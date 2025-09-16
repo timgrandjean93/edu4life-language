@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Override Tailwind base styles that might interfere with background */
+body {
+  background-image: url('/assets/backgrounds/background.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-color: transparent !important;
+}
+
+/* Force text centering */
+h1 {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  color: #213547;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100vh;
+  /* Don't override background - let HTML handle it */
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  height: 100vh;
+  /* Transparent background so HTML background shows through */
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Landscape orientation styles for mobile */
+@media screen and (max-width: 768px) {
+  .landscape-only {
+    display: none;
+  }
+  
+  .portrait-warning {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .landscape-only {
+    display: block;
+  }
+  
+  .portrait-warning {
+    display: none;
+  }
+}
+
+/* Game specific styles */
+.game-container {
+  min-height: 100vh;
+  /* Don't set background - let HTML handle it */
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.wetland-gradient {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+}
+
+.nature-gradient {
+  background: linear-gradient(135deg, #84cc16 0%, #65a30d 50%, #4d7c0f 100%);
+}
+
+/* Smooth transitions for all interactive elements */
+button, .clickable {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover, .clickable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

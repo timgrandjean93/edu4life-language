@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu4Life - Wetlands Game Embedding Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .game-container {
+            height: 600px;
+            border: none;
+        }
+        .info {
+            padding: 20px;
+            background: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌿 Edu4Life - Wetlands Educatie</h1>
+            <p>Interactieve gamification voor wetlands leren</p>
+        </div>
+        
+        <iframe 
+            id="edu4life-iframe"
+            src="./dist/index.html" 
+            class="game-container"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+        
+        <div class="info">
+            <h3>Hoe werkt het?</h3>
+            <p>Deze game is embedded in deze pagina en kan eenvoudig geïntegreerd worden in elke website. 
+            De game detecteert automatisch of je op een mobiel apparaat bent en vraagt je om je scherm te kantelen voor de beste ervaring.</p>
+            
+            <h4>Features:</h4>
+            <ul>
+                <li>✅ Responsive design voor alle apparaten</li>
+                <li>✅ Landscape-only op mobile</li>
+                <li>✅ Geen login vereist</li>
+                <li>✅ Eenvoudig te embedden</li>
+                <li>✅ Educatieve mini-games</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Voorbeeld van postMessage communicatie
+        const iframe = document.getElementById('edu4life-iframe');
+        
+        // Luister naar berichten van de game
+        window.addEventListener('message', (event) => {
+            // In productie, controleer event.origin voor veiligheid
+            console.log('Bericht van game:', event.data);
+            
+            switch(event.data.type) {
+                case 'GAME_STARTED':
+                    console.log('🎮 Game gestart!');
+                    break;
+                case 'GAME_COMPLETED':
+                    console.log('🎉 Game voltooid! Score:', event.data.score);
+                    break;
+                case 'LEVEL_COMPLETED':
+                    console.log('✅ Level voltooid:', event.data.level);
+                    break;
+            }
+        });
+        
+        // Stuur berichten naar de game (voorbeeld)
+        // iframe.contentWindow.postMessage({
+        //     type: 'PAUSE_GAME'
+        // }, '*');
+    </script>
+</body>
+</html>
