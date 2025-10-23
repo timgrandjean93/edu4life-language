@@ -4,19 +4,34 @@ import { RotationMessage } from './RotationMessage';
 import { clickableComponents } from '../data/clickableComponents';
 import type { ClickableComponent } from '../data/clickableComponents';
 
-export const HomePage: React.FC = () => {
+interface HomePageProps {
+  onComponentClick?: (component: ClickableComponent) => void;
+}
+
+export const HomePage: React.FC<HomePageProps> = ({ onComponentClick }) => {
   const riverRef = useRef<HTMLDivElement>(null);
   const [showRotationMessage, setShowRotationMessage] = useState(false);
   
   // Responsive configuratie wordt nu direct toegepast in de component data
 
   useEffect(() => {
-    // Apply background permanently with fixed attachment
+    // Apply background image for homepage
     document.body.style.backgroundImage = "url('/assets/backgrounds/background.png')";
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundAttachment = "fixed";
+    document.body.style.backgroundColor = "";
+    
+    // Cleanup function to remove background when component unmounts
+    return () => {
+      document.body.style.backgroundImage = "none";
+      document.body.style.backgroundSize = "";
+      document.body.style.backgroundPosition = "";
+      document.body.style.backgroundRepeat = "";
+      document.body.style.backgroundAttachment = "";
+      document.body.style.backgroundColor = "";
+    };
   }, []);
 
   useEffect(() => {
@@ -47,9 +62,15 @@ export const HomePage: React.FC = () => {
 
   const handleComponentClick = (component: ClickableComponent) => {
     console.log('Clicked component:', component.title);
-    // Hier kun je later games starten of andere acties uitvoeren
-    if (component.gameId) {
-      console.log('Starting game:', component.gameId);
+    
+    // Use the passed callback if available, otherwise use default behavior
+    if (onComponentClick) {
+      onComponentClick(component);
+    } else {
+      // Default behavior for backwards compatibility
+      if (component.gameId) {
+        console.log('Starting game:', component.gameId);
+      }
     }
   };
 
