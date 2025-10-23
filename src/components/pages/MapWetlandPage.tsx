@@ -65,39 +65,8 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
     };
   }, []);
 
-  const currentItem = quizItems[currentStep - 1];
   const isCompleted = currentStep > quizItems.length;
 
-  const handleLetterSelect = (letter: string) => {
-    if (usedLetters.includes(letter)) return;
-    setSelectedLetter(letter);
-  };
-
-  const handleSubmit = () => {
-    if (!selectedLetter) return;
-
-    if (selectedLetter === currentItem.correctLetter) {
-      // Correct answer
-      setCompletedSteps([...completedSteps, currentStep]);
-      setUsedLetters([...usedLetters, selectedLetter]);
-      setSelectedLetter(null);
-      setShowError(false);
-      
-      // Move to next step
-      if (currentStep < quizItems.length) {
-        setCurrentStep(currentStep + 1);
-      } else {
-        setCurrentStep(currentStep + 1); // Completion state
-      }
-    } else {
-      // Wrong answer
-      setShowError(true);
-      setTimeout(() => {
-        setShowError(false);
-        setSelectedLetter(null);
-      }, 2000);
-    }
-  };
 
   return (
     <div className="relative w-full min-h-screen">

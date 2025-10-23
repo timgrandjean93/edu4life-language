@@ -166,7 +166,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
 
   // Close dropdown when clicking outside
   React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (_event: MouseEvent) => {
       if (activeDropdown) {
         setActiveDropdown(null);
       }
