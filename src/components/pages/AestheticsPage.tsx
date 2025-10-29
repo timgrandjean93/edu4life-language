@@ -330,7 +330,7 @@ const hiddenIconsData: Record<string, {
   }, []);
 
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {/* Header with title and home button */}
       <div className="relative z-50">
         <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
@@ -355,7 +355,7 @@ const hiddenIconsData: Record<string, {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: '120px' }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}
