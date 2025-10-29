@@ -134,7 +134,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   const dropZones = [
     { id: 'zone1', x: 15, y: 26, width: 8, height: 15, correctAnswer: 'cutting-meanders' },
     { id: 'zone2', x: 25, y: 19, width: 8, height: 15, correctAnswer: 'building-dykes' },
-    { id: 'zone3', x: 37, y: 26, width: 12, height: 8, correctAnswer: 'channellizing-rivers' },
+    { id: 'zone3', x: 44, y: 35, width: 10, height: 8, correctAnswer: 'channellizing-rivers' },
     { id: 'zone4', x: 40, y: 43, width: 8, height: 12, correctAnswer: 'draining-floodplains' },
     { id: 'zone5', x: 50, y: 46, width: 8, height: 10, correctAnswer: 'urbanization' },
     { id: 'zone6', x: 44, y: 62, width: 12, height: 15, correctAnswer: 'agriculture-pesticides' },
@@ -482,7 +482,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           }}
                         />
                         
-                        {/* Invisible drop zones - Always invisible */}
+                        {/* Visible drop zones for page 2 */}
                         {!showValidation && dropZones.map((zone) => (
                           <div
                             key={zone.id}
@@ -495,7 +495,11 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                               width: `${zone.width}%`,
                               height: `${zone.height}%`,
                               pointerEvents: 'auto',
-                              cursor: 'pointer'
+                              cursor: 'pointer',
+                              border: '2px dashed #C41904',
+                              backgroundColor: 'rgba(196, 25, 4, 0.1)',
+                              borderRadius: '4px',
+                              boxSizing: 'border-box'
                             }}
                           />
                         ))}
