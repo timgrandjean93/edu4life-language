@@ -13,11 +13,12 @@ import { AestheticsPage } from './components/pages/AestheticsPage';
 import { WetlandFreskPage } from './components/pages/WetlandFreskPage';
 import { Wetland4LifePage } from './components/pages/Wetland4LifePage';
 import { WetlandEduRepoPage } from './components/pages/WetlandEduRepoPage';
+import { TreatmentWetlandsPage } from './components/pages/TreatmentWetlandsPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands'>('home');
 
-  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo') => {
+  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands') => {
     setCurrentPage(page);
   };
 
@@ -107,6 +108,12 @@ function App() {
             onHomeClick={() => navigateTo('home')}
           />
         );
+      case 'treatmentwetlands':
+        return (
+          <TreatmentWetlandsPage
+            onHomeClick={() => navigateTo('home')}
+          />
+        );
       case 'home':
       default:
         return (
@@ -122,6 +129,8 @@ function App() {
                 navigateTo('floodcontrol');
               } else if (component.id === 'climate') {
                 navigateTo('carbon');
+              } else if (component.id === 'constructed') {
+                navigateTo('treatmentwetlands');
               } else if (component.id === 'wastewater') {
                 navigateTo('selfpurification');
               } else if (component.id === 'Art') {

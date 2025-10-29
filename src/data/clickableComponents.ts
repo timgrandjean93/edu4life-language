@@ -132,6 +132,24 @@ export const clickableComponents: ClickableComponent[] = [
     widthPercentage: 18 // 15% van viewport breedte, hoogte wordt automatisch bepaald
   },
   {
+    id: 'constructed',
+    title: 'Treatment wetlands',
+    description: 'Learn about constructed treatment wetlands',
+    x: 0, // Wordt overschreven door riverPosition
+    y: 0, // Wordt overschreven door riverPosition
+    icon: '🏞️',
+    color: 'bg-blue-400',
+    size: 'medium',
+    category: 'river',
+    image: '/assets/components/Constructed.png',
+    riverPosition: {
+      x: 45, // Position along the river
+      offsetY: 60 // Offset from river
+    },
+    anchorPoint: 'top', // De witte cirkel aan de bovenkant
+    widthPercentage: 18 // 15% van viewport breedte, hoogte wordt automatisch bepaald
+  },
+  {
     id: 'Mapping',
     title: 'Mapping your wetland',
     description: 'Ontdek hoe wetlands fungeren als natuurlijke spons',
