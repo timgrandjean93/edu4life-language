@@ -61,9 +61,9 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
 
 
   return (
-    <div className="relative w-full min-h-screen page-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#dfebf5' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
       {/* Header with title and home button */}
-      <div className="relative z-50" style={{ flexShrink: 0 }}>
+      <div className="relative z-50">
         <div className="flex items-start justify-center" style={{paddingBottom: '10px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">

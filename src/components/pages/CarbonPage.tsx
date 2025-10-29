@@ -266,7 +266,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   const missedCount = dropZones.length - Object.keys(placements).length;
 
   return (
-    <div className="relative w-full min-h-screen page-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#dfebf5' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
       
       {/* Modal for Page 2 Quiz */}
       {showModal && (
