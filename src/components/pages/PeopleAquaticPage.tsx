@@ -430,7 +430,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={currentPage === 3 ? { paddingBottom: '32px' } : { flex: 1, overflowY: 'auto' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}

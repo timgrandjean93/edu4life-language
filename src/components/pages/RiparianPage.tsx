@@ -215,7 +215,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, overflowY: 'auto' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}

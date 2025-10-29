@@ -82,7 +82,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, overflowY: 'auto' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}

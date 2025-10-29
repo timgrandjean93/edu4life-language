@@ -552,7 +552,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-8" style={{ flex: 1, overflowY: 'auto' }}>
+      <div className="relative z-10 px-8" style={{ paddingBottom: '32px' }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
