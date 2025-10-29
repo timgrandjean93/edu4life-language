@@ -103,8 +103,8 @@ const libelleElements = [
 ];
 
 // Removed: boatElements (page 3 removed)
-// @ts-ignore - Unused, kept for reference
-const _boatElementsUnused = [
+// Unused, kept for reference
+/* const _boatElementsUnused = [
   { 
     id: 'leaf', 
     name: 'Leaf', 
@@ -241,11 +241,11 @@ const _boatElementsUnused = [
     type: 'element', 
     rotation: 25 
   }
-];
+]; */
 
 // Removed: animalsElements (page 4 removed)
-// @ts-ignore - Unused, kept for reference
-const _animalsElementsUnused = [
+// Unused, kept for reference
+/* const _animalsElementsUnused = [
   { 
     id: 'rock', 
     name: 'Rock', 
@@ -321,7 +321,7 @@ const _animalsElementsUnused = [
     type: 'element', 
     rotation: 12 
   }
-];
+]; */
 
 const finalElements = [
   { 
@@ -419,8 +419,8 @@ const libelleOutline = {
 };
 
 // Removed: boatOutline (page 3 removed)
-// @ts-ignore - Unused, kept for reference
-const _boatOutlineUnused = {
+// Unused, kept for reference
+/* const _boatOutlineUnused = {
   id: 'boat', 
   name: 'Boat', 
   image: '/assets/components/art/boat/boat.png',
@@ -443,11 +443,11 @@ const _boatOutlineUnused = {
     { id: 'boat-zone16', x: 80, y: 10, width: 15, height: 15, accepts: ['grass'] },
     { id: 'boat-zone17', x: 90, y: 10, width: 15, height: 15, accepts: ['arm_2'] }
   ]
-};
+}; */
 
 // Removed: animalsOutline (page 4 removed)
-// @ts-ignore - Unused, kept for reference
-const _animalsOutlineUnused = {
+// Unused, kept for reference
+/* const _animalsOutlineUnused = {
   id: 'animals', 
   name: 'Animals', 
   image: '/assets/components/art/animals/animals.png',
@@ -479,7 +479,7 @@ const _animalsOutlineUnused = {
     // Small_leaf - 1 drop zone
     { id: 'animals-zone6', x: 5, y: 15, width: 8, height: 8, accepts: ['small_leaf'] }
   ]
-};
+}; */
 
 // Final outline that can be filled
 const finalOutline = {

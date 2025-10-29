@@ -10,11 +10,12 @@ import { SelfPurificationPage } from './components/pages/SelfPurificationPage';
 import { ArtPage } from './components/pages/ArtPage';
 import { PeopleAquaticPage } from './components/pages/PeopleAquaticPage';
 import { AestheticsPage } from './components/pages/AestheticsPage';
+import { WetlandFreskPage } from './components/pages/WetlandFreskPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk'>('home');
 
-  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics') => {
+  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk') => {
     setCurrentPage(page);
   };
 
@@ -82,6 +83,12 @@ function App() {
             onArtClick={() => navigateTo('art')}
           />
         );
+      case 'wetlandfresk':
+        return (
+          <WetlandFreskPage
+            onHomeClick={() => navigateTo('home')}
+          />
+        );
       case 'home':
       default:
         return (
@@ -105,6 +112,8 @@ function App() {
                 navigateTo('people');
               } else if (component.id === 'aestethics') {
                 navigateTo('aesthetics');
+              } else if (component.id === 'WetlandFresk') {
+                navigateTo('wetlandfresk');
               } else {
                 console.log('Component clicked:', component.id, '- navigation not implemented yet');
               }
