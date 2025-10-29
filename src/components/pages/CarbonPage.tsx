@@ -5,6 +5,7 @@ import { HomeButton } from '../HomeButton';
 interface CarbonPageProps {
   onHomeClick: () => void;
   onSelfPurificationClick?: () => void;
+  onRepositoryClick?: () => void;
 }
 
 const TOTAL_PAGES = 3;
@@ -103,7 +104,8 @@ const dropZones = [
 
 export const CarbonPage: React.FC<CarbonPageProps> = ({
   onHomeClick,
-  onSelfPurificationClick
+  onSelfPurificationClick,
+  onRepositoryClick
 }) => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [draggedLabel, setDraggedLabel] = React.useState<string | null>(null);
@@ -125,6 +127,9 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   const [puzzleAnswers, setPuzzleAnswers] = React.useState<Record<string, string>>({});
   const [puzzleSubmitted, setPuzzleSubmitted] = React.useState(false);
   // removed feedback state
+  
+  // Download modal state
+  const [showDownloadModal, setShowDownloadModal] = React.useState(false);
 
   // Set page background
   React.useEffect(() => {
@@ -242,6 +247,32 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
     }));
     
     setSelectedLetter(null);
+  };
+
+  // Download modal handlers
+  const handleDownloadClick = () => {
+    setShowDownloadModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowDownloadModal(false);
+  };
+
+  const handleZenodoLink1 = () => {
+    window.open('https://zenodo.org/records/17453840', '_blank');
+    setShowDownloadModal(false);
+  };
+
+  const handleZenodoLink2 = () => {
+    window.open('https://doi.org/10.5281/zenodo.17463284', '_blank');
+    setShowDownloadModal(false);
+  };
+
+  const handleDashboardLink = () => {
+    setShowDownloadModal(false);
+    if (onRepositoryClick) {
+      onRepositoryClick();
+    }
   };
 
   const handlePuzzleSubmit = () => {
@@ -1296,34 +1327,36 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
             {currentPage === TOTAL_PAGES && puzzleSubmitted ? (
               <div className="flex items-center justify-center" style={{ position: 'relative' }}>
                 {/* Download Button - 50px left of pagination */}
-                <button
-                  className="download-button relative flex items-center justify-center z-50"
-                  style={{
+              <button
+                  onClick={handleDownloadClick}
+                className="download-button relative flex items-center justify-center z-50"
+                style={{
                     width: '480px',
-                    height: '50px',
-                    backgroundColor: 'transparent',
-                    border: 'none',
-                    marginRight: '50px'
-                  }}
-                >
-                  <img 
-                    src="/assets/icons/download.png" 
-                    alt="Download" 
-                    style={{ 
+                  height: '50px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                    marginRight: '50px',
+                    cursor: 'pointer'
+                }}
+              >
+                <img 
+                  src="/assets/icons/download.png" 
+                  alt="Download" 
+                  style={{ 
                       width: '480px',
-                      height: '50px',
-                      opacity: 1
-                    }}
-                  />
-                </button>
+                    height: '50px',
+                    opacity: 1
+                  }}
+                />
+              </button>
 
                 {/* Pagination Dots */}
                 <div className="flex justify-center items-center" style={{ gap: '14px', position: 'relative' }}>
-                  {Array.from({ length: TOTAL_PAGES }, (_, index) => {
-                    const pageNum = index + 1;
-                    return (
-                      <button
-                        key={index}
+            {Array.from({ length: TOTAL_PAGES }, (_, index) => {
+              const pageNum = index + 1;
+              return (
+                <button
+                  key={index}
                         onClick={() => setCurrentPage(pageNum)}
                         className="transition-all duration-300 p-0 border-0 bg-transparent"
                         aria-label={`Go to page ${pageNum}`}
@@ -1369,27 +1402,27 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   <button
                     key={index}
                     onClick={() => { if (canNavigate) setCurrentPage(pageNum); }}
-                    disabled={!canNavigate}
-                    className="transition-all duration-300 p-0 border-0 bg-transparent"
-                    aria-label={`Go to page ${pageNum}`}
-                    style={{ 
-                      background: 'none', 
-                      border: 'none', 
-                      padding: 0,
-                      cursor: canNavigate ? 'pointer' : 'default',
-                      opacity: canNavigate ? 1 : 0.5
+                  disabled={!canNavigate}
+                  className="transition-all duration-300 p-0 border-0 bg-transparent"
+                  aria-label={`Go to page ${pageNum}`}
+                  style={{ 
+                    background: 'none', 
+                    border: 'none', 
+                    padding: 0,
+                    cursor: canNavigate ? 'pointer' : 'default',
+                    opacity: canNavigate ? 1 : 0.5
+                  }}
+                >
+                  <div
+                    className="rounded-full transition-all duration-300"
+                    style={{
+                      width: '14px',
+                      height: '14px',
+                      backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
                     }}
-                  >
-                    <div
-                      className="rounded-full transition-all duration-300"
-                      style={{
-                        width: '14px',
-                        height: '14px',
-                        backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
-                      }}
-                    />
-                  </button>
-                );
+                  />
+                </button>
+              );
               })
             )}
           </motion.div>
@@ -1467,6 +1500,250 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Download Modal */}
+      {showDownloadModal && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999
+          }}
+          onClick={handleCloseModal}
+        >
+          <div 
+            style={{
+              backgroundColor: '#dfebf5',
+              borderRadius: '16px',
+              padding: '40px',
+              maxWidth: '600px',
+              width: '90%',
+              position: 'relative',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={handleCloseModal}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'transparent',
+                border: 'none',
+                fontSize: '32px',
+                cursor: 'pointer',
+                color: '#406A46',
+                fontWeight: 'bold'
+              }}
+            >
+              ×
+            </button>
+
+            {/* Modal Title */}
+            <div style={{
+              fontFamily: 'Comfortaa, sans-serif',
+              fontSize: '32px',
+              fontWeight: 'bold',
+              color: '#406A46',
+              textAlign: 'center',
+              marginBottom: '30px'
+            }}>
+              Download Options
+            </div>
+
+            {/* Option 1: Zenodo Link 1 */}
+            <button
+              onClick={handleZenodoLink1}
+              style={{
+                width: '100%',
+                backgroundColor: '#97C09D',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '24px',
+                cursor: 'pointer',
+                marginBottom: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#7FAF85';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#97C09D';
+              }}
+            >
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src="/assets/icons/protocols.png" 
+                  alt="Protocols" 
+                  style={{ 
+                    width: '70px',
+                    height: '90px'
+                  }}
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '6px'
+                }}>
+                  Carbon sequestration in soils
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.7)'
+                }}>
+                  (Opens in new tab: Zenodo)
+                </div>
+              </div>
+            </button>
+
+            {/* Option 2: Zenodo Link 2 */}
+            <button
+              onClick={handleZenodoLink2}
+              style={{
+                width: '100%',
+                backgroundColor: '#97C09D',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '24px',
+                cursor: 'pointer',
+                marginBottom: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#7FAF85';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#97C09D';
+              }}
+            >
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src="/assets/icons/protocols.png" 
+                  alt="Protocols" 
+                  style={{ 
+                    width: '70px',
+                    height: '90px'
+                  }}
+                />
+          </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '6px'
+                }}>
+                  Carbon sequestration in floodplain forests
+        </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.7)'
+                }}>
+                  (Opens in new tab: Zenodo)
+      </div>
+              </div>
+            </button>
+
+            {/* Option 3: Dashboard */}
+            <button
+              onClick={handleDashboardLink}
+              style={{
+                width: '100%',
+                backgroundColor: '#CE7C0A',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '24px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#B86A08';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#CE7C0A';
+              }}
+            >
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src="/assets/icons/edurepo.png" 
+                  alt="Edu Repository" 
+                  style={{ 
+                    width: '50px',
+                    height: '50px'
+                  }}
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '8px'
+                }}>
+                  Wetland Edu Repository
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.9)'
+                }}>
+                  Explore related projects and resources
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

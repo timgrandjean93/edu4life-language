@@ -12,11 +12,12 @@ import { PeopleAquaticPage } from './components/pages/PeopleAquaticPage';
 import { AestheticsPage } from './components/pages/AestheticsPage';
 import { WetlandFreskPage } from './components/pages/WetlandFreskPage';
 import { Wetland4LifePage } from './components/pages/Wetland4LifePage';
+import { WetlandEduRepoPage } from './components/pages/WetlandEduRepoPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo'>('home');
 
-  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life') => {
+  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo') => {
     setCurrentPage(page);
   };
 
@@ -41,6 +42,7 @@ function App() {
           <FloodplainPage
             onHomeClick={() => navigateTo('home')}
             onMapWetlandClick={() => navigateTo('mapwetland')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
           />
         );
       case 'floodcontrol':
@@ -55,6 +57,7 @@ function App() {
           <CarbonPage
             onHomeClick={() => navigateTo('home')}
             onSelfPurificationClick={() => navigateTo('selfpurification')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
           />
         );
       case 'selfpurification':
@@ -69,6 +72,7 @@ function App() {
           <ArtPage
             onHomeClick={() => navigateTo('home')}
             onPeopleAquaticClick={() => navigateTo('people')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
           />
         );
       case 'people':
@@ -82,6 +86,7 @@ function App() {
           <AestheticsPage
             onHomeClick={() => navigateTo('home')}
             onArtClick={() => navigateTo('art')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
           />
         );
       case 'wetlandfresk':
@@ -93,6 +98,12 @@ function App() {
       case 'wetland4life':
         return (
           <Wetland4LifePage
+            onHomeClick={() => navigateTo('home')}
+          />
+        );
+      case 'wetlandEduRepo':
+        return (
+          <WetlandEduRepoPage
             onHomeClick={() => navigateTo('home')}
           />
         );
@@ -109,7 +120,7 @@ function App() {
                 navigateTo('floodplain');
               } else if (component.id === 'floodplain-sponge') {
                 navigateTo('floodcontrol');
-              } else if (component.id === 'carbon') {
+              } else if (component.id === 'climate') {
                 navigateTo('carbon');
               } else if (component.id === 'wastewater') {
                 navigateTo('selfpurification');

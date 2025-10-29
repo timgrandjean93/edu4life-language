@@ -5,6 +5,7 @@ import { HomeButton } from '../HomeButton';
 interface ArtPageProps {
   onHomeClick: () => void;
   onPeopleAquaticClick?: () => void;
+  onRepositoryClick?: () => void;
 }
 
 // Natural elements that can be dragged
@@ -497,14 +498,15 @@ const finalOutline = {
   ]
 };
 
-export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticClick }) => {
+export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticClick, onRepositoryClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [draggedElement, setDraggedElement] = useState<string | null>(null);
   const [placedElements, setPlacedElements] = useState<{[key: string]: string}>({});
   const [isCompleted, setIsCompleted] = useState(false);
   const [usedElements, setUsedElements] = useState<Set<string>>(new Set());
   const [showDropZones] = useState(false);
-  
+  const [showDownloadModal, setShowDownloadModal] = useState(false);
+
   // Dropzones are hidden by default
 
   const TOTAL_PAGES = 3;
@@ -591,6 +593,28 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
 
   // Removed: resetPuzzle unused
 
+  // Download modal handlers
+  const handleDownloadClick = () => {
+    setShowDownloadModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowDownloadModal(false);
+  };
+
+  const handleZenodoLink = () => {
+    // TODO: Add specific Zenodo link for Art
+    window.open('https://doi.org/10.5281/zenodo.17477431', '_blank');
+    setShowDownloadModal(false);
+  };
+
+  const handleDashboardLink = () => {
+    setShowDownloadModal(false);
+    if (onRepositoryClick) {
+      onRepositoryClick();
+    }
+  };
+
   return (
     <div className="min-h-screen relative" style={{ 
       display: 'flex', 
@@ -634,51 +658,51 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
 
           {/* Introduction Text - Only on pages 1 and 2 */}
           {currentPage !== 3 && (
+          <div className="text-center mb-8">
+            <p style={{
+              fontSize: '22px',
+              fontFamily: 'Comfortaa, sans-serif',
+              fontWeight: 'bold',
+              color: '#406A46',
+              lineHeight: '1.6',
+              marginBottom: '20px'
+            }}>
+              Rivers and their floodplains are home to numerous animals and plants, and they are also living landscapes full of stories that have inspired people for centuries. From weaving baskets with willow branches to creating songs, legends, and drawings, floodplains connect nature with culture.
+            </p>
+            
+            <p style={{
+              fontSize: '22px',
+              fontFamily: 'Comfortaa, sans-serif',
+              fontWeight: 'bold',
+              color: '#9F8B68',
+              lineHeight: '1.6',
+              marginBottom: '30px'
+            }}>
+              Now it's your turn - have fun using natural elements to create your own pictures and stories.<br />By the river, let its colors, shapes, and sounds inspire you discover the joy of shaping your own story from the floodplain.
+            </p>
+
+            {/* Pointer Icon */}
+            <div className="flex justify-center mb-8">
+              <img 
+                src="/assets/icons/pointer.png" 
+                alt="Pointer" 
+                style={{ width: '70px', height: '70px' }}
+              />
+            </div>
+
+            {/* Instruction */}
             <div className="text-center mb-8">
               <p style={{
                 fontSize: '22px',
                 fontFamily: 'Comfortaa, sans-serif',
                 fontWeight: 'bold',
                 color: '#406A46',
-                lineHeight: '1.6',
-                marginBottom: '20px'
+                lineHeight: '1.6'
               }}>
-                Rivers and their floodplains are home to numerous animals and plants, and they are also living landscapes full of stories that have inspired people for centuries. From weaving baskets with willow branches to creating songs, legends, and drawings, floodplains connect nature with culture.
+                Imagine you are out in nature, collecting leaves, branches, or feathers to create your own characters.<br />Could you help these outlines come to life? Drag and drop the natural elements into the shapes until they are filled with form and color.
               </p>
-              
-              <p style={{
-                fontSize: '22px',
-                fontFamily: 'Comfortaa, sans-serif',
-                fontWeight: 'bold',
-                color: '#9F8B68',
-                lineHeight: '1.6',
-                marginBottom: '30px'
-              }}>
-                Now it's your turn - have fun using natural elements to create your own pictures and stories.<br />By the river, let its colors, shapes, and sounds inspire you discover the joy of shaping your own story from the floodplain.
-              </p>
-
-              {/* Pointer Icon */}
-              <div className="flex justify-center mb-8">
-                <img 
-                  src="/assets/icons/pointer.png" 
-                  alt="Pointer" 
-                  style={{ width: '70px', height: '70px' }}
-                />
-              </div>
-
-              {/* Instruction */}
-              <div className="text-center mb-8">
-                <p style={{
-                  fontSize: '22px',
-                  fontFamily: 'Comfortaa, sans-serif',
-                  fontWeight: 'bold',
-                  color: '#406A46',
-                  lineHeight: '1.6'
-                }}>
-                  Imagine you are out in nature, collecting leaves, branches, or feathers to create your own characters.<br />Could you help these outlines come to life? Drag and drop the natural elements into the shapes until they are filled with form and color.
-                </p>
-              </div>
             </div>
+          </div>
           )}
 
           {/* Page 3 - Pointer and Instruction */}
@@ -771,11 +795,11 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
             )}
 
             {/* Image - 50% width on page 3, fixed width on pages 1 and 2 */}
-            <div className="relative" style={{ 
+              <div className="relative" style={{ 
               width: currentPage === 1 ? '354px' : currentPage === 2 ? '506px' : '50%',
               height: 'auto',
               flexShrink: currentPage === 3 ? 0 : undefined
-            }}>
+              }}>
               <img 
                 src={getCurrentOutline().image} 
                 alt={getCurrentOutline().name}
@@ -980,7 +1004,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                       </div>
                     );
                   })}
-            </div>
+                </div>
             )}
 
             {/* Elements for pages 1 and 2 - Below image */}
@@ -1050,23 +1074,25 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
       }}>
         <div className="max-w-6xl mx-auto">
           <div className="relative flex justify-between items-center px-4">
-          {/* Home Button - Left */}
-          <div className="flex items-center">
-            <HomeButton onClick={onHomeClick} />
-          </div>
+        {/* Home Button - Left */}
+        <div className="flex items-center">
+          <HomeButton onClick={onHomeClick} />
+        </div>
 
           {/* Center Section - Pagination and Download Button */}
           <div className="flex items-center justify-center" style={{ position: 'relative' }}>
             {/* Download Button - Only on last page, 50px left of pagination */}
             {currentPage === TOTAL_PAGES && isCompleted && (
               <button
+                onClick={handleDownloadClick}
                 className="download-button relative flex items-center justify-center z-50"
                 style={{
                   width: '480px',
                   height: '50px',
                   backgroundColor: 'transparent',
                   border: 'none',
-                  marginRight: '50px'
+                  marginRight: '50px',
+                  cursor: 'pointer'
                 }}
               >
                 <img 
@@ -1082,21 +1108,21 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
             )}
 
             {/* Pagination Dots - Centered */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-              className="flex justify-center items-center"
-              style={{ gap: '14px' }}
-            >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
+            className="flex justify-center items-center"
+            style={{ gap: '14px' }}
+          >
               {[1, 2, 3].map((page) => (
                 <button
-                  key={page}
-                  onClick={() => {
-                    setCurrentPage(page);
-                    setPlacedElements({});
-                    setIsCompleted(false);
-                    setUsedElements(new Set());
+                key={page}
+                onClick={() => {
+                  setCurrentPage(page);
+                  setPlacedElements({});
+                  setIsCompleted(false);
+                  setUsedElements(new Set());
                   }}
                   className="transition-all duration-300 p-0 border-0 bg-transparent"
                   aria-label={`Go to page ${page}`}
@@ -1116,8 +1142,8 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                     }}
                   />
                 </button>
-              ))}
-            </motion.div>
+            ))}
+          </motion.div>
 
             {/* NEXT TOPIC Text - Only on last page, 50px right of pagination */}
             {currentPage === TOTAL_PAGES && isCompleted && (
@@ -1132,41 +1158,233 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                 </span>
               </div>
             )}
-          </div>
+        </div>
 
           {/* Next/Back Home Button - Right */}
-          <div className="flex items-center">
-            <button
+        <div className="flex items-center">
+          <button
               onClick={isCompleted ? (currentPage === TOTAL_PAGES ? onPeopleAquaticClick : () => {
-                setCurrentPage(currentPage + 1);
-                setPlacedElements({});
-                setIsCompleted(false);
-                setUsedElements(new Set());
-              }) : undefined}
+              setCurrentPage(currentPage + 1);
+              setPlacedElements({});
+              setIsCompleted(false);
+              setUsedElements(new Set());
+            }) : undefined}
               className="next-button relative flex items-center justify-center z-50"
-              style={{
-                width: '158px',
-                height: '60px',
-                backgroundColor: 'transparent',
-                border: 'none',
+            style={{
+              width: '158px',
+              height: '60px',
+              backgroundColor: 'transparent',
+              border: 'none',
                 cursor: isCompleted ? 'pointer' : 'not-allowed'
-              }}
-            >
-              <img 
-                src="/assets/icons/next.png" 
+            }}
+          >
+            <img 
+              src="/assets/icons/next.png" 
                 alt={currentPage === TOTAL_PAGES ? 'People and aquatic ecosystems' : 'Next'} 
-                style={{ 
-                  width: '158px',
+              style={{ 
+                width: '158px',
                   height: '60px',
                   opacity: isCompleted ? 1 : 0.3,
                   transition: 'opacity 0.3s ease'
-                }}
-              />
-            </button>
-          </div>
-          </div>
+              }}
+            />
+          </button>
         </div>
       </div>
+      </div>
+      </div>
+
+      {/* Download Modal */}
+      {showDownloadModal && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999
+          }}
+          onClick={handleCloseModal}
+        >
+          <div 
+            style={{
+              backgroundColor: '#dfebf5',
+              borderRadius: '16px',
+              padding: '40px',
+              maxWidth: '600px',
+              width: '90%',
+              position: 'relative',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={handleCloseModal}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'transparent',
+                border: 'none',
+                fontSize: '32px',
+                cursor: 'pointer',
+                color: '#406A46',
+                fontWeight: 'bold'
+              }}
+            >
+              ×
+            </button>
+
+            {/* Modal Title */}
+            <div style={{
+              fontFamily: 'Comfortaa, sans-serif',
+              fontSize: '32px',
+              fontWeight: 'bold',
+              color: '#406A46',
+              textAlign: 'center',
+              marginBottom: '30px'
+            }}>
+              Download Options
+            </div>
+
+            {/* Option 1: Zenodo */}
+            <button
+              onClick={handleZenodoLink}
+              style={{
+                width: '100%',
+                backgroundColor: '#97C09D',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '24px',
+                cursor: 'pointer',
+                marginBottom: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#7FAF85';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#97C09D';
+              }}
+            >
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src="/assets/icons/protocols.png" 
+                  alt="Protocols" 
+                  style={{ 
+                    width: '70px',
+                    height: '90px'
+                  }}
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '8px'
+                }}>
+                  Access protocols
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  marginBottom: '6px'
+                }}>
+                  Based on 5E learning method and scientific research
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.7)'
+                }}>
+                  (Opens in new tab: Zenodo)
+                </div>
+              </div>
+            </button>
+
+            {/* Option 2: Dashboard */}
+            <button
+              onClick={handleDashboardLink}
+              style={{
+                width: '100%',
+                backgroundColor: '#CE7C0A',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '24px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#B86A08';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#CE7C0A';
+              }}
+            >
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src="/assets/icons/edurepo.png" 
+                  alt="Edu Repository" 
+                  style={{ 
+                    width: '50px',
+                    height: '50px'
+                  }}
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '8px'
+                }}>
+                  Wetland Edu Repository
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.9)'
+                }}>
+                  Explore related projects and resources
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
