@@ -58,7 +58,7 @@ const rightImageHoverAreas = [
     y: 35,
     width: 60,
     height: 15,
-    text: 'The river is confined by dykes like a tight corset.  It can’t spread out or reach the floodplain, so floodwaters rise quickly'
+    text: 'The river is confined by dikes like a tight corset.  It can't spread out or reach the floodplain, so floodwaters rise quickly'
   },
   {
     id: 'ecosystem-benefits',
@@ -123,7 +123,7 @@ const leftDescriptions = [
 ];
 
 const rightDescriptions = [
-  "In heavy rain, floods can build up, break dykes, and threaten nearby villages.",
+  "In heavy rain, floods can build up, break dikes, and threaten nearby villages.",
   "In a straightened, channelized river, water flows too fast downstream.",
   "Without riverside plants, there's nothing to slow down runoff or absorb water."
 ];

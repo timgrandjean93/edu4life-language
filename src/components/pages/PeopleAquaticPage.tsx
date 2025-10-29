@@ -40,9 +40,9 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
       description: 'Straightening the river (making the river shorter and straighter instead of meandering)'
     },
     {
-      id: 'building-dykes', 
-      label: 'Building dykes',
-      description: 'Flood protection dykes (raised embankments along the river that keep the water inside the main channel and stop it from reaching the floodplain)'
+      id: 'building-dikes',
+      label: 'Building dikes',
+      description: 'Flood protection dikes (raised embankments along the river that keep the water inside the main channel and stop it from reaching the floodplain)'
     },
     {
       id: 'channellizing-rivers',
@@ -104,9 +104,9 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
       description: 'Re-opening old river branches so that water can flow there again, creating multiple habitats for fish, birds, and plants.'
     },
     {
-      id: 'dyke-relocation',
-      label: 'Dyke relocation for more space',
-      description: 'Moving dykes further away from the river to provide more space to the river and floodplain forests that may retain flood waters.'
+      id: 'dike-relocation',
+      label: 'Dike relocation for more space',
+      description: 'Moving dikes further away from the river to provide more space to the river and floodplain forests that may retain flood waters.'
     },
     {
       id: 'buffer-strips',
@@ -133,7 +133,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   // Drop zones for page 2 (Activity 1)
   const dropZones = [
     { id: 'zone1', x: 15, y: 26, width: 8, height: 15, correctAnswer: 'cutting-meanders' },
-    { id: 'zone2', x: 25, y: 19, width: 8, height: 15, correctAnswer: 'building-dykes' },
+    { id: 'zone2', x: 25, y: 19, width: 8, height: 15, correctAnswer: 'building-dikes' },
     { id: 'zone3', x: 44, y: 35, width: 10, height: 8, correctAnswer: 'channellizing-rivers' },
     { id: 'zone4', x: 40, y: 43, width: 8, height: 12, correctAnswer: 'draining-floodplains' },
     { id: 'zone5', x: 50, y: 46, width: 8, height: 10, correctAnswer: 'urbanization' },
@@ -151,7 +151,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     { id: 'restore-zone1', x: 16, y: 8, width: 20, height: 22, correctAnswer: 'restoration-sidearms' },
     { id: 'restore-zone2', x: 41, y: 10, width: 25, height: 30, correctAnswer: 'buffer-strips' },
     { id: 'restore-zone3', x: 40, y: 70, width: 22, height: 20, correctAnswer: 'bypass-channels' },
-    { id: 'restore-zone4', x: 13, y: 45, width: 32, height: 24, correctAnswer: 'dyke-relocation' },
+    { id: 'restore-zone4', x: 13, y: 45, width: 32, height: 24, correctAnswer: 'dike-relocation' },
     { id: 'restore-zone5', x: 52, y: 40, width: 16, height: 25, correctAnswer: 'fish-ramps' },
     { id: 'restore-zone6', x: 70, y: 75, width: 12, height: 25, correctAnswer: 'native-species' }
   ];
@@ -169,7 +169,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     column2: {
       options: [
         { id: 'A', text: 'Because the Danube\'s natural forests and wetlands expanded, increasing farming and timber production at the same time.' },
-        { id: 'B', text: 'Because dykes disconnected the floodplain from the river, protecting agriculture from floods but destroying many natural habitats and their benefits.' },
+        { id: 'B', text: 'Because dikes disconnected the floodplain from the river, protecting agriculture from floods but destroying many natural habitats and their benefits.' },
         { id: 'C', text: 'Because no one lived near the Danube, so only a few services were used.' }
       ],
       correct: 'B'
@@ -178,7 +178,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
       options: [
         { id: 'A', text: 'Because nature-based solutions restore side arms, wetlands, and forests, which bring back multiple benefits for both nature and people.' },
         { id: 'B', text: 'Because people allowed the river to flood naturally, and removed all the pressures' },
-        { id: 'C', text: 'Because the Danube was cut off from its floodplains by dykes.' }
+        { id: 'C', text: 'Because the Danube was cut off from its floodplains by dikes.' }
       ],
       correct: 'A'
     }
@@ -560,7 +560,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                         textAlign: 'left',
                         flexShrink: 0
                       }}>
-                        People cleared forests, transformed the floodplains into pastures and crop fields, and built villages and later cities near the banks of the Danube. To protect themselves from floods, they constructed dykes. The Danube was also developed as a navigational waterway and for hydropower production. As a result, the river lost many of its natural features: the balance of sediments in the riverbed was disturbed, and the connection between the river channel and its floodplains was largely cut off. Only a few remnants of the original floodplain remained, while many typical animals and plants disappeared.
+                        People cleared forests, transformed the floodplains into pastures and crop fields, and built villages and later cities near the banks of the Danube. To protect themselves from floods, they constructed dikes. The Danube was also developed as a navigational waterway and for hydropower production. As a result, the river lost many of its natural features: the balance of sediments in the riverbed was disturbed, and the connection between the river channel and its floodplains was largely cut off. Only a few remnants of the original floodplain remained, while many typical animals and plants disappeared.
                       </div>
                     </div>
                     
@@ -603,7 +603,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                         marginBottom: '24px'
                       }}>
                         Look closely—this is how human actions have transformed the Danube and its floodplains. 
-                        Dykes, farming, navigation, and other pressures changed the landscape.
+                        Dikes, farming, navigation, and other pressures changed the landscape.
                         <br /><br />
                         Can you help me by matching each pressure label to the right place in the picture?
                       </div>

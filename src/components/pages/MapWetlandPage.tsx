@@ -16,7 +16,7 @@ const quizItems = [
   { id: 6, name: 'FLOODPLAIN FOREST', correctLetter: 'F' },
   { id: 7, name: 'PASTURE WITH ANIMALS', correctLetter: 'J' },
   { id: 8, name: 'GRASSLAND', correctLetter: 'G' },
-  { id: 9, name: 'PROTECTIVE DYKE', correctLetter: 'K' },
+  { id: 9, name: 'PROTECTIVE DIKE', correctLetter: 'K' },
   { id: 10, name: 'HUMAN SETTLEMENT', correctLetter: 'A' },
   { id: 11, name: 'AGRICULTURAL FIELDS', correctLetter: 'I' }
 ];
