@@ -77,7 +77,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick }) => {
   // Responsive configuratie wordt nu direct toegepast in de component data
 
   return (
-    <div className="relative w-full min-h-screen" style={{ 
+    <div className="relative w-full min-h-screen homepage-container" style={{ 
       width: '100%',
       maxWidth: '100vw',
       overflowX: 'hidden',
@@ -99,16 +99,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick }) => {
           alignItems: 'center',
           justifyContent: 'center'
         }}>
-          <h1 className="font-bold drop-shadow-lg text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl" style={{ 
-            fontFamily: 'Comfortaa, sans-serif', 
-            textAlign: 'center',
-            width: '100%',
-            margin: '0 auto',
-            display: 'block',
-            lineHeight: '1.2'
-          }}>
-            WETLANDS EDU AND CS TOPICS IN R4L TOOLBOX
-          </h1>
         </div>
       </div>
 

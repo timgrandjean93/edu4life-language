@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 interface FloodplainPageProps {
   onHomeClick: () => void;
+  onMapWetlandClick?: () => void;
 }
 
 const TOTAL_PAGES = 4;
@@ -16,10 +17,11 @@ const getImagePath = (page: number, subPage: number) => {
 };
 
 export const FloodplainPage: React.FC<FloodplainPageProps> = ({
-  onHomeClick
+  onHomeClick,
+  onMapWetlandClick
 }) => {
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [currentSubPage, setCurrentSubPage] = React.useState(1); // For page 1 sub-images
+  const [currentSubPage, setCurrentSubPage] = React.useState(3); // Start with last photo on page 1
   const [sliderPosition, setSliderPosition] = React.useState(50); // For page 4 slider (0-100)
 
   // Slider handlers
@@ -42,54 +44,25 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
     body.style.minHeight = "100vh";
     body.style.height = "auto";
     
-    // Set background that stays fixed when scrolling
-    body.style.backgroundImage = "url('/assets/backgrounds/background-pages.png')";
-    body.style.backgroundSize = "100vw 100vh"; // Cover exactly one viewport
-    body.style.backgroundPosition = "center top";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundAttachment = "fixed";
-    body.style.backgroundColor = "#e8f4f8"; // Fallback color that fills any space
+    // Set solid background color
+    body.style.backgroundColor = "#dfebf5";
     
     return () => {
       html.style.minHeight = "";
       html.style.height = "";
       body.style.minHeight = "";
       body.style.height = "";
-      body.style.backgroundImage = "";
-      body.style.backgroundSize = "";
-      body.style.backgroundPosition = "";
-      body.style.backgroundRepeat = "";
-      body.style.backgroundAttachment = "";
       body.style.backgroundColor = "";
     };
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen">
+    <div className="relative w-full min-h-screen page-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#dfebf5' }}>
       {/* Header with title and home button */}
-      <div className="relative z-50">
+      <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
-              {/* Home Button */}
-              <div className="absolute top-0" style={{ left: '10%' }}>
-                <button
-                  onClick={onHomeClick}
-                  className="relative overflow-hidden bg-white hover:bg-white text-gray-800 font-bold w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white hover:border-white flex items-center justify-center z-50 opacity-100"
-                  style={{ backgroundColor: 'white' }}
-                >
-                  <img 
-                    src="/assets/icons/Home.png" 
-                    alt="Home" 
-                    className="w-6 h-6"
-                    style={{ 
-                      backgroundColor: 'white',
-                      opacity: 1
-                    }}
-                  />
-                </button>
-              </div>
-              
               {/* Title */}
               <div className="text-center">
                 <motion.h1 
@@ -97,25 +70,11 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-blue-900 mb-2"
-                  style={{ 
-                    fontFamily: 'Comfortaa, sans-serif',
-                    lineHeight: '1.2',
-                    textShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                  }}
+                  className="main-title mb-2"
                 >
                   Floodplain Living Environment
                 </motion.h1>
                 
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="text-lg sm:text-xl md:text-2xl text-blue-800 font-medium"
-                  style={{ fontFamily: 'Comfortaa, sans-serif' }}
-                >
-                  WETLANDS EDU AND CS TOPICS IN R4L TOOLBOX
-                </motion.p>
               </div>
             </div>
           </div>
@@ -123,7 +82,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8">
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, overflowY: 'auto' }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}
@@ -143,7 +102,8 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
               {currentPage === 2 && (
                 <div className="mb-6">
                   <h3 style={{ 
-                    fontSize: '28px', 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '36px', 
                     fontWeight: 'bold', 
                     color: '#406BB8',
                     textAlign: 'center'
@@ -155,7 +115,8 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
               {currentPage === 3 && (
                 <div className="mb-6">
                   <h3 style={{ 
-                    fontSize: '28px', 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '36px', 
                     fontWeight: 'bold', 
                     color: '#9F8B68',
                     textAlign: 'center'
@@ -182,23 +143,38 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
           ) : (
             // Page 4: Gamification - Image Comparison Slider
             <div className="flex flex-col items-center">
+              {/* Pointer Icon */}
+              <div style={{ marginBottom: '20px' }}>
+                <img 
+                  src="/assets/icons/pointer.png" 
+                  alt="Pointer" 
+                  style={{ 
+                    width: '70px', 
+                    height: '70px',
+                    display: 'block',
+                    margin: '0 auto'
+                  }}
+                />
+              </div>
+              
               {/* Slider Title */}
               <div className="mb-6">
                 <h3 style={{ 
+                  fontFamily: 'Comfortaa, sans-serif',
                   fontSize: '24px', 
                   fontWeight: 'bold', 
-                  color: '#51727C',
+                  color: '#406A46',
                   textAlign: 'center'
                 }}>
                   Slide the bar to see the differences
                 </h3>
               </div>
               
-              <div style={{ width: '100%', maxWidth: '1600px', display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <div style={{ width: '90%', maxWidth: '1600px', display: 'flex', alignItems: 'center', gap: '20px', margin: '0 auto' }}>
                 {/* Left Icon - Rain */}
                 <div 
                   className="flex items-center justify-center"
-                  style={{ width: '15%', minWidth: '80px', display: 'flex', justifyContent: 'center' }}
+                  style={{ width: '20%', display: 'flex', justifyContent: 'center' }}
                 >
                   <div 
                     className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center transition-opacity duration-300"
@@ -218,7 +194,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                 <div 
                   className="relative"
                   style={{ 
-                    width: '70%',
+                    width: '60%',
                     backgroundColor: 'transparent',
                     borderRadius: '24px',
                     overflow: 'hidden',
@@ -322,7 +298,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                 {/* Right Icon - Dry */}
                 <div 
                   className="flex items-center justify-center"
-                  style={{ width: '15%', minWidth: '80px', display: 'flex', justifyContent: 'center' }}
+                  style={{ width: '20%', minWidth: '80px', display: 'flex', justifyContent: 'center' }}
                 >
                   <div 
                     className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center transition-opacity duration-300"
@@ -343,101 +319,166 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Spacer */}
-      <div className="relative z-10" style={{ height: '60px', width: '100%' }}></div>
+      {/* Pagination and Next Button - Sticky Footer */}
+      <div className="relative z-10" style={{ 
+        position: 'sticky', 
+        bottom: 0, 
+        backgroundColor: 'rgba(223, 235, 245, 0.95)',
+        paddingTop: '20px',
+        paddingBottom: '20px',
+        flexShrink: 0
+      }}>
+        <div className="relative flex justify-between items-center px-4">
+          {/* Home Button - Left */}
+          <div className="flex items-center">
+            <button
+              onClick={onHomeClick}
+              className="home-button relative flex items-center justify-center z-50"
+              style={{ 
+                width: '54px',
+                height: '54px',
+                backgroundColor: 'transparent',
+                border: 'none'
+              }}
+            >
+              <img 
+                src="/assets/icons/Home.png" 
+                alt="Home" 
+                style={{ 
+                  width: '54px',
+                  height: '54px',
+                  opacity: 1
+                }}
+              />
+            </button>
+          </div>
 
-      {/* Pagination and Next Button */}
-      <div className="relative z-10 pb-8">
-        <div className="relative flex justify-center items-center">
-          {/* Pagination Dots - Centered */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            className="flex justify-center items-center"
-            style={{ gap: '14px' }}
-          >
-            {Array.from({ length: TOTAL_PAGES }, (_, index) => {
-              const pageNum = index + 1;
-              
-              return (
-                <button
-                  key={index}
-                  onClick={() => setCurrentPage(pageNum)}
-                  className="transition-all duration-300 p-0 border-0 bg-transparent"
-                  aria-label={`Go to page ${pageNum}`}
+          {/* Center Section - Pagination and Download Button */}
+          <div className="flex items-center justify-center" style={{ position: 'relative' }}>
+            {/* Download Button - Only on last page, 50px left of pagination */}
+            {currentPage === TOTAL_PAGES && (
+              <button
+                className="download-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '480px',
+                  height: '50px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  marginRight: '50px'
+                }}
+              >
+                <img 
+                  src="/assets/icons/download.png" 
+                  alt="Download" 
                   style={{ 
-                    background: 'none', 
-                    border: 'none', 
-                    padding: 0,
-                    cursor: 'pointer'
+                    width: '480px',
+                    height: '50px',
+                    opacity: 1
                   }}
-                >
-                  <div
-                    className="rounded-full transition-all duration-300"
-                    style={{
-                      width: '14px',
-                      height: '14px',
-                      backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
-                    }}
-                  />
-                </button>
-              );
-            })}
-          </motion.div>
+                />
+              </button>
+            )}
 
-          {/* Next/Back Home Button - Positioned at 90% */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
+            {/* Pagination Dots - Centered */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1 }}
+              className="flex justify-center items-center"
+              style={{ gap: '14px' }}
+            >
+              {Array.from({ length: TOTAL_PAGES }, (_, index) => {
+                const pageNum = index + 1;
+                
+                return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentPage(pageNum);
+                      // Skip directly to last photo on pages 1-3
+                      if (pageNum === 1 || pageNum === 2 || pageNum === 3) {
+                        const maxSubPages = pageNum === 3 ? 2 : 3;
+                        setCurrentSubPage(maxSubPages);
+                      } else {
+                        setCurrentSubPage(1);
+                      }
+                    }}
+                    className="transition-all duration-300 p-0 border-0 bg-transparent"
+                    aria-label={`Go to page ${pageNum}`}
+                    style={{ 
+                      background: 'none', 
+                      border: 'none', 
+                      padding: 0,
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <div
+                      className="rounded-full transition-all duration-300"
+                      style={{
+                        width: '14px',
+                        height: '14px',
+                        backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
+                      }}
+                    />
+                  </button>
+                );
+              })}
+            </motion.div>
+
+            {/* NEXT TOPIC Text - Only on last page, 50px right of pagination */}
+            {currentPage === TOTAL_PAGES && (
+              <div style={{ marginLeft: '50px' }}>
+                <span style={{ 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '24px',
+                  color: '#406A46'
+                }}>
+                  NEXT TOPIC: Map your wetland
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Next/Back Home Button - Right */}
+          <div className="flex items-center">
+            <button
             onClick={() => {
-              // Handle sub-images: pages 1&2 have 3, page 3 has 2
-              const maxSubPages = currentPage === 3 ? 2 : 3;
-              
-              if ((currentPage === 1 || currentPage === 2 || currentPage === 3) && currentSubPage < maxSubPages) {
-                setCurrentSubPage(currentSubPage + 1);
-              } else if (currentPage < TOTAL_PAGES) {
+              if (currentPage < TOTAL_PAGES) {
                 setCurrentPage(currentPage + 1);
-                setCurrentSubPage(1); // Reset sub-page when moving to next page
+                // Skip directly to the last photo on pages 1-3
+                if (currentPage + 1 === 1 || currentPage + 1 === 2 || currentPage + 1 === 3) {
+                  const nextPageMaxSubPages = currentPage + 1 === 3 ? 2 : 3;
+                  setCurrentSubPage(nextPageMaxSubPages);
+                } else {
+                  setCurrentSubPage(1);
+                }
               } else {
-                onHomeClick();
+                // Navigate to Map Wetland page
+                if (onMapWetlandClick) {
+                  onMapWetlandClick();
+                }
               }
             }}
-            className="absolute transition-all duration-300 hover:opacity-80"
+            className="next-button relative flex items-center justify-center z-50"
             style={{
-              right: '10%',
-              width: currentPage === TOTAL_PAGES ? '180px' : '140px',
+              width: '158px',
               height: '60px',
-              backgroundColor: '#51727C',
-              borderRadius: '30px',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px'
+              backgroundColor: 'transparent',
+              border: 'none'
             }}
           >
-            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '24px', lineHeight: '1' }}>
-              {currentPage === TOTAL_PAGES ? 'Back Home' : 'NEXT'}
-            </span>
-            <svg 
-              width="28" 
-              height="28" 
-              viewBox="0 0 20 20" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                d={currentPage === TOTAL_PAGES ? "M3 10H17M10 3L3 10L10 17" : "M7.5 15L12.5 10L7.5 5"}
-                stroke="white" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
-          </motion.button>
+            <img 
+              src="/assets/icons/next.png" 
+              alt={currentPage === TOTAL_PAGES ? 'Map your wetland' : 'Next'} 
+              style={{ 
+                width: '158px',
+                height: '60px',
+                opacity: 1
+              }}
+            />
+          </button>
+          </div>
         </div>
       </div>
     </div>

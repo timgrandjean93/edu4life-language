@@ -3,28 +3,30 @@ import { motion } from 'framer-motion';
 
 interface MapWetlandPageProps {
   onHomeClick: () => void;
+  onRiparianClick?: () => void;
 }
 
 // Quiz items with their correct letters
 const quizItems = [
-  { id: 1, name: 'Watercourse', correctLetter: 'E' },
-  { id: 2, name: 'Side arms', correctLetter: 'C' },
-  { id: 3, name: 'Drainage channels', correctLetter: 'H' },
-  { id: 4, name: 'Floodplain lake', correctLetter: 'B' },
-  { id: 5, name: 'Islands (marsh)', correctLetter: 'D' },
-  { id: 6, name: 'Floodplain forest', correctLetter: 'F' },
-  { id: 7, name: 'Pasture with animals', correctLetter: 'J' },
-  { id: 8, name: 'Grassland', correctLetter: 'G' },
-  { id: 9, name: 'Protective dyke', correctLetter: 'K' },
-  { id: 10, name: 'Human settlement', correctLetter: 'A' },
-  { id: 11, name: 'Agricultural fields', correctLetter: 'I' }
+  { id: 1, name: 'WATERCOURSE', correctLetter: 'E' },
+  { id: 2, name: 'SIDE ARMS', correctLetter: 'C' },
+  { id: 3, name: 'DRAINAGE CHANNELS', correctLetter: 'H' },
+  { id: 4, name: 'FLOODPLAIN LAKE', correctLetter: 'B' },
+  { id: 5, name: 'ISLANDS (MARSH)', correctLetter: 'D' },
+  { id: 6, name: 'FLOODPLAIN FOREST', correctLetter: 'F' },
+  { id: 7, name: 'PASTURE WITH ANIMALS', correctLetter: 'J' },
+  { id: 8, name: 'GRASSLAND', correctLetter: 'G' },
+  { id: 9, name: 'PROTECTIVE DYKE', correctLetter: 'K' },
+  { id: 10, name: 'HUMAN SETTLEMENT', correctLetter: 'A' },
+  { id: 11, name: 'AGRICULTURAL FIELDS', correctLetter: 'I' }
 ];
 
 // All available letters
 const allLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
 
 export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
-  onHomeClick
+  onHomeClick,
+  onRiparianClick
 }) => {
   const [currentStep, setCurrentStep] = React.useState(1);
   const [selectedLetter, setSelectedLetter] = React.useState<string | null>(null);
@@ -43,24 +45,14 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
     body.style.minHeight = "100vh";
     body.style.height = "auto";
     
-    // Set background that stays fixed when scrolling
-    body.style.backgroundImage = "url('/assets/backgrounds/background-pages.png')";
-    body.style.backgroundSize = "100vw 100vh"; // Cover exactly one viewport
-    body.style.backgroundPosition = "center top";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundAttachment = "fixed";
-    body.style.backgroundColor = "#e8f4f8"; // Fallback color that fills any space
+    // Set solid background color
+    body.style.backgroundColor = "#dfebf5";
     
     return () => {
       html.style.minHeight = "";
       html.style.height = "";
       body.style.minHeight = "";
       body.style.height = "";
-      body.style.backgroundImage = "";
-      body.style.backgroundSize = "";
-      body.style.backgroundPosition = "";
-      body.style.backgroundRepeat = "";
-      body.style.backgroundAttachment = "";
       body.style.backgroundColor = "";
     };
   }, []);
@@ -69,56 +61,23 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
 
 
   return (
-    <div className="relative w-full min-h-screen">
+    <div className="relative w-full min-h-screen page-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#dfebf5' }}>
       {/* Header with title and home button */}
-      <div className="relative z-50">
-        <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
+      <div className="relative z-50" style={{ flexShrink: 0 }}>
+        <div className="flex items-start justify-center" style={{paddingBottom: '10px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
-              {/* Home Button */}
-              <div className="absolute top-0" style={{ left: '10%' }}>
-                <button
-                  onClick={onHomeClick}
-                  className="relative overflow-hidden bg-white hover:bg-white text-gray-800 font-bold w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white hover:border-white flex items-center justify-center z-50 opacity-100"
-                  style={{ backgroundColor: 'white' }}
-                >
-                  <img 
-                    src="/assets/icons/Home.png" 
-                    alt="Home" 
-                    className="w-6 h-6"
-                    style={{ 
-                      backgroundColor: 'white',
-                      opacity: 1
-                    }}
-                  />
-                </button>
-              </div>
-              
               {/* Title */}
               <div className="text-center">
                 <motion.h1 
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-blue-900 mb-2"
-                  style={{ 
-                    fontFamily: 'Comfortaa, sans-serif',
-                    lineHeight: '1.2',
-                    textShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                  }}
+                  className="main-title mb-2"
                 >
                   Map your wetland
                 </motion.h1>
                 
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="text-lg sm:text-xl md:text-2xl text-blue-800 font-medium"
-                  style={{ fontFamily: 'Comfortaa, sans-serif' }}
-                >
-                  WETLANDS EDU AND CS TOPICS IN R4L TOOLBOX
-                </motion.p>
               </div>
             </div>
           </div>
@@ -126,7 +85,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8">
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, overflowY: 'auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,20 +94,48 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
         >
           {!isCompleted ? (
             <>
+              {/* Eagle's-eye challenge */}
+              <div className="text-center mx-auto" style={{ maxWidth: '80%'}}>
+                <div className="flex items-center justify-center" style={{ gap: '10px' }}>
+                  <img 
+                    src="/assets/icons/pencil.png" 
+                    alt="Pencil" 
+                    style={{ 
+                      width: '84px',
+                      height: '84px',
+                      backgroundColor: 'transparent'
+                    }}
+                  />
+                  <span style={{ 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    fontSize: '36px',
+                    color: '#406A46'
+                  }}>
+                    Eagle's-eye challenge!
+                  </span>
+                </div>
+              </div>
+
               {/* Intro Text */}
-              <div className="text-center mx-auto" style={{ maxWidth: '80%', marginBottom: '60px' }}>
+              <div className="text-center mx-auto" style={{ maxWidth: '90%', marginBottom: '20px' }}>
                 <p 
                   className="leading-relaxed"
-                  style={{ fontSize: '22px' }}
+                  style={{ 
+                    fontSize: '22px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46'
+                  }}
                 >
-                  From high above the floodplain, our White-tailed eagle friend sees the winding river, hidden lakes, marshes, forests, dike, and villages. Can you find them too?  Match each feature with its correct label and bring it to life with color! Each time you identify the right spot, the landscape will shine in its true colors — just as the eagle sees it from the sky.
+                  From high above the floodplain, our White-tailed eagle friend sees the winding river, hidden lakes, marshes, forests, dike, and villages. Can you find them too?  Match each feature with its correct label and bring it to life with color! Each time you identify the right spot, the landscape will shine in its true colors — just as the eagle sees it from the sky.
                 </p>
               </div>
 
               {/* Main Content Area - Image and Quiz */}
-              <div className="flex justify-center items-start gap-[5%]">
+              <div className="flex justify-center items-start gap-[3%]">
                 {/* Left: Image */}
-                <div style={{ width: '45%' }}>
+                <div style={{ width: '50%' }}>
                   <div className="relative">
                     <img 
                       src={`/assets/components/Mapping/map${completedSteps.length + 1}.png`}
@@ -163,7 +150,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                 </div>
 
                 {/* Right: All Categories List */}
-                <div style={{ width: '25%', paddingTop: '40px' }}>
+                <div style={{ width: '42%' }}>
                   {/* All Items - No scroll, fits in view */}
                   <div>
                     {quizItems.map((item, index) => {
@@ -178,9 +165,9 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.05 }}
-                          style={{ marginBottom: '12px' }}
+                          style={{ marginBottom: '6px' }}
                         >
-                          <div className="flex items-center" style={{ gap: '12px' }}>
+                          <div className="flex items-center" style={{ gap: '8px' }}>
                             {/* Number */}
                             <div 
                               style={{ 
@@ -201,10 +188,12 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
 
                             {/* Category Name */}
                             <p style={{ 
-                              fontSize: '16px', 
-                              fontWeight: '600', 
-                              color: isLocked ? '#9ca3af' : '#1e3a8a',
-                              marginBottom: '0', 
+                              fontSize: '14px',
+                              fontFamily: 'Comfortaa, sans-serif',
+                              fontWeight: 'bold', 
+                              color: isCompleted ? '#548235' : hasError ? '#C41904' : '#406A46',
+                              margin: '0',
+                              padding: '0',
                               flex: 1
                             }}>
                               {item.name}
@@ -340,22 +329,45 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
               </div>
             </>
           ) : (
-            // Completion Screen - Image left, Congratulations right
+            // Completion Screen - Eagle's-eye challenge centered, then image and congratulations
             <>
-              <div className="flex justify-center items-start gap-8 mb-8">
+              {/* Eagle's-eye challenge - Centered */}
+              <div className="text-center mx-auto" style={{ maxWidth: '80%'}}>
+                <div className="flex items-center justify-center" style={{ gap: '10px' }}>
+                  <img 
+                    src="/assets/icons/pencil.png" 
+                    alt="Pencil" 
+                    style={{ 
+                      width: '84px',
+                      height: '84px',
+                      backgroundColor: 'transparent'
+                    }}
+                  />
+                  <span style={{ 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    fontSize: '36px',
+                    color: '#406A46'
+                  }}>
+                    Eagle's-eye challenge!
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex justify-center items-center gap-8 mb-8" style={{marginTop: '-50px' }}>
                 {/* Left - Map Image */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  style={{ width: '45%', maxWidth: '600px' }}
+                  style={{ width: '55%', maxWidth: '800px' }}
                 >
                   <img 
-                    src="/assets/components/Mapping/map12.png"
+                    src="/assets/components/Mapping/map13.png"
                     alt="Complete wetland map"
                     className="w-full shadow-lg"
                     style={{ 
-                      backgroundColor: 'white',
+                      backgroundColor: 'transparent',
                       borderRadius: '16px'
                     }}
                   />
@@ -366,88 +378,141 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 }}
-                  style={{ width: '45%', maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+                  style={{ width: '45%', maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
                 >
-                  <h2 style={{ fontSize: '48px', fontWeight: 'bold', color: '#1e3a8a', marginBottom: '20px', textAlign: 'center' }}>
+                  <h2 style={{ 
+                    fontSize: '48px', 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold', 
+                    color: '#406A46', 
+                    marginBottom: '20px', 
+                    textAlign: 'center' 
+                  }}>
                     Congratulations!
                   </h2>
-                  <p style={{ fontSize: '22px', color: '#1e3a8a', marginBottom: '40px', textAlign: 'center', lineHeight: '1.6' }}>
+                  <p style={{ 
+                    fontSize: '22px', 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46', 
+                    marginBottom: '40px', 
+                    textAlign: 'center', 
+                    lineHeight: '1.6' 
+                  }}>
                     You've successfully mapped all wetland features!
                   </p>
                 </motion.div>
               </div>
 
-              {/* Buttons at bottom - Same style as RiparianPage */}
-              <div className="flex justify-center items-center gap-8 mt-12">
-                {/* Download Button */}
-                <motion.button
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                  onClick={() => {
-                    window.open('/assets/report.pdf', '_blank');
-                  }}
-                  className="transition-all duration-300 hover:opacity-80"
-                  style={{
-                    width: '280px',
-                    height: '60px',
-                    backgroundColor: '#97C09D',
-                    borderRadius: '30px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <span style={{ color: 'white', fontWeight: 'bold', fontSize: '18px', lineHeight: '1' }}>
-                    Download Report & Activity Papers
-                  </span>
-                </motion.button>
-
-                {/* Back Home Button */}
-                <motion.button
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                  onClick={onHomeClick}
-                  className="transition-all duration-300 hover:opacity-80"
-                  style={{
-                    width: '180px',
-                    height: '60px',
-                    backgroundColor: '#51727C',
-                    borderRadius: '30px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px'
-                  }}
-                >
-                  <span style={{ color: 'white', fontWeight: 'bold', fontSize: '24px', lineHeight: '1' }}>
-                    Back Home
-                  </span>
-                  <svg 
-                    width="28" 
-                    height="28" 
-                    viewBox="0 0 20 20" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path 
-                      d="M3 10H17M10 3L3 10L10 17"
-                      stroke="white" 
-                      strokeWidth="2" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </motion.button>
-              </div>
             </>
           )}
         </motion.div>
+      </div>
+
+      {/* Pagination and Next Button - Sticky Footer */}
+      <div className="relative z-10" style={{ 
+        position: 'sticky', 
+        bottom: 0, 
+        backgroundColor: 'rgba(223, 235, 245, 0.95)',
+        paddingTop: '20px',
+        paddingBottom: '20px',
+        flexShrink: 0
+      }}>
+        <div className="relative flex justify-between items-center px-4">
+          {/* Home Button - Left */}
+          <div className="flex items-center">
+            <button
+              onClick={onHomeClick}
+              className="home-button relative flex items-center justify-center z-50"
+              style={{ 
+                width: '54px',
+                height: '54px',
+                backgroundColor: 'transparent',
+                border: 'none'
+              }}
+            >
+              <img 
+                src="/assets/icons/Home.png" 
+                alt="Home" 
+                style={{ 
+                  width: '54px',
+                  height: '54px',
+                  opacity: 1
+                }}
+              />
+            </button>
+          </div>
+
+          {/* Center Section - Download Button and NEXT TOPIC Text - Only on completion */}
+          {isCompleted && (
+            <div className="flex items-center justify-center" style={{ position: 'relative' }}>
+              {/* Download Button - 50px left of NEXT TOPIC text */}
+              <button
+                className="download-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '480px',
+                  height: '50px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  marginRight: '50px'
+                }}
+              >
+                <img 
+                  src="/assets/icons/download.png" 
+                  alt="Download" 
+                  style={{ 
+                    width: '480px',
+                    height: '50px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+
+              {/* NEXT TOPIC Text - 50px right of download button */}
+              <div style={{ marginLeft: '50px' }}>
+                <span style={{ 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '24px',
+                  color: '#406A46'
+                }}>
+                  NEXT TOPIC: Exploring the habitat of a stream
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Next Button - Right - Only on completion */}
+          {isCompleted && (
+            <div className="flex items-center">
+              <button
+                onClick={() => {
+                  // Navigate to Riparian page
+                  if (onRiparianClick) {
+                    onRiparianClick();
+                  }
+                }}
+                className="next-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '158px',
+                  height: '60px',
+                  backgroundColor: 'transparent',
+                  border: 'none'
+                }}
+              >
+                <img 
+                  src="/assets/icons/next.png" 
+                  alt="Exploring the habitat of a stream" 
+                  style={{ 
+                    width: '158px',
+                    height: '60px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

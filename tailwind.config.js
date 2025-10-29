@@ -33,7 +33,8 @@ export default {
         }
       },
       fontFamily: {
-        'game': ['Inter', 'system-ui', 'sans-serif'],
+        'game': ['Comfortaa', 'system-ui', 'sans-serif'],
+        'sans': ['Comfortaa', 'system-ui', 'sans-serif'],
       },
       animation: {
         'bounce-slow': 'bounce 2s infinite',

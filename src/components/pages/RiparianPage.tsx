@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 interface RiparianPageProps {
   onHomeClick: () => void;
+  onFloodControlClick?: () => void;
 }
 
 const TOTAL_PAGES = 2;
@@ -27,27 +28,28 @@ const quizOptions = [
 
 // Drop zones for page 2 - Stream habitats
 const dropZones = [
-  { id: 'pool-left', correctLabel: 'Pool', x: 30, y: 80, image: 'left' },
-  { id: 'riffle-left', correctLabel: 'Riffle', x: 60, y: 60, image: 'left' },
-  { id: 'run-left', correctLabel: 'Run', x: 45, y: 52, image: 'left' },
-  { id: 'pool-right', correctLabel: 'Pool', x: 30, y: 32, image: 'right' },
-  { id: 'run-right', correctLabel: 'Run', x: 52, y: 50, image: 'right' },
-  { id: 'riffle-right', correctLabel: 'Riffle', x: 40, y: 35, image: 'right' },
-  { id: 'pool-2-right', correctLabel: 'Pool', x: 68, y: 65, image: 'right' },
-  { id: 'riffle-2-right', correctLabel: 'Riffle', x: 88, y: 40, image: 'right' }
+  { id: 'pool-left', correctLabel: 'POOL', x: 30, y: 80, image: 'left' },
+  { id: 'riffle-left', correctLabel: 'RIFFLE', x: 60, y: 60, image: 'left' },
+  { id: 'run-left', correctLabel: 'RUN', x: 45, y: 52, image: 'left' },
+  { id: 'pool-right', correctLabel: 'POOL', x: 30, y: 32, image: 'right' },
+  { id: 'run-right', correctLabel: 'RUN', x: 52, y: 50, image: 'right' },
+  { id: 'riffle-right', correctLabel: 'RIFFLE', x: 40, y: 35, image: 'right' },
+  { id: 'pool-2-right', correctLabel: 'POOL', x: 68, y: 65, image: 'right' },
+  { id: 'riffle-2-right', correctLabel: 'RIFFLE', x: 88, y: 40, image: 'right' }
 ];
 
 // Color mapping for different labels
 const labelColors = {
-  'Pool': '#87CEEB', // Light blue
-  'Riffle': '#8B4513', // Brown
-  'Run': '#1E3A8A' // Dark blue
+  'POOL': '#00AEFF', // Blue
+  'RIFFLE': '#CE7C0A', // Orange
+  'RUN': '#0400D4' // Dark blue
 };
 
-const labels = ['Pool', 'Riffle', 'Run'];
+const labels = ['POOL', 'RIFFLE', 'RUN'];
 
 export const RiparianPage: React.FC<RiparianPageProps> = ({
-  onHomeClick
+  onHomeClick,
+  onFloodControlClick
 }) => {
   const [currentPage, setCurrentPage] = React.useState(1);
   
@@ -141,13 +143,8 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
     body.style.minHeight = "100vh";
     body.style.height = "auto";
     
-    // Set background that stays fixed when scrolling
-    body.style.backgroundImage = "url('/assets/backgrounds/background-pages.png')";
-    body.style.backgroundSize = "100vw 100vh"; // Cover exactly one viewport
-    body.style.backgroundPosition = "center top";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundAttachment = "fixed";
-    body.style.backgroundColor = "#e8f4f8"; // Fallback color that fills any space
+    // Set solid background color
+    body.style.backgroundColor = "#dfebf5";
     
     // Cleanup function to remove background when component unmounts
     return () => {
@@ -155,18 +152,13 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
       html.style.height = "";
       body.style.minHeight = "";
       body.style.height = "";
-      body.style.backgroundImage = "";
-      body.style.backgroundSize = "";
-      body.style.backgroundPosition = "";
-      body.style.backgroundRepeat = "";
-      body.style.backgroundAttachment = "";
       body.style.backgroundColor = "";
     };
   }, []);
 
   // Close dropdown when clicking outside
   React.useEffect(() => {
-    const handleClickOutside = (_event: MouseEvent) => {
+    const handleClickOutside = () => {
       if (activeDropdown) {
         setActiveDropdown(null);
       }
@@ -181,33 +173,27 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
     };
   }, [activeDropdown]);
 
+  // Auto-submit page 2 when all zones are filled
+  React.useEffect(() => {
+    if (currentPage === 2 && !page2Submitted) {
+      const allZonesFilled = dropZones.length === Object.keys(placements).length;
+      if (allZonesFilled) {
+        // Small delay to allow the last drop animation to complete
+        setTimeout(() => {
+          handleSubmitPage2();
+        }, 300);
+      }
+    }
+  }, [placements, currentPage, page2Submitted]);
+
   return (
-    <div className="relative w-full min-h-screen">
+    <div className="relative w-full min-h-screen page-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#dfebf5' }}>
       {/* Header with title and home button */}
-      <div className="relative z-50">
+      <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
-            {/* Header with Home Button and Title */}
+            {/* Header with Title */}
             <div className="relative">
-              {/* Home Button - Absolute positioned */}
-              <div className="absolute top-0" style={{ left: '10%' }}>
-                <button
-                  onClick={onHomeClick}
-                  className="relative overflow-hidden bg-white hover:bg-white text-gray-800 font-bold w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white hover:border-white flex items-center justify-center z-50 opacity-100"
-                  style={{ backgroundColor: 'white' }}
-                >
-                  <img 
-                    src="/assets/icons/Home.png" 
-                    alt="Home" 
-                    className="w-6 h-6"
-                    style={{ 
-                      backgroundColor: 'white',
-                      opacity: 1
-                    }}
-                  />
-                </button>
-              </div>
-              
               {/* Title and Subtitle - Centered */}
               <div className="text-center">
                 {/* Title */}
@@ -216,26 +202,12 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-blue-900 mb-2"
-                  style={{ 
-                    fontFamily: 'Comfortaa, sans-serif',
-                    lineHeight: '1.2',
-                    textShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                  }}
+                  className="main-title mb-2"
                 >
-                  {currentPage === 1 ? 'Land use along the rivers' : 'Stream habitats: riffle, pool, and run'}
+                  {currentPage === 1 ? 'Land use along the rivers' : 'Stream habitats: RIFFLE, POOL, and RUN'}
                 </motion.h1>
                 
                 {/* Subtitle */}
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="text-lg sm:text-xl md:text-2xl text-blue-800 font-medium"
-                  style={{ fontFamily: 'Comfortaa, sans-serif' }}
-                >
-                  WETLANDS EDU AND CS TOPICS IN R4L TOOLBOX
-                </motion.p>
               </div>
             </div>
           </div>
@@ -243,7 +215,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 px-4 pb-8">
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, overflowY: 'auto' }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}
@@ -255,26 +227,48 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
             <>
               {/* Page 1 Content */}
               {/* Intro Text */}
-              <div className="text-center mx-auto" style={{ maxWidth: '80%' }}>
+              <div className="text-center mx-auto" style={{ maxWidth: '100%' }}>
                 <p 
                   className="leading-relaxed"
-                  style={{ fontSize: '22px' }}
+                  style={{ 
+                    fontSize: '24px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#619F6A'
+                  }}
                 >
                   Rivers and their surroundings have been used by people since ancient times for many different activities, such as farming, building homes, fishing, traveling, and getting water. This land use shows how humans interact with and shape the areas around rivers.
                 </p>
                 
-                {/* Second paragraph with spacing */}
+                {/* Second paragraph with pencil icon */}
+                <div>
+                  <div className="flex items-center justify-center" style={{ gap: '10px' }}>
+                    <img 
+                      src="/assets/icons/pencil.png" 
+                      alt="Pencil" 
+                      style={{ 
+                        width: '84px', 
+                        height: '84px',
+                        backgroundColor: 'transparent'
+                      }} 
+                    />
                 <p 
                   className="leading-relaxed"
                   style={{ 
-                    fontSize: '22px',
-                    fontStyle: 'italic',
+                        fontSize: '24px',
+                        fontFamily: 'Comfortaa, sans-serif',
                     fontWeight: 'bold',
-                    marginTop: '30px'
+                        color: '#406A46',
+                        margin: '0',
+                        textAlign: 'left'
                   }}
                 >
-                  Look carefully at the both illustration and choose which land use activities you can find.
+                      Look carefully at the both illustration and choose which{' '}
+                      <span style={{ color: '#D2847A' }}>land use activities</span>{' '}
+                      you can find.
                 </p>
+                  </div>
+                </div>
               </div>
 
               {/* Images Section */}
@@ -286,7 +280,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
               >
                 <div className="flex justify-center items-end gap-[10%]">
                   {/* Image 1 */}
-                  <div style={{ width: '35%' }}>
+                  <div style={{ width: '40%' }}>
                     <img 
                       src="/assets/components/Topic2/image1.png" 
                       alt="Riparian area 1"
@@ -295,7 +289,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   </div>
 
                   {/* Image 2 */}
-                  <div style={{ width: '35%' }}>
+                  <div style={{ width: '40%' }}>
                     <img 
                       src="/assets/components/Topic2/image2.png" 
                       alt="Riparian area 2"
@@ -314,21 +308,20 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                 style={{ maxWidth: '80%' }}
               >
                 {/* Quiz Question */}
-                <h3 className="text-center mb-6" style={{ fontSize: '22px', fontWeight: 'bold', color: '#548235' }}>
+                <h3 className="text-center mb-6" style={{ 
+                  fontSize: '24px', 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold', 
+                  color: '#406A46' 
+                }}>
                   From the list below, click on the activities you can see in the pictures:
                 </h3>
 
                 {/* Quiz Options - Flowing Layout */}
-                <div className="flex flex-wrap gap-x-8 gap-y-4 mb-6" style={{ paddingLeft: '20px' }}>
+                <div className="flex flex-wrap gap-x-8 gap-y-4 mb-6 justify-center" style={{ width: '100%' }}>
                   {quizOptions.map((option) => {
                     const feedback = getOptionFeedback(option);
                     const isSelected = selectedOptions.includes(option.id);
-                    
-                    // Determine text color based on feedback
-                    let textColor = '#333';
-                    if (feedback === 'correct') textColor = '#28a745';
-                    if (feedback === 'incorrect') textColor = '#dc3545';
-                    if (feedback === 'missed') textColor = '#ffc107';
                     
                     return (
                       <button
@@ -352,9 +345,9 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                             height: '20px',
                             borderRadius: '4px',
                             border: `2px solid ${
-                              feedback === 'correct' ? '#28a745' : 
-                              feedback === 'incorrect' ? '#dc3545' : 
-                              feedback === 'missed' ? '#ffc107' : 
+                              feedback === 'correct' ? '#548235' : 
+                              feedback === 'incorrect' ? '#C41904' : 
+                              feedback === 'missed' ? '#CE7C0A' : 
                               isSelected ? '#548235' : '#999'
                             }`,
                             backgroundColor: isSelected ? '#548235' : 'transparent',
@@ -371,17 +364,17 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                           )}
                           {feedback === 'correct' && (
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                              <path d="M3 8L6 11L13 4" stroke="#28a745" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M3 8L6 11L13 4" stroke="#548235" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           )}
                           {feedback === 'incorrect' && (
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                              <path d="M4 4L12 12M12 4L4 12" stroke="#dc3545" strokeWidth="2.5" strokeLinecap="round"/>
+                              <path d="M4 4L12 12M12 4L4 12" stroke="#C41904" strokeWidth="2.5" strokeLinecap="round"/>
                             </svg>
                           )}
                           {feedback === 'missed' && (
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                              <path d="M3 8L6 11L13 4" stroke="#ffc107" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M3 8L6 11L13 4" stroke="#CE7C0A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           )}
                         </div>
@@ -390,9 +383,10 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                         <span 
                           className="transition-colors duration-300"
                           style={{ 
-                            fontSize: '16px', 
-                            color: textColor,
-                            fontWeight: feedback ? '600' : '400'
+                            fontSize: '20px', 
+                            fontFamily: 'Comfortaa, sans-serif',
+                            fontWeight: 'bold',
+                            color: '#406A46'
                           }}
                         >
                           {option.label}
@@ -487,13 +481,31 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
           ) : (
             <>
               {/* Page 2 Content - Stream Habitats */}
+              {/* Pointer Icon */}
+              <div className="text-center mx-auto mb-4" style={{ maxWidth: '80%' }}>
+                <img 
+                  src="/assets/icons/pointer.png" 
+                  alt="Pointer" 
+                  style={{ 
+                    width: '54px', 
+                    height: '54px',
+                    backgroundColor: 'transparent'
+                  }} 
+                />
+              </div>
+              
               {/* Intro Text */}
-              <div className="text-center mx-auto" style={{ maxWidth: '80%' }}>
+              <div className="text-center mx-auto" style={{ maxWidth: '80%', marginBottom: '-50px'}}>
                 <p 
                   className="leading-relaxed"
-                  style={{ fontSize: '22px' }}
+                  style={{ 
+                    fontSize: '24px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46'
+                  }}
                 >
-                  Read the definitions of the terms riffle, run, and pool below, then drag and drop each label to its correct place in the two images.
+                  Read the definitions of the terms <span style={{ color: '#CE7C0A', fontWeight: 'bold' }}>RIFFLE</span>, <span style={{ color: '#0400D4', fontWeight: 'bold' }}>RUN</span>, and <span style={{ color: '#00AEFF', fontWeight: 'bold' }}>POOL</span> below,<br />then drag and drop each label to its correct place in the two images.
                 </p>
               </div>
 
@@ -502,11 +514,11 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 }}
-                className="mt-8"
+                className="mt-2"
               >
-                <div className="flex justify-center items-center" style={{ gap: '5%' }}>
+                <div className="flex justify-center items-center" style={{ gap: '4%' }}>
                     {/* Left Image with Drop Zones */}
-                    <div style={{ width: '35%', position: 'relative' }}>
+                    <div style={{ width: '40%', position: 'relative' }}>
                       <img 
                         src="/assets/components/Riparian/stream.png" 
                         alt="Stream habitat"
@@ -543,9 +555,10 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               backgroundColor: currentLabel ? labelColors[currentLabel as keyof typeof labelColors] : 'rgba(255, 255, 255, 0.6)',
                               borderColor: isCorrect ? '#28a745' : isIncorrect ? '#dc3545' : currentLabel ? '#333' : '#ccc',
                               boxShadow: currentLabel ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 6px rgba(0, 0, 0, 0.1)',
-                              fontSize: '20px',
+                              fontSize: '32px',
+                              fontFamily: 'Comfortaa, sans-serif',
                               fontWeight: 'bold',
-                              color: '#333',
+                              color: 'white',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -563,11 +576,11 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   </div>
 
                     {/* Draggable Labels - Between Images */}
-                    <div className="flex flex-col justify-center" style={{ width: '7%', gap: '20px' }}>
+                    <div className="flex flex-col justify-center items-center" style={{ gap: '20px' }}>
                       {labels.map(label => {
                         const labelColor = labelColors[label as keyof typeof labelColors];
-                        const isLightColor = label === 'Pool';
-                        const textColor = isLightColor ? '#000' : '#fff';
+                        const isLightColor = label === 'POOL';
+                        const textColor = isLightColor ? '#fff' : '#fff';
                         
                         return (
                           <div
@@ -580,14 +593,19 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               backgroundColor: labelColor,
                               color: textColor,
                               borderRadius: '30px',
-                              padding: '12px 16px',
-                              fontSize: '16px',
+                              padding: '10px 12px',
+                              fontSize: '24px',
+                              fontFamily: 'Comfortaa, sans-serif',
                               textAlign: 'center',
                               cursor: page2Submitted ? 'not-allowed' : 'move',
                               opacity: draggedLabel === label ? 0.5 : 1,
                               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
                               border: 'none',
-                              width: '100%'
+                              width: '120px',
+                              minWidth: '120px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
                             }}
                           >
                             {label}
@@ -597,7 +615,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                     </div>
 
                     {/* Right Image with Drop Zones */}
-                    <div style={{ width: '35%', position: 'relative' }}>
+                    <div style={{ width: '40%', position: 'relative' }}>
                       <img 
                         src="/assets/components/Riparian/river.png" 
                         alt="Stream habitat"
@@ -634,9 +652,10 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               backgroundColor: currentLabel ? labelColors[currentLabel as keyof typeof labelColors] : 'rgba(255, 255, 255, 0.6)',
                               borderColor: isCorrect ? '#28a745' : isIncorrect ? '#dc3545' : currentLabel ? '#333' : '#ccc',
                               boxShadow: currentLabel ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 6px rgba(0, 0, 0, 0.1)',
-                              fontSize: '20px',
+                              fontSize: '32px',
+                              fontFamily: 'Comfortaa, sans-serif',
                               fontWeight: 'bold',
-                              color: '#333',
+                              color: 'white',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -656,7 +675,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
               </motion.div>
 
               {/* Spacer */}
-              <div className="relative z-10" style={{ height: '60px', width: '100%' }}></div>
+              <div className="relative z-10" style={{ height: '60px', width: '100%', marginTop: '-30px'}}></div>
 
               {/* Definitions Section */}
               <motion.div
@@ -664,17 +683,35 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.1 }}
                 className="mt-12 mx-auto"
-                style={{ maxWidth: '80%' }}
+                style={{ maxWidth: '100%' }}
               >
-                <div className="text-left space-y-4">
-                  <p style={{ fontSize: '18px', lineHeight: '1.6' }}>
-                    <strong style={{ color: labelColors.Pool }}>Pool:</strong> A deeper, slower-moving section of a stream where water collects. Pools are quiet, calm, and provide shelter for fish.
+                <div className="text-center space-y-4">
+                  <p style={{ 
+                    fontSize: '24px', 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
+                    lineHeight: '1.6' 
+                  }}>
+                    <strong style={{ color: labelColors.POOL }}>POOL:</strong> A deeper, slower-moving section of a stream where water collects. Pools are quiet, calm, and provide shelter for fish.
                   </p>
-                  <p style={{ fontSize: '18px', lineHeight: '1.6' }}>
-                    <strong style={{ color: labelColors.Riffle }}>Riffle:</strong> A shallow, fast-flowing part of a stream with small waves and visible rocks. Riffles appear rough and bubbly, and are rich in oxygen, making them ideal habitats for insects and fish.
+                  <p style={{ 
+                    fontSize: '24px', 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
+                    lineHeight: '1.6' 
+                  }}>
+                    <strong style={{ color: labelColors.RIFFLE }}>RIFFLE:</strong> A shallow, fast-flowing part of a stream with small waves and visible rocks. Riffles appear rough and bubbly, and are rich in oxygen, making them ideal habitats for insects and fish.
                   </p>
-                  <p style={{ fontSize: '18px', lineHeight: '1.6' }}>
-                    <strong style={{ color: labelColors.Run }}>Run:</strong> A smooth, moderately deep section of a stream where water flows steadily between a riffle and a pool. Runs get plenty of sunlight, which helps algae grow. Insects feed on the algae, making runs good feeding spots for fish from pools and riffles. 
+                  <p style={{ 
+                    fontSize: '24px', 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
+                    lineHeight: '1.6' 
+                  }}>
+                    <strong style={{ color: labelColors.RUN }}>RUN:</strong> A smooth, moderately deep section of a stream where water flows steadily between a riffle and a pool. Runs get plenty of sunlight, which helps algae grow. Insects feed on the algae, making runs good feeding spots for fish from pools and riffles. 
                   </p>
                 </div>
               </motion.div>
@@ -696,10 +733,10 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                    initial={{ opacity: 0, y: 10 }}
                    animate={{ opacity: 1, y: 0 }}
                    className="text-center"
-                   style={{ marginTop: '60px' }}
+                   style={{ marginTop: '10px' }}
                  >
                    <div className="inline-flex items-center justify-center" 
-                     style={{ gap: '60px' }}
+                     style={{ gap: '10px' }}
                    >
                      {/* Correct */}
                      <div className="flex items-center" style={{ gap: '12px' }}>
@@ -763,179 +800,208 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
           </motion.div>
         </div>
 
-      {/* Spacer */}
-      <div className="relative z-10" style={{ height: '60px', width: '100%' }}></div>
-
-      {/* Pagination and Next Button */}
-      <div className="relative z-10 pb-8">
-        <div className="relative flex justify-center items-center">
-          {/* Pagination Dots - Centered */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            className="flex justify-center items-center"
-            style={{ gap: '14px' }}
-          >
-            {Array.from({ length: TOTAL_PAGES }, (_, index) => {
-              const pageNum = index + 1;
-              const canNavigate = pageNum === 1 || (pageNum === 2 && quizSubmitted);
-              
-              return (
-                <button
-                  key={index}
-                  onClick={() => {
-                    if (canNavigate) {
-                      setCurrentPage(pageNum);
-                    }
-                  }}
-                  disabled={!canNavigate}
-                  className="transition-all duration-300 p-0 border-0 bg-transparent"
-                  aria-label={`Go to page ${pageNum}`}
-                  style={{ 
-                    background: 'none', 
-                    border: 'none', 
-                    padding: 0,
-                    cursor: canNavigate ? 'pointer' : 'default',
-                    opacity: canNavigate ? 1 : 0.5
-                  }}
-                >
-                  <div
-                    className="rounded-full transition-all duration-300"
-                    style={{
-                      width: '14px',
-                      height: '14px',
-                      backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
-                    }}
-                  />
-                </button>
-              );
-            })}
-          </motion.div>
-
-          {/* Download Button - Left of pagination (only on page 2 after submit) */}
-          {currentPage === 2 && page2Submitted && (
-            <motion.button
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              onClick={() => {
-                // TODO: Implement download functionality
-                console.log('Download report and activity papers');
-              }}
-              className="absolute transition-all duration-300 hover:opacity-80"
-              style={{
-                left: '10%',
-                width: '280px',
-                height: '60px',
-                backgroundColor: '#28a745',
-                borderRadius: '30px',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
+      {/* Pagination and Next Button - Sticky Footer */}
+      <div className="relative z-10" style={{ 
+        position: 'sticky', 
+        bottom: 0, 
+        backgroundColor: 'rgba(223, 235, 245, 0.95)',
+        paddingTop: '20px',
+        paddingBottom: '20px',
+        flexShrink: 0
+      }}>
+        <div className="relative flex justify-between items-center px-4">
+          {/* Home Button - Left */}
+          <div className="flex items-center">
+            <button
+              onClick={onHomeClick}
+              className="home-button relative flex items-center justify-center z-50"
+              style={{ 
+                width: '54px',
+                height: '54px',
+                backgroundColor: 'transparent',
+                border: 'none'
               }}
             >
-              <span style={{ color: 'white', fontWeight: 'bold', fontSize: '18px', lineHeight: '1' }}>
-                Download Report & Papers
-              </span>
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 20 20" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
+              <img 
+                src="/assets/icons/Home.png" 
+                alt="Home" 
+                style={{ 
+                  width: '54px',
+                  height: '54px',
+                  opacity: 1
+                }}
+              />
+            </button>
+          </div>
+
+          {/* Center Section - Pagination and Download Button */}
+          <div className="flex items-center justify-center" style={{ position: 'relative' }}>
+            {/* Download Button - Only on completion, 50px left of pagination */}
+            {currentPage === 2 && page2Submitted && (
+              <button
+                className="download-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '480px',
+                  height: '50px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  marginRight: '50px'
+                }}
               >
-                <path 
-                  d="M10 3V13M10 13L6 9M10 13L14 9M3 17H17" 
-                  stroke="white" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
+                <img
+                  src="/assets/icons/download.png"
+                  alt="Download"
+                  style={{
+                    width: '480px',
+                    height: '50px',
+                    opacity: 1
+                  }}
                 />
-              </svg>
-            </motion.button>
+              </button>
+            )}
+            
+            {/* Pagination Dots */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1 }}
+              className="flex justify-center items-center"
+              style={{ gap: '14px', position: 'relative' }}
+            >
+              {Array.from({ length: TOTAL_PAGES }, (_, index) => {
+                const pageNum = index + 1;
+                const canNavigate = pageNum === 1 || (pageNum === 2 && quizSubmitted);
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      if (canNavigate) {
+                        setCurrentPage(pageNum);
+                      }
+                    }}
+                    disabled={!canNavigate}
+                    className="transition-all duration-300 p-0 border-0 bg-transparent"
+                    aria-label={`Go to page ${pageNum}`}
+                    style={{ 
+                      background: 'none', 
+                      border: 'none', 
+                      padding: 0,
+                      cursor: canNavigate ? 'pointer' : 'default',
+                      opacity: canNavigate ? 1 : 0.5
+                    }}
+                  >
+                    <div
+                      className="rounded-full transition-all duration-300"
+                      style={{
+                        width: '14px',
+                        height: '14px',
+                        backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
+                      }}
+                    />
+                  </button>
+                );
+              })}
+            </motion.div>
+
+            {/* NEXT TOPIC Text - Only on completion, 50px right of pagination */}
+            {currentPage === 2 && page2Submitted && (
+              <div style={{ marginLeft: '50px' }}>
+                <span style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '24px',
+                  color: '#406A46'
+                }}>
+                  NEXT TOPIC: Floodplains like a sponge
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Next Button - Right - Only on completion */}
+          {currentPage === 2 && page2Submitted && (
+            <div className="flex items-center">
+              <button
+                onClick={() => {
+                  // Navigate to Flood Control page
+                  if (onFloodControlClick) {
+                    onFloodControlClick();
+                  }
+                }}
+                className="next-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '158px',
+                  height: '60px',
+                  backgroundColor: 'transparent',
+                  border: 'none'
+                }}
+              >
+                <img
+                  src="/assets/icons/next.png"
+                  alt="Floodplains like a sponge"
+                  style={{
+                    width: '158px',
+                    height: '60px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+            </div>
           )}
 
-          {/* Check Answers / Next / Back Home Button - Positioned at 90% */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            onClick={() => {
-              if (currentPage === 1) {
-                if (!quizSubmitted) {
-                  if (selectedOptions.length > 0) {
-                    handleSubmitQuiz();
+          {/* Check Answers / Next Button - Right - Only during drag & drop */}
+          {!(currentPage === 2 && page2Submitted) && (
+            <div className="flex items-center">
+              <button
+                onClick={() => {
+                  if (currentPage === 1) {
+                    if (!quizSubmitted) {
+                      if (selectedOptions.length > 0) {
+                        handleSubmitQuiz();
+                      }
+                    } else {
+                      setCurrentPage(2);
+                    }
+                  } else if (currentPage === 2) {
+                    if (!page2Submitted) {
+                      if (Object.keys(placements).length > 0) {
+                        handleSubmitPage2();
+                      }
+                    } else {
+                      // Navigate to Flood Control page
+                      if (onFloodControlClick) {
+                        onFloodControlClick();
+                      }
+                    }
                   }
-                } else {
-                  setCurrentPage(2);
+                }}
+                disabled={
+                  (currentPage === 1 && !quizSubmitted && selectedOptions.length === 0) ||
+                  (currentPage === 2 && !page2Submitted && Object.keys(placements).length === 0)
                 }
-              } else if (currentPage === 2) {
-                if (!page2Submitted) {
-                  if (Object.keys(placements).length > 0) {
-                    handleSubmitPage2();
-                  }
-                } else {
-                  // Go back home
-                  onHomeClick();
-                }
-              }
-            }}
-            disabled={
-              (currentPage === 1 && !quizSubmitted && selectedOptions.length === 0) ||
-              (currentPage === 2 && !page2Submitted && Object.keys(placements).length === 0)
-            }
-            className="absolute transition-all duration-300 hover:opacity-80"
-            style={{
-              right: '10%',
-              width: (currentPage === 1 && quizSubmitted) || (currentPage === 2 && page2Submitted) ? '180px' : '200px',
-              height: '60px',
-              backgroundColor: 
-                ((currentPage === 1 && !quizSubmitted && selectedOptions.length === 0) ||
-                 (currentPage === 2 && !page2Submitted && Object.keys(placements).length === 0))
-                  ? '#ccc' : '#51727C',
-              borderRadius: '30px',
-              border: 'none',
-              cursor: 
-                ((currentPage === 1 && !quizSubmitted && selectedOptions.length === 0) ||
-                 (currentPage === 2 && !page2Submitted && Object.keys(placements).length === 0))
-                  ? 'not-allowed' : 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px'
-            }}
-          >
-            {((currentPage === 1 && !quizSubmitted) || (currentPage === 2 && !page2Submitted)) ? (
-              <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px', lineHeight: '1' }}>
-                Check Answers
-              </span>
-            ) : (
-              <>
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '24px', lineHeight: '1' }}>
-                  {currentPage === TOTAL_PAGES && page2Submitted ? 'Back Home' : 'NEXT'}
-                </span>
-                <svg 
-                  width="28" 
-                  height="28" 
-                  viewBox="0 0 20 20" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    d={currentPage === TOTAL_PAGES && page2Submitted ? "M3 10H17M10 3L3 10L10 17" : "M7.5 15L12.5 10L7.5 5"}
-                    stroke="white" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </>
-            )}
-          </motion.button>
+                className="next-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '158px',
+                  height: '60px',
+                  backgroundColor: 'transparent',
+                  border: 'none'
+                }}
+              >
+                <img 
+                  src="/assets/icons/next.png" 
+                  alt={((currentPage === 1 && !quizSubmitted) || (currentPage === 2 && !page2Submitted)) ? 'Check Answers' : 'Next'} 
+                  style={{ 
+                    width: '158px',
+                    height: '60px',
+                    opacity: ((currentPage === 1 && !quizSubmitted && selectedOptions.length === 0) ||
+                             (currentPage === 2 && !page2Submitted && Object.keys(placements).length === 0))
+                      ? 0.5 : 1
+                  }}
+                />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

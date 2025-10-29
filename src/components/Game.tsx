@@ -102,7 +102,7 @@ export const Game: React.FC<GameProps> = ({
         ) : (
           <div className="h-full">
             {React.isValidElement(children) && 
-              React.cloneElement(children as React.ReactElement<any>, {
+              React.cloneElement(children as React.ReactElement<Record<string, unknown>>, {
                 onLevelComplete: handleLevelComplete,
                 currentLevel: gameState.progress.currentLevel,
                 isPaused: gameState.isPaused,

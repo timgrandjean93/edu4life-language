@@ -4,6 +4,7 @@ import { HomeButton } from '../HomeButton';
 
 interface FloodControlPageProps {
   onHomeClick: () => void;
+  onCarbonClick?: () => void;
 }
 
 // Hover areas for the images
@@ -128,7 +129,8 @@ const rightDescriptions = [
 ];
 
 export const FloodControlPage: React.FC<FloodControlPageProps> = ({
-  onHomeClick
+  onHomeClick,
+  onCarbonClick
 }) => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [hoveredArea, setHoveredArea] = React.useState<string | null>(null);
@@ -158,27 +160,31 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
     body.style.minHeight = "100vh";
     body.style.height = "auto";
     
-    // Set background that stays fixed when scrolling
-    body.style.backgroundImage = "url('/assets/backgrounds/background-pages.png')";
-    body.style.backgroundSize = "100vw 100vh"; // Cover exactly one viewport
-    body.style.backgroundPosition = "center top";
-    body.style.backgroundRepeat = "no-repeat";
-    body.style.backgroundAttachment = "fixed";
-    body.style.backgroundColor = "#e8f4f8"; // Fallback color that fills any space
+    // Set solid background color
+    body.style.backgroundColor = "#dfebf5";
     
     return () => {
       html.style.minHeight = "";
       html.style.height = "";
       body.style.minHeight = "";
       body.style.height = "";
-      body.style.backgroundImage = "";
-      body.style.backgroundSize = "";
-      body.style.backgroundPosition = "";
-      body.style.backgroundRepeat = "";
-      body.style.backgroundAttachment = "";
       body.style.backgroundColor = "";
     };
   }, []);
+
+  // Auto-submit page 2 when all zones are filled
+  React.useEffect(() => {
+    if (currentPage === 2 && !page2Submitted) {
+      const totalZones = leftImageDropZones.length + rightImageDropZones.length;
+      const allZonesFilled = Object.keys(placements).length === totalZones;
+      if (allZonesFilled) {
+        // Small delay to allow the last drop animation to complete
+        setTimeout(() => {
+          handleSubmitPage2();
+        }, 300);
+      }
+    }
+  }, [placements, currentPage, page2Submitted]);
 
   const handleAreaHover = (areaId: string) => {
     setHoveredArea(areaId);
@@ -250,19 +256,14 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
   };
 
   return (
-    <div className="relative w-full min-h-screen">
+    <div className="relative w-full min-h-screen page-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#dfebf5' }}>
       
       {/* Header with title and home button */}
-      <div className="relative z-50">
+      <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
-            {/* Header with Home Button and Title */}
+            {/* Header with Title */}
             <div className="relative">
-              {/* Home Button - Absolute positioned */}
-              <div className="absolute top-0" style={{ left: '10%' }}>
-                <HomeButton onClick={onHomeClick} />
-              </div>
-              
               {/* Title and Subtitle - Centered */}
               <div className="text-center">
                 {/* Title */}
@@ -270,26 +271,12 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-blue-900 mb-2"
-                  style={{ 
-                    fontFamily: 'Comfortaa, sans-serif',
-                    lineHeight: '1.2',
-                    textShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                  }}
+                  className="main-title mb-2"
                 >
                   Flood control function – Floodplains are like a sponge
                 </motion.h1>
                 
                 {/* Subtitle */}
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="text-lg sm:text-xl md:text-2xl text-blue-800 font-medium"
-                  style={{ fontFamily: 'Comfortaa, sans-serif' }}
-                >
-                  WETLANDS EDU AND CS TOPICS IN R4L TOOLBOX
-                </motion.p>
               </div>
             </div>
           </div>
@@ -297,7 +284,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 px-4 pb-8">
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, overflowY: 'auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -307,12 +294,27 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
           {currentPage === 1 ? (
             <>
               {/* Page 1 Content */}
+              {/* Pointer Icon */}
+              <div className="text-center mx-auto mb-4">
+                <img 
+                  src="/assets/icons/pointer.png" 
+                  alt="Pointer" 
+                  style={{ 
+                    width: '54px', 
+                    height: '54px',
+                    backgroundColor: 'transparent',
+                    margin: '0 auto'
+                  }} 
+                />
+              </div>
+              
               {/* Instruction Text */}
               <div className="text-center mb-8">
                 <p style={{ 
-                  fontSize: '20px', 
-                  color: '#51727C',
-                  fontWeight: '500',
+                  fontSize: '24px',
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  color: '#406A46',
                   lineHeight: '1.5'
                 }}>
                   Hover over different areas of the images to reveal useful facts.
@@ -355,22 +357,56 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       borderRadius: '24px',
                       padding: '40px',
                       maxHeight: '100%',
-                      overflowY: 'auto'
+                      overflowY: 'auto',
+                      backgroundColor: 'rgba(255, 255, 255, 0.95)'
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      onClick={toggleDidYouKnowLeft}
+                      style={{
+                        position: 'absolute',
+                        top: '16px',
+                        right: '16px',
+                        fontSize: '36px',
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontWeight: 'bold',
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        zIndex: 10,
+                        color: '#6B7280'
+                      }}
+                    >
+                      ×
+                    </button>
+                    
                     {/* Content */}
                     <div>
                       <h3 
-                        className="font-bold text-blue-900"
-                        style={{ fontSize: '28px', marginBottom: '24px' }}
+                        className="font-bold"
+                        style={{ 
+                          fontSize: '36px', 
+                          marginBottom: '24px',
+                          color: '#51727C'
+                        }}
                       >
                         {didYouKnowContentLeft.title}
                       </h3>
                       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                         {didYouKnowContentLeft.items.map((item, index) => (
                           <li key={index} className="flex items-start" style={{ marginBottom: '16px' }}>
-                            <span className="text-green-600 font-bold mr-3" style={{ fontSize: '16px', lineHeight: '1.5' }}>•  </span>
-                            <span className="text-gray-700" style={{ fontSize: '16px', lineHeight: '1.6' }}> {item}</span>
+                            <span className="text-green-600 font-bold mr-3" style={{ 
+                              fontSize: '22px', 
+                              lineHeight: '1.5',
+                              fontFamily: 'Comfortaa, sans-serif'
+                            }}>•  </span>
+                            <span className="text-gray-700" style={{ 
+                              fontSize: '22px', 
+                              lineHeight: '1.6',
+                              fontFamily: 'Comfortaa, sans-serif',
+                              fontWeight: 'bold'
+                            }}> {item}</span>
                           </li>
                         ))}
                       </ul>
@@ -407,9 +443,17 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         width: '100%',
                         height: '100%',
                         zIndex: 10,
-                        fontSize: '18px',
-                        lineHeight: '1.2',
-                        padding: '5px 10px'
+                        fontSize: 'clamp(12px, 1.5vw, 18px)',
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontWeight: 'bold',
+                        color: '#406A46',
+                        lineHeight: '1.3',
+                        padding: '4px 8px',
+                        overflow: 'hidden',
+                        wordBreak: 'break-word',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
                       }}
                     >
                       {area.text}
@@ -453,22 +497,56 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       borderRadius: '24px',
                       padding: '40px',
                       maxHeight: '100%',
-                      overflowY: 'auto'
+                      overflowY: 'auto',
+                      backgroundColor: 'rgba(255, 255, 255, 0.95)'
                     }}
                   >
+                    {/* Close Button */}
+                    <button
+                      onClick={toggleDidYouKnowRight}
+                      style={{
+                        position: 'absolute',
+                        top: '16px',
+                        right: '16px',
+                        fontSize: '36px',
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontWeight: 'bold',
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        zIndex: 10,
+                        color: '#6B7280'
+                      }}
+                    >
+                      ×
+                    </button>
+                    
                     {/* Content */}
                     <div>
                       <h3 
-                        className="font-bold text-blue-900"
-                        style={{ fontSize: '28px', marginBottom: '24px' }}
+                        className="font-bold"
+                        style={{ 
+                          fontSize: '36px', 
+                          marginBottom: '24px',
+                          color: '#51727C'
+                        }}
                       >
                         {didYouKnowContentRight.title}
                       </h3>
                       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                         {didYouKnowContentRight.items.map((item, index) => (
                           <li key={index} className="flex items-start" style={{ marginBottom: '16px' }}>
-                            <span className="text-green-600 font-bold mr-3" style={{ fontSize: '16px', lineHeight: '1.5' }}>•  </span>
-                            <span className="text-gray-700" style={{ fontSize: '16px', lineHeight: '1.6' }}> {item}</span>
+                            <span className="text-green-600 font-bold mr-3" style={{ 
+                              fontSize: '22px', 
+                              lineHeight: '1.5',
+                              fontFamily: 'Comfortaa, sans-serif'
+                            }}>•  </span>
+                            <span className="text-gray-700" style={{ 
+                              fontSize: '22px', 
+                              lineHeight: '1.6',
+                              fontFamily: 'Comfortaa, sans-serif',
+                              fontWeight: 'bold'
+                            }}> {item}</span>
                           </li>
                         ))}
                       </ul>
@@ -498,7 +576,6 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   {hoveredArea === area.id && (
                     <div 
                       className="absolute bg-white rounded-lg shadow-lg font-medium text-gray-800 leading-tight flex items-center justify-center text-center"
-
                       style={{
                         top: '50%',
                         left: '50%',
@@ -506,9 +583,17 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         width: '100%',
                         height: '100%',
                         zIndex: 10,
-                        fontSize: '18px',
-                        lineHeight: '1.2',
-                        padding: '5px 10px'
+                        fontSize: 'clamp(12px, 1.5vw, 18px)',
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontWeight: 'bold',
+                        color: '#406A46',
+                        lineHeight: '1.3',
+                        padding: '4px 8px',
+                        overflow: 'hidden',
+                        wordBreak: 'break-word',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
                       }}
                     >
                       {area.text}
@@ -533,7 +618,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 style={{
                   width: '200px',
                   height: '60px',
-                  backgroundColor: '#28a745',
+                  backgroundColor: '#406A46',
                   borderRadius: '30px',
                   border: 'none',
                   cursor: 'pointer',
@@ -542,7 +627,13 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   justifyContent: 'center'
                 }}
               >
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px', lineHeight: '1' }}>
+                <span style={{ 
+                  color: 'white', 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold', 
+                  fontSize: '24px', 
+                  lineHeight: '1' 
+                }}>
                   Did you know?
                 </span>
               </motion.button>
@@ -559,7 +650,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 style={{
                   width: '200px',
                   height: '60px',
-                  backgroundColor: '#28a745',
+                  backgroundColor: '#406A46',
                   borderRadius: '30px',
                   border: 'none',
                   cursor: 'pointer',
@@ -568,7 +659,13 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   justifyContent: 'center'
                 }}
               >
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px', lineHeight: '1' }}>
+                <span style={{ 
+                  color: 'white', 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold', 
+                  fontSize: '24px', 
+                  lineHeight: '1' 
+                }}>
                   Did you know?
                 </span>
               </motion.button>
@@ -578,28 +675,47 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
           ) : currentPage === 2 ? (
             <>
               {/* Page 2 Content - Drag and Drop */}
-              {/* Instruction Text */}
+              {/* Activity 1 Title with Pencil Icon */}
               <div className="text-center mb-8">
-                <p className="text-blue-900 font-semibold" style={{
-                  fontSize: '22px',
+                <div className="flex items-center justify-center" style={{ gap: '10px' }}>
+                  <img 
+                    src="/assets/icons/pencil.png" 
+                    alt="Pencil" 
+                    style={{ 
+                      width: '84px', 
+                      height: '84px',
+                      backgroundColor: 'transparent'
+                    }} 
+                  />
+                  <h2 style={{
+                    fontSize: '48px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
+                    margin: '0'
+                  }}>
+                    Activity 1
+                  </h2>
+                </div>
+              </div>
+              
+              {/* Instruction Text */}
+              <div className="text-center mb-2">
+                <p style={{
+                  fontSize: '24px',
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  color: '#406A46',
                   lineHeight: '1.6',
-                  maxWidth: '1000px',
+                  width: '100%',
                   margin: '0 auto'
                 }}>
-                  Can you spot the missing floodplain superpowers?
-                </p>
-                <p className="text-blue-900" style={{
-                  fontSize: '18px',
-                  lineHeight: '1.6',
-                  maxWidth: '1000px',
-                  margin: '8px auto 0'
-                }}>
-                  Match the description numbers to the healthy floodplain (left) and degraded floodplain (right).
+                  Can you spot the missing floodplain superpowers? Match the description numbers to the healthy floodplain (left) and degraded floodplain (right).
                 </p>
               </div>
 
               {/* Images with Drop Zones */}
-              <div className="flex justify-center items-start gap-8 mb-8">
+              <div className="flex justify-center items-start gap-8 mb-2">
                 {/* Left Image */}
                 <div className="relative" style={{ width: '45%', maxWidth: '800px', display: 'inline-block' }}>
                   <img 
@@ -629,7 +745,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           height: '50px',
                           backgroundColor: placement ? '#51727C' : 'rgba(255, 255, 255, 0.6)',
                           border: showPage2Feedback 
-                            ? (isCorrect ? '4px solid #4ade80' : isIncorrect ? '4px solid #ef4444' : '4px solid #ccc')
+                            ? (isCorrect ? '4px solid #548235' : isIncorrect ? '4px solid #C41904' : '4px solid #CE7C0A')
                             : '4px solid #ccc',
                           boxShadow: placement ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 6px rgba(0, 0, 0, 0.1)',
                           fontSize: '24px',
@@ -676,7 +792,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           height: '50px',
                           backgroundColor: placement ? '#51727C' : 'rgba(255, 255, 255, 0.6)',
                           border: showPage2Feedback 
-                            ? (isCorrect ? '4px solid #4ade80' : isIncorrect ? '4px solid #ef4444' : '4px solid #ccc')
+                            ? (isCorrect ? '4px solid #548235' : isIncorrect ? '4px solid #C41904' : '4px solid #CE7C0A')
                             : '4px solid #ccc',
                           boxShadow: placement ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 6px rgba(0, 0, 0, 0.1)',
                           fontSize: '24px',
@@ -696,7 +812,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               </div>
 
               {/* Descriptions with Draggable Numbers */}
-              <div className="flex justify-center gap-8 mt-8">
+              <div className="flex justify-center gap-8 mt-4">
                 {/* Left Descriptions */}
                 <div style={{ width: '45%', maxWidth: '800px', paddingLeft: '10px' }}>
                   <h4 className="font-bold text-blue-900 mb-4" style={{ fontSize: '20px' }}>Natural Floodplain:</h4>
@@ -857,32 +973,52 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               {/* Page 3 Content - Fill in the Blank */}
               {/* Title above white box */}
               <div className="text-center mb-12">
-                <h2 className="text-blue-900 font-bold" style={{
-                  fontSize: '28px',
-                  margin: 0
-                }}>
-                  Fill-in-the-blanks challenge
-                </h2>
+                <div className="flex items-center justify-center" style={{ gap: '10px' }}>
+                  <img 
+                    src="/assets/icons/pencil.png" 
+                    alt="Pencil" 
+                    style={{ 
+                      width: '84px', 
+                      height: '84px',
+                      backgroundColor: 'transparent'
+                    }} 
+                  />
+                  <h2 style={{
+                    fontSize: '48px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
+                    margin: 0
+                  }}>
+                    Fill-in-the-blanks challenge
+                  </h2>
+                </div>
               </div>
 
               <div className="flex justify-center mb-8">
                 <div style={{
-                  backgroundColor: 'white',
+                  backgroundColor: '#F5F5F5',
                   borderRadius: '24px',
                   padding: '40px 60px',
                   maxWidth: '1000px',
                   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
                 }}>
-                  <p className="text-blue-900 font-semibold" style={{
+                  <p style={{
                     fontSize: '24px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
                     lineHeight: '1.6',
                     margin: '0 0 20px',
                     textAlign: 'center'
                   }}>
                     Floodplains are nature's buffer zones!
                   </p>
-                  <p className="text-blue-900" style={{
-                    fontSize: '20px',
+                  <p style={{
+                    fontSize: '24px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
                     lineHeight: '1.8',
                     margin: '0 0 30px',
                     textAlign: 'center'
@@ -890,20 +1026,25 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     How does the floodplain help in times of heavy rain?<br />
                     What happens to floodwater when a river has space to spread out?
                   </p>
-                  <p className="text-blue-900 font-semibold" style={{
-                    fontSize: '22px',
+                  <p style={{
+                    fontSize: '24px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
                     textAlign: 'center',
                     margin: '0 0 30px'
                   }}>
-                    Complete the sentence:
+                    COMPLETE THE SENTENCE:
                   </p>
 
                   {/* Fill in the blank inputs */}
                   <div style={{
-                    fontSize: '20px',
+                    fontSize: '24px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
                     lineHeight: '2',
                     textAlign: 'center',
-                    color: '#1e3a8a'
+                    color: '#406A46'
                   }}>
                     <p style={{ marginBottom: '30px' }}>
                       Floodplains act as natural{' '}
@@ -918,7 +1059,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           fontSize: '20px',
                           textAlign: 'center',
                           border: showPage3Feedback 
-                            ? (isAnswer1Correct() ? '3px solid #4ade80' : '3px solid #ef4444')
+                            ? (isAnswer1Correct() ? '3px solid #548235' : '3px solid #C41904')
                             : '2px solid #51727C',
                           borderRadius: '8px',
                           backgroundColor: page3Submitted ? '#f3f4f6' : 'white',
@@ -942,7 +1083,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           fontSize: '20px',
                           textAlign: 'center',
                           border: showPage3Feedback 
-                            ? (isAnswer2Correct() ? '3px solid #4ade80' : '3px solid #ef4444')
+                            ? (isAnswer2Correct() ? '3px solid #548235' : '3px solid #C41904')
                             : '2px solid #51727C',
                           borderRadius: '8px',
                           backgroundColor: page3Submitted ? '#f3f4f6' : 'white',
@@ -968,7 +1109,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         <div className="flex items-center" style={{ gap: '12px' }}>
                           <div className="flex items-center justify-center rounded-full" 
                             style={{ 
-                              backgroundColor: isAnswer1Correct() ? '#4ade80' : '#ef4444',
+                              backgroundColor: isAnswer1Correct() ? '#548235' : '#C41904',
                               width: '32px',
                               height: '32px'
                             }}
@@ -986,7 +1127,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           <span style={{ 
                             fontSize: '20px', 
                             fontWeight: '600', 
-                            color: isAnswer1Correct() ? '#4ade80' : '#ef4444' 
+                            color: isAnswer1Correct() ? '#548235' : '#C41904' 
                           }}>
                             {isAnswer1Correct() ? 'Correct: sponge' : `Incorrect (Answer: sponge)`}
                           </span>
@@ -996,7 +1137,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         <div className="flex items-center" style={{ gap: '12px' }}>
                           <div className="flex items-center justify-center rounded-full" 
                             style={{ 
-                              backgroundColor: isAnswer2Correct() ? '#4ade80' : '#ef4444',
+                              backgroundColor: isAnswer2Correct() ? '#548235' : '#C41904',
                               width: '32px',
                               height: '32px'
                             }}
@@ -1014,7 +1155,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           <span style={{ 
                             fontSize: '20px', 
                             fontWeight: '600', 
-                            color: isAnswer2Correct() ? '#4ade80' : '#ef4444' 
+                            color: isAnswer2Correct() ? '#548235' : '#C41904' 
                           }}>
                             {isAnswer2Correct() ? 'Correct: flooding' : `Incorrect (Answer: flooding)`}
                           </span>
@@ -1029,253 +1170,255 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Spacer */}
-      <div className="relative z-10" style={{ height: '60px', width: '100%' }}></div>
+      {/* Pagination and Next Button - Sticky Footer */}
+      <div className="relative z-10" style={{ 
+        position: 'sticky', 
+        bottom: 0, 
+        backgroundColor: 'rgba(223, 235, 245, 0.95)',
+        paddingTop: '20px',
+        paddingBottom: '20px',
+        flexShrink: 0
+      }}>
+        <div className="relative flex justify-between items-center px-4">
+          {/* Home Button - Left */}
+          <div className="flex items-center">
+            <HomeButton onClick={onHomeClick} />
+          </div>
 
-      {/* Pagination and Next Button */}
-      <div className="relative z-10 pb-8">
-        <div className="relative flex justify-center items-center">
-          {/* Download Button - Left side (only on page 3 after submit) */}
-          {currentPage === 3 && page3Submitted && (
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-              onClick={() => {
-                window.open('/assets/report.pdf', '_blank');
-              }}
-              className="absolute transition-all duration-300 hover:opacity-80"
-              style={{
-                left: '10%',
-                width: '280px',
-                height: '60px',
-                backgroundColor: '#97C09D',
-                borderRadius: '30px',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
-              }}
-            >
-              <span style={{ color: 'white', fontWeight: 'bold', fontSize: '18px', lineHeight: '1' }}>
-                Download Report & Activity Papers
-              </span>
-            </motion.button>
-          )}
-
-          {/* Pagination Dots - Centered */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            className="flex justify-center items-center"
-            style={{ gap: '14px' }}
-          >
-            {Array.from({ length: TOTAL_PAGES }, (_, index) => {
-              const pageNum = index + 1;
-              
-              return (
-                <button
-                  key={index}
-                  onClick={() => setCurrentPage(pageNum)}
-                  className="transition-all duration-300 p-0 border-0 bg-transparent"
-                  aria-label={`Go to page ${pageNum}`}
-                  style={{ 
-                    background: 'none', 
-                    border: 'none', 
-                    padding: 0,
-                    cursor: 'pointer',
-                    opacity: 1
-                  }}
-                >
-                  <div
-                    className="rounded-full transition-all duration-300"
-                    style={{
-                      width: '14px',
-                      height: '14px',
-                      backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
-                    }}
-                  />
-                </button>
-              );
-            })}
-          </motion.div>
-
-          {/* Next/Back Home/Check Answers Button - Positioned at 90% */}
-          {currentPage === 2 ? (
-            // Page 2: Show Check Answers button (becomes NEXT after submit)
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-              onClick={() => {
-                if (page2Submitted) {
-                  // Navigate to next page after submit
-                  setCurrentPage(currentPage + 1);
-                } else if (Object.keys(placements).length >= 6) {
-                  // Submit answers
-                  handleSubmitPage2();
-                }
-              }}
-              className="absolute transition-all duration-300"
-              style={{
-                right: '10%',
-                width: '200px',
-                height: '60px',
-                backgroundColor: '#51727C',
-                borderRadius: '30px',
-                border: 'none',
-                cursor: page2Submitted || Object.keys(placements).length >= 6 ? 'pointer' : 'not-allowed',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                opacity: page2Submitted || Object.keys(placements).length >= 6 ? 1 : 0.25
-              }}
-            >
-              <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px', lineHeight: '1' }}>
-                {page2Submitted ? 'NEXT' : 'Check Answers'}
-              </span>
-              {page2Submitted && (
-                <svg 
-                  width="28" 
-                  height="28" 
-                  viewBox="0 0 20 20" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    d="M7.5 15L12.5 10L7.5 5"
-                    stroke="white" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              )}
-            </motion.button>
-          ) : currentPage === 3 ? (
-            // Page 3: Show Check Answers button OR Back Home button after submit
-            page3Submitted ? (
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.1 }}
-                onClick={onHomeClick}
-                className="absolute transition-all duration-300 hover:opacity-80"
+          {/* Center Section - Download Button, Pagination, and NEXT TOPIC Text - Only on completion */}
+          {currentPage === TOTAL_PAGES && page3Submitted ? (
+            <div className="flex items-center justify-center" style={{ position: 'relative' }}>
+              {/* Download Button - 50px left of pagination */}
+              <button
+                className="download-button relative flex items-center justify-center z-50"
                 style={{
-                  right: '10%',
-                  width: '180px',
-                  height: '60px',
-                  backgroundColor: '#51727C',
-                  borderRadius: '30px',
+                  width: '480px',
+                  height: '50px',
+                  backgroundColor: 'transparent',
                   border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
+                  marginRight: '50px'
                 }}
               >
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '24px', lineHeight: '1' }}>
-                  Back Home
-                </span>
-                <svg 
-                  width="28" 
-                  height="28" 
-                  viewBox="0 0 20 20" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    d="M3 10H17M10 3L3 10L10 17"
-                    stroke="white" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </motion.button>
-            ) : (
-              <motion.button
+                <img 
+                  src="/assets/icons/download.png" 
+                  alt="Download" 
+                  style={{ 
+                    width: '480px',
+                    height: '50px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+              
+              {/* Pagination Dots */}
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.1 }}
+                className="flex justify-center items-center"
+                style={{ gap: '14px', position: 'relative' }}
+              >
+                {Array.from({ length: TOTAL_PAGES }, (_, index) => {
+                  const pageNum = index + 1;
+                  
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentPage(pageNum)}
+                      className="transition-all duration-300 p-0 border-0 bg-transparent"
+                      aria-label={`Go to page ${pageNum}`}
+                      style={{ 
+                        background: 'none', 
+                        border: 'none', 
+                        padding: 0,
+                        cursor: 'pointer',
+                        opacity: 1
+                      }}
+                    >
+                      <div
+                        className="rounded-full transition-all duration-300"
+                        style={{
+                          width: '14px',
+                          height: '14px',
+                          backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
+                        }}
+                      />
+                    </button>
+                  );
+                })}
+              </motion.div>
+
+              {/* NEXT TOPIC Text - 50px right of pagination */}
+              <div style={{ marginLeft: '50px' }}>
+                <span style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '24px',
+                  color: '#406A46'
+                }}>
+                  NEXT TOPIC: Climate protection and carbon sink
+                </span>
+              </div>
+            </div>
+          ) : (
+            /* Pagination Dots - Only when not on completion page */
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1 }}
+              className="flex justify-center items-center"
+              style={{ gap: '14px', position: 'relative' }}
+            >
+              {Array.from({ length: TOTAL_PAGES }, (_, index) => {
+                const pageNum = index + 1;
+                
+                return (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className="transition-all duration-300 p-0 border-0 bg-transparent"
+                    aria-label={`Go to page ${pageNum}`}
+                    style={{ 
+                      background: 'none', 
+                      border: 'none', 
+                      padding: 0,
+                      cursor: 'pointer',
+                      opacity: 1
+                    }}
+                  >
+                    <div
+                      className="rounded-full transition-all duration-300"
+                      style={{
+                        width: '14px',
+                        height: '14px',
+                        backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
+                      }}
+                    />
+                  </button>
+                );
+              })}
+            </motion.div>
+          )}
+
+          {/* Next Button - Right - Only on completion */}
+          {currentPage === TOTAL_PAGES && page3Submitted && (
+            <div className="flex items-center">
+              <button
+                onClick={() => {
+                  if (onCarbonClick) {
+                    onCarbonClick();
+                  }
+                }}
+                className="next-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '158px',
+                  height: '60px',
+                  backgroundColor: 'transparent',
+                  border: 'none'
+                }}
+              >
+                <img
+                  src="/assets/icons/next.png"
+                  alt="Climate protection and carbon sink"
+                  style={{
+                    width: '158px',
+                    height: '60px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+            </div>
+          )}
+
+          {/* Check Answers / Next Button - Right - Only during activities */}
+          {!(currentPage === TOTAL_PAGES && page3Submitted) && (
+            <div className="flex items-center">
+              {currentPage === 2 ? (
+              // Page 2: Show Check Answers button (becomes NEXT after submit)
+              <button
+                onClick={() => {
+                  if (page2Submitted) {
+                    // Navigate to next page after submit
+                    setCurrentPage(currentPage + 1);
+                  } else if (Object.keys(placements).length >= 6) {
+                    // Submit answers
+                    handleSubmitPage2();
+                  }
+                }}
+                disabled={!(page2Submitted || Object.keys(placements).length >= 6)}
+                className="next-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '158px',
+                  height: '60px',
+                  backgroundColor: 'transparent',
+                  border: 'none'
+                }}
+              >
+                <img 
+                  src="/assets/icons/next.png" 
+                  alt={page2Submitted ? 'Next' : 'Check Answers'} 
+                  style={{ 
+                    width: '158px',
+                    height: '60px',
+                    opacity: page2Submitted || Object.keys(placements).length >= 6 ? 1 : 0.5
+                  }}
+                />
+              </button>
+            ) : currentPage === 3 ? (
+              // Page 3: Show Check Answers button
+              <button
                 onClick={() => {
                   if (answer1.trim() && answer2.trim()) {
                     handleSubmitPage3();
                   }
                 }}
-                className="absolute transition-all duration-300"
+                disabled={!(answer1.trim() && answer2.trim())}
+                className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  right: '10%',
-                  width: '200px',
+                  width: '158px',
                   height: '60px',
-                  backgroundColor: '#51727C',
-                  borderRadius: '30px',
-                  border: 'none',
-                  cursor: (answer1.trim() && answer2.trim()) ? 'pointer' : 'not-allowed',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  opacity: (answer1.trim() && answer2.trim()) ? 1 : 0.25
+                  backgroundColor: 'transparent',
+                  border: 'none'
                 }}
               >
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px', lineHeight: '1' }}>
-                  Check Answers
-                </span>
-              </motion.button>
-            )
-          ) : (
-            // Other pages: Show NEXT/Back Home button
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-              onClick={() => {
-                if (currentPage < TOTAL_PAGES) {
-                  setCurrentPage(currentPage + 1);
-                } else {
-                  onHomeClick();
-                }
-              }}
-              className="absolute transition-all duration-300 hover:opacity-80"
-              style={{
-                right: '10%',
-                width: currentPage === TOTAL_PAGES ? '180px' : '140px',
-                height: '60px',
-                backgroundColor: '#51727C',
-                borderRadius: '30px',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
-              }}
-            >
-              <span style={{ color: 'white', fontWeight: 'bold', fontSize: '24px', lineHeight: '1' }}>
-                {currentPage === TOTAL_PAGES ? 'Back Home' : 'NEXT'}
-              </span>
-              <svg 
-                width="28" 
-                height="28" 
-                viewBox="0 0 20 20" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  d={currentPage === TOTAL_PAGES ? "M3 10H17M10 3L3 10L10 17" : "M7.5 15L12.5 10L7.5 5"}
-                  stroke="white" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
+                <img 
+                  src="/assets/icons/next.png" 
+                  alt="Check Answers" 
+                  style={{ 
+                    width: '158px',
+                    height: '60px',
+                    opacity: (answer1.trim() && answer2.trim()) ? 1 : 0.5
+                  }}
                 />
-              </svg>
-            </motion.button>
+              </button>
+            ) : (
+              // Other pages: Show NEXT button
+              <button
+                onClick={() => {
+                  if (currentPage < TOTAL_PAGES) {
+                    setCurrentPage(currentPage + 1);
+                  }
+                }}
+                className="next-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '158px',
+                  height: '60px',
+                  backgroundColor: 'transparent',
+                  border: 'none'
+                }}
+              >
+                <img 
+                  src="/assets/icons/next.png" 
+                  alt="Next" 
+                  style={{ 
+                    width: '158px',
+                    height: '60px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+            )}
+            </div>
           )}
         </div>
       </div>

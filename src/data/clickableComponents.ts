@@ -115,36 +115,18 @@ export const clickableComponents: ClickableComponent[] = [
   },
   {
     id: 'aestethics',
-    title: 'Floodplain aestethics versus Floodplain',
-    description: 'Ontdek hoe wetlands fungeren als natuurlijke spons',
+    title: 'Nature\'s Aesthetics',
+    description: 'Discover the beauty and aesthetic value of natural floodplains',
     x: 0, // Wordt overschreven door riverPosition
     y: 0, // Wordt overschreven door riverPosition
-    icon: '🧽',
-    color: 'bg-blue-400',
+    icon: '🎨',
+    color: 'bg-purple-400',
     size: 'medium',
     category: 'river',
-    image: '/assets/components/Aestethics.png',
+    image: '/assets/components/Constructed.png', // Using Constructed wetlands image
     riverPosition: {
-      x: 57, // 50% langs de rivier
-      offsetY: 23 // 10% van rivier hoogte boven de rivier
-    },
-    anchorPoint: 'top', // De witte cirkel aan de bovenkant
-    widthPercentage: 18 // 15% van viewport breedte, hoogte wordt automatisch bepaald
-  },
-  {
-    id: 'constructed',
-    title: 'Constructed wetlands',
-    description: 'Ontdek hoe wetlands fungeren als natuurlijke spons',
-    x: 0, // Wordt overschreven door riverPosition
-    y: 0, // Wordt overschreven door riverPosition
-    icon: '🧽',
-    color: 'bg-blue-400',
-    size: 'medium',
-    category: 'river',
-    image: '/assets/components/Constructed.png',
-    riverPosition: {
-      x: 57.5, // 50% langs de rivier
-      offsetY: 40 // 10% van rivier hoogte boven de rivier
+      x: 57.5, // Same position as Constructed wetlands
+      offsetY: 40 // Same position as Constructed wetlands
     },
     anchorPoint: 'top', // De witte cirkel aan de bovenkant
     widthPercentage: 18 // 15% van viewport breedte, hoogte wordt automatisch bepaald
@@ -256,7 +238,7 @@ export const clickableComponents: ClickableComponent[] = [
     },
     anchorPoint: 'top', // De witte cirkel aan de bovenkant
     widthPercentage: 15 // 15% van viewport breedte, hoogte wordt automatisch bepaald
-  }
+  },
 ];
 
 // Helper functies voor het beheren van componenten

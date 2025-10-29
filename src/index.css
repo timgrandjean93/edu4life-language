@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,7 +11,7 @@ h1 {
 }
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Comfortaa', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light;
@@ -80,6 +80,49 @@ body {
   background-color: transparent !important;
 }
 
+/* Default padding for all pages except homepage */
+.page-container {
+  padding: 50px 100px 0 100px;
+}
+
+/* Homepage should not have this padding */
+.homepage-container {
+  padding: 0;
+}
+
+/* Main title styling - consistent across all pages */
+.main-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  color: #51727C;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  line-height: 1.2;
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+  .page-container {
+    padding: 25px 20px 0 20px;
+  }
+  
+  .main-title {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-container {
+    padding: 15px 15px 0 15px;
+  }
+  
+  .main-title {
+    font-size: 28px;
+  }
+}
+
 .wetland-gradient {
   background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
 }
@@ -89,13 +132,43 @@ body {
 }
 
 /* Smooth transitions for all interactive elements */
-button, .clickable {
+button:not(.home-button):not(.next-button):not(.download-button), .clickable {
   transition: all 0.2s ease-in-out;
 }
 
-button:hover, .clickable:hover {
+button:not(.home-button):not(.next-button):not(.download-button):hover, .clickable:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Home button - no hover effects */
+.home-button {
+  transition: none !important;
+}
+
+.home-button:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Next button - no hover effects */
+.next-button {
+  transition: none !important;
+}
+
+.next-button:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Download button - no hover effects */
+.download-button {
+  transition: none !important;
+}
+
+.download-button:hover {
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 /* Custom scrollbar */
