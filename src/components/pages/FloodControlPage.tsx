@@ -58,7 +58,7 @@ const rightImageHoverAreas = [
     y: 35,
     width: 60,
     height: 15,
-    text: 'The river is confined by dikes like a tight corset.  It can't spread out or reach the floodplain, so floodwaters rise quickly'
+    text: "The river is confined by dikes like a tight corset.  It can't spread out or reach the floodplain, so floodwaters rise quickly"
   },
   {
     id: 'ecosystem-benefits',
