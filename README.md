@@ -1,4 +1,4 @@
-# Edu4Life - Wetlands Gamification
+# Wetland Education Toolkit
 
 Een interactieve gamification applicatie voor wetlands educatie, ontworpen om embedded te worden in andere websites.
 
