@@ -482,7 +482,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           }}
                         />
                         
-                        {/* Visible drop zones for page 2 */}
+                        {/* Invisible drop zones for page 2 */}
                         {!showValidation && dropZones.map((zone) => (
                           <div
                             key={zone.id}
@@ -495,11 +495,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                               width: `${zone.width}%`,
                               height: `${zone.height}%`,
                               pointerEvents: 'auto',
-                              cursor: 'pointer',
-                              border: '2px dashed #C41904',
-                              backgroundColor: 'rgba(196, 25, 4, 0.1)',
-                              borderRadius: '4px',
-                              boxSizing: 'border-box'
+                              cursor: 'pointer'
                             }}
                           />
                         ))}
