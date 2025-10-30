@@ -63,6 +63,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
   const [page2Submitted, setPage2Submitted] = React.useState(false);
   const [showPage2Feedback, setShowPage2Feedback] = React.useState(false);
   const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null);
+  const [showDownloadModal, setShowDownloadModal] = React.useState(false);
 
   const handleOptionToggle = (optionId: string) => {
     if (quizSubmitted) return; // Don't allow changes after submission
@@ -118,6 +119,26 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
   const handleSubmitPage2 = () => {
     setPage2Submitted(true);
     setShowPage2Feedback(true);
+  };
+
+  // Download modal handlers
+  const handleDownloadClick = () => {
+    setShowDownloadModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowDownloadModal(false);
+  };
+
+  const handleZenodoLink = () => {
+    // Note: No specific Zenodo link provided for RiparianPage
+    window.open('https://doi.org/10.5281/zenodo.17477431', '_blank');
+    setShowDownloadModal(false);
+  };
+
+  const handleDashboardLink = () => {
+    setShowDownloadModal(false);
+    // TODO: Navigate to repository
   };
 
   const getPage2Feedback = (zoneId: string) => {
@@ -839,12 +860,14 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
             {/* Download Button - Only on completion, 50px left of pagination */}
             {currentPage === 2 && page2Submitted && (
               <button
+                onClick={handleDownloadClick}
                 className="download-button relative flex items-center justify-center z-50"
                 style={{
                   width: '480px',
                   height: '50px',
                   backgroundColor: 'transparent',
                   border: 'none',
+                  cursor: 'pointer',
                   marginRight: '50px'
                 }}
               >
@@ -1004,6 +1027,198 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
           )}
         </div>
       </div>
+
+      {/* Download Modal */}
+      {showDownloadModal && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999
+          }}
+          onClick={handleCloseModal}
+        >
+          <div 
+            style={{
+              backgroundColor: '#dfebf5',
+              borderRadius: '16px',
+              padding: '40px',
+              maxWidth: '600px',
+              width: '90%',
+              position: 'relative',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={handleCloseModal}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'transparent',
+                border: 'none',
+                fontSize: '32px',
+                cursor: 'pointer',
+                color: '#406A46',
+                fontWeight: 'bold'
+              }}
+            >
+              ×
+            </button>
+
+            {/* Modal Title */}
+            <div style={{
+              fontFamily: 'Comfortaa, sans-serif',
+              fontSize: '32px',
+              fontWeight: 'bold',
+              color: '#406A46',
+              textAlign: 'center',
+              marginBottom: '30px'
+            }}>
+              Download Options
+            </div>
+
+            {/* Option 1: Zenodo */}
+            <button
+              onClick={handleZenodoLink}
+              style={{
+                width: '100%',
+                backgroundColor: '#97C09D',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '24px',
+                cursor: 'pointer',
+                marginBottom: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#7FAF85';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#97C09D';
+              }}
+            >
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src="/assets/icons/protocols.png" 
+                  alt="Protocols" 
+                  style={{ 
+                    width: '70px',
+                    height: '90px'
+                  }}
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '8px'
+                }}>
+                  Access protocols
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  marginBottom: '6px'
+                }}>
+                  Based on 5E learning method and scientific research
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.7)'
+                }}>
+                  (Opens in new tab: Zenodo)
+                </div>
+              </div>
+            </button>
+
+            {/* Option 2: Dashboard */}
+            <button
+              onClick={handleDashboardLink}
+              style={{
+                width: '100%',
+                backgroundColor: '#CE7C0A',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '24px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#B86A08';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#CE7C0A';
+              }}
+            >
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src="/assets/icons/edurepo.png" 
+                  alt="Edu Repository" 
+                  style={{ 
+                    width: '50px',
+                    height: '50px'
+                  }}
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '8px'
+                }}>
+                  Wetland Edu Repository
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.9)'
+                }}>
+                  Explore related projects and resources
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
