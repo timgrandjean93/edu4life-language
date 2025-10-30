@@ -14,11 +14,12 @@ import { WetlandFreskPage } from './components/pages/WetlandFreskPage';
 import { Wetland4LifePage } from './components/pages/Wetland4LifePage';
 import { WetlandEduRepoPage } from './components/pages/WetlandEduRepoPage';
 import { TreatmentWetlandsPage } from './components/pages/TreatmentWetlandsPage';
+import { BlueGreenSpace4AllPage } from './components/pages/BlueGreenSpace4AllPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen'>('home');
 
-  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands') => {
+  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen') => {
     setCurrentPage(page);
   };
 
@@ -114,6 +115,12 @@ function App() {
             onHomeClick={() => navigateTo('home')}
           />
         );
+      case 'bluegreen':
+        return (
+          <BlueGreenSpace4AllPage
+            onHomeClick={() => navigateTo('home')}
+          />
+        );
       case 'home':
       default:
         return (
@@ -143,6 +150,8 @@ function App() {
                 navigateTo('wetlandfresk');
               } else if (component.id === 'Solution4Life') {
                 navigateTo('wetland4life');
+              } else if (component.id === 'Bluegreen') {
+                navigateTo('bluegreen');
               } else {
                 console.log('Component clicked:', component.id, '- navigation not implemented yet');
               }
