@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GameContainer } from './components/GameContainer';
 import { HomePage } from './components/HomePage';
 import { RiparianPage } from './components/pages/RiparianPage';
@@ -15,6 +15,7 @@ import { Wetland4LifePage } from './components/pages/Wetland4LifePage';
 import { WetlandEduRepoPage } from './components/pages/WetlandEduRepoPage';
 import { TreatmentWetlandsPage } from './components/pages/TreatmentWetlandsPage';
 import { BlueGreenSpace4AllPage } from './components/pages/BlueGreenSpace4AllPage';
+import { trackPageView } from './analytics';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen'>('home');
@@ -160,6 +161,29 @@ function App() {
         );
     }
   };
+
+  // Track page views on logical page changes
+  useEffect(() => {
+    const path = `/${currentPage}`;
+    const titleMap: Record<typeof currentPage, string> = {
+      home: 'Home',
+      riparian: 'Riparian Page',
+      mapwetland: 'Map Wetland Page',
+      floodplain: 'Floodplain Page',
+      floodcontrol: 'Flood Control Page',
+      carbon: 'Carbon Page',
+      selfpurification: 'Self Purification Page',
+      art: 'Art Page',
+      people: 'People & Aquatic Page',
+      aesthetics: 'Aesthetics Page',
+      wetlandfresk: 'Wetland Fresk Page',
+      wetland4life: 'Wetland4Life Page',
+      wetlandEduRepo: 'Wetland Edu Repo',
+      treatmentwetlands: 'Treatment Wetlands Page',
+      bluegreen: 'Blue-Green Space 4 All',
+    };
+    trackPageView(path, titleMap[currentPage]);
+  }, [currentPage]);
 
   return (
     <GameContainer>
