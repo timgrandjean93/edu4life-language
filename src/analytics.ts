@@ -31,8 +31,9 @@ export function initAnalytics(measurementId: string | undefined): void {
 	document.head.appendChild(gtagScript);
 
 	// Initialize
-	window.gtag('js', new Date());
-	window.gtag('config', measurementId, {
+	const gtag = window.gtag as (...args: unknown[]) => void;
+	gtag('js', new Date());
+	gtag('config', measurementId, {
 		// Let us control page_view manually for SPA
 		send_page_view: false,
 	});
