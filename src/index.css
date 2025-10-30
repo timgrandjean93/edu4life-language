@@ -83,6 +83,9 @@ body {
 /* Default padding for all pages except homepage */
 .page-container {
   padding: 50px 100px 0 100px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Homepage should not have this padding */

@@ -82,7 +82,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
   return (
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
       {/* Header with title and home button */}
-      <div className="relative z-50">
+      <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
@@ -105,7 +105,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px', flex: 1 }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}
