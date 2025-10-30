@@ -64,6 +64,32 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 >
                   Treatment wetlands
                 </motion.h1>
+
+                {/* Subtitle for current page */}
+                <h2 style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '36px',
+                  fontWeight: 'bold',
+                  color: '#406A46',
+                  margin: 0,
+                  marginTop: '10px',
+                  marginBottom: '0'
+                }}>
+                  {getTitleForPage(currentPage)}
+                </h2>
+
+                {/* Pointer icon for pages 2-4 - right below subtitle */}
+                {currentPage > 1 && (
+                  <img
+                    src="/assets/icons/pointer.png"
+                    alt="Pointer"
+                    style={{
+                      width: '60px',
+                      height: '60px',
+                      marginTop: '0px'
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -79,32 +105,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
           className="max-w-6xl mx-auto"
         >
           {/* Page Content */}
-          <div className="w-full">
-            <div className="text-center" style={{ marginBottom: '40px' }}>
-              <h2 style={{
-                fontFamily: 'Comfortaa, sans-serif',
-                fontSize: '36px',
-                fontWeight: 'bold',
-                color: '#548235',
-                margin: 0,
-                marginBottom: currentPage > 1 ? '20px' : '0'
-              }}>
-                {getTitleForPage(currentPage)}
-              </h2>
-              
-              {/* Pointer icon for pages 2-4 */}
-              {currentPage > 1 && (
-                <img
-                  src="/assets/icons/pointer.png"
-                  alt="Pointer"
-                  style={{
-                    width: '60px',
-                    height: '60px',
-                    marginTop: '20px'
-                  }}
-                />
-              )}
-            </div>
+          <div className="w-full" style={{ marginTop: '0px' }}>
 
             {/* Page Content */}
             {currentPage === 1 && (
@@ -116,7 +117,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   alt="Nature's final filter – The Treatment Wetland"
                   style={{
                     width: '100%',
-                    maxWidth: '900px',
+                    maxWidth: '1200px',
                     height: 'auto',
                     borderRadius: '12px'
                   }}
@@ -124,19 +125,43 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               </div>
             )}
 
-            {/* Placeholder for other pages */}
-            {currentPage > 1 && (
+            {/* Page 2-4 Content */}
+            {currentPage === 2 && (
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
                 fontSize: '24px',
                 fontWeight: 'bold',
                 color: '#406A46',
                 textAlign: 'center',
-                padding: '40px',
-                backgroundColor: 'white',
-                borderRadius: '12px'
+                lineHeight: '1.6'
               }}>
-                Content for page {currentPage} will go here
+                Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky. Drag each layer label to its correct place in the container, then check if you got the order right!
+              </div>
+            )}
+
+            {currentPage === 3 && (
+              <div style={{
+                fontFamily: 'Comfortaa, sans-serif',
+                fontSize: '24px',
+                fontWeight: 'bold',
+                color: '#406A46',
+                textAlign: 'center',
+                lineHeight: '1.6'
+              }}>
+                Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top. Watch how your wetland gets ready to clean the water naturally!
+              </div>
+            )}
+
+            {currentPage === 4 && (
+              <div style={{
+                fontFamily: 'Comfortaa, sans-serif',
+                fontSize: '24px',
+                fontWeight: 'bold',
+                color: '#406A46',
+                textAlign: 'center',
+                lineHeight: '1.6'
+              }}>
+                Now that the wetland is built, let's meet its hidden workers — the tiny microbes who do most of the cleaning job.
               </div>
             )}
           </div>
@@ -179,7 +204,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
           </div>
 
           {/* Pagination Dots */}
-          <div className="flex items-center justify-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+          <div className="flex items-center justify-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', gap: '14px' }}>
             {Array.from({ length: TOTAL_PAGES }, (_, index) => {
               const pageNum = index + 1;
               return (
@@ -187,16 +212,22 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   key={pageNum}
                   onClick={() => setCurrentPage(pageNum)}
                   style={{
-                    width: currentPage === pageNum ? '40px' : '12px',
-                    height: '12px',
-                    borderRadius: '6px',
-                    backgroundColor: currentPage === pageNum ? '#406A46' : '#97C09D',
+                    background: 'none',
                     border: 'none',
+                    padding: 0,
                     cursor: 'pointer',
-                    margin: '0 6px',
-                    transition: 'all 0.3s ease'
+                    opacity: 1
                   }}
-                />
+                >
+                  <div
+                    className="rounded-full transition-all duration-300"
+                    style={{
+                      width: '14px',
+                      height: '14px',
+                      backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
+                    }}
+                  />
+                </button>
               );
             })}
           </div>

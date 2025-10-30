@@ -603,8 +603,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
   };
 
   const handleZenodoLink = () => {
-    // TODO: Add specific Zenodo link for Art
-    window.open('https://doi.org/10.5281/zenodo.17477431', '_blank');
+    window.open('https://doi.org/10.5281/zenodo.17478185', '_blank');
     setShowDownloadModal(false);
   };
 
