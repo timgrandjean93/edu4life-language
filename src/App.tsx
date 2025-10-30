@@ -15,12 +15,13 @@ import { Wetland4LifePage } from './components/pages/Wetland4LifePage';
 import { WetlandEduRepoPage } from './components/pages/WetlandEduRepoPage';
 import { TreatmentWetlandsPage } from './components/pages/TreatmentWetlandsPage';
 import { BlueGreenSpace4AllPage } from './components/pages/BlueGreenSpace4AllPage';
+import { EnvironmentalToolboxPage } from './components/pages/EnvironmentalToolboxPage';
 import { trackPageView } from './analytics';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox'>('home');
 
-  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen') => {
+  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox') => {
     setCurrentPage(page);
   };
 
@@ -122,6 +123,12 @@ function App() {
             onHomeClick={() => navigateTo('home')}
           />
         );
+      case 'environmentalToolbox':
+        return (
+          <EnvironmentalToolboxPage
+            onHomeClick={() => navigateTo('home')}
+          />
+        );
       case 'home':
       default:
         return (
@@ -157,6 +164,7 @@ function App() {
                 console.log('Component clicked:', component.id, '- navigation not implemented yet');
               }
             }}
+            onNavigate={(page) => navigateTo(page)}
           />
         );
     }
@@ -166,7 +174,7 @@ function App() {
   useEffect(() => {
     const path = `/${currentPage}`;
     const titleMap: Record<typeof currentPage, string> = {
-      home: 'Home',
+      home: 'Living floodplains: Learn, Explore, Restore4Life Toolbox',
       riparian: 'Riparian Page',
       mapwetland: 'Map Wetland Page',
       floodplain: 'Floodplain Page',
@@ -181,7 +189,10 @@ function App() {
       wetlandEduRepo: 'Wetland Edu Repo',
       treatmentwetlands: 'Treatment Wetlands Page',
       bluegreen: 'Blue-Green Space 4 All',
+      environmentalToolbox: 'Environmental Toolbox',
     };
+    // Update document title and send page view to analytics
+    document.title = titleMap[currentPage];
     trackPageView(path, titleMap[currentPage]);
   }, [currentPage]);
 

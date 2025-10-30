@@ -135,11 +135,11 @@ body {
 }
 
 /* Smooth transitions for all interactive elements */
-button:not(.home-button):not(.next-button):not(.download-button), .clickable {
+button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button), .clickable {
   transition: all 0.2s ease-in-out;
 }
 
-button:not(.home-button):not(.next-button):not(.download-button):hover, .clickable:hover {
+button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):hover, .clickable:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -174,21 +174,28 @@ button:not(.home-button):not(.next-button):not(.download-button):hover, .clickab
   box-shadow: none !important;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - matching header color #51727C */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
+  background: #e8ecef;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
+  background: #51727C;
+  border-radius: 5px;
+  border: 2px solid #e8ecef;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: #406A46;
+}
+
+/* Firefox scrollbar styling */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #51727C #e8ecef;
 }
