@@ -84,6 +84,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick }) => {
       overflowY: 'auto',
       minHeight: '100vh'
     }}>
+      {/* Test header bar (full width) */}
+      <div
+        style={{
+          width: '100%',
+          height: '94px',
+          backgroundColor: '#51727C',
+          position: 'sticky',
+          top: 0,
+          zIndex: 100,
+        }}
+      />
       {/* Rotation Message Overlay */}
       {showRotationMessage && <RotationMessage />}
       
