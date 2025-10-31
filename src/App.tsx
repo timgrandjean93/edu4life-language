@@ -74,6 +74,7 @@ function App() {
             onHomeClick={() => navigateTo('home')}
             onAestheticsClick={() => navigateTo('aesthetics')}
             onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onTreatmentWetlandsClick={() => navigateTo('treatmentwetlands')}
           />
         );
       case 'art':
@@ -121,6 +122,7 @@ function App() {
           <TreatmentWetlandsPage
             onHomeClick={() => navigateTo('home')}
             onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onAestheticsClick={() => navigateTo('aesthetics')}
           />
         );
       case 'bluegreen':

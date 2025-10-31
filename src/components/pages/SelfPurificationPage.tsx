@@ -6,6 +6,7 @@ interface SelfPurificationPageProps {
   onHomeClick: () => void;
   onAestheticsClick?: () => void;
   onRepositoryClick?: () => void;
+  onTreatmentWetlandsClick?: () => void;
 }
 
 const TOTAL_PAGES = 6;
@@ -244,8 +245,8 @@ const nutrientsHoverAreas6 = [
 
 export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
   onHomeClick,
-  onAestheticsClick,
-  onRepositoryClick
+  onRepositoryClick,
+  onTreatmentWetlandsClick
 }) => {
   const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
   const [hoveredArea, setHoveredArea] = React.useState<string | null>(null);
@@ -1413,7 +1414,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                     fontSize: '24px',
                     color: '#406A46'
                   }}>
-                    NEXT TOPIC: Floodplains aesthetics
+                    NEXT TOPIC: Treatment wetlands
                   </span>
                 </div>
               </div>
@@ -1460,11 +1461,11 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               </button>
             ) : (
               <button
-                onClick={onAestheticsClick}
+                onClick={onTreatmentWetlandsClick}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{ width: '158px', height: '60px', backgroundColor: 'transparent', border: 'none' }}
               >
-                <img src="/assets/icons/next.png" alt="NEXT TOPIC: Floodplains aesthetics" style={{ width: '158px', height: '60px', opacity: 1 }} />
+                <img src="/assets/icons/next.png" alt="NEXT TOPIC: Treatment wetlands" style={{ width: '158px', height: '60px', opacity: 1 }} />
               </button>
             )}
           </div>

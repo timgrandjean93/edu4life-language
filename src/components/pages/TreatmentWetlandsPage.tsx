@@ -3,16 +3,25 @@ import { motion } from 'framer-motion';
 
 type LayerSlotId = 'plant' | 'filter' | 'intermediate' | 'drainage';
 
+interface TooltipContent {
+  first: string;
+  firstColor: string;
+  second?: string;
+  secondColor?: string;
+  highlightText?: string;
+  highlightColor?: string;
+}
+
 interface LayerItem {
   id: string;
   slot: LayerSlotId;
   name: string;
   label: string;
-  description: string;
   characterImage: string;
   layerImage: string;
   layerDroppedImage: string;
   side: 'left' | 'right';
+  tooltip: TooltipContent;
 }
 
 const LAYER_ITEMS: LayerItem[] = [
@@ -21,44 +30,66 @@ const LAYER_ITEMS: LayerItem[] = [
     slot: 'drainage',
     name: 'Rocky the Drainer',
     label: 'ROCKY THE DRAINER',
-    description: 'Large stones keep the drainage layer open so the water can always flow out of the wetland.',
     characterImage: '/assets/components/constructed/page2/ROCKY.png',
     layerImage: '/assets/components/constructed/page2/drainage.png',
     layerDroppedImage: '/assets/components/constructed/page2/drainage-dropped.png',
-    side: 'left'
+    side: 'left',
+    tooltip: {
+      first: "I’m Rocky the Drainer! I collect the cleaned water and let it flow out safely to the river. I keep the bottom open and full of air so the whole system can breathe.",
+      firstColor: '#707070',
+      second: 'Function: Collects the cleaned water, ensures aeration from below, and directs flow to the outlet.',
+      secondColor: '#2f5c36'
+    }
   },
   {
     id: 'reeda',
     slot: 'plant',
     name: 'Reeda the Flowkeeper',
     label: 'REEDA THE FLOWKEEPER',
-    description: 'Wetland plants on the top layer breathe oxygen into the bed and help take up nutrients.',
     characterImage: '/assets/components/constructed/page2/REEDA.png',
     layerImage: '/assets/components/constructed/page2/plant.png',
     layerDroppedImage: '/assets/components/constructed/page2/plant-dropped.png',
-    side: 'left'
+    side: 'left',
+    tooltip: {
+      first: 'I’m Reeda, Flowkeeper! My roots keep the filter open so the water can pass through easily. I protect the wetland from heat and cold, bring in a bit of oxygen, and give microbes a good place to live.',
+      firstColor: '#406A46',
+      second: 'Function: Root growth maintains hydraulic conductivity of the filter, provide insulation against heat (summer) and cold (winter), slows down inflow, supports microbes, and takes up some nutrients.',
+      secondColor: '#2f5c36'
+    }
   },
   {
     id: 'gravelia',
     slot: 'intermediate',
     name: 'Gravelia the Distributor',
     label: 'GRAVELIA THE DISTRIBUTOR',
-    description: 'Gravel spreads the inflowing water evenly so every part of the wetland can do its job.',
     characterImage: '/assets/components/constructed/page2/GRAVELIA.png',
     layerImage: '/assets/components/constructed/page2/intermediate.png',
     layerDroppedImage: '/assets/components/constructed/page2/intermediate-dropped.png',
-    side: 'right'
+    side: 'right',
+    tooltip: {
+      first: 'Hey there! I’m Gravelia the Distributor! I stop fine particles from blocking the bottom and spread the water evenly.  I keep everything balanced between Sandy above and Rocky below.',
+      firstColor: '#9F8B68',
+      second: 'Function: Distributes water evenly, prevents clogging, and protects the drainage zone below.',
+      secondColor: '#2f5c36'
+    }
   },
   {
     id: 'sandy',
     slot: 'filter',
     name: 'Sandy the Cleaner',
     label: 'SANDY THE CLEANER',
-    description: 'Fine sand filters out the last particles and gives microbes a home to break pollutants down.',
     characterImage: '/assets/components/constructed/page2/SANDY.png',
     layerImage: '/assets/components/constructed/page2/filter.png',
     layerDroppedImage: '/assets/components/constructed/page2/filter-dropped.png',
-    side: 'right'
+    side: 'right',
+    tooltip: {
+      first: 'I’m Sandy the Cleaner! Millions of microbes live between my grains — they eat waste and transform nitrogen and organic matter into harmless forms. I do most of the real cleaning work here!',
+      firstColor: '#CE7C0A',
+      second: 'Function: Hosts microbial biofilms that perform most of the biological cleaning (nitrification, organic matter removal, some phosphorus binding). Fine texture slows water for longer contact time → better cleaning.',
+      secondColor: '#2f5c36',
+      highlightText: 'perform most of the biological cleaning',
+      highlightColor: '#CE7C0A'
+    }
   }
 ];
 
@@ -68,6 +99,43 @@ const LAYER_SLOTS: { id: LayerSlotId; label: string; accent: string }[] = [
   { id: 'intermediate', label: 'Intermediate layer', accent: '#A07F55' },
   { id: 'drainage', label: 'Drainage layer', accent: '#5B605F' }
 ];
+
+const BUCKET_BASE_IMAGE = '/assets/components/constructed/page2/bucket.png';
+
+const SLOT_LAYOUTS: Record<LayerSlotId, { top: number; height: number; left: number; width: number }> = {
+  plant: { top: 0, height: 200, left: 0, width: 100 },
+  filter: { top: 0, height: 200, left: 0, width: 100 },
+  intermediate: { top: 0, height: 200, left: 0, width: 100 },
+  drainage: { top: 0, height: 200, left: 0, width: 100 }
+};
+
+const SLOT_DROPZONES: Record<LayerSlotId, { top: number; height: number; left: number; width: number }> = {
+  plant: { top: 50, height: 30, left: 0, width: 100 },
+  filter: { top: 83, height: 30, left: 0, width: 100 },
+  intermediate: { top: 116, height: 30, left: 0, width: 100 },
+  drainage: { top: 149, height: 30, left: 0, width: 100 }
+};
+
+const DEBUG_DROPZONES = false;
+
+const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const renderHighlightedText = (text: string, highlightText?: string, highlightColor?: string) => {
+  if (!highlightText) {
+    return text;
+  }
+  const parts = text.split(new RegExp(`(${escapeRegExp(highlightText)})`, 'gi'));
+  return parts.map((part, index) => {
+    if (part.toLowerCase() === highlightText.toLowerCase()) {
+      return (
+        <span key={`highlight-${index}`} style={{ color: highlightColor ?? 'inherit', fontWeight: 'bold' }}>
+          {part}
+        </span>
+      );
+    }
+    return <React.Fragment key={`text-${index}`}>{part}</React.Fragment>;
+  });
+};
 
 const LEFT_DISPLAY_ORDER: { id: string; offset: number }[] = [
   { id: 'rocky', offset: 26 },
@@ -79,21 +147,46 @@ const RIGHT_DISPLAY_ORDER: { id: string; offset: number }[] = [
   { id: 'sandy', offset: 26 }
 ];
 
+// Page 3 configuration
+const PAGE3_STEPS = [
+  { id: 'rock', bucket: '/assets/components/constructed/page3/bucket-rock.png', character: '/assets/components/constructed/page3/ROCKY.png', name: 'Rocky', bucketWidth: 140, characterWidth: 347 },
+  { id: 'gravel', bucket: '/assets/components/constructed/page3/bucket-gravel.png', character: '/assets/components/constructed/page3/GRAVELIA.png', name: 'Gravelia', bucketWidth: 164, characterWidth: 405 },
+  { id: 'sand', bucket: '/assets/components/constructed/page3/bucket-sand.png', character: '/assets/components/constructed/page3/SANDY.png', name: 'Sandy', bucketWidth: 140, characterWidth: 350 },
+  { id: 'plant', bucket: '/assets/components/constructed/page3/bucket-plant.png', character: '/assets/components/constructed/page3/REEDA.png', name: 'Reeda', bucketWidth: 157, characterWidth: 400 }
+];
+
+const PAGE3_IMAGES = [
+  '/assets/components/constructed/page3/image1.png',
+  '/assets/components/constructed/page3/image2.png',
+  '/assets/components/constructed/page3/image3.png',
+  '/assets/components/constructed/page3/image4.png',
+  '/assets/components/constructed/page3/image5.png'
+];
+
+// Page 4 hover zones configuration (positions in percentage)
+const PAGE4_HOVER_ZONES = [
+  { id: 1, text: "I turn ammonium into nitrate when oxygen is around!", top: 60, left: 40, width: 5, height: 20 },
+  { id: 2, text: "I work where there's no oxygen — I turn nitrate into nitrogen gas!", top: 63, left: 45, width: 5, height: 20 },
+  { id: 3, text: "I grab phosphorus and hold it tight in the gravel!", top: 66, left: 51, width: 5, height: 20 },
+  { id: 4, text: "I grab phosphorus and hold it tight in the gravel!", top: 64, left: 58, width: 5, height: 20 }
+];
+
 interface TreatmentWetlandsPageProps {
   onHomeClick: () => void;
   onRepositoryClick?: () => void;
+  onAestheticsClick?: () => void;
 }
 
 const TOTAL_PAGES = 4;
 
 export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
   onHomeClick,
-  onRepositoryClick
+  onRepositoryClick,
+  onAestheticsClick
 }) => {
   const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
   const [hoveredLayer, setHoveredLayer] = React.useState<string | null>(null);
   const [draggedLayer, setDraggedLayer] = React.useState<string | null>(null);
-  const [activeSlot, setActiveSlot] = React.useState<LayerSlotId | null>(null);
   const [placements, setPlacements] = React.useState<Record<LayerSlotId, string | null>>({
     plant: null,
     filter: null,
@@ -102,6 +195,17 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
   });
   const [statusMessage, setStatusMessage] = React.useState<string | null>(null);
   const [statusType, setStatusType] = React.useState<'success' | 'error' | null>(null);
+  
+  // Page 3 state
+  const [page3CurrentStep, setPage3CurrentStep] = React.useState(0); // 0=rock, 1=gravel, 2=sand, 3=plant, 4=complete
+  const [page3DraggedBucket, setPage3DraggedBucket] = React.useState<string | null>(null);
+  const [page3HoveredCharacter, setPage3HoveredCharacter] = React.useState<string | null>(null);
+
+  // Page 4 state
+  const [page4HoveredZone, setPage4HoveredZone] = React.useState<number | null>(null);
+
+  // Download modal state
+  const [showDownloadModal, setShowDownloadModal] = React.useState(false);
 
   React.useEffect(() => {
     const html = document.documentElement;
@@ -127,6 +231,27 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
     [placements]
   );
 
+  // Reset page 3 state when leaving page 3
+  React.useEffect(() => {
+    if (currentPage !== 3) {
+      setPage3CurrentStep(0);
+      setPage3DraggedBucket(null);
+      setPage3HoveredCharacter(null);
+    }
+  }, [currentPage]);
+
+  const handleDebugClick = React.useCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    if (!DEBUG_DROPZONES) {
+      return;
+    }
+    const rect = event.currentTarget.getBoundingClientRect();
+    const leftPx = event.clientX - rect.left;
+    const topPx = event.clientY - rect.top;
+    const leftPercent = ((leftPx / rect.width) * 100).toFixed(2);
+    const topValue = topPx.toFixed(2);
+    console.log(`Bucket click → left: ${leftPercent}%, top: ${topValue}px`);
+  }, []);
+
   React.useEffect(() => {
     if (allLayersPlaced) {
       setStatusMessage('Great job! You built the treatment wetland in the right order.');
@@ -144,7 +269,6 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
   const handleDragEnd = () => {
     setDraggedLayer(null);
-    setActiveSlot(null);
   };
 
   const handleDragOver = (event: React.DragEvent) => {
@@ -170,7 +294,6 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
       setStatusMessage(`${layer.name} belongs in a different layer. Try another spot!`);
       setStatusType('error');
       setDraggedLayer(null);
-      setActiveSlot(null);
       return;
     }
 
@@ -186,13 +309,6 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
     });
 
     setDraggedLayer(null);
-    setActiveSlot(null);
-  };
-
-  const handleRemoveFromSlot = (slotId: LayerSlotId) => {
-    setPlacements((prev) => ({ ...prev, [slotId]: null }));
-    setStatusMessage(null);
-    setStatusType(null);
   };
 
   const isLayerPlaced = (layerId: string) =>
@@ -200,8 +316,69 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
   const getItemById = (id: string) => LAYER_ITEMS.find((item) => item.id === id);
 
+  // Page 3 handlers
+  const handlePage3BucketDragStart = (event: React.DragEvent, bucketId: string) => {
+    setPage3DraggedBucket(bucketId);
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', bucketId);
+  };
+
+  const handlePage3BucketDragEnd = () => {
+    setPage3DraggedBucket(null);
+  };
+
+  const handlePage3ImageDrop = (event: React.DragEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const bucketId = page3DraggedBucket ?? event.dataTransfer.getData('text/plain');
+    if (!bucketId) {
+      return;
+    }
+
+    const currentStepData = PAGE3_STEPS[page3CurrentStep];
+    if (bucketId === currentStepData.id) {
+      // Correct bucket
+      if (page3CurrentStep < PAGE3_STEPS.length - 1) {
+        setPage3CurrentStep(page3CurrentStep + 1);
+      } else {
+        // All steps complete
+        setPage3CurrentStep(PAGE3_STEPS.length);
+      }
+    }
+    setPage3DraggedBucket(null);
+  };
+
+  const handlePage3ImageDragOver = (event: React.DragEvent) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  };
+
+  // Download modal handlers
+  const handleCloseModal = () => {
+    setShowDownloadModal(false);
+  };
+
+  const handleZenodoLink = () => {
+    window.open('https://doi.org/10.5281/zenodo.17478433', '_blank', 'noopener,noreferrer');
+    setShowDownloadModal(false);
+  };
+
+  const handleDashboardLink = () => {
+    if (onRepositoryClick) {
+      onRepositoryClick();
+    }
+    setShowDownloadModal(false);
+  };
+
   const renderCharacterCard = (item: LayerItem, offsetY: number, align: 'left' | 'right') => {
     const isPlaced = isLayerPlaced(item.id);
+    const { tooltip } = item;
+
+    const handleStart = (event: React.DragEvent) => {
+      handleDragStart(event, item.id);
+      setHoveredLayer(null);
+    };
 
     return (
       <div
@@ -209,36 +386,20 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
         className="flex flex-col items-center"
         style={{
           position: 'relative',
-          gap: '10px',
-          transform: `translateY(${offsetY}px)`
+          gap: '4px',
+          transform: `translateY(${offsetY - 60}px)`,
+          zIndex: 10
         }}
         onMouseEnter={() => setHoveredLayer(item.id)}
         onMouseLeave={() => setHoveredLayer((current) => (current === item.id ? null : current))}
       >
         <div
           style={{
-            fontFamily: 'Comfortaa, sans-serif',
-            fontWeight: 'bold',
-            fontSize: '18px',
-            color: '#406A46',
-            opacity: isPlaced ? 0.45 : 1,
-            textAlign: 'center',
-            textTransform: 'uppercase'
-          }}
-        >
-          {item.label}
-        </div>
-
-        <div
-          draggable
-          onDragStart={(event) => handleDragStart(event, item.id)}
-          onDragEnd={handleDragEnd}
-          style={{
             position: 'relative',
-            width: '160px',
-            height: '160px',
+            width: '190px',
+            height: '190px',
             cursor: 'grab',
-            opacity: isPlaced ? 0.5 : 1,
+            opacity: isPlaced ? 0.45 : 1,
             transition: 'opacity 0.2s ease',
             display: 'flex',
             alignItems: 'center',
@@ -246,22 +407,17 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
           }}
         >
           <img
-            src={isPlaced ? item.layerDroppedImage : item.layerImage}
-            alt={item.name}
-            style={{
-              width: '100%',
-              height: '100%'
-            }}
-          />
-          <img
+            draggable
+            onDragStart={handleStart}
+            onDragEnd={handleDragEnd}
             src={item.characterImage}
             alt={item.name}
             style={{
               position: 'absolute',
-              width: '150px',
-              transform: 'translateY(-60px)',
-              pointerEvents: 'none',
-              filter: isPlaced ? 'grayscale(25%) opacity(85%)' : 'none'
+              width: '180px',
+              transform: 'translateY(-85px)',
+              pointerEvents: 'auto',
+              filter: isPlaced ? 'grayscale(25%) opacity(75%)' : 'none'
             }}
           />
         </div>
@@ -283,12 +439,19 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               padding: '12px 16px',
               fontFamily: 'Comfortaa, sans-serif',
               fontSize: '14px',
-              color: '#406A46',
+              color: tooltip.firstColor,
               lineHeight: 1.4,
-              zIndex: 5
+              zIndex: 100
             }}
           >
-            {item.description}
+            <p style={{ margin: 0, marginBottom: tooltip.second ? '10px' : 0, color: tooltip.firstColor }}>
+              {tooltip.first}
+            </p>
+            {tooltip.second && (
+              <p style={{ margin: 0, color: tooltip.secondColor ?? '#2f5c36' }}>
+                {renderHighlightedText(tooltip.second, tooltip.highlightText, tooltip.highlightColor)}
+              </p>
+            )}
           </motion.div>
         )}
       </div>
@@ -453,7 +616,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                       </div>
                       <div style={{ marginBottom: '12px' }}>
                         <a
-                          href="https://doi.org/10.5281/zenodo.17474270"
+                          href="https://doi.org/10.5281/zenodo.17478433"
                           target="_blank"
                           rel="noreferrer"
                           style={{
@@ -569,24 +732,26 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               </div>
             ) : currentPage === 2 ? (
               <div style={{ width: '100%' }}>
-                <div style={{
-                  fontFamily: 'Comfortaa, sans-serif',
+              <div style={{
+                fontFamily: 'Comfortaa, sans-serif',
                   fontSize: '22px',
-                  fontWeight: 'bold',
-                  color: '#406A46',
-                  textAlign: 'center',
+                fontWeight: 'bold',
+                color: '#406A46',
+                textAlign: 'center',
                   lineHeight: '1.6',
                   marginBottom: '36px'
                 }}>
-                  Drag each layer helper to the correct place in the treatment wetland container. Hover a helper to learn what they do, then build the wetland from bottom to top.
+                  Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky.
+                  <br />
+                  Drag each helper onto the wetland container to build the layers from bottom to top.
                 </div>
 
                 <div
                   style={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'flex-end',
-                    gap: '32px',
+                    alignItems: 'flex-start',
+                    gap: '40px',
                     flexWrap: 'wrap'
                   }}
                 >
@@ -594,9 +759,10 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                     style={{
                       flex: '1 1 220px',
                       display: 'flex',
-                      alignItems: 'flex-end',
+                      alignItems: 'flex-start',
                       justifyContent: 'flex-end',
-                      gap: '28px'
+                      gap: '28px',
+                      paddingTop: '180px'
                     }}
                   >
                     {LEFT_DISPLAY_ORDER.map(({ id, offset }) => {
@@ -608,153 +774,104 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
                   <div
                     style={{
-                      flex: '1 1 480px',
-                      maxWidth: '520px',
-                      background: 'linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(236,245,239,0.9) 100%)',
-                      borderRadius: '24px',
-                      padding: '32px 28px',
-                      boxShadow: '0 24px 50px rgba(64, 106, 70, 0.18)',
+                      flex: '0 1 420px',
+                      maxWidth: '420px',
                       position: 'relative',
-                      overflow: 'visible'
+                      margin: '0 auto',
+                      cursor: DEBUG_DROPZONES ? 'crosshair' : 'default'
                     }}
+                    onClick={handleDebugClick}
                   >
-              <div style={{
-                fontFamily: 'Comfortaa, sans-serif',
-                      fontSize: '20px',
-                fontWeight: 'bold',
-                color: '#406A46',
-                textAlign: 'center',
-                      marginBottom: '24px'
-                    }}>
-                      Vertical flow treatment wetland cross section
-                    </div>
+                    <img
+                      src={BUCKET_BASE_IMAGE}
+                      alt="Vertical flow wetland container"
+                      style={{ width: '100%', display: 'block' }}
+                    />
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                      {LAYER_SLOTS.map((slot) => {
-                        const placedLayerId = placements[slot.id];
-                        const placedLayer = placedLayerId ? LAYER_ITEMS.find((item) => item.id === placedLayerId) : undefined;
-                        const isActive = activeSlot === slot.id;
+                    {LAYER_SLOTS.map((slot) => {
+                      const placedLayerId = placements[slot.id];
+                      const placedLayer = placedLayerId ? LAYER_ITEMS.find((item) => item.id === placedLayerId) : undefined;
+                      const baseLayer = LAYER_ITEMS.find((item) => item.slot === slot.id);
+                      const layerImage = placedLayer ? placedLayer.layerDroppedImage : baseLayer?.layerImage;
+                      const layout = SLOT_LAYOUTS[slot.id];
 
-                        return (
-                          <div
-                            key={slot.id}
-                            onDragEnter={() => setActiveSlot(slot.id)}
-                            onDragLeave={() => setActiveSlot((current) => (current === slot.id ? null : current))}
-                            onDragOver={handleDragOver}
-                            onDrop={(event) => handleDrop(event, slot.id)}
-                            style={{
-                              minHeight: '88px',
-                              borderRadius: '18px',
-                              border: `2px dashed ${placedLayer ? '#51727C' : '#97C09D'}`,
-                              backgroundColor: placedLayer
-                                ? 'rgba(81, 114, 124, 0.15)'
-                                : isActive
-                                  ? 'rgba(129, 168, 140, 0.18)'
-                                  : 'rgba(255,255,255,0.9)',
-                              padding: '14px 18px',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              justifyContent: 'center',
-                              gap: '10px',
-                              boxShadow: isActive ? '0 0 0 4px rgba(81, 114, 124, 0.25)' : 'none',
-                              transition: 'all 0.2s ease'
-                            }}
-                          >
-                            <div style={{
-                              fontFamily: 'Comfortaa, sans-serif',
-                              fontSize: '18px',
-                              fontWeight: 'bold',
-                              color: slot.accent,
-                              textTransform: 'uppercase'
-                            }}>
-                              {slot.label}
-                            </div>
+                      if (!layerImage) {
+                        return null;
+                      }
 
-                            {placedLayer ? (
-                              <div style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                gap: '14px'
-                              }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                                  <img
-                                    src={placedLayer.layerDroppedImage}
-                                    alt={`${placedLayer.name} layer`}
-                                    style={{ width: '86px', height: 'auto' }}
-                                  />
-                                  <div>
-                                    <div style={{
-                                      fontFamily: 'Comfortaa, sans-serif',
-                                      fontSize: '16px',
-                                      fontWeight: 'bold',
-                                      color: '#406A46',
-                                      marginBottom: '4px'
-                                    }}>
-                                      {placedLayer.name}
-                                    </div>
-                                    <div style={{
-                                      fontFamily: 'Comfortaa, sans-serif',
-                                      fontSize: '13px',
-                                      color: '#51727C'
-                                    }}>
-                                      {placedLayer.description.split('.')[0]}.
-                                    </div>
-                                  </div>
-                                </div>
-                                <button
-                                  type="button"
-                                  onClick={() => handleRemoveFromSlot(slot.id)}
-                                  style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    fontFamily: 'Comfortaa, sans-serif',
-                                    fontSize: '13px',
-                                    fontWeight: 'bold',
-                                    color: '#51727C',
-                                    cursor: 'pointer'
-                                  }}
-                                >
-                                  reset
-                                </button>
-                              </div>
-                            ) : (
-                              <div style={{
+                      return (
+                        <img
+                          key={`layer-visual-${slot.id}`}
+                          src={layerImage}
+                          alt={`${slot.label} layer`}
+                          style={{
+                            position: 'absolute',
+                            left: `${layout.left}%`,
+                            width: `${layout.width}%`,
+                            top: `${layout.top}px`,
+                            height: `${layout.height}px`,
+                            objectFit: 'cover',
+                            pointerEvents: 'none',
+                            zIndex: 2
+                          }}
+                        />
+                      );
+                    })}
+
+                    {LAYER_SLOTS.map((slot) => {
+                      const placedLayerId = placements[slot.id];
+                      const placedLayer = placedLayerId ? LAYER_ITEMS.find((item) => item.id === placedLayerId) : undefined;
+                      const layout = SLOT_DROPZONES[slot.id];
+
+                      return (
+                        <div
+                          key={slot.id}
+                          onDragOver={handleDragOver}
+                          onDrop={(event) => handleDrop(event, slot.id)}
+                          style={{
+                            position: 'absolute',
+                            left: `${layout.left}%`,
+                            width: `${layout.width}%`,
+                            top: `${layout.top}px`,
+                            height: `${layout.height}px`,
+                            borderRadius: '14px',
+                            border: DEBUG_DROPZONES ? `2px dashed rgba(255, 0, 0, 0.6)` : '2px solid transparent',
+                            boxShadow: DEBUG_DROPZONES ? '0 0 0 3px rgba(255, 0, 0, 0.15)' : 'none',
+                            cursor: 'pointer',
+                            overflow: 'hidden',
+                            transition: 'all 0.2s ease',
+                            zIndex: 3
+                          }}
+                        >
+                          {!placedLayer && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                left: '50%',
+                                top: '50%',
+                                transform: 'translate(-50%, -50%)',
                                 fontFamily: 'Comfortaa, sans-serif',
-                                fontSize: '16px',
-                                color: '#51727C'
-                              }}>
-                                Drop the correct helper here
-                              </div>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    {statusMessage && (
-                      <div
-                        style={{
-                          marginTop: '24px',
-                          fontFamily: 'Comfortaa, sans-serif',
-                          fontSize: '16px',
-                          fontWeight: 'bold',
-                          color: statusType === 'error' ? '#C41904' : '#406A46',
-                          textAlign: 'center'
-                        }}
-                      >
-                        {statusMessage}
-                      </div>
-                    )}
+                                fontSize: '14px',
+                                fontWeight: 'bold',
+                                color: '#ffffff',
+                                textShadow: '0 0 8px rgba(0,0,0,0.45)'
+                              }}
+                            >
+              </div>
+            )}
+                        </div>
+                      );
+                    })}
                   </div>
 
                   <div
                     style={{
                       flex: '1 1 220px',
                       display: 'flex',
-                      alignItems: 'flex-end',
+                      alignItems: 'flex-start',
                       justifyContent: 'flex-start',
-                      gap: '28px'
+                      gap: '28px',
+                      paddingTop: '180px'
                     }}
                   >
                     {RIGHT_DISPLAY_ORDER.map(({ id, offset }) => {
@@ -764,28 +881,316 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                     })}
                   </div>
                 </div>
+
+                {statusMessage && (
+                  <div
+                    style={{
+                      marginTop: '32px',
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      color: statusType === 'error' ? '#C41904' : '#406A46',
+                      textAlign: 'center'
+                    }}
+                  >
+                    {statusMessage}
+                  </div>
+                )}
               </div>
             ) : currentPage === 3 ? (
+              <div style={{ width: '100%', padding: '0 40px' }}>
+                {/* Intro Text */}
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
-                fontSize: '24px',
+                  fontSize: '22px',
                 fontWeight: 'bold',
                 color: '#406A46',
                 textAlign: 'center',
-                lineHeight: '1.6'
+                  lineHeight: '1.6',
+                  marginBottom: '36px'
               }}>
-                Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top. Watch how your wetland gets ready to clean the water naturally!
+                  Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top.
+                  <br />
+                  Watch how your wetland gets ready to clean the water naturally!
+              </div>
+
+                {/* Main Layout: Characters (left) - Image (center) - Buckets (right) */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  gap: '40px',
+                  maxWidth: '1400px',
+                  margin: '10px'
+                }}>
+                  {/* Left: Characters */}
+                  <div style={{
+                    flex: '0 0 420px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '20px',
+                    alignItems: 'center'
+                  }}>
+                    {PAGE3_STEPS.map((step, index) => {
+                      const layerItem = LAYER_ITEMS.find(item => item.id === step.id);
+                      const isHovered = page3HoveredCharacter === step.id;
+
+                      return (
+                        <div
+                          key={step.id}
+                          style={{
+                            opacity: index < page3CurrentStep ? 0.3 : index === page3CurrentStep ? 1 : 0.6,
+                            transition: 'opacity 0.3s ease',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            position: 'relative',
+                            zIndex: isHovered ? 100 : 10
+                          }}
+                          onMouseEnter={() => setPage3HoveredCharacter(step.id)}
+                          onMouseLeave={() => setPage3HoveredCharacter(null)}
+                        >
+                          <img
+                            src={step.character}
+                            alt={step.name}
+                            style={{
+                              width: `${step.characterWidth}px`,
+                              height: 'auto',
+                              filter: index < page3CurrentStep ? 'grayscale(60%)' : 'none'
+                            }}
+                          />
+                          {isHovered && layerItem && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.2 }}
+                              style={{
+                                position: 'absolute',
+                                bottom: '-80px',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                width: '280px',
+                                backgroundColor: 'rgba(255,255,255,0.95)',
+                                boxShadow: '0 12px 30px rgba(64, 106, 70, 0.18)',
+                                borderRadius: '12px',
+                                padding: '12px 16px',
+                                fontFamily: 'Comfortaa, sans-serif',
+                                fontSize: '14px',
+                                color: layerItem.tooltip.firstColor,
+                                lineHeight: 1.4,
+                                zIndex: 100
+                              }}
+                            >
+                              <p style={{ margin: 0, color: layerItem.tooltip.firstColor }}>
+                                {layerItem.tooltip.first}
+                              </p>
+                            </motion.div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Center: Current Image (Drop Zone) */}
+              <div style={{
+                    flex: '1 1 auto',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'flex-end',
+                    position: 'relative'
+                  }}>
+                    <div
+                      onDragOver={handlePage3ImageDragOver}
+                      onDrop={handlePage3ImageDrop}
+                      style={{
+                        position: 'relative',
+                        width: '100%',
+                        maxWidth: '500px',
+                        cursor: page3CurrentStep < PAGE3_STEPS.length ? 'copy' : 'default',
+                        border: page3DraggedBucket ? '3px dashed #406A46' : '3px solid transparent',
+                        borderRadius: '12px',
+                        transition: 'border 0.2s ease'
+                      }}
+                    >
+                      <img
+                        src={PAGE3_IMAGES[page3CurrentStep < PAGE3_STEPS.length ? page3CurrentStep : PAGE3_STEPS.length]}
+                        alt={`Step ${page3CurrentStep + 1}`}
+                        style={{
+                          width: '100%',
+                          display: 'block',
+                          borderRadius: '8px'
+                        }}
+                      />
+                      {page3DraggedBucket && page3CurrentStep < PAGE3_STEPS.length && (
+                        <div style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          transform: 'translate(-50%, -50%)',
+                fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '18px',
+                          fontWeight: 'bold',
+                          color: '#ffffff',
+                          backgroundColor: 'rgba(64, 106, 70, 0.8)',
+                          padding: '12px 24px',
+                          borderRadius: '8px',
+                          textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                          pointerEvents: 'none'
+                        }}>
+                          Drop bucket here!
+              </div>
+            )}
+                    </div>
+                  </div>
+
+                  {/* Right: Buckets (Draggable) - Reversed order: plant at top, rock at bottom */}
+                  <div style={{
+                    flex: '0 0 180px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '20px',
+                    alignItems: 'center'
+                  }}>
+                    {[...PAGE3_STEPS].reverse().map((step, reversedIndex) => {
+                      const index = PAGE3_STEPS.length - 1 - reversedIndex;
+                      const isUsed = index < page3CurrentStep;
+                      const isCurrent = index === page3CurrentStep;
+
+                      return (
+                        <div
+                          key={step.id}
+                          draggable={isCurrent && page3CurrentStep < PAGE3_STEPS.length}
+                          onDragStart={(e) => handlePage3BucketDragStart(e, step.id)}
+                          onDragEnd={handlePage3BucketDragEnd}
+                          style={{
+                            cursor: isCurrent && page3CurrentStep < PAGE3_STEPS.length ? 'grab' : 'default',
+                            opacity: isUsed ? 0.3 : isCurrent ? 1 : 0.5,
+                            transition: 'opacity 0.3s ease, transform 0.2s ease',
+                            transform: page3DraggedBucket === step.id ? 'scale(1.05)' : 'scale(1)',
+                            filter: isUsed ? 'grayscale(60%)' : 'none'
+                          }}
+                        >
+                          <img
+                            src={step.bucket}
+                            alt={`${step.name} bucket`}
+                            style={{
+                              width: `${step.bucketWidth}px`,
+                              height: 'auto',
+                              pointerEvents: 'none'
+                            }}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             ) : currentPage === 4 ? (
+              <div style={{ 
+                width: '100%', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center',
+                gap: '30px',
+                padding: '0 40px'
+              }}>
+                {/* Intro Text */}
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
-                fontSize: '24px',
+                  fontSize: '22px',
                 fontWeight: 'bold',
                 color: '#406A46',
                 textAlign: 'center',
-                lineHeight: '1.6'
+                  lineHeight: '1.6',
+                  width: '100%'
               }}>
                 Now that the wetland is built, let's meet its hidden workers — the tiny microbes who do most of the cleaning job.
+              </div>
+
+                {/* Page 4 Image with Hover Zones */}
+                <div style={{
+                  width: '100%',
+                  maxWidth: '1600px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  position: 'relative'
+                }}>
+                  <img
+                    src="/assets/components/constructed/page4/page4.png"
+                    alt="Treatment wetland microbes"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      borderRadius: '8px',
+                      display: 'block'
+                    }}
+                  />
+                  
+                  {/* Hover Zones */}
+                  {PAGE4_HOVER_ZONES.map((zone) => (
+                    <div
+                      key={zone.id}
+                      onMouseEnter={() => setPage4HoveredZone(zone.id)}
+                      onMouseLeave={() => setPage4HoveredZone(null)}
+                      style={{
+                        position: 'absolute',
+                        top: `${zone.top}%`,
+                        left: `${zone.left}%`,
+                        width: `${zone.width}%`,
+                        height: `${zone.height}%`,
+                        border: 'none',
+                        backgroundColor: 'transparent',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        zIndex: 10
+                      }}
+                    >
+                      {/* Tooltip */}
+                      {page4HoveredZone === zone.id && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.2 }}
+                          style={{
+                            position: 'absolute',
+                            top: '110%',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            minWidth: '220px',
+                            backgroundColor: 'rgba(255,255,255,0.95)',
+                            boxShadow: '0 12px 30px rgba(64, 106, 70, 0.18)',
+                            borderRadius: '12px',
+                            padding: '12px 16px',
+                            fontFamily: 'Comfortaa, sans-serif',
+                            fontSize: '14px',
+                            color: '#406A46',
+                            fontWeight: 'bold',
+                            lineHeight: 1.4,
+                            zIndex: 100,
+                            pointerEvents: 'none',
+                            whiteSpace: 'nowrap'
+                          }}
+                        >
+                          {zone.text}
+                        </motion.div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Text below image */}
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '22px',
+                  fontWeight: 'bold',
+                  color: '#406A46',
+                  textAlign: 'center',
+                  lineHeight: '1.6',
+                  width: '100%'
+                }}>
+                  Thanks to millions of tiny helpers like Nino, Dina, Phos, and Bacto, the water leaves the treatment wetland fresh and clean — ready to flow back to Danubius and start its journey again!
+                </div>
               </div>
             ) : null}
           </div>
@@ -828,8 +1233,36 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
             </button>
           </div>
 
-          {/* Pagination Dots */}
-          <div className="flex items-center justify-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', gap: '14px' }}>
+          {/* Pagination Dots and Download/Next Topic */}
+          <div className="flex items-center justify-center" style={{ position: 'relative' }}>
+            {/* Download Button - Only on last page, 50px left of pagination */}
+            {currentPage === TOTAL_PAGES && (
+              <button
+                onClick={() => setShowDownloadModal(true)}
+                className="download-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '480px',
+                  height: '50px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  marginRight: '50px',
+                  cursor: 'pointer'
+                }}
+              >
+                <img 
+                  src="/assets/icons/download.png" 
+                  alt="Download" 
+                  style={{ 
+                    width: '480px',
+                    height: '50px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+            )}
+
+            {/* Pagination Dots - Centered */}
+            <div className="flex justify-center items-center" style={{ gap: '14px' }}>
             {Array.from({ length: TOTAL_PAGES }, (_, index) => {
               const pageNum = index + 1;
               return (
@@ -855,43 +1288,250 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 </button>
               );
             })}
+            </div>
+
+            {/* NEXT TOPIC Text - Only on last page, 50px right of pagination */}
+            {currentPage === TOTAL_PAGES && (
+              <div style={{ marginLeft: '50px' }}>
+                <span style={{ 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '24px',
+                  color: '#406A46'
+                }}>
+                  NEXT TOPIC: Floodplain Aesthetics
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Next Button - Right */}
-          {currentPage < TOTAL_PAGES && (
             <div className="flex items-center">
               <button
-                onClick={() => {
-                  if (currentPage === 2 && !allLayersPlaced) {
-                    return;
-                  }
+              onClick={() => {
+                if (currentPage < TOTAL_PAGES) {
                   setCurrentPage(currentPage + 1);
-                }}
+                } else {
+                  // Navigate to Aesthetics page
+                  if (onAestheticsClick) {
+                    onAestheticsClick();
+                  }
+                }
+              }}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
                   width: '158px',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
-                  cursor: currentPage === 2 && !allLayersPlaced ? 'not-allowed' : 'pointer'
+                  cursor: 'pointer'
                 }}
-                disabled={currentPage === 2 && !allLayersPlaced}
               >
                 <img
                   src="/assets/icons/next.png"
-                  alt="Next"
+                alt={currentPage === TOTAL_PAGES ? 'Floodplain Aesthetics' : 'Next'} 
                   style={{
                     width: '158px',
                     height: '60px',
-                    opacity: currentPage === 2 && !allLayersPlaced ? 0.35 : 1,
-                    transition: 'opacity 0.2s ease'
+                    opacity: 1
                   }}
                 />
               </button>
-            </div>
-          )}
+          </div>
         </div>
       </div>
+      )}
+
+      {/* Download Modal */}
+      {showDownloadModal && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999
+          }}
+          onClick={handleCloseModal}
+        >
+          <div 
+            style={{
+              backgroundColor: '#dfebf5',
+              borderRadius: '16px',
+              padding: '40px',
+              maxWidth: '600px',
+              width: '90%',
+              position: 'relative',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={handleCloseModal}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'transparent',
+                border: 'none',
+                fontSize: '32px',
+                cursor: 'pointer',
+                color: '#406A46',
+                fontWeight: 'bold'
+              }}
+            >
+              ×
+            </button>
+
+            {/* Modal Title */}
+            <div style={{
+              fontFamily: 'Comfortaa, sans-serif',
+              fontSize: '32px',
+              fontWeight: 'bold',
+              color: '#406A46',
+              textAlign: 'center',
+              marginBottom: '30px'
+            }}>
+              Download Options
+            </div>
+
+            {/* Option 1: Zenodo */}
+            <button
+              onClick={handleZenodoLink}
+              style={{
+                width: '100%',
+                backgroundColor: '#97C09D',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '24px',
+                cursor: 'pointer',
+                marginBottom: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#7FAF85';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#97C09D';
+              }}
+            >
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src="/assets/icons/protocols.png" 
+                  alt="Download" 
+                  style={{ 
+                    width: '70px',
+                    height: '90px',
+                  }}
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '8px'
+                }}>
+                  Access Teaching Materials
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  marginBottom: '6px'
+                }}>
+                  Based on 5E learning method and scientific research
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.7)'
+                }}>
+                  (Opens in new tab: Zenodo)
+                </div>
+              </div>
+            </button>
+
+            {/* Option 2: Dashboard */}
+            <button
+              onClick={handleDashboardLink}
+              style={{
+                width: '100%',
+                backgroundColor: '#CE7C0A',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '24px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#B86A08';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#CE7C0A';
+              }}
+            >
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <img 
+                  src="/assets/icons/edurepo.png" 
+                  alt="Explore Wet-Edu Repository" 
+                  style={{ 
+                    width: '50px',
+                    height: '50px'
+                  }}
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginBottom: '8px'
+                }}>
+                  Explore Wet-Edu Repository
+                </div>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  color: 'rgba(255, 255, 255, 0.9)'
+                }}>
+                  Explore related projects and resources
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
