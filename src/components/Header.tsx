@@ -23,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
         {/* Left: brand/title placeholder */}
         <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
           <button
+            className="logo-button"
             onClick={() => onNavigate && onNavigate('home')}
             style={{ 
               display: 'block', 
@@ -86,10 +87,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                 <button className="nav-button" onClick={() => onNavigate && onNavigate('wetlandfresk')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>Wetland Fresk</button>
               </div>
               <div>
-                <button className="nav-button" onClick={() => onNavigate && onNavigate('environmentalToolbox')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>Environmental toolbox</button>
+                <button className="nav-button" onClick={() => onNavigate && onNavigate('wetland4life')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>Wetland4Life</button>
               </div>
               <div>
-                <button className="nav-button" onClick={() => onNavigate && onNavigate('wetlandEduRepo')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>Repository</button>
+                <button className="nav-button" onClick={() => onNavigate && onNavigate('wetlandEduRepo')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>Explore Wet-Edu Repository</button>
               </div>
             </div>
           </div>

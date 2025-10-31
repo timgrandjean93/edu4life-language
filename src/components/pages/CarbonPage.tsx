@@ -651,22 +651,22 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     justifyContent: 'center',
                     flexShrink: 0
                   }}>
-                    <img 
-                      src="/assets/icons/edumaterial.png"
-                      alt="Access protocols"
+                  <img 
+                    src="/assets/icons/edumaterial.png"
+                    alt="Access Teaching Materials"
                       style={{ width: '150px', height: '110px' }}
                     />
                   </div>
                   {/* Text and Button - Left aligned */}
                   <div>
-                    <div style={{
+                  <div style={{
                       fontFamily: 'Comfortaa, sans-serif',
                       fontSize: '24px',
                       fontWeight: 'bold',
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access protocols
+                    Access Teaching Materials
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -711,22 +711,22 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     justifyContent: 'center',
                     flexShrink: 0
                   }}>
-                    <img 
-                      src="/assets/icons/edurepo.png"
-                      alt="Explore Edu Repository"
+                  <img 
+                    src="/assets/icons/edurepo.png"
+                    alt="Explore Wet-Edu Repository"
                       style={{ width: '120px', height: '120px' }}
                     />
                   </div>
                   {/* Text and Button - Left aligned */}
                   <div>
-                    <div style={{
+                  <div style={{
                       fontFamily: 'Comfortaa, sans-serif',
                       fontSize: '24px',
                       fontWeight: 'bold',
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Edu Repository
+                    Explore Wet-Edu Repository
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -1896,7 +1896,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
               }}>
                 <img 
                   src="/assets/icons/edurepo.png" 
-                  alt="Edu Repository" 
+                  alt="Explore Wet-Edu Repository" 
                   style={{ 
                     width: '50px',
                     height: '50px'
@@ -1911,7 +1911,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Wetland Edu Repository
+                  Explore Wet-Edu Repository
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',

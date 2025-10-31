@@ -1,6 +1,84 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+type LayerSlotId = 'plant' | 'filter' | 'intermediate' | 'drainage';
+
+interface LayerItem {
+  id: string;
+  slot: LayerSlotId;
+  name: string;
+  label: string;
+  description: string;
+  characterImage: string;
+  layerImage: string;
+  layerDroppedImage: string;
+  side: 'left' | 'right';
+}
+
+const LAYER_ITEMS: LayerItem[] = [
+  {
+    id: 'rocky',
+    slot: 'drainage',
+    name: 'Rocky the Drainer',
+    label: 'ROCKY THE DRAINER',
+    description: 'Large stones keep the drainage layer open so the water can always flow out of the wetland.',
+    characterImage: '/assets/components/constructed/page2/ROCKY.png',
+    layerImage: '/assets/components/constructed/page2/drainage.png',
+    layerDroppedImage: '/assets/components/constructed/page2/drainage-dropped.png',
+    side: 'left'
+  },
+  {
+    id: 'reeda',
+    slot: 'plant',
+    name: 'Reeda the Flowkeeper',
+    label: 'REEDA THE FLOWKEEPER',
+    description: 'Wetland plants on the top layer breathe oxygen into the bed and help take up nutrients.',
+    characterImage: '/assets/components/constructed/page2/REEDA.png',
+    layerImage: '/assets/components/constructed/page2/plant.png',
+    layerDroppedImage: '/assets/components/constructed/page2/plant-dropped.png',
+    side: 'left'
+  },
+  {
+    id: 'gravelia',
+    slot: 'intermediate',
+    name: 'Gravelia the Distributor',
+    label: 'GRAVELIA THE DISTRIBUTOR',
+    description: 'Gravel spreads the inflowing water evenly so every part of the wetland can do its job.',
+    characterImage: '/assets/components/constructed/page2/GRAVELIA.png',
+    layerImage: '/assets/components/constructed/page2/intermediate.png',
+    layerDroppedImage: '/assets/components/constructed/page2/intermediate-dropped.png',
+    side: 'right'
+  },
+  {
+    id: 'sandy',
+    slot: 'filter',
+    name: 'Sandy the Cleaner',
+    label: 'SANDY THE CLEANER',
+    description: 'Fine sand filters out the last particles and gives microbes a home to break pollutants down.',
+    characterImage: '/assets/components/constructed/page2/SANDY.png',
+    layerImage: '/assets/components/constructed/page2/filter.png',
+    layerDroppedImage: '/assets/components/constructed/page2/filter-dropped.png',
+    side: 'right'
+  }
+];
+
+const LAYER_SLOTS: { id: LayerSlotId; label: string; accent: string }[] = [
+  { id: 'plant', label: 'Plant layer', accent: '#6FAF75' },
+  { id: 'filter', label: 'Filter layer', accent: '#F0A23B' },
+  { id: 'intermediate', label: 'Intermediate layer', accent: '#A07F55' },
+  { id: 'drainage', label: 'Drainage layer', accent: '#5B605F' }
+];
+
+const LEFT_DISPLAY_ORDER: { id: string; offset: number }[] = [
+  { id: 'rocky', offset: 26 },
+  { id: 'reeda', offset: 0 }
+];
+
+const RIGHT_DISPLAY_ORDER: { id: string; offset: number }[] = [
+  { id: 'gravelia', offset: 0 },
+  { id: 'sandy', offset: 26 }
+];
+
 interface TreatmentWetlandsPageProps {
   onHomeClick: () => void;
   onRepositoryClick?: () => void;
@@ -13,6 +91,17 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
   onRepositoryClick
 }) => {
   const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
+  const [hoveredLayer, setHoveredLayer] = React.useState<string | null>(null);
+  const [draggedLayer, setDraggedLayer] = React.useState<string | null>(null);
+  const [activeSlot, setActiveSlot] = React.useState<LayerSlotId | null>(null);
+  const [placements, setPlacements] = React.useState<Record<LayerSlotId, string | null>>({
+    plant: null,
+    filter: null,
+    intermediate: null,
+    drainage: null
+  });
+  const [statusMessage, setStatusMessage] = React.useState<string | null>(null);
+  const [statusType, setStatusType] = React.useState<'success' | 'error' | null>(null);
 
   React.useEffect(() => {
     const html = document.documentElement;
@@ -32,6 +121,179 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
       body.style.backgroundColor = "";
     };
   }, []);
+
+  const allLayersPlaced = React.useMemo(() =>
+    Object.values(placements).every((value) => Boolean(value)),
+    [placements]
+  );
+
+  React.useEffect(() => {
+    if (allLayersPlaced) {
+      setStatusMessage('Great job! You built the treatment wetland in the right order.');
+      setStatusType('success');
+    }
+  }, [allLayersPlaced]);
+
+  const handleDragStart = (event: React.DragEvent, layerId: string) => {
+    setDraggedLayer(layerId);
+    setStatusMessage(null);
+    setStatusType(null);
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', layerId);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedLayer(null);
+    setActiveSlot(null);
+  };
+
+  const handleDragOver = (event: React.DragEvent) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  };
+
+  const handleDrop = (event: React.DragEvent, slotId: LayerSlotId) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const layerId = draggedLayer ?? event.dataTransfer.getData('text/plain');
+    if (!layerId) {
+      return;
+    }
+
+    const layer = LAYER_ITEMS.find((item) => item.id === layerId);
+    if (!layer) {
+      return;
+    }
+
+    if (layer.slot !== slotId) {
+      setStatusMessage(`${layer.name} belongs in a different layer. Try another spot!`);
+      setStatusType('error');
+      setDraggedLayer(null);
+      setActiveSlot(null);
+      return;
+    }
+
+    setPlacements((prev) => {
+      const updated = { ...prev };
+      (Object.keys(updated) as LayerSlotId[]).forEach((key) => {
+        if (updated[key] === layerId) {
+          updated[key] = null;
+        }
+      });
+      updated[slotId] = layerId;
+      return updated;
+    });
+
+    setDraggedLayer(null);
+    setActiveSlot(null);
+  };
+
+  const handleRemoveFromSlot = (slotId: LayerSlotId) => {
+    setPlacements((prev) => ({ ...prev, [slotId]: null }));
+    setStatusMessage(null);
+    setStatusType(null);
+  };
+
+  const isLayerPlaced = (layerId: string) =>
+    Object.values(placements).includes(layerId);
+
+  const getItemById = (id: string) => LAYER_ITEMS.find((item) => item.id === id);
+
+  const renderCharacterCard = (item: LayerItem, offsetY: number, align: 'left' | 'right') => {
+    const isPlaced = isLayerPlaced(item.id);
+
+    return (
+      <div
+        key={item.id}
+        className="flex flex-col items-center"
+        style={{
+          position: 'relative',
+          gap: '10px',
+          transform: `translateY(${offsetY}px)`
+        }}
+        onMouseEnter={() => setHoveredLayer(item.id)}
+        onMouseLeave={() => setHoveredLayer((current) => (current === item.id ? null : current))}
+      >
+        <div
+          style={{
+            fontFamily: 'Comfortaa, sans-serif',
+            fontWeight: 'bold',
+            fontSize: '18px',
+            color: '#406A46',
+            opacity: isPlaced ? 0.45 : 1,
+            textAlign: 'center',
+            textTransform: 'uppercase'
+          }}
+        >
+          {item.label}
+        </div>
+
+        <div
+          draggable
+          onDragStart={(event) => handleDragStart(event, item.id)}
+          onDragEnd={handleDragEnd}
+          style={{
+            position: 'relative',
+            width: '160px',
+            height: '160px',
+            cursor: 'grab',
+            opacity: isPlaced ? 0.5 : 1,
+            transition: 'opacity 0.2s ease',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <img
+            src={isPlaced ? item.layerDroppedImage : item.layerImage}
+            alt={item.name}
+            style={{
+              width: '100%',
+              height: '100%'
+            }}
+          />
+          <img
+            src={item.characterImage}
+            alt={item.name}
+            style={{
+              position: 'absolute',
+              width: '150px',
+              transform: 'translateY(-60px)',
+              pointerEvents: 'none',
+              filter: isPlaced ? 'grayscale(25%) opacity(85%)' : 'none'
+            }}
+          />
+        </div>
+
+        {hoveredLayer === item.id && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              position: 'absolute',
+              bottom: '-105px',
+              left: align === 'left' ? '6%' : '94%',
+              transform: align === 'left' ? 'translateX(-6%)' : 'translateX(-94%)',
+              width: '220px',
+              backgroundColor: 'rgba(255,255,255,0.95)',
+              boxShadow: '0 12px 30px rgba(64, 106, 70, 0.18)',
+              borderRadius: '12px',
+              padding: '12px 16px',
+              fontFamily: 'Comfortaa, sans-serif',
+              fontSize: '14px',
+              color: '#406A46',
+              lineHeight: 1.4,
+              zIndex: 5
+            }}
+          >
+            {item.description}
+          </motion.div>
+        )}
+      </div>
+    );
+  };
 
   const getTitleForPage = (page: number) => {
     const titles = [
@@ -174,7 +436,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                     }}>
                       <img 
                         src="/assets/icons/edumaterial.png"
-                        alt="Access protocols"
+                      alt="Access Teaching Materials"
                         style={{ width: '150px', height: '110px' }}
                       />
                     </div>
@@ -187,7 +449,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                         color: '#406A46',
                         marginBottom: '6px'
                       }}>
-                        Access protocols
+                    Access Teaching Materials
                       </div>
                       <div style={{ marginBottom: '12px' }}>
                         <a
@@ -234,7 +496,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                     }}>
                       <img 
                         src="/assets/icons/edurepo.png"
-                        alt="Explore Edu Repository"
+                      alt="Explore Wet-Edu Repository"
                         style={{ width: '120px', height: '120px' }}
                       />
                     </div>
@@ -247,7 +509,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                         color: '#406A46',
                         marginBottom: '6px'
                       }}>
-                        Explore Edu Repository
+                    Explore Wet-Edu Repository
                       </div>
                       <div style={{ marginBottom: '12px' }}>
                         <button
@@ -306,15 +568,202 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 />
               </div>
             ) : currentPage === 2 ? (
+              <div style={{ width: '100%' }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '22px',
+                  fontWeight: 'bold',
+                  color: '#406A46',
+                  textAlign: 'center',
+                  lineHeight: '1.6',
+                  marginBottom: '36px'
+                }}>
+                  Drag each layer helper to the correct place in the treatment wetland container. Hover a helper to learn what they do, then build the wetland from bottom to top.
+                </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-end',
+                    gap: '32px',
+                    flexWrap: 'wrap'
+                  }}
+                >
+                  <div
+                    style={{
+                      flex: '1 1 220px',
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      justifyContent: 'flex-end',
+                      gap: '28px'
+                    }}
+                  >
+                    {LEFT_DISPLAY_ORDER.map(({ id, offset }) => {
+                      const item = getItemById(id);
+                      if (!item) return null;
+                      return renderCharacterCard(item, offset, 'left');
+                    })}
+                  </div>
+
+                  <div
+                    style={{
+                      flex: '1 1 480px',
+                      maxWidth: '520px',
+                      background: 'linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(236,245,239,0.9) 100%)',
+                      borderRadius: '24px',
+                      padding: '32px 28px',
+                      boxShadow: '0 24px 50px rgba(64, 106, 70, 0.18)',
+                      position: 'relative',
+                      overflow: 'visible'
+                    }}
+                  >
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
-                fontSize: '24px',
+                      fontSize: '20px',
                 fontWeight: 'bold',
                 color: '#406A46',
                 textAlign: 'center',
-                lineHeight: '1.6'
-              }}>
-                Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky. Drag each layer label to its correct place in the container, then check if you got the order right!
+                      marginBottom: '24px'
+                    }}>
+                      Vertical flow treatment wetland cross section
+                    </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                      {LAYER_SLOTS.map((slot) => {
+                        const placedLayerId = placements[slot.id];
+                        const placedLayer = placedLayerId ? LAYER_ITEMS.find((item) => item.id === placedLayerId) : undefined;
+                        const isActive = activeSlot === slot.id;
+
+                        return (
+                          <div
+                            key={slot.id}
+                            onDragEnter={() => setActiveSlot(slot.id)}
+                            onDragLeave={() => setActiveSlot((current) => (current === slot.id ? null : current))}
+                            onDragOver={handleDragOver}
+                            onDrop={(event) => handleDrop(event, slot.id)}
+                            style={{
+                              minHeight: '88px',
+                              borderRadius: '18px',
+                              border: `2px dashed ${placedLayer ? '#51727C' : '#97C09D'}`,
+                              backgroundColor: placedLayer
+                                ? 'rgba(81, 114, 124, 0.15)'
+                                : isActive
+                                  ? 'rgba(129, 168, 140, 0.18)'
+                                  : 'rgba(255,255,255,0.9)',
+                              padding: '14px 18px',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              justifyContent: 'center',
+                              gap: '10px',
+                              boxShadow: isActive ? '0 0 0 4px rgba(81, 114, 124, 0.25)' : 'none',
+                              transition: 'all 0.2s ease'
+                            }}
+                          >
+                            <div style={{
+                              fontFamily: 'Comfortaa, sans-serif',
+                              fontSize: '18px',
+                              fontWeight: 'bold',
+                              color: slot.accent,
+                              textTransform: 'uppercase'
+                            }}>
+                              {slot.label}
+                            </div>
+
+                            {placedLayer ? (
+                              <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                gap: '14px'
+                              }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                                  <img
+                                    src={placedLayer.layerDroppedImage}
+                                    alt={`${placedLayer.name} layer`}
+                                    style={{ width: '86px', height: 'auto' }}
+                                  />
+                                  <div>
+                                    <div style={{
+                                      fontFamily: 'Comfortaa, sans-serif',
+                                      fontSize: '16px',
+                                      fontWeight: 'bold',
+                                      color: '#406A46',
+                                      marginBottom: '4px'
+                                    }}>
+                                      {placedLayer.name}
+                                    </div>
+                                    <div style={{
+                                      fontFamily: 'Comfortaa, sans-serif',
+                                      fontSize: '13px',
+                                      color: '#51727C'
+                                    }}>
+                                      {placedLayer.description.split('.')[0]}.
+                                    </div>
+                                  </div>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => handleRemoveFromSlot(slot.id)}
+                                  style={{
+                                    background: 'none',
+                                    border: 'none',
+                                    fontFamily: 'Comfortaa, sans-serif',
+                                    fontSize: '13px',
+                                    fontWeight: 'bold',
+                                    color: '#51727C',
+                                    cursor: 'pointer'
+                                  }}
+                                >
+                                  reset
+                                </button>
+                              </div>
+                            ) : (
+                              <div style={{
+                                fontFamily: 'Comfortaa, sans-serif',
+                                fontSize: '16px',
+                                color: '#51727C'
+                              }}>
+                                Drop the correct helper here
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {statusMessage && (
+                      <div
+                        style={{
+                          marginTop: '24px',
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: statusType === 'error' ? '#C41904' : '#406A46',
+                          textAlign: 'center'
+                        }}
+                      >
+                        {statusMessage}
+                      </div>
+                    )}
+                  </div>
+
+                  <div
+                    style={{
+                      flex: '1 1 220px',
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      justifyContent: 'flex-start',
+                      gap: '28px'
+                    }}
+                  >
+                    {RIGHT_DISPLAY_ORDER.map(({ id, offset }) => {
+                      const item = getItemById(id);
+                      if (!item) return null;
+                      return renderCharacterCard(item, offset, 'right');
+                    })}
+                  </div>
+                </div>
               </div>
             ) : currentPage === 3 ? (
               <div style={{
@@ -412,15 +861,21 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
           {currentPage < TOTAL_PAGES && (
             <div className="flex items-center">
               <button
-                onClick={() => setCurrentPage(currentPage + 1)}
+                onClick={() => {
+                  if (currentPage === 2 && !allLayersPlaced) {
+                    return;
+                  }
+                  setCurrentPage(currentPage + 1);
+                }}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
                   width: '158px',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
-                  cursor: 'pointer'
+                  cursor: currentPage === 2 && !allLayersPlaced ? 'not-allowed' : 'pointer'
                 }}
+                disabled={currentPage === 2 && !allLayersPlaced}
               >
                 <img
                   src="/assets/icons/next.png"
@@ -428,7 +883,8 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   style={{
                     width: '158px',
                     height: '60px',
-                    opacity: 1
+                    opacity: currentPage === 2 && !allLayersPlaced ? 0.35 : 1,
+                    transition: 'opacity 0.2s ease'
                   }}
                 />
               </button>

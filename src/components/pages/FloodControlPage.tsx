@@ -387,7 +387,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   }}>
                     <img 
                       src="/assets/icons/edumaterial.png"
-                      alt="Access protocols"
+                      alt="Access Teaching Materials"
                       style={{ width: '150px', height: '110px' }}
                     />
                   </div>
@@ -400,7 +400,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access protocols
+                      Access Teaching Materials
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -447,7 +447,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   }}>
                     <img 
                       src="/assets/icons/edurepo.png"
-                      alt="Explore Edu Repository"
+                      alt="Explore Wet-Edu Repository"
                       style={{ width: '120px', height: '120px' }}
                     />
                   </div>
@@ -460,7 +460,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Edu Repository
+                      Explore Wet-Edu Repository
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -1746,7 +1746,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Access protocols
+                  Access Teaching Materials
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1800,7 +1800,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               }}>
                 <img 
                   src="/assets/icons/edurepo.png" 
-                  alt="Edu Repository" 
+                  alt="Explore Wet-Edu Repository" 
                   style={{ 
                     width: '50px',
                     height: '50px'
@@ -1815,7 +1815,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Wetland Edu Repository
+                  Explore Wet-Edu Repository
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',

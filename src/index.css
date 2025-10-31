@@ -135,11 +135,11 @@ body {
 }
 
 /* Smooth transitions for all interactive elements */
-button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):not(.learn-test-button), .clickable {
+button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):not(.learn-test-button):not(.logo-button), .clickable {
   transition: all 0.2s ease-in-out;
 }
 
-button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):not(.learn-test-button):hover, .clickable:hover {
+button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):not(.learn-test-button):not(.logo-button):hover, .clickable:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -150,6 +150,16 @@ button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button
 }
 
 .home-button:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Header logo button - no hover effects */
+.logo-button {
+  transition: none !important;
+}
+
+.logo-button:hover {
   transform: none !important;
   box-shadow: none !important;
 }

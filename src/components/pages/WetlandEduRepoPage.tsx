@@ -75,7 +75,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
               }}>
                 <img
                   src="/assets/icons/edurepo.png"
-                  alt="Edu Repository"
+                  alt="Explore Wet-Edu Repository"
                   style={{
                     width: '100px',
                     height: '100px',
@@ -96,7 +96,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                       marginBottom: '10px'
                     }}
                   >
-                    Wetland Edu Repository
+                    Explore Wet-Edu Repository
                   </motion.h1>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
