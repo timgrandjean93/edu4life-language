@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { GameContainer } from './components/GameContainer';
+import { Header } from './components/Header';
 import { HomePage } from './components/HomePage';
 import { RiparianPage } from './components/pages/RiparianPage';
 import { MapWetlandPage } from './components/pages/MapWetlandPage';
@@ -32,6 +33,7 @@ function App() {
           <RiparianPage
             onHomeClick={() => navigateTo('home')}
             onFloodControlClick={() => navigateTo('floodcontrol')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
           />
         );
       case 'mapwetland':
@@ -39,6 +41,7 @@ function App() {
           <MapWetlandPage
             onHomeClick={() => navigateTo('home')}
             onRiparianClick={() => navigateTo('riparian')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
           />
         );
       case 'floodplain':
@@ -54,6 +57,7 @@ function App() {
           <FloodControlPage
             onHomeClick={() => navigateTo('home')}
             onCarbonClick={() => navigateTo('carbon')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
           />
         );
       case 'carbon':
@@ -69,6 +73,7 @@ function App() {
           <SelfPurificationPage
             onHomeClick={() => navigateTo('home')}
             onAestheticsClick={() => navigateTo('aesthetics')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
           />
         );
       case 'art':
@@ -198,6 +203,7 @@ function App() {
 
   return (
     <GameContainer>
+      <Header onNavigate={navigateTo} />
       {renderCurrentPage()}
     </GameContainer>
   );

@@ -407,7 +407,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
       {/* Header with title and home button */}
       <div className="relative z-50">
-        <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
               {/* Main Title */}

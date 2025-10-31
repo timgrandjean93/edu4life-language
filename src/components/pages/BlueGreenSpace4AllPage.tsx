@@ -35,7 +35,7 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {/* Header with title */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
-        <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
               {/* Title */}

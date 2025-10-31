@@ -22,7 +22,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
   onMapWetlandClick,
   onRepositoryClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
   const [currentSubPage, setCurrentSubPage] = React.useState(3); // Start with last photo on page 1
   const [sliderPosition, setSliderPosition] = React.useState(50); // For page 4 slider (0-100)
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
@@ -83,7 +83,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
       {/* Header with title and home button */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
-        <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '40px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
               {/* Title */}
@@ -113,7 +113,196 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
           transition={{ delay: 0.7 }}
           className="max-w-6xl mx-auto"
         >
-          {currentPage <= 3 ? (
+          {currentPage === 0 ? (
+            // Intro Page: Introduction with two illustrations (rain and dry), description, and CTA button
+            <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
+              {/* Two Illustrations Side by Side */}
+              <div className="flex gap-8 justify-center mb-8" style={{ width: '100%', maxWidth: '1200px' }}>
+                {/* Left Illustration - Rain */}
+                <div style={{ flex: 1, maxWidth: '600px' }}>
+                  <img 
+                    src="/assets/components/LivingEnvironment/rain.png"
+                    alt="Floodplain in rainy season"
+                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                  />
+                </div>
+                {/* Right Illustration - Dry */}
+                <div style={{ flex: 1, maxWidth: '600px' }}>
+                  <img 
+                    src="/assets/components/LivingEnvironment/dry.png"
+                    alt="Floodplain in dry season"
+                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                  />
+                </div>
+              </div>
+
+              {/* Descriptive Text */}
+              <div style={{
+                fontFamily: 'Comfortaa, sans-serif',
+                fontSize: '24px',
+                fontWeight: 'bold',
+                color: '#406A46',
+                textAlign: 'center',
+                marginBottom: '40px',
+                maxWidth: '1200px',
+                lineHeight: '1.6'
+              }}>
+                Learn about Floodplain Living Environment and explore the diverse habitats and wildlife that thrive in these unique ecosystems.
+              </div>
+
+              {/* Call-to-Action Button */}
+              <button
+                className="learn-test-button"
+                onClick={() => setCurrentPage(1)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginBottom: '40px',
+                  padding: 0
+                }}
+              >
+                <img 
+                  src="/assets/icons/learnandtest.png"
+                  alt="Learn and test your knowledge"
+                  style={{ 
+                    height: 'auto',
+                    maxWidth: '500px',
+                    width: 'auto'
+                  }}
+                />
+              </button>
+
+              {/* Download Section */}
+              <div className="flex justify-center" style={{ width: '100%', maxWidth: '1400px', paddingTop: '20px', position: 'relative', marginBottom: '20px', minHeight: '180px' }}>
+                {/* Left Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', right: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  {/* Icon - Transparent background */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img 
+                      src="/assets/icons/edumaterial.png"
+                      alt="Access protocols"
+                      style={{ width: '150px', height: '110px' }}
+                    />
+                  </div>
+                  {/* Text and Button - Left aligned */}
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Access protocols
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <a
+                        href="https://doi.org/10.5281/zenodo.17477431"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Open platform
+                      </a>
+                    </div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '14px',
+                      color: '#406A46',
+                      fontStyle: 'italic'
+                    }}>
+                      Opens new tab: Zenodo
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', left: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  {/* Icon - Transparent background */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img 
+                      src="/assets/icons/edurepo.png"
+                      alt="Explore Edu Repository"
+                      style={{ width: '120px', height: '120px' }}
+                    />
+                  </div>
+                  {/* Text and Button - Left aligned */}
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Explore Edu Repository
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <button
+                        onClick={() => onRepositoryClick && onRepositoryClick()}
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Explore
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* EU Disclaimer - Centered at bottom of intro page */}
+              <div style={{
+                width: '100%',
+                textAlign: 'center',
+              }}>
+                <img 
+                  src="/assets/icons/EU.png"
+                  alt="EU Disclaimer"
+                  style={{
+                    height: '96px',
+                    width: 'auto',
+                    opacity: 0.7
+                  }}
+                />
+              </div>
+            </div>
+          ) : currentPage <= 3 ? (
             // Pages 1-3: Image with title
             <div className="flex flex-col items-center">
               {/* Page Title */}
@@ -343,6 +532,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
       </div>
 
       {/* Pagination and Next Button - Sticky Footer */}
+      {currentPage > 0 && (
       <div className="relative z-10" style={{ 
         position: 'sticky', 
         bottom: 0, 
@@ -506,6 +696,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
           </div>
         </div>
       </div>
+      )}
 
       {/* Download Modal */}
       {showDownloadModal && (

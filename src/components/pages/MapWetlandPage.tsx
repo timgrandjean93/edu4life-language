@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 interface MapWetlandPageProps {
   onHomeClick: () => void;
   onRiparianClick?: () => void;
+  onRepositoryClick?: () => void;
 }
 
 // Quiz items with their correct letters
@@ -26,8 +27,10 @@ const allLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
 
 export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
   onHomeClick,
-  onRiparianClick
+  onRiparianClick,
+  onRepositoryClick
 }) => {
+  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
   const [currentStep, setCurrentStep] = React.useState(1);
   const [selectedLetter, setSelectedLetter] = React.useState<string | null>(null);
   const [showError, setShowError] = React.useState(false);
@@ -83,7 +86,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
       {/* Header with title and home button */}
       <div className="relative z-50">
-        <div className="flex items-start justify-center" style={{paddingBottom: '10px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '10px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
               {/* Title */}
@@ -111,7 +114,187 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
           transition={{ delay: 0.7 }}
           className="max-w-6xl mx-auto"
         >
-          {!isCompleted ? (
+          {currentPage === 0 ? (
+            // Intro Page: Introduction with map13.png, description, and CTA button
+            <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
+              {/* Single Illustration - Centered */}
+              <div className="flex justify-center mb-8" style={{ width: '100%', maxWidth: '600px' }}>
+                <div style={{ width: '100%', maxWidth: '600px' }}>
+                  <img 
+                    src="/assets/components/Mapping/map13.png"
+                    alt="Wetland map"
+                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                  />
+                </div>
+              </div>
+
+              {/* Descriptive Text */}
+              <div style={{
+                fontFamily: 'Comfortaa, sans-serif',
+                fontSize: '24px',
+                fontWeight: 'bold',
+                color: '#406A46',
+                textAlign: 'center',
+                marginBottom: '40px',
+                maxWidth: '1200px',
+                lineHeight: '1.6'
+              }}>
+                Learn about mapping wetlands and explore the diverse habitats and features that can be identified from above.
+              </div>
+
+              {/* Call-to-Action Button */}
+              <button
+                className="learn-test-button"
+                onClick={() => setCurrentPage(1)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginBottom: '40px',
+                  padding: 0
+                }}
+              >
+                <img 
+                  src="/assets/icons/learnandtest.png"
+                  alt="Learn and test your knowledge"
+                  style={{ 
+                    height: 'auto',
+                    maxWidth: '500px',
+                    width: 'auto'
+                  }}
+                />
+              </button>
+
+              {/* Download Section */}
+              <div className="flex justify-center" style={{ width: '100%', maxWidth: '1400px', paddingTop: '20px', position: 'relative', marginBottom: '20px', minHeight: '180px' }}>
+                {/* Left Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', right: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  {/* Icon - Transparent background */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img 
+                      src="/assets/icons/edumaterial.png"
+                      alt="Access protocols"
+                      style={{ width: '150px', height: '110px' }}
+                    />
+                  </div>
+                  {/* Text and Button - Left aligned */}
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Access protocols
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <a
+                        href="https://doi.org/10.5281/zenodo.17476801"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Open platform
+                      </a>
+                    </div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '14px',
+                      color: '#406A46',
+                      fontStyle: 'italic'
+                    }}>
+                      Opens new tab: Zenodo
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', left: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  {/* Icon - Transparent background */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img 
+                      src="/assets/icons/edurepo.png"
+                      alt="Explore Edu Repository"
+                      style={{ width: '120px', height: '120px' }}
+                    />
+                  </div>
+                  {/* Text and Button - Left aligned */}
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Explore Edu Repository
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <button
+                        onClick={() => onRepositoryClick && onRepositoryClick()}
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Explore
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* EU Disclaimer - Centered at bottom of intro page */}
+              <div style={{
+                width: '100%',
+                textAlign: 'center',
+              }}>
+                <img 
+                  src="/assets/icons/EU.png"
+                  alt="EU Disclaimer"
+                  style={{
+                    height: '96px',
+                    width: 'auto',
+                    opacity: 0.7
+                  }}
+                />
+              </div>
+            </div>
+          ) : !isCompleted ? (
             <>
               {/* Eagle's-eye challenge */}
               <div className="text-center mx-auto" style={{ maxWidth: '80%'}}>
@@ -428,42 +611,43 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Pagination and Next Button - Sticky Footer */}
-      <div className="relative z-10" style={{ 
-        position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        flexShrink: 0
-      }}>
-        <div className="relative flex justify-between items-center px-4">
-          {/* Home Button - Left */}
-          <div className="flex items-center">
-            <button
-              onClick={onHomeClick}
-              className="home-button relative flex items-center justify-center z-50"
-              style={{ 
-                width: '54px',
-                height: '54px',
-                backgroundColor: 'transparent',
-                border: 'none'
-              }}
-            >
-              <img 
-                src="/assets/icons/Home.png" 
-                alt="Home" 
+      {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
+      {currentPage > 0 && (
+        <div className="relative z-10" style={{ 
+          position: 'sticky', 
+          bottom: 0, 
+          backgroundColor: 'rgba(223, 235, 245, 0.95)',
+          paddingTop: '20px',
+          paddingBottom: '20px',
+          flexShrink: 0
+        }}>
+          <div className="relative flex justify-between items-center px-4">
+            {/* Home Button - Left */}
+            <div className="flex items-center">
+              <button
+                onClick={onHomeClick}
+                className="home-button relative flex items-center justify-center z-50"
                 style={{ 
                   width: '54px',
                   height: '54px',
-                  opacity: 1
+                  backgroundColor: 'transparent',
+                  border: 'none'
                 }}
-              />
-            </button>
-          </div>
+              >
+                <img 
+                  src="/assets/icons/Home.png" 
+                  alt="Home" 
+                  style={{ 
+                    width: '54px',
+                    height: '54px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+            </div>
 
-          {/* Center Section - Download Button and NEXT TOPIC Text - Only on completion */}
-          {isCompleted && (
+            {/* Center Section - Download Button and NEXT TOPIC Text - Only on completion */}
+            {isCompleted && (
             <div className="flex items-center justify-center" style={{ position: 'relative' }}>
               {/* Download Button - 50px left of NEXT TOPIC text */}
               <button
@@ -533,8 +717,9 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
               </button>
             </div>
           )}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Download Modal */}
       {showDownloadModal && (

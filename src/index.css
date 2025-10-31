@@ -82,7 +82,7 @@ body {
 
 /* Default padding for all pages except homepage */
 .page-container {
-  padding: 50px 100px 0 100px;
+  padding: 80px 100px 0 100px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -108,7 +108,7 @@ body {
 /* Responsive adjustments for smaller screens */
 @media screen and (max-width: 768px) {
   .page-container {
-    padding: 25px 20px 0 20px;
+    padding: 80px 20px 0 20px;
   }
   
   .main-title {
@@ -118,7 +118,7 @@ body {
 
 @media screen and (max-width: 480px) {
   .page-container {
-    padding: 15px 15px 0 15px;
+    padding: 80px 15px 0 15px;
   }
   
   .main-title {
@@ -135,11 +135,11 @@ body {
 }
 
 /* Smooth transitions for all interactive elements */
-button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button), .clickable {
+button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):not(.learn-test-button), .clickable {
   transition: all 0.2s ease-in-out;
 }
 
-button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):hover, .clickable:hover {
+button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):not(.learn-test-button):hover, .clickable:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -172,6 +172,17 @@ button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button
 .download-button:hover {
   transform: none !important;
   box-shadow: none !important;
+}
+
+/* Learn test button - no hover effects */
+.learn-test-button {
+  transition: none !important;
+}
+
+.learn-test-button:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
 }
 
 /* Custom scrollbar - matching header color #51727C */

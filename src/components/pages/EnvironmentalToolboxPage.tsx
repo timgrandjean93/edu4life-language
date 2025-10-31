@@ -26,7 +26,7 @@ export const EnvironmentalToolboxPage: React.FC<EnvironmentalToolboxPageProps> =
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
       {/* Header */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
-        <div className="flex items-start justify-center" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '20px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="text-center">
               <h1 className="main-title mb-2">Environmental Toolbox</h1>

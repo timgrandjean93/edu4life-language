@@ -63,7 +63,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {/* Header with title */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
-        <div className="flex items-start justify-center" style={{ paddingTop: '10px', paddingBottom: '40px', paddingRight: '40px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: '30px', paddingBottom: '40px', paddingRight: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
               <div style={{
