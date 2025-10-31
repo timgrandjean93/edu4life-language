@@ -270,9 +270,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
       {/* Page Title under header */}
       <div className="flex items-start justify-center" style={{ paddingTop: '16px', paddingBottom: '48px', marginTop: '80px' }}>
         <div className="w-full" style={{ padding: '0 100px' }}>
-          <h1 className="main-title" style={{ fontSize: '48px', color: '#51727C' }}>
-            Living floodplains:{' '}
-            <span style={{ color: '#548235' }}>Learn, Explore, Restore4Life Toolbox</span>
+          <h1 className="main-title" style={{ fontSize: '36px', color: '#51727C' }}>
+            LIVING FLOODPLAINS:{' '}
+            <span style={{ color: '#548235' }}>LEARN, EXPLORE, RESTORE</span>
+            <span style={{ color: '#51727C' }}>4LIFE TOOLBOX</span>
           </h1>
         </div>
       </div>
