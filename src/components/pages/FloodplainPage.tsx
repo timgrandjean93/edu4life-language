@@ -45,7 +45,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
   };
 
   const handleZenodoLink = () => {
-    window.open('https://doi.org/10.5281/zenodo.17484379', '_blank');
+    window.open('https://doi.org/10.5281/zenodo.17494367', '_blank');
     setShowDownloadModal(false);
   };
 
@@ -203,7 +203,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
-                        href="https://doi.org/10.5281/zenodo.17484379"
+                        href="https://doi.org/10.5281/zenodo.17494367"
                         target="_blank"
                         rel="noreferrer"
                         style={{
