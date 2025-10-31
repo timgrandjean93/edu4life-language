@@ -328,25 +328,25 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                 
                 {/* Subtitle - Only show when not on intro page */}
                 {currentPage > 0 && (
-                  <motion.h2
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    style={{
-                      fontSize: '36px',
-                      fontFamily: 'Comfortaa, sans-serif',
-                      fontWeight: 'bold',
-                      color: '#406A46',
-                      margin: '0'
-                    }}
-                  >
-                    {currentPage === 1 ? 'Nitrogen input into rivers' :
-                     currentPage === 2 ? 'Retention of nitrogen by rivers' :
-                     currentPage === 3 ? 'Additional retention of nitrogen by floodplains' :
-                     currentPage === 4 ? 'Phosphorous input into rivers' :
-                     currentPage === 5 ? 'Retention of phosphorous by rivers' :
+                <motion.h2
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  style={{
+                    fontSize: '36px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
+                    margin: '0'
+                  }}
+                >
+                  {currentPage === 1 ? 'Nitrogen input into rivers' :
+                   currentPage === 2 ? 'Retention of nitrogen by rivers' :
+                   currentPage === 3 ? 'Additional retention of nitrogen by floodplains' :
+                   currentPage === 4 ? 'Phosphorous input into rivers' :
+                   currentPage === 5 ? 'Retention of phosphorous by rivers' :
                      'Additional retention of phosphorous by floodplains'}
-                  </motion.h2>
+                </motion.h2>
                 )}
               </div>
             </div>
@@ -1326,7 +1326,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
 
       {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
       {currentPage > 0 && (
-        <div className="relative z-10" style={{ 
+      <div className="relative z-10" style={{ 
         position: 'sticky', 
         bottom: 0, 
         backgroundColor: 'rgba(223, 235, 245, 0.95)',
@@ -1469,7 +1469,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
             )}
           </div>
         </div>
-        </div>
+      </div>
       )}
 
       {/* Download Modal */}

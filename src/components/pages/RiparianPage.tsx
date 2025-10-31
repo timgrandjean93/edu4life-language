@@ -134,7 +134,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
 
   const handleZenodoLink = () => {
     // Note: No specific Zenodo link provided for RiparianPage
-    window.open('https://doi.org/10.5281/zenodo.17477431', '_blank');
+    window.open('https://doi.org/10.5281/zenodo.17484379', '_blank');
     setShowDownloadModal(false);
   };
 
@@ -338,7 +338,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
-                        href="https://doi.org/10.5281/zenodo.17477431"
+                        href="https://doi.org/10.5281/zenodo.17484379"
                         target="_blank"
                         rel="noreferrer"
                         style={{
@@ -1016,14 +1016,14 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
 
       {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
       {currentPage > 0 && (
-        <div className="relative z-10" style={{ 
-          position: 'sticky', 
-          bottom: 0, 
-          backgroundColor: 'rgba(223, 235, 245, 0.95)',
-          paddingTop: '20px',
-          paddingBottom: '20px',
-          flexShrink: 0
-        }}>
+      <div className="relative z-10" style={{ 
+        position: 'sticky', 
+        bottom: 0, 
+        backgroundColor: 'rgba(223, 235, 245, 0.95)',
+        paddingTop: '20px',
+        paddingBottom: '20px',
+        flexShrink: 0
+      }}>
         <div className="relative flex justify-between items-center px-4">
           {/* Home Button - Left */}
           <div className="flex items-center">
@@ -1220,7 +1220,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
             </div>
           )}
         </div>
-        </div>
+      </div>
       )}
 
       {/* Download Modal */}

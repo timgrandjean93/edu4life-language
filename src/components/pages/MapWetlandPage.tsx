@@ -613,41 +613,41 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
 
       {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
       {currentPage > 0 && (
-        <div className="relative z-10" style={{ 
-          position: 'sticky', 
-          bottom: 0, 
-          backgroundColor: 'rgba(223, 235, 245, 0.95)',
-          paddingTop: '20px',
-          paddingBottom: '20px',
-          flexShrink: 0
-        }}>
-          <div className="relative flex justify-between items-center px-4">
-            {/* Home Button - Left */}
-            <div className="flex items-center">
-              <button
-                onClick={onHomeClick}
-                className="home-button relative flex items-center justify-center z-50"
+      <div className="relative z-10" style={{ 
+        position: 'sticky', 
+        bottom: 0, 
+        backgroundColor: 'rgba(223, 235, 245, 0.95)',
+        paddingTop: '20px',
+        paddingBottom: '20px',
+        flexShrink: 0
+      }}>
+        <div className="relative flex justify-between items-center px-4">
+          {/* Home Button - Left */}
+          <div className="flex items-center">
+            <button
+              onClick={onHomeClick}
+              className="home-button relative flex items-center justify-center z-50"
+              style={{ 
+                width: '54px',
+                height: '54px',
+                backgroundColor: 'transparent',
+                border: 'none'
+              }}
+            >
+              <img 
+                src="/assets/icons/Home.png" 
+                alt="Home" 
                 style={{ 
                   width: '54px',
                   height: '54px',
-                  backgroundColor: 'transparent',
-                  border: 'none'
+                  opacity: 1
                 }}
-              >
-                <img 
-                  src="/assets/icons/Home.png" 
-                  alt="Home" 
-                  style={{ 
-                    width: '54px',
-                    height: '54px',
-                    opacity: 1
-                  }}
-                />
-              </button>
-            </div>
+              />
+            </button>
+          </div>
 
-            {/* Center Section - Download Button and NEXT TOPIC Text - Only on completion */}
-            {isCompleted && (
+          {/* Center Section - Download Button and NEXT TOPIC Text - Only on completion */}
+          {isCompleted && (
             <div className="flex items-center justify-center" style={{ position: 'relative' }}>
               {/* Download Button - 50px left of NEXT TOPIC text */}
               <button
@@ -717,8 +717,8 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
               </button>
             </div>
           )}
-          </div>
         </div>
+      </div>
       )}
 
       {/* Download Modal */}

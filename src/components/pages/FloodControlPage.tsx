@@ -296,7 +296,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   className="main-title mb-2"
                 >
                   {currentPage === 0 ? 'Floodplains are like a sponge' : 
-                   'Flood control function – Floodplains are like a sponge'}
+                   'Flood control function – Floodplains like a sponge'}
                 </motion.h1>
                 
                 {/* Subtitle */}
@@ -1384,7 +1384,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
 
       {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
       {currentPage > 0 && (
-        <div className="relative z-10" style={{ 
+      <div className="relative z-10" style={{ 
         position: 'sticky', 
         bottom: 0, 
         backgroundColor: 'rgba(223, 235, 245, 0.95)',
@@ -1636,7 +1636,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
             </div>
           )}
         </div>
-        </div>
+      </div>
       )}
 
       {/* Download Modal */}

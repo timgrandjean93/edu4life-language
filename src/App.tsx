@@ -120,6 +120,7 @@ function App() {
         return (
           <TreatmentWetlandsPage
             onHomeClick={() => navigateTo('home')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
           />
         );
       case 'bluegreen':

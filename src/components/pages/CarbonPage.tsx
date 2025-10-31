@@ -1483,7 +1483,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
 
       {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
       {currentPage > 0 && (
-        <div className="relative z-10" style={{ 
+      <div className="relative z-10" style={{ 
         position: 'sticky', 
         bottom: 0, 
         backgroundColor: 'rgba(223, 235, 245, 0.95)',
@@ -1680,7 +1680,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
           )}
           </div>
         </div>
-        </div>
+      </div>
       )}
 
       {/* Download Modal */}

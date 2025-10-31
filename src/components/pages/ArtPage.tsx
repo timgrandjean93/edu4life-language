@@ -499,7 +499,7 @@ const finalOutline = {
 };
 
 export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticClick, onRepositoryClick }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [draggedElement, setDraggedElement] = useState<string | null>(null);
   const [placedElements, setPlacedElements] = useState<{[key: string]: string}>({});
   const [isCompleted, setIsCompleted] = useState(false);
@@ -622,10 +622,10 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
     }}>
       {/* Header with title and home button */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
-        <div className="flex items-start justify-center" style={{ paddingTop: '50px', paddingBottom: '40px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: '70px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4" style={{ marginLeft: '100px', marginRight: '100px' }}>
             {/* Header with Title */}
-            <div className="relative">
+            <div className="relative" style={{ marginTop: '40px' }}>
               {/* Title and Subtitle - Centered */}
               <div className="text-center">
                 {/* Title */}
@@ -635,7 +635,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  Floodplains as sources of inspiration
+                  {currentPage === 0 ? 'Floodplains as sources of inspiration' : 'Floodplains as sources of inspiration'}
                 </motion.h1>
                 
                 {/* Subtitle */}
@@ -654,100 +654,276 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
           className="max-w-6xl mx-auto"
           style={{ marginLeft: '100px', marginRight: '100px' }}
         >
+          {currentPage === 0 ? (
+            <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
+              {/* Single Illustration */}
+              <div className="flex justify-center mb-8" style={{ width: '100%', maxWidth: '500px' }}>
+                <div style={{ width: '100%', maxWidth: '600px' }}>
+                  <img
+                    src="/assets/components/art/landing.png"
+                    alt="Sources of inspiration"
+                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                  />
+                </div>
+              </div>
 
-          {/* Introduction Text - Only on pages 1 and 2 */}
-          {currentPage !== 3 && (
-          <div className="text-center mb-8">
-            <p style={{
-              fontSize: '22px',
-              fontFamily: 'Comfortaa, sans-serif',
-              fontWeight: 'bold',
-              color: '#406A46',
-              lineHeight: '1.6',
-              marginBottom: '20px'
-            }}>
-              Rivers and their floodplains are home to numerous animals and plants, and they are also living landscapes full of stories that have inspired people for centuries. From weaving baskets with willow branches to creating songs, legends, and drawings, floodplains connect nature with culture.
-            </p>
-            
-            <p style={{
-              fontSize: '22px',
-              fontFamily: 'Comfortaa, sans-serif',
-              fontWeight: 'bold',
-              color: '#9F8B68',
-              lineHeight: '1.6',
-              marginBottom: '30px'
-            }}>
-              Now it's your turn - have fun using natural elements to create your own pictures and stories.<br />By the river, let its colors, shapes, and sounds inspire you discover the joy of shaping your own story from the floodplain.
-            </p>
-
-            {/* Pointer Icon */}
-            <div className="flex justify-center mb-8">
-              <img 
-                src="/assets/icons/pointer.png" 
-                alt="Pointer" 
-                style={{ width: '70px', height: '70px' }}
-              />
-            </div>
-
-            {/* Instruction */}
-            <div className="text-center mb-8">
-              <p style={{
-                fontSize: '22px',
+              {/* Descriptive Text */}
+              <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
+                fontSize: '24px',
                 fontWeight: 'bold',
                 color: '#406A46',
+                textAlign: 'center',
+                marginBottom: '40px',
+                maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Imagine you are out in nature, collecting leaves, branches, or feathers to create your own characters.<br />Could you help these outlines come to life? Drag and drop the natural elements into the shapes until they are filled with form and color.
-              </p>
-            </div>
-          </div>
-          )}
+                Discover how floodplains inspire stories, crafts, and creativity. Explore the art of nature-based materials before building your own masterpieces.
+              </div>
 
-          {/* Page 3 - Pointer and Instruction */}
-          {currentPage === 3 && (
-            <div className="text-center mb-8">
-              {/* Pointer Icon */}
-              <div className="flex justify-center mb-8">
-                <img 
-                  src="/assets/icons/pointer.png" 
-                  alt="Pointer" 
-                  style={{ width: '70px', height: '70px' }}
+              {/* Call-to-Action Button */}
+              <button
+                className="learn-test-button"
+                onClick={() => setCurrentPage(1)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginBottom: '40px',
+                  padding: 0
+                }}
+              >
+                <img
+                  src="/assets/icons/learnandtest.png"
+                  alt="Learn and test your knowledge"
+                  style={{
+                    height: 'auto',
+                    maxWidth: '500px',
+                    width: 'auto'
+                  }}
+                />
+              </button>
+
+              {/* Download Section */}
+              <div className="flex justify-center" style={{ width: '100%', maxWidth: '1400px', paddingTop: '20px', position: 'relative', marginBottom: '20px', minHeight: '180px' }}>
+                {/* Left Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', right: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img
+                      src="/assets/icons/edumaterial.png"
+                      alt="Access protocols"
+                      style={{ width: '150px', height: '110px' }}
+                    />
+                  </div>
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Access protocols
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <a
+                        href="https://doi.org/10.5281/zenodo.17478185"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Open platform
+                      </a>
+                    </div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '14px',
+                      color: '#406A46',
+                      fontStyle: 'italic'
+                    }}>
+                      Opens new tab: Zenodo
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', left: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img
+                      src="/assets/icons/edurepo.png"
+                      alt="Explore Edu Repository"
+                      style={{ width: '120px', height: '120px' }}
+                    />
+                  </div>
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Explore Edu Repository
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <button
+                        onClick={handleDashboardLink}
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Explore
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* EU Disclaimer */}
+              <div style={{
+                width: '100%',
+                textAlign: 'center'
+              }}>
+                <img
+                  src="/assets/icons/EU.png"
+                  alt="EU Disclaimer"
+                  style={{
+                    height: '96px',
+                    width: 'auto',
+                    opacity: 0.7
+                  }}
                 />
               </div>
-
-              {/* Instruction */}
-              <div className="text-center mb-8">
-                <p style={{
-                  fontSize: '22px',
-                  fontFamily: 'Comfortaa, sans-serif',
-                  fontWeight: 'bold',
-                  color: '#406A46',
-                  lineHeight: '1.6'
-                }}>
-                  Some parts of the landscape are missing. <br />
-                  Drag and drop the figures you created into the right places to complete the floodplain scene.
-                </p>
-              </div>
             </div>
-          )}
+          ) : (
+            <>
+              {/* Introduction Text - Only on pages 1 and 2 */}
+              {currentPage !== 3 && (
+                <div className="text-center mb-8">
+                  <p style={{
+                    fontSize: '22px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#406A46',
+                    lineHeight: '1.6',
+                    marginBottom: '20px'
+                  }}>
+                    Rivers and their floodplains are home to numerous animals and plants, and they are also living landscapes full of stories that have inspired people for centuries. From weaving baskets with willow branches to creating songs, legends, and drawings, floodplains connect nature with culture.
+                  </p>
+                  
+                  <p style={{
+                    fontSize: '22px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#9F8B68',
+                    lineHeight: '1.6',
+                    marginBottom: '30px'
+                  }}>
+                    Now it's your turn - have fun using natural elements to create your own pictures and stories.<br />By the river, let its colors, shapes, and sounds inspire you discover the joy of shaping your own story from the floodplain.
+                  </p>
 
-          {/* Interactive Section */}
-          <div
-            className="bg-white bg-opacity-90 rounded-lg p-8 shadow-lg"
-            style={{
-              maxWidth: '1200px',
-              margin: '50px auto 0'
-            }}
-          >
+                  {/* Pointer Icon */}
+                  <div className="flex justify-center mb-8">
+                    <img 
+                      src="/assets/icons/pointer.png" 
+                      alt="Pointer" 
+                      style={{ width: '70px', height: '70px' }}
+                    />
+                  </div>
 
-          {/* Puzzle Area */}
-          <div className="flex justify-center items-center gap-8" style={{
-            flexDirection: (currentPage === 1 || currentPage === 2 || currentPage === 3) ? 'row' : 'column',
-            gap: currentPage === 3 ? '20px' : currentPage === 2 ? '120px' : '8px'
-          }}>
-            {/* Left Elements - Only on page 3, 25% width */}
-            {currentPage === 3 && (
+                  {/* Instruction */}
+                  <div className="text-center mb-8">
+                    <p style={{
+                      fontSize: '22px',
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      lineHeight: '1.6'
+                    }}>
+                      Imagine you are out in nature, collecting leaves, branches, or feathers to create your own characters.<br />Could you help these outlines come to life? Drag and drop the natural elements into the shapes until they are filled with form and color.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Page 3 - Pointer and Instruction */}
+              {currentPage === 3 && (
+                <div className="text-center mb-8">
+                  {/* Pointer Icon */}
+                  <div className="flex justify-center mb-8">
+                    <img 
+                      src="/assets/icons/pointer.png" 
+                      alt="Pointer" 
+                      style={{ width: '70px', height: '70px' }}
+                    />
+                  </div>
+
+                  {/* Instruction */}
+                  <div className="text-center mb-8">
+                    <p style={{
+                      fontSize: '22px',
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      lineHeight: '1.6'
+                    }}>
+                      Some parts of the landscape are missing. <br />
+                      Drag and drop the figures you created into the right places to complete the floodplain scene.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Interactive Section */}
+              <div
+                className="bg-white bg-opacity-90 rounded-lg p-8 shadow-lg"
+                style={{
+                  maxWidth: '1200px',
+                  margin: '50px auto 0'
+                }}
+              >
+
+              {/* Puzzle Area */}
+              <div className="flex justify-center items-center gap-8" style={{
+                flexDirection: (currentPage === 1 || currentPage === 2 || currentPage === 3) ? 'row' : 'column',
+                gap: currentPage === 3 ? '20px' : currentPage === 2 ? '120px' : '8px'
+              }}>
+                {/* Left Elements - Only on page 3, 25% width */}
+                {currentPage === 3 && (
               <div className="grid gap-1" style={{ 
                 gridTemplateColumns: 'repeat(2, 1fr)',
                 width: '25%',
@@ -1057,22 +1233,25 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
           </div>
 
           </div>
+            </>
+          )}
         </motion.div>
       </div>
 
       {/* Footer - Sticky Footer */}
-      <div className="relative z-10" style={{ 
-        position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        flexShrink: 0,
-        paddingLeft: '100px',
-        paddingRight: '100px'
-      }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="relative flex justify-between items-center px-4">
+      {currentPage > 0 && (
+        <div className="relative z-10" style={{ 
+          position: 'sticky', 
+          bottom: 0, 
+          backgroundColor: 'rgba(223, 235, 245, 0.95)',
+          paddingTop: '20px',
+          paddingBottom: '20px',
+          flexShrink: 0,
+          paddingLeft: '100px',
+          paddingRight: '100px'
+        }}>
+          <div className="max-w-6xl mx-auto">
+            <div className="relative flex justify-between items-center px-4">
         {/* Home Button - Left */}
         <div className="flex items-center">
           <HomeButton onClick={onHomeClick} />
@@ -1189,9 +1368,10 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
             />
           </button>
         </div>
+        </div>
       </div>
       </div>
-      </div>
+      )}
 
       {/* Download Modal */}
       {showDownloadModal && (

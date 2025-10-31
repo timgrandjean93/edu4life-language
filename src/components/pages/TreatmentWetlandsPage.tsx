@@ -3,14 +3,16 @@ import { motion } from 'framer-motion';
 
 interface TreatmentWetlandsPageProps {
   onHomeClick: () => void;
+  onRepositoryClick?: () => void;
 }
 
 const TOTAL_PAGES = 4;
 
 export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
-  onHomeClick
+  onHomeClick,
+  onRepositoryClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
 
   React.useEffect(() => {
     const html = document.documentElement;
@@ -65,7 +67,8 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   Treatment wetlands
                 </motion.h1>
 
-                {/* Subtitle for current page */}
+                {/* Subtitle for current page - Only show when not on intro page */}
+                {currentPage > 0 && (
                 <h2 style={{
                   fontFamily: 'Comfortaa, sans-serif',
                   fontSize: '36px',
@@ -77,6 +80,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 }}>
                   {getTitleForPage(currentPage)}
                 </h2>
+                )}
 
                 {/* Pointer icon for pages 2-4 - right below subtitle */}
                 {currentPage > 1 && (
@@ -106,9 +110,187 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
         >
           {/* Page Content */}
           <div className="w-full" style={{ marginTop: '0px' }}>
+            {currentPage === 0 ? (
+              // Intro Page: Introduction with landing.png, description, and CTA button
+              <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
+                {/* Single Illustration - Centered */}
+                <div className="flex justify-center mb-8" style={{ width: '100%', maxWidth: '600px' }}>
+                  <div style={{ width: '100%', maxWidth: '600px' }}>
+                    <img 
+                      src="/assets/components/constructed/landing.png"
+                      alt="Treatment wetlands"
+                      style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                    />
+                  </div>
+                </div>
 
-            {/* Page Content */}
-            {currentPage === 1 && (
+                {/* Descriptive Text */}
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: '#406A46',
+                  textAlign: 'center',
+                  marginBottom: '40px',
+                  maxWidth: '1200px',
+                  lineHeight: '1.6'
+                }}>
+                  Learn about treatment wetlands and discover how constructed wetlands naturally filter and clean wastewater.
+                </div>
+
+                {/* Call-to-Action Button */}
+                <button
+                  className="learn-test-button"
+                  onClick={() => setCurrentPage(1)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    marginBottom: '40px',
+                    padding: 0
+                  }}
+                >
+                  <img 
+                    src="/assets/icons/learnandtest.png"
+                    alt="Learn and test your knowledge"
+                    style={{ 
+                      height: 'auto',
+                      maxWidth: '500px',
+                      width: 'auto'
+                    }}
+                  />
+                </button>
+
+                {/* Download Section */}
+                <div className="flex justify-center" style={{ width: '100%', maxWidth: '1400px', paddingTop: '20px', position: 'relative', marginBottom: '20px', minHeight: '180px' }}>
+                  {/* Left Download Section */}
+                  <div className="flex items-center" style={{ gap: '32px', position: 'absolute', right: 'calc(50% + 50px)', alignItems: 'center' }}>
+                    {/* Icon - Transparent background */}
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}>
+                      <img 
+                        src="/assets/icons/edumaterial.png"
+                        alt="Access protocols"
+                        style={{ width: '150px', height: '110px' }}
+                      />
+                    </div>
+                    {/* Text and Button - Left aligned */}
+                    <div>
+                      <div style={{
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontSize: '24px',
+                        fontWeight: 'bold',
+                        color: '#406A46',
+                        marginBottom: '6px'
+                      }}>
+                        Access protocols
+                      </div>
+                      <div style={{ marginBottom: '12px' }}>
+                        <a
+                          href="https://doi.org/10.5281/zenodo.17474270"
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            fontFamily: 'Comfortaa, sans-serif',
+                            fontSize: '16px',
+                            fontWeight: 'bold',
+                            color: 'white',
+                            backgroundColor: '#51727C',
+                            padding: '12px 32px',
+                            borderRadius: '8px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            textTransform: 'uppercase',
+                            textDecoration: 'none',
+                            display: 'inline-block'
+                          }}
+                        >
+                          Open platform
+                        </a>
+                      </div>
+                      <div style={{
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontSize: '14px',
+                        color: '#406A46',
+                        fontStyle: 'italic'
+                      }}>
+                        Opens new tab: Zenodo
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Download Section */}
+                  <div className="flex items-center" style={{ gap: '32px', position: 'absolute', left: 'calc(50% + 50px)', alignItems: 'center' }}>
+                    {/* Icon - Transparent background */}
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}>
+                      <img 
+                        src="/assets/icons/edurepo.png"
+                        alt="Explore Edu Repository"
+                        style={{ width: '120px', height: '120px' }}
+                      />
+                    </div>
+                    {/* Text and Button - Left aligned */}
+                    <div>
+                      <div style={{
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontSize: '24px',
+                        fontWeight: 'bold',
+                        color: '#406A46',
+                        marginBottom: '6px'
+                      }}>
+                        Explore Edu Repository
+                      </div>
+                      <div style={{ marginBottom: '12px' }}>
+                        <button
+                          onClick={() => onRepositoryClick && onRepositoryClick()}
+                          style={{
+                            fontFamily: 'Comfortaa, sans-serif',
+                            fontSize: '16px',
+                            fontWeight: 'bold',
+                            color: 'white',
+                            backgroundColor: '#51727C',
+                            padding: '12px 32px',
+                            borderRadius: '8px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            textTransform: 'uppercase',
+                            textDecoration: 'none',
+                            display: 'inline-block'
+                          }}
+                        >
+                          Explore
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* EU Disclaimer - Centered at bottom of intro page */}
+                <div style={{
+                  width: '100%',
+                  textAlign: 'center',
+                }}>
+                  <img 
+                    src="/assets/icons/EU.png"
+                    alt="EU Disclaimer"
+                    style={{
+                      height: '96px',
+                      width: 'auto',
+                      opacity: 0.7
+                    }}
+                  />
+                </div>
+              </div>
+            ) : currentPage === 1 ? (
               <div style={{
                 textAlign: 'center'
               }}>
@@ -123,10 +305,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   }}
                 />
               </div>
-            )}
-
-            {/* Page 2-4 Content */}
-            {currentPage === 2 && (
+            ) : currentPage === 2 ? (
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
                 fontSize: '24px',
@@ -137,9 +316,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               }}>
                 Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky. Drag each layer label to its correct place in the container, then check if you got the order right!
               </div>
-            )}
-
-            {currentPage === 3 && (
+            ) : currentPage === 3 ? (
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
                 fontSize: '24px',
@@ -150,9 +327,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               }}>
                 Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top. Watch how your wetland gets ready to clean the water naturally!
               </div>
-            )}
-
-            {currentPage === 4 && (
+            ) : currentPage === 4 ? (
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
                 fontSize: '24px',
@@ -163,12 +338,13 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               }}>
                 Now that the wetland is built, let's meet its hidden workers — the tiny microbes who do most of the cleaning job.
               </div>
-            )}
+            ) : null}
           </div>
         </motion.div>
       </div>
 
-      {/* Footer with Pagination and Navigation */}
+      {/* Footer with Pagination and Navigation - Only show when not on intro page */}
+      {currentPage > 0 && (
       <div className="relative z-10" style={{
         position: 'sticky',
         bottom: 0,
@@ -260,6 +436,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
           )}
         </div>
       </div>
+      )}
     </div>
   );
 };

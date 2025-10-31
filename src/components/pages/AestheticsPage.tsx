@@ -14,7 +14,7 @@ export const AestheticsPage: React.FC<AestheticsPageProps> = ({
   onArtClick,
   onRepositoryClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
   const [draggedItem, setDraggedItem] = React.useState<string | null>(null);
   const [droppedItems, setDroppedItems] = React.useState<Record<string, string>>({});
   const [showValidation, setShowValidation] = React.useState(false);
@@ -121,7 +121,7 @@ const hiddenIconsData: Record<string, {
   };
 
   const handleZenodoLink = () => {
-    window.open('https://zenodo.org/records/17453700', '_blank');
+    window.open('https://doi.org/10.5281/zenodo.17453700', '_blank');
     setShowDownloadModal(false);
   };
 
@@ -345,8 +345,9 @@ const hiddenIconsData: Record<string, {
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  {currentPage === 1 && 'Nature\'s presents offered by the Danube and its floodplains'}
-                  {currentPage === 2 && 'Discover the hidden services of the floodplain!'}
+                  {currentPage === 0 ? 'Floodplain aesthetics versus Floodplain functions' :
+                   currentPage === 1 ? 'Nature\'s presents offered by the Danube and its floodplains' :
+                   'Discover the hidden services of the floodplain!'}
                 </motion.h1>
               </div>
             </div>
@@ -363,7 +364,187 @@ const hiddenIconsData: Record<string, {
           transition={{ delay: 0.7 }}
           className="max-w-6xl mx-auto"
         >
-          {currentPage === 1 ? (
+          {currentPage === 0 ? (
+            // Intro Page: Introduction with landing.png, description, and CTA button
+            <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
+              {/* Single Illustration - Centered */}
+              <div className="flex justify-center mb-8" style={{ width: '100%', maxWidth: '600px' }}>
+                <div style={{ width: '100%', maxWidth: '600px' }}>
+                  <img 
+                    src="/assets/components/aesthetics/landing.png"
+                    alt="Aesthetics"
+                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                  />
+                </div>
+              </div>
+
+              {/* Descriptive Text */}
+              <div style={{
+                fontFamily: 'Comfortaa, sans-serif',
+                fontSize: '24px',
+                fontWeight: 'bold',
+                color: '#406A46',
+                textAlign: 'center',
+                marginBottom: '40px',
+                maxWidth: '1200px',
+                lineHeight: '1.6'
+              }}>
+                Learn about aesthetics and discover the hidden services and cultural values that floodplains offer.
+              </div>
+
+              {/* Call-to-Action Button */}
+              <button
+                className="learn-test-button"
+                onClick={() => setCurrentPage(1)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginBottom: '40px',
+                  padding: 0
+                }}
+              >
+                <img 
+                  src="/assets/icons/learnandtest.png"
+                  alt="Learn and test your knowledge"
+                  style={{ 
+                    height: 'auto',
+                    maxWidth: '500px',
+                    width: 'auto'
+                  }}
+                />
+              </button>
+
+              {/* Download Section */}
+              <div className="flex justify-center" style={{ width: '100%', maxWidth: '1400px', paddingTop: '20px', position: 'relative', marginBottom: '20px', minHeight: '180px' }}>
+                {/* Left Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', right: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  {/* Icon - Transparent background */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img 
+                      src="/assets/icons/edumaterial.png"
+                      alt="Access protocols"
+                      style={{ width: '150px', height: '110px' }}
+                    />
+                  </div>
+                  {/* Text and Button - Left aligned */}
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Access protocols
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <a
+                        href="https://doi.org/10.5281/zenodo.17453700"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Open platform
+                      </a>
+                    </div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '14px',
+                      color: '#406A46',
+                      fontStyle: 'italic'
+                    }}>
+                      Opens new tab: Zenodo
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', left: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  {/* Icon - Transparent background */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img 
+                      src="/assets/icons/edurepo.png"
+                      alt="Explore Edu Repository"
+                      style={{ width: '120px', height: '120px' }}
+                    />
+                  </div>
+                  {/* Text and Button - Left aligned */}
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Explore Edu Repository
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <button
+                        onClick={() => onRepositoryClick && onRepositoryClick()}
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Explore
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* EU Disclaimer - Centered at bottom of intro page */}
+              <div style={{
+                width: '100%',
+                textAlign: 'center',
+              }}>
+                <img 
+                  src="/assets/icons/EU.png"
+                  alt="EU Disclaimer"
+                  style={{
+                    height: '96px',
+                    width: 'auto',
+                    opacity: 0.7
+                  }}
+                />
+              </div>
+            </div>
+          ) : currentPage === 1 ? (
             // Page 1: Drag and Drop Interface
             <div className="w-full">
               {/* Original Description Text */}
@@ -918,7 +1099,8 @@ const hiddenIconsData: Record<string, {
         </motion.div>
       </div>
 
-      {/* Pagination and Navigation - Sticky Footer */}
+      {/* Pagination and Navigation - Sticky Footer - Only show when not on intro page */}
+      {currentPage > 0 && (
       <div className="relative z-10" style={{ 
         position: 'sticky', 
         bottom: 0, 
@@ -1143,6 +1325,7 @@ const hiddenIconsData: Record<string, {
           )}
         </div>
       </div>
+      )}
 
       {/* Download Modal */}
       {showDownloadModal && (

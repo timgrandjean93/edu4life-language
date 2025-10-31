@@ -23,7 +23,7 @@ const getImagePath = (page: number) => {
 export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   onHomeClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(0);
   const [draggedItem, setDraggedItem] = React.useState<string | null>(null);
   const [droppedItems, setDroppedItems] = React.useState<Record<string, {x: number, y: number}>>({});
   const [restorationDroppedItems, setRestorationDroppedItems] = React.useState<Record<string, {x: number, y: number}>>({});
@@ -419,11 +419,11 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  People and aquatic ecosystems
+                  The people and aquatic ecosystems
                 </motion.h1>
                 
                 {/* Subtitle - Only show for pages 1-3 */}
-                {currentPage < 4 && (
+                {currentPage > 0 && currentPage < 4 && (
                   <motion.h2
                     key={`subtitle-${currentPage}`}
                     initial={{ opacity: 0, y: -10 }}
@@ -458,7 +458,190 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
           transition={{ delay: 0.7 }}
           className="max-w-6xl mx-auto"
         >
-          {currentPage <= 3 ? (
+          {currentPage === 0 ? (
+            // Intro Page: Two illustrations, description, CTA, downloads, and EU disclaimer
+            <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
+              {/* Two Illustrations Side by Side */}
+              <div className="flex gap-8 justify-center mb-8" style={{ width: '100%', maxWidth: '1200px', alignItems: 'flex-end' }}>
+                <div style={{ flex: 1, maxWidth: '600px' }}>
+                  <img
+                    src="/assets/components/people/landing1.png"
+                    alt="People interacting with aquatic ecosystems"
+                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                  />
+                </div>
+                <div style={{ flex: 1, maxWidth: '600px' }}>
+                  <img
+                    src="/assets/components/people/landing2.png"
+                    alt="Learning about aquatic ecosystems"
+                    style={{ width: '100%', height: 'auto', maxHeight: '320px', borderRadius: '8px', objectFit: 'contain' }}
+                  />
+                </div>
+              </div>
+
+              {/* Descriptive Text */}
+              <div style={{
+                fontFamily: 'Comfortaa, sans-serif',
+                fontSize: '24px',
+                fontWeight: 'bold',
+                color: '#406A46',
+                textAlign: 'center',
+                marginBottom: '40px',
+                maxWidth: '1200px',
+                lineHeight: '1.6'
+              }}>
+                Explore how people rely on floodplains and aquatic ecosystems, and discover pathways to restore their benefits for communities and nature.
+              </div>
+
+              {/* Call-to-Action Button */}
+              <button
+                className="learn-test-button"
+                onClick={() => setCurrentPage(1)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginBottom: '40px',
+                  padding: 0
+                }}
+              >
+                <img
+                  src="/assets/icons/learnandtest.png"
+                  alt="Learn and test your knowledge"
+                  style={{
+                    height: 'auto',
+                    maxWidth: '500px',
+                    width: 'auto'
+                  }}
+                />
+              </button>
+
+              {/* Download Section */}
+              <div className="flex justify-center" style={{ width: '100%', maxWidth: '1400px', paddingTop: '20px', position: 'relative', marginBottom: '20px', minHeight: '180px' }}>
+                {/* Left Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', right: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img
+                      src="/assets/icons/edumaterial.png"
+                      alt="Access protocols"
+                      style={{ width: '150px', height: '110px' }}
+                    />
+                  </div>
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Access protocols
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <a
+                        href="https://doi.org/10.5281/zenodo.17477840"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Open platform
+                      </a>
+                    </div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '14px',
+                      color: '#406A46',
+                      fontStyle: 'italic'
+                    }}>
+                      Opens new tab: Zenodo
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Download Section */}
+                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', left: 'calc(50% + 50px)', alignItems: 'center' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <img
+                      src="/assets/icons/edurepo.png"
+                      alt="Explore Edu Repository"
+                      style={{ width: '120px', height: '120px' }}
+                    />
+                  </div>
+                  <div>
+                    <div style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      marginBottom: '6px'
+                    }}>
+                      Explore Edu Repository
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <button
+                        onClick={handleDashboardLink}
+                        style={{
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '16px',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          backgroundColor: '#51727C',
+                          padding: '12px 32px',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        Explore
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* EU Disclaimer */}
+              <div style={{
+                width: '100%',
+                textAlign: 'center'
+              }}>
+                <img
+                  src="/assets/icons/EU.png"
+                  alt="EU Disclaimer"
+                  style={{
+                    height: '96px',
+                    width: 'auto',
+                    opacity: 0.7
+                  }}
+                />
+              </div>
+            </div>
+          ) : currentPage <= 3 ? (
             // Pages 1-3: Image content
             <div className="flex flex-col items-center" style={currentPage === 3 ? { height: 'auto', minHeight: 'auto' } : {}}>
               {currentPage === 1 ? (
@@ -1429,15 +1612,16 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
       </div>
 
       {/* Pagination and Navigation - Sticky Footer */}
-      <div className="relative z-10" style={{ 
-        position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        flexShrink: 0
-      }}>
-        <div className="relative flex justify-between items-center px-4">
+      {currentPage > 0 && (
+        <div className="relative z-10" style={{ 
+          position: 'sticky', 
+          bottom: 0, 
+          backgroundColor: 'rgba(223, 235, 245, 0.95)',
+          paddingTop: '20px',
+          paddingBottom: '20px',
+          flexShrink: 0
+        }}>
+          <div className="relative flex justify-between items-center px-4">
           {/* Home Button - Left */}
           <div className="flex items-center">
             <button
@@ -1594,6 +1778,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
           )}
         </div>
       </div>
+      )}
 
       {/* Download Modal */}
       {showDownloadModal && (
