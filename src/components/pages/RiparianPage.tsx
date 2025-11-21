@@ -1071,25 +1071,19 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
             >
               {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
-                const canNavigate = pageNum === 1 || (pageNum === 2 && quizSubmitted);
 
                 return (
                   <button
                     key={index}
-                    onClick={() => {
-                      if (canNavigate) {
-                        setCurrentPage(pageNum);
-                      }
-                    }}
-                    disabled={!canNavigate}
+                    onClick={() => setCurrentPage(pageNum)}
                     className="transition-all duration-300 p-0 border-0 bg-transparent"
                     aria-label={`Go to page ${pageNum}`}
                     style={{ 
                       background: 'none', 
                       border: 'none', 
                       padding: 0,
-                      cursor: canNavigate ? 'pointer' : 'default',
-                      opacity: canNavigate ? 1 : 0.5
+                      cursor: 'pointer',
+                      opacity: 1
                     }}
                   >
                     <div

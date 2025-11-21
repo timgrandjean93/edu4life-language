@@ -443,6 +443,103 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     {currentPage === 3 && 'C. Restoring floodplains as a Nature-based Solution'}
                   </motion.h2>
                 )}
+                
+                {/* Activity 1 description - Only for page 2 */}
+                {currentPage === 2 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      lineHeight: '1.4',
+                      textAlign: 'center',
+                      marginTop: '20px',
+                      marginBottom: '10px',
+                      width: '100%',
+                      padding: '0 20px'
+                    }}
+                  >
+                    <div className="flex items-center justify-center mb-4">
+                      <img 
+                        src="/assets/icons/pointer.png" 
+                        alt="Pointer" 
+                        style={{ 
+                          width: '57px', 
+                          height: '57px',
+                          marginRight: '16px'
+                        }}
+                      />
+                      <h3 style={{ 
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontSize: '48px', 
+                        fontWeight: 'bold', 
+                        color: '#406A46',
+                        margin: 0,
+                        lineHeight: '1.1'
+                      }}>
+                        Activity 1
+                      </h3>
+                    </div>
+                    <div>
+                      Look closely—this is how human actions have transformed the Danube and its floodplains. 
+                      Dikes, farming, navigation, and other pressures changed the landscape.
+                      <br /><br />
+                      Can you help me by matching each pressure label to the right place in the picture?
+                    </div>
+                  </motion.div>
+                )}
+                
+                {/* Activity 2 description - Only for page 3 */}
+                {currentPage === 3 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      lineHeight: '1.4',
+                      textAlign: 'center',
+                      marginTop: '20px',
+                      marginBottom: '10px',
+                      width: '100%',
+                      padding: '0 20px'
+                    }}
+                  >
+                    <div className="flex items-center justify-center mb-4">
+                      <img 
+                        src="/assets/icons/pointer.png" 
+                        alt="Pointer" 
+                        style={{ 
+                          width: '57px', 
+                          height: '57px',
+                          marginRight: '16px'
+                        }}
+                      />
+                      <h3 style={{ 
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontSize: '48px', 
+                        fontWeight: 'bold', 
+                        color: '#406A46',
+                        margin: 0,
+                        lineHeight: '1.1'
+                      }}>
+                        Activity 2
+                      </h3>
+                    </div>
+                    <div>
+                      To solve societal problems with this Nature-based Solution, you can now explore suitable restoration measures: each picture shows one way how people and nature may work together.
+                      <br /><br />
+                      At the bottom, you will find a list with six measures. Can you match the number of the measure from the list with the respective image that shows it?
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </div>
           </div>
@@ -650,14 +747,14 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
               ) : currentPage === 2 ? (
                 // Page 2: 2/3 image + 1/3 activity content layout
                 <>
-                  <div className="mb-6" style={{ height: '40px' }}>
-                    {/* White space for consistent positioning */}
+                  <div className="mb-6" style={{ height: '20px' }}>
+                    {/* Reduced white space for better alignment */}
                   </div>
-                  <div className="flex w-full max-w-7xl gap-8">
-                    {/* Left side - Image and text (2/3) */}
-                    <div style={{ width: '66.66%', display: 'flex', flexDirection: 'column' }}>
+                  <div className="flex w-full max-w-7xl gap-8" style={{ alignItems: 'flex-start' }}>
+                    {/* Left side - Image (2/3) */}
+                    <div style={{ width: '66.66%', display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
                       {/* Image container with fixed aspect ratio */}
-                      <div style={{ position: 'relative', width: '100%' }}>
+                      <div style={{ position: 'relative', width: '100%', flexShrink: 0 }}>
                         <img 
                           src={getImagePath(currentPage)}
                           alt={`People and aquatic ecosystems page ${currentPage}`}
@@ -735,67 +832,11 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           ) : null;
                         })}
                       </div>
-                      
-                      {/* Descriptive text below image - Outside the relative container */}
-                      <div style={{
-                        marginTop: '30px',
-                        fontFamily: 'Comfortaa, sans-serif',
-                        fontSize: '22px',
-                        fontWeight: 'bold',
-                        color: '#406A46',
-                        lineHeight: '1.6',
-                        textAlign: 'left',
-                        flexShrink: 0
-                      }}>
-                        People cleared forests, transformed the floodplains into pastures and crop fields, and built villages and later cities near the banks of the Danube. To protect themselves from floods, they constructed dikes. The Danube was also developed as a navigational waterway and for hydropower production. As a result, the river lost many of its natural features: the balance of sediments in the riverbed was disturbed, and the connection between the river channel and its floodplains was largely cut off. Only a few remnants of the original floodplain remained, while many typical animals and plants disappeared.
-                      </div>
                     </div>
                     
-                    {/* Right side - Activity content (1/3) */}
-                    <div style={{ width: '33.33%' }} className="flex flex-col justify-start pt-4">
-                      {/* Activity 1 title with pointer icon - Centered */}
-                      <div className="flex items-center justify-center mb-6">
-                        <img 
-                          src="/assets/icons/pointer.png" 
-                          alt="Pointer" 
-                          style={{ 
-                            width: '57px', 
-                            height: '57px',
-                            marginRight: '16px'
-                          }}
-                        />
-                        <h3 style={{ 
-                          fontFamily: 'Comfortaa, sans-serif',
-                          fontSize: '48px', 
-                          fontWeight: 'bold', 
-                          color: '#406A46',
-                          margin: 0,
-                          lineHeight: '1.1'
-                        }}>
-                          Activity 1
-                        </h3>
-                      </div>
-                      
-                      {/* White space separator */}
-                      <div style={{ height: '20px' }}></div>
-                      
-                      {/* Activity description - Centered */}
-                      <div style={{ 
-                        fontFamily: 'Comfortaa, sans-serif',
-                        fontSize: '24px', 
-                        fontWeight: 'bold', 
-                        color: '#406A46',
-                        lineHeight: '1.4',
-                        textAlign: 'center',
-                        marginBottom: '24px'
-                      }}>
-                        Look closely—this is how human actions have transformed the Danube and its floodplains. 
-                        Dikes, farming, navigation, and other pressures changed the landscape.
-                        <br /><br />
-                        Can you help me by matching each pressure label to the right place in the picture?
-                      </div>
-                      
-                      {/* Score Display */}
+                    {/* Right side - Activity content (1/3) - Sticky positioned to align with image */}
+                    <div style={{ width: '33.33%', position: 'sticky', top: '100px', alignSelf: 'flex-start' }} className="flex flex-col justify-start pt-4">
+                      {/* Score Display - Only show when validation is active */}
                       {showValidation && (
                         <div style={{
                           backgroundColor: 'white',
@@ -877,7 +918,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                         </div>
                       )}
                       
-                      {/* Drag and Drop Buttons */}
+                      {/* Drag and Drop Buttons - 2 columns, aligned with image */}
                       <div className="grid grid-cols-2 gap-4">
                         {(randomizedLabels.length > 0 ? randomizedLabels : pressureLabels).map((item) => {
                           const isDropped = droppedItems[item.id];
@@ -956,18 +997,33 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       </div>
                     </div>
                   </div>
+                  
+                  {/* Descriptive text below image and buttons - Full width */}
+                  <div style={{
+                    marginTop: '30px',
+                    width: '100%',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '22px',
+                    fontWeight: 'bold',
+                    color: '#406A46',
+                    lineHeight: '1.6',
+                    textAlign: 'left',
+                    flexShrink: 0
+                  }}>
+                    People cleared forests, transformed the floodplains into pastures and crop fields, and built villages and later cities near the banks of the Danube. To protect themselves from floods, they constructed dikes. The Danube was also developed as a navigational waterway and for hydropower production. As a result, the river lost many of its natural features: the balance of sediments in the riverbed was disturbed, and the connection between the river channel and its floodplains was largely cut off. Only a few remnants of the original floodplain remained, while many typical animals and plants disappeared.
+                  </div>
                 </>
               ) : currentPage === 3 ? (
                 // Page 3: Activity 2 layout
                 <>
-                  <div className="mb-6" style={{ height: '40px' }}>
-                    {/* White space for consistent positioning */}
+                  <div className="mb-6" style={{ height: '20px' }}>
+                    {/* Reduced white space for better alignment */}
                   </div>
                   <div className="flex w-full max-w-7xl gap-8" style={{ alignItems: 'flex-start' }}>
-                    {/* Left side - Image and text (2/3) */}
+                    {/* Left side - Image (2/3) */}
                     <div style={{ width: '66.66%', display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
                       {/* Image container with fixed aspect ratio */}
-                      <div style={{ position: 'relative', width: '100%' }}>
+                      <div style={{ position: 'relative', width: '100%', flexShrink: 0 }}>
                         <img 
                           src={getImagePath(currentPage)}
                           alt={`People and aquatic ecosystems page ${currentPage}`}
@@ -1045,65 +1101,10 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           ) : null;
                         })}
                       </div>
-                      
-                      {/* Descriptive text below image */}
-                      <div style={{
-                        marginTop: '30px',
-                        fontFamily: 'Comfortaa, sans-serif',
-                        fontSize: '22px',
-                        fontWeight: 'bold',
-                        color: '#406A46',
-                        lineHeight: '1.6',
-                        textAlign: 'left',
-                        flexShrink: 0
-                      }}>
-                        Step by step, parts of the Danube floodplain are being reconnected to the river. Old side arms are reopened, forests and wetlands are restored, and natural flooding is allowed again wherever possible. These measures bring back habitats for fish, birds, and plants, while also helping people — by storing floodwaters, improving water quality, providing water during droughts, and offering space for recreation. These restoration Measures are called Nature-based Solution.
-                      </div>
                     </div>
                     
-                    {/* Right side - Activity 2 content (1/3) */}
-                    <div style={{ width: '33.33%', flexShrink: 0 }} className="flex flex-col justify-start pt-4">
-                      {/* Activity 2 title with pointer icon - Centered */}
-                      <div className="flex items-center justify-center mb-6">
-                        <img 
-                          src="/assets/icons/pointer.png" 
-                          alt="Pointer" 
-                          style={{ 
-                            width: '57px', 
-                            height: '57px',
-                            marginRight: '16px'
-                          }}
-                        />
-                        <h3 style={{ 
-                          fontFamily: 'Comfortaa, sans-serif',
-                          fontSize: '48px', 
-                          fontWeight: 'bold', 
-                          color: '#406A46',
-                          margin: 0,
-                          lineHeight: '1.1'
-                        }}>
-                          Activity 2
-                        </h3>
-                      </div>
-                      
-                      {/* White space separator */}
-                      <div style={{ height: '20px' }}></div>
-                      
-                      {/* Activity description - Centered */}
-                      <div style={{ 
-                        fontFamily: 'Comfortaa, sans-serif',
-                        fontSize: '24px', 
-                        fontWeight: 'bold', 
-                        color: '#406A46',
-                        lineHeight: '1.4',
-                        textAlign: 'center',
-                        marginBottom: '24px'
-                      }}>
-                        To solve societal problems with this Nature-based Solution, you can now explore suitable restoration measures: each picture shows one way how people and nature may work together.
-                        <br /><br />
-                        At the bottom, you will find a list with six measures. Can you match the number of the measure from the list with the respective image that shows it?
-                      </div>
-                      
+                    {/* Right side - Activity 2 content (1/3) - Sticky positioned to align with image */}
+                    <div style={{ width: '33.33%', position: 'sticky', top: '100px', alignSelf: 'flex-start' }} className="flex flex-col justify-start pt-4">
                       {/* Score Display */}
                       {showValidation && (
                         <div style={{
@@ -1264,6 +1265,21 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                         })}
                       </div>
                     </div>
+                  </div>
+                  
+                  {/* Descriptive text below image and buttons - Full width */}
+                  <div style={{
+                    marginTop: '30px',
+                    width: '100%',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '22px',
+                    fontWeight: 'bold',
+                    color: '#406A46',
+                    lineHeight: '1.6',
+                    textAlign: 'left',
+                    flexShrink: 0
+                  }}>
+                    Step by step, parts of the Danube floodplain are being reconnected to the river. Old side arms are reopened, forests and wetlands are restored, and natural flooding is allowed again wherever possible. These measures bring back habitats for fish, birds, and plants, while also helping people — by storing floodwaters, improving water quality, providing water during droughts, and offering space for recreation. These restoration Measures are called Nature-based Solution.
                   </div>
                 </>
               ) : (
@@ -1642,21 +1658,19 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
             >
               {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
-                const isDisabled = (currentPage === 2 || currentPage === 3) && !allItemsPlaced && pageNum !== currentPage;
                 
                 return (
                   <button
                     key={index}
-                    onClick={() => !isDisabled && setCurrentPage(pageNum)}
+                    onClick={() => setCurrentPage(pageNum)}
                     className="transition-all duration-300 p-0 border-0 bg-transparent"
                     aria-label={`Go to page ${pageNum}`}
-                    disabled={isDisabled}
                     style={{ 
                       background: 'none', 
                       border: 'none', 
                       padding: 0,
-                      cursor: isDisabled ? 'not-allowed' : 'pointer',
-                      opacity: isDisabled ? 0.4 : 1
+                      cursor: 'pointer',
+                      opacity: 1
                     }}
                   >
                     <div

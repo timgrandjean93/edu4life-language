@@ -349,6 +349,52 @@ const hiddenIconsData: Record<string, {
                    currentPage === 1 ? 'Nature\'s presents offered by the Danube and its floodplains' :
                    'Discover the hidden services of the floodplain!'}
                 </motion.h1>
+                
+                {/* Activity description - Only for page 1 */}
+                {currentPage === 1 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      color: '#406A46',
+                      lineHeight: '1.4',
+                      textAlign: 'center',
+                      marginTop: '20px',
+                      marginBottom: '10px',
+                      width: '100%',
+                      padding: '0 20px'
+                    }}
+                  >
+                    <div className="flex items-center justify-center mb-4">
+                      <img 
+                        src="/assets/icons/pointer.png" 
+                        alt="Pointer" 
+                        style={{ 
+                          width: '60px', 
+                          height: '60px',
+                          marginRight: '16px'
+                        }}
+                      />
+                      <h3 style={{ 
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontSize: '36px', 
+                        fontWeight: 'bold', 
+                        color: '#406A46',
+                        margin: 0,
+                        lineHeight: '1.1'
+                      }}>
+                        Can you sort nature's services into groups?
+                      </h3>
+                    </div>
+                    <div style={{ color: '#548235' }}>
+                      Please drag and drop each icon to its matching labeled box on the right.
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </div>
           </div>
@@ -538,7 +584,7 @@ const hiddenIconsData: Record<string, {
                 fontWeight: 'bold',
                 color: '#548235',
                 textAlign: 'center',
-                marginBottom: '30px',
+                marginBottom: '20px',
                 width: '100%',
                 lineHeight: '1.6'
               }}>
@@ -551,60 +597,17 @@ const hiddenIconsData: Record<string, {
                 • <span style={{ color: '#406BB8' }}>Cultural services</span> – benefits that enrich our lives, such as recreation, learning, and cultural traditions.
               </div>
 
-
               {/* Main Drag and Drop Area */}
-              <div className="flex gap-8 drag-drop-container" style={{ minHeight: '500px' }}>
+              <div className="flex gap-8 drag-drop-container" style={{ minHeight: '500px', alignItems: 'center' }}>
                 {/* Left Side - Draggable Icons */}
-                <div style={{ width: '45%' }}>
-                  {/* Pointer Icon */}
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    marginBottom: '20px'
-                  }}>
-                    <img 
-                      src="/assets/icons/pointer.png"
-                      alt="Pointer"
-                      style={{
-                        width: '60px',
-                        height: '60px'
-                      }}
-                    />
-                  </div>
-                  
-                  {/* Activity Question */}
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '36px',
-                    fontWeight: 'bold',
-                    color: '#406A46',
-                    marginBottom: '16px',
-                    textAlign: 'center'
-                  }}>
-                    Can you sort nature's services into groups?
-                  </div>
-                  
-                  {/* Activity Instructions */}
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '24px',
-                    fontWeight: 'bold',
-                    color: '#548235',
-                    marginBottom: '24px',
-                    textAlign: 'center',
-                    lineHeight: '1.4'
-                  }}>
-                    Please drag and drop each icon to its matching labeled box on the right.
-                  </div>
-                  
+                <div style={{ width: '45%', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '500px' }}>
                   {/* Icons Container with Waves Background */}
                   <div 
                     className="waves-container"
                     style={{
                       position: 'relative',
                       width: '60%',
-                      height: '50%',
-                      margin: '0 auto',
+                      aspectRatio: '1 / 1',
                       backgroundImage: 'url(/assets/components/aesthetics/WAVES.png)',
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
@@ -1213,25 +1216,19 @@ const hiddenIconsData: Record<string, {
             >
               {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
-                const isDisabled = !allItemsPlaced && pageNum !== currentPage && currentPage === 1;
                 
                 return (
                   <button
                     key={index}
-                    onClick={() => {
-                      if (!isDisabled) {
-                        setCurrentPage(pageNum);
-                      }
-                    }}
+                    onClick={() => setCurrentPage(pageNum)}
                     className="transition-all duration-300 p-0 border-0 bg-transparent"
                     aria-label={`Go to page ${pageNum}`}
-                    disabled={isDisabled}
                     style={{ 
                       background: 'none', 
                       border: 'none', 
                       padding: 0,
-                      cursor: isDisabled ? 'not-allowed' : 'pointer',
-                      opacity: isDisabled ? 0.4 : 1
+                      cursor: 'pointer',
+                      opacity: 1
                     }}
                   >
                     <div

@@ -1592,35 +1592,33 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 </div>
               </div>
             ) : (
-              // Pagination only when not on completion page
+              // Pagination only when not on completion page - All pages always accessible
               Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
-                const canNavigate = pageNum === 1 || (pageNum === 2 && submitted) || (pageNum === 3 && puzzleSubmitted);
                 return (
                   <button
                     key={index}
-                    onClick={() => { if (canNavigate) setCurrentPage(pageNum); }}
-                  disabled={!canNavigate}
-                  className="transition-all duration-300 p-0 border-0 bg-transparent"
-                  aria-label={`Go to page ${pageNum}`}
-                  style={{ 
-                    background: 'none', 
-                    border: 'none', 
-                    padding: 0,
-                    cursor: canNavigate ? 'pointer' : 'default',
-                    opacity: canNavigate ? 1 : 0.5
-                  }}
-                >
-                  <div
-                    className="rounded-full transition-all duration-300"
-                    style={{
-                      width: '14px',
-                      height: '14px',
-                      backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
+                    onClick={() => setCurrentPage(pageNum)}
+                    className="transition-all duration-300 p-0 border-0 bg-transparent"
+                    aria-label={`Go to page ${pageNum}`}
+                    style={{ 
+                      background: 'none', 
+                      border: 'none', 
+                      padding: 0,
+                      cursor: 'pointer',
+                      opacity: 1
                     }}
-                  />
-                </button>
-              );
+                  >
+                    <div
+                      className="rounded-full transition-all duration-300"
+                      style={{
+                        width: '14px',
+                        height: '14px',
+                        backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
+                      }}
+                    />
+                  </button>
+                );
               })
             )}
           </motion.div>
