@@ -116,23 +116,67 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
           {currentPage === 0 ? (
             // Intro Page: Introduction with two illustrations (rain and dry), description, and CTA button
             <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
+              {/* Question with Pointer Icon */}
+              <div className="flex items-center justify-center mb-6" style={{ width: '100%' }}>
+                <img 
+                  src="/assets/icons/pointer.png"
+                  alt="Pointer"
+                  style={{
+                    width: '54px',
+                    height: '54px',
+                    marginRight: '20px'
+                  }}
+                />
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  color: '#406A46',
+                  textAlign: 'center'
+                }}>
+                   Can you notice the difference between the illustrations?
+                </div>
+              </div>
+
               {/* Two Illustrations Side by Side */}
-              <div className="flex gap-8 justify-center mb-8" style={{ width: '100%', maxWidth: '1200px' }}>
+              <div className="flex gap-8 justify-center items-stretch" style={{ width: '100%', maxWidth: '1200px', marginBottom: '48px' }}>
                 {/* Left Illustration - Rain */}
-                <div style={{ flex: 1, maxWidth: '600px' }}>
+                <div style={{ flex: 1, maxWidth: '600px', display: 'flex', flexDirection: 'column' }}>
                   <img 
                     src="/assets/components/LivingEnvironment/rain.png"
                     alt="Floodplain in rainy season"
-                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                    style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block', flex: '1 0 auto' }}
                   />
+                  <div style={{
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '18px',
+                    fontWeight: '600',
+                    color: '#406A46',
+                    textAlign: 'center',
+                    marginTop: '12px',
+                    flex: '0 0 auto'
+                  }}>
+                    Floodplain during a flooding event (wet season)
+                  </div>
                 </div>
                 {/* Right Illustration - Dry */}
-                <div style={{ flex: 1, maxWidth: '600px' }}>
+                <div style={{ flex: 1, maxWidth: '600px', display: 'flex', flexDirection: 'column' }}>
                   <img 
                     src="/assets/components/LivingEnvironment/dry.png"
                     alt="Floodplain in dry season"
-                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                    style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block', flex: '1 0 auto' }}
                   />
+                  <div style={{
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '18px',
+                    fontWeight: '600',
+                    color: '#406A46',
+                    textAlign: 'center',
+                    marginTop: '12px',
+                    flex: '0 0 auto'
+                  }}>
+                    Floodplain during dry conditions
+                  </div>
                 </div>
               </div>
 
@@ -284,22 +328,6 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              {/* EU Disclaimer - Centered at bottom of intro page */}
-              <div style={{
-                width: '100%',
-                textAlign: 'center',
-              }}>
-                <img 
-                  src="/assets/icons/EU.png"
-                  alt="EU Disclaimer"
-                  style={{
-                    height: '96px',
-                    width: 'auto',
-                    opacity: 0.7
-                  }}
-                />
               </div>
             </div>
           ) : currentPage <= 3 ? (

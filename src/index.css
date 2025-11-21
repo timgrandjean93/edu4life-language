@@ -82,15 +82,21 @@ body {
 
 /* Default padding for all pages except homepage */
 .page-container {
-  padding: 80px 100px 0 100px;
-  min-height: 100vh;
+  padding: 80px 100px 80px 100px;
+  min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 /* Homepage should not have this padding */
 .homepage-container {
   padding: 0;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 0;
 }
 
 /* Main title styling - consistent across all pages */
@@ -113,6 +119,14 @@ body {
   
   .main-title {
     font-size: 36px;
+  }
+  
+  .eu-disclaimer-bar {
+    padding: 6px 20px !important;
+  }
+  
+  .eu-disclaimer-bar img {
+    height: 60px !important;
   }
 }
 

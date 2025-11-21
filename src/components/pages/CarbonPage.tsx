@@ -201,6 +201,16 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
     setDraggedLabel(null);
   };
 
+  const handleRemoveLabel = (zoneId: string) => {
+    if (submitted) return;
+    
+    setPlacements(prev => {
+      const newPlacements = { ...prev };
+      delete newPlacements[zoneId];
+      return newPlacements;
+    });
+  };
+
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
   };
@@ -752,32 +762,16 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   </div>
                 </div>
               </div>
-              
-              {/* EU Disclaimer - Centered at bottom of intro page */}
-              <div style={{
-                width: '100%',
-                textAlign: 'center',
-              }}>
-                <img 
-                  src="/assets/icons/EU.png"
-                  alt="EU Disclaimer"
-                  style={{
-                    height: '96px',
-                    width: 'auto',
-                    opacity: 0.7
-                  }}
-                />
-              </div>
             </div>
           ) : currentPage === 1 ? (
             <>
               {/* Page 1 Content - Full Layout */}
               
               {/* Two Column Layout: 1/3 Left with Text and Buttons, 2/3 Right with Image */}
-              <div className="flex" style={{ gap: '40px', maxWidth: '1400px', margin: '0 auto', alignItems: 'flex-start' }}>
+              <div className="flex" style={{ gap: '40px', maxWidth: '1400px', margin: '0 auto', alignItems: 'flex-start', position: 'relative' }}>
                 
                 {/* Left Column (1/3) - Text and Draggable Labels */}
-                <div style={{ width: '33.333%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ width: '33.333%', display: 'flex', flexDirection: 'column', gap: '20px', maxHeight: 'calc(100vh - 120px)', overflowY: 'auto', paddingRight: '10px' }}>
                   
                   {/* Pointer Icon - Centered */}
                   <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
@@ -792,10 +786,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   <h2 style={{ 
                     fontFamily: 'Comfortaa, sans-serif',
                     fontWeight: 'bold',
-                    fontSize: '36px',
+                    fontSize: '28px',
                     color: '#406A46',
                     textAlign: 'center',
-                    marginBottom: '20px',
+                    marginBottom: '15px',
                     lineHeight: '1.2'
                   }}>
                   Match the ecosystem icons
@@ -805,15 +799,15 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   <div style={{ 
                     fontFamily: 'Comfortaa, sans-serif',
                     fontWeight: 'bold',
-                    fontSize: '24px',
+                    fontSize: '18px',
                     color: '#406A46',
                     lineHeight: '1.4',
-                    marginBottom: '20px'
+                    marginBottom: '15px'
                   }}>
                     <p style={{ margin: 0 }}>
                       Look at the icons on top of the graph – each shows a different ecosystem.
                     </p>
-                    <p style={{ margin: '10px 0 0 0' }}>
+                    <p style={{ margin: '8px 0 0 0' }}>
                       Your challenge: <span style={{ color: '#9F8B68' }}>Drag the correct label from below to the matching question mark.</span>
                 </p>
               </div>
@@ -844,12 +838,12 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                             opacity: isDragging ? 0.5 : (isUsed ? 0.5 : 1),
                             textAlign: 'center',
                             fontWeight: 'bold',
-                            fontSize: '14px',
+                            fontSize: '12px',
                             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            minHeight: '50px'
+                            minHeight: '40px'
                           }}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -863,13 +857,14 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 </div>
 
                 {/* Right Column (2/3) - Image with Drop Zones */}
-                <div style={{ width: '66.667%' }}>
+                <div style={{ width: '66.667%', position: 'sticky', top: '100px', alignSelf: 'flex-start', display: 'flex', flexDirection: 'column', justifyContent: 'center', maxHeight: 'calc(100vh - 120px)' }}>
                   <div className="relative" style={{ width: '100%' }}>
                 <img 
                   src="/assets/components/carbon/carbon.png"
                   alt="Carbon pools ecosystem map"
-                  className="w-full h-auto rounded-lg shadow-lg"
+                  className="w-full h-auto rounded-lg shadow-lg transition-transform duration-300"
                   style={{ backgroundColor: 'transparent', display: 'block' }}
+                  id="carbon-image"
                 />
                 
                 {/* Drop Zones */}
@@ -883,6 +878,26 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       key={zone.id}
                       onDragOver={handleDragOver}
                       onDrop={() => handleDrop(zone.id)}
+                      onClick={() => placement && !submitted && handleRemoveLabel(zone.id)}
+                      onMouseEnter={() => {
+                        if (!submitted) {
+                          const img = document.getElementById('carbon-image');
+                          if (img) {
+                            // Calculate icon position (icons are above the drop zones, around y: 10-20%)
+                            const iconY = Math.max(5, zone.y - 70);
+                            img.style.transform = 'scale(1.2)';
+                            img.style.transformOrigin = `${zone.x}% ${iconY}%`;
+                            img.style.transition = 'transform 0.3s ease';
+                          }
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        const img = document.getElementById('carbon-image');
+                        if (img) {
+                          img.style.transform = 'scale(1)';
+                          img.style.transition = 'transform 0.3s ease';
+                        }
+                      }}
                       className="absolute rounded-lg border-2 border-dashed transition-all duration-300"
                       style={{
                         left: `${zone.x}%`,
@@ -898,11 +913,13 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        cursor: draggedLabel && !submitted ? 'copy' : 'default',
+                        cursor: placement && !submitted ? 'pointer' : (draggedLabel && !submitted ? 'copy' : 'default'),
                         fontSize: '10px',
                         fontWeight: 'bold',
-                        color: placement ? '#1e3a8a' : '#666'
+                        color: placement ? '#1e3a8a' : '#666',
+                        zIndex: 10
                       }}
+                      title={placement && !submitted ? 'Click to remove label' : ''}
                     >
                       {placement ? ecosystemLabels.find(l => l.id === placement)?.label : '?'}
                     </div>
@@ -918,7 +935,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     <p style={{ 
                       fontFamily: 'Comfortaa, sans-serif',
                       fontWeight: 'bold',
-                      fontSize: '24px',
+                      fontSize: '16px',
                       color: '#707070',
                       margin: 0,
                       lineHeight: '1.4'

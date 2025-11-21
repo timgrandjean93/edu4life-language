@@ -459,7 +459,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
           className="max-w-6xl mx-auto"
         >
           {currentPage === 0 ? (
-            // Intro Page: Two illustrations, description, CTA, downloads, and EU disclaimer
+            // Intro Page: Two illustrations, description, CTA, downloads
             <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
               {/* Two Illustrations Side by Side */}
               <div className="flex gap-8 justify-center mb-8" style={{ width: '100%', maxWidth: '1200px', alignItems: 'flex-end' }}>
@@ -623,22 +623,6 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* EU Disclaimer */}
-              <div style={{
-                width: '100%',
-                textAlign: 'center'
-              }}>
-                <img
-                  src="/assets/icons/EU.png"
-                  alt="EU Disclaimer"
-                  style={{
-                    height: '96px',
-                    width: 'auto',
-                    opacity: 0.7
-                  }}
-                />
               </div>
             </div>
           ) : currentPage <= 3 ? (

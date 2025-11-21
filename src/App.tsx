@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { GameContainer } from './components/GameContainer';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { CookieConsent } from './components/CookieConsent';
 import { HomePage } from './components/HomePage';
 import { RiparianPage } from './components/pages/RiparianPage';
 import { MapWetlandPage } from './components/pages/MapWetlandPage';
@@ -17,14 +19,49 @@ import { WetlandEduRepoPage } from './components/pages/WetlandEduRepoPage';
 import { TreatmentWetlandsPage } from './components/pages/TreatmentWetlandsPage';
 import { BlueGreenSpace4AllPage } from './components/pages/BlueGreenSpace4AllPage';
 import { EnvironmentalToolboxPage } from './components/pages/EnvironmentalToolboxPage';
-import { trackPageView } from './analytics';
+import { PrivacyPolicyPage } from './components/pages/PrivacyPolicyPage';
+import { CookiePolicyPage } from './components/pages/CookiePolicyPage';
+import { TermsOfUsePage } from './components/pages/TermsOfUsePage';
+import { trackPageView, initAnalytics, revokeAnalytics } from './analytics';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse'>('home');
+  const [showCookieBanner, setShowCookieBanner] = useState<boolean>(() => {
+    // Check if user has already made a choice
+    const stored = localStorage.getItem('cookie_consent');
+    return stored === null;
+  });
 
-  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox') => {
+  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse') => {
     setCurrentPage(page);
   };
+
+  // Handle cookie consent changes
+  const handleConsentChange = (accepted: boolean) => {
+    setShowCookieBanner(false);
+    const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
+    if (accepted) {
+      initAnalytics(measurementId, true);
+    } else {
+      revokeAnalytics();
+    }
+  };
+
+  // Listen for privacy policy and cookie policy link clicks from cookie banner
+  useEffect(() => {
+    const handleShowPrivacyPolicy = () => {
+      navigateTo('privacy');
+    };
+    const handleShowCookiePolicy = () => {
+      navigateTo('cookies');
+    };
+    window.addEventListener('showPrivacyPolicy', handleShowPrivacyPolicy);
+    window.addEventListener('showCookiePolicy', handleShowCookiePolicy);
+    return () => {
+      window.removeEventListener('showPrivacyPolicy', handleShowPrivacyPolicy);
+      window.removeEventListener('showCookiePolicy', handleShowCookiePolicy);
+    };
+  }, []);
 
   const renderCurrentPage = () => {
     switch (currentPage) {
@@ -137,6 +174,24 @@ function App() {
             onHomeClick={() => navigateTo('home')}
           />
         );
+      case 'privacy':
+        return (
+          <PrivacyPolicyPage
+            onHomeClick={() => navigateTo('home')}
+          />
+        );
+      case 'cookies':
+        return (
+          <CookiePolicyPage
+            onHomeClick={() => navigateTo('home')}
+          />
+        );
+      case 'termsofuse':
+        return (
+          <TermsOfUsePage
+            onHomeClick={() => navigateTo('home')}
+          />
+        );
       case 'home':
       default:
         return (
@@ -198,6 +253,9 @@ function App() {
       treatmentwetlands: 'Treatment Wetlands Page',
       bluegreen: 'Blue-Green Space 4 All',
       environmentalToolbox: 'Environmental Toolbox',
+      privacy: 'Privacy Policy',
+      cookies: 'Cookie Policy',
+      termsofuse: 'Terms of Use',
     };
     // Update document title and send page view to analytics
     document.title = titleMap[currentPage];
@@ -207,7 +265,22 @@ function App() {
   return (
     <GameContainer>
       <Header onNavigate={navigateTo} />
-      {renderCurrentPage()}
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        minHeight: '100vh',
+        paddingBottom: showCookieBanner ? '140px' : '0'
+      }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          {renderCurrentPage()}
+        </div>
+        <Footer 
+          onPrivacyClick={() => navigateTo('privacy')} 
+          onCookiePolicyClick={() => navigateTo('cookies')}
+          onTermsOfUseClick={() => navigateTo('termsofuse')}
+        />
+      </div>
+      {showCookieBanner && <CookieConsent onConsentChange={handleConsentChange} />}
     </GameContainer>
   );
 }

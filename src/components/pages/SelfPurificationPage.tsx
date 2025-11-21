@@ -252,6 +252,94 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
   const [hoveredArea, setHoveredArea] = React.useState<string | null>(null);
   const [showQuizModal, setShowQuizModal] = React.useState(false);
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
+  
+  // Refs for image containers to measure width
+  const imageContainerRef1 = React.useRef<HTMLDivElement>(null);
+  const imageContainerRef2 = React.useRef<HTMLDivElement>(null);
+  const imageContainerRef3 = React.useRef<HTMLDivElement>(null);
+  const imageContainerRef4 = React.useRef<HTMLDivElement>(null);
+  const imageContainerRef5 = React.useRef<HTMLDivElement>(null);
+  const imageContainerRef6 = React.useRef<HTMLDivElement>(null);
+  
+  // State to track container widths
+  const [containerWidth1, setContainerWidth1] = React.useState(1600);
+  const [containerWidth2, setContainerWidth2] = React.useState(1600);
+  const [containerWidth3, setContainerWidth3] = React.useState(1600);
+  const [containerWidth4, setContainerWidth4] = React.useState(1600);
+  const [containerWidth5, setContainerWidth5] = React.useState(1600);
+  const [containerWidth6, setContainerWidth6] = React.useState(1600);
+  
+  // Function to calculate font size based on container width
+  const getFontSize = (containerWidth: number) => {
+    // Base calculation: smaller containers get smaller fonts
+    // For a 1600px container, use 14px
+    // Scale down proportionally
+    const baseWidth = 1600;
+    const baseFontSize = 14;
+    const minFontSize = 8;
+    const maxFontSize = 14;
+    
+    const fontSize = (containerWidth / baseWidth) * baseFontSize;
+    return Math.max(minFontSize, Math.min(maxFontSize, fontSize));
+  };
+  
+  // Function to calculate padding based on container width
+  const getPadding = (containerWidth: number) => {
+    const baseWidth = 1600;
+    const basePadding = 15;
+    const minPadding = 6;
+    const maxPadding = 15;
+    
+    const padding = (containerWidth / baseWidth) * basePadding;
+    const paddingValue = Math.max(minPadding, Math.min(maxPadding, padding));
+    return `${paddingValue}px ${Math.max(8, Math.min(20, paddingValue * 1.3))}px`;
+  };
+  
+  // Update container widths on resize
+  React.useEffect(() => {
+    const updateWidths = () => {
+      if (imageContainerRef1.current) {
+        const rect = imageContainerRef1.current.getBoundingClientRect();
+        setContainerWidth1(rect.width);
+      }
+      if (imageContainerRef2.current) {
+        const rect = imageContainerRef2.current.getBoundingClientRect();
+        setContainerWidth2(rect.width);
+      }
+      if (imageContainerRef3.current) {
+        const rect = imageContainerRef3.current.getBoundingClientRect();
+        setContainerWidth3(rect.width);
+      }
+      if (imageContainerRef4.current) {
+        const rect = imageContainerRef4.current.getBoundingClientRect();
+        setContainerWidth4(rect.width);
+      }
+      if (imageContainerRef5.current) {
+        const rect = imageContainerRef5.current.getBoundingClientRect();
+        setContainerWidth5(rect.width);
+      }
+      if (imageContainerRef6.current) {
+        const rect = imageContainerRef6.current.getBoundingClientRect();
+        setContainerWidth6(rect.width);
+      }
+    };
+    
+    // Initial update
+    const timer = setTimeout(updateWidths, 100);
+    
+    // Update on resize
+    window.addEventListener('resize', updateWidths);
+    
+    // Also update when images load
+    window.addEventListener('load', updateWidths);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateWidths);
+      window.removeEventListener('load', updateWidths);
+    };
+  }, [currentPage]);
+  
   // Set page background
   React.useEffect(() => {
     const html = document.documentElement;
@@ -527,28 +615,12 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   </div>
                 </div>
               </div>
-              
-              {/* EU Disclaimer - Centered at bottom of intro page */}
-              <div style={{
-                width: '100%',
-                textAlign: 'center',
-              }}>
-                <img 
-                  src="/assets/icons/EU.png"
-                  alt="EU Disclaimer"
-                  style={{
-                    height: '96px',
-                    width: 'auto',
-                    opacity: 0.7
-                  }}
-                />
-              </div>
             </div>
           ) : currentPage === 1 ? (
             <>
               {/* Page 1 Content - Nutrients Image with Hover Areas */}
               <div className="flex justify-center items-start">
-                <div className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
+                <div ref={imageContainerRef1} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
                   <img 
                     src="/assets/components/nutrients/image1.png"
                     alt="Nutrients in wetlands"
@@ -603,14 +675,17 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             width: '100%',
                             height: '100%',
                             zIndex: 20,
-                            fontSize: '14px',
+                            fontSize: `${getFontSize(containerWidth1)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
                             lineHeight: '1.2',
-                            padding: '15px 20px',
+                            padding: getPadding(containerWidth1),
                             overflow: 'hidden',
-                            wordWrap: 'break-word'
+                            wordWrap: 'break-word',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
                           }}
                         >
                           <span dangerouslySetInnerHTML={{ __html: area.text }} />
@@ -625,7 +700,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
             <>
               {/* Page 2 Content - Nutrients Image 2 with Hover Areas */}
               <div className="flex justify-center items-start">
-                <div className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
+                <div ref={imageContainerRef2} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
                   <img 
                     src="/assets/components/nutrients/image2.png"
                     alt="Nutrients in wetlands"
@@ -702,14 +777,17 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             width: '100%',
                             height: '100%',
                             zIndex: 20,
-                            fontSize: '14px',
+                            fontSize: `${getFontSize(containerWidth2)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
                             lineHeight: '1.2',
-                            padding: '15px 20px',
+                            padding: getPadding(containerWidth2),
                             overflow: 'hidden',
-                            wordWrap: 'break-word'
+                            wordWrap: 'break-word',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
                           }}
                         >
                           <span dangerouslySetInnerHTML={{ __html: area.text }} />
@@ -815,7 +893,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
             <>
               {/* Page 3 Content - Nutrients Image 3 with Hover Areas */}
               <div className="flex justify-center items-start">
-                <div className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
+                <div ref={imageContainerRef3} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
                   <img 
                     src="/assets/components/nutrients/image3.png"
                     alt="Additional nitrogen retention by floodplains"
@@ -892,14 +970,17 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             width: '100%',
                             height: '100%',
                             zIndex: 20,
-                            fontSize: '14px',
+                            fontSize: `${getFontSize(containerWidth3)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
                             lineHeight: '1.2',
-                            padding: '15px 20px',
+                            padding: getPadding(containerWidth3),
                             overflow: 'hidden',
-                            wordWrap: 'break-word'
+                            wordWrap: 'break-word',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
                           }}
                         >
                           <span dangerouslySetInnerHTML={{ __html: area.text }} />
@@ -999,7 +1080,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
             <>
               {/* Page 4 Content - Nutrients Image 4 with Hover Areas */}
               <div className="flex justify-center items-start">
-                <div className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
+                <div ref={imageContainerRef4} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
                   <img 
                     src="/assets/components/nutrients/image4.png"
                     alt="Nitrogen sources and processing in floodplains"
@@ -1054,14 +1135,17 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             width: '100%',
                             height: '100%',
                             zIndex: 20,
-                            fontSize: '14px',
+                            fontSize: `${getFontSize(containerWidth4)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
                             lineHeight: '1.2',
-                            padding: '15px 20px',
+                            padding: getPadding(containerWidth4),
                             overflow: 'hidden',
-                            wordWrap: 'break-word'
+                            wordWrap: 'break-word',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
                           }}
                         >
                           <span dangerouslySetInnerHTML={{ __html: area.text }} />
@@ -1076,7 +1160,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
             <>
               {/* Page 5 Content - Nutrients Image 5 with Hover Areas */}
               <div className="flex justify-center items-start">
-                <div className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
+                <div ref={imageContainerRef5} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
                   <img 
                     src="/assets/components/nutrients/image5.png"
                     alt="Retention of phosphorous by rivers"
@@ -1131,14 +1215,17 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             width: '100%',
                             height: '100%',
                             zIndex: 20,
-                            fontSize: '14px',
+                            fontSize: `${getFontSize(containerWidth5)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
                             lineHeight: '1.2',
-                            padding: '15px 20px',
+                            padding: getPadding(containerWidth5),
                             overflow: 'hidden',
-                            wordWrap: 'break-word'
+                            wordWrap: 'break-word',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
                           }}
                         >
                           <span dangerouslySetInnerHTML={{ __html: area.text }} />
@@ -1153,7 +1240,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
             <>
               {/* Page 6 Content - Nutrients Image 6 with Hover Areas and Quiz */}
               <div className="flex justify-center items-start">
-                <div className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
+                <div ref={imageContainerRef6} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
                   <img 
                     src="/assets/components/nutrients/image6.png"
                     alt="Additional retention of phosphorous by floodplains"
@@ -1230,14 +1317,17 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             width: '100%',
                             height: '100%',
                             zIndex: 20,
-                            fontSize: '14px',
+                            fontSize: `${getFontSize(containerWidth6)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
                             lineHeight: '1.2',
-                            padding: '15px 20px',
+                            padding: getPadding(containerWidth6),
                             overflow: 'hidden',
-                            wordWrap: 'break-word'
+                            wordWrap: 'break-word',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
                           }}
                         >
                           <span dangerouslySetInnerHTML={{ __html: area.text }} />

@@ -812,22 +812,6 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   </div>
                 </div>
               </div>
-
-              {/* EU Disclaimer */}
-              <div style={{
-                width: '100%',
-                textAlign: 'center'
-              }}>
-                <img
-                  src="/assets/icons/EU.png"
-                  alt="EU Disclaimer"
-                  style={{
-                    height: '96px',
-                    width: 'auto',
-                    opacity: 0.7
-                  }}
-                />
-              </div>
             </div>
           ) : (
             <>

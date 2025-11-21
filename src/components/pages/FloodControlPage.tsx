@@ -486,22 +486,6 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   </div>
                 </div>
               </div>
-              
-              {/* EU Disclaimer - Centered at bottom of intro page */}
-              <div style={{
-                width: '100%',
-                textAlign: 'center',
-              }}>
-                <img 
-                  src="/assets/icons/EU.png"
-                  alt="EU Disclaimer"
-                  style={{
-                    height: '96px',
-                    width: 'auto',
-                    opacity: 0.7
-                  }}
-                />
-              </div>
             </div>
           ) : currentPage === 1 ? (
             <>
