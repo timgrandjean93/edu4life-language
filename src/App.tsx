@@ -293,7 +293,7 @@ function App() {
         minHeight: '100vh',
         paddingBottom: showCookieBanner ? '140px' : '0'
       }}>
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ flex: currentPage === 'home' ? '0 0 auto' : 1, display: 'flex', flexDirection: 'column' }}>
           {renderCurrentPage()}
         </div>
         <Footer 

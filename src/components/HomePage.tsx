@@ -283,9 +283,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
       width: '100%',
       maxWidth: '100vw',
       overflowX: 'hidden',
-      overflowY: 'auto',
-      minHeight: '100vh',
-      paddingBottom: '0'
+      overflowY: 'visible',
+      flex: '0 0 auto',
+      display: 'flex',
+      flexDirection: 'column'
     }}>
       {showRotationMessage && <RotationMessage />}
       
