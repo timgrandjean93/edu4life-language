@@ -63,7 +63,7 @@ const POINTERS: Array<{
 // Menu items configuration
 const MENU_ITEMS: Array<{
   key: keyof typeof MENU_BASE;
-  page: Parameters<HomePageProps['onNavigate']>[0];
+  page: NonNullable<Parameters<NonNullable<HomePageProps['onNavigate']>>[0]>;
   imageSrc: string;
   alt: string;
 }> = [
@@ -186,7 +186,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
   // Render menu button helper
   const renderMenuButton = useCallback((item: typeof MENU_ITEMS[0]) => {
     const menuItem = MENU_BASE[item.key];
-    if (!menuItem || !('x' in menuItem)) return null;
+    if (!menuItem || !('x' in menuItem) || !('width' in menuItem)) return null;
 
     return (
       <button

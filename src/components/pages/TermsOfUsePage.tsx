@@ -4,7 +4,7 @@ interface TermsOfUsePageProps {
   onHomeClick: () => void;
 }
 
-export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick }) => {
+export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _onHomeClick }) => {
   return (
     <div className="page-container" style={{ paddingTop: '120px' }}>
       <h1 className="main-title" style={{ marginBottom: '40px' }}>

@@ -4,7 +4,7 @@ interface CookiePolicyPageProps {
   onHomeClick: () => void;
 }
 
-export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick }) => {
+export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick: _onHomeClick }) => {
   return (
     <div className="page-container" style={{ paddingTop: '120px' }}>
       <h1 className="main-title" style={{ marginBottom: '40px' }}>
