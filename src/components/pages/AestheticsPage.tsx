@@ -21,6 +21,19 @@ export const AestheticsPage: React.FC<AestheticsPageProps> = ({
   const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
   const [iconPositions, setIconPositions] = React.useState<Record<string, { x: number; y: number }>>({});
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  // Track window width for responsive navbar
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate if there's enough space for download and next topic buttons
+  const hasEnoughSpace = windowWidth >= 1400;
   
   // Page 2 - Magnifying Glass states
   const [revealedIcons, setRevealedIcons] = React.useState<Set<string>>(new Set());
@@ -79,7 +92,7 @@ const hiddenIconsData: Record<string, {
     
     setMagnifierPosition({ x, y });
 
-    // Time-based reveal: require 3s inside discovery zone
+    // Time-based reveal: require 1.5s inside discovery zone
     const now = performance.now();
     const dt = lastMoveTimeRef.current ? now - lastMoveTimeRef.current : 0;
     lastMoveTimeRef.current = now;
@@ -94,7 +107,7 @@ const hiddenIconsData: Record<string, {
       const inside = distance <= 15; // same radius used for showing magnified icons
       if (inside) {
         durations[iconId] = (durations[iconId] || 0) + dt;
-        if (durations[iconId] >= 3000) {
+        if (durations[iconId] >= 1000) {
           setRevealedIcons(prev => new Set([...prev, iconId]));
         }
       } else {
@@ -330,9 +343,9 @@ const hiddenIconsData: Record<string, {
   }, []);
 
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh', overflowX: 'visible', paddingBottom: '0px' }}>
       {/* Header with title and home button */}
-      <div className="relative z-50">
+      <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
@@ -389,7 +402,7 @@ const hiddenIconsData: Record<string, {
                       }}>
                         Can you sort nature's services into groups?
                       </h3>
-                    </div>
+              </div>
                     <div style={{ color: '#548235' }}>
                       Please drag and drop each icon to its matching labeled box on the right.
                     </div>
@@ -402,7 +415,7 @@ const hiddenIconsData: Record<string, {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: '120px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: '10px' }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}
@@ -856,14 +869,9 @@ const hiddenIconsData: Record<string, {
                   The Danube floodplain is full of hidden treasures — but some are tricky to see!
                   <br /><br />
                   Use the magnifying glass to explore the landscape and spot the ecosystem service icons.
-                  When you discover one, drag it to the matching label at the edge of the illustration.
+                  When you hover over one with the magnifying glass, it will disappear from the image and appear at the matching label at the edge of the illustration.
                   <br /><br />
                   Together, these services reveal how nature supports our lives every day.
-                </div>
-                
-                {/* Magnifying Glass Icon */}
-                <div>
-                  <img src="/assets/icons/vergrootglas.png" alt="Magnifying Glass" style={{ width: '108px', height: '108px' }} />
                 </div>
               </div>
               
@@ -1086,19 +1094,34 @@ const hiddenIconsData: Record<string, {
         </motion.div>
       </div>
 
-      {/* Pagination and Navigation - Sticky Footer - Only show when not on intro page */}
+      {/* Pagination and Navigation - Sticky Footer - Outside container for full width */}
       {currentPage > 0 && (
       <div className="relative z-10" style={{ 
         position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100vw',
+        marginLeft: 'calc((100% - 100vw) / 2)',
+        backgroundColor: 'rgba(210, 228, 240, 0.95)',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginBottom: '0px',
         flexShrink: 0
       }}>
-        <div className="relative flex justify-between items-center px-4">
+        {/* Top Shadow - Full Width */}
+        <div style={{
+          position: 'absolute',
+          top: '-4px',
+          left: 0,
+          width: '100%',
+          height: '6px',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+          pointerEvents: 'none'
+        }} />
+        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
           {/* Home Button - Left */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ paddingLeft: '16px' }}>
             <button
               onClick={onHomeClick}
               className="home-button relative flex items-center justify-center z-50"
@@ -1106,7 +1129,8 @@ const hiddenIconsData: Record<string, {
                 width: '54px',
                 height: '54px',
                 backgroundColor: 'transparent',
-                border: 'none'
+                border: 'none',
+                cursor: 'pointer'
               }}
             >
               <img 
@@ -1121,42 +1145,52 @@ const hiddenIconsData: Record<string, {
             </button>
           </div>
 
-          {/* Center Section - Pagination and Download Button */}
+          {/* Center Section - Download, Pagination, and Next Topic */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
+            className="flex justify-center items-center"
+            style={{ 
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              transformOrigin: 'center',
+              gap: '50px',
+              transition: 'transform 0.3s ease'
+            }}
+          >
           {currentPage === TOTAL_PAGES && revealedIcons.size === Object.keys(hiddenIconsData).length ? (
             // Completion state: Show download button, pagination, and NEXT TOPIC text
-            <div className="flex items-center justify-center" style={{ position: 'relative' }}>
-              {/* Download Button - 50px left of pagination */}
-              <button
-                onClick={handleDownloadClick}
-                className="download-button relative flex items-center justify-center z-50"
-                style={{
-                  width: '480px',
-                  height: '50px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  marginRight: '50px',
-                  cursor: 'pointer'
-                }}
-              >
-                <img 
-                  src="/assets/icons/download.png" 
-                  alt="Download" 
-                  style={{ 
-                    width: '480px',
-                    height: '50px',
-                    opacity: 1
-                  }}
-                />
-              </button>
+              <>
+                {/* Download Button - left of pagination - Hide if not enough space */}
+                {hasEnoughSpace && (
+                  <button
+                    onClick={handleDownloadClick}
+                    className="download-button relative flex items-center justify-center z-50"
+                    style={{
+                      width: '480px',
+                      height: '50px',
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                        cursor: 'pointer',
+                        flexShrink: 0
+                    }}
+                  >
+                    <img 
+                      src="/assets/icons/download.png" 
+                      alt="Download" 
+                      style={{ 
+                        width: '480px',
+                        height: '50px',
+                        opacity: 1
+                      }}
+                    />
+                  </button>
+                )}
 
-              {/* Pagination Dots */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.1 }}
-                className="flex justify-center items-center"
-                style={{ gap: '14px' }}
-              >
+                {/* Pagination Dots - Perfectly Centered */}
+                <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
                 {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                   const pageNum = index + 1;
                   const isDisabled = false; // All pages accessible when all icons discovered
@@ -1191,29 +1225,25 @@ const hiddenIconsData: Record<string, {
                     </button>
                   );
                 })}
-              </motion.div>
+                </div>
 
-              {/* NEXT TOPIC Text - 50px right of pagination */}
-              <div style={{ marginLeft: '50px' }}>
-                <span style={{ 
-                  fontFamily: 'Comfortaa, sans-serif',
-                  fontWeight: 'bold',
-                  fontSize: '24px',
-                  color: '#406A46'
-                }}>
-                  NEXT TOPIC: Floodplain Art
-                </span>
-              </div>
-            </div>
+                {/* NEXT TOPIC Text - right of pagination - Hide if not enough space */}
+                {hasEnoughSpace && (
+                  <div style={{ flexShrink: 0 }}>
+                    <span style={{ 
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontWeight: 'bold',
+                      fontSize: '24px',
+                      color: '#406A46'
+                    }}>
+                      NEXT TOPIC: Floodplain Art
+                    </span>
+                  </div>
+                )}
+              </>
           ) : (
             // Normal state: Show only pagination dots
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-              className="flex justify-center items-center"
-              style={{ gap: '14px' }}
-            >
+              <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
               {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
                 
@@ -1227,8 +1257,7 @@ const hiddenIconsData: Record<string, {
                       background: 'none', 
                       border: 'none', 
                       padding: 0,
-                      cursor: 'pointer',
-                      opacity: 1
+                        cursor: 'pointer'
                     }}
                   >
                     <div
@@ -1242,12 +1271,13 @@ const hiddenIconsData: Record<string, {
                   </button>
                 );
               })}
-            </motion.div>
+              </div>
           )}
+          </motion.div>
 
           {/* Next Button - Right */}
           {currentPage < TOTAL_PAGES && (
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingRight: '16px' }}>
               <button
                 onClick={() => {
                   const isDisabled = currentPage === 1 && !allItemsPlaced;
@@ -1280,7 +1310,7 @@ const hiddenIconsData: Record<string, {
           )}
           {/* Next Button for Art page - Only when all icons discovered on page 2 */}
           {currentPage === TOTAL_PAGES && revealedIcons.size === Object.keys(hiddenIconsData).length && onArtClick && (
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingRight: '16px' }}>
               <button
                 onClick={onArtClick}
                 className="next-button relative flex items-center justify-center z-50"

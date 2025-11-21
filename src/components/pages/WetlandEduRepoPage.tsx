@@ -4,10 +4,12 @@ import { wetlandEduRepoData } from '../../data/wetlandEduRepoData';
 
 interface WetlandEduRepoPageProps {
   onHomeClick: () => void;
+  initialTopic?: string | null;
 }
 
 export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
-  onHomeClick
+  onHomeClick: _onHomeClick,
+  initialTopic = null
 }) => {
   // Get unique topics
   const uniqueTopics = React.useMemo(() => {
@@ -15,8 +17,13 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
     return Array.from(topics).sort();
   }, []);
 
-  // State for filter
-  const [selectedTopic, setSelectedTopic] = React.useState<string | null>(null);
+  // State for filter - initialize with initialTopic if provided
+  const [selectedTopic, setSelectedTopic] = React.useState<string | null>(initialTopic || null);
+  
+  // Update selectedTopic when initialTopic changes (e.g., when navigating from different pages)
+  React.useEffect(() => {
+    setSelectedTopic(initialTopic || null);
+  }, [initialTopic]);
   // State for pagination
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 20;
@@ -368,49 +375,6 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
             </div>
           )}
         </motion.div>
-      </div>
-
-      {/* Footer with Home Button */}
-      <div className="relative z-10" style={{
-        position: 'sticky',
-        bottom: 0,
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        flexShrink: 0
-      }}>
-        <div className="relative flex justify-between items-center px-4">
-          <div className="flex items-center">
-            <button
-              onClick={onHomeClick}
-              className="home-button relative flex items-center justify-center z-50"
-              style={{
-                width: '54px',
-                height: '54px',
-                backgroundColor: 'transparent',
-                border: 'none'
-              }}
-            >
-              <img
-                src="/assets/icons/Home.png"
-                alt="Home"
-                style={{
-                  width: '54px',
-                  height: '54px',
-                  opacity: 1
-                }}
-              />
-            </button>
-          </div>
-
-          <div className="flex items-center justify-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-            {/* No pagination needed */}
-          </div>
-
-          <div className="flex items-center" style={{ width: '54px' }}>
-            {/* Spacer */}
-          </div>
-        </div>
       </div>
     </div>
   );

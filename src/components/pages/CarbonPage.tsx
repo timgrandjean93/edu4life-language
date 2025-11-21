@@ -130,6 +130,19 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   
   // Download modal state
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  // Track window width for responsive navbar
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate if there's enough space for download and next topic buttons
+  const hasEnoughSpace = windowWidth >= 1400;
 
   // Set page background
   React.useEffect(() => {
@@ -249,8 +262,22 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   };
 
   const handleBlankClick = (blankId: string) => {
-    if (puzzleSubmitted || !selectedLetter) return;
+    if (puzzleSubmitted) return;
     
+    // If clicking on a blank that already has a letter, remove it
+    if (puzzleAnswers[blankId]) {
+      setPuzzleAnswers(prev => {
+        const newAnswers = { ...prev };
+        delete newAnswers[blankId];
+        return newAnswers;
+      });
+      return;
+    }
+    
+    // If no letter is selected, don't do anything
+    if (!selectedLetter) return;
+    
+    // Place the selected letter
     setPuzzleAnswers(prev => ({
       ...prev,
       [blankId]: selectedLetter
@@ -307,7 +334,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   const missedCount = dropZones.length - Object.keys(placements).length;
 
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', overflowX: 'visible', paddingBottom: '0px' }}>
       
       {/* Modal for Page 2 Quiz */}
       {showModal && (
@@ -467,7 +494,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   textAlign: 'center',
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                   backgroundColor: isQuizAnswerCorrect() ? '#f0fdf4' : '#fef2f2',
-                  border: `3px solid ${isQuizAnswerCorrect() ? '#22c55e' : '#ef4444'}`
+                  border: `3px solid ${isQuizAnswerCorrect() ? '#548235' : '#C41904'}`
                 }}>
                   <div style={{
                     display: 'flex',
@@ -593,7 +620,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-8" style={{ paddingBottom: '32px' }}>
+      <div className="relative z-10 px-8" style={{ paddingBottom: '10px', flex: 1 }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -767,75 +794,83 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
             <>
               {/* Page 1 Content - Full Layout */}
               
-              {/* Two Column Layout: 1/3 Left with Text and Buttons, 2/3 Right with Image */}
-              <div className="flex" style={{ gap: '40px', maxWidth: '1400px', margin: '0 auto', alignItems: 'flex-start', position: 'relative' }}>
-                
-                {/* Left Column (1/3) - Text and Draggable Labels */}
-                <div style={{ width: '33.333%', display: 'flex', flexDirection: 'column', gap: '20px', maxHeight: 'calc(100vh - 120px)', overflowY: 'auto', paddingRight: '10px' }}>
-                  
-                  {/* Pointer Icon - Centered */}
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
-                    <img 
-                      src="/assets/icons/pointer.png" 
-                      alt="Pointer" 
-                      style={{ width: '70px', height: '70px' }}
-                    />
-                  </div>
+              {/* Pointer Icon and Instructions - Above columns */}
+              <div style={{ marginBottom: '30px', textAlign: 'center' }}>
+                {/* Pointer Icon */}
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '15px' }}>
+                  <img 
+                    src="/assets/icons/pointer.png" 
+                    alt="Pointer" 
+                    style={{ width: '70px', height: '70px' }}
+                  />
+                </div>
 
-                  {/* Title */}
-                  <h2 style={{ 
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
-                    fontSize: '28px',
-                    color: '#406A46',
-                    textAlign: 'center',
-                    marginBottom: '15px',
-                    lineHeight: '1.2'
-                  }}>
+                {/* Title */}
+                <h2 style={{ 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '28px',
+                  color: '#406A46',
+                  textAlign: 'center',
+                  marginBottom: '15px',
+                  lineHeight: '1.2'
+                }}>
                   Match the ecosystem icons
                 </h2>
 
-                  {/* Instructions Text */}
-                  <div style={{ 
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
-                    fontSize: '18px',
-                    color: '#406A46',
-                    lineHeight: '1.4',
-                    marginBottom: '15px'
-                  }}>
-                    <p style={{ margin: 0 }}>
-                      Look at the icons on top of the graph – each shows a different ecosystem.
-                    </p>
-                    <p style={{ margin: '8px 0 0 0' }}>
-                      Your challenge: <span style={{ color: '#9F8B68' }}>Drag the correct label from below to the matching question mark.</span>
-                </p>
+                {/* Instructions Text */}
+                <div style={{ 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '18px',
+                  color: '#406A46',
+                  lineHeight: '1.4',
+                  maxWidth: '1000px',
+                  margin: '0 auto'
+                }}>
+                  <p style={{ margin: 0 }}>
+                    Look at the icons on top of the graph – each shows a different ecosystem.
+                  </p>
+                  <p style={{ margin: '8px 0 0 0' }}>
+                    Your challenge: <span style={{ color: '#9F8B68' }}>Drag the correct label from below to the matching question mark.</span>
+                  </p>
+                </div>
               </div>
-
-                  {/* Draggable Labels - 2 Columns */}
+              
+              {/* Two Column Layout: 1/3 Left with Draggable Labels, 2/3 Right with Image */}
+              <div className="flex" style={{ gap: '40px', maxWidth: '1400px', margin: '0 auto', alignItems: 'center', position: 'relative' }}>
+                
+                {/* Left Column (1/3) - Draggable Labels */}
+                <div style={{ width: '33.333%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                  
+                  {/* Draggable Labels - 2 Columns, vertically centered */}
                   <div style={{ 
                     display: 'grid', 
                     gridTemplateColumns: '1fr 1fr',
-                    gap: '12px'
+                    gap: '12px',
+                    width: '100%'
                   }}>
                     {ecosystemLabels.map((label, index) => {
                       const isUsed = Object.values(placements).includes(label.id);
                       const isDragging = draggedLabel === label.id;
                       
+                      // Don't render if label is already used
+                      if (isUsed) return null;
+                      
                       return (
                         <motion.div
                           key={label.id}
-                          draggable={!submitted && !isUsed}
+                          draggable={!submitted}
                           onDragStart={() => handleDragStart(label.id)}
                           onDragEnd={handleDragEnd}
                           className="transition-all duration-300 hover:opacity-80"
                           style={{
-                            backgroundColor: isUsed ? '#e5e7eb' : '#51727C',
+                            backgroundColor: '#51727C',
                             color: 'white',
                             borderRadius: '12px',
                             padding: '12px 8px',
-                            cursor: submitted || isUsed ? 'not-allowed' : 'move',
-                            opacity: isDragging ? 0.5 : (isUsed ? 0.5 : 1),
+                            cursor: submitted ? 'not-allowed' : 'move',
+                            opacity: isDragging ? 0.5 : 1,
                             textAlign: 'center',
                             fontWeight: 'bold',
                             fontSize: '12px',
@@ -879,25 +914,6 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       onDragOver={handleDragOver}
                       onDrop={() => handleDrop(zone.id)}
                       onClick={() => placement && !submitted && handleRemoveLabel(zone.id)}
-                      onMouseEnter={() => {
-                        if (!submitted) {
-                          const img = document.getElementById('carbon-image');
-                          if (img) {
-                            // Calculate icon position (icons are above the drop zones, around y: 10-20%)
-                            const iconY = Math.max(5, zone.y - 70);
-                            img.style.transform = 'scale(1.2)';
-                            img.style.transformOrigin = `${zone.x}% ${iconY}%`;
-                            img.style.transition = 'transform 0.3s ease';
-                          }
-                        }
-                      }}
-                      onMouseLeave={() => {
-                        const img = document.getElementById('carbon-image');
-                        if (img) {
-                          img.style.transform = 'scale(1)';
-                          img.style.transition = 'transform 0.3s ease';
-                        }
-                      }}
                       className="absolute rounded-lg border-2 border-dashed transition-all duration-300"
                       style={{
                         left: `${zone.x}%`,
@@ -908,16 +924,22 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           ? (isCorrect ? 'rgba(74, 222, 128, 0.3)' : isIncorrect ? 'rgba(239, 68, 68, 0.3)' : 'rgba(81, 114, 124, 0.3)')
                           : 'rgba(255, 255, 255, 0.8)',
                         borderColor: showFeedback 
-                          ? (isCorrect ? '#4ade80' : isIncorrect ? '#ef4444' : '#51727C')
+                          ? (isCorrect ? '#548235' : isIncorrect ? '#C41904' : '#51727C')
                           : '#51727C',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         cursor: placement && !submitted ? 'pointer' : (draggedLabel && !submitted ? 'copy' : 'default'),
-                        fontSize: '10px',
+                        fontSize: '7px',
                         fontWeight: 'bold',
                         color: placement ? '#1e3a8a' : '#666',
-                        zIndex: 10
+                        zIndex: 10,
+                        padding: '2px',
+                        lineHeight: '1.1',
+                        textAlign: 'center',
+                        wordBreak: 'break-word',
+                        overflow: 'hidden',
+                        fontFamily: 'Comfortaa, sans-serif'
                       }}
                       title={placement && !submitted ? 'Click to remove label' : ''}
                     >
@@ -985,7 +1007,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     <div className="flex items-center" style={{ gap: '12px' }}>
                       <div className="flex items-center justify-center rounded-full" 
                         style={{ 
-                          backgroundColor: '#4ade80',
+                          backgroundColor: '#548235',
                           width: '32px',
                           height: '32px'
                         }}
@@ -994,7 +1016,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <span style={{ fontSize: '22px', fontWeight: '600', color: '#4ade80' }}>
+                      <span style={{ fontSize: '22px', fontWeight: '600', color: '#548235' }}>
                         {correctCount} Correct
                       </span>
                     </div>
@@ -1003,7 +1025,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     <div className="flex items-center" style={{ gap: '12px' }}>
                       <div className="flex items-center justify-center rounded-full" 
                         style={{ 
-                          backgroundColor: '#ef4444',
+                          backgroundColor: '#C41904',
                           width: '32px',
                           height: '32px'
                         }}
@@ -1012,7 +1034,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                         </svg>
                       </div>
-                      <span style={{ fontSize: '22px', fontWeight: '600', color: '#ef4444' }}>
+                      <span style={{ fontSize: '22px', fontWeight: '600', color: '#C41904' }}>
                         {incorrectCount} Incorrect
                       </span>
                     </div>
@@ -1021,7 +1043,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     <div className="flex items-center" style={{ gap: '12px' }}>
                       <div className="flex items-center justify-center rounded-full" 
                         style={{ 
-                          backgroundColor: '#fbbf24',
+                          backgroundColor: '#CE7C0A',
                           width: '32px',
                           height: '32px'
                         }}
@@ -1030,7 +1052,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           <circle cx="8" cy="8" r="1.5" fill="white"/>
                         </svg>
                       </div>
-                      <span style={{ fontSize: '22px', fontWeight: '600', color: '#fbbf24' }}>
+                      <span style={{ fontSize: '22px', fontWeight: '600', color: '#CE7C0A' }}>
                         {missedCount} Missed
                       </span>
                     </div>
@@ -1057,7 +1079,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
 
               {/* Images with Hover Areas */}
               <div className="flex justify-center items-start">
-                <div className="relative" style={{ width: '80%', maxWidth: '1200px', display: 'inline-block' }}>
+                <div className="relative" style={{ width: '70%', maxWidth: '900px', display: 'inline-block' }}>
                   <img 
                     src="/assets/components/carbon/carbon-info.png"
                     alt="Carbon storage processes"
@@ -1085,6 +1107,33 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       onMouseEnter={() => handleAreaHover(area.id)}
                       onMouseLeave={handleAreaLeave}
                     >
+                      {/* Hover indicator - small circle with ! */}
+                      {hoveredArea !== area.id && (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: '24px',
+                            height: '24px',
+                            backgroundColor: '#51727C',
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '16px',
+                            fontWeight: 'bold',
+                            fontFamily: 'Comfortaa, sans-serif',
+                            boxShadow: '0 2px 6px rgba(0, 0, 0, 0.3)',
+                            zIndex: 5
+                          }}
+                        >
+                          !
+                        </div>
+                      )}
+                      
                       {/* Text overlay when hovered */}
                       {hoveredArea === area.id && (
                         <div 
@@ -1096,14 +1145,15 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                             width: '100%',
                             height: '100%',
                             zIndex: 10,
-                            fontSize: 'clamp(12px, 1.5vw, 18px)',
-                            lineHeight: '1.3',
-                            padding: '4px 8px',
+                            fontSize: 'clamp(10px, 1.2vw, 16px)',
+                            lineHeight: '1.2',
+                            padding: '2px 6px',
                             overflow: 'hidden',
                             wordBreak: 'break-word',
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'center'
+                            justifyContent: 'center',
+                            fontFamily: 'Comfortaa, sans-serif'
                           }}
                         >
                           {area.text}
@@ -1209,10 +1259,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank1'] && !isPuzzleAnswerCorrect('blank1') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank1'] 
-                            ? (isPuzzleAnswerCorrect('blank1') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank1') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank1'] 
-                            ? (isPuzzleAnswerCorrect('blank1') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank1') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1229,10 +1279,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank2'] && !isPuzzleAnswerCorrect('blank2') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank2'] 
-                            ? (isPuzzleAnswerCorrect('blank2') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank2') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank2'] 
-                            ? (isPuzzleAnswerCorrect('blank2') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank2') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1249,10 +1299,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank3'] && !isPuzzleAnswerCorrect('blank3') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank3'] 
-                            ? (isPuzzleAnswerCorrect('blank3') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank3') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank3'] 
-                            ? (isPuzzleAnswerCorrect('blank3') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank3') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1269,10 +1319,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank4'] && !isPuzzleAnswerCorrect('blank4') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank4'] 
-                            ? (isPuzzleAnswerCorrect('blank4') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank4') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank4'] 
-                            ? (isPuzzleAnswerCorrect('blank4') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank4') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1289,10 +1339,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank5'] && !isPuzzleAnswerCorrect('blank5') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank5'] 
-                            ? (isPuzzleAnswerCorrect('blank5') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank5') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank5'] 
-                            ? (isPuzzleAnswerCorrect('blank5') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank5') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1312,10 +1362,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank6'] && !isPuzzleAnswerCorrect('blank6') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank6'] 
-                            ? (isPuzzleAnswerCorrect('blank6') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank6') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank6'] 
-                            ? (isPuzzleAnswerCorrect('blank6') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank6') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1332,10 +1382,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank7'] && !isPuzzleAnswerCorrect('blank7') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank7'] 
-                            ? (isPuzzleAnswerCorrect('blank7') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank7') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank7'] 
-                            ? (isPuzzleAnswerCorrect('blank7') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank7') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1352,10 +1402,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank8'] && !isPuzzleAnswerCorrect('blank8') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank8'] 
-                            ? (isPuzzleAnswerCorrect('blank8') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank8') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank8'] 
-                            ? (isPuzzleAnswerCorrect('blank8') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank8') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1375,10 +1425,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank9'] && !isPuzzleAnswerCorrect('blank9') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank9'] 
-                            ? (isPuzzleAnswerCorrect('blank9') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank9') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank9'] 
-                            ? (isPuzzleAnswerCorrect('blank9') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank9') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1395,10 +1445,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank10'] && !isPuzzleAnswerCorrect('blank10') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank10'] 
-                            ? (isPuzzleAnswerCorrect('blank10') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank10') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank10'] 
-                            ? (isPuzzleAnswerCorrect('blank10') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank10') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1415,10 +1465,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         style={{
                           textDecoration: puzzleSubmitted && puzzleAnswers['blank11'] && !isPuzzleAnswerCorrect('blank11') ? 'line-through' : 'none',
                           backgroundColor: puzzleSubmitted && puzzleAnswers['blank11'] 
-                            ? (isPuzzleAnswerCorrect('blank11') ? '#4ade80' : '#C41904')
+                            ? (isPuzzleAnswerCorrect('blank11') ? '#548235' : '#C41904')
                             : undefined,
                           color: puzzleSubmitted && puzzleAnswers['blank11'] 
-                            ? (isPuzzleAnswerCorrect('blank11') ? '#166534' : 'white')
+                            ? (isPuzzleAnswerCorrect('blank11') ? 'white' : 'white')
                             : undefined
                         }}
                       >
@@ -1439,31 +1489,52 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   />
                   
                   {/* Hidden Letters - White text overlay */}
-                  {hiddenLetters.map((letter) => (
-                    <div
-                      key={letter.id}
-                      onClick={() => handleLetterClick(letter.text)}
-                      className={`absolute cursor-pointer transition-all duration-300 ${
-                        selectedLetter === letter.text ? 'scale-110' : 'hover:scale-105'
-                      }`}
-                      style={{
-                        left: `${letter.x}%`,
-                        top: `${letter.y}%`,
-                        transform: 'translate(-50%, -50%)',
-                        color: selectedLetter === letter.text ? '#3b82f6' : 'white',
-                        fontFamily: 'Comfortaa, sans-serif',
-                        fontSize: '28px',
-                        fontWeight: 'bold',
-                        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
-                        opacity: puzzleSubmitted ? 0.7 : 1,
-                        userSelect: 'none'
-                      }}
-                    >
-                      {letter.text}
-                    </div>
-                  ))}
+                  {hiddenLetters.map((letter) => {
+                    // Check if this letter is already placed
+                    const isPlaced = Object.values(puzzleAnswers).includes(letter.text);
+                    
+                    // Don't render if letter is already placed
+                    if (isPlaced) return null;
+                    
+                    return (
+                      <div
+                        key={letter.id}
+                        onClick={() => handleLetterClick(letter.text)}
+                        className={`absolute cursor-pointer transition-all duration-300 ${
+                          selectedLetter === letter.text ? 'scale-110' : 'hover:scale-105'
+                        }`}
+                        style={{
+                          left: `${letter.x}%`,
+                          top: `${letter.y}%`,
+                          transform: 'translate(-50%, -50%)',
+                          color: selectedLetter === letter.text ? '#3b82f6' : 'white',
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontSize: '28px',
+                          fontWeight: 'bold',
+                          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
+                          opacity: puzzleSubmitted ? 0.7 : 1,
+                          userSelect: 'none'
+                        }}
+                      >
+                        {letter.text}
+                      </div>
+                    );
+                  })}
                 </div>
 
+                {/* Instructions on how to use */}
+                <p style={{ 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '20px',
+                  color: '#406A46',
+                  lineHeight: '1.5',
+                  textAlign: 'center',
+                  margin: '20px auto 30px',
+                  maxWidth: '800px'
+                }}>
+                  Click on a letter in the image above, then click on the corresponding gap in the text to place it. Click on a placed letter to remove it.
+                </p>
 
                 {/* Check Answers Button */}
                 {!puzzleSubmitted && Object.keys(puzzleAnswers).length >= 11 && Object.values(puzzleAnswers).every(answer => answer && answer.trim() !== '') && (
@@ -1498,58 +1569,82 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
+      {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
       {currentPage > 0 && (
       <div className="relative z-10" style={{ 
         position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100vw',
+        marginLeft: 'calc((100% - 100vw) / 2)',
+        backgroundColor: 'rgba(210, 228, 240, 0.95)',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginBottom: '0px',
         flexShrink: 0
       }}>
-        <div className="relative flex justify-between items-center px-4">
+        {/* Top Shadow - Full Width */}
+        <div style={{
+          position: 'absolute',
+          top: '-4px',
+          left: 0,
+          width: '100%',
+          height: '6px',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+          pointerEvents: 'none'
+        }} />
+        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
           {/* Home Button - Left */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ paddingLeft: '16px' }}>
             <HomeButton onClick={onHomeClick} />
           </div>
 
-          {/* Pagination Dots - Centered */}
+          {/* Center Section - Download, Pagination, and Next Topic */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1 }}
             className="flex justify-center items-center"
-            style={{ gap: '14px', position: 'relative' }}
+            style={{ 
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              transformOrigin: 'center',
+              gap: '50px',
+              transition: 'transform 0.3s ease'
+            }}
           >
             {currentPage === TOTAL_PAGES && puzzleSubmitted ? (
-              <div className="flex items-center justify-center" style={{ position: 'relative' }}>
-                {/* Download Button - 50px left of pagination */}
-              <button
-                  onClick={handleDownloadClick}
-                className="download-button relative flex items-center justify-center z-50"
-                style={{
-                    width: '480px',
-                  height: '50px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                    marginRight: '50px',
-                    cursor: 'pointer'
-                }}
-              >
-                <img 
-                  src="/assets/icons/download.png" 
-                  alt="Download" 
-                  style={{ 
+              <>
+                {/* Download Button - left of pagination - Hide if not enough space */}
+                {hasEnoughSpace && (
+                  <button
+                    onClick={handleDownloadClick}
+                    className="download-button relative flex items-center justify-center z-50"
+                    style={{
                       width: '480px',
-                    height: '50px',
-                    opacity: 1
-                  }}
-                />
-              </button>
+                      height: '50px',
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      flexShrink: 0
+                    }}
+                  >
+                    <img 
+                      src="/assets/icons/download.png" 
+                      alt="Download" 
+                      style={{ 
+                        width: '480px',
+                        height: '50px',
+                        opacity: 1
+                      }}
+                    />
+                  </button>
+                )}
 
-                {/* Pagination Dots */}
-                <div className="flex justify-center items-center" style={{ gap: '14px', position: 'relative' }}>
+                {/* Pagination Dots - Perfectly Centered */}
+                <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
             {Array.from({ length: TOTAL_PAGES }, (_, index) => {
               const pageNum = index + 1;
               return (
@@ -1562,8 +1657,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           background: 'none', 
                           border: 'none', 
                           padding: 0,
-                          cursor: 'pointer',
-                          opacity: 1
+                          cursor: 'pointer'
                         }}
                       >
                         <div
@@ -1579,52 +1673,55 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   })}
                 </div>
 
-                {/* NEXT TOPIC Text - 50px right of pagination */}
-                <div style={{ marginLeft: '50px' }}>
-                  <span style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
-                    fontSize: '24px',
-                    color: '#406A46'
-                  }}>
-                    NEXT TOPIC: Self Purification
-                  </span>
-                </div>
-              </div>
+                {/* NEXT TOPIC Text - right of pagination - Hide if not enough space */}
+                {hasEnoughSpace && (
+                  <div style={{ flexShrink: 0 }}>
+                    <span style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontWeight: 'bold',
+                      fontSize: '24px',
+                      color: '#406A46'
+                    }}>
+                      NEXT TOPIC: Self Purification
+                    </span>
+                  </div>
+                )}
+              </>
             ) : (
               // Pagination only when not on completion page - All pages always accessible
-              Array.from({ length: TOTAL_PAGES }, (_, index) => {
+              <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
+                {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
                 return (
                   <button
                     key={index}
                     onClick={() => setCurrentPage(pageNum)}
-                    className="transition-all duration-300 p-0 border-0 bg-transparent"
-                    aria-label={`Go to page ${pageNum}`}
-                    style={{ 
-                      background: 'none', 
-                      border: 'none', 
-                      padding: 0,
-                      cursor: 'pointer',
-                      opacity: 1
+                  className="transition-all duration-300 p-0 border-0 bg-transparent"
+                  aria-label={`Go to page ${pageNum}`}
+                  style={{ 
+                    background: 'none', 
+                    border: 'none', 
+                    padding: 0,
+                        cursor: 'pointer'
+                  }}
+                >
+                  <div
+                    className="rounded-full transition-all duration-300"
+                    style={{
+                      width: '14px',
+                      height: '14px',
+                      backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
                     }}
-                  >
-                    <div
-                      className="rounded-full transition-all duration-300"
-                      style={{
-                        width: '14px',
-                        height: '14px',
-                        backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
-                      }}
-                    />
-                  </button>
-                );
-              })
+                  />
+                </button>
+              );
+                })}
+              </div>
             )}
           </motion.div>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ paddingRight: '16px' }}>
             {currentPage === 1 && submitted && (
               <button
                 onClick={() => setShowModal(true)}
@@ -1633,7 +1730,8 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   width: '158px',
                   height: '60px',
                   backgroundColor: 'transparent',
-                  border: 'none'
+                  border: 'none',
+                  cursor: 'pointer'
                 }}
               >
                 <img 
@@ -1656,8 +1754,12 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 width: '158px',
                 height: '60px',
                 backgroundColor: 'transparent',
-                border: 'none'
+                border: 'none',
+                cursor: 'grab'
               }}
+              onMouseDown={(e) => e.currentTarget.style.cursor = 'grabbing'}
+              onMouseUp={(e) => e.currentTarget.style.cursor = 'grab'}
+              onMouseLeave={(e) => e.currentTarget.style.cursor = 'grab'}
             >
               <img 
                 src="/assets/icons/next.png" 
@@ -1679,8 +1781,12 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 width: '158px',
                 height: '60px',
                 backgroundColor: 'transparent',
-                border: 'none'
+                border: 'none',
+                cursor: 'grab'
               }}
+              onMouseDown={(e) => e.currentTarget.style.cursor = 'grabbing'}
+              onMouseUp={(e) => e.currentTarget.style.cursor = 'grab'}
+              onMouseLeave={(e) => e.currentTarget.style.cursor = 'grab'}
             >
               <img 
                 src="/assets/icons/next.png" 

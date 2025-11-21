@@ -26,14 +26,35 @@ import { trackPageView, initAnalytics, revokeAnalytics } from './analytics';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse'>('home');
+  const [repositoryTopic, setRepositoryTopic] = useState<string | null>(null);
   const [showCookieBanner, setShowCookieBanner] = useState<boolean>(() => {
     // Check if user has already made a choice
     const stored = localStorage.getItem('cookie_consent');
     return stored === null;
   });
 
-  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse') => {
+  // Mapping from page to topic
+  const pageToTopicMap: Record<string, string> = {
+    'floodplain': 'Floodplain living environment',
+    'mapwetland': 'Floodplain mapping',
+    'floodcontrol': 'Flood control',
+    'riparian': 'Habitat assessment',
+    'carbon': 'Carbon sequestration',
+    'selfpurification': 'Self purification',
+    'treatmentwetlands': 'Constructed wetlands',
+    'aesthetics': 'Aesthetics',
+    'art': 'Art & Storytelling',
+  };
+
+  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse', topic?: string | null) => {
     setCurrentPage(page);
+    if (page === 'wetlandEduRepo') {
+      // Set topic if provided, otherwise keep existing or set to null
+      setRepositoryTopic(topic !== undefined ? topic : null);
+    } else {
+      // If navigating away from repo, clear the topic
+      setRepositoryTopic(null);
+    }
   };
 
   // Handle cookie consent changes
@@ -70,7 +91,7 @@ function App() {
           <RiparianPage
             onHomeClick={() => navigateTo('home')}
             onFloodControlClick={() => navigateTo('floodcontrol')}
-            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo', pageToTopicMap['riparian'])}
           />
         );
       case 'mapwetland':
@@ -78,7 +99,7 @@ function App() {
           <MapWetlandPage
             onHomeClick={() => navigateTo('home')}
             onRiparianClick={() => navigateTo('riparian')}
-            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo', pageToTopicMap['mapwetland'])}
           />
         );
       case 'floodplain':
@@ -86,7 +107,7 @@ function App() {
           <FloodplainPage
             onHomeClick={() => navigateTo('home')}
             onMapWetlandClick={() => navigateTo('mapwetland')}
-            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo', pageToTopicMap['floodplain'])}
           />
         );
       case 'floodcontrol':
@@ -94,7 +115,7 @@ function App() {
           <FloodControlPage
             onHomeClick={() => navigateTo('home')}
             onCarbonClick={() => navigateTo('carbon')}
-            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo', pageToTopicMap['floodcontrol'])}
           />
         );
       case 'carbon':
@@ -102,7 +123,7 @@ function App() {
           <CarbonPage
             onHomeClick={() => navigateTo('home')}
             onSelfPurificationClick={() => navigateTo('selfpurification')}
-            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo', pageToTopicMap['carbon'])}
           />
         );
       case 'selfpurification':
@@ -110,7 +131,7 @@ function App() {
           <SelfPurificationPage
             onHomeClick={() => navigateTo('home')}
             onAestheticsClick={() => navigateTo('aesthetics')}
-            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo', pageToTopicMap['selfpurification'])}
             onTreatmentWetlandsClick={() => navigateTo('treatmentwetlands')}
           />
         );
@@ -119,7 +140,7 @@ function App() {
           <ArtPage
             onHomeClick={() => navigateTo('home')}
             onPeopleAquaticClick={() => navigateTo('people')}
-            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo', pageToTopicMap['art'])}
           />
         );
       case 'people':
@@ -133,7 +154,7 @@ function App() {
           <AestheticsPage
             onHomeClick={() => navigateTo('home')}
             onArtClick={() => navigateTo('art')}
-            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo', pageToTopicMap['aesthetics'])}
           />
         );
       case 'wetlandfresk':
@@ -152,13 +173,14 @@ function App() {
         return (
           <WetlandEduRepoPage
             onHomeClick={() => navigateTo('home')}
+            initialTopic={repositoryTopic}
           />
         );
       case 'treatmentwetlands':
         return (
           <TreatmentWetlandsPage
             onHomeClick={() => navigateTo('home')}
-            onRepositoryClick={() => navigateTo('wetlandEduRepo')}
+            onRepositoryClick={() => navigateTo('wetlandEduRepo', pageToTopicMap['treatmentwetlands'])}
             onAestheticsClick={() => navigateTo('aesthetics')}
           />
         );

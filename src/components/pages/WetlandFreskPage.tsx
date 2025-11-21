@@ -6,7 +6,7 @@ interface WetlandFreskPageProps {
 }
 
 export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
-  onHomeClick
+  onHomeClick: _onHomeClick
 }) => {
   // Set page background
   React.useEffect(() => {
@@ -350,52 +350,6 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
           </div>
           </div>
         </motion.div>
-      </div>
-
-      {/* Footer with Home Button */}
-      <div className="relative z-10" style={{ 
-        position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        flexShrink: 0
-      }}>
-        <div className="relative flex justify-between items-center px-4">
-          {/* Home Button - Left */}
-          <div className="flex items-center">
-            <button
-              onClick={onHomeClick}
-              className="home-button relative flex items-center justify-center z-50"
-              style={{ 
-                width: '54px',
-                height: '54px',
-                backgroundColor: 'transparent',
-                border: 'none'
-              }}
-            >
-              <img 
-                src="/assets/icons/Home.png" 
-                alt="Home" 
-                style={{ 
-                  width: '54px',
-                  height: '54px',
-                  opacity: 1
-                }}
-              />
-            </button>
-          </div>
-
-          {/* Center Section - Empty for centering */}
-          <div className="flex items-center justify-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-            {/* No pagination needed for single page */}
-          </div>
-
-          {/* Right Section - Empty */}
-          <div className="flex items-center" style={{ width: '54px' }}>
-            {/* Spacer to balance layout */}
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -66,6 +66,19 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
   const [showPage2Feedback, setShowPage2Feedback] = React.useState(false);
   const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null);
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  // Track window width for responsive navbar
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate if there's enough space for download and next topic buttons
+  const hasEnoughSpace = windowWidth >= 1400;
 
   const handleOptionToggle = (optionId: string) => {
     if (quizSubmitted) return; // Don't allow changes after submission
@@ -210,9 +223,9 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
   }, [placements, currentPage, page2Submitted]);
 
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', overflowX: 'visible', paddingBottom: '0px' }}>
       {/* Header with title and home button */}
-      <div className="relative z-50">
+      <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             {/* Header with Title */}
@@ -240,7 +253,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '10px', flex: 1 }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}
@@ -548,11 +561,14 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               feedback === 'missed' ? '#CE7C0A' : 
                               isSelected ? '#548235' : '#999'
                             }`,
-                            backgroundColor: isSelected ? '#548235' : 'transparent',
+                            backgroundColor: feedback === 'correct' ? '#548235' :
+                                            feedback === 'incorrect' ? '#C41904' : 
+                                            feedback === 'missed' ? '#CE7C0A' :
+                                            isSelected ? '#548235' : 'transparent',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            boxShadow: isSelected ? '0 2px 4px rgba(84, 130, 53, 0.3)' : 'none'
+                            boxShadow: feedback ? 'none' : (isSelected ? '0 2px 4px rgba(84, 130, 53, 0.3)' : 'none')
                           }}
                         >
                           {isSelected && !quizSubmitted && (
@@ -562,17 +578,17 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                           )}
                           {feedback === 'correct' && (
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                              <path d="M3 8L6 11L13 4" stroke="#548235" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           )}
                           {feedback === 'incorrect' && (
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                              <path d="M4 4L12 12M12 4L4 12" stroke="#C41904" strokeWidth="2.5" strokeLinecap="round"/>
+                              <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                             </svg>
                           )}
                           {feedback === 'missed' && (
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                              <path d="M3 8L6 11L13 4" stroke="#CE7C0A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           )}
                         </div>
@@ -584,7 +600,10 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                             fontSize: '20px', 
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
-                            color: '#406A46'
+                            color: feedback === 'missed' ? '#CE7C0A' : 
+                                   feedback === 'incorrect' ? '#C41904' :
+                                   feedback === 'correct' ? '#548235' :
+                                   '#406A46'
                           }}
                         >
                           {option.label}
@@ -621,7 +640,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                         <div className="flex items-center" style={{ gap: '12px' }}>
                           <div className="flex items-center justify-center rounded-full" 
                             style={{ 
-                              backgroundColor: '#28a745',
+                              backgroundColor: '#548235',
                               width: '32px',
                               height: '32px'
                             }}
@@ -630,7 +649,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           </div>
-                          <span style={{ fontSize: '22px', fontWeight: '600', color: '#28a745' }}>
+                          <span style={{ fontSize: '22px', fontWeight: '600', color: '#548235' }}>
                             {correctCount} Correct
                           </span>
                         </div>
@@ -639,7 +658,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                         <div className="flex items-center" style={{ gap: '12px' }}>
                           <div className="flex items-center justify-center rounded-full" 
                             style={{ 
-                              backgroundColor: '#dc3545',
+                              backgroundColor: '#C41904',
                               width: '32px',
                               height: '32px'
                             }}
@@ -648,7 +667,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                             </svg>
                           </div>
-                          <span style={{ fontSize: '22px', fontWeight: '600', color: '#dc3545' }}>
+                          <span style={{ fontSize: '22px', fontWeight: '600', color: '#C41904' }}>
                             {incorrectCount} Incorrect
                           </span>
                         </div>
@@ -657,7 +676,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                         <div className="flex items-center" style={{ gap: '12px' }}>
                           <div className="flex items-center justify-center rounded-full" 
                             style={{ 
-                              backgroundColor: '#ffc107',
+                              backgroundColor: '#CE7C0A',
                               width: '32px',
                               height: '32px'
                             }}
@@ -666,7 +685,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           </div>
-                          <span style={{ fontSize: '22px', fontWeight: '600', color: '#ffc107' }}>
+                          <span style={{ fontSize: '22px', fontWeight: '600', color: '#CE7C0A' }}>
                             {missedCount} Missed
                           </span>
                         </div>
@@ -750,13 +769,13 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               minHeight: '40px',
                               maxWidth: '40px',
                               maxHeight: '40px',
-                              backgroundColor: currentLabel ? labelColors[currentLabel as keyof typeof labelColors] : 'rgba(255, 255, 255, 0.6)',
-                              borderColor: isCorrect ? '#28a745' : isIncorrect ? '#dc3545' : currentLabel ? '#333' : '#ccc',
-                              boxShadow: currentLabel ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 6px rgba(0, 0, 0, 0.1)',
+                              backgroundColor: currentLabel ? labelColors[currentLabel as keyof typeof labelColors] : 'transparent',
+                              borderColor: isCorrect ? '#548235' : isIncorrect ? '#C41904' : currentLabel ? '#333' : 'white',
+                              boxShadow: currentLabel ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(255, 255, 255, 0.5)',
                               fontSize: '32px',
                               fontFamily: 'Comfortaa, sans-serif',
                               fontWeight: 'bold',
-                              color: 'white',
+                              color: currentLabel ? 'white' : 'white',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -767,7 +786,31 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                           >
                             {currentLabel ? '' : '?'}
                           </div>
-
+                          
+                          {/* Show correct answer when incorrect or empty */}
+                          {((isIncorrect || feedback === 'empty') && page2Submitted) && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                top: '50px',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                backgroundColor: isIncorrect ? '#fef2f2' : '#fef3c7',
+                                border: `2px solid ${isIncorrect ? '#C41904' : '#CE7C0A'}`,
+                                borderRadius: '8px',
+                                padding: '6px 10px',
+                                fontSize: '14px',
+                                fontFamily: 'Comfortaa, sans-serif',
+                                fontWeight: 'bold',
+                                color: isIncorrect ? '#C41904' : '#CE7C0A',
+                                whiteSpace: 'nowrap',
+                                zIndex: 100,
+                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
+                              }}
+                            >
+                              Correct: {zone.correctLabel}
+                            </div>
+                          )}
                         </div>
                       );
                     })}
@@ -847,13 +890,13 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               minHeight: '40px',
                               maxWidth: '40px',
                               maxHeight: '40px',
-                              backgroundColor: currentLabel ? labelColors[currentLabel as keyof typeof labelColors] : 'rgba(255, 255, 255, 0.6)',
-                              borderColor: isCorrect ? '#28a745' : isIncorrect ? '#dc3545' : currentLabel ? '#333' : '#ccc',
-                              boxShadow: currentLabel ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 6px rgba(0, 0, 0, 0.1)',
+                              backgroundColor: currentLabel ? labelColors[currentLabel as keyof typeof labelColors] : 'transparent',
+                              borderColor: isCorrect ? '#548235' : isIncorrect ? '#C41904' : currentLabel ? '#333' : 'white',
+                              boxShadow: currentLabel ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(255, 255, 255, 0.5)',
                               fontSize: '32px',
                               fontFamily: 'Comfortaa, sans-serif',
                               fontWeight: 'bold',
-                              color: 'white',
+                              color: currentLabel ? 'white' : 'white',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -864,7 +907,31 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                           >
                             {currentLabel ? '' : '?'}
                           </div>
-
+                          
+                          {/* Show correct answer when incorrect or empty */}
+                          {((isIncorrect || feedback === 'empty') && page2Submitted) && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                top: '50px',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                backgroundColor: isIncorrect ? '#fef2f2' : '#fef3c7',
+                                border: `2px solid ${isIncorrect ? '#C41904' : '#CE7C0A'}`,
+                                borderRadius: '8px',
+                                padding: '6px 10px',
+                                fontSize: '14px',
+                                fontFamily: 'Comfortaa, sans-serif',
+                                fontWeight: 'bold',
+                                color: isIncorrect ? '#C41904' : '#CE7C0A',
+                                whiteSpace: 'nowrap',
+                                zIndex: 100,
+                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
+                              }}
+                            >
+                              Correct: {zone.correctLabel}
+                            </div>
+                          )}
                         </div>
                       );
                     })}
@@ -940,7 +1007,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                      <div className="flex items-center" style={{ gap: '12px' }}>
                        <div className="flex items-center justify-center rounded-full" 
                          style={{ 
-                           backgroundColor: '#28a745',
+                           backgroundColor: '#548235',
                            width: '32px',
                            height: '32px'
                          }}
@@ -949,7 +1016,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                            <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                          </svg>
                        </div>
-                       <span style={{ fontSize: '22px', fontWeight: '600', color: '#28a745' }}>
+                       <span style={{ fontSize: '22px', fontWeight: '600', color: '#548235' }}>
                          {correctCount} Correct
                        </span>
                      </div>
@@ -958,7 +1025,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                      <div className="flex items-center" style={{ gap: '12px' }}>
                        <div className="flex items-center justify-center rounded-full" 
                          style={{ 
-                           backgroundColor: '#dc3545',
+                           backgroundColor: '#C41904',
                            width: '32px',
                            height: '32px'
                          }}
@@ -967,7 +1034,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                            <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                          </svg>
                        </div>
-                       <span style={{ fontSize: '22px', fontWeight: '600', color: '#dc3545' }}>
+                       <span style={{ fontSize: '22px', fontWeight: '600', color: '#C41904' }}>
                          {incorrectCount} Incorrect
                        </span>
                      </div>
@@ -976,7 +1043,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                      <div className="flex items-center" style={{ gap: '12px' }}>
                        <div className="flex items-center justify-center rounded-full" 
                          style={{ 
-                           backgroundColor: '#ffc107',
+                           backgroundColor: '#CE7C0A',
                            width: '32px',
                            height: '32px'
                          }}
@@ -985,7 +1052,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                            <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                          </svg>
                        </div>
-                       <span style={{ fontSize: '22px', fontWeight: '600', color: '#ffc107' }}>
+                       <span style={{ fontSize: '22px', fontWeight: '600', color: '#CE7C0A' }}>
                          {missedCount} Missed
                        </span>
                      </div>
@@ -998,19 +1065,34 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
           </motion.div>
         </div>
 
-      {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
+      {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
       {currentPage > 0 && (
       <div className="relative z-10" style={{ 
         position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100vw',
+        marginLeft: 'calc((100% - 100vw) / 2)',
+        backgroundColor: 'rgba(210, 228, 240, 0.95)',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginBottom: '0px',
         flexShrink: 0
       }}>
-        <div className="relative flex justify-between items-center px-4">
+        {/* Top Shadow - Full Width */}
+        <div style={{
+          position: 'absolute',
+          top: '-4px',
+          left: 0,
+          width: '100%',
+          height: '6px',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+          pointerEvents: 'none'
+        }} />
+        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
           {/* Home Button - Left */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ paddingLeft: '16px' }}>
             <button
               onClick={onHomeClick}
               className="home-button relative flex items-center justify-center z-50"
@@ -1018,7 +1100,8 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                 width: '54px',
                 height: '54px',
                 backgroundColor: 'transparent',
-                border: 'none'
+                border: 'none',
+                cursor: 'pointer'
               }}
             >
               <img 
@@ -1033,10 +1116,23 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
             </button>
           </div>
 
-          {/* Center Section - Pagination and Download Button */}
-          <div className="flex items-center justify-center" style={{ position: 'relative' }}>
-            {/* Download Button - Only on completion, 50px left of pagination */}
-            {currentPage === 2 && page2Submitted && (
+          {/* Center Section - Download, Pagination, and Next Topic */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
+            className="flex justify-center items-center"
+            style={{ 
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              transformOrigin: 'center',
+              gap: '50px',
+              transition: 'transform 0.3s ease'
+            }}
+          >
+            {/* Download Button - Only on completion, left of pagination - Hide if not enough space */}
+            {currentPage === 2 && page2Submitted && hasEnoughSpace && (
               <button
                 onClick={handleDownloadClick}
                 className="download-button relative flex items-center justify-center z-50"
@@ -1046,7 +1142,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
-                  marginRight: '50px'
+                  flexShrink: 0
                 }}
               >
                 <img
@@ -1061,14 +1157,8 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
               </button>
             )}
             
-            {/* Pagination Dots */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-              className="flex justify-center items-center"
-              style={{ gap: '14px', position: 'relative' }}
-            >
+            {/* Pagination Dots - Perfectly Centered */}
+            <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
               {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
 
@@ -1082,8 +1172,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                       background: 'none', 
                       border: 'none', 
                       padding: 0,
-                      cursor: 'pointer',
-                      opacity: 1
+                      cursor: 'pointer'
                     }}
                   >
                     <div
@@ -1097,11 +1186,11 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   </button>
                 );
               })}
-            </motion.div>
+            </div>
 
-            {/* NEXT TOPIC Text - Only on completion, 50px right of pagination */}
-            {currentPage === 2 && page2Submitted && (
-              <div style={{ marginLeft: '50px' }}>
+            {/* NEXT TOPIC Text - Only on completion, right of pagination - Hide if not enough space */}
+            {currentPage === 2 && page2Submitted && hasEnoughSpace && (
+              <div style={{ flexShrink: 0 }}>
                 <span style={{
                   fontFamily: 'Comfortaa, sans-serif',
                   fontWeight: 'bold',
@@ -1112,11 +1201,11 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                 </span>
               </div>
             )}
-          </div>
+          </motion.div>
 
           {/* Next Button - Right - Only on completion */}
           {currentPage === 2 && page2Submitted && (
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingRight: '16px' }}>
               <button
                 onClick={() => {
                   // Navigate to Flood Control page
@@ -1129,7 +1218,8 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   width: '158px',
                   height: '60px',
                   backgroundColor: 'transparent',
-                  border: 'none'
+                  border: 'none',
+                  cursor: 'pointer'
                 }}
               >
                 <img
@@ -1147,7 +1237,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
 
           {/* Check Answers / Next Button - Right - Only during drag & drop */}
           {!(currentPage === 2 && page2Submitted) && (
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingRight: '16px' }}>
               <button
                 onClick={() => {
                   if (currentPage === 1) {
@@ -1180,7 +1270,8 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   width: '158px',
                   height: '60px',
                   backgroundColor: 'transparent',
-                  border: 'none'
+                  border: 'none',
+                  cursor: 'pointer'
                 }}
               >
                 <img 

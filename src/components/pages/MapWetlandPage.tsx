@@ -37,6 +37,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
   const [completedSteps, setCompletedSteps] = React.useState<number[]>([]);
   const [usedLetters, setUsedLetters] = React.useState<string[]>([]);
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
+  const hasEnoughSpace = true; // Always show download button and next topic text
 
   // Set page background
   React.useEffect(() => {
@@ -360,7 +361,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                                 minWidth: '32px',
                                 height: '32px',
                                 borderRadius: '50%',
-                                backgroundColor: isCompleted ? '#28a745' : isLocked ? '#e5e7eb' : '#51727C',
+                                backgroundColor: isCompleted ? '#548235' : isLocked ? '#e5e7eb' : '#51727C',
                                 color: 'white',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -595,19 +596,34 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
+      {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
       {currentPage > 0 && (
       <div className="relative z-10" style={{ 
         position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100vw',
+        marginLeft: 'calc((100% - 100vw) / 2)',
+        backgroundColor: 'rgba(210, 228, 240, 0.95)',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginBottom: '0px',
         flexShrink: 0
       }}>
-        <div className="relative flex justify-between items-center px-4">
+        {/* Top Shadow - Full Width */}
+        <div style={{
+          position: 'absolute',
+          top: '-4px',
+          left: 0,
+          width: '100%',
+          height: '6px',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+          pointerEvents: 'none'
+        }} />
+        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
           {/* Home Button - Left */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ paddingLeft: '16px' }}>
             <button
               onClick={onHomeClick}
               className="home-button relative flex items-center justify-center z-50"
@@ -615,7 +631,8 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                 width: '54px',
                 height: '54px',
                 backgroundColor: 'transparent',
-                border: 'none'
+                border: 'none',
+                cursor: 'pointer'
               }}
             >
               <img 
@@ -632,48 +649,65 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
 
           {/* Center Section - Download Button and NEXT TOPIC Text - Only on completion */}
           {isCompleted && (
-            <div className="flex items-center justify-center" style={{ position: 'relative' }}>
-              {/* Download Button - 50px left of NEXT TOPIC text */}
-              <button
-                onClick={handleDownloadClick}
-                className="download-button relative flex items-center justify-center z-50"
-                style={{
-                  width: '480px',
-                  height: '50px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  marginRight: '50px',
-                  cursor: 'pointer'
-                }}
-              >
-                <img 
-                  src="/assets/icons/download.png" 
-                  alt="Download" 
-                  style={{ 
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1 }}
+              className="flex justify-center items-center"
+              style={{ 
+                position: 'absolute',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                transformOrigin: 'center',
+                gap: '50px',
+                transition: 'transform 0.3s ease'
+              }}
+            >
+              {/* Download Button - left of NEXT TOPIC text - Hide if not enough space */}
+              {hasEnoughSpace && (
+                <button
+                  onClick={handleDownloadClick}
+                  className="download-button relative flex items-center justify-center z-50"
+                  style={{
                     width: '480px',
                     height: '50px',
-                    opacity: 1
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    flexShrink: 0
                   }}
-                />
-              </button>
+                >
+                  <img 
+                    src="/assets/icons/download.png" 
+                    alt="Download" 
+                    style={{ 
+                      width: '480px',
+                      height: '50px',
+                      opacity: 1
+                    }}
+                  />
+                </button>
+              )}
 
-              {/* NEXT TOPIC Text - 50px right of download button */}
-              <div style={{ marginLeft: '50px' }}>
-                <span style={{ 
-                  fontFamily: 'Comfortaa, sans-serif',
-                  fontWeight: 'bold',
-                  fontSize: '24px',
-                  color: '#406A46'
-                }}>
-                  NEXT TOPIC: Exploring the habitat of a stream
-                </span>
-              </div>
-            </div>
+              {/* NEXT TOPIC Text - right of download button - Hide if not enough space */}
+              {hasEnoughSpace && (
+                <div style={{ flexShrink: 0 }}>
+                  <span style={{ 
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    fontSize: '24px',
+                    color: '#406A46'
+                  }}>
+                    NEXT TOPIC: Exploring the habitat of a stream
+                  </span>
+                </div>
+              )}
+            </motion.div>
           )}
 
           {/* Next Button - Right - Only on completion */}
           {isCompleted && (
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingRight: '16px' }}>
               <button
                 onClick={() => {
                   // Navigate to Riparian page
@@ -686,7 +720,8 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   width: '158px',
                   height: '60px',
                   backgroundColor: 'transparent',
-                  border: 'none'
+                  border: 'none',
+                  cursor: 'pointer'
                 }}
               >
                 <img 

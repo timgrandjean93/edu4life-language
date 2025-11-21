@@ -206,6 +206,19 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
   // Download modal state
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  // Track window width for responsive navbar
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate if there's enough space for download and next topic buttons
+  const hasEnoughSpace = windowWidth >= 1400;
 
   React.useEffect(() => {
     const html = document.documentElement;
@@ -374,6 +387,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
   const renderCharacterCard = (item: LayerItem, offsetY: number, align: 'left' | 'right') => {
     const isPlaced = isLayerPlaced(item.id);
     const { tooltip } = item;
+    const isDragged = draggedLayer === item.id;
 
     const handleStart = (event: React.DragEvent) => {
       handleDragStart(event, item.id);
@@ -388,7 +402,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
           position: 'relative',
           gap: '4px',
           transform: `translateY(${offsetY - 60}px)`,
-          zIndex: 10
+          zIndex: isDragged ? 10002 : (hoveredLayer === item.id ? 10000 : 10)
         }}
         onMouseEnter={() => setHoveredLayer(item.id)}
         onMouseLeave={() => setHoveredLayer((current) => (current === item.id ? null : current))}
@@ -396,14 +410,15 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
         <div
           style={{
             position: 'relative',
-            width: '190px',
-            height: '190px',
-            cursor: 'grab',
-            opacity: isPlaced ? 0.45 : 1,
-            transition: 'opacity 0.2s ease',
+            width: 'clamp(120px, 12vw, 190px)',
+            height: 'clamp(120px, 12vw, 190px)',
+            cursor: isDragged ? 'grabbing' : 'grab',
+            opacity: isDragged ? 1 : (isPlaced ? 0.45 : 1),
+            transition: isDragged ? 'none' : 'opacity 0.2s ease',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            zIndex: isDragged ? 10002 : 'auto'
           }}
         >
           <img
@@ -414,10 +429,12 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
             alt={item.name}
             style={{
               position: 'absolute',
-              width: '180px',
+              width: 'clamp(110px, 11vw, 180px)',
               transform: 'translateY(-85px)',
               pointerEvents: 'auto',
-              filter: isPlaced ? 'grayscale(25%) opacity(75%)' : 'none'
+              filter: isDragged ? 'none' : (isPlaced ? 'grayscale(25%) opacity(75%)' : 'none'),
+              zIndex: isDragged ? 10002 : 'auto',
+              opacity: isDragged ? 1 : 1
             }}
           />
         </div>
@@ -429,19 +446,24 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
             transition={{ duration: 0.2 }}
             style={{
               position: 'absolute',
-              bottom: '-105px',
-              left: align === 'left' ? '6%' : '94%',
-              transform: align === 'left' ? 'translateX(-6%)' : 'translateX(-94%)',
-              width: '220px',
+              top: '-20px',
+              ...(align === 'left' 
+                ? { left: '0%', transform: 'translateX(0)', maxWidth: 'min(320px, calc(100vw - 40px))' }
+                : align === 'right'
+                ? { right: '0%', transform: 'translateX(0)', maxWidth: 'min(320px, calc(100vw - 40px))' }
+                : { left: '50%', transform: 'translateX(-50%)', maxWidth: 'min(320px, calc(100vw - 40px))' }
+              ),
+              width: 'clamp(250px, 28vw, 320px)',
               backgroundColor: 'rgba(255,255,255,0.95)',
               boxShadow: '0 12px 30px rgba(64, 106, 70, 0.18)',
               borderRadius: '12px',
-              padding: '12px 16px',
+              padding: 'clamp(10px, 1.2vw, 12px) clamp(14px, 1.6vw, 16px)',
               fontFamily: 'Comfortaa, sans-serif',
-              fontSize: '14px',
+              fontSize: 'clamp(12px, 1.4vw, 14px)',
               color: tooltip.firstColor,
               lineHeight: 1.4,
-              zIndex: 100
+              zIndex: 10001,
+              pointerEvents: 'none'
             }}
           >
             <p style={{ margin: 0, marginBottom: tooltip.second ? '10px' : 0, color: tooltip.firstColor }}>
@@ -469,7 +491,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
   };
 
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh', overflowX: 'visible', paddingBottom: '0px' }}>
       {/* Header with title */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
@@ -501,7 +523,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   color: '#406A46',
                   margin: 0,
                   marginTop: '10px',
-                  marginBottom: '0'
+                  marginBottom: currentPage > 1 ? '-10px' : '0'
                 }}>
                   {getTitleForPage(currentPage)}
                 </h2>
@@ -526,7 +548,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: '120px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: '10px' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -723,6 +745,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 color: '#406A46',
                 textAlign: 'center',
                   lineHeight: '1.6',
+                  marginTop: '-20px',
                   marginBottom: '36px'
                 }}>
                   Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky.
@@ -733,20 +756,25 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 <div
                   style={{
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    justifyContent: 'center',
                     alignItems: 'flex-start',
-                    gap: '40px',
-                    flexWrap: 'wrap'
+                    gap: 'clamp(20px, 4vw, 60px)',
+                    flexWrap: 'nowrap',
+                    position: 'relative',
+                    width: '100%'
                   }}
                 >
                   <div
                     style={{
-                      flex: '1 1 220px',
                       display: 'flex',
                       alignItems: 'flex-start',
                       justifyContent: 'flex-end',
-                      gap: '28px',
-                      paddingTop: '180px'
+                      gap: 'clamp(14px, 2vw, 28px)',
+                      paddingTop: 'clamp(120px, 15vw, 180px)',
+                      position: 'relative',
+                      zIndex: hoveredLayer ? 10000 : 1,
+                      flex: '1 1 0',
+                      minWidth: 0
                     }}
                   >
                     {LEFT_DISPLAY_ORDER.map(({ id, offset }) => {
@@ -758,11 +786,13 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
                   <div
                     style={{
-                      flex: '0 1 420px',
+                      flex: '0 0 auto',
+                      width: 'clamp(300px, 42vw, 420px)',
                       maxWidth: '420px',
+                      minWidth: '300px',
                       position: 'relative',
-                      margin: '0 auto',
-                      cursor: DEBUG_DROPZONES ? 'crosshair' : 'default'
+                      cursor: DEBUG_DROPZONES ? 'crosshair' : 'default',
+                      zIndex: 1
                     }}
                     onClick={handleDebugClick}
                   >
@@ -850,12 +880,15 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
                   <div
                     style={{
-                      flex: '1 1 220px',
                       display: 'flex',
                       alignItems: 'flex-start',
                       justifyContent: 'flex-start',
-                      gap: '28px',
-                      paddingTop: '180px'
+                      gap: 'clamp(14px, 2vw, 28px)',
+                      paddingTop: 'clamp(120px, 15vw, 180px)',
+                      position: 'relative',
+                      zIndex: hoveredLayer ? 10000 : 1,
+                      flex: '1 1 0',
+                      minWidth: 0
                     }}
                   >
                     {RIGHT_DISPLAY_ORDER.map(({ id, offset }) => {
@@ -891,6 +924,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 color: '#406A46',
                 textAlign: 'center',
                   lineHeight: '1.6',
+                  marginTop: '-20px',
                   marginBottom: '36px'
               }}>
                   Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top.
@@ -901,19 +935,22 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 {/* Main Layout: Characters (left) - Image (center) - Buckets (right) */}
                 <div style={{
                   display: 'flex',
-                  justifyContent: 'space-between',
+                  justifyContent: 'center',
                   alignItems: 'center',
-                  gap: '40px',
-                  maxWidth: '1400px',
-                  margin: '10px'
+                  gap: 'clamp(20px, 4vw, 60px)',
+                  flexWrap: 'nowrap',
+                  width: '100%'
                 }}>
                   {/* Left: Characters */}
                   <div style={{
-                    flex: '0 0 420px',
+                    flex: '1 1 0',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '20px',
-                    alignItems: 'center'
+                    gap: 'clamp(15px, 2vw, 20px)',
+                    alignItems: 'center',
+                    minWidth: 0,
+                    position: 'relative',
+                    zIndex: page3HoveredCharacter ? 10000 : 1
                   }}>
                     {PAGE3_STEPS.map((step, index) => {
                       const layerItem = LAYER_ITEMS.find(item => item.id === step.id);
@@ -929,7 +966,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                             flexDirection: 'column',
                             alignItems: 'center',
                             position: 'relative',
-                            zIndex: isHovered ? 100 : 10
+                            zIndex: isHovered ? 10000 : 10
                           }}
                           onMouseEnter={() => setPage3HoveredCharacter(step.id)}
                           onMouseLeave={() => setPage3HoveredCharacter(null)}
@@ -938,7 +975,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                             src={step.character}
                             alt={step.name}
                             style={{
-                              width: `${step.characterWidth}px`,
+                              width: `clamp(${step.characterWidth * 0.6}px, ${step.characterWidth * 0.01}vw, ${step.characterWidth}px)`,
                               height: 'auto',
                               filter: index < page3CurrentStep ? 'grayscale(60%)' : 'none'
                             }}
@@ -953,16 +990,17 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                                 bottom: '-80px',
                                 left: '50%',
                                 transform: 'translateX(-50%)',
-                                width: '280px',
+                                width: 'clamp(250px, 28vw, 320px)',
+                                maxWidth: '90vw',
                                 backgroundColor: 'rgba(255,255,255,0.95)',
                                 boxShadow: '0 12px 30px rgba(64, 106, 70, 0.18)',
                                 borderRadius: '12px',
-                                padding: '12px 16px',
+                                padding: 'clamp(10px, 1.2vw, 12px) clamp(14px, 1.6vw, 16px)',
                                 fontFamily: 'Comfortaa, sans-serif',
-                                fontSize: '14px',
+                                fontSize: 'clamp(12px, 1.4vw, 14px)',
                                 color: layerItem.tooltip.firstColor,
                                 lineHeight: 1.4,
-                                zIndex: 100
+                                zIndex: 10001
                               }}
                             >
                               <p style={{ margin: 0, color: layerItem.tooltip.firstColor }}>
@@ -977,11 +1015,14 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
                   {/* Center: Current Image (Drop Zone) */}
               <div style={{
-                    flex: '1 1 auto',
+                    flex: '0 0 auto',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'flex-end',
-                    position: 'relative'
+                    position: 'relative',
+                    width: 'clamp(300px, 50vw, 500px)',
+                    maxWidth: '500px',
+                    zIndex: 1
                   }}>
                     <div
                       onDragOver={handlePage3ImageDragOver}
@@ -989,7 +1030,6 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                       style={{
                         position: 'relative',
                         width: '100%',
-                        maxWidth: '500px',
                         cursor: page3CurrentStep < PAGE3_STEPS.length ? 'copy' : 'default',
                         border: page3DraggedBucket ? '3px dashed #406A46' : '3px solid transparent',
                         borderRadius: '12px',
@@ -1029,11 +1069,14 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
                   {/* Right: Buckets (Draggable) - Reversed order: plant at top, rock at bottom */}
                   <div style={{
-                    flex: '0 0 180px',
+                    flex: '1 1 0',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '20px',
-                    alignItems: 'center'
+                    gap: 'clamp(15px, 2vw, 20px)',
+                    alignItems: 'center',
+                    minWidth: 0,
+                    position: 'relative',
+                    zIndex: 1
                   }}>
                     {[...PAGE3_STEPS].reverse().map((step, reversedIndex) => {
                       const index = PAGE3_STEPS.length - 1 - reversedIndex;
@@ -1058,7 +1101,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                             src={step.bucket}
                             alt={`${step.name} bucket`}
                             style={{
-                              width: `${step.bucketWidth}px`,
+                              width: `clamp(${step.bucketWidth * 0.6}px, ${step.bucketWidth * 0.01}vw, ${step.bucketWidth}px)`,
                               height: 'auto',
                               pointerEvents: 'none'
                             }}
@@ -1086,7 +1129,8 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 color: '#406A46',
                 textAlign: 'center',
                   lineHeight: '1.6',
-                  width: '100%'
+                  width: '100%',
+                  marginTop: '-20px'
               }}>
                 Now that the wetland is built, let's meet its hidden workers — the tiny microbes who do most of the cleaning job.
               </div>
@@ -1181,19 +1225,34 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Footer with Pagination and Navigation - Only show when not on intro page */}
+      {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
       {currentPage > 0 && (
       <div className="relative z-10" style={{
         position: 'sticky',
         bottom: 0,
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
+        left: 0,
+        right: 0,
+        width: '100vw',
+        marginLeft: 'calc((100% - 100vw) / 2)',
+        backgroundColor: 'rgba(210, 228, 240, 0.95)',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginBottom: '0px',
         flexShrink: 0
       }}>
-        <div className="relative flex justify-between items-center px-4">
+        {/* Top Shadow - Full Width */}
+        <div style={{
+          position: 'absolute',
+          top: '-4px',
+          left: 0,
+          width: '100%',
+          height: '6px',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+          pointerEvents: 'none'
+        }} />
+        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
           {/* Home Button - Left */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ paddingLeft: '16px' }}>
             <button
               onClick={onHomeClick}
               className="home-button relative flex items-center justify-center z-50"
@@ -1217,10 +1276,23 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
             </button>
           </div>
 
-          {/* Pagination Dots and Download/Next Topic */}
-          <div className="flex items-center justify-center" style={{ position: 'relative' }}>
-            {/* Download Button - Only on last page, 50px left of pagination */}
-            {currentPage === TOTAL_PAGES && (
+          {/* Center Section - Download, Pagination, and Next Topic */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
+            className="flex justify-center items-center"
+            style={{ 
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              transformOrigin: 'center',
+              gap: '50px',
+              transition: 'transform 0.3s ease'
+            }}
+          >
+            {/* Download Button - Only on last page, left of pagination - Hide if not enough space */}
+            {currentPage === TOTAL_PAGES && hasEnoughSpace && (
               <button
                 onClick={() => setShowDownloadModal(true)}
                 className="download-button relative flex items-center justify-center z-50"
@@ -1229,8 +1301,8 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   height: '50px',
                   backgroundColor: 'transparent',
                   border: 'none',
-                  marginRight: '50px',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  flexShrink: 0
                 }}
               >
                 <img 
@@ -1245,20 +1317,21 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               </button>
             )}
 
-            {/* Pagination Dots - Centered */}
-            <div className="flex justify-center items-center" style={{ gap: '14px' }}>
+            {/* Pagination Dots - Perfectly Centered */}
+            <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
             {Array.from({ length: TOTAL_PAGES }, (_, index) => {
               const pageNum = index + 1;
               return (
                 <button
                   key={pageNum}
                   onClick={() => setCurrentPage(pageNum)}
+                    className="transition-all duration-300 p-0 border-0 bg-transparent"
+                    aria-label={`Go to page ${pageNum}`}
                   style={{
                     background: 'none',
                     border: 'none',
                     padding: 0,
-                    cursor: 'pointer',
-                    opacity: 1
+                      cursor: 'pointer'
                   }}
                 >
                   <div
@@ -1274,9 +1347,9 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
             })}
             </div>
 
-            {/* NEXT TOPIC Text - Only on last page, 50px right of pagination */}
-            {currentPage === TOTAL_PAGES && (
-              <div style={{ marginLeft: '50px' }}>
+            {/* NEXT TOPIC Text - Only on last page, right of pagination - Hide if not enough space */}
+            {currentPage === TOTAL_PAGES && hasEnoughSpace && (
+              <div style={{ flexShrink: 0 }}>
                 <span style={{ 
                   fontFamily: 'Comfortaa, sans-serif',
                   fontWeight: 'bold',
@@ -1287,10 +1360,10 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 </span>
               </div>
             )}
-          </div>
+          </motion.div>
 
-          {/* Next Button - Right */}
-            <div className="flex items-center">
+          {/* Next/Back Home Button - Right */}
+          <div className="flex items-center" style={{ paddingRight: '16px' }}>
               <button
               onClick={() => {
                 if (currentPage < TOTAL_PAGES) {

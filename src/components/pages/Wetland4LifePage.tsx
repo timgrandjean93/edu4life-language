@@ -6,7 +6,7 @@ interface Wetland4LifePageProps {
 }
 
 export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
-  onHomeClick
+  onHomeClick: _onHomeClick
 }) => {
   // Set page background
   React.useEffect(() => {
@@ -229,7 +229,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                   lineHeight: '1.6',
                   marginBottom: '10px'
                 }}>
-                  The app include a built-in academy with material about wetlands — like their functions, threats, and restoration. Whether you're a beginner or a professional, there's always something new to discover.
+                  The app includes a built-in academy with material about wetlands — like their functions, threats, and restoration. Whether you're a beginner or a professional, there's always something new to discover.
                 </div>
               </div>
             </div>
@@ -289,54 +289,26 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
             }}>
               This link leads to an external website optimized for mobile. The experience may be less optimal on desktop.
             </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Footer with Home Button */}
-      <div className="relative z-10" style={{ 
-        position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        flexShrink: 0
-      }}>
-        <div className="relative flex justify-between items-center px-4">
-          {/* Home Button - Left */}
-          <div className="flex items-center">
-            <button
-              onClick={onHomeClick}
-              className="home-button relative flex items-center justify-center z-50"
-              style={{ 
-                width: '54px',
-                height: '54px',
-                backgroundColor: 'transparent',
-                border: 'none'
+            <a
+              href="https://wetland.restore4life-platform.eu"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: 'Comfortaa, sans-serif',
+                fontSize: '14px',
+                fontWeight: 'bold',
+                color: '#51727C',
+                textAlign: 'center',
+                marginTop: '8px',
+                display: 'block',
+                textDecoration: 'underline',
+                cursor: 'pointer'
               }}
             >
-              <img 
-                src="/assets/icons/Home.png" 
-                alt="Home" 
-                style={{ 
-                  width: '54px',
-                  height: '54px',
-                  opacity: 1
-                }}
-              />
-            </button>
+              https://wetland.restore4life-platform.eu
+            </a>
           </div>
-
-          {/* Center Section - Empty for centering */}
-          <div className="flex items-center justify-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-            {/* No pagination needed for single page */}
-          </div>
-
-          {/* Right Section - Empty */}
-          <div className="flex items-center" style={{ width: '54px' }}>
-            {/* Spacer to balance layout */}
-          </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

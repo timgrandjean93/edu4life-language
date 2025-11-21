@@ -139,6 +139,58 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
   const [showDidYouKnowLeft, setShowDidYouKnowLeft] = React.useState(false);
   const [showDidYouKnowRight, setShowDidYouKnowRight] = React.useState(false);
   
+  // Refs for image containers to measure width
+  const leftImageRef = React.useRef<HTMLDivElement>(null);
+  const rightImageRef = React.useRef<HTMLDivElement>(null);
+  const [leftContainerWidth, setLeftContainerWidth] = React.useState(800);
+  const [rightContainerWidth, setRightContainerWidth] = React.useState(800);
+  
+  // Function to calculate font size based on container width, text length, and area width
+  const getFontSize = (containerWidth: number, textLength: number, areaWidthPercent: number) => {
+    // Calculate available width for text (area width percentage of container width)
+    // Subtract padding (16px total: 8px on each side)
+    const availableWidth = (containerWidth * areaWidthPercent) / 100 - 16;
+    
+    // Base font size - start with a larger size (closer to original clamp max of 18px)
+    const baseFontSize = 18;
+    const minFontSize = 12; // Original clamp min was 12px
+    const maxFontSize = 18; // Original clamp max was 18px
+    
+    // Estimate how much width the text needs
+    // For Comfortaa font, each character is roughly 0.6-0.7 times the font size
+    // We use 0.6 as a conservative estimate
+    const charWidthRatio = 0.6;
+    const estimatedTextWidth = textLength * charWidthRatio * baseFontSize;
+    
+    // Calculate scale factor to fit text in available width
+    // Use 0.85 margin to ensure text fits comfortably but not too small
+    const scaleFactor = Math.min(1, (availableWidth / estimatedTextWidth) * 0.85);
+    
+    // Calculate final font size
+    const fontSize = baseFontSize * scaleFactor;
+    
+    // Clamp between min and max - but prefer larger sizes when possible
+    // If the text fits easily, use a larger font size
+    if (estimatedTextWidth < availableWidth * 0.7) {
+      // Text fits easily, use larger font (closer to max)
+      return Math.max(minFontSize, Math.min(maxFontSize, Math.max(fontSize, baseFontSize * 0.9)));
+    }
+    
+    return Math.max(minFontSize, Math.min(maxFontSize, fontSize));
+  };
+  
+  // Function to calculate padding based on container width
+  const getPadding = (containerWidth: number) => {
+    const baseWidth = 1600;
+    const basePadding = 15;
+    const minPadding = 6;
+    const maxPadding = 15;
+    
+    const padding = (containerWidth / baseWidth) * basePadding;
+    const paddingValue = Math.max(minPadding, Math.min(maxPadding, padding));
+    return `${paddingValue}px ${Math.max(8, Math.min(20, paddingValue * 1.3))}px`;
+  };
+  
   // Page 2 state
   const [draggedNumber, setDraggedNumber] = React.useState<number | null>(null);
   const [placements, setPlacements] = React.useState<Record<string, number>>({});
@@ -151,6 +203,19 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
   const [page3Submitted, setPage3Submitted] = React.useState(false);
   const [showPage3Feedback, setShowPage3Feedback] = React.useState(false);
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  // Track window width for responsive navbar
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate if there's enough space for download and next topic buttons
+  const hasEnoughSpace = windowWidth >= 1400;
 
   // Set page background
   React.useEffect(() => {
@@ -174,6 +239,35 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
       body.style.backgroundColor = "";
     };
   }, []);
+
+  // Update container widths on resize
+  React.useEffect(() => {
+    const updateWidths = () => {
+      if (leftImageRef.current) {
+        const rect = leftImageRef.current.getBoundingClientRect();
+        setLeftContainerWidth(rect.width);
+      }
+      if (rightImageRef.current) {
+        const rect = rightImageRef.current.getBoundingClientRect();
+        setRightContainerWidth(rect.width);
+      }
+    };
+    
+    // Initial update
+    const timer = setTimeout(updateWidths, 100);
+    
+    // Update on resize
+    window.addEventListener('resize', updateWidths);
+    
+    // Also update when images load
+    window.addEventListener('load', updateWidths);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateWidths);
+      window.removeEventListener('load', updateWidths);
+    };
+  }, [currentPage]);
 
   // Auto-submit page 2 when all zones are filled
   React.useEffect(() => {
@@ -222,6 +316,28 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
       [zoneId]: draggedNumber
     }));
     setDraggedNumber(null);
+  };
+
+  // Helper function to find zone ID by correct number and image side
+  const findZoneIdByCorrectNumber = (correctNumber: number, imageSide: 'left' | 'right') => {
+    const zones = imageSide === 'left' ? leftImageDropZones : rightImageDropZones;
+    const zone = zones.find(z => z.correctNumber === correctNumber);
+    return zone?.id || null;
+  };
+
+  // Check if a number has been placed anywhere (currently unused but kept for potential future use)
+  // const isNumberPlaced = (number: number) => {
+  //   return Object.values(placements).includes(number);
+  // };
+
+  // Handle drop on extra corner zones - automatically assign to correct zone
+  const handleCornerDrop = (correctNumber: number, imageSide: 'left' | 'right') => {
+    if (page2Submitted || !draggedNumber) return;
+    
+    const zoneId = findZoneIdByCorrectNumber(correctNumber, imageSide);
+    if (zoneId) {
+      handleDrop(zoneId);
+    }
   };
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -278,10 +394,10 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
   };
 
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', overflowX: 'visible', paddingBottom: '0px' }}>
       
       {/* Header with title and home button */}
-      <div className="relative z-50">
+      <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             {/* Header with Title */}
@@ -307,7 +423,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '10px', flex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -520,7 +636,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               {/* Images with Hover Areas */}
           <div className="flex justify-center items-start gap-8">
             {/* Left Image */}
-            <div className="relative" style={{ width: '45%', maxWidth: '800px', display: 'inline-block' }}>
+            <div ref={leftImageRef} className="relative" style={{ width: '45%', maxWidth: '800px', display: 'inline-block' }}>
               <img 
                 src="/assets/components/Sponge/image1.png"
                 alt="Floodplain sponge function"
@@ -628,6 +744,32 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   onMouseEnter={() => handleAreaHover(area.id)}
                   onMouseLeave={handleAreaLeave}
                 >
+                  {/* Hover indicator - small circle with ! */}
+                  {hoveredArea !== area.id && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '8px',
+                        right: '8px',
+                        width: '24px',
+                        height: '24px',
+                        backgroundColor: '#51727C',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'white',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Comfortaa, sans-serif',
+                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.3)',
+                        zIndex: 5
+                      }}
+                    >
+                      !
+                    </div>
+                  )}
+                  
                   {/* Text overlay when hovered */}
                   {hoveredArea === area.id && (
                     <div 
@@ -639,14 +781,14 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         width: '100%',
                         height: '100%',
                         zIndex: 10,
-                        fontSize: 'clamp(12px, 1.5vw, 18px)',
+                        fontSize: `${getFontSize(leftContainerWidth, area.text.length, area.width)}px`,
                         fontFamily: 'Comfortaa, sans-serif',
                         fontWeight: 'bold',
                         color: '#406A46',
-                        lineHeight: '1.3',
-                        padding: '4px 8px',
+                        lineHeight: '1.2',
+                        padding: getPadding(leftContainerWidth),
                         overflow: 'hidden',
-                        wordBreak: 'break-word',
+                        wordWrap: 'break-word',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center'
@@ -660,7 +802,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
             </div>
 
             {/* Right Image */}
-            <div className="relative" style={{ width: '45%', maxWidth: '800px', display: 'inline-block' }}>
+            <div ref={rightImageRef} className="relative" style={{ width: '45%', maxWidth: '800px', display: 'inline-block' }}>
               <img 
                 src="/assets/components/Sponge/image2.png"
                 alt="Floodplain ecosystem benefits"
@@ -768,6 +910,32 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   onMouseEnter={() => handleAreaHover(area.id)}
                   onMouseLeave={handleAreaLeave}
                 >
+                  {/* Hover indicator - small circle with ! */}
+                  {hoveredArea !== area.id && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '8px',
+                        right: '8px',
+                        width: '24px',
+                        height: '24px',
+                        backgroundColor: '#51727C',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'white',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Comfortaa, sans-serif',
+                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.3)',
+                        zIndex: 5
+                      }}
+                    >
+                      !
+                    </div>
+                  )}
+                  
                   {/* Text overlay when hovered */}
                   {hoveredArea === area.id && (
                     <div 
@@ -779,14 +947,14 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         width: '100%',
                         height: '100%',
                         zIndex: 10,
-                        fontSize: 'clamp(12px, 1.5vw, 18px)',
+                        fontSize: `${getFontSize(rightContainerWidth, area.text.length, area.width)}px`,
                         fontFamily: 'Comfortaa, sans-serif',
                         fontWeight: 'bold',
                         color: '#406A46',
-                        lineHeight: '1.3',
-                        padding: '4px 8px',
+                        lineHeight: '1.2',
+                        padding: getPadding(rightContainerWidth),
                         overflow: 'hidden',
-                        wordBreak: 'break-word',
+                        wordWrap: 'break-word',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center'
@@ -926,37 +1094,117 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     const placement = placements[zone.id];
                     const isCorrect = showPage2Feedback && placement === zone.correctNumber;
                     const isIncorrect = showPage2Feedback && placement && placement !== zone.correctNumber;
+                    const isEmpty = showPage2Feedback && !placement;
                     
                     return (
                       <div
                         key={zone.id}
-                        onDragOver={handleDragOver}
-                        onDrop={() => handleDrop(zone.id)}
-                        className="absolute rounded-full transition-all duration-300"
                         style={{
+                          position: 'absolute',
                           left: `${zone.x}%`,
                           top: `${zone.y}%`,
-                          transform: 'translate(-50%, -50%)',
-                          width: '50px',
-                          height: '50px',
-                          backgroundColor: placement ? '#51727C' : 'rgba(255, 255, 255, 0.6)',
-                          border: showPage2Feedback 
-                            ? (isCorrect ? '4px solid #548235' : isIncorrect ? '4px solid #C41904' : '4px solid #CE7C0A')
-                            : '4px solid #ccc',
-                          boxShadow: placement ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 6px rgba(0, 0, 0, 0.1)',
-                          fontSize: '24px',
-                          fontWeight: 'bold',
-                          color: placement ? 'white' : '#333',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          cursor: draggedNumber && !page2Submitted ? 'copy' : 'default'
+                          transform: 'translate(-50%, -50%)'
                         }}
                       >
-                        {placement || '?'}
+                        <div
+                          onDragOver={handleDragOver}
+                          onDrop={() => handleDrop(zone.id)}
+                          className="rounded-full transition-all duration-300"
+                          style={{
+                            width: '50px',
+                            height: '50px',
+                            backgroundColor: placement ? '#51727C' : 'transparent',
+                            border: showPage2Feedback 
+                              ? (isCorrect ? '4px solid #548235' : isIncorrect ? '4px solid #C41904' : '4px solid #CE7C0A')
+                              : '4px solid white',
+                            boxShadow: placement ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(255, 255, 255, 0.5)',
+                            fontSize: '24px',
+                            fontWeight: 'bold',
+                            color: placement ? 'white' : 'white',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: draggedNumber && !page2Submitted ? 'copy' : 'default',
+                            opacity: 1
+                          }}
+                        >
+                          {placement || '?'}
+                        </div>
+                        
+                        {/* Show correct answer when incorrect or empty */}
+                        {((isIncorrect || isEmpty) && page2Submitted) && (
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: '60px',
+                              left: '50%',
+                              transform: 'translateX(-50%)',
+                              backgroundColor: isIncorrect ? '#fef2f2' : '#fef3c7',
+                              border: `2px solid ${isIncorrect ? '#C41904' : '#CE7C0A'}`,
+                              borderRadius: '8px',
+                              padding: '6px 10px',
+                              fontSize: '14px',
+                              fontFamily: 'Comfortaa, sans-serif',
+                              fontWeight: 'bold',
+                              color: isIncorrect ? '#C41904' : '#CE7C0A',
+                              whiteSpace: 'nowrap',
+                              zIndex: 100,
+                              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
+                            }}
+                          >
+                            Correct: {zone.correctNumber}
+                          </div>
+                        )}
                       </div>
                     );
                   })}
+                  
+                  {/* Extra Corner Drop Zones for Left Image - Always accessible, aligned right bottom horizontally */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      right: '5%',
+                      bottom: '5%',
+                      display: 'flex',
+                      gap: '12px',
+                      alignItems: 'center'
+                    }}
+                  >
+                    {[1, 2, 3].map((num) => {
+                      return (
+                        <div
+                          key={`left-corner-${num}`}
+                        >
+                          <div
+                            draggable={!page2Submitted}
+                            onDragStart={() => handleDragStart(num)}
+                            onDragEnd={handleDragEnd}
+                            onDragOver={handleDragOver}
+                            onDrop={() => handleCornerDrop(num, 'left')}
+                            className="font-bold transition-all duration-300 hover:opacity-80"
+                            style={{
+                              width: '40px',
+                              height: '40px',
+                              backgroundColor: '#51727C',
+                              color: 'white',
+                              borderRadius: '50%',
+                              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                              fontSize: '20px',
+                              fontWeight: 'bold',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              cursor: page2Submitted ? 'not-allowed' : 'move',
+                              opacity: draggedNumber === num ? 0.5 : 1,
+                              zIndex: 10
+                            }}
+                          >
+                            {num}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 {/* Right Image */}
@@ -973,37 +1221,117 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     const placement = placements[zone.id];
                     const isCorrect = showPage2Feedback && placement === zone.correctNumber;
                     const isIncorrect = showPage2Feedback && placement && placement !== zone.correctNumber;
+                    const isEmpty = showPage2Feedback && !placement;
                     
                     return (
                       <div
                         key={zone.id}
-                        onDragOver={handleDragOver}
-                        onDrop={() => handleDrop(zone.id)}
-                        className="absolute rounded-full transition-all duration-300"
                         style={{
+                          position: 'absolute',
                           left: `${zone.x}%`,
                           top: `${zone.y}%`,
-                          transform: 'translate(-50%, -50%)',
-                          width: '50px',
-                          height: '50px',
-                          backgroundColor: placement ? '#51727C' : 'rgba(255, 255, 255, 0.6)',
-                          border: showPage2Feedback 
-                            ? (isCorrect ? '4px solid #548235' : isIncorrect ? '4px solid #C41904' : '4px solid #CE7C0A')
-                            : '4px solid #ccc',
-                          boxShadow: placement ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 6px rgba(0, 0, 0, 0.1)',
-                          fontSize: '24px',
-                          fontWeight: 'bold',
-                          color: placement ? 'white' : '#333',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          cursor: draggedNumber && !page2Submitted ? 'copy' : 'default'
+                          transform: 'translate(-50%, -50%)'
                         }}
                       >
-                        {placement || '?'}
+                        <div
+                          onDragOver={handleDragOver}
+                          onDrop={() => handleDrop(zone.id)}
+                          className="rounded-full transition-all duration-300"
+                          style={{
+                            width: '50px',
+                            height: '50px',
+                            backgroundColor: placement ? '#51727C' : 'transparent',
+                            border: showPage2Feedback 
+                              ? (isCorrect ? '4px solid #548235' : isIncorrect ? '4px solid #C41904' : '4px solid #CE7C0A')
+                              : '4px solid white',
+                            boxShadow: placement ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(255, 255, 255, 0.5)',
+                            fontSize: '24px',
+                            fontWeight: 'bold',
+                            color: placement ? 'white' : 'white',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: draggedNumber && !page2Submitted ? 'copy' : 'default',
+                            opacity: 1
+                          }}
+                        >
+                          {placement || '?'}
+                        </div>
+                        
+                        {/* Show correct answer when incorrect or empty */}
+                        {((isIncorrect || isEmpty) && page2Submitted) && (
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: '60px',
+                              left: '50%',
+                              transform: 'translateX(-50%)',
+                              backgroundColor: isIncorrect ? '#fef2f2' : '#fef3c7',
+                              border: `2px solid ${isIncorrect ? '#C41904' : '#CE7C0A'}`,
+                              borderRadius: '8px',
+                              padding: '6px 10px',
+                              fontSize: '14px',
+                              fontFamily: 'Comfortaa, sans-serif',
+                              fontWeight: 'bold',
+                              color: isIncorrect ? '#C41904' : '#CE7C0A',
+                              whiteSpace: 'nowrap',
+                              zIndex: 100,
+                              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
+                            }}
+                          >
+                            Correct: {zone.correctNumber}
+                          </div>
+                        )}
                       </div>
                     );
                   })}
+                  
+                  {/* Extra Corner Drop Zones for Right Image - Always accessible, aligned right bottom horizontally */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      right: '5%',
+                      bottom: '5%',
+                      display: 'flex',
+                      gap: '12px',
+                      alignItems: 'center'
+                    }}
+                  >
+                    {[1, 2, 3].map((num) => {
+                      return (
+                        <div
+                          key={`right-corner-${num}`}
+                        >
+                          <div
+                            draggable={!page2Submitted}
+                            onDragStart={() => handleDragStart(num)}
+                            onDragEnd={handleDragEnd}
+                            onDragOver={handleDragOver}
+                            onDrop={() => handleCornerDrop(num, 'right')}
+                            className="font-bold transition-all duration-300 hover:opacity-80"
+                            style={{
+                              width: '40px',
+                              height: '40px',
+                              backgroundColor: '#51727C',
+                              color: 'white',
+                              borderRadius: '50%',
+                              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                              fontSize: '20px',
+                              fontWeight: 'bold',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              cursor: page2Submitted ? 'not-allowed' : 'move',
+                              opacity: draggedNumber === num ? 0.5 : 1,
+                              zIndex: 10
+                            }}
+                          >
+                            {num}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
 
@@ -1094,7 +1422,6 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   const zone = allZones.find(z => z.id === zoneId);
                   return placements[zoneId] && placements[zoneId] !== zone?.correctNumber;
                 }).length;
-                const missedCount = allZones.length - Object.keys(placements).length;
 
                 return (
                   <motion.div
@@ -1110,7 +1437,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       <div className="flex items-center" style={{ gap: '12px' }}>
                         <div className="flex items-center justify-center rounded-full" 
                           style={{ 
-                            backgroundColor: '#4ade80',
+                            backgroundColor: '#548235',
                             width: '32px',
                             height: '32px'
                           }}
@@ -1119,7 +1446,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                             <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </div>
-                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#4ade80' }}>
+                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#548235' }}>
                           {correctCount} Correct
                         </span>
                       </div>
@@ -1128,7 +1455,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       <div className="flex items-center" style={{ gap: '12px' }}>
                         <div className="flex items-center justify-center rounded-full" 
                           style={{ 
-                            backgroundColor: '#ef4444',
+                            backgroundColor: '#C41904',
                             width: '32px',
                             height: '32px'
                           }}
@@ -1137,26 +1464,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                             <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                           </svg>
                         </div>
-                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#ef4444' }}>
+                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#C41904' }}>
                           {incorrectCount} Incorrect
-                        </span>
-                      </div>
-
-                      {/* Missed */}
-                      <div className="flex items-center" style={{ gap: '12px' }}>
-                        <div className="flex items-center justify-center rounded-full" 
-                          style={{ 
-                            backgroundColor: '#fbbf24',
-                            width: '32px',
-                            height: '32px'
-                          }}
-                        >
-                          <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
-                            <circle cx="8" cy="8" r="1.5" fill="white"/>
-                          </svg>
-                        </div>
-                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#fbbf24' }}>
-                          {missedCount} Missed
                         </span>
                       </div>
                     </div>
@@ -1267,7 +1576,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       {' '}to hold floodwater
                     </p>
                     <p style={{ margin: 0 }}>
-                      and reduce{' '}
+                      and reduce the risk of{' '}
                       <input
                         type="text"
                         value={answer2}
@@ -1288,7 +1597,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         }}
                         placeholder="f___g"
                       />
-                      {' '}risk downstream.
+                      .
                     </p>
                   </div>
 
@@ -1366,57 +1675,82 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
+      {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
       {currentPage > 0 && (
       <div className="relative z-10" style={{ 
         position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100vw',
+        marginLeft: 'calc((100% - 100vw) / 2)',
+        backgroundColor: 'rgba(210, 228, 240, 0.95)',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginBottom: '0px',
         flexShrink: 0
       }}>
-        <div className="relative flex justify-between items-center px-4">
+        {/* Top Shadow - Full Width */}
+        <div style={{
+          position: 'absolute',
+          top: '-4px',
+          left: 0,
+          width: '100%',
+          height: '6px',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+          pointerEvents: 'none'
+        }} />
+        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
           {/* Home Button - Left */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ paddingLeft: '16px' }}>
             <HomeButton onClick={onHomeClick} />
           </div>
 
-          {/* Center Section - Download Button, Pagination, and NEXT TOPIC Text - Only on completion */}
+          {/* Center Section - Download, Pagination, and Next Topic */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
+            className="flex justify-center items-center"
+            style={{ 
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              transformOrigin: 'center',
+              gap: '50px',
+              transition: 'transform 0.3s ease'
+            }}
+          >
           {currentPage === TOTAL_PAGES && page3Submitted ? (
-            <div className="flex items-center justify-center" style={{ position: 'relative' }}>
-              {/* Download Button - 50px left of pagination */}
-              <button
-                onClick={handleDownloadClick}
-                className="download-button relative flex items-center justify-center z-50"
-                style={{
-                  width: '480px',
-                  height: '50px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  marginRight: '50px',
-                  cursor: 'pointer'
-                }}
-              >
-                <img 
-                  src="/assets/icons/download.png" 
-                  alt="Download" 
-                  style={{ 
-                    width: '480px',
-                    height: '50px',
-                    opacity: 1
-                  }}
-                />
-              </button>
+              <>
+                {/* Download Button - left of pagination - Hide if not enough space */}
+                {hasEnoughSpace && (
+                  <button
+                    onClick={handleDownloadClick}
+                    className="download-button relative flex items-center justify-center z-50"
+                    style={{
+                      width: '480px',
+                      height: '50px',
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                        cursor: 'pointer',
+                        flexShrink: 0
+                    }}
+                  >
+                    <img 
+                      src="/assets/icons/download.png" 
+                      alt="Download" 
+                      style={{ 
+                        width: '480px',
+                        height: '50px',
+                        opacity: 1
+                      }}
+                    />
+                  </button>
+                )}
               
-              {/* Pagination Dots */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.1 }}
-                className="flex justify-center items-center"
-                style={{ gap: '14px', position: 'relative' }}
-              >
+                {/* Pagination Dots - Perfectly Centered */}
+                <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
                 {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                   const pageNum = index + 1;
                   
@@ -1430,8 +1764,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         background: 'none', 
                         border: 'none', 
                         padding: 0,
-                        cursor: 'pointer',
-                        opacity: 1
+                          cursor: 'pointer'
                       }}
                     >
                       <div
@@ -1445,29 +1778,25 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     </button>
                   );
                 })}
-              </motion.div>
+                </div>
 
-              {/* NEXT TOPIC Text - 50px right of pagination */}
-              <div style={{ marginLeft: '50px' }}>
-                <span style={{
-                  fontFamily: 'Comfortaa, sans-serif',
-                  fontWeight: 'bold',
-                  fontSize: '24px',
-                  color: '#406A46'
-                }}>
-                  NEXT TOPIC: Climate protection and carbon sink
-                </span>
-              </div>
-            </div>
+                {/* NEXT TOPIC Text - right of pagination - Hide if not enough space */}
+                {hasEnoughSpace && (
+                  <div style={{ flexShrink: 0 }}>
+                    <span style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontWeight: 'bold',
+                      fontSize: '24px',
+                      color: '#406A46'
+                    }}>
+                      NEXT TOPIC: Climate protection and carbon sink
+                    </span>
+                  </div>
+                )}
+              </>
           ) : (
             /* Pagination Dots - Only when not on completion page */
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-              className="flex justify-center items-center"
-              style={{ gap: '14px', position: 'relative' }}
-            >
+              <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
               {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
                 
@@ -1481,8 +1810,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       background: 'none', 
                       border: 'none', 
                       padding: 0,
-                      cursor: 'pointer',
-                      opacity: 1
+                        cursor: 'pointer'
                     }}
                   >
                     <div
@@ -1496,12 +1824,13 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   </button>
                 );
               })}
-            </motion.div>
+              </div>
           )}
+          </motion.div>
 
           {/* Next Button - Right - Only on completion */}
           {currentPage === TOTAL_PAGES && page3Submitted && (
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingRight: '16px' }}>
               <button
                 onClick={() => {
                   if (onCarbonClick) {
@@ -1513,7 +1842,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   width: '158px',
                   height: '60px',
                   backgroundColor: 'transparent',
-                  border: 'none'
+                  border: 'none',
+                  cursor: 'pointer'
                 }}
               >
                 <img
@@ -1531,7 +1861,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
 
           {/* Check Answers / Next Button - Right - Only during activities */}
           {!(currentPage === TOTAL_PAGES && page3Submitted) && (
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingRight: '16px' }}>
               {currentPage === 2 ? (
               // Page 2: Show Check Answers button (becomes NEXT after submit)
               <button

@@ -14,7 +14,8 @@ export const HomeButton: React.FC<HomeButtonProps> = ({ onClick, className = '' 
         backgroundColor: 'transparent',
         width: '54px',
         height: '54px',
-        border: 'none'
+        border: 'none',
+        cursor: 'pointer'
       }}
         className={`
           home-button

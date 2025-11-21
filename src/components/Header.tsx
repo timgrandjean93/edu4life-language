@@ -43,17 +43,17 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
 
         {/* Right: nav items */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-          {/* Environmental activities dropdown */}
+          {/* Learning activities dropdown */}
           <div className="group" style={{ position: 'relative' }}>
             <button className="nav-button" style={{ background: 'none', border: 'none', color: 'white', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', cursor: 'pointer' }}>
-              Environmental activities ▾
+              Learning activities ▾
             </button>
-            <div className="hidden group-hover:block" style={{ position: 'absolute', right: 0, top: '100%', background: 'white', borderRadius: '8px', boxShadow: '0 8px 20px rgba(0,0,0,0.1)', padding: '8px', minWidth: '240px', zIndex: 200 }}>
+            <div className="hidden group-hover:block" style={{ position: 'absolute', right: 0, top: '100%', background: 'white', borderRadius: '8px', boxShadow: '0 8px 20px rgba(0,0,0,0.1)', padding: '8px', minWidth: '300px', zIndex: 200 }}>
               {[
                 { id: 'floodplain' as const, label: 'Living environment' },
                 { id: 'mapwetland' as const, label: 'Map your wetland' },
                 { id: 'riparian' as const, label: 'Exploring habitats' },
-                { id: 'floodcontrol' as const, label: 'Floodplain sponge' },
+                { id: 'floodcontrol' as const, label: 'Floodplain sponge effect' },
                 { id: 'carbon' as const, label: 'Climate & Carbon' },
                 { id: 'selfpurification' as const, label: 'Purification' },
                 { id: 'treatmentwetlands' as const, label: 'Treatment wetlands' },

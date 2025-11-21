@@ -32,6 +32,20 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   const [showValidation, setShowValidation] = React.useState(false);
   const [quizAnswers, setQuizAnswers] = React.useState<Record<string, string>>({});
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  // Track window width for responsive navbar
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate if there's enough space for download and next topic buttons
+  // Home button (54px) + padding (116px) + Download (480px) + gaps (100px) + Pagination (~70px) + NEXT TOPIC (~350px) + Next button (158px) + padding (116px) = ~1448px minimum
+  const hasEnoughSpace = windowWidth >= 1400;
 
   // Drag and Drop items for Activity 1
   const pressureLabels = [
@@ -131,6 +145,25 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     }
   ];
 
+  // Default label positions for page 2 (Activity 1) - can be customized
+  // These positions define where labels appear when placed on dropzones
+  // To adjust label positions, modify the x and y values (in percentages)
+  // Example: 'cutting-meanders': { x: 15, y: 26 } means 15% from left, 26% from top
+  const labelPositionsPage2: Record<string, { x: number, y: number }> = {
+    'cutting-meanders': { x: 15.5, y: 45 },
+    'building-dikes': { x: 30, y: 40 },
+    'channellizing-rivers': { x: 44, y: 22 },
+    'draining-floodplains': { x: 33, y: 50 },
+    'urbanization': { x: 63, y: 43 },
+    'agriculture-pesticides': { x: 34, y: 76 },
+    'cutting-forests': { x: 36, y: 61 },
+    'industrialization': { x: 66, y: 52 },
+    'dams-hydroelectric': { x: 65, y: 87 },
+    'invasive-species': { x: 78, y: 70 },
+    'navigation': { x: 84, y: 52 },
+    'climate-change': { x: 86, y: 26 }
+  };
+
   // Drop zones for page 2 (Activity 1)
   const dropZones = [
     { id: 'zone1', x: 15, y: 26, width: 8, height: 15, correctAnswer: 'cutting-meanders' },
@@ -146,6 +179,19 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     { id: 'zone11', x: 78, y: 42, width: 8, height: 8, correctAnswer: 'navigation' },
     { id: 'zone12', x: 86, y: 26, width: 8, height: 14, correctAnswer: 'climate-change' }
   ];
+
+  // Default label positions for page 3 (Activity 2) - can be customized
+  // These positions define where labels appear when placed on dropzones
+  // To adjust label positions, modify the x and y values (in percentages)
+  // Example: 'restoration-sidearms': { x: 16, y: 8 } means 16% from left, 8% from top
+  const labelPositionsPage3: Record<string, { x: number, y: number }> = {
+    'restoration-sidearms': { x: 16, y: 8 },
+    'dike-relocation': { x: 23, y: 75 },
+    'buffer-strips': { x: 63, y: 10 },
+    'fish-ramps': { x: 70, y: 44 },
+    'bypass-channels': { x: 50, y: 95 },
+    'native-species': { x: 75, y: 95 }
+  };
 
   // Drop zones for page 3 (Activity 2)
   const restorationDropZones = [
@@ -229,6 +275,30 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     e.dataTransfer.dropEffect = 'move';
   };
 
+  // Handle clicking on image to place label at custom position
+  const handleImageClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!draggedItem || showValidation) return;
+    
+    const container = e.currentTarget;
+    const rect = container.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    
+    // Only place if clicked within image bounds (not on dropzones or existing labels)
+    if (x >= 0 && x <= 100 && y >= 0 && y <= 100) {
+      if (currentPage === 2) {
+        const newDroppedItems = { ...droppedItems };
+        newDroppedItems[draggedItem] = { x, y };
+        setDroppedItems(newDroppedItems);
+      } else if (currentPage === 3) {
+        const newDroppedItems = { ...restorationDroppedItems };
+        newDroppedItems[draggedItem] = { x, y };
+        setRestorationDroppedItems(newDroppedItems);
+      }
+      setDraggedItem(null);
+    }
+  };
+
   // Download modal handlers
   const handleDownloadClick = () => {
     setShowDownloadModal(true);
@@ -257,16 +327,19 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
           // Remove any existing item from this zone before adding new one
           const newDroppedItems = { ...droppedItems };
           
-          // Find and remove any item that was in this zone
+          // Find and remove any item that was in this zone (check both zone position and label position)
+          const labelPosition = labelPositionsPage2[zone.correctAnswer] || { x: zone.x, y: zone.y };
           Object.keys(newDroppedItems).forEach(key => {
             const item = newDroppedItems[key];
-            if (item.x === zone.x && item.y === zone.y) {
+            if ((item.x === zone.x && item.y === zone.y) || 
+                (item.x === labelPosition.x && item.y === labelPosition.y)) {
               delete newDroppedItems[key];
             }
           });
           
-          // Add the new item
-          newDroppedItems[draggedItem] = { x: zone.x, y: zone.y };
+          // Use defined label position if available, otherwise use zone position
+          const position = labelPositionsPage2[draggedItem] || { x: zone.x, y: zone.y };
+          newDroppedItems[draggedItem] = position;
           setDroppedItems(newDroppedItems);
         }
       } else if (currentPage === 3) {
@@ -275,16 +348,19 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
           // Remove any existing item from this zone before adding new one
           const newDroppedItems = { ...restorationDroppedItems };
           
-          // Find and remove any item that was in this zone
+          // Find and remove any item that was in this zone (check both zone position and label position)
+          const labelPosition = labelPositionsPage3[zone.correctAnswer] || { x: zone.x, y: zone.y };
           Object.keys(newDroppedItems).forEach(key => {
             const item = newDroppedItems[key];
-            if (item.x === zone.x && item.y === zone.y) {
+            if ((item.x === zone.x && item.y === zone.y) || 
+                (item.x === labelPosition.x && item.y === labelPosition.y)) {
               delete newDroppedItems[key];
             }
           });
           
-          // Add the new item
-          newDroppedItems[draggedItem] = { x: zone.x, y: zone.y };
+          // Use defined label position if available, otherwise use zone position
+          const position = labelPositionsPage3[draggedItem] || { x: zone.x, y: zone.y };
+          newDroppedItems[draggedItem] = position;
           setRestorationDroppedItems(newDroppedItems);
         }
       }
@@ -316,17 +392,44 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
       const droppedPosition = droppedItems[itemId];
       if (!droppedPosition) return false;
       
-      const zone = dropZones.find(z => z.x === droppedPosition.x && z.y === droppedPosition.y);
+      // Check if position matches the defined label position
+      const definedPosition = labelPositionsPage2[itemId];
+      if (definedPosition) {
+        // Allow small tolerance for floating point comparison (0.1%)
+        const tolerance = 0.1;
+        return Math.abs(droppedPosition.x - definedPosition.x) < tolerance &&
+               Math.abs(droppedPosition.y - definedPosition.y) < tolerance;
+      }
+      
+      // Fallback: check if it matches a dropzone position
+      const zone = dropZones.find(z => 
+        Math.abs(z.x - droppedPosition.x) < 0.1 && 
+        Math.abs(z.y - droppedPosition.y) < 0.1
+      );
       return zone?.correctAnswer === itemId;
     } else if (currentPage === 3) {
       const droppedPosition = restorationDroppedItems[itemId];
       if (!droppedPosition) return false;
       
-      const zone = restorationDropZones.find(z => z.x === droppedPosition.x && z.y === droppedPosition.y);
+      // Check if position matches the defined label position
+      const definedPosition = labelPositionsPage3[itemId];
+      if (definedPosition) {
+        // Allow small tolerance for floating point comparison (0.1%)
+        const tolerance = 0.1;
+        return Math.abs(droppedPosition.x - definedPosition.x) < tolerance &&
+               Math.abs(droppedPosition.y - definedPosition.y) < tolerance;
+      }
+      
+      // Fallback: check if it matches a dropzone position
+      const zone = restorationDropZones.find(z => 
+        Math.abs(z.x - droppedPosition.x) < 0.1 && 
+        Math.abs(z.y - droppedPosition.y) < 0.1
+      );
       return zone?.correctAnswer === itemId;
     }
     return false;
   };
+
 
   // Check if all items are placed
   const allItemsPlaced = currentPage === 2 
@@ -380,6 +483,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     setShowValidation(false);
   }, [currentPage]);
 
+
   // Set page background
   React.useEffect(() => {
     const html = document.documentElement;
@@ -404,9 +508,9 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   }, []);
 
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', overflowX: 'visible', paddingBottom: '0px' }}>
       {/* Header with title and home button */}
-      <div className="relative z-50">
+      <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
@@ -547,7 +651,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '10px', flex: 1 }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}
@@ -754,7 +858,16 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     {/* Left side - Image (2/3) */}
                     <div style={{ width: '66.66%', display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
                       {/* Image container with fixed aspect ratio */}
-                      <div style={{ position: 'relative', width: '100%', flexShrink: 0 }}>
+                      <div 
+                        data-image-container
+                        style={{ 
+                          position: 'relative', 
+                          width: '100%', 
+                          flexShrink: 0,
+                          cursor: draggedItem ? 'crosshair' : 'default'
+                        }}
+                        onClick={handleImageClick}
+                      >
                         <img 
                           src={getImagePath(currentPage)}
                           alt={`People and aquatic ecosystems page ${currentPage}`}
@@ -762,7 +875,8 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             width: '100%',
                             height: 'auto',
                             display: 'block',
-                            backgroundColor: 'transparent'
+                            backgroundColor: 'transparent',
+                            pointerEvents: draggedItem ? 'none' : 'auto'
                           }}
                         />
                         
@@ -771,7 +885,14 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           <div
                             key={zone.id}
                             onDragOver={handleDragOver}
-                            onDrop={(e) => handleDrop(e, zone.id)}
+                            onDrop={(e) => {
+                              e.stopPropagation();
+                              handleDrop(e, zone.id);
+                            }}
+                            onClick={(e) => {
+                              // Stop propagation so dropzone click doesn't trigger image click
+                              e.stopPropagation();
+                            }}
                             style={{
                               position: 'absolute',
                               left: `${zone.x}%`,
@@ -801,29 +922,38 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 }
                               }}
                               onClick={(e) => {
-                                // Only remove on double-click if validation not shown
-                                if (e.detail === 2 && !showValidation) {
+                                // Stop propagation to prevent image click handler
+                                e.stopPropagation();
+                                // Remove on click if validation not shown
+                                if (!showValidation) {
                                   handleRemoveDroppedItem(itemId);
                                 }
                               }}
-                              title={showValidation ? (isCorrect ? 'Correct!' : 'Incorrect') : 'Drag to move, double-click to remove'}
+                              title={showValidation ? (isCorrect ? 'Correct!' : 'Incorrect') : 'Click to remove and return to list'}
                               style={{
                                 position: 'absolute',
                                 left: `${position.x}%`,
                                 top: `${position.y}%`,
                                 backgroundColor: showValidation ? (isCorrect ? '#4CAF50' : '#F44336') : '#58717B',
                                 color: 'white',
-                                padding: '6px 10px',
-                                borderRadius: '6px',
-                                fontSize: '11px',
+                                padding: 'clamp(0.25em, 0.4vw, 0.5em) clamp(0.35em, 0.6vw, 0.7em)',
+                                borderRadius: 'clamp(0.25em, 0.4vw, 0.4em)',
+                                fontSize: 'clamp(0.5rem, 0.8vw, 0.75rem)',
                                 fontWeight: 'bold',
                                 transform: 'translate(-50%, -50%)',
                                 cursor: showValidation ? 'default' : 'grab',
                                 transition: 'all 0.2s ease',
-                                border: showValidation ? (isCorrect ? '3px solid #2E7D32' : '3px solid #D32F2F') : '2px solid white',
-                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+                                border: showValidation 
+                                  ? `clamp(1.5px, 0.15vw, 2.5px) solid ${isCorrect ? '#2E7D32' : '#D32F2F'}` 
+                                  : 'clamp(0.8px, 0.12vw, 1.5px) solid white',
+                                boxShadow: '0 clamp(0.8px, 0.12vw, 1.5px) clamp(3px, 0.5vw, 6px) rgba(0, 0, 0, 0.3)',
                                 pointerEvents: 'auto',
-                                zIndex: 10
+                                zIndex: 10,
+                                whiteSpace: 'nowrap',
+                                userSelect: 'none',
+                                WebkitUserSelect: 'none',
+                                MozUserSelect: 'none',
+                                msUserSelect: 'none'
                               }}
                               className={showValidation ? '' : 'hover:bg-opacity-80 hover:scale-105 active:cursor-grabbing'}
                             >
@@ -835,7 +965,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     </div>
                     
                     {/* Right side - Activity content (1/3) - Sticky positioned to align with image */}
-                    <div style={{ width: '33.33%', position: 'sticky', top: '100px', alignSelf: 'flex-start' }} className="flex flex-col justify-start pt-4">
+                    <div style={{ width: '33.33%', position: 'sticky', top: '100px', alignSelf: 'flex-start', zIndex: 100 }} className="flex flex-col justify-start pt-4">
                       {/* Score Display - Only show when validation is active */}
                       {showValidation && (
                         <div style={{
@@ -857,8 +987,9 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           </h4>
                           <div style={{
                             display: 'flex',
-                            justifyContent: 'space-around',
-                            gap: '20px'
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: '15px'
                           }}>
                             <div style={{
                               display: 'flex',
@@ -942,7 +1073,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                               transition: 'all 0.3s ease',
                               position: 'relative',
                               minHeight: '50px',
-                              display: 'flex',
+                              display: isDropped ? 'none' : 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               lineHeight: '1.2',
@@ -955,7 +1086,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             {/* Tooltip - Only show when not dragging and not dropped */}
                             {draggedItem !== item.id && !isDropped && (
                               <div 
-                                className="absolute z-50 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300"
+                                className="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300"
                                 style={{
                                   bottom: '100%',
                                   left: '50%',
@@ -972,7 +1103,8 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                   textAlign: 'left',
                                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
                                   border: '1px solid #e2e8f0',
-                                  pointerEvents: 'none'
+                                  pointerEvents: 'none',
+                                  zIndex: 9999
                                 }}
                               >
                                 {item.description}
@@ -1023,7 +1155,16 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     {/* Left side - Image (2/3) */}
                     <div style={{ width: '66.66%', display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
                       {/* Image container with fixed aspect ratio */}
-                      <div style={{ position: 'relative', width: '100%', flexShrink: 0 }}>
+                      <div 
+                        data-image-container
+                        style={{ 
+                          position: 'relative', 
+                          width: '100%', 
+                          flexShrink: 0,
+                          cursor: draggedItem ? 'crosshair' : 'default'
+                        }}
+                        onClick={handleImageClick}
+                      >
                         <img 
                           src={getImagePath(currentPage)}
                           alt={`People and aquatic ecosystems page ${currentPage}`}
@@ -1031,7 +1172,8 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             width: '100%',
                             height: 'auto',
                             display: 'block',
-                            backgroundColor: 'transparent'
+                            backgroundColor: 'transparent',
+                            pointerEvents: draggedItem ? 'none' : 'auto'
                           }}
                         />
                         
@@ -1040,7 +1182,14 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           <div
                             key={zone.id}
                             onDragOver={handleDragOver}
-                            onDrop={(e) => handleDrop(e, zone.id)}
+                            onDrop={(e) => {
+                              e.stopPropagation();
+                              handleDrop(e, zone.id);
+                            }}
+                            onClick={(e) => {
+                              // Stop propagation so dropzone click doesn't trigger image click
+                              e.stopPropagation();
+                            }}
                             style={{
                               position: 'absolute',
                               left: `${zone.x}%`,
@@ -1070,29 +1219,38 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 }
                               }}
                               onClick={(e) => {
-                                // Only remove on double-click if validation not shown
-                                if (e.detail === 2 && !showValidation) {
+                                // Stop propagation to prevent image click handler
+                                e.stopPropagation();
+                                // Remove on click if validation not shown
+                                if (!showValidation) {
                                   handleRemoveDroppedItem(itemId);
                                 }
                               }}
-                              title={showValidation ? (isCorrect ? 'Correct!' : 'Incorrect') : 'Drag to move, double-click to remove'}
+                              title={showValidation ? (isCorrect ? 'Correct!' : 'Incorrect') : 'Click to remove and return to list'}
                               style={{
                                 position: 'absolute',
                                 left: `${position.x}%`,
                                 top: `${position.y}%`,
                                 backgroundColor: showValidation ? (isCorrect ? '#4CAF50' : '#F44336') : '#406A46',
                                 color: 'white',
-                                padding: '6px 10px',
-                                borderRadius: '6px',
-                                fontSize: '11px',
+                                padding: 'clamp(0.35em, 0.6vw, 0.6em) clamp(0.5em, 0.9vw, 0.9em)',
+                                borderRadius: 'clamp(0.3em, 0.5vw, 0.5em)',
+                                fontSize: 'clamp(0.65rem, 1vw, 0.9rem)',
                                 fontWeight: 'bold',
                                 transform: 'translate(-50%, -50%)',
                                 cursor: showValidation ? 'default' : 'grab',
                                 transition: 'all 0.2s ease',
-                                border: showValidation ? (isCorrect ? '3px solid #2E7D32' : '3px solid #D32F2F') : '2px solid white',
-                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+                                border: showValidation 
+                                  ? `clamp(1.5px, 0.15vw, 2.5px) solid ${isCorrect ? '#2E7D32' : '#D32F2F'}` 
+                                  : 'clamp(0.8px, 0.12vw, 1.5px) solid white',
+                                boxShadow: '0 clamp(0.8px, 0.12vw, 1.5px) clamp(3px, 0.5vw, 6px) rgba(0, 0, 0, 0.3)',
                                 pointerEvents: 'auto',
-                                zIndex: 10
+                                zIndex: 10,
+                                whiteSpace: 'nowrap',
+                                userSelect: 'none',
+                                WebkitUserSelect: 'none',
+                                MozUserSelect: 'none',
+                                msUserSelect: 'none'
                               }}
                               className={showValidation ? '' : 'hover:bg-opacity-80 hover:scale-105 active:cursor-grabbing'}
                             >
@@ -1126,8 +1284,9 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           </h4>
                           <div style={{
                             display: 'flex',
-                            justifyContent: 'space-around',
-                            gap: '20px'
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: '15px'
                           }}>
                             <div style={{
                               display: 'flex',
@@ -1211,7 +1370,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                               transition: 'all 0.3s ease',
                               position: 'relative',
                               minHeight: '50px',
-                              display: 'flex',
+                              display: isDropped ? 'none' : 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               lineHeight: '1.2',
@@ -1224,7 +1383,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             {/* Tooltip - Only show when not dragging and not dropped */}
                             {draggedItem !== item.id && !isDropped && (
                               <div 
-                                className="absolute z-50 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300"
+                                className="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300"
                                 style={{
                                   bottom: '100%',
                                   left: '50%',
@@ -1241,7 +1400,8 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                   textAlign: 'left',
                                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
                                   border: '1px solid #e2e8f0',
-                                  pointerEvents: 'none'
+                                  pointerEvents: 'none',
+                                  zIndex: 9999
                                 }}
                               >
                                 {item.description}
@@ -1398,7 +1558,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             key={option.id}
                             onClick={() => handleQuizAnswer('column1', option.id)}
                             style={{
-                              backgroundColor: showResult ? (isCorrect ? '#619F6A' : '#C41904') : 'white',
+                              backgroundColor: showResult ? (isCorrect ? '#548235' : '#C41904') : 'white',
                               color: showResult ? 'white' : 'black',
                               padding: '12px 16px',
                               borderRadius: '8px',
@@ -1486,7 +1646,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             key={option.id}
                             onClick={() => handleQuizAnswer('column2', option.id)}
                             style={{
-                              backgroundColor: showResult ? (isCorrect ? '#619F6A' : '#C41904') : 'white',
+                              backgroundColor: showResult ? (isCorrect ? '#548235' : '#C41904') : 'white',
                               color: showResult ? 'white' : 'black',
                               padding: '12px 16px',
                               borderRadius: '8px',
@@ -1574,7 +1734,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             key={option.id}
                             onClick={() => handleQuizAnswer('column3', option.id)}
                             style={{
-                              backgroundColor: showResult ? (isCorrect ? '#619F6A' : '#C41904') : 'white',
+                              backgroundColor: showResult ? (isCorrect ? '#548235' : '#C41904') : 'white',
                               color: showResult ? 'white' : 'black',
                               padding: '12px 16px',
                               borderRadius: '8px',
@@ -1611,19 +1771,34 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Pagination and Navigation - Sticky Footer */}
+      {/* Pagination and Navigation - Sticky Footer - Outside container for full width */}
       {currentPage > 0 && (
         <div className="relative z-10" style={{ 
           position: 'sticky', 
-          bottom: 0, 
-          backgroundColor: 'rgba(223, 235, 245, 0.95)',
-          paddingTop: '20px',
-          paddingBottom: '20px',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          width: '100vw',
+          marginLeft: 'calc((100% - 100vw) / 2)',
+          backgroundColor: 'rgba(210, 228, 240, 0.95)',
+          paddingTop: '10px',
+          paddingBottom: '10px',
+          marginBottom: '0px',
           flexShrink: 0
         }}>
-          <div className="relative flex justify-between items-center px-4">
+          {/* Top Shadow - Full Width */}
+          <div style={{
+            position: 'absolute',
+            top: '-4px',
+            left: 0,
+            width: '100%',
+            height: '6px',
+            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+            pointerEvents: 'none'
+          }} />
+          <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
           {/* Home Button - Left */}
-          <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingLeft: '16px' }}>
             <button
               onClick={onHomeClick}
               className="home-button relative flex items-center justify-center z-50"
@@ -1631,7 +1806,8 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                 width: '54px',
                 height: '54px',
                 backgroundColor: 'transparent',
-                border: 'none'
+                  border: 'none',
+                  cursor: 'pointer'
               }}
             >
               <img 
@@ -1646,16 +1822,49 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
             </button>
           </div>
 
-          {/* Center Section - Pagination (always centered) */}
-          <div className="flex items-center justify-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-            {/* Pagination Dots */}
+            {/* Center Section - Download and Pagination */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.1 }}
               className="flex justify-center items-center"
-              style={{ gap: '14px' }}
+              style={{ 
+                position: 'absolute',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                transformOrigin: 'center',
+                gap: '50px',
+                transition: 'transform 0.3s ease'
+              }}
             >
+              {/* Download Button - Only on last page, left of pagination - Hide if not enough space */}
+              {currentPage === TOTAL_PAGES && hasEnoughSpace && (
+                <button
+                  onClick={handleDownloadClick}
+                  className="download-button relative flex items-center justify-center z-50"
+                  style={{
+                    width: '480px',
+                    height: '50px',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    flexShrink: 0
+                  }}
+            >
+                  <img 
+                    src="/assets/icons/download.png" 
+                    alt="Download" 
+                    style={{ 
+                      width: '480px',
+                      height: '50px',
+                      opacity: 1
+                    }}
+                  />
+                </button>
+              )}
+
+              {/* Pagination Dots - Perfectly Centered */}
+              <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
               {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
                 
@@ -1669,8 +1878,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       background: 'none', 
                       border: 'none', 
                       padding: 0,
-                      cursor: 'pointer',
-                      opacity: 1
+                        cursor: 'pointer'
                     }}
                   >
                     <div
@@ -1684,40 +1892,12 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   </button>
                 );
               })}
-            </motion.div>
           </div>
-
-          {/* Download Button - Only on last page, left of pagination */}
-          {currentPage === TOTAL_PAGES && (
-            <div className="flex items-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', marginLeft: '-290px' }}>
-              <button
-                onClick={handleDownloadClick}
-                className="download-button relative flex items-center justify-center z-50"
-                style={{
-                  width: '480px',
-                  height: '50px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  marginRight: '50px',
-                  cursor: 'pointer'
-                }}
-              >
-                <img 
-                  src="/assets/icons/download.png" 
-                  alt="Download" 
-                  style={{ 
-                    width: '480px',
-                    height: '50px',
-                    opacity: 1
-                  }}
-                />
-              </button>
-            </div>
-          )}
+            </motion.div>
 
           {/* Next Button - Right (Hide on last page) */}
           {currentPage < TOTAL_PAGES && (
-            <div className="flex items-center">
+              <div className="flex items-center" style={{ paddingRight: '16px' }}>
               <button
                 onClick={() => {
                   const isDisabled = (currentPage === 2 || currentPage === 3) && !allItemsPlaced;
@@ -1749,7 +1929,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
             </div>
           )}
           {currentPage === TOTAL_PAGES && (
-            <div className="flex items-center">
+              <div className="flex items-center" style={{ paddingRight: '16px' }}>
               <button
                 onClick={onHomeClick}
                 className="next-button relative flex items-center justify-center z-50"
@@ -1969,6 +2149,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
           </div>
         </div>
       )}
+
     </div>
   );
 };

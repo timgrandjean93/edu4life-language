@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { HomeButton } from '../HomeButton';
 
@@ -24,7 +24,8 @@ const heronElements = [
     image: '/assets/components/art/heron/feather.png', 
     placedImage: '/assets/components/art/heron/feather_placed.png',
     type: 'element', 
-    rotation: -25 
+    rotation: -25,
+    multipleDropZones: true  // Can be placed in 2 different zones
   },
   { 
     id: 'grass', 
@@ -398,11 +399,12 @@ const heronOutline = {
   dropZones: [
     { id: 'heron-zone1', x: 67, y: 8, width: 12, height: 10, accepts: ['snail'] },
     { id: 'heron-zone2', x: 82, y: 18, width: 20, height: 22, accepts: ['feather'] },
+    { id: 'heron-zone2b', x: 10, y: 50, width: 18, height: 15, accepts: ['feather'] }, // Second dropzone for feather
     { id: 'heron-zone3', x: 60, y: 10, width: 20, height: 25, accepts: ['petals'] },
     { id: 'heron-zone4', x: 30, y: 35, width: 60, height: 30, accepts: ['leaf'] },
     { id: 'heron-zone5', x: 50, y: 35, width: 35, height: 20, accepts: ['small_leaves'] },
     { id: 'heron-zone6', x: 40, y: 8, width: 25, height: 20, accepts: ['grass'] },
-    { id: 'heron-zone7', x: 45, y: 70, width: 40, height: 40, accepts: ['branches'] }
+    { id: 'heron-zone7', x: 45, y: 73, width: 40, height: 45, accepts: ['branches'] }
   ]
 };
 
@@ -504,8 +506,22 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
   const [placedElements, setPlacedElements] = useState<{[key: string]: string}>({});
   const [isCompleted, setIsCompleted] = useState(false);
   const [usedElements, setUsedElements] = useState<Set<string>>(new Set());
-  const [showDropZones] = useState(false);
+  // Dropzones are hidden by default
+  const showDropZones = false;
   const [showDownloadModal, setShowDownloadModal] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Track window width for responsive navbar
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate if there's enough space for download and next topic buttons
+  const hasEnoughSpace = windowWidth >= 1400;
 
   // Dropzones are hidden by default
 
@@ -531,6 +547,73 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
     console.log('Is element used?', usedElements.has(elementId));
     setDraggedElement(elementId);
     e.dataTransfer.effectAllowed = 'move';
+    
+    // Create a custom drag image that maintains exact displayed size and orientation
+    const dragElement = e.currentTarget as HTMLElement;
+    const imgElement = dragElement.querySelector('img') as HTMLImageElement;
+    
+    if (imgElement) {
+      // Find the element object to get rotation
+      const element = getCurrentElements().find(el => el.id === elementId);
+      const rotation = element?.rotation || 0;
+      
+      // Get the exact displayed dimensions (before rotation transform)
+      // Use offsetWidth/offsetHeight to get the actual rendered size
+      const displayedWidth = imgElement.offsetWidth;
+      const displayedHeight = imgElement.offsetHeight;
+      
+      // Get computed styles to preserve exact appearance
+      const computedStyle = window.getComputedStyle(imgElement);
+      
+      // Create a container div that exactly matches what the user sees
+      const dragContainer = document.createElement('div');
+      dragContainer.style.position = 'absolute';
+      dragContainer.style.top = '-10000px';
+      dragContainer.style.left = '-10000px';
+      dragContainer.style.width = displayedWidth + 'px';
+      dragContainer.style.height = displayedHeight + 'px';
+      dragContainer.style.pointerEvents = 'none';
+      dragContainer.style.boxSizing = 'border-box';
+      dragContainer.style.overflow = 'visible';
+      dragContainer.style.transformOrigin = 'center center';
+      
+      // Clone the image element
+      const clone = imgElement.cloneNode(true) as HTMLImageElement;
+      
+      // Apply exact same styling as displayed - preserve size and rotation
+      clone.style.width = displayedWidth + 'px';
+      clone.style.height = displayedHeight + 'px';
+      clone.style.maxWidth = displayedWidth + 'px';
+      clone.style.maxHeight = displayedHeight + 'px';
+      clone.style.minWidth = displayedWidth + 'px';
+      clone.style.minHeight = displayedHeight + 'px';
+      clone.style.transform = `rotate(${rotation}deg)`; // Preserve exact rotation
+      clone.style.transformOrigin = 'center center'; // Rotate around center
+      clone.style.objectFit = computedStyle.objectFit || 'contain';
+      clone.style.display = 'block';
+      clone.style.margin = '0';
+      clone.style.padding = '0';
+      clone.style.border = 'none';
+      clone.style.opacity = '0.9';
+      clone.style.boxSizing = 'border-box';
+      clone.style.verticalAlign = 'top';
+      
+      dragContainer.appendChild(clone);
+      document.body.appendChild(dragContainer);
+      
+      // Force a reflow to ensure dimensions and transform are applied
+      void dragContainer.offsetHeight;
+      
+      // Set the drag image with offset at center
+      e.dataTransfer.setDragImage(dragContainer, displayedWidth / 2, displayedHeight / 2);
+      
+      // Remove clone after drag starts
+      setTimeout(() => {
+        if (document.body.contains(dragContainer)) {
+          document.body.removeChild(dragContainer);
+        }
+      }, 0);
+    }
   };
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -540,23 +623,74 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
 
   const handleDrop = (e: React.DragEvent, dropZoneId: string) => {
     e.preventDefault();
+    e.stopPropagation(); // Prevent multiple drop handlers from firing
     
     if (!draggedElement) return;
 
-    console.log(`Dropped ${draggedElement} in zone ${dropZoneId}`);
-
     const element = getCurrentElements().find(el => el.id === draggedElement);
-    const dropZone = getCurrentOutline().dropZones.find(zone => zone.id === dropZoneId);
+    if (!element) {
+      setDraggedElement(null);
+      return;
+    }
 
-    console.log('Element:', element);
-    console.log('Drop Zone:', dropZone);
-    console.log('Accepts:', dropZone?.accepts);
-    console.log('Element ID:', element?.id);
-    console.log('Accepts includes element?', dropZone?.accepts.includes(element?.id || ''));
+    // Get the image container to calculate relative position
+    const imageContainer = (e.currentTarget as HTMLElement).closest('.relative') as HTMLElement;
+    if (!imageContainer) {
+      setDraggedElement(null);
+      return;
+    }
 
-    if (element && dropZone && dropZone.accepts.includes(element.id)) {
-      console.log('✓ Drop accepted!');
-      const newPlacedElements = { ...placedElements, [dropZoneId]: draggedElement };
+    const containerRect = imageContainer.getBoundingClientRect();
+    const dropX = ((e.clientX - containerRect.left) / containerRect.width) * 100;
+    const dropY = ((e.clientY - containerRect.top) / containerRect.height) * 100;
+
+    // Find all dropzones that accept this element
+    const validZones = getCurrentOutline().dropZones.filter(zone => 
+      zone.accepts.includes(element.id) && !placedElements[zone.id]
+    );
+
+    if (validZones.length === 0) {
+      console.log('✗ No valid zones available for this element');
+      setDraggedElement(null);
+      return;
+    }
+
+    // Find which zone the drop point is in (check all valid zones)
+    let targetZone = validZones.find(zone => {
+      const zoneLeft = zone.x - zone.width / 2;
+      const zoneRight = zone.x + zone.width / 2;
+      const zoneTop = zone.y - zone.height / 2;
+      const zoneBottom = zone.y + zone.height / 2;
+      
+      return dropX >= zoneLeft && dropX <= zoneRight && 
+             dropY >= zoneTop && dropY <= zoneBottom;
+    });
+
+    // If not found in any zone, use the zone that was triggered (for backwards compatibility)
+    if (!targetZone) {
+      const triggeredZone = getCurrentOutline().dropZones.find(zone => zone.id === dropZoneId);
+      if (triggeredZone && triggeredZone.accepts.includes(element.id) && !placedElements[triggeredZone.id]) {
+        targetZone = triggeredZone;
+      }
+    }
+
+    // If still no zone found, try to find the closest valid zone
+    if (!targetZone && validZones.length > 0) {
+      let minDistance = Infinity;
+      for (const zone of validZones) {
+        const distance = Math.sqrt(
+          Math.pow(dropX - zone.x, 2) + Math.pow(dropY - zone.y, 2)
+        );
+        if (distance < minDistance) {
+          minDistance = distance;
+          targetZone = zone;
+        }
+      }
+    }
+
+    if (targetZone) {
+      console.log(`✓ Drop accepted in zone ${targetZone.id} for element ${draggedElement}`);
+      const newPlacedElements = { ...placedElements, [targetZone.id]: draggedElement };
       
       setPlacedElements(newPlacedElements);
 
@@ -585,7 +719,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
         setIsCompleted(true);
       }
     } else {
-      console.log('✗ Drop rejected!');
+      console.log('✗ Drop rejected - no valid zone found');
     }
 
     setDraggedElement(null);
@@ -618,7 +752,9 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
     <div className="min-h-screen relative" style={{ 
       display: 'flex', 
       flexDirection: 'column',
-      backgroundColor: '#dfebf5'
+      backgroundColor: '#dfebf5',
+      overflowX: 'visible',
+      paddingBottom: '0px'
     }}>
       {/* Header with title and home button */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
@@ -646,7 +782,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '10px', flex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -1171,8 +1307,35 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
               <div style={{ 
                 width: currentPage === 1 ? '354px' : '506px',
                 display: 'flex',
-                justifyContent: 'flex-end'
+                flexDirection: 'column',
+                alignItems: 'flex-end'
               }}>
+                {/* Instruction text for page 1 - show before snail is placed */}
+                {currentPage === 1 && (() => {
+                  const snailZone = getCurrentOutline().dropZones.find(zone => zone.accepts.includes('snail'));
+                  const isSnailPlaced = snailZone && placedElements[snailZone.id] === 'snail';
+                  
+                  if (!isSnailPlaced) {
+                    return (
+                      <div style={{
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontSize: '20px',
+                        fontWeight: 'bold',
+                        color: '#406A46',
+                        textAlign: 'center',
+                        marginBottom: '20px',
+                        padding: '12px',
+                        backgroundColor: 'rgba(97, 192, 157, 0.2)',
+                        borderRadius: '8px',
+                        width: '100%'
+                      }}>
+                        Try placing the snail first
+                      </div>
+                    );
+                  }
+                  return null;
+                })()}
+                
                 <div className="grid gap-2" style={{ 
                   gridTemplateColumns: currentPage === 1 ? 'repeat(3, 1fr)' : currentPage === 2 ? 'repeat(2, 1fr)' : 'repeat(2, 1fr)',
                   width: 'fit-content'
@@ -1181,6 +1344,17 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                     const elementZones = getCurrentOutline().dropZones.filter(zone => zone.accepts.includes(element.id));
                     const filledElementZones = elementZones.filter(zone => placedElements[zone.id] === element.id);
                     const isElementFullyUsed = filledElementZones.length >= elementZones.length;
+                    
+                    // On page 1, hide other elements until snail is placed
+                    if (currentPage === 1) {
+                      const snailZone = getCurrentOutline().dropZones.find(zone => zone.accepts.includes('snail'));
+                      const isSnailPlaced = snailZone && placedElements[snailZone.id] === 'snail';
+                      
+                      // Show only snail if it's not placed yet, show all if snail is placed
+                      if (!isSnailPlaced && element.id !== 'snail') {
+                        return null;
+                      }
+                    }
                     
                     return (
                       <div
@@ -1222,29 +1396,54 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
         </motion.div>
       </div>
 
-      {/* Footer - Sticky Footer */}
+      {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
       {currentPage > 0 && (
         <div className="relative z-10" style={{ 
           position: 'sticky', 
-          bottom: 0, 
-          backgroundColor: 'rgba(223, 235, 245, 0.95)',
-          paddingTop: '20px',
-          paddingBottom: '20px',
-          flexShrink: 0,
-          paddingLeft: '100px',
-          paddingRight: '100px'
+          bottom: 0,
+          left: 0,
+          right: 0,
+          width: '100vw',
+          marginLeft: 'calc((100% - 100vw) / 2)',
+          backgroundColor: 'rgba(210, 228, 240, 0.95)',
+          paddingTop: '10px',
+          paddingBottom: '10px',
+          marginBottom: '0px',
+          flexShrink: 0
         }}>
-          <div className="max-w-6xl mx-auto">
-            <div className="relative flex justify-between items-center px-4">
+          {/* Top Shadow - Full Width */}
+          <div style={{
+            position: 'absolute',
+            top: '-4px',
+            left: 0,
+            width: '100%',
+            height: '6px',
+            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+            pointerEvents: 'none'
+          }} />
+          <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
         {/* Home Button - Left */}
-        <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingLeft: '16px' }}>
           <HomeButton onClick={onHomeClick} />
         </div>
 
-          {/* Center Section - Pagination and Download Button */}
-          <div className="flex items-center justify-center" style={{ position: 'relative' }}>
-            {/* Download Button - Only on last page, 50px left of pagination */}
-            {currentPage === TOTAL_PAGES && isCompleted && (
+            {/* Center Section - Download, Pagination, and Next Topic */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1 }}
+              className="flex justify-center items-center"
+              style={{ 
+                position: 'absolute',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                transformOrigin: 'center',
+                gap: '50px',
+                transition: 'transform 0.3s ease'
+              }}
+            >
+              {/* Download Button - Only on last page, left of pagination - Hide if not enough space */}
+            {currentPage === TOTAL_PAGES && isCompleted && hasEnoughSpace && (
               <button
                 onClick={handleDownloadClick}
                 className="download-button relative flex items-center justify-center z-50"
@@ -1253,8 +1452,8 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   height: '50px',
                   backgroundColor: 'transparent',
                   border: 'none',
-                  marginRight: '50px',
-                  cursor: 'pointer'
+                    cursor: 'pointer',
+                    flexShrink: 0
                 }}
               >
                 <img 
@@ -1269,14 +1468,8 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
               </button>
             )}
 
-            {/* Pagination Dots - Centered */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            className="flex justify-center items-center"
-            style={{ gap: '14px' }}
-          >
+              {/* Pagination Dots - Perfectly Centered */}
+              <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
               {[1, 2, 3].map((page) => (
                 <button
                 key={page}
@@ -1305,11 +1498,11 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   />
                 </button>
             ))}
-          </motion.div>
+              </div>
 
-            {/* NEXT TOPIC Text - Only on last page, 50px right of pagination */}
-            {currentPage === TOTAL_PAGES && isCompleted && (
-              <div style={{ marginLeft: '50px' }}>
+              {/* NEXT TOPIC Text - Only on last page, right of pagination - Hide if not enough space */}
+            {currentPage === TOTAL_PAGES && isCompleted && hasEnoughSpace && (
+                <div style={{ flexShrink: 0 }}>
                 <span style={{ 
                   fontFamily: 'Comfortaa, sans-serif',
                   fontWeight: 'bold',
@@ -1320,10 +1513,10 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                 </span>
               </div>
             )}
-        </div>
+            </motion.div>
 
           {/* Next/Back Home Button - Right */}
-        <div className="flex items-center">
+            <div className="flex items-center" style={{ paddingRight: '16px' }}>
           <button
               onClick={isCompleted ? (currentPage === TOTAL_PAGES ? onPeopleAquaticClick : () => {
               setCurrentPage(currentPage + 1);
@@ -1351,7 +1544,6 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
               }}
             />
           </button>
-        </div>
         </div>
       </div>
       </div>

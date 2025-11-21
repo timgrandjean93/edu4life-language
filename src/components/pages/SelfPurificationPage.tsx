@@ -67,7 +67,7 @@ const nutrientsHoverAreas1 = [
 const nutrientsHoverAreas2 = [
   {
     id: 'area-1',
-    x: 25.4,
+    x: 15,
     y: 73,
     width: 18,
     height: 15,
@@ -253,6 +253,84 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
   const [showQuizModal, setShowQuizModal] = React.useState(false);
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
   
+  // State to track window width for responsive modal text
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  
+  // Update window width on resize
+  // Calculate if there's enough space for download and next topic buttons
+  const hasEnoughSpace = windowWidth >= 1400;
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // Function to calculate modal font sizes based on window width
+  const getModalTitleSize = () => {
+    if (windowWidth < 768) return '24px';
+    if (windowWidth < 1024) return '28px';
+    if (windowWidth < 1440) return '32px';
+    return '36px';
+  };
+  
+  const getModalBodySize = () => {
+    if (windowWidth < 768) return '14px';
+    if (windowWidth < 1024) return '16px';
+    if (windowWidth < 1440) return '18px';
+    return '20px';
+  };
+  
+  const getModalCloseSize = () => {
+    if (windowWidth < 768) return '28px';
+    if (windowWidth < 1024) return '32px';
+    return '36px';
+  };
+  
+  const getModalWidth = () => {
+    if (windowWidth < 768) return '90%';
+    if (windowWidth < 1024) return '70%';
+    if (windowWidth < 1440) return '60%';
+    return '60%';
+  };
+  
+  const getModalWidthSmall = () => {
+    if (windowWidth < 768) return '90%';
+    if (windowWidth < 1024) return '60%';
+    if (windowWidth < 1440) return '45%';
+    return '40%';
+  };
+  
+  const getModalPadding = () => {
+    if (windowWidth < 768) return '16px';
+    if (windowWidth < 1024) return '20px';
+    return '20px';
+  };
+  
+  const getModalPaddingLarge = () => {
+    if (windowWidth < 768) return '20px';
+    if (windowWidth < 1024) return '30px';
+    return '40px';
+  };
+  
+  const getModalContentPaddingTop = () => {
+    if (windowWidth < 768) return '40px';
+    if (windowWidth < 1024) return '45px';
+    return '50px';
+  };
+  
+  const getModalCloseTop = () => {
+    if (windowWidth < 768) return '12px';
+    return '20px';
+  };
+  
+  const getModalCloseRight = () => {
+    if (windowWidth < 768) return '12px';
+    return '20px';
+  };
+  
   // Refs for image containers to measure width
   const imageContainerRef1 = React.useRef<HTMLDivElement>(null);
   const imageContainerRef2 = React.useRef<HTMLDivElement>(null);
@@ -395,10 +473,10 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
   };
 
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', overflowX: 'visible', paddingBottom: '0px' }}>
       
       {/* Header with title and home button */}
-      <div className="relative z-50">
+      <div className="relative" style={{ zIndex: (showQuizModal || showDownloadModal) ? 1 : 50, flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
           <div className="w-full max-w-6xl px-4">
             {/* Header with Title */}
@@ -444,7 +522,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px' }}>
+      <div className="relative px-4 pb-8" style={{ paddingBottom: '10px', flex: 1, zIndex: (showQuizModal || showDownloadModal) ? 1 : 10 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -644,7 +722,9 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         height: `${area.height}%`,
                         backgroundColor: hoveredArea === area.id ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
                         borderRadius: '8px',
-                        border: 'none'
+                        border: 'none',
+                        zIndex: hoveredArea === area.id ? 200 : 100,
+                        pointerEvents: showQuizModal ? 'none' : 'auto'
                       }}
                       onMouseEnter={() => handleAreaHover(area.id)}
                       onMouseLeave={handleAreaLeave}
@@ -660,7 +740,8 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                           top: '50%',
                           left: '50%',
                           transform: 'translate(-50%, -50%)',
-                          opacity: hoveredArea === area.id ? 0 : 1
+                          opacity: hoveredArea === area.id ? 0 : 1,
+                          zIndex: hoveredArea === area.id ? 201 : 101
                         }} 
                       />
                       
@@ -674,7 +755,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
-                            zIndex: 20,
+                            zIndex: 202,
                             fontSize: `${getFontSize(containerWidth1)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
@@ -719,7 +800,8 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       left: '42%',
                       top: '80%',
                       transform: 'translate(-50%, -50%)',
-                      zIndex: 15
+                      zIndex: 15,
+                      pointerEvents: showQuizModal ? 'none' : 'auto'
                     }}
                     onClick={toggleQuizModal}
                   >
@@ -735,66 +817,77 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   </div>
 
                   {/* Hover Areas for Nutrients Image 2 */}
-                  {nutrientsHoverAreas2.map((area) => (
-                    <div
-                      key={area.id}
-                      className="absolute cursor-pointer transition-all duration-300"
-                      style={{
-                        left: `${area.x}%`,
-                        top: `${area.y}%`,
-                        width: `${area.width}%`,
-                        height: `${area.height}%`,
-                        backgroundColor: hoveredArea === area.id ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
-                        borderRadius: '8px',
-                        border: 'none'
-                      }}
-                      onMouseEnter={() => handleAreaHover(area.id)}
-                      onMouseLeave={handleAreaLeave}
-                    >
-                      {/* Info Icon - Hidden when hovering */}
-                      <img 
-                        src="/assets/icons/info.png" 
-                        alt="Info" 
-                        style={{ 
-                          width: '20px',
-                          height: '20px',
-                          position: 'absolute',
-                          top: '50%',
-                          left: '50%',
-                          transform: 'translate(-50%, -50%)',
-                          opacity: hoveredArea === area.id ? 0 : 1
-                        }} 
-                      />
-                      
-                      {/* Text overlay when hovered */}
-                      {hoveredArea === area.id && (
-                        <div 
-                          className="absolute bg-white rounded-lg shadow-lg font-medium text-gray-800 leading-tight flex items-center justify-center text-center"
-                          style={{
+                  {nutrientsHoverAreas2.map((area) => {
+                    // Calculate original center position for area-1 info button
+                    const originalX = area.id === 'area-1' ? 25.4 : area.x;
+                    const originalCenter = originalX + (area.width / 2);
+                    const currentCenter = area.x + (area.width / 2);
+                    const infoButtonOffset = area.id === 'area-1' ? originalCenter - currentCenter : 0;
+                    
+                    return (
+                      <div
+                        key={area.id}
+                        className="absolute cursor-pointer transition-all duration-300"
+                        style={{
+                          left: `${area.x}%`,
+                          top: `${area.y}%`,
+                          width: `${area.width}%`,
+                          height: `${area.height}%`,
+                          backgroundColor: hoveredArea === area.id ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
+                          borderRadius: '8px',
+                          border: 'none',
+                          zIndex: 100,
+                          pointerEvents: showQuizModal ? 'none' : 'auto'
+                        }}
+                        onMouseEnter={() => handleAreaHover(area.id)}
+                        onMouseLeave={handleAreaLeave}
+                      >
+                        {/* Info Icon - Hidden when hovering */}
+                        <img 
+                          src="/assets/icons/info.png" 
+                          alt="Info" 
+                          style={{ 
+                            width: '20px',
+                            height: '20px',
+                            position: 'absolute',
                             top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            width: '100%',
-                            height: '100%',
-                            zIndex: 20,
-                            fontSize: `${getFontSize(containerWidth2)}px`,
-                            fontFamily: 'Comfortaa, sans-serif',
-                            fontWeight: 'bold',
-                            color: '#406A46',
-                            lineHeight: '1.2',
-                            padding: getPadding(containerWidth2),
-                            overflow: 'hidden',
-                            wordWrap: 'break-word',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                          }}
-                        >
-                          <span dangerouslySetInnerHTML={{ __html: area.text }} />
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                          left: infoButtonOffset !== 0 ? `calc(50% + ${infoButtonOffset}%)` : '50%',
+                          transform: 'translate(-50%, -50%)',
+                          opacity: hoveredArea === area.id ? 0 : 1,
+                          zIndex: hoveredArea === area.id ? 201 : 101
+                        }}
+                        />
+                        
+                        {/* Text overlay when hovered */}
+                        {hoveredArea === area.id && (
+                          <div 
+                            className="absolute bg-white rounded-lg shadow-lg font-medium text-gray-800 leading-tight flex items-center justify-center text-center"
+                            style={{
+                              top: '50%',
+                              left: '50%',
+                              transform: 'translate(-50%, -50%)',
+                              width: '100%',
+                              height: '100%',
+                              zIndex: 202,
+                              fontSize: `${getFontSize(containerWidth2)}px`,
+                              fontFamily: 'Comfortaa, sans-serif',
+                              fontWeight: 'bold',
+                              color: '#406A46',
+                              lineHeight: '1.2',
+                              padding: getPadding(containerWidth2),
+                              overflow: 'hidden',
+                              wordWrap: 'break-word',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                          >
+                            <span dangerouslySetInnerHTML={{ __html: area.text }} />
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
 
                 {/* Quiz Modal - Only on Page 2 */}
@@ -803,14 +896,15 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
                     onClick={toggleQuizModal}
                     style={{
-                      position: 'absolute',
+                      position: 'fixed',
                       top: 0,
                       left: 0,
                       right: 0,
-                      bottom: 0
+                      bottom: 0,
+                      zIndex: 99999
                     }}
                   >
                     <motion.div
@@ -821,9 +915,9 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       onClick={(e) => e.stopPropagation()}
                       style={{
                         backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                        width: '60%',
+                        width: getModalWidth(),
                         borderRadius: '20px',
-                        padding: '20px'
+                        padding: getModalPadding()
                       }}
                     >
                       {/* Close Button */}
@@ -831,15 +925,15 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         onClick={toggleQuizModal}
                         style={{
                           position: 'absolute',
-                          top: '20px',
-                          right: '20px',
-                          fontSize: '36px',
+                          top: getModalCloseTop(),
+                          right: getModalCloseRight(),
+                          fontSize: getModalCloseSize(),
                           fontFamily: 'Comfortaa, sans-serif',
                           fontWeight: 'bold',
                           backgroundColor: 'transparent',
                           border: 'none',
                           cursor: 'pointer',
-                          zIndex: 10,
+                          zIndex: 100000,
                           color: '#6B7280'
                         }}
                       >
@@ -847,11 +941,11 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       </button>
                       
                       {/* Content */}
-                      <div>
+                      <div style={{ paddingTop: getModalContentPaddingTop() }}>
                         <h3 
                           className="font-bold mb-6"
                           style={{ 
-                            fontSize: '36px', 
+                            fontSize: getModalTitleSize(), 
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#51727C',
@@ -862,7 +956,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         </h3>
                         <div 
                           style={{ 
-                            fontSize: '20px', 
+                            fontSize: getModalBodySize(), 
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#51727C',
@@ -912,7 +1006,8 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       left: '41%',
                       top: '83%',
                       transform: 'translate(-50%, -50%)',
-                      zIndex: 15
+                      zIndex: 15,
+                      pointerEvents: showQuizModal ? 'none' : 'auto'
                     }}
                     onClick={toggleQuizModal}
                   >
@@ -939,7 +1034,9 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         height: `${area.height}%`,
                         backgroundColor: hoveredArea === area.id ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
                         borderRadius: '8px',
-                        border: 'none'
+                        border: 'none',
+                        zIndex: hoveredArea === area.id ? 200 : 100,
+                        pointerEvents: showQuizModal ? 'none' : 'auto'
                       }}
                       onMouseEnter={() => handleAreaHover(area.id)}
                       onMouseLeave={handleAreaLeave}
@@ -955,7 +1052,8 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                           top: '50%',
                           left: '50%',
                           transform: 'translate(-50%, -50%)',
-                          opacity: hoveredArea === area.id ? 0 : 1
+                          opacity: hoveredArea === area.id ? 0 : 1,
+                          zIndex: hoveredArea === area.id ? 201 : 101
                         }} 
                       />
                       
@@ -969,7 +1067,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
-                            zIndex: 20,
+                            zIndex: 202,
                             fontSize: `${getFontSize(containerWidth3)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
@@ -996,14 +1094,15 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
                     onClick={toggleQuizModal}
                     style={{
-                      position: 'absolute',
+                      position: 'fixed',
                       top: 0,
                       left: 0,
                       right: 0,
-                      bottom: 0
+                      bottom: 0,
+                      zIndex: 99999
                     }}
                   >
                     <motion.div
@@ -1014,9 +1113,9 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       onClick={(e) => e.stopPropagation()}
                       style={{
                         backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                        width: '60%',
+                        width: getModalWidth(),
                         borderRadius: '20px',
-                        padding: '20px'
+                        padding: getModalPadding()
                       }}
                     >
                       {/* Close Button */}
@@ -1024,15 +1123,15 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         onClick={toggleQuizModal}
                         style={{
                           position: 'absolute',
-                          top: '20px',
-                          right: '20px',
-                          fontSize: '36px',
+                          top: getModalCloseTop(),
+                          right: getModalCloseRight(),
+                          fontSize: getModalCloseSize(),
                           fontFamily: 'Comfortaa, sans-serif',
                           fontWeight: 'bold',
                           backgroundColor: 'transparent',
                           border: 'none',
                           cursor: 'pointer',
-                          zIndex: 10,
+                          zIndex: 100000,
                           color: '#6B7280'
                         }}
                       >
@@ -1040,11 +1139,11 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       </button>
                       
                       {/* Content */}
-                      <div>
+                      <div style={{ paddingTop: getModalContentPaddingTop() }}>
                         <h3 
                           className="font-bold mb-6"
                           style={{ 
-                            fontSize: '36px', 
+                            fontSize: getModalTitleSize(), 
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#51727C',
@@ -1055,7 +1154,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         </h3>
                         <div 
                           style={{ 
-                            fontSize: '20px', 
+                            fontSize: getModalBodySize(), 
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#51727C',
@@ -1104,7 +1203,9 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         height: `${area.height}%`,
                         backgroundColor: hoveredArea === area.id ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
                         borderRadius: '8px',
-                        border: 'none'
+                        border: 'none',
+                        zIndex: hoveredArea === area.id ? 200 : 100,
+                        pointerEvents: showQuizModal ? 'none' : 'auto'
                       }}
                       onMouseEnter={() => handleAreaHover(area.id)}
                       onMouseLeave={handleAreaLeave}
@@ -1120,7 +1221,8 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                           top: '50%',
                           left: '50%',
                           transform: 'translate(-50%, -50%)',
-                          opacity: hoveredArea === area.id ? 0 : 1
+                          opacity: hoveredArea === area.id ? 0 : 1,
+                          zIndex: hoveredArea === area.id ? 201 : 101
                         }} 
                       />
                       
@@ -1134,7 +1236,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
-                            zIndex: 20,
+                            zIndex: 202,
                             fontSize: `${getFontSize(containerWidth4)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
@@ -1184,7 +1286,9 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         height: `${area.height}%`,
                         backgroundColor: hoveredArea === area.id ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
                         borderRadius: '8px',
-                        border: 'none'
+                        border: 'none',
+                        zIndex: hoveredArea === area.id ? 200 : 100,
+                        pointerEvents: showQuizModal ? 'none' : 'auto'
                       }}
                       onMouseEnter={() => handleAreaHover(area.id)}
                       onMouseLeave={handleAreaLeave}
@@ -1200,7 +1304,8 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                           top: '50%',
                           left: '50%',
                           transform: 'translate(-50%, -50%)',
-                          opacity: hoveredArea === area.id ? 0 : 1
+                          opacity: hoveredArea === area.id ? 0 : 1,
+                          zIndex: hoveredArea === area.id ? 201 : 101
                         }} 
                       />
                       
@@ -1214,7 +1319,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
-                            zIndex: 20,
+                            zIndex: 202,
                             fontSize: `${getFontSize(containerWidth5)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
@@ -1259,7 +1364,8 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       left: '42%',
                       top: '74%',
                       transform: 'translate(-50%, -50%)',
-                      zIndex: 15
+                      zIndex: 15,
+                      pointerEvents: showQuizModal ? 'none' : 'auto'
                     }}
                     onClick={toggleQuizModal}
                   >
@@ -1286,7 +1392,9 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         height: `${area.height}%`,
                         backgroundColor: hoveredArea === area.id ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
                         borderRadius: '8px',
-                        border: 'none'
+                        border: 'none',
+                        zIndex: hoveredArea === area.id ? 200 : 100,
+                        pointerEvents: showQuizModal ? 'none' : 'auto'
                       }}
                       onMouseEnter={() => handleAreaHover(area.id)}
                       onMouseLeave={handleAreaLeave}
@@ -1302,7 +1410,8 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                           top: '50%',
                           left: '50%',
                           transform: 'translate(-50%, -50%)',
-                          opacity: hoveredArea === area.id ? 0 : 1
+                          opacity: hoveredArea === area.id ? 0 : 1,
+                          zIndex: hoveredArea === area.id ? 201 : 101
                         }} 
                       />
                       
@@ -1316,7 +1425,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
-                            zIndex: 20,
+                            zIndex: 202,
                             fontSize: `${getFontSize(containerWidth6)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
@@ -1343,14 +1452,15 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
                     onClick={toggleQuizModal}
                     style={{
-                      position: 'absolute',
+                      position: 'fixed',
                       top: 0,
                       left: 0,
                       right: 0,
-                      bottom: 0
+                      bottom: 0,
+                      zIndex: 99999
                     }}
                   >
                     <motion.div
@@ -1361,9 +1471,9 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       onClick={(e) => e.stopPropagation()}
                       style={{
                         backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                        width: '40%',
+                        width: getModalWidthSmall(),
                         borderRadius: '20px',
-                        padding: '40px'
+                        padding: getModalPaddingLarge()
                       }}
                     >
                       {/* Close Button */}
@@ -1371,15 +1481,15 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                         onClick={toggleQuizModal}
                         style={{
                           position: 'absolute',
-                          top: '20px',
-                          right: '20px',
-                          fontSize: '36px',
+                          top: getModalCloseTop(),
+                          right: getModalCloseRight(),
+                          fontSize: getModalCloseSize(),
                           fontFamily: 'Comfortaa, sans-serif',
                           fontWeight: 'bold',
                           backgroundColor: 'transparent',
                           border: 'none',
                           cursor: 'pointer',
-                          zIndex: 10,
+                          zIndex: 100000,
                           color: '#6B7280'
                         }}
                       >
@@ -1387,10 +1497,10 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       </button>
                       
                       {/* Content */}
-                      <div>
+                      <div style={{ paddingTop: getModalContentPaddingTop() }}>
                         <div 
                           style={{ 
-                            fontSize: '20px', 
+                            fontSize: getModalBodySize(), 
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#51727C',
@@ -1415,58 +1525,83 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Pagination and Next Button - Sticky Footer - Only show when not on intro page */}
+      {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
       {currentPage > 0 && (
-      <div className="relative z-10" style={{ 
+      <div className="relative" style={{
+        zIndex: (showQuizModal || showDownloadModal) ? 1 : 10, 
         position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100vw',
+        marginLeft: 'calc((100% - 100vw) / 2)',
+        backgroundColor: 'rgba(210, 228, 240, 0.95)',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginBottom: '0px',
         flexShrink: 0
       }}>
-        <div className="relative flex justify-between items-center px-4">
+        {/* Top Shadow - Full Width */}
+        <div style={{
+          position: 'absolute',
+          top: '-4px',
+          left: 0,
+          width: '100%',
+          height: '6px',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+          pointerEvents: 'none'
+        }} />
+        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
           {/* Home Button - Left */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ paddingLeft: '16px' }}>
             <HomeButton onClick={onHomeClick} />
           </div>
 
-          {/* Pagination / Completion Footer - Centered */}
+          {/* Center Section - Download, Pagination, and Next Topic */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1 }}
             className="flex justify-center items-center"
-            style={{ gap: '14px', position: 'relative' }}
+            style={{ 
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              transformOrigin: 'center',
+              gap: '50px',
+              transition: 'transform 0.3s ease'
+            }}
           >
             {currentPage === TOTAL_PAGES ? (
-              <div className="flex items-center justify-center" style={{ position: 'relative' }}>
-                {/* Download Button - 50px left of pagination */}
-                <button
-                  onClick={handleDownloadClick}
-                  className="download-button relative flex items-center justify-center z-50"
-                  style={{
-                    width: '480px',
-                    height: '50px',
-                    backgroundColor: 'transparent',
-                    border: 'none',
-                    marginRight: '50px',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <img 
-                    src="/assets/icons/download.png" 
-                    alt="Download" 
-                    style={{ 
+              <>
+                {/* Download Button - left of pagination - Hide if not enough space */}
+                {hasEnoughSpace && (
+                  <button
+                    onClick={handleDownloadClick}
+                    className="download-button relative flex items-center justify-center z-50"
+                    style={{
                       width: '480px',
                       height: '50px',
-                      opacity: 1
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      flexShrink: 0
                     }}
-                  />
-                </button>
+                  >
+                    <img 
+                      src="/assets/icons/download.png" 
+                      alt="Download" 
+                      style={{ 
+                        width: '480px',
+                        height: '50px',
+                        opacity: 1
+                      }}
+                    />
+                  </button>
+                )}
 
-                {/* Pagination Dots */}
-                <div className="flex justify-center items-center" style={{ gap: '14px', position: 'relative' }}>
+                {/* Pagination Dots - Perfectly Centered */}
+                <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
                   {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                     const pageNum = index + 1;
                     return (
@@ -1479,8 +1614,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                           background: 'none', 
                           border: 'none', 
                           padding: 0,
-                          cursor: 'pointer',
-                          opacity: 1
+                          cursor: 'pointer'
                         }}
                       >
                         <div
@@ -1496,20 +1630,23 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   })}
                 </div>
 
-                {/* NEXT TOPIC Text - 50px right of pagination */}
-                <div style={{ marginLeft: '50px' }}>
-                  <span style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
-                    fontSize: '24px',
-                    color: '#406A46'
-                  }}>
-                    NEXT TOPIC: Treatment wetlands
-                  </span>
-                </div>
-              </div>
+                {/* NEXT TOPIC Text - right of pagination - Hide if not enough space */}
+                {hasEnoughSpace && (
+                  <div style={{ flexShrink: 0 }}>
+                    <span style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontWeight: 'bold',
+                      fontSize: '24px',
+                      color: '#406A46'
+                    }}>
+                      NEXT TOPIC: Treatment wetlands
+                    </span>
+                  </div>
+                )}
+              </>
             ) : (
-              Array.from({ length: TOTAL_PAGES }, (_, index) => {
+              <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
+                {Array.from({ length: TOTAL_PAGES }, (_, index) => {
                 const pageNum = index + 1;
                 return (
                   <button
@@ -1521,8 +1658,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       background: 'none', 
                       border: 'none', 
                       padding: 0,
-                      cursor: 'pointer',
-                      opacity: 1
+                        cursor: 'pointer'
                     }}
                   >
                     <div
@@ -1535,17 +1671,18 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                     />
                   </button>
                 );
-              })
+                })}
+              </div>
             )}
           </motion.div>
 
           {/* Next Button - Right */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ paddingRight: '16px' }}>
             {currentPage < TOTAL_PAGES ? (
               <button
                 onClick={() => setCurrentPage(currentPage + 1)}
                 className="next-button relative flex items-center justify-center z-50"
-                style={{ width: '158px', height: '60px', backgroundColor: 'transparent', border: 'none' }}
+                style={{ width: '158px', height: '60px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
               >
                 <img src="/assets/icons/next.png" alt="Next" style={{ width: '158px', height: '60px', opacity: 1 }} />
               </button>
@@ -1553,7 +1690,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               <button
                 onClick={onTreatmentWetlandsClick}
                 className="next-button relative flex items-center justify-center z-50"
-                style={{ width: '158px', height: '60px', backgroundColor: 'transparent', border: 'none' }}
+                style={{ width: '158px', height: '60px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
               >
                 <img src="/assets/icons/next.png" alt="NEXT TOPIC: Treatment wetlands" style={{ width: '158px', height: '60px', opacity: 1 }} />
               </button>
@@ -1576,7 +1713,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 9999
+            zIndex: 99999
           }}
           onClick={handleCloseModal}
         >

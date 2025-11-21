@@ -26,6 +26,21 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
   const [currentSubPage, setCurrentSubPage] = React.useState(3); // Start with last photo on page 1
   const [sliderPosition, setSliderPosition] = React.useState(50); // For page 4 slider (0-100)
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
+  const [centerScale, setCenterScale] = React.useState(1); // Scale factor for center elements
+  const centerSectionRef = React.useRef<HTMLDivElement>(null);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  // Track window width for responsive navbar
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate if there's enough space for download and next topic buttons
+  const hasEnoughSpace = windowWidth >= 1400;
 
   // Slider handlers
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,8 +94,59 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
     };
   }, []);
 
+  // Calculate scale for center section when elements overlap
+  React.useEffect(() => {
+    if (currentPage !== TOTAL_PAGES) {
+      setCenterScale(1);
+      return;
+    }
+
+    const calculateScale = () => {
+      if (!centerSectionRef.current) {
+        return;
+      }
+
+      const centerSection = centerSectionRef.current;
+      const container = centerSection.closest('[style*="paddingLeft"]') as HTMLElement;
+      
+      if (!container) return;
+
+      const containerRect = container.getBoundingClientRect();
+      const centerRect = centerSection.getBoundingClientRect();
+      
+      // Calculate available width (between home button and next button)
+      const homeButtonWidth = 54 + 16; // button width + padding
+      const nextButtonWidth = 158 + 16; // button width + padding
+      const availableWidth = containerRect.width - homeButtonWidth - nextButtonWidth;
+      
+      // Calculate required width for center section
+      const requiredWidth = centerRect.width;
+      
+      // If required width is greater than available width, scale down
+      if (requiredWidth > availableWidth) {
+        const scale = Math.max(0.5, availableWidth / requiredWidth * 0.95); // 0.95 for some padding
+        setCenterScale(scale);
+      } else {
+        setCenterScale(1);
+      }
+    };
+
+    // Calculate on mount and resize
+    calculateScale();
+    window.addEventListener('resize', calculateScale);
+    
+    // Also check after a short delay to ensure elements are rendered
+    const timeoutId = setTimeout(calculateScale, 100);
+
+    return () => {
+      window.removeEventListener('resize', calculateScale);
+      clearTimeout(timeoutId);
+    };
+  }, [currentPage]);
+
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
+    <>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', overflowX: 'visible', paddingBottom: '0px' }}>
       {/* Header with title and home button */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
@@ -105,7 +171,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '32px', flex: 1 }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '10px', flex: 1 }}>
         <motion.div
           key={currentPage}
           initial={{ opacity: 0, y: 20 }}
@@ -559,173 +625,6 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
         </motion.div>
       </div>
 
-      {/* Pagination and Next Button - Sticky Footer */}
-      {currentPage > 0 && (
-      <div className="relative z-10" style={{ 
-        position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        flexShrink: 0
-      }}>
-        <div className="relative flex justify-between items-center px-4">
-          {/* Home Button - Left */}
-          <div className="flex items-center">
-            <button
-              onClick={onHomeClick}
-              className="home-button relative flex items-center justify-center z-50"
-              style={{ 
-                width: '54px',
-                height: '54px',
-                backgroundColor: 'transparent',
-                border: 'none'
-              }}
-            >
-              <img 
-                src="/assets/icons/Home.png" 
-                alt="Home" 
-                style={{ 
-                  width: '54px',
-                  height: '54px',
-                  opacity: 1
-                }}
-              />
-            </button>
-          </div>
-
-          {/* Center Section - Pagination and Download Button */}
-          <div className="flex items-center justify-center" style={{ position: 'relative' }}>
-            {/* Download Button - Only on last page, 50px left of pagination */}
-            {currentPage === TOTAL_PAGES && (
-              <button
-                onClick={handleDownloadClick}
-                className="download-button relative flex items-center justify-center z-50"
-                style={{
-                  width: '480px',
-                  height: '50px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  marginRight: '50px',
-                  cursor: 'pointer'
-                }}
-              >
-                <img 
-                  src="/assets/icons/download.png" 
-                  alt="Download" 
-                  style={{ 
-                    width: '480px',
-                    height: '50px',
-                    opacity: 1
-                  }}
-                />
-              </button>
-            )}
-
-            {/* Pagination Dots - Centered */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-              className="flex justify-center items-center"
-              style={{ gap: '14px' }}
-            >
-              {Array.from({ length: TOTAL_PAGES }, (_, index) => {
-                const pageNum = index + 1;
-                
-                return (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setCurrentPage(pageNum);
-                      // Skip directly to last photo on pages 1-3
-                      if (pageNum === 1 || pageNum === 2 || pageNum === 3) {
-                        const maxSubPages = pageNum === 3 ? 2 : 3;
-                        setCurrentSubPage(maxSubPages);
-                      } else {
-                        setCurrentSubPage(1);
-                      }
-                    }}
-                    className="transition-all duration-300 p-0 border-0 bg-transparent"
-                    aria-label={`Go to page ${pageNum}`}
-                    style={{ 
-                      background: 'none', 
-                      border: 'none', 
-                      padding: 0,
-                      cursor: 'pointer'
-                    }}
-                  >
-                    <div
-                      className="rounded-full transition-all duration-300"
-                      style={{
-                        width: '14px',
-                        height: '14px',
-                        backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
-                      }}
-                    />
-                  </button>
-                );
-              })}
-            </motion.div>
-
-            {/* NEXT TOPIC Text - Only on last page, 50px right of pagination */}
-            {currentPage === TOTAL_PAGES && (
-              <div style={{ marginLeft: '50px' }}>
-                <span style={{ 
-                  fontFamily: 'Comfortaa, sans-serif',
-                  fontWeight: 'bold',
-                  fontSize: '24px',
-                  color: '#406A46'
-                }}>
-                  NEXT TOPIC: Map your wetland
-                </span>
-              </div>
-            )}
-          </div>
-
-          {/* Next/Back Home Button - Right */}
-          <div className="flex items-center">
-            <button
-            onClick={() => {
-              if (currentPage < TOTAL_PAGES) {
-                setCurrentPage(currentPage + 1);
-                // Skip directly to the last photo on pages 1-3
-                if (currentPage + 1 === 1 || currentPage + 1 === 2 || currentPage + 1 === 3) {
-                  const nextPageMaxSubPages = currentPage + 1 === 3 ? 2 : 3;
-                  setCurrentSubPage(nextPageMaxSubPages);
-                } else {
-                  setCurrentSubPage(1);
-                }
-              } else {
-                // Navigate to Map Wetland page
-                if (onMapWetlandClick) {
-                  onMapWetlandClick();
-                }
-              }
-            }}
-            className="next-button relative flex items-center justify-center z-50"
-            style={{
-              width: '158px',
-              height: '60px',
-              backgroundColor: 'transparent',
-              border: 'none'
-            }}
-          >
-            <img 
-              src="/assets/icons/next.png" 
-              alt={currentPage === TOTAL_PAGES ? 'Map your wetland' : 'Next'} 
-              style={{ 
-                width: '158px',
-                height: '60px',
-                opacity: 1
-              }}
-            />
-          </button>
-          </div>
-        </div>
-      </div>
-      )}
-
       {/* Download Modal */}
       {showDownloadModal && (
         <div 
@@ -918,6 +817,198 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
         </div>
       )}
     </div>
+      {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
+      {currentPage > 0 && (
+      <div className="relative z-10" style={{ 
+        position: 'sticky', 
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100vw',
+        marginLeft: 'calc((100% - 100vw) / 2)',
+        backgroundColor: 'rgba(210, 228, 240, 0.95)',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        marginBottom: '0px',
+        flexShrink: 0
+      }}>
+        {/* Top Shadow - Full Width */}
+        <div style={{
+          position: 'absolute',
+          top: '-4px',
+          left: 0,
+          width: '100%',
+          height: '6px',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
+          pointerEvents: 'none'
+        }} />
+        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
+          {/* Home Button - Left */}
+          <div className="flex items-center" style={{ paddingLeft: '16px' }}>
+            <button
+              onClick={onHomeClick}
+              className="home-button relative flex items-center justify-center z-50"
+              style={{ 
+                width: '54px',
+                height: '54px',
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              <img 
+                src="/assets/icons/Home.png" 
+                alt="Home" 
+                style={{ 
+                  width: '54px',
+                  height: '54px',
+                  opacity: 1
+                }}
+              />
+            </button>
+          </div>
+
+          {/* Center Section - Download, Pagination, and Next Topic */}
+          <motion.div
+            ref={centerSectionRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
+            className="flex justify-center items-center"
+            style={{ 
+              position: 'absolute',
+              left: '50%',
+              transform: `translateX(-50%) scale(${centerScale})`,
+              transformOrigin: 'center',
+              gap: '50px',
+              transition: 'transform 0.3s ease'
+            }}
+          >
+            {/* Download Button - Only on last page, left of pagination - Hide if not enough space */}
+            {currentPage === TOTAL_PAGES && hasEnoughSpace && (
+              <button
+                onClick={handleDownloadClick}
+                className="download-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '480px',
+                  height: '50px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  flexShrink: 0
+                }}
+              >
+                <img 
+                  src="/assets/icons/download.png" 
+                  alt="Download" 
+                  style={{ 
+                    width: '480px',
+                    height: '50px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+            )}
+
+            {/* Pagination Dots - Perfectly Centered */}
+            <div className="flex justify-center items-center" style={{ gap: '14px', flexShrink: 0 }}>
+              {Array.from({ length: TOTAL_PAGES }, (_, index) => {
+                const pageNum = index + 1;
+                
+                return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentPage(pageNum);
+                      // Skip directly to last photo on pages 1-3
+                      if (pageNum === 1 || pageNum === 2 || pageNum === 3) {
+                        const maxSubPages = pageNum === 3 ? 2 : 3;
+                        setCurrentSubPage(maxSubPages);
+                      } else {
+                        setCurrentSubPage(1);
+                      }
+                    }}
+                    className="transition-all duration-300 p-0 border-0 bg-transparent"
+                    aria-label={`Go to page ${pageNum}`}
+                    style={{ 
+                      background: 'none', 
+                      border: 'none', 
+                      padding: 0,
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <div
+                      className="rounded-full transition-all duration-300"
+                      style={{
+                        width: '14px',
+                        height: '14px',
+                        backgroundColor: currentPage === pageNum ? '#51727C' : '#97C09D'
+                      }}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* NEXT TOPIC Text - Only on last page, right of pagination - Hide if not enough space */}
+            {currentPage === TOTAL_PAGES && hasEnoughSpace && (
+              <div style={{ flexShrink: 0 }}>
+                <span style={{ 
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  fontSize: '24px',
+                  color: '#406A46'
+                }}>
+                  NEXT TOPIC: Map your wetland
+                </span>
+              </div>
+            )}
+          </motion.div>
+
+          {/* Next/Back Home Button - Right */}
+          <div className="flex items-center" style={{ paddingRight: '16px' }}>
+            <button
+            onClick={() => {
+              if (currentPage < TOTAL_PAGES) {
+                setCurrentPage(currentPage + 1);
+                // Skip directly to the last photo on pages 1-3
+                if (currentPage + 1 === 1 || currentPage + 1 === 2 || currentPage + 1 === 3) {
+                  const nextPageMaxSubPages = currentPage + 1 === 3 ? 2 : 3;
+                  setCurrentSubPage(nextPageMaxSubPages);
+                } else {
+                  setCurrentSubPage(1);
+                }
+              } else {
+                // Navigate to Map Wetland page
+                if (onMapWetlandClick) {
+                  onMapWetlandClick();
+                }
+              }
+            }}
+            className="next-button relative flex items-center justify-center z-50"
+            style={{
+              width: '158px',
+              height: '60px',
+              backgroundColor: 'transparent',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            <img 
+              src="/assets/icons/next.png" 
+              alt={currentPage === TOTAL_PAGES ? 'Map your wetland' : 'Next'} 
+              style={{ 
+                width: '158px',
+                height: '60px',
+                opacity: 1
+              }}
+            />
+          </button>
+          </div>
+        </div>
+      </div>
+      )}
+    </>
   );
 };
 

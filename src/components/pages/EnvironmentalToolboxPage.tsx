@@ -50,13 +50,17 @@ export const EnvironmentalToolboxPage: React.FC<EnvironmentalToolboxPageProps> =
       {/* Footer */}
       <div className="relative z-10" style={{ 
         position: 'sticky', 
-        bottom: 0, 
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100%',
         backgroundColor: 'rgba(223, 235, 245, 0.95)',
         paddingTop: '20px',
         paddingBottom: '20px',
-        flexShrink: 0
+        flexShrink: 0,
+        boxShadow: '0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06)'
       }}>
-        <div className="relative flex justify-between items-center px-4">
+        <div className="relative flex justify-between items-center px-4" style={{ maxWidth: '100%', width: '100%' }}>
           <div className="flex items-center">
             <button onClick={onHomeClick} className="home-button" style={{ width: '54px', height: '54px', background: 'none', border: 'none' }}>
               <img src="/assets/icons/Home.png" alt="Home" style={{ width: '54px', height: '54px' }} />

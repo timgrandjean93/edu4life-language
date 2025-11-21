@@ -6,7 +6,7 @@ interface BlueGreenSpace4AllPageProps {
 }
 
 export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
-  onHomeClick
+  onHomeClick: _onHomeClick
 }) => {
   React.useEffect(() => {
     const html = document.documentElement;
@@ -32,7 +32,7 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
   };
 
   return (
-    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh', overflowX: 'visible', paddingBottom: '0px' }}>
       {/* Header with title */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
@@ -77,7 +77,7 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: '120px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: '10px' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -189,53 +189,26 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
               }}>
                 You will open an external website with the game.
               </div>
+              <a
+                href="http://game.restore4life-platform.eu"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  color: '#51727C',
+                  marginTop: '8px',
+                  display: 'block',
+                  textDecoration: 'underline',
+                  cursor: 'pointer'
+                }}
+              >
+                http://game.restore4life-platform.eu
+              </a>
             </div>
           </div>
         </motion.div>
-      </div>
-
-      {/* Footer with Home Button */}
-      <div className="relative z-10" style={{ 
-        position: 'sticky', 
-        bottom: 0, 
-        backgroundColor: 'rgba(223, 235, 245, 0.95)',
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        flexShrink: 0
-      }}>
-        <div className="relative flex justify-between items-center px-4">
-          {/* Home Button - Left */}
-          <div className="flex items-center">
-            <button
-              onClick={onHomeClick}
-              className="home-button relative flex items-center justify-center z-50"
-              style={{ 
-                width: '54px',
-                height: '54px',
-                backgroundColor: 'transparent',
-                border: 'none'
-              }}
-            >
-              <img 
-                src="/assets/icons/Home.png" 
-                alt="Home" 
-                style={{ 
-                  width: '54px',
-                  height: '54px',
-                  opacity: 1
-                }}
-              />
-            </button>
-          </div>
-
-          {/* Center Section - Empty for centering */}
-          <div className="flex items-center justify-center" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-          </div>
-
-          {/* Right Section - Empty */}
-          <div className="flex items-center" style={{ width: '54px' }}>
-          </div>
-        </div>
       </div>
     </div>
   );
