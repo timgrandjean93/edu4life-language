@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { usePageRouting } from '../../hooks/usePageRouting';
 import { HomeButton } from '../HomeButton';
 
 interface FloodControlPageProps {
@@ -134,7 +135,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
   onCarbonClick,
   onRepositoryClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
+  const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const [hoveredArea, setHoveredArea] = React.useState<string | null>(null);
   const [showDidYouKnowLeft, setShowDidYouKnowLeft] = React.useState(false);
   const [showDidYouKnowRight, setShowDidYouKnowRight] = React.useState(false);

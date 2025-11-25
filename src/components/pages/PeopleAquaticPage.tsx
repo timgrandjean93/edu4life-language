@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { usePageRouting } from '../../hooks/usePageRouting';
 
 interface PeopleAquaticPageProps {
   onHomeClick: () => void;
@@ -23,7 +24,7 @@ const getImagePath = (page: number) => {
 export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   onHomeClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(0);
+  const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const [draggedItem, setDraggedItem] = React.useState<string | null>(null);
   const [droppedItems, setDroppedItems] = React.useState<Record<string, {x: number, y: number}>>({});
   const [restorationDroppedItems, setRestorationDroppedItems] = React.useState<Record<string, {x: number, y: number}>>({});

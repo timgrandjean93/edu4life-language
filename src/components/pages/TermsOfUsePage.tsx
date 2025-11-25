@@ -35,8 +35,14 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             HORIZON-MISS-2022-OCEAN-01.
           </p>
           <p style={{ marginTop: '12px' }}>
-            These Terms of Use govern your access to and use of this website and its materials. 
-            By accessing or using this website, you agree to be bound by these Terms of Use.
+            The <strong>"LIVING FLOODPLAINS: LEARN, EXPLORE, RESTORE4LIFE TOOLBOX"</strong> (hereinafter referred to as 
+            "this platform" or "the Toolbox") has been developed within the framework of The Project.
+          </p>
+          <p style={{ marginTop: '12px' }}>
+            These Terms of Use govern your access to and use of this platform and all content, materials, 
+            and resources available within the Toolbox. All content in the Toolbox is part of The Project 
+            and is subject to these Terms of Use. By accessing or using this platform or any content within 
+            the Toolbox, you agree to be bound by these Terms of Use.
           </p>
         </section>
 

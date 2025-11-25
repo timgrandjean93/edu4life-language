@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { HomeButton } from '../HomeButton';
+import { usePageRouting } from '../../hooks/usePageRouting';
 
 interface CarbonPageProps {
   onHomeClick: () => void;
@@ -107,7 +108,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   onSelfPurificationClick,
   onRepositoryClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
+  const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const [draggedLabel, setDraggedLabel] = React.useState<string | null>(null);
   const [placements, setPlacements] = React.useState<Record<string, string>>({});
   const [submitted, setSubmitted] = React.useState(false);

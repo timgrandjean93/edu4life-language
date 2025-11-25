@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { usePageRouting } from '../../hooks/usePageRouting';
 
 interface RiparianPageProps {
   onHomeClick: () => void;
@@ -53,7 +54,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
   onFloodControlClick,
   onRepositoryClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
+  const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   
   // Page 1 state
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);

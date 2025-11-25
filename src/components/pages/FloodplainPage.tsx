@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { usePageRouting } from '../../hooks/usePageRouting';
 
 interface FloodplainPageProps {
   onHomeClick: () => void;
@@ -22,7 +23,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
   onMapWetlandClick,
   onRepositoryClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
+  const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const [currentSubPage, setCurrentSubPage] = React.useState(3); // Start with last photo on page 1
   const [sliderPosition, setSliderPosition] = React.useState(50); // For page 4 slider (0-100)
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);

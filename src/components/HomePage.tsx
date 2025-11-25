@@ -312,37 +312,48 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
 
       {/* Credits Modal */}
       {showCreditsModal && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-          zIndex: 1000,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '20px'
-        }}
-        onClick={() => setShowCreditsModal(false)}
-        >
-          <div style={{
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            padding: '40px',
-            maxWidth: '800px',
-            maxHeight: '90vh',
-            overflow: 'auto',
-            position: 'relative'
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            zIndex: 1000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
-          onClick={(e) => e.stopPropagation()}
+          onClick={() => setShowCreditsModal(false)}
+        >
+          <div
+            style={{
+              position: 'relative',
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            onClick={(e) => e.stopPropagation()}
           >
+            <img
+              src="/assets/icons/menu/creditsmodal.png"
+              alt="Credits Modal"
+              style={{
+                maxWidth: '100%',
+                maxHeight: '90vh',
+                height: 'auto',
+                display: 'block'
+              }}
+            />
+            {/* Close button - X in top right corner */}
             <button
               onClick={() => setShowCreditsModal(false)}
               style={{
                 position: 'absolute',
-                top: '10px',
+                top: '5px',
                 right: '10px',
                 background: 'none',
                 border: 'none',
@@ -360,36 +371,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
             >
               ×
             </button>
-            <h2 style={{ 
-              fontFamily: 'Comfortaa, sans-serif', 
-              fontSize: '24px', 
-              fontWeight: 'bold', 
-              color: '#51727C',
-              marginBottom: '20px'
-            }}>
-              Credits
-            </h2>
-            <div style={{ 
-              fontFamily: 'Comfortaa, sans-serif', 
-              fontSize: '16px', 
-              color: '#213547',
-              lineHeight: '1.6'
-            }}>
-              <p style={{ marginBottom: '16px' }}>
-                This educational platform is part of the Restore4Life project, co-funded by the European Union.
-              </p>
-              <p style={{ marginBottom: '16px' }}>
-                For detailed credits and acknowledgments, please visit{' '}
-                <a 
-                  href="https://www.restore4life.eu" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  style={{ color: '#51727C', textDecoration: 'underline' }}
-                >
-                  www.restore4life.eu
-                </a>.
-              </p>
-            </div>
           </div>
         </div>
       )}

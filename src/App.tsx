@@ -24,8 +24,38 @@ import { CookiePolicyPage } from './components/pages/CookiePolicyPage';
 import { TermsOfUsePage } from './components/pages/TermsOfUsePage';
 import { trackPageView, initAnalytics, revokeAnalytics } from './analytics';
 
+type PageType = 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse';
+
+// Helper function to get page from URL pathname
+const getPageFromURL = (): PageType => {
+  const path = window.location.pathname;
+  // Remove leading slash and get the first segment
+  const segments = path.split('/').filter(Boolean);
+  const pageName = segments[0] || 'home';
+  
+  // Map URL paths to page types
+  const validPages: PageType[] = ['home', 'riparian', 'mapwetland', 'floodplain', 'floodcontrol', 'carbon', 'selfpurification', 'art', 'people', 'aesthetics', 'wetlandfresk', 'wetland4life', 'wetlandEduRepo', 'treatmentwetlands', 'bluegreen', 'environmentalToolbox', 'privacy', 'cookies', 'termsofuse'];
+  
+  if (validPages.includes(pageName as PageType)) {
+    return pageName as PageType;
+  }
+  
+  return 'home'; // Default to home
+};
+
+// Helper function to update URL when navigating
+const updateURL = (page: PageType, preserveQuery = false) => {
+  const newPath = page === 'home' ? '/' : `/${page}`;
+  const currentPath = window.location.pathname;
+  const queryString = preserveQuery ? window.location.search : '';
+  
+  if (currentPath !== newPath || (!preserveQuery && window.location.search)) {
+    window.history.pushState({ page }, '', newPath + queryString);
+  }
+};
+
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse'>('home');
+  const [currentPage, setCurrentPage] = useState<PageType>(getPageFromURL());
   const [repositoryTopic, setRepositoryTopic] = useState<string | null>(null);
   const [showCookieBanner, setShowCookieBanner] = useState<boolean>(() => {
     // Check if user has already made a choice
@@ -46,8 +76,17 @@ function App() {
     'art': 'Art & Storytelling',
   };
 
-  const navigateTo = (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse', topic?: string | null) => {
+  // Pages that have subpages and use query parameters
+  const pagesWithSubpages: PageType[] = [
+    'people', 'treatmentwetlands', 'art', 'floodcontrol', 'aesthetics', 
+    'selfpurification', 'riparian', 'floodplain', 'carbon'
+  ];
+
+  const navigateTo = (page: PageType, topic?: string | null) => {
     setCurrentPage(page);
+    // Preserve query parameters for pages with subpages (they're handled by their respective components)
+    const preserveQuery = pagesWithSubpages.includes(page);
+    updateURL(page, preserveQuery);
     if (page === 'wetlandEduRepo') {
       // Set topic if provided, otherwise keep existing or set to null
       setRepositoryTopic(topic !== undefined ? topic : null);
@@ -56,6 +95,23 @@ function App() {
       setRepositoryTopic(null);
     }
   };
+
+  // Initialize URL on mount - preserve query params if on a page with subpages
+  useEffect(() => {
+    const preserveQuery = pagesWithSubpages.includes(currentPage);
+    updateURL(currentPage, preserveQuery);
+  }, []); // Only run on mount
+
+  // Listen for browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const page = getPageFromURL();
+      setCurrentPage(page);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Handle cookie consent changes
   const handleConsentChange = (accepted: boolean) => {

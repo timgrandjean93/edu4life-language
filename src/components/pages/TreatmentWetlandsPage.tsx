@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { usePageRouting } from '../../hooks/usePageRouting';
 
 type LayerSlotId = 'plant' | 'filter' | 'intermediate' | 'drainage';
 
@@ -184,7 +185,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
   onRepositoryClick,
   onAestheticsClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
+  const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const [hoveredLayer, setHoveredLayer] = React.useState<string | null>(null);
   const [draggedLayer, setDraggedLayer] = React.useState<string | null>(null);
   const [placements, setPlacements] = React.useState<Record<LayerSlotId, string | null>>({

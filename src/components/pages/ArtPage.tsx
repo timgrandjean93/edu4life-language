@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { HomeButton } from '../HomeButton';
+import { usePageRouting } from '../../hooks/usePageRouting';
 
 interface ArtPageProps {
   onHomeClick: () => void;
@@ -501,7 +502,6 @@ const finalOutline = {
 };
 
 export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticClick, onRepositoryClick }) => {
-  const [currentPage, setCurrentPage] = useState(0);
   const [draggedElement, setDraggedElement] = useState<string | null>(null);
   const [placedElements, setPlacedElements] = useState<{[key: string]: string}>({});
   const [isCompleted, setIsCompleted] = useState(false);
@@ -526,6 +526,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
   // Dropzones are hidden by default
 
   const TOTAL_PAGES = 3;
+  const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
 
   // Get current outline based on page
   const getCurrentOutline = () => {

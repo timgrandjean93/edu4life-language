@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { HomeButton } from '../HomeButton';
+import { usePageRouting } from '../../hooks/usePageRouting';
 
 interface SelfPurificationPageProps {
   onHomeClick: () => void;
@@ -248,7 +249,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
   onRepositoryClick,
   onTreatmentWetlandsClick
 }) => {
-  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
+  const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const [hoveredArea, setHoveredArea] = React.useState<string | null>(null);
   const [showQuizModal, setShowQuizModal] = React.useState(false);
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
