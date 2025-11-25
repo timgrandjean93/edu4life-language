@@ -96,10 +96,24 @@ function App() {
     }
   };
 
-  // Initialize URL on mount - preserve query params if on a page with subpages
+  // Initialize URL on mount - only update if needed (preserve direct navigation)
   useEffect(() => {
-    const preserveQuery = pagesWithSubpages.includes(currentPage);
-    updateURL(currentPage, preserveQuery);
+    const urlPage = getPageFromURL();
+    // If URL already matches current page, don't overwrite it (preserves direct navigation)
+    if (urlPage === currentPage) {
+      // Just ensure query params are preserved if needed
+      const preserveQuery = pagesWithSubpages.includes(currentPage);
+      const currentPath = window.location.pathname;
+      const expectedPath = currentPage === 'home' ? '/' : `/${currentPage}`;
+      // Only update if path doesn't match (but preserve query)
+      if (currentPath !== expectedPath) {
+        updateURL(currentPage, preserveQuery);
+      }
+    } else {
+      // URL doesn't match current page state, sync them
+      const preserveQuery = pagesWithSubpages.includes(currentPage);
+      updateURL(currentPage, preserveQuery);
+    }
   }, []); // Only run on mount
 
   // Listen for browser back/forward buttons
