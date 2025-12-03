@@ -52,7 +52,8 @@ export const usePageRouting = (totalPages: number): [number, React.Dispatch<Reac
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // getPageFromURL is stable, no need to include
 
   // Update URL when currentPage changes (but not on initial mount)
   useEffect(() => {

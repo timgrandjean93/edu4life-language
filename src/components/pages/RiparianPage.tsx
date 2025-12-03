@@ -12,7 +12,6 @@ const TOTAL_PAGES = 2;
 
 // Quiz options with correct answers
 const quizOptions = [
-  { id: 'farming', label: 'Farming', correct: true },
   { id: 'human-settlements', label: 'Human settlements', correct: true },
   { id: 'roads-bridges', label: 'Roads and bridges', correct: true },
   { id: 'flood-protection', label: 'Flood protection structures (dikes, embankments and bridges)', correct: true },
@@ -24,7 +23,7 @@ const quizOptions = [
   { id: 'cycling', label: 'Cycling', correct: true },
   { id: 'riparian-vegetation', label: 'Riparian vegetation (trees and shrubs along the riverbanks)', correct: true },
   { id: 'floodplains', label: 'Floodplains, wetlands', correct: true },
-  { id: 'agriculture', label: 'Agriculture/Crop fields', correct: true },
+  { id: 'agriculture', label: 'Agriculture/Farming', correct: true },
   { id: 'recreation', label: 'Recreation (camping, swimming, canoeing, etc.)', correct: true }
 ];
 
@@ -135,6 +134,20 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
   const handleSubmitPage2 = () => {
     setPage2Submitted(true);
     setShowPage2Feedback(true);
+  };
+
+  // Retry function to reset activity
+  const handleRetry = () => {
+    if (currentPage === 1) {
+      setSelectedOptions([]);
+      setQuizSubmitted(false);
+      setShowFeedback(false);
+    } else if (currentPage === 2) {
+      setPlacements({});
+      setPage2Submitted(false);
+      setShowPage2Feedback(false);
+      setDraggedLabel(null);
+    }
   };
 
   // Download modal handlers
@@ -650,7 +663,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           </div>
-                          <span style={{ fontSize: '22px', fontWeight: '600', color: '#548235' }}>
+                          <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#548235' }}>
                             {correctCount} Correct
                           </span>
                         </div>
@@ -668,7 +681,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                             </svg>
                           </div>
-                          <span style={{ fontSize: '22px', fontWeight: '600', color: '#C41904' }}>
+                          <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#C41904' }}>
                             {incorrectCount} Incorrect
                           </span>
                         </div>
@@ -686,7 +699,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           </div>
-                          <span style={{ fontSize: '22px', fontWeight: '600', color: '#CE7C0A' }}>
+                          <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#CE7C0A' }}>
                             {missedCount} Missed
                           </span>
                         </div>
@@ -1206,7 +1219,29 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
 
           {/* Next Button - Right - Only on completion */}
           {currentPage === 2 && page2Submitted && (
-            <div className="flex items-center" style={{ paddingRight: '16px' }}>
+            <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
+              {/* Retry Button */}
+              <button
+                onClick={handleRetry}
+                className="retry-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '217px',
+                  height: '60px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}
+              >
+                <img
+                  src="/assets/icons/tryagain.png"
+                  alt="Try Again"
+                  style={{
+                    width: '217px',
+                    height: '60px',
+                    opacity: 1
+                  }}
+                />
+              </button>
               <button
                 onClick={() => {
                   // Navigate to Flood Control page
@@ -1238,7 +1273,31 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
 
           {/* Check Answers / Next Button - Right - Only during drag & drop */}
           {!(currentPage === 2 && page2Submitted) && (
-            <div className="flex items-center" style={{ paddingRight: '16px' }}>
+            <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
+              {/* Retry Button - Show when quiz is submitted */}
+              {quizSubmitted && currentPage === 1 && (
+                <button
+                  onClick={handleRetry}
+                  className="retry-button relative flex items-center justify-center z-50"
+                  style={{
+                    width: '217px',
+                    height: '60px',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <img 
+                    src="/assets/icons/tryagain.png" 
+                    alt="Try Again" 
+                    style={{ 
+                      width: '217px',
+                      height: '60px',
+                      opacity: 1
+                    }}
+                  />
+                </button>
+              )}
               <button
                 onClick={() => {
                   if (currentPage === 1) {

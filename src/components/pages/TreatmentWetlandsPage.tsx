@@ -954,15 +954,21 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                     zIndex: page3HoveredCharacter ? 10000 : 1
                   }}>
                     {PAGE3_STEPS.map((step, index) => {
-                      const layerItem = LAYER_ITEMS.find(item => item.id === step.id);
+                      // Map PAGE3_STEPS IDs to LAYER_ITEMS IDs
+                      const idMapping: Record<string, string> = {
+                        'rock': 'rocky',
+                        'gravel': 'gravelia',
+                        'sand': 'sandy',
+                        'plant': 'reeda'
+                      };
+                      const layerItemId = idMapping[step.id] || step.id;
+                      const layerItem = LAYER_ITEMS.find(item => item.id === layerItemId);
                       const isHovered = page3HoveredCharacter === step.id;
 
                       return (
                         <div
                           key={step.id}
                           style={{
-                            opacity: index < page3CurrentStep ? 0.3 : index === page3CurrentStep ? 1 : 0.6,
-                            transition: 'opacity 0.3s ease',
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
@@ -978,6 +984,8 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                             style={{
                               width: `clamp(${step.characterWidth * 0.6}px, ${step.characterWidth * 0.01}vw, ${step.characterWidth}px)`,
                               height: 'auto',
+                              opacity: index < page3CurrentStep ? 0.3 : index === page3CurrentStep ? 1 : 0.6,
+                              transition: 'opacity 0.3s ease',
                               filter: index < page3CurrentStep ? 'grayscale(60%)' : 'none'
                             }}
                           />
@@ -988,11 +996,11 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                               transition={{ duration: 0.2 }}
                               style={{
                                 position: 'absolute',
-                                bottom: '-80px',
-                                left: '50%',
-                                transform: 'translateX(-50%)',
+                                top: '-20px',
+                                left: '0%',
+                                transform: 'translateX(0)',
+                                maxWidth: 'min(320px, calc(100vw - 40px))',
                                 width: 'clamp(250px, 28vw, 320px)',
-                                maxWidth: '90vw',
                                 backgroundColor: 'rgba(255,255,255,0.95)',
                                 boxShadow: '0 12px 30px rgba(64, 106, 70, 0.18)',
                                 borderRadius: '12px',
@@ -1001,7 +1009,8 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                                 fontSize: 'clamp(12px, 1.4vw, 14px)',
                                 color: layerItem.tooltip.firstColor,
                                 lineHeight: 1.4,
-                                zIndex: 10001
+                                zIndex: 10001,
+                                pointerEvents: 'none'
                               }}
                             >
                               <p style={{ margin: 0, color: layerItem.tooltip.firstColor }}>

@@ -201,6 +201,17 @@ const hiddenIconsData: Record<string, {
   // Check if all items are placed
   const allItemsPlaced = Object.keys(droppedItems).length === ecosystemServices.length;
 
+  // Retry function to reset activity
+  const handleRetry = () => {
+    if (currentPage === 1) {
+      setDroppedItems({});
+      setShowValidation(false);
+      setHoveredItem(null);
+      setDraggedItem(null);
+      setIconPositions({}); // Reset positions so they get regenerated
+    }
+  };
+
   // Show validation when all items are placed
   React.useEffect(() => {
     if (currentPage === 1 && allItemsPlaced && !showValidation) {
@@ -806,7 +817,7 @@ const hiddenIconsData: Record<string, {
                         width: '30px',
                         height: '30px',
                         borderRadius: '50%',
-                        backgroundColor: '#4CAF50',
+                        backgroundColor: '#548235',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -817,7 +828,7 @@ const hiddenIconsData: Record<string, {
                         fontFamily: 'Comfortaa, sans-serif',
                         fontSize: '18px',
                         fontWeight: 'bold',
-                        color: '#4CAF50'
+                        color: '#548235'
                       }}>
                         {Object.keys(droppedItems).filter(itemId => isItemCorrect(itemId)).length} Correct
                       </span>
@@ -827,7 +838,7 @@ const hiddenIconsData: Record<string, {
                         width: '30px',
                         height: '30px',
                         borderRadius: '50%',
-                        backgroundColor: '#F44336',
+                        backgroundColor: '#C41904',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -838,7 +849,7 @@ const hiddenIconsData: Record<string, {
                         fontFamily: 'Comfortaa, sans-serif',
                         fontSize: '18px',
                         fontWeight: 'bold',
-                        color: '#F44336'
+                        color: '#C41904'
                       }}>
                         {Object.keys(droppedItems).filter(itemId => !isItemCorrect(itemId)).length} Incorrect
                       </span>
@@ -1278,7 +1289,31 @@ const hiddenIconsData: Record<string, {
 
           {/* Next Button - Right */}
           {currentPage < TOTAL_PAGES && (
-            <div className="flex items-center" style={{ paddingRight: '16px' }}>
+            <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
+              {/* Retry Button - Show when validation is active */}
+              {showValidation && currentPage === 1 && (
+                <button
+                  onClick={handleRetry}
+                  className="retry-button relative flex items-center justify-center z-50"
+                  style={{
+                    width: '217px',
+                    height: '60px',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <img 
+                    src="/assets/icons/tryagain.png" 
+                    alt="Try Again" 
+                    style={{ 
+                      width: '217px',
+                      height: '60px',
+                      opacity: 1
+                    }}
+                  />
+                </button>
+              )}
               <button
                 onClick={() => {
                   const isDisabled = currentPage === 1 && !allItemsPlaced;

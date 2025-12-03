@@ -229,6 +229,20 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
     e.preventDefault();
   };
 
+  // Retry function to reset activity
+  const handleRetry = () => {
+    if (currentPage === 1) {
+      setPlacements({});
+      setSubmitted(false);
+      setShowFeedback(false);
+      setDraggedLabel(null);
+    } else if (currentPage === 3) {
+      setPuzzleAnswers({});
+      setPuzzleSubmitted(false);
+      setSelectedLetter(null);
+    }
+  };
+
   const handleSubmit = () => {
     setSubmitted(true);
     setShowFeedback(true);
@@ -502,7 +516,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: '16px',
-                    color: isQuizAnswerCorrect() ? '#15803d' : '#dc2626'
+                    color: isQuizAnswerCorrect() ? '#548235' : '#C41904'
                   }}>
                     <div style={{
                       width: '48px',
@@ -524,7 +538,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         </svg>
                       )}
                     </div>
-                    <span style={{ fontSize: '20px', fontWeight: 'bold' }}>
+                    <span style={{ fontSize: '20px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: isQuizAnswerCorrect() ? '#548235' : '#C41904' }}>
                       {isQuizAnswerCorrect() ? 'Correct! Wetlands store the most carbon.' : 'Incorrect. The correct answer is Wetlands.'}
                     </span>
                   </div>
@@ -1017,7 +1031,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <span style={{ fontSize: '22px', fontWeight: '600', color: '#548235' }}>
+                      <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#548235' }}>
                         {correctCount} Correct
                       </span>
                     </div>
@@ -1035,7 +1049,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                         </svg>
                       </div>
-                      <span style={{ fontSize: '22px', fontWeight: '600', color: '#C41904' }}>
+                      <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#C41904' }}>
                         {incorrectCount} Incorrect
                       </span>
                     </div>
@@ -1053,7 +1067,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           <circle cx="8" cy="8" r="1.5" fill="white"/>
                         </svg>
                       </div>
-                      <span style={{ fontSize: '22px', fontWeight: '600', color: '#CE7C0A' }}>
+                      <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#CE7C0A' }}>
                         {missedCount} Missed
                       </span>
                     </div>
@@ -1722,29 +1736,53 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
           </motion.div>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center" style={{ paddingRight: '16px' }}>
+          <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
             {currentPage === 1 && submitted && (
-              <button
-                onClick={() => setShowModal(true)}
-                className="next-button relative flex items-center justify-center z-50"
-                style={{
-                  width: '158px',
-                  height: '60px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
-              >
-                <img 
-                  src="/assets/icons/next.png" 
-                  alt="Next" 
-                  style={{ 
+              <>
+                {/* Retry Button */}
+                <button
+                  onClick={handleRetry}
+                  className="retry-button relative flex items-center justify-center z-50"
+                  style={{
+                    width: '217px',
+                    height: '60px',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <img 
+                    src="/assets/icons/tryagain.png" 
+                    alt="Try Again" 
+                    style={{ 
+                      width: '217px',
+                      height: '60px',
+                      opacity: 1
+                    }}
+                  />
+                </button>
+                <button
+                  onClick={() => setShowModal(true)}
+                  className="next-button relative flex items-center justify-center z-50"
+                  style={{
                     width: '158px',
                     height: '60px',
-                    opacity: 1
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer'
                   }}
-                />
-              </button>
+                >
+                  <img 
+                    src="/assets/icons/next.png" 
+                    alt="Next" 
+                    style={{ 
+                      width: '158px',
+                      height: '60px',
+                      opacity: 1
+                    }}
+                  />
+                </button>
+              </>
           )}
 
           {currentPage === 2 && (
@@ -1775,30 +1813,54 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
           )}
 
           {currentPage === 3 && puzzleSubmitted && (
-            <button
-              onClick={onSelfPurificationClick}
-              className="next-button relative flex items-center justify-center z-50"
-              style={{
-                width: '158px',
-                height: '60px',
-                backgroundColor: 'transparent',
-                border: 'none',
-                cursor: 'grab'
-              }}
-              onMouseDown={(e) => e.currentTarget.style.cursor = 'grabbing'}
-              onMouseUp={(e) => e.currentTarget.style.cursor = 'grab'}
-              onMouseLeave={(e) => e.currentTarget.style.cursor = 'grab'}
-            >
-              <img 
-                src="/assets/icons/next.png" 
-                alt="NEXT TOPIC: Self Purification" 
-                style={{ 
+            <>
+              {/* Retry Button */}
+              <button
+                onClick={handleRetry}
+                className="retry-button relative flex items-center justify-center z-50"
+                style={{
                   width: '158px',
                   height: '60px',
-                  opacity: 1
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer'
                 }}
-              />
-            </button>
+              >
+                <img 
+                  src="/assets/icons/tryagain.png" 
+                  alt="Try Again" 
+                  style={{ 
+                    width: '158px',
+                    height: '60px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+              <button
+                onClick={onSelfPurificationClick}
+                className="next-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '158px',
+                  height: '60px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'grab'
+                }}
+                onMouseDown={(e) => e.currentTarget.style.cursor = 'grabbing'}
+                onMouseUp={(e) => e.currentTarget.style.cursor = 'grab'}
+                onMouseLeave={(e) => e.currentTarget.style.cursor = 'grab'}
+              >
+                <img 
+                  src="/assets/icons/next.png" 
+                  alt="NEXT TOPIC: Self Purification" 
+                  style={{ 
+                    width: '158px',
+                    height: '60px',
+                    opacity: 1
+                  }}
+                />
+              </button>
+            </>
           )}
           </div>
         </div>

@@ -107,8 +107,8 @@ const TOTAL_PAGES = 3;
 
 // Page 2 drop zones and descriptions
 const leftImageDropZones = [
-  { id: 'left-1', x: 45, y: 47, correctNumber: 3 },
-  { id: 'left-2', x: 50, y: 30, correctNumber: 1 },
+  { id: 'left-1', x: 45, y: 47, correctNumber: 1 },
+  { id: 'left-2', x: 50, y: 30, correctNumber: 3 },
   { id: 'left-3', x: 80, y: 70, correctNumber: 2 }
 ];
 
@@ -126,7 +126,7 @@ const leftDescriptions = [
 
 const rightDescriptions = [
   "In heavy rain, floods can build up, break dikes, and threaten nearby villages.",
-  "In a straightened, channelized river, water flows too fast downstream.",
+  "In a straightened, channelized river, faster flow causes erosion and riverbed deepening, which dries out nearby floodplains",
   "Without riverside plants, there's nothing to slow down runoff or absorb water."
 ];
 
@@ -364,6 +364,21 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
     
     setPage3Submitted(true);
     setShowPage3Feedback(true);
+  };
+
+  // Retry function to reset activity
+  const handleRetry = () => {
+    if (currentPage === 2) {
+      setPlacements({});
+      setPage2Submitted(false);
+      setShowPage2Feedback(false);
+      setDraggedNumber(null);
+    } else if (currentPage === 3) {
+      setAnswer1('');
+      setAnswer2('');
+      setPage3Submitted(false);
+      setShowPage3Feedback(false);
+    }
   };
 
   // Download modal handlers
@@ -1447,7 +1462,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                             <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </div>
-                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#548235' }}>
+                        <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#548235' }}>
                           {correctCount} Correct
                         </span>
                       </div>
@@ -1465,7 +1480,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                             <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                           </svg>
                         </div>
-                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#C41904' }}>
+                        <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#C41904' }}>
                           {incorrectCount} Incorrect
                         </span>
                       </div>
@@ -1831,7 +1846,29 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
 
           {/* Next Button - Right - Only on completion */}
           {currentPage === TOTAL_PAGES && page3Submitted && (
-            <div className="flex items-center" style={{ paddingRight: '16px' }}>
+            <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
+              {/* Retry Button */}
+              <button
+                onClick={handleRetry}
+                className="retry-button relative flex items-center justify-center z-50"
+                style={{
+                  width: '217px',
+                  height: '60px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}
+              >
+                <img
+                  src="/assets/icons/tryagain.png"
+                  alt="Try Again"
+                  style={{
+                    width: '217px',
+                    height: '60px',
+                    opacity: 1
+                  }}
+                />
+              </button>
               <button
                 onClick={() => {
                   if (onCarbonClick) {
@@ -1862,7 +1899,31 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
 
           {/* Check Answers / Next Button - Right - Only during activities */}
           {!(currentPage === TOTAL_PAGES && page3Submitted) && (
-            <div className="flex items-center" style={{ paddingRight: '16px' }}>
+            <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
+              {/* Retry Button - Show when page 2 is submitted */}
+              {currentPage === 2 && page2Submitted && (
+                <button
+                  onClick={handleRetry}
+                  className="retry-button relative flex items-center justify-center z-50"
+                  style={{
+                    width: '158px',
+                    height: '60px',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <img 
+                    src="/assets/icons/tryagain.png" 
+                    alt="Try Again" 
+                    style={{ 
+                      width: '158px',
+                      height: '60px',
+                      opacity: 1
+                    }}
+                  />
+                </button>
+              )}
               {currentPage === 2 ? (
               // Page 2: Show Check Answers button (becomes NEXT after submit)
               <button

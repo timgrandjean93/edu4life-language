@@ -118,6 +118,7 @@ function App() {
     // Otherwise, update URL to match current page state (but preserve query params if needed)
     const preserveQuery = pagesWithSubpages.includes(currentPage);
     updateURL(currentPage, preserveQuery);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only run on mount
 
   // Listen for browser back/forward buttons
@@ -156,7 +157,8 @@ function App() {
       window.removeEventListener('showPrivacyPolicy', handleShowPrivacyPolicy);
       window.removeEventListener('showCookiePolicy', handleShowCookiePolicy);
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // navigateTo is stable, no need to include
 
   const renderCurrentPage = () => {
     switch (currentPage) {

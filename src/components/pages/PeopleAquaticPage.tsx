@@ -28,12 +28,23 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   const [draggedItem, setDraggedItem] = React.useState<string | null>(null);
   const [droppedItems, setDroppedItems] = React.useState<Record<string, {x: number, y: number}>>({});
   const [restorationDroppedItems, setRestorationDroppedItems] = React.useState<Record<string, {x: number, y: number}>>({});
+  const [droppedItemZones, setDroppedItemZones] = React.useState<Record<string, string>>({});
+  const [restorationDroppedItemZones, setRestorationDroppedItemZones] = React.useState<Record<string, string>>({});
+  const [_initialDropPositions, setInitialDropPositions] = React.useState<Record<string, {x: number, y: number}>>({});
+  const [_restorationInitialDropPositions, setRestorationInitialDropPositions] = React.useState<Record<string, {x: number, y: number}>>({});
+  const [animatingItems, setAnimatingItems] = React.useState<Set<string>>(new Set());
   const [randomizedLabels, setRandomizedLabels] = React.useState<typeof pressureLabels>([]);
   const [randomizedRestoration, setRandomizedRestoration] = React.useState<typeof restorationMeasures>([]);
   const [showValidation, setShowValidation] = React.useState(false);
   const [quizAnswers, setQuizAnswers] = React.useState<Record<string, string>>({});
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  const [editMode] = React.useState(false);
+  const [_customDropZones, setCustomDropZones] = React.useState<typeof dropZones | null>(null);
+  const [_customRestorationDropZones, setCustomRestorationDropZones] = React.useState<typeof restorationDropZones | null>(null);
+  const [positionCode, setPositionCode] = React.useState('');
+  const [showCodeModal, setShowCodeModal] = React.useState(false);
+  const [showRawJson, setShowRawJson] = React.useState(false);
 
   // Track window width for responsive navbar
   React.useEffect(() => {
@@ -146,39 +157,50 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     }
   ];
 
-  // Default label positions for page 2 (Activity 1) - can be customized
+  // Default label positions for page 2 (Activity 1) - optimized for new dropzone positions
   // These positions define where labels appear when placed on dropzones
-  // To adjust label positions, modify the x and y values (in percentages)
-  // Example: 'cutting-meanders': { x: 15, y: 26 } means 15% from left, 26% from top
+  // Labels are positioned relative to their dropzones (above, below, left, right, or centered)
   const labelPositionsPage2: Record<string, { x: number, y: number }> = {
-    'cutting-meanders': { x: 15.5, y: 45 },
-    'building-dikes': { x: 30, y: 40 },
-    'channellizing-rivers': { x: 44, y: 22 },
-    'draining-floodplains': { x: 33, y: 50 },
-    'urbanization': { x: 63, y: 43 },
-    'agriculture-pesticides': { x: 34, y: 76 },
-    'cutting-forests': { x: 36, y: 61 },
-    'industrialization': { x: 66, y: 52 },
-    'dams-hydroelectric': { x: 65, y: 87 },
-    'invasive-species': { x: 78, y: 70 },
-    'navigation': { x: 84, y: 52 },
-    'climate-change': { x: 86, y: 26 }
+    // Zone 1: cutting-meanders - BELOW the dropzone
+    'cutting-meanders': { x: 14.49 + 9.82/2, y: 15.60 + 19.23 + 2 },
+    // Zone 2: building-dikes - ABOVE the dropzone
+    'building-dikes': { x: 24.78 + 9.89/2, y: 6.83 - 2 },
+    // Zone 3: channellizing-rivers - ABOVE the dropzone
+    'channellizing-rivers': { x: 37.08 + 17.00/2, y: 14.72 - 2 },
+    // Zone 4: draining-floodplains - LEFT of the dropzone
+    'draining-floodplains': { x: 38.76 - 2, y: 39.30 + 17.82/2 },
+    // Zone 5: urbanization - RIGHT of the dropzone
+    'urbanization': { x: 50.44 + 8.29 + 2, y: 36.30 + 13.17/2 },
+    // Zone 6: agriculture-pesticides - BELOW the dropzone
+    'agriculture-pesticides': { x: 44 + 13.46/2, y: 62 + 17.64 + 2 },
+    // Zone 7: cutting-forests - RIGHT of the dropzone
+    'cutting-forests': { x: 73.48 + 8.66 + 2, y: 71.57 + 12.58/2 },
+    // Zone 8: industrialization - RIGHT of the dropzone
+    'industrialization': { x: 55.95 + 8 + 2, y: 49.18 + 11.23/2 },
+    // Zone 9: dams-hydroelectric - BELOW the dropzone
+    'dams-hydroelectric': { x: 60 + 10.26/2, y: 65.48 + 18.52 + 2 },
+    // Zone 10: invasive-species - BELOW the dropzone
+    'invasive-species': { x: 73.38 + 9.46/2, y: 47.48 + 11.88 + 2 },
+    // Zone 11: navigation - BELOW the dropzone
+    'navigation': { x: 77.93 + 8/2, y: 32.13 + 9.94 + 2 },
+    // Zone 12: climate-change - ABOVE the dropzone
+    'climate-change': { x: 86 + 8/2, y: 12.25 - 2 }
   };
 
-  // Drop zones for page 2 (Activity 1)
+  // Drop zones for page 2 (Activity 1) - Optimized positions
   const dropZones = [
-    { id: 'zone1', x: 15, y: 26, width: 8, height: 15, correctAnswer: 'cutting-meanders' },
-    { id: 'zone2', x: 25, y: 19, width: 8, height: 15, correctAnswer: 'building-dikes' },
-    { id: 'zone3', x: 44, y: 35, width: 10, height: 8, correctAnswer: 'channellizing-rivers' },
-    { id: 'zone4', x: 40, y: 43, width: 8, height: 12, correctAnswer: 'draining-floodplains' },
-    { id: 'zone5', x: 50, y: 46, width: 8, height: 10, correctAnswer: 'urbanization' },
-    { id: 'zone6', x: 44, y: 62, width: 12, height: 15, correctAnswer: 'agriculture-pesticides' },
-    { id: 'zone7', x: 42, y: 55, width: 8, height: 8, correctAnswer: 'cutting-forests' },
-    { id: 'zone8', x: 55, y: 55, width: 8, height: 10, correctAnswer: 'industrialization' },
-    { id: 'zone9', x: 60, y: 72, width: 8, height: 12, correctAnswer: 'dams-hydroelectric' },
-    { id: 'zone10', x: 72, y: 60, width: 8, height: 8, correctAnswer: 'invasive-species' },
-    { id: 'zone11', x: 78, y: 42, width: 8, height: 8, correctAnswer: 'navigation' },
-    { id: 'zone12', x: 86, y: 26, width: 8, height: 14, correctAnswer: 'climate-change' }
+    { id: 'zone1', x: 14.489947580515329, y: 15.59712111140132, width: 9.821615783873826, height: 19.231679547904548, correctAnswer: 'cutting-meanders' },
+    { id: 'zone2', x: 24.78140610593514, y: 6.833921299774424, width: 9.894480415228779, height: 18.70271960441648, correctAnswer: 'building-dikes' },
+    { id: 'zone3', x: 37.07786002127946, y: 14.723202166290708, width: 16.99500461007549, height: 21.75295853068978, correctAnswer: 'channellizing-rivers' },
+    { id: 'zone4', x: 38.761301266965795, y: 39.29728039558352, width: 10.477397466068403, height: 17.818559378368754, correctAnswer: 'draining-floodplains' },
+    { id: 'zone5', x: 50.43718778812972, y: 36.302401036052075, width: 8.291458525419813, height: 13.173759660928411, correctAnswer: 'urbanization' },
+    { id: 'zone6', x: 44, y: 62, width: 13.457292627099061, height: 17.644799717440343, correctAnswer: 'agriculture-pesticides' },
+    { id: 'zone7', x: 73.47752074533972, y: 71.57407822929281, width: 8.655781682194577, height: 12.584319510229928, correctAnswer: 'cutting-forests' },
+    { id: 'zone8', x: 55.94724020761439, y: 49.181440621631246, width: 8, height: 11.234239868138827, correctAnswer: 'industrialization' },
+    { id: 'zone9', x: 60, y: 65.47616069698049, width: 10.258803572003544, height: 18.52383930301951, correctAnswer: 'dams-hydroelectric' },
+    { id: 'zone10', x: 73.3844279957441, y: 47.48128133744905, width: 9.457292627099061, height: 11.87903958557917, correctAnswer: 'invasive-species' },
+    { id: 'zone11', x: 77.92713536864505, y: 32.12608105488938, width: 8, height: 9.939519792789584, correctAnswer: 'navigation' },
+    { id: 'zone12', x: 86, y: 12.247041469310219, width: 8, height: 20.171199340694134, correctAnswer: 'climate-change' }
   ];
 
   // Default label positions for page 3 (Activity 2) - can be customized
@@ -276,28 +298,60 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     e.dataTransfer.dropEffect = 'move';
   };
 
-  // Handle clicking on image to place label at custom position
-  const handleImageClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!draggedItem || showValidation) return;
+  // Handle drop on a dropzone
+  const handleDrop = (e: React.DragEvent, zoneId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!draggedItem || showValidation || editMode) return;
     
-    const container = e.currentTarget;
-    const rect = container.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    
-    // Only place if clicked within image bounds (not on dropzones or existing labels)
-    if (x >= 0 && x <= 100 && y >= 0 && y <= 100) {
       if (currentPage === 2) {
+      const zone = currentDropZones.find(z => z.id === zoneId);
+      if (zone) {
+        // Remove any existing item from this zone before adding new one
         const newDroppedItems = { ...droppedItems };
-        newDroppedItems[draggedItem] = { x, y };
+        const newDroppedItemZones = { ...droppedItemZones };
+        
+        // Find and remove any item that was in this zone
+        Object.keys(newDroppedItems).forEach(key => {
+          if (newDroppedItemZones[key] === zoneId) {
+            delete newDroppedItems[key];
+            delete newDroppedItemZones[key];
+          }
+        });
+        
+        // Place label at dropzone position - use the position associated with the dropzone's correctAnswer
+        // This ensures labels go to the position of the dropzone they're dropped on, not their own position
+        const position = labelPositionsPage2[zone.correctAnswer] || { x: zone.x, y: zone.y };
+        newDroppedItems[draggedItem] = position;
+        newDroppedItemZones[draggedItem] = zoneId;
         setDroppedItems(newDroppedItems);
-      } else if (currentPage === 3) {
-        const newDroppedItems = { ...restorationDroppedItems };
-        newDroppedItems[draggedItem] = { x, y };
-        setRestorationDroppedItems(newDroppedItems);
+        setDroppedItemZones(newDroppedItemZones);
       }
-      setDraggedItem(null);
+      } else if (currentPage === 3) {
+      const zone = currentRestorationDropZones.find(z => z.id === zoneId);
+      if (zone) {
+        // Remove any existing item from this zone before adding new one
+        const newDroppedItems = { ...restorationDroppedItems };
+        const newDroppedItemZones = { ...restorationDroppedItemZones };
+        
+        // Find and remove any item that was in this zone
+        Object.keys(newDroppedItems).forEach(key => {
+          if (newDroppedItemZones[key] === zoneId) {
+            delete newDroppedItems[key];
+            delete newDroppedItemZones[key];
+          }
+        });
+        
+        // Place label at dropzone position - use the position associated with the dropzone's correctAnswer
+        // This ensures labels go to the position of the dropzone they're dropped on, not their own position
+        const position = labelPositionsPage3[zone.correctAnswer] || { x: zone.x, y: zone.y };
+        newDroppedItems[draggedItem] = position;
+        newDroppedItemZones[draggedItem] = zoneId;
+        setRestorationDroppedItems(newDroppedItems);
+        setRestorationDroppedItemZones(newDroppedItemZones);
+      }
     }
+    setDraggedItem(null);
   };
 
   // Download modal handlers
@@ -319,54 +373,79 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
     // TODO: Navigate to repository
   };
 
-  const handleDrop = (e: React.DragEvent, zoneId: string) => {
-    e.preventDefault();
-    if (draggedItem) {
-      if (currentPage === 2) {
-        const zone = dropZones.find(z => z.id === zoneId);
-        if (zone) {
-          // Remove any existing item from this zone before adding new one
-          const newDroppedItems = { ...droppedItems };
-          
-          // Find and remove any item that was in this zone (check both zone position and label position)
-          const labelPosition = labelPositionsPage2[zone.correctAnswer] || { x: zone.x, y: zone.y };
-          Object.keys(newDroppedItems).forEach(key => {
-            const item = newDroppedItems[key];
-            if ((item.x === zone.x && item.y === zone.y) || 
-                (item.x === labelPosition.x && item.y === labelPosition.y)) {
-              delete newDroppedItems[key];
-            }
-          });
-          
-          // Use defined label position if available, otherwise use zone position
-          const position = labelPositionsPage2[draggedItem] || { x: zone.x, y: zone.y };
-          newDroppedItems[draggedItem] = position;
-          setDroppedItems(newDroppedItems);
-        }
-      } else if (currentPage === 3) {
-        const zone = restorationDropZones.find(z => z.id === zoneId);
-        if (zone) {
-          // Remove any existing item from this zone before adding new one
-          const newDroppedItems = { ...restorationDroppedItems };
-          
-          // Find and remove any item that was in this zone (check both zone position and label position)
-          const labelPosition = labelPositionsPage3[zone.correctAnswer] || { x: zone.x, y: zone.y };
-          Object.keys(newDroppedItems).forEach(key => {
-            const item = newDroppedItems[key];
-            if ((item.x === zone.x && item.y === zone.y) || 
-                (item.x === labelPosition.x && item.y === labelPosition.y)) {
-              delete newDroppedItems[key];
-            }
-          });
-          
-          // Use defined label position if available, otherwise use zone position
-          const position = labelPositionsPage3[draggedItem] || { x: zone.x, y: zone.y };
-          newDroppedItems[draggedItem] = position;
-          setRestorationDroppedItems(newDroppedItems);
-        }
-      }
-      setDraggedItem(null);
+  // Use the optimized dropzones (always use fixed positions, ignore custom)
+  const currentDropZones = dropZones;
+  const currentRestorationDropZones = restorationDropZones;
+
+  // Export current dropzone positions as code
+  const exportDropZonePositions = () => {
+    const data = {
+      page2: dropZones.map(zone => ({
+        id: zone.id,
+        x: zone.x,
+        y: zone.y,
+        width: zone.width,
+        height: zone.height,
+        correctAnswer: zone.correctAnswer
+      })),
+      page3: restorationDropZones.map(zone => ({
+        id: zone.id,
+        x: zone.x,
+        y: zone.y,
+        width: zone.width,
+        height: zone.height,
+        correctAnswer: zone.correctAnswer
+      }))
+    };
+
+    let code: string;
+    if (showRawJson) {
+      code = JSON.stringify(data, null, 2);
+    } else {
+      code = btoa(JSON.stringify(data, null, 2));
     }
+
+    setPositionCode(code);
+    setShowCodeModal(true);
+    // Copy to clipboard
+    navigator.clipboard.writeText(code).catch(() => {});
+  };
+
+  // Import dropzone positions from code
+  const importDropZonePositions = () => {
+    try {
+      let data;
+
+      // Try to parse as raw JSON first
+      try {
+        data = JSON.parse(positionCode);
+      } catch {
+        // If that fails, try to decode as base64
+        data = JSON.parse(atob(positionCode));
+      }
+
+      if (data.page2) {
+        setCustomDropZones(data.page2);
+      }
+      if (data.page3) {
+        setCustomRestorationDropZones(data.page3);
+      }
+      setShowCodeModal(false);
+      setPositionCode('');
+      alert('Dropzone posities zijn geïmporteerd!');
+    } catch {
+      alert('Ongeldige code. Controleer de code en probeer opnieuw.');
+    }
+  };
+
+  // Handle dropzone drag in edit mode (disabled - dropzones are fixed)
+  const handleDropZoneDrag = (_e: React.MouseEvent, _zoneId: string, _page: number) => {
+    // Note: Dropzones are now fixed to optimized positions, drag functionality disabled
+  };
+
+  // Handle dropzone resize in edit mode (disabled - dropzones are fixed)
+  const handleDropZoneResize = (_e: React.MouseEvent, _zoneId: string, _page: number, _corner: 'se' | 'sw' | 'ne' | 'nw') => {
+    // Note: Dropzones are now fixed to optimized positions, resize functionality disabled
   };
 
   // Remove a dropped item (return it to the list)
@@ -377,11 +456,41 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
         delete newItems[itemId];
         return newItems;
       });
+      setDroppedItemZones(prev => {
+        const newItems = { ...prev };
+        delete newItems[itemId];
+        return newItems;
+      });
+      setInitialDropPositions(prev => {
+        const newItems = { ...prev };
+        delete newItems[itemId];
+        return newItems;
+      });
+      setAnimatingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(itemId);
+        return newSet;
+      });
     } else if (currentPage === 3) {
       setRestorationDroppedItems(prev => {
         const newItems = { ...prev };
         delete newItems[itemId];
         return newItems;
+      });
+      setRestorationDroppedItemZones(prev => {
+        const newItems = { ...prev };
+        delete newItems[itemId];
+        return newItems;
+      });
+      setRestorationInitialDropPositions(prev => {
+        const newItems = { ...prev };
+        delete newItems[itemId];
+        return newItems;
+      });
+      setAnimatingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(itemId);
+        return newSet;
       });
     }
     setShowValidation(false); // Reset validation when removing
@@ -390,42 +499,22 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   // Check if an item is correctly placed
   const isItemCorrect = (itemId: string): boolean => {
     if (currentPage === 2) {
-      const droppedPosition = droppedItems[itemId];
-      if (!droppedPosition) return false;
+      const zoneId = droppedItemZones[itemId];
+      if (!zoneId) return false;
       
-      // Check if position matches the defined label position
-      const definedPosition = labelPositionsPage2[itemId];
-      if (definedPosition) {
-        // Allow small tolerance for floating point comparison (0.1%)
-        const tolerance = 0.1;
-        return Math.abs(droppedPosition.x - definedPosition.x) < tolerance &&
-               Math.abs(droppedPosition.y - definedPosition.y) < tolerance;
-      }
+      // Find the dropzone where this label is placed
+      const zone = currentDropZones.find(z => z.id === zoneId);
       
-      // Fallback: check if it matches a dropzone position
-      const zone = dropZones.find(z => 
-        Math.abs(z.x - droppedPosition.x) < 0.1 && 
-        Math.abs(z.y - droppedPosition.y) < 0.1
-      );
+      // Check if the dropzone's correctAnswer matches this label
       return zone?.correctAnswer === itemId;
     } else if (currentPage === 3) {
-      const droppedPosition = restorationDroppedItems[itemId];
-      if (!droppedPosition) return false;
+      const zoneId = restorationDroppedItemZones[itemId];
+      if (!zoneId) return false;
       
-      // Check if position matches the defined label position
-      const definedPosition = labelPositionsPage3[itemId];
-      if (definedPosition) {
-        // Allow small tolerance for floating point comparison (0.1%)
-        const tolerance = 0.1;
-        return Math.abs(droppedPosition.x - definedPosition.x) < tolerance &&
-               Math.abs(droppedPosition.y - definedPosition.y) < tolerance;
-      }
+      // Find the dropzone where this label is placed
+      const zone = currentRestorationDropZones.find(z => z.id === zoneId);
       
-      // Fallback: check if it matches a dropzone position
-      const zone = restorationDropZones.find(z => 
-        Math.abs(z.x - droppedPosition.x) < 0.1 && 
-        Math.abs(z.y - droppedPosition.y) < 0.1
-      );
+      // Check if the dropzone's correctAnswer matches this label
       return zone?.correctAnswer === itemId;
     }
     return false;
@@ -443,6 +532,37 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   const currentDroppedItems = currentPage === 2 ? droppedItems : restorationDroppedItems;
   const correctCount = Object.keys(currentDroppedItems).filter(itemId => isItemCorrect(itemId)).length;
   const incorrectCount = Object.keys(currentDroppedItems).length - correctCount;
+
+  // Retry function to reset activity
+  const handleRetry = () => {
+    if (currentPage === 2) {
+      setDroppedItems({});
+      setDroppedItemZones({});
+      setInitialDropPositions({});
+      setShowValidation(false);
+      setAnimatingItems(new Set());
+      // Re-randomize labels
+      const shuffled = [...pressureLabels];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      setRandomizedLabels(shuffled);
+    } else if (currentPage === 3) {
+      setRestorationDroppedItems({});
+      setRestorationDroppedItemZones({});
+      setRestorationInitialDropPositions({});
+      setShowValidation(false);
+      setAnimatingItems(new Set());
+      // Re-randomize restoration measures
+      const shuffled = [...restorationMeasures];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      setRandomizedRestoration(shuffled);
+    }
+  };
 
   // Randomize labels when entering page 2
   React.useEffect(() => {
@@ -482,6 +602,15 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   // Reset validation when leaving page 2 or 3, or when switching between them
   React.useEffect(() => {
     setShowValidation(false);
+    setAnimatingItems(new Set());
+    if (currentPage !== 2) {
+      setInitialDropPositions({});
+      setDroppedItemZones({});
+    }
+    if (currentPage !== 3) {
+      setRestorationInitialDropPositions({});
+      setRestorationDroppedItemZones({});
+    }
   }, [currentPage]);
 
 
@@ -867,7 +996,6 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           flexShrink: 0,
                           cursor: draggedItem ? 'crosshair' : 'default'
                         }}
-                        onClick={handleImageClick}
                       >
                         <img 
                           src={getImagePath(currentPage)}
@@ -877,22 +1005,18 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             height: 'auto',
                             display: 'block',
                             backgroundColor: 'transparent',
-                            pointerEvents: draggedItem ? 'none' : 'auto'
+                            pointerEvents: 'auto'
                           }}
                         />
                         
-                        {/* Invisible drop zones for page 2 */}
-                        {!showValidation && dropZones.map((zone) => (
+                        {/* Drop zones for page 2 - invisible */}
+                        {!showValidation && currentDropZones.map((zone) => (
                           <div
                             key={zone.id}
                             onDragOver={handleDragOver}
                             onDrop={(e) => {
                               e.stopPropagation();
                               handleDrop(e, zone.id);
-                            }}
-                            onClick={(e) => {
-                              // Stop propagation so dropzone click doesn't trigger image click
-                              e.stopPropagation();
                             }}
                             style={{
                               position: 'absolute',
@@ -901,7 +1025,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                               width: `${zone.width}%`,
                               height: `${zone.height}%`,
                               pointerEvents: 'auto',
-                              cursor: 'pointer'
+                              cursor: draggedItem ? 'pointer' : 'default'
                             }}
                           />
                         ))}
@@ -910,12 +1034,13 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                         {Object.entries(droppedItems).map(([itemId, position]) => {
                           const item = pressureLabels.find(p => p.id === itemId);
                           const isCorrect = showValidation ? isItemCorrect(itemId) : null;
+                          const isAnimating = animatingItems.has(itemId);
                           
                           return item ? (
                             <div
                               key={itemId}
                               draggable={!showValidation}
-                              onDragStart={(e) => {
+                              onDragStart={(e: React.DragEvent) => {
                                 if (!showValidation) {
                                   // Remove from current position and start dragging again
                                   handleRemoveDroppedItem(itemId);
@@ -936,6 +1061,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 left: `${position.x}%`,
                                 top: `${position.y}%`,
                                 backgroundColor: showValidation ? (isCorrect ? '#4CAF50' : '#F44336') : '#58717B',
+                                transition: isAnimating ? 'all 0.5s ease-out' : 'all 0.2s ease-in-out',
                                 color: 'white',
                                 padding: 'clamp(0.25em, 0.4vw, 0.5em) clamp(0.35em, 0.6vw, 0.7em)',
                                 borderRadius: 'clamp(0.25em, 0.4vw, 0.4em)',
@@ -943,7 +1069,6 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontWeight: 'bold',
                                 transform: 'translate(-50%, -50%)',
                                 cursor: showValidation ? 'default' : 'grab',
-                                transition: 'all 0.2s ease',
                                 border: showValidation 
                                   ? `clamp(1.5px, 0.15vw, 2.5px) solid ${isCorrect ? '#2E7D32' : '#D32F2F'}` 
                                   : 'clamp(0.8px, 0.12vw, 1.5px) solid white',
@@ -1001,7 +1126,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 width: '30px',
                                 height: '30px',
                                 borderRadius: '50%',
-                                backgroundColor: '#4CAF50',
+                                backgroundColor: '#548235',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -1014,7 +1139,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontFamily: 'Comfortaa, sans-serif',
                                 fontSize: '18px',
                                 fontWeight: 'bold',
-                                color: '#4CAF50'
+                                color: '#548235'
                               }}>
                                 {correctCount} Correct
                               </span>
@@ -1028,7 +1153,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 width: '30px',
                                 height: '30px',
                                 borderRadius: '50%',
-                                backgroundColor: '#F44336',
+                                backgroundColor: '#C41904',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -1041,7 +1166,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontFamily: 'Comfortaa, sans-serif',
                                 fontSize: '18px',
                                 fontWeight: 'bold',
-                                color: '#F44336'
+                                color: '#C41904'
                               }}>
                                 {incorrectCount} Incorrect
                               </span>
@@ -1164,7 +1289,6 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           flexShrink: 0,
                           cursor: draggedItem ? 'crosshair' : 'default'
                         }}
-                        onClick={handleImageClick}
                       >
                         <img 
                           src={getImagePath(currentPage)}
@@ -1174,23 +1298,26 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             height: 'auto',
                             display: 'block',
                             backgroundColor: 'transparent',
-                            pointerEvents: draggedItem ? 'none' : 'auto'
+                            pointerEvents: 'auto'
                           }}
                         />
                         
-                        {/* Invisible drop zones for restoration */}
-                        {!showValidation && restorationDropZones.map((zone) => (
+                        {/* Drop zones for page 3 */}
+                        {!showValidation && currentRestorationDropZones.map((zone) => (
                           <div
                             key={zone.id}
-                            onDragOver={handleDragOver}
-                            onDrop={(e) => {
+                            onDragOver={editMode ? undefined : handleDragOver}
+                            onDrop={editMode ? undefined : (e) => {
                               e.stopPropagation();
                               handleDrop(e, zone.id);
                             }}
-                            onClick={(e) => {
-                              // Stop propagation so dropzone click doesn't trigger image click
-                              e.stopPropagation();
-                            }}
+                            onMouseDown={editMode ? (e) => {
+                              // Only drag if not clicking on a resize handle
+                              if ((e.target as HTMLElement).classList.contains('resize-handle')) {
+                                return;
+                              }
+                              handleDropZoneDrag(e, zone.id, 3);
+                            } : undefined}
                             style={{
                               position: 'absolute',
                               left: `${zone.x}%`,
@@ -1198,21 +1325,113 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                               width: `${zone.width}%`,
                               height: `${zone.height}%`,
                               pointerEvents: 'auto',
-                              cursor: 'pointer'
+                              cursor: editMode ? 'move' : (draggedItem ? 'pointer' : 'default'),
+                              backgroundColor: editMode ? 'rgba(255, 0, 0, 0.3)' : 'rgba(255, 255, 0, 0.3)',
+                              border: editMode ? '2px solid rgba(255, 0, 0, 0.8)' : '2px dashed rgba(255, 165, 0, 0.8)',
+                              borderRadius: '4px',
+                              boxSizing: 'border-box',
+                              userSelect: 'none'
                             }}
-                          />
+                          >
+                            {/* Resize handles - only show in edit mode */}
+                            {editMode && (
+                              <>
+                                {/* Southeast corner */}
+                                <div
+                                  className="resize-handle"
+                                  onMouseDown={(e) => {
+                                    e.stopPropagation();
+                                    handleDropZoneResize(e, zone.id, 3, 'se');
+                                  }}
+                                  style={{
+                                    position: 'absolute',
+                                    right: '-6px',
+                                    bottom: '-6px',
+                                    width: '12px',
+                                    height: '12px',
+                                    backgroundColor: '#C41904',
+                                    border: '2px solid white',
+                                    borderRadius: '2px',
+                                    cursor: 'nwse-resize',
+                                    zIndex: 1000
+                                  }}
+                                />
+                                {/* Southwest corner */}
+                                <div
+                                  className="resize-handle"
+                                  onMouseDown={(e) => {
+                                    e.stopPropagation();
+                                    handleDropZoneResize(e, zone.id, 3, 'sw');
+                                  }}
+                                  style={{
+                                    position: 'absolute',
+                                    left: '-6px',
+                                    bottom: '-6px',
+                                    width: '12px',
+                                    height: '12px',
+                                    backgroundColor: '#C41904',
+                                    border: '2px solid white',
+                                    borderRadius: '2px',
+                                    cursor: 'nesw-resize',
+                                    zIndex: 1000
+                                  }}
+                                />
+                                {/* Northeast corner */}
+                                <div
+                                  className="resize-handle"
+                                  onMouseDown={(e) => {
+                                    e.stopPropagation();
+                                    handleDropZoneResize(e, zone.id, 3, 'ne');
+                                  }}
+                                  style={{
+                                    position: 'absolute',
+                                    right: '-6px',
+                                    top: '-6px',
+                                    width: '12px',
+                                    height: '12px',
+                                    backgroundColor: '#C41904',
+                                    border: '2px solid white',
+                                    borderRadius: '2px',
+                                    cursor: 'nesw-resize',
+                                    zIndex: 1000
+                                  }}
+                                />
+                                {/* Northwest corner */}
+                                <div
+                                  className="resize-handle"
+                                  onMouseDown={(e) => {
+                                    e.stopPropagation();
+                                    handleDropZoneResize(e, zone.id, 3, 'nw');
+                                  }}
+                                  style={{
+                                    position: 'absolute',
+                                    left: '-6px',
+                                    top: '-6px',
+                                    width: '12px',
+                                    height: '12px',
+                                    backgroundColor: '#C41904',
+                                    border: '2px solid white',
+                                    borderRadius: '2px',
+                                    cursor: 'nwse-resize',
+                                    zIndex: 1000
+                                  }}
+                                />
+                              </>
+                            )}
+                          </div>
                         ))}
                         
                         {/* Dropped restoration items */}
                         {Object.entries(restorationDroppedItems).map(([itemId, position]) => {
                           const item = restorationMeasures.find(p => p.id === itemId);
                           const isCorrect = showValidation ? isItemCorrect(itemId) : null;
+                          const isAnimating = animatingItems.has(itemId);
                           
                           return item ? (
                             <div
                               key={itemId}
                               draggable={!showValidation}
-                              onDragStart={(e) => {
+                              onDragStart={(e: React.DragEvent) => {
                                 if (!showValidation) {
                                   // Remove from current position and start dragging again
                                   handleRemoveDroppedItem(itemId);
@@ -1233,6 +1452,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 left: `${position.x}%`,
                                 top: `${position.y}%`,
                                 backgroundColor: showValidation ? (isCorrect ? '#4CAF50' : '#F44336') : '#406A46',
+                                transition: isAnimating ? 'all 0.5s ease-out' : 'all 0.2s ease-in-out',
                                 color: 'white',
                                 padding: 'clamp(0.35em, 0.6vw, 0.6em) clamp(0.5em, 0.9vw, 0.9em)',
                                 borderRadius: 'clamp(0.3em, 0.5vw, 0.5em)',
@@ -1240,7 +1460,6 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontWeight: 'bold',
                                 transform: 'translate(-50%, -50%)',
                                 cursor: showValidation ? 'default' : 'grab',
-                                transition: 'all 0.2s ease',
                                 border: showValidation 
                                   ? `clamp(1.5px, 0.15vw, 2.5px) solid ${isCorrect ? '#2E7D32' : '#D32F2F'}` 
                                   : 'clamp(0.8px, 0.12vw, 1.5px) solid white',
@@ -1298,7 +1517,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 width: '30px',
                                 height: '30px',
                                 borderRadius: '50%',
-                                backgroundColor: '#4CAF50',
+                                backgroundColor: '#548235',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -1311,7 +1530,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontFamily: 'Comfortaa, sans-serif',
                                 fontSize: '18px',
                                 fontWeight: 'bold',
-                                color: '#4CAF50'
+                                color: '#548235'
                               }}>
                                 {correctCount} Correct
                               </span>
@@ -1325,7 +1544,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 width: '30px',
                                 height: '30px',
                                 borderRadius: '50%',
-                                backgroundColor: '#F44336',
+                                backgroundColor: '#C41904',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -1338,7 +1557,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontFamily: 'Comfortaa, sans-serif',
                                 fontSize: '18px',
                                 fontWeight: 'bold',
-                                color: '#F44336'
+                                color: '#C41904'
                               }}>
                                 {incorrectCount} Incorrect
                               </span>
@@ -1898,7 +2117,31 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
 
           {/* Next Button - Right (Hide on last page) */}
           {currentPage < TOTAL_PAGES && (
-              <div className="flex items-center" style={{ paddingRight: '16px' }}>
+              <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
+              {/* Retry Button - Show when validation is active */}
+              {showValidation && (currentPage === 2 || currentPage === 3) && (
+                <button
+                  onClick={handleRetry}
+                  className="retry-button relative flex items-center justify-center z-50"
+                  style={{
+                    width: '217px',
+                    height: '60px',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <img 
+                    src="/assets/icons/tryagain.png" 
+                    alt="Try Again" 
+                    style={{ 
+                      width: '217px',
+                      height: '60px',
+                      opacity: 1
+                    }}
+                  />
+                </button>
+              )}
               <button
                 onClick={() => {
                   const isDisabled = (currentPage === 2 || currentPage === 3) && !allItemsPlaced;
@@ -2147,6 +2390,201 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                 </div>
               </div>
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Code Modal */}
+      {showCodeModal && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999
+          }}
+          onClick={() => setShowCodeModal(false)}
+        >
+          <div 
+            style={{
+              backgroundColor: '#dfebf5',
+              borderRadius: '16px',
+              padding: '40px',
+              maxWidth: '600px',
+              width: '90%',
+              position: 'relative',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => {
+                setShowCodeModal(false);
+                setPositionCode('');
+              }}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'transparent',
+                border: 'none',
+                fontSize: '32px',
+                cursor: 'pointer',
+                color: '#406A46',
+                fontWeight: 'bold'
+              }}
+            >
+              ×
+            </button>
+
+            {/* Modal Title */}
+            <div style={{
+              fontFamily: 'Comfortaa, sans-serif',
+              fontSize: '32px',
+              fontWeight: 'bold',
+              color: '#406A46',
+              textAlign: 'center',
+              marginBottom: '20px'
+            }}>
+              Dropzone Posities
+            </div>
+
+            {/* Format Toggle */}
+            <div style={{
+              display: 'flex',
+              gap: '10px',
+              justifyContent: 'center',
+              marginBottom: '10px'
+            }}>
+              <button
+                onClick={() => {
+                  setShowRawJson(false);
+                  exportDropZonePositions();
+                }}
+                style={{
+                  padding: '8px 16px',
+                  backgroundColor: showRawJson ? '#97C09D' : '#406A46',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '14px'
+                }}
+              >
+                Base64 Code
+              </button>
+              <button
+                onClick={() => {
+                  setShowRawJson(true);
+                  exportDropZonePositions();
+                }}
+                style={{
+                  padding: '8px 16px',
+                  backgroundColor: showRawJson ? '#406A46' : '#97C09D',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '14px'
+                }}
+              >
+                Ruwe JSON
+              </button>
+            </div>
+
+            {/* Format Explanation */}
+            <div style={{
+              fontFamily: 'Comfortaa, sans-serif',
+              fontSize: '14px',
+              color: '#406A46',
+              textAlign: 'center',
+              marginBottom: '20px',
+              fontStyle: 'italic'
+            }}>
+              {showRawJson
+                ? 'Ruwe JSON: Leesbaar maar langer'
+                : 'Base64 Code: Compact voor delen'}
+            </div>
+
+            {/* Code Input/Display */}
+            <div style={{ marginBottom: '20px' }}>
+              <label style={{
+                fontFamily: 'Comfortaa, sans-serif',
+                fontSize: '18px',
+                fontWeight: 'bold',
+                color: '#406A46',
+                display: 'block',
+                marginBottom: '10px'
+              }}>
+                {positionCode ? `${showRawJson ? 'JSON' : 'Base64 Code'} (gekopieerd naar clipboard):` : 'Plak code hier:'}
+              </label>
+              <textarea
+                value={positionCode}
+                onChange={(e) => setPositionCode(e.target.value)}
+                placeholder="Plak hier de code..."
+                style={{
+                  width: '100%',
+                  minHeight: '200px',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  border: '2px solid #406A46',
+                  fontFamily: showRawJson ? 'monospace' : 'monospace',
+                  fontSize: showRawJson ? '11px' : '12px',
+                  resize: 'vertical',
+                  whiteSpace: showRawJson ? 'pre' : 'normal'
+                }}
+              />
+            </div>
+
+            {/* Buttons */}
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+              {positionCode && (
+                <button
+                  onClick={importDropZonePositions}
+                  style={{
+                    padding: '12px 24px',
+                    backgroundColor: '#406A46',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '16px',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Importeer Posities
+                </button>
+              )}
+              <button
+                onClick={() => {
+                  setShowCodeModal(false);
+                  setPositionCode('');
+                }}
+                style={{
+                  padding: '12px 24px',
+                  backgroundColor: '#97C09D',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '16px',
+                  fontWeight: 'bold'
+                }}
+              >
+                Sluiten
+              </button>
+            </div>
           </div>
         </div>
       )}

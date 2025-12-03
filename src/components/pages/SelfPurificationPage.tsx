@@ -49,17 +49,17 @@ const nutrientsHoverAreas1 = [
   {
     id: 'area-5',
     x: 39,
-    y: 34,
+    y: 30,
     width: 20,
-    height: 15,
+    height: 25,
       text: '<span style="color: #1C00B8;">Treated water still contains some nitrogen</span> compounds that flow into rivers through outlet pipes. In some countries, modern plants remove most nitrogen efficiently, but in others, treatment is less advanced — or even missing.'
   },
   {
     id: 'area-6',
     x: 44.5,
-    y: 23,
+    y: 21,
     width: 20,
-    height: 15,
+    height: 20,
       text: '<span style="color: #1C00B8;">Some factories</span> release nitrogen-rich wastewater from food processing, chemicals, or manufacturing activities. Usually regulated but still important locally.'
   },
 ];
@@ -69,9 +69,9 @@ const nutrientsHoverAreas2 = [
   {
     id: 'area-1',
     x: 15,
-    y: 73,
+    y: 68,
     width: 18,
-    height: 15,
+    height: 25,
     text: 'Particulate N settles in sediments. Organic nitrogen particles <span style="color: #1C00B8;">sink down</span>, and thus become accessible for microbes living between sand grains — quiet zones of purification.'
   },
   {
@@ -104,25 +104,25 @@ const nutrientsHoverAreas2 = [
 const nutrientsHoverAreas3 = [
     {
       id: 'area-1',
-      x: 66,
-      y: 73,
-      width: 18,
-      height: 15,
+      x: 65,
+      y: 70,
+      width: 20,
+      height: 20,
       text: '<span style="color: #1C00B8;">Nitrogen bound to particles settles.</span> During floods, suspended particles with nitrogen are trapped and deposited on the floodplain surface.'
     },
     {
       id: 'area-2',
       x: 65,
-      y: 77.5,
+      y: 75,
       width: 20,
-      height: 18,
+      height: 20,
       text: '<span style="color: #1C00B8;">Nutrients → Biomass (temporary).</span> Floodplain plants absorb nitrogen during the growing season and store it in wood and leaves.'
     },
     {
       id: 'area-3',
-      x: 67.5,
+      x: 65,
       y: 82,
-      width: 15,
+      width: 20,
       height: 20,
       text: '<span style="color: #1C00B8;">Nitrate → Nitrogen gas (no oxygen).</span> In flooded soils, microbes breathe without oxygen and transform nitrate into nitrogen gas — permanent nitrogen removal.'
     }
@@ -208,9 +208,9 @@ const nutrientsHoverAreas5 = [
     },
   {
     id: 'area-3',
-    x: 54,
+    x: 49,
     y: 73,
-    width: 15,
+    width: 25,
     height: 20,
     text: 'Phosphorus attached to soil and organic particles sinks down to the riverbed. This happens mainly in calm areas or where the flow is slow — forming a temporary "phosphorus storage" in the sediment.'
   }
@@ -220,25 +220,25 @@ const nutrientsHoverAreas5 = [
 const nutrientsHoverAreas6 = [
   {
     id: 'area-1',
-    x: 66.5,
+    x: 61.5,
     y: 66,
-    width: 18,
+    width: 28,
     height: 15,
     text: 'When floodwaters spread across the land, they slow down and drop suspended particles rich in phosphorus. This is one of the most effective ways floodplains trap and store phosphorus.'
   },
   {
     id: 'area-2',
-    x: 63,
+    x: 58,
     y: 71,
-    width: 20,
+    width: 30,
     height: 18,
     text: 'Floodplain plants absorb phosphorus as they grow, storing it in leaves and roots. This retention is temporary, but some phosphorus stays longer in litter and humus after plants die.'
   },
   {
     id: 'area-3',
-    x: 63.5,
+    x: 58.5,
     y: 76,
-    width: 15,
+    width: 25,
     height: 20,
     text: 'Dissolved phosphorus binds to iron, aluminium, or calcium compounds in the soil. This keeps phosphorus locked away — unless oxygen runs out, when it can be released again.'
   }
@@ -351,12 +351,12 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
   // Function to calculate font size based on container width
   const getFontSize = (containerWidth: number) => {
     // Base calculation: smaller containers get smaller fonts
-    // For a 1600px container, use 14px
+    // For a 1600px container, use 12px (reduced from 14px for better fit)
     // Scale down proportionally
     const baseWidth = 1600;
-    const baseFontSize = 14;
-    const minFontSize = 8;
-    const maxFontSize = 14;
+    const baseFontSize = 12;
+    const minFontSize = 7;
+    const maxFontSize = 12;
     
     const fontSize = (containerWidth / baseWidth) * baseFontSize;
     return Math.max(minFontSize, Math.min(maxFontSize, fontSize));
@@ -365,13 +365,13 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
   // Function to calculate padding based on container width
   const getPadding = (containerWidth: number) => {
     const baseWidth = 1600;
-    const basePadding = 15;
-    const minPadding = 6;
-    const maxPadding = 15;
+    const basePadding = 10;
+    const minPadding = 5;
+    const maxPadding = 10;
     
     const padding = (containerWidth / baseWidth) * basePadding;
     const paddingValue = Math.max(minPadding, Math.min(maxPadding, padding));
-    return `${paddingValue}px ${Math.max(8, Math.min(20, paddingValue * 1.3))}px`;
+    return `${paddingValue}px ${Math.max(6, Math.min(15, paddingValue * 1.2))}px`;
   };
   
   // Update container widths on resize
@@ -756,21 +756,38 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
                             zIndex: 202,
                             fontSize: `${getFontSize(containerWidth1)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
-                            lineHeight: '1.2',
+                            lineHeight: '1.15',
                             padding: getPadding(containerWidth1),
                             overflow: 'hidden',
+                            overflowWrap: 'break-word',
                             wordWrap: 'break-word',
+                            wordBreak: 'break-word',
+                            boxSizing: 'border-box',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center'
                           }}
                         >
-                          <span dangerouslySetInnerHTML={{ __html: area.text }} />
+                          <span 
+                            dangerouslySetInnerHTML={{ __html: area.text }}
+                            style={{
+                              display: 'block',
+                              width: '100%',
+                              maxWidth: '100%',
+                              overflow: 'hidden',
+                              overflowWrap: 'break-word',
+                              wordWrap: 'break-word',
+                              wordBreak: 'break-word',
+                              lineHeight: '1.15'
+                            }}
+                          />
                         </div>
                       )}
                     </div>
@@ -869,21 +886,38 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                               transform: 'translate(-50%, -50%)',
                               width: '100%',
                               height: '100%',
+                              maxWidth: '100%',
+                              maxHeight: '100%',
                               zIndex: 202,
                               fontSize: `${getFontSize(containerWidth2)}px`,
                               fontFamily: 'Comfortaa, sans-serif',
                               fontWeight: 'bold',
                               color: '#406A46',
-                              lineHeight: '1.2',
+                              lineHeight: '1.15',
                               padding: getPadding(containerWidth2),
                               overflow: 'hidden',
+                              overflowWrap: 'break-word',
                               wordWrap: 'break-word',
+                              wordBreak: 'break-word',
+                              boxSizing: 'border-box',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center'
                             }}
                           >
-                            <span dangerouslySetInnerHTML={{ __html: area.text }} />
+                            <span 
+                              dangerouslySetInnerHTML={{ __html: area.text }}
+                              style={{
+                                display: 'block',
+                                width: '100%',
+                                maxWidth: '100%',
+                                overflow: 'hidden',
+                                overflowWrap: 'break-word',
+                                wordWrap: 'break-word',
+                                wordBreak: 'break-word',
+                                lineHeight: '1.15'
+                              }}
+                            />
                           </div>
                         )}
                       </div>
@@ -1068,21 +1102,38 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
                             zIndex: 202,
                             fontSize: `${getFontSize(containerWidth3)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
-                            lineHeight: '1.2',
+                            lineHeight: '1.15',
                             padding: getPadding(containerWidth3),
                             overflow: 'hidden',
+                            overflowWrap: 'break-word',
                             wordWrap: 'break-word',
+                            wordBreak: 'break-word',
+                            boxSizing: 'border-box',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center'
                           }}
                         >
-                          <span dangerouslySetInnerHTML={{ __html: area.text }} />
+                          <span 
+                            dangerouslySetInnerHTML={{ __html: area.text }}
+                            style={{
+                              display: 'block',
+                              width: '100%',
+                              maxWidth: '100%',
+                              overflow: 'hidden',
+                              overflowWrap: 'break-word',
+                              wordWrap: 'break-word',
+                              wordBreak: 'break-word',
+                              lineHeight: '1.15'
+                            }}
+                          />
                         </div>
                       )}
                     </div>
@@ -1237,21 +1288,38 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
                             zIndex: 202,
                             fontSize: `${getFontSize(containerWidth4)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
-                            lineHeight: '1.2',
+                            lineHeight: '1.15',
                             padding: getPadding(containerWidth4),
                             overflow: 'hidden',
+                            overflowWrap: 'break-word',
                             wordWrap: 'break-word',
+                            wordBreak: 'break-word',
+                            boxSizing: 'border-box',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center'
                           }}
                         >
-                          <span dangerouslySetInnerHTML={{ __html: area.text }} />
+                          <span 
+                            dangerouslySetInnerHTML={{ __html: area.text }}
+                            style={{
+                              display: 'block',
+                              width: '100%',
+                              maxWidth: '100%',
+                              overflow: 'hidden',
+                              overflowWrap: 'break-word',
+                              wordWrap: 'break-word',
+                              wordBreak: 'break-word',
+                              lineHeight: '1.15'
+                            }}
+                          />
                         </div>
                       )}
                     </div>
@@ -1320,21 +1388,38 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
                             zIndex: 202,
                             fontSize: `${getFontSize(containerWidth5)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
-                            lineHeight: '1.2',
+                            lineHeight: '1.15',
                             padding: getPadding(containerWidth5),
                             overflow: 'hidden',
+                            overflowWrap: 'break-word',
                             wordWrap: 'break-word',
+                            wordBreak: 'break-word',
+                            boxSizing: 'border-box',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center'
                           }}
                         >
-                          <span dangerouslySetInnerHTML={{ __html: area.text }} />
+                          <span 
+                            dangerouslySetInnerHTML={{ __html: area.text }}
+                            style={{
+                              display: 'block',
+                              width: '100%',
+                              maxWidth: '100%',
+                              overflow: 'hidden',
+                              overflowWrap: 'break-word',
+                              wordWrap: 'break-word',
+                              wordBreak: 'break-word',
+                              lineHeight: '1.15'
+                            }}
+                          />
                         </div>
                       )}
                     </div>
@@ -1426,21 +1511,38 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             transform: 'translate(-50%, -50%)',
                             width: '100%',
                             height: '100%',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
                             zIndex: 202,
                             fontSize: `${getFontSize(containerWidth6)}px`,
                             fontFamily: 'Comfortaa, sans-serif',
                             fontWeight: 'bold',
                             color: '#406A46',
-                            lineHeight: '1.2',
+                            lineHeight: '1.15',
                             padding: getPadding(containerWidth6),
                             overflow: 'hidden',
+                            overflowWrap: 'break-word',
                             wordWrap: 'break-word',
+                            wordBreak: 'break-word',
+                            boxSizing: 'border-box',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center'
                           }}
                         >
-                          <span dangerouslySetInnerHTML={{ __html: area.text }} />
+                          <span 
+                            dangerouslySetInnerHTML={{ __html: area.text }}
+                            style={{
+                              display: 'block',
+                              width: '100%',
+                              maxWidth: '100%',
+                              overflow: 'hidden',
+                              overflowWrap: 'break-word',
+                              wordWrap: 'break-word',
+                              wordBreak: 'break-word',
+                              lineHeight: '1.15'
+                            }}
+                          />
                         </div>
                       )}
                     </div>

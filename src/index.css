@@ -149,11 +149,11 @@ body {
 }
 
 /* Smooth transitions for all interactive elements */
-button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):not(.learn-test-button):not(.logo-button), .clickable {
+button:not(.home-button):not(.next-button):not(.retry-button):not(.download-button):not(.nav-button):not(.learn-test-button):not(.logo-button), .clickable {
   transition: all 0.2s ease-in-out;
 }
 
-button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button):not(.learn-test-button):not(.logo-button):hover, .clickable:hover {
+button:not(.home-button):not(.next-button):not(.retry-button):not(.download-button):not(.nav-button):not(.learn-test-button):not(.logo-button):hover, .clickable:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -184,6 +184,16 @@ button:not(.home-button):not(.next-button):not(.download-button):not(.nav-button
 }
 
 .next-button:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Retry button - no hover effects */
+.retry-button {
+  transition: none !important;
+}
+
+.retry-button:hover {
   transform: none !important;
   box-shadow: none !important;
 }
