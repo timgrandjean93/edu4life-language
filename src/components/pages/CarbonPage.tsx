@@ -103,6 +103,19 @@ const dropZones = [
   { id: 'croplands', x: 74, y: 87, width: 6, height: 6 }
 ];
 
+// Icon hover areas at the top of the carbon.png image (9 icons)
+// Uses same x position and width as drop zones, height is approximately 2x width
+const iconHoverAreas = dropZones.map((zone, index) => ({
+  index: index,
+  x: zone.x,
+  y: 8, // Position at top of image
+  width: zone.width, // Same width as drop zone
+  height: zone.width * 2, // Height is 2x the width
+  iconPath: index === 0 
+    ? '/assets/components/carbon/icons/icon.png' 
+    : `/assets/components/carbon/icons/icon-${index}.png`
+}));
+
 export const CarbonPage: React.FC<CarbonPageProps> = ({
   onHomeClick,
   onSelfPurificationClick,
@@ -122,6 +135,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   
   // Page 2 hover state
   const [hoveredArea, setHoveredArea] = React.useState<string | null>(null);
+  
+  // Page 1 icon hover state
+  const [hoveredIconIndex, setHoveredIconIndex] = React.useState<number | null>(null);
+  const [mousePosition, setMousePosition] = React.useState<{ x: number; y: number } | null>(null);
   
   // Page 3 state - Carbon puzzle
   const [selectedLetter, setSelectedLetter] = React.useState<string | null>(null);
@@ -916,6 +933,64 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   style={{ backgroundColor: 'transparent', display: 'block' }}
                   id="carbon-image"
                 />
+                
+                {/* Icon Hover Areas - Top of image */}
+                {iconHoverAreas.map((iconArea) => (
+                  <div
+                    key={`icon-${iconArea.index}`}
+                    className="absolute cursor-pointer transition-all duration-300"
+                    style={{
+                      left: `${iconArea.x}%`,
+                      top: `${iconArea.y}%`,
+                      width: `${iconArea.width}%`,
+                      height: `${iconArea.height}%`,
+                      zIndex: 15,
+                      backgroundColor: 'transparent'
+                    }}
+                    onMouseEnter={() => setHoveredIconIndex(iconArea.index)}
+                    onMouseLeave={() => {
+                      setHoveredIconIndex(null);
+                      setMousePosition(null);
+                    }}
+                    onMouseMove={(e) => {
+                      setMousePosition({
+                        x: e.clientX,
+                        y: e.clientY
+                      });
+                    }}
+                  />
+                ))}
+                
+                {/* Enlarged Icon Display - Follows cursor */}
+                {hoveredIconIndex !== null && mousePosition && (
+                  <div
+                    className="fixed pointer-events-none z-20"
+                    style={{
+                      left: `${mousePosition.x}px`,
+                      top: `${mousePosition.y}px`,
+                      transform: 'translate(-50%, -50%)',
+                      zIndex: 9999
+                    }}
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <img 
+                        src={iconHoverAreas[hoveredIconIndex].iconPath}
+                        alt={`Ecosystem icon ${hoveredIconIndex + 1}`}
+                        style={{
+                          width: '120px',
+                          height: '120px',
+                          objectFit: 'contain',
+                          display: 'block'
+                        }}
+                      />
+                    </motion.div>
+                  </div>
+                )}
                 
                 {/* Drop Zones */}
                 {dropZones.map(zone => {
