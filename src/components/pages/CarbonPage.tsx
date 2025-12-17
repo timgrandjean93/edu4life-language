@@ -95,7 +95,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   onSelfPurificationClick,
   onRepositoryClick
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   
   // Create translated data structures

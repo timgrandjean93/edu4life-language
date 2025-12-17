@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 /**
  * Custom hook for managing page routing with URL parameters
@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
  */
 export const usePageRouting = (totalPages: number): [number, React.Dispatch<React.SetStateAction<number>>] => {
   // Helper function to get page from URL
-  const getPageFromURL = (): number => {
+  const getPageFromURL = useCallback((): number => {
     const params = new URLSearchParams(window.location.search);
     const pageParam = params.get('page');
     if (pageParam) {
@@ -17,7 +17,7 @@ export const usePageRouting = (totalPages: number): [number, React.Dispatch<Reac
       }
     }
     return 0; // Default to page 0 (intro)
-  };
+  }, [totalPages]);
 
   // Helper function to update URL without reloading
   const updateURL = (page: number) => {
@@ -61,7 +61,7 @@ export const usePageRouting = (totalPages: number): [number, React.Dispatch<Reac
     if (currentPage !== currentURLPage) {
       updateURL(currentPage);
     }
-  }, [currentPage, totalPages]);
+  }, [currentPage, totalPages, getPageFromURL]);
 
   return [currentPage, setCurrentPage];
 };

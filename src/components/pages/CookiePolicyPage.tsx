@@ -5,6 +5,21 @@ interface CookiePolicyPageProps {
   onHomeClick: () => void;
 }
 
+interface CookieInfo {
+  name: string;
+  purpose: string;
+  purposeContent: string;
+  duration: string;
+  durationContent: string;
+  type: string;
+  typeContent: string;
+}
+
+interface PreferenceInfo {
+  label: string;
+  content: string;
+}
+
 export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick: _onHomeClick }) => {
   const { t, i18n } = useTranslation();
   
@@ -100,7 +115,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
           </p>
           
           {(['_ga', '_gid', '_gat'] as const).map((cookieKey) => {
-            const cookie = t(`cookiePolicyPage.section4.cookies.${cookieKey}`, { returnObjects: true }) as any;
+            const cookie = t(`cookiePolicyPage.section4.cookies.${cookieKey}`, { returnObjects: true }) as CookieInfo;
             return (
               <div key={cookieKey} style={{ 
                 backgroundColor: '#f5f5f5', 
@@ -144,7 +159,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             {t('cookiePolicyPage.section5.intro')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
-            {t('cookiePolicyPage.section5.preferences', { returnObjects: true }).map((pref: any, index: number) => (
+            {t('cookiePolicyPage.section5.preferences', { returnObjects: true }).map((pref: PreferenceInfo, index: number) => (
               <li key={index} style={{ marginBottom: '8px' }}>
                 <strong>{pref.label}</strong> {pref.content}
               </li>
