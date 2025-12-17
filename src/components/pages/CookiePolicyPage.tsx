@@ -85,7 +85,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             {t('cookiePolicyPage.section3.intro')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
-            {t('cookiePolicyPage.section3.infoItems', { returnObjects: true }).map((item: string, index: number) => (
+            {(t('cookiePolicyPage.section3.infoItems', { returnObjects: true }) as string[]).map((item: string, index: number) => (
               <li key={index} style={{ marginBottom: '8px' }}>{item}</li>
             ))}
           </ul>
@@ -159,7 +159,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             {t('cookiePolicyPage.section5.intro')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
-            {t('cookiePolicyPage.section5.preferences', { returnObjects: true }).map((pref: PreferenceInfo, index: number) => (
+            {(t('cookiePolicyPage.section5.preferences', { returnObjects: true }) as PreferenceInfo[]).map((pref: PreferenceInfo, index: number) => (
               <li key={index} style={{ marginBottom: '8px' }}>
                 <strong>{pref.label}</strong> {pref.content}
               </li>

@@ -131,7 +131,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             {t('privacyPolicyPage.section5.intro')}
           </p>
           <ul style={{ paddingLeft: '24px' }}>
-            {t('privacyPolicyPage.section5.purposes', { returnObjects: true }).map((purpose: string, index: number) => (
+            {(t('privacyPolicyPage.section5.purposes', { returnObjects: true }) as string[]).map((purpose: string, index: number) => (
               <li key={index} style={{ marginBottom: '8px' }}>{purpose}</li>
             ))}
           </ul>
@@ -152,7 +152,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             <strong> {t('privacyPolicyPage.section6.notApplicable')}</strong> {t('privacyPolicyPage.section6.because')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
-            {t('privacyPolicyPage.section6.reasons', { returnObjects: true }).map((reason: string, index: number) => (
+            {(t('privacyPolicyPage.section6.reasons', { returnObjects: true }) as string[]).map((reason: string, index: number) => (
               <li key={index} style={{ marginBottom: '8px' }}>{reason}</li>
             ))}
           </ul>
