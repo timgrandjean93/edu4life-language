@@ -572,9 +572,9 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   padding: 0
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/learnandtest.png"
-                  alt="Learn and test your knowledge"
+                  alt={t('common.learnAndTestButton')}
                   style={{ 
                     height: 'auto',
                     maxWidth: '500px',

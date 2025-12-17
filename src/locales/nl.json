@@ -5,7 +5,8 @@
     "home": "Home",
     "loading": "Laden...",
     "close": "Sluiten",
-    "tryAgain": "Probeer opnieuw"
+    "tryAgain": "Probeer opnieuw",
+    "learnAndTestButton": "Leer en test je kennis"
   },
   "header": {
     "learningActivities": "Activiteiten",
@@ -50,7 +51,7 @@
     "title": "Selecteer uw taal",
     "detecting": "Uw locatie wordt gedetecteerd...",
     "suggested": "We hebben gedetecteerd dat u uit",
-    "suggestedQuestion": "Wilt u gebruiken",
+    "suggestedQuestion": "Wilt u",
     "continueWith": "Doorgaan met"
   },
   "pages": {

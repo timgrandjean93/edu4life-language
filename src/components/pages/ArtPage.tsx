@@ -833,9 +833,9 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   padding: 0
                 }}
               >
-                <img
+                <LocalizedImage
                   src="/assets/icons/learnandtest.png"
-                  alt="Learn and test your knowledge"
+                  alt={t('common.learnAndTestButton')}
                   style={{
                     height: 'auto',
                     maxWidth: '500px',

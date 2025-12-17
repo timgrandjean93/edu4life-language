@@ -5,7 +5,8 @@
     "home": "Home",
     "loading": "Loading...",
     "close": "Close",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "learnAndTestButton": "Learn and test your knowledge"
   },
   "header": {
     "learningActivities": "Learning activities",
