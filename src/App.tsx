@@ -65,11 +65,7 @@ function App() {
     const stored = localStorage.getItem('cookie_consent');
     return stored === null;
   });
-  const [showLanguageModal, setShowLanguageModal] = useState<boolean>(() => {
-    // Check if language modal has been shown before
-    const stored = localStorage.getItem('language_modal_shown');
-    return stored !== 'true';
-  });
+  const [showLanguageModal, setShowLanguageModal] = useState<boolean>(false);
 
   // Mapping from page to topic
   const pageToTopicMap: Record<string, string> = {
