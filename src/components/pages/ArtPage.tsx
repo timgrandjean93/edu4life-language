@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { HomeButton } from '../HomeButton';
 import { usePageRouting } from '../../hooks/usePageRouting';
+import { LocalizedImage } from '../LocalizedImage';
 
 interface ArtPageProps {
   onHomeClick: () => void;
@@ -502,6 +504,7 @@ const finalOutline = {
 };
 
 export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticClick, onRepositoryClick }) => {
+  const { t } = useTranslation();
   const [draggedElement, setDraggedElement] = useState<string | null>(null);
   const [placedElements, setPlacedElements] = useState<{[key: string]: string}>({});
   const [isCompleted, setIsCompleted] = useState(false);
@@ -772,7 +775,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  {currentPage === 0 ? 'Floodplains as sources of inspiration' : 'Floodplains as sources of inspiration'}
+                  {t('artPage.title')}
                 </motion.h1>
                 
                 {/* Subtitle */}
@@ -815,7 +818,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                 maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Discover how floodplains inspire stories, crafts, and creativity. Explore the art of nature-based materials before building your own masterpieces.
+                {t('artPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
@@ -865,7 +868,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access Teaching Materials
+                      {t('artPage.intro.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -887,7 +890,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                           display: 'inline-block'
                         }}
                       >
-                        Open platform
+                        {t('artPage.intro.openPlatform')}
                       </a>
                     </div>
                     <div style={{
@@ -896,7 +899,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                       color: '#406A46',
                       fontStyle: 'italic'
                     }}>
-                      Opens new tab: Zenodo
+                      {t('artPage.intro.opensNewTab')}
                     </div>
                   </div>
                 </div>
@@ -923,7 +926,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Wet-Edu Repository
+                      {t('artPage.intro.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -943,7 +946,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                           display: 'inline-block'
                         }}
                       >
-                        Explore
+                        {t('artPage.intro.explore')}
                       </button>
                     </div>
                   </div>
@@ -963,7 +966,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                     lineHeight: '1.6',
                     marginBottom: '20px'
                   }}>
-                    Rivers and their floodplains are home to numerous animals and plants, and they are also living landscapes full of stories that have inspired people for centuries. From weaving baskets with willow branches to creating songs, legends, and drawings, floodplains connect nature with culture.
+                    {t('artPage.instruction.intro1')}
                   </p>
                   
                   <p style={{
@@ -974,7 +977,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                     lineHeight: '1.6',
                     marginBottom: '30px'
                   }}>
-                    Now it's your turn - have fun using natural elements to create your own pictures and stories.<br />By the river, let its colors, shapes, and sounds inspire you discover the joy of shaping your own story from the floodplain.
+                    {t('artPage.instruction.intro2')}
                   </p>
 
                   {/* Pointer Icon */}
@@ -995,7 +998,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                       color: '#406A46',
                       lineHeight: '1.6'
                     }}>
-                      Imagine you are out in nature, collecting leaves, branches, or feathers to create your own characters.<br />Could you help these outlines come to life? Drag and drop the natural elements into the shapes until they are filled with form and color.
+                      {t('artPage.instruction.instruction')}
                     </p>
                   </div>
                 </div>
@@ -1022,8 +1025,8 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                       color: '#406A46',
                       lineHeight: '1.6'
                     }}>
-                      Some parts of the landscape are missing. <br />
-                      Drag and drop the figures you created into the right places to complete the floodplain scene.
+                      {t('artPage.instruction.page3.text1')} <br />
+                      {t('artPage.instruction.page3.text2')}
                     </p>
                   </div>
                 </div>
@@ -1330,7 +1333,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                         borderRadius: '8px',
                         width: '100%'
                       }}>
-                        Try placing the snail first
+                        {t('artPage.instruction.page3.trySnailFirst')}
                       </div>
                     );
                   }
@@ -1449,7 +1452,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                 onClick={handleDownloadClick}
                 className="download-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '480px',
+                  width: 'auto',
                   height: '50px',
                   backgroundColor: 'transparent',
                   border: 'none',
@@ -1457,11 +1460,11 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                     flexShrink: 0
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/download.png" 
                   alt="Download" 
                   style={{ 
-                    width: '480px',
+                    width: 'auto',
                     height: '50px',
                     opacity: 1
                   }}
@@ -1510,7 +1513,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   fontSize: '24px',
                   color: '#406A46'
                 }}>
-                  NEXT TOPIC: People and aquatic ecosystems
+                  {t('artPage.nextTopic')}
                 </span>
               </div>
             )}
@@ -1527,18 +1530,18 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
             }) : undefined}
               className="next-button relative flex items-center justify-center z-50"
             style={{
-              width: '158px',
+              width: 'auto',
               height: '60px',
               backgroundColor: 'transparent',
               border: 'none',
                 cursor: isCompleted ? 'pointer' : 'not-allowed'
             }}
           >
-            <img 
+            <LocalizedImage 
               src="/assets/icons/next.png" 
-                alt={currentPage === TOTAL_PAGES ? 'People and aquatic ecosystems' : 'Next'} 
+                alt={currentPage === TOTAL_PAGES ? t('artPage.nextTopic').replace('NEXT TOPIC: ', '') : 'Next'} 
               style={{ 
-                width: '158px',
+                width: 'auto',
                   height: '60px',
                   opacity: isCompleted ? 1 : 0.3,
                   transition: 'opacity 0.3s ease'
@@ -1606,7 +1609,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
               textAlign: 'center',
               marginBottom: '30px'
             }}>
-              Download Options
+              {t('artPage.modal.title')}
             </div>
 
             {/* Option 1: Zenodo */}
@@ -1666,7 +1669,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   color: 'rgba(255, 255, 255, 0.9)',
                   marginBottom: '6px'
                 }}>
-                  Based on 5E learning method and scientific research
+                  {t('artPage.modal.basedOn5E')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1674,7 +1677,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.7)'
                 }}>
-                  (Opens in new tab: Zenodo)
+                  {t('artPage.modal.opensInNewTab')}
                 </div>
               </div>
             </button>
@@ -1711,7 +1714,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
               }}>
                 <img 
                   src="/assets/icons/edurepo.png" 
-                  alt="Explore Wet-Edu Repository" 
+                  alt={t('artPage.modal.exploreRepository')} 
                   style={{ 
                     width: '50px',
                     height: '50px'
@@ -1726,7 +1729,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('artPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1734,7 +1737,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.9)'
                 }}>
-                  Explore related projects and resources
+                  {t('artPage.modal.exploreRelated')}
                 </div>
               </div>
             </button>

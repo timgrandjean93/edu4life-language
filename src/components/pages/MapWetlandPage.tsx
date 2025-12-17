@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import { LocalizedImage } from '../LocalizedImage';
 
 interface MapWetlandPageProps {
   onHomeClick: () => void;
@@ -7,19 +9,19 @@ interface MapWetlandPageProps {
   onRepositoryClick?: () => void;
 }
 
-// Quiz items with their correct letters
+// Quiz items with their correct letters and translation keys
 const quizItems = [
-  { id: 1, name: 'WATERCOURSE', correctLetter: 'E' },
-  { id: 2, name: 'SIDE ARMS', correctLetter: 'C' },
-  { id: 3, name: 'DRAINAGE CHANNELS', correctLetter: 'H' },
-  { id: 4, name: 'FLOODPLAIN LAKE', correctLetter: 'B' },
-  { id: 5, name: 'ISLANDS (MARSH)', correctLetter: 'D' },
-  { id: 6, name: 'FLOODPLAIN FOREST', correctLetter: 'F' },
-  { id: 7, name: 'PASTURE WITH ANIMALS', correctLetter: 'J' },
-  { id: 8, name: 'GRASSLAND', correctLetter: 'G' },
-  { id: 9, name: 'PROTECTIVE DIKE', correctLetter: 'K' },
-  { id: 10, name: 'HUMAN SETTLEMENT', correctLetter: 'A' },
-  { id: 11, name: 'AGRICULTURAL FIELDS', correctLetter: 'I' }
+  { id: 1, nameKey: 'WATERCOURSE', correctLetter: 'E' },
+  { id: 2, nameKey: 'SIDE_ARMS', correctLetter: 'C' },
+  { id: 3, nameKey: 'DRAINAGE_CHANNELS', correctLetter: 'H' },
+  { id: 4, nameKey: 'FLOODPLAIN_LAKE', correctLetter: 'B' },
+  { id: 5, nameKey: 'ISLANDS_MARSH', correctLetter: 'D' },
+  { id: 6, nameKey: 'FLOODPLAIN_FOREST', correctLetter: 'F' },
+  { id: 7, nameKey: 'PASTURE_WITH_ANIMALS', correctLetter: 'J' },
+  { id: 8, nameKey: 'GRASSLAND', correctLetter: 'G' },
+  { id: 9, nameKey: 'PROTECTIVE_DIKE', correctLetter: 'K' },
+  { id: 10, nameKey: 'HUMAN_SETTLEMENT', correctLetter: 'A' },
+  { id: 11, nameKey: 'AGRICULTURAL_FIELDS', correctLetter: 'I' }
 ];
 
 // All available letters
@@ -30,6 +32,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
   onRiparianClick,
   onRepositoryClick
 }) => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
   const [currentStep, setCurrentStep] = React.useState(1);
   const [selectedLetter, setSelectedLetter] = React.useState<string | null>(null);
@@ -98,7 +101,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  Map your wetland
+                  {t('mapWetlandPage.title')}
                 </motion.h1>
                 
               </div>
@@ -123,7 +126,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                 <div style={{ width: '100%', maxWidth: '600px' }}>
                   <img 
                     src="/assets/components/Mapping/map13.png"
-                    alt="Wetland map"
+                    alt={t('mapWetlandPage.title')}
                     style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
                   />
                 </div>
@@ -140,7 +143,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                 maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Learn about mapping wetlands and explore the diverse habitats and features that can be identified from above.
+                {t('mapWetlandPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
@@ -192,7 +195,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access Teaching Materials
+                      {t('mapWetlandPage.intro.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -214,7 +217,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Open platform
+                        {t('mapWetlandPage.intro.openPlatform')}
                       </a>
                     </div>
                     <div style={{
@@ -223,7 +226,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                       color: '#406A46',
                       fontStyle: 'italic'
                     }}>
-                      Opens new tab: Zenodo
+                      {t('mapWetlandPage.intro.opensNewTab')}
                     </div>
                   </div>
                 </div>
@@ -252,7 +255,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Wet-Edu Repository
+                      {t('mapWetlandPage.intro.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -272,7 +275,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Explore
+                        {t('mapWetlandPage.intro.explore')}
                       </button>
                     </div>
                   </div>
@@ -299,7 +302,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                     fontSize: '36px',
                     color: '#406A46'
                   }}>
-                    Eagle's-eye challenge!
+                    {t('mapWetlandPage.challenge.title')}
                   </span>
                 </div>
               </div>
@@ -315,7 +318,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                     color: '#406A46'
                   }}
                 >
-                  From high above the floodplain, our White-tailed eagle friend sees the winding river, hidden lakes, marshes, forests, dike, and villages. Can you find them too?  Match each feature with its correct label and bring it to life with color! Each time you identify the right spot, the landscape will shine in its true colors — just as the eagle sees it from the sky.
+                  {t('mapWetlandPage.challenge.intro')}
                 </p>
               </div>
 
@@ -326,7 +329,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   <div className="relative">
                     <img 
                       src={`/assets/components/Mapping/map${completedSteps.length + 1}.png`}
-                      alt="Wetland map"
+                      alt={t('mapWetlandPage.title')}
                       className="w-full h-auto shadow-lg"
                       style={{ 
                         backgroundColor: 'white',
@@ -383,7 +386,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                               padding: '0',
                               flex: 1
                             }}>
-                              {item.name}
+                              {t(`mapWetlandPage.quizItems.${item.nameKey}`)}
                             </p>
 
                             {/* Dropdown or Status */}
@@ -473,7 +476,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                                     backgroundSize: '16px'
                                   }}
                                 >
-                                  <option value="" disabled>Letter?</option>
+                                  <option value="" disabled>{t('mapWetlandPage.quiz.letterPlaceholder')}</option>
                                   {allLetters.map(letter => (
                                     <option 
                                       key={letter} 
@@ -536,7 +539,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                     fontSize: '36px',
                     color: '#406A46'
                   }}>
-                    Eagle's-eye challenge!
+                    {t('mapWetlandPage.challenge.title')}
                   </span>
                 </div>
               </div>
@@ -551,7 +554,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                 >
                   <img 
                     src="/assets/components/Mapping/map13.png"
-                    alt="Complete wetland map"
+                    alt={t('mapWetlandPage.quiz.successMessage')}
                     className="w-full shadow-lg"
                     style={{ 
                       backgroundColor: 'transparent',
@@ -575,7 +578,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                     marginBottom: '20px', 
                     textAlign: 'center' 
                   }}>
-                    Congratulations!
+                    {t('mapWetlandPage.quiz.congratulations')}
                   </h2>
                   <p style={{ 
                     fontSize: '22px', 
@@ -586,7 +589,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                     textAlign: 'center', 
                     lineHeight: '1.6' 
                   }}>
-                    You've successfully mapped all wetland features!
+                    {t('mapWetlandPage.quiz.successMessage')}
                   </p>
                 </motion.div>
               </div>
@@ -669,7 +672,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   onClick={handleDownloadClick}
                   className="download-button relative flex items-center justify-center z-50"
                   style={{
-                    width: '480px',
+                    width: 'auto',
                     height: '50px',
                     backgroundColor: 'transparent',
                     border: 'none',
@@ -677,11 +680,11 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                     flexShrink: 0
                   }}
                 >
-                  <img 
+                  <LocalizedImage 
                     src="/assets/icons/download.png" 
                     alt="Download" 
                     style={{ 
-                      width: '480px',
+                      width: 'auto',
                       height: '50px',
                       opacity: 1
                     }}
@@ -698,7 +701,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                     fontSize: '24px',
                     color: '#406A46'
                   }}>
-                    NEXT TOPIC: Exploring the habitat of a stream
+                    {t('mapWetlandPage.nextTopic')}
                   </span>
                 </div>
               )}
@@ -717,18 +720,18 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                 }}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer'
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
-                  alt="Exploring the habitat of a stream" 
+                  alt={t('pages.titles.riparian')} 
                   style={{ 
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: 1
                   }}
@@ -796,7 +799,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
               textAlign: 'center',
               marginBottom: '30px'
             }}>
-              Download Options
+              {t('mapWetlandPage.modal.title')}
             </div>
 
             {/* Option 1: Zenodo */}
@@ -847,7 +850,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Access Teaching Materials
+                  {t('mapWetlandPage.modal.accessTeachingMaterials')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -856,7 +859,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   color: 'rgba(255, 255, 255, 0.9)',
                   marginBottom: '6px'
                 }}>
-                  Based on 5E learning method and scientific research
+                  {t('mapWetlandPage.modal.basedOn5E')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -864,7 +867,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.7)'
                 }}>
-                  (Opens in new tab: Zenodo)
+                  {t('mapWetlandPage.modal.opensInNewTab')}
                 </div>
               </div>
             </button>
@@ -916,7 +919,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('mapWetlandPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -924,7 +927,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.9)'
                 }}>
-                  Explore related projects and resources
+                  {t('mapWetlandPage.modal.exploreRelated')}
                 </div>
               </div>
             </button>

@@ -1,10 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface HeaderProps {
   onNavigate?: (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
+  const { t } = useTranslation();
   return (
     <div
       style={{
@@ -46,20 +49,20 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
           {/* Learning activities dropdown */}
           <div className="group" style={{ position: 'relative' }}>
             <button className="nav-button" style={{ background: 'none', border: 'none', color: 'white', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', cursor: 'pointer' }}>
-              Learning activities ▾
+              {t('header.learningActivities')} ▾
             </button>
             <div className="hidden group-hover:block" style={{ position: 'absolute', right: 0, top: '100%', background: 'white', borderRadius: '8px', boxShadow: '0 8px 20px rgba(0,0,0,0.1)', padding: '8px', minWidth: '300px', zIndex: 200 }}>
               {[
-                { id: 'floodplain' as const, label: 'Living environment' },
-                { id: 'mapwetland' as const, label: 'Map your wetland' },
-                { id: 'riparian' as const, label: 'Exploring habitats' },
-                { id: 'floodcontrol' as const, label: 'Floodplain sponge effect' },
-                { id: 'carbon' as const, label: 'Climate & Carbon' },
-                { id: 'selfpurification' as const, label: 'Purification' },
-                { id: 'treatmentwetlands' as const, label: 'Treatment wetlands' },
-                { id: 'aesthetics' as const, label: 'Aesthetics' },
-                { id: 'art' as const, label: 'Sources of Inspiration' },
-                { id: 'people' as const, label: 'People and Aquatic' },
+                { id: 'floodplain' as const, labelKey: 'header.menuItems.livingEnvironment' },
+                { id: 'mapwetland' as const, labelKey: 'header.menuItems.mapYourWetland' },
+                { id: 'riparian' as const, labelKey: 'header.menuItems.exploringHabitats' },
+                { id: 'floodcontrol' as const, labelKey: 'header.menuItems.floodplainSpongeEffect' },
+                { id: 'carbon' as const, labelKey: 'header.menuItems.climateCarbon' },
+                { id: 'selfpurification' as const, labelKey: 'header.menuItems.purification' },
+                { id: 'treatmentwetlands' as const, labelKey: 'header.menuItems.treatmentWetlands' },
+                { id: 'aesthetics' as const, labelKey: 'header.menuItems.aesthetics' },
+                { id: 'art' as const, labelKey: 'header.menuItems.sourcesOfInspiration' },
+                { id: 'people' as const, labelKey: 'header.menuItems.peopleAndAquatic' },
               ].map((item) => (
                 <div key={item.id}>
                   <button
@@ -67,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                     onClick={() => onNavigate && onNavigate(item.id)}
                     style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}
                   >
-                    {item.label}
+                    {t(item.labelKey)}
                   </button>
                 </div>
               ))}
@@ -77,20 +80,20 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
           {/* External tools dropdown (includes Repository) */}
           <div className="group" style={{ position: 'relative' }}>
             <button className="nav-button" style={{ background: 'none', border: 'none', color: 'white', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', cursor: 'pointer' }}>
-              External tools ▾
+              {t('header.externalTools')} ▾
             </button>
             <div className="hidden group-hover:block" style={{ position: 'absolute', right: 0, top: '100%', background: 'white', borderRadius: '8px', boxShadow: '0 8px 20px rgba(0,0,0,0.1)', padding: '8px', minWidth: '260px', zIndex: 200 }}>
               <div>
-                <a href="http://game.restore4life-platform.eu" target="_blank" rel="noreferrer" style={{ display: 'block', padding: '10px 12px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46', textDecoration: 'none' }}>Blue-Green Space4All</a>
+                <a href="http://game.restore4life-platform.eu" target="_blank" rel="noreferrer" style={{ display: 'block', padding: '10px 12px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46', textDecoration: 'none' }}>{t('header.externalToolsItems.blueGreenSpace4All')}</a>
               </div>
               <div>
-                <button className="nav-button" onClick={() => onNavigate && onNavigate('wetlandfresk')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>Wetland Fresk</button>
+                <button className="nav-button" onClick={() => onNavigate && onNavigate('wetlandfresk')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>{t('header.externalToolsItems.wetlandFresk')}</button>
               </div>
               <div>
-                <button className="nav-button" onClick={() => onNavigate && onNavigate('wetland4life')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>Wetland4Life</button>
+                <button className="nav-button" onClick={() => onNavigate && onNavigate('wetland4life')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>{t('header.externalToolsItems.wetland4Life')}</button>
               </div>
               <div>
-                <button className="nav-button" onClick={() => onNavigate && onNavigate('wetlandEduRepo')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>Explore Wet-Edu Repository</button>
+                <button className="nav-button" onClick={() => onNavigate && onNavigate('wetlandEduRepo')} style={{ width: '100%', textAlign: 'left', padding: '10px 12px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', color: '#406A46' }}>{t('header.externalToolsItems.exploreWetEduRepository')}</button>
               </div>
             </div>
           </div>
@@ -103,8 +106,11 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
             rel="noreferrer"
             style={{ color: 'white', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', fontSize: '16px', textDecoration: 'none', cursor: 'pointer' }}
           >
-            Restore4Life
+            {t('header.restore4Life')}
           </a>
+          
+          {/* Language Switcher */}
+          <LanguageSwitcher />
         </div>
       </div>
     </div>

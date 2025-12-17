@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { usePageRouting } from '../../hooks/usePageRouting';
+import { LocalizedImage } from '../LocalizedImage';
+import { useLocalizedImage } from '../../utils/localizedImage';
 
 interface AestheticsPageProps {
   onHomeClick: () => void;
@@ -15,6 +18,9 @@ export const AestheticsPage: React.FC<AestheticsPageProps> = ({
   onArtClick,
   onRepositoryClick
 }) => {
+  const { t } = useTranslation();
+  const wavesImage = useLocalizedImage('/assets/components/aesthetics/WAVES.png');
+  const ess2Image = useLocalizedImage('/assets/components/aesthetics/ess2.png');
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const [draggedItem, setDraggedItem] = React.useState<string | null>(null);
   const [droppedItems, setDroppedItems] = React.useState<Record<string, string>>({});
@@ -48,18 +54,18 @@ export const AestheticsPage: React.FC<AestheticsPageProps> = ({
 
   // Ecosystem services data for drag and drop
   const ecosystemServices = [
-    { id: 'tourism', name: 'Tourism', category: 'cultural', icon: '/assets/components/aesthetics/icons/tourism.png' },
-    { id: 'recreation', name: 'Recreation and fishing', category: 'cultural', icon: '/assets/components/aesthetics/icons/recreation.png' },
-    { id: 'landscape', name: 'Landscape aesthetics', category: 'cultural', icon: '/assets/components/aesthetics/icons/landscape.png' },
-    { id: 'climate', name: 'Climate regulation', category: 'regulating', icon: '/assets/components/aesthetics/icons/climate.png' },
-    { id: 'carbon', name: 'Carbon sequestration', category: 'regulating', icon: '/assets/components/aesthetics/icons/carbon.png' },
-    { id: 'nutrient', name: 'Nutrient retention', category: 'regulating', icon: '/assets/components/aesthetics/icons/nutrient.png' },
-    { id: 'flood', name: 'Flood regulation', category: 'regulating', icon: '/assets/components/aesthetics/icons/flood.png' },
-    { id: 'habitat', name: 'Habitat provision', category: 'regulating', icon: '/assets/components/aesthetics/icons/habitat.png' },
-    { id: 'water', name: 'Surface and groundwater', category: 'provisioning', icon: '/assets/components/aesthetics/icons/groundwater.png' },
-    { id: 'fish', name: 'Fish', category: 'provisioning', icon: '/assets/components/aesthetics/icons/fish.png' },
-    { id: 'agriculture', name: 'Agriculture', category: 'provisioning', icon: '/assets/components/aesthetics/icons/agriculture.png' },
-    { id: 'timber', name: 'Timber', category: 'provisioning', icon: '/assets/components/aesthetics/icons/timber.png' }
+    { id: 'tourism', name: t('aestheticsPage.ecosystemServices.tourism'), category: 'cultural', icon: '/assets/components/aesthetics/icons/tourism.png' },
+    { id: 'recreation', name: t('aestheticsPage.ecosystemServices.recreation'), category: 'cultural', icon: '/assets/components/aesthetics/icons/recreation.png' },
+    { id: 'landscape', name: t('aestheticsPage.ecosystemServices.landscape'), category: 'cultural', icon: '/assets/components/aesthetics/icons/landscape.png' },
+    { id: 'climate', name: t('aestheticsPage.ecosystemServices.climate'), category: 'regulating', icon: '/assets/components/aesthetics/icons/climate.png' },
+    { id: 'carbon', name: t('aestheticsPage.ecosystemServices.carbon'), category: 'regulating', icon: '/assets/components/aesthetics/icons/carbon.png' },
+    { id: 'nutrient', name: t('aestheticsPage.ecosystemServices.nutrient'), category: 'regulating', icon: '/assets/components/aesthetics/icons/nutrient.png' },
+    { id: 'flood', name: t('aestheticsPage.ecosystemServices.flood'), category: 'regulating', icon: '/assets/components/aesthetics/icons/flood.png' },
+    { id: 'habitat', name: t('aestheticsPage.ecosystemServices.habitat'), category: 'regulating', icon: '/assets/components/aesthetics/icons/habitat.png' },
+    { id: 'water', name: t('aestheticsPage.ecosystemServices.water'), category: 'provisioning', icon: '/assets/components/aesthetics/icons/groundwater.png' },
+    { id: 'fish', name: t('aestheticsPage.ecosystemServices.fish'), category: 'provisioning', icon: '/assets/components/aesthetics/icons/fish.png' },
+    { id: 'agriculture', name: t('aestheticsPage.ecosystemServices.agriculture'), category: 'provisioning', icon: '/assets/components/aesthetics/icons/agriculture.png' },
+    { id: 'timber', name: t('aestheticsPage.ecosystemServices.timber'), category: 'provisioning', icon: '/assets/components/aesthetics/icons/timber.png' }
   ];
 
 // Page 2: Hidden icons positions (all in percentages)
@@ -370,9 +376,9 @@ const hiddenIconsData: Record<string, {
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  {currentPage === 0 ? 'Floodplain aesthetics versus Floodplain functions' :
-                   currentPage === 1 ? 'Nature\'s presents offered by the Danube and its floodplains' :
-                   'Discover the hidden services of the floodplain!'}
+                  {currentPage === 0 ? t('aestheticsPage.title.page0') :
+                   currentPage === 1 ? t('aestheticsPage.title.page1') :
+                   t('aestheticsPage.title.page2')}
                 </motion.h1>
                 
                 {/* Activity description - Only for page 1 */}
@@ -411,12 +417,12 @@ const hiddenIconsData: Record<string, {
                         color: '#406A46',
                         margin: 0,
                         lineHeight: '1.1'
-                      }}>
-                        Can you sort nature's services into groups?
+                      }}                      >
+                        {t('aestheticsPage.page1.activityQuestion')}
                       </h3>
               </div>
                     <div style={{ color: '#548235' }}>
-                      Please drag and drop each icon to its matching labeled box on the right.
+                      {t('aestheticsPage.page1.activityInstruction')}
                     </div>
                   </motion.div>
                 )}
@@ -441,7 +447,7 @@ const hiddenIconsData: Record<string, {
               {/* Single Illustration - Centered */}
               <div className="flex justify-center mb-8" style={{ width: '100%', maxWidth: '600px' }}>
                 <div style={{ width: '100%', maxWidth: '600px' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/aesthetics/landing.png"
                     alt="Aesthetics"
                     style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
@@ -460,7 +466,7 @@ const hiddenIconsData: Record<string, {
                 maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Learn about aesthetics and discover the hidden services and cultural values that floodplains offer.
+                {t('aestheticsPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
@@ -512,7 +518,7 @@ const hiddenIconsData: Record<string, {
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access Teaching Materials
+                      {t('aestheticsPage.intro.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -534,7 +540,7 @@ const hiddenIconsData: Record<string, {
                           display: 'inline-block'
                         }}
                       >
-                        Open platform
+                        {t('aestheticsPage.intro.openPlatform')}
                       </a>
                     </div>
                     <div style={{
@@ -543,7 +549,7 @@ const hiddenIconsData: Record<string, {
                       color: '#406A46',
                       fontStyle: 'italic'
                     }}>
-                      Opens new tab: Zenodo
+                      {t('aestheticsPage.intro.opensNewTab')}
                     </div>
                   </div>
                 </div>
@@ -572,7 +578,7 @@ const hiddenIconsData: Record<string, {
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Wet-Edu Repository
+                      {t('aestheticsPage.intro.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -592,7 +598,7 @@ const hiddenIconsData: Record<string, {
                           display: 'inline-block'
                         }}
                       >
-                        Explore
+                        {t('aestheticsPage.intro.explore')}
                       </button>
                     </div>
                   </div>
@@ -613,13 +619,13 @@ const hiddenIconsData: Record<string, {
                 width: '100%',
                 lineHeight: '1.6'
               }}>
-                The floodplains and wetlands of the Danube give us many benefits, called ecosystem services. These come in different forms:
+                {t('aestheticsPage.page1.description')}
                 <br />
-                • <span style={{ color: '#D2847A' }}>Provisioning services</span> – resources we can use directly, like fish, clean water, or wood.
+                • <span style={{ color: '#D2847A' }}>{t('aestheticsPage.page1.provisioningServices')}</span> – {t('aestheticsPage.page1.provisioningDescription')}
                 <br />
-                • <span style={{ color: '#548235' }}>Regulating services</span> – processes that keep nature in balance, like reducing floods, cleaning water, or storing carbon.
+                • <span style={{ color: '#548235' }}>{t('aestheticsPage.page1.regulatingServices')}</span> – {t('aestheticsPage.page1.regulatingDescription')}
                 <br />
-                • <span style={{ color: '#406BB8' }}>Cultural services</span> – benefits that enrich our lives, such as recreation, learning, and cultural traditions.
+                • <span style={{ color: '#406BB8' }}>{t('aestheticsPage.page1.culturalServices')}</span> – {t('aestheticsPage.page1.culturalDescription')}
               </div>
 
               {/* Main Drag and Drop Area */}
@@ -633,7 +639,7 @@ const hiddenIconsData: Record<string, {
                       position: 'relative',
                       width: '60%',
                       aspectRatio: '1 / 1',
-                      backgroundImage: 'url(/assets/components/aesthetics/WAVES.png)',
+                      backgroundImage: `url(${wavesImage})`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
@@ -697,7 +703,7 @@ const hiddenIconsData: Record<string, {
                     display: 'inline-block'
                   }}>
                     {/* ESS Background Image */}
-                    <img 
+                    <LocalizedImage 
                       src="/assets/components/aesthetics/ess.png"
                       alt="Ecosystem Services"
                       style={{
@@ -778,7 +784,7 @@ const hiddenIconsData: Record<string, {
                                 border: showValidation ? `4px solid ${isCorrect ? '#4CAF50' : '#F44336'}` : 'none',
                                 transition: 'all 0.3s ease'
                               }}
-                              title={showValidation ? (isCorrect ? 'Correct!' : 'Incorrect') : 'Click to remove'}
+                              title={showValidation ? (isCorrect ? t('aestheticsPage.page1.correctTooltip') : t('aestheticsPage.page1.incorrectTooltip')) : t('aestheticsPage.page1.clickToRemove')}
                             />
                           )}
                         </div>
@@ -805,7 +811,7 @@ const hiddenIconsData: Record<string, {
                     color: '#548235',
                     marginBottom: '16px'
                   }}>
-                    Results
+                    {t('aestheticsPage.page1.results')}
                   </h4>
                   <div style={{
                     display: 'flex',
@@ -830,7 +836,7 @@ const hiddenIconsData: Record<string, {
                         fontWeight: 'bold',
                         color: '#548235'
                       }}>
-                        {Object.keys(droppedItems).filter(itemId => isItemCorrect(itemId)).length} Correct
+                        {Object.keys(droppedItems).filter(itemId => isItemCorrect(itemId)).length} {t('aestheticsPage.page1.correct')}
                       </span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -851,7 +857,7 @@ const hiddenIconsData: Record<string, {
                         fontWeight: 'bold',
                         color: '#C41904'
                       }}>
-                        {Object.keys(droppedItems).filter(itemId => !isItemCorrect(itemId)).length} Incorrect
+                        {Object.keys(droppedItems).filter(itemId => !isItemCorrect(itemId)).length} {t('aestheticsPage.page1.incorrect')}
                       </span>
                     </div>
                   </div>
@@ -878,12 +884,12 @@ const hiddenIconsData: Record<string, {
                   lineHeight: '1.5',
                   marginBottom: '30px'
                 }}>
-                  The Danube floodplain is full of hidden treasures — but some are tricky to see!
-                  <br /><br />
-                  Use the magnifying glass to explore the landscape and spot the ecosystem service icons.
-                  When you hover over one with the magnifying glass, it will disappear from the image and appear at the matching label at the edge of the illustration.
-                  <br /><br />
-                  Together, these services reveal how nature supports our lives every day.
+                  {t('aestheticsPage.page2.instruction').split('\n').map((line, index, array) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      {index < array.length - 1 && <><br /><br /></>}
+                    </React.Fragment>
+                  ))}
                 </div>
               </div>
               
@@ -904,7 +910,7 @@ const hiddenIconsData: Record<string, {
                   }}
                 >
                 {/* Main Landscape Image */}
-                <img 
+                <LocalizedImage 
                   src="/assets/components/aesthetics/ess2.png"
                   alt="Floodplain Landscape"
                   style={{ 
@@ -996,7 +1002,7 @@ const hiddenIconsData: Record<string, {
                               position: 'absolute',
                               width: '100%',
                               height: '100%',
-                              backgroundImage: 'url(/assets/components/aesthetics/ess2.png)',
+                              backgroundImage: `url(${ess2Image})`,
                               backgroundSize: `${bgW}px ${bgH}px`,
                               backgroundPosition: `-${bgPosX}px -${bgPosY}px`,
                               backgroundRepeat: 'no-repeat'
@@ -1087,7 +1093,7 @@ const hiddenIconsData: Record<string, {
                         pointerEvents: 'none'
                       }}
                     >
-                      <img 
+                      <LocalizedImage 
                         src={service.icon}
                         alt={service.name}
                         style={{
@@ -1181,7 +1187,7 @@ const hiddenIconsData: Record<string, {
                     onClick={handleDownloadClick}
                     className="download-button relative flex items-center justify-center z-50"
                     style={{
-                      width: '480px',
+                      width: 'auto',
                       height: '50px',
                       backgroundColor: 'transparent',
                       border: 'none',
@@ -1189,11 +1195,11 @@ const hiddenIconsData: Record<string, {
                         flexShrink: 0
                     }}
                   >
-                    <img 
+                    <LocalizedImage 
                       src="/assets/icons/download.png" 
                       alt="Download" 
                       style={{ 
-                        width: '480px',
+                        width: 'auto',
                         height: '50px',
                         opacity: 1
                       }}
@@ -1248,7 +1254,7 @@ const hiddenIconsData: Record<string, {
                       fontSize: '24px',
                       color: '#406A46'
                     }}>
-                      NEXT TOPIC: Floodplain Art
+                      {t('aestheticsPage.nextTopic')}
                     </span>
                   </div>
                 )}
@@ -1303,9 +1309,9 @@ const hiddenIconsData: Record<string, {
                     cursor: 'pointer'
                   }}
                 >
-                  <img 
+                  <LocalizedImage 
                     src="/assets/icons/tryagain.png" 
-                    alt="Try Again" 
+                    alt={t('common.tryAgain')} 
                     style={{ 
                       width: '217px',
                       height: '60px',
@@ -1324,18 +1330,18 @@ const hiddenIconsData: Record<string, {
                 disabled={currentPage === 1 && !allItemsPlaced}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: (currentPage === 1 && !allItemsPlaced) ? 'not-allowed' : 'pointer'
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
                   alt="Next" 
                   style={{ 
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: (currentPage === 1 && !allItemsPlaced) ? 0.3 : 1,
                     transition: 'opacity 0.3s ease'
@@ -1351,18 +1357,18 @@ const hiddenIconsData: Record<string, {
                 onClick={onArtClick}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer'
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
                   alt="Next" 
                   style={{ 
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: 1
                   }}
@@ -1430,7 +1436,7 @@ const hiddenIconsData: Record<string, {
               textAlign: 'center',
               marginBottom: '30px'
             }}>
-              Download Options
+              {t('aestheticsPage.modal.title')}
             </div>
 
             {/* Option 1: Zenodo */}
@@ -1481,7 +1487,7 @@ const hiddenIconsData: Record<string, {
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Access Teaching Materials
+                  {t('aestheticsPage.modal.accessTeachingMaterials')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1490,7 +1496,7 @@ const hiddenIconsData: Record<string, {
                   color: 'rgba(255, 255, 255, 0.9)',
                   marginBottom: '6px'
                 }}>
-                  Based on 5E learning method and scientific research
+                  {t('aestheticsPage.modal.basedOn5E')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1498,7 +1504,7 @@ const hiddenIconsData: Record<string, {
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.7)'
                 }}>
-                  (Opens in new tab: Zenodo)
+                  {t('aestheticsPage.modal.opensInNewTab')}
                 </div>
               </div>
             </button>
@@ -1550,7 +1556,7 @@ const hiddenIconsData: Record<string, {
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('aestheticsPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1558,7 +1564,7 @@ const hiddenIconsData: Record<string, {
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.9)'
                 }}>
-                  Explore related projects and resources
+                  {t('aestheticsPage.modal.exploreRelated')}
                 </div>
               </div>
             </button>

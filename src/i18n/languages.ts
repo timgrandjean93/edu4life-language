@@ -1,0 +1,28 @@
+// Central list of available languages
+// Add new languages here and they will automatically appear in the dropdown
+
+export interface Language {
+  code: string;
+  name: string; // Native name of the language
+  flag?: string; // Optional emoji flag
+}
+
+export const AVAILABLE_LANGUAGES: Language[] = [
+  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
+  // Add more languages here as they become available:
+  // { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+  // { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  // { code: 'es', name: 'Español', flag: '🇪🇸' },
+  // { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+  // { code: 'pl', name: 'Polski', flag: '🇵🇱' },
+  // { code: 'ro', name: 'Română', flag: '🇷🇴' },
+  // { code: 'sk', name: 'Slovenčina', flag: '🇸🇰' },
+  // { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
+];
+
+export const getLanguageName = (code: string): string => {
+  const lang = AVAILABLE_LANGUAGES.find(l => l.code === code);
+  return lang?.name || code.toUpperCase();
+};
+

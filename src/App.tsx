@@ -23,6 +23,8 @@ import { PrivacyPolicyPage } from './components/pages/PrivacyPolicyPage';
 import { CookiePolicyPage } from './components/pages/CookiePolicyPage';
 import { TermsOfUsePage } from './components/pages/TermsOfUsePage';
 import { trackPageView, initAnalytics, revokeAnalytics } from './analytics';
+import { useTranslation } from 'react-i18next';
+import { LanguageSelectionModal } from './components/LanguageSelectionModal';
 
 type PageType = 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse';
 
@@ -55,12 +57,18 @@ const updateURL = (page: PageType, preserveQuery = false) => {
 };
 
 function App() {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState<PageType>(getPageFromURL());
   const [repositoryTopic, setRepositoryTopic] = useState<string | null>(null);
   const [showCookieBanner, setShowCookieBanner] = useState<boolean>(() => {
     // Check if user has already made a choice
     const stored = localStorage.getItem('cookie_consent');
     return stored === null;
+  });
+  const [showLanguageModal, setShowLanguageModal] = useState<boolean>(() => {
+    // Check if language modal has been shown before
+    const stored = localStorage.getItem('language_modal_shown');
+    return stored !== 'true';
   });
 
   // Mapping from page to topic
@@ -335,30 +343,30 @@ function App() {
   useEffect(() => {
     const path = `/${currentPage}`;
     const titleMap: Record<typeof currentPage, string> = {
-      home: 'Living floodplains: Learn, Explore, Restore4Life Toolbox',
-      riparian: 'Riparian Page',
-      mapwetland: 'Map Wetland Page',
-      floodplain: 'Floodplain Page',
-      floodcontrol: 'Flood Control Page',
-      carbon: 'Carbon Page',
-      selfpurification: 'Self Purification Page',
-      art: 'Art Page',
-      people: 'People & Aquatic Page',
-      aesthetics: 'Aesthetics Page',
-      wetlandfresk: 'Wetland Fresk Page',
-      wetland4life: 'Wetland4Life Page',
-      wetlandEduRepo: 'Wetland Edu Repo',
-      treatmentwetlands: 'Treatment Wetlands Page',
-      bluegreen: 'Blue-Green Space 4 All',
-      environmentalToolbox: 'Environmental Toolbox',
-      privacy: 'Privacy Policy',
-      cookies: 'Cookie Policy',
-      termsofuse: 'Terms of Use',
+      home: t('pages.titles.home'),
+      riparian: t('pages.titles.riparian'),
+      mapwetland: t('pages.titles.mapwetland'),
+      floodplain: t('pages.titles.floodplain'),
+      floodcontrol: t('pages.titles.floodcontrol'),
+      carbon: t('pages.titles.carbon'),
+      selfpurification: t('pages.titles.selfpurification'),
+      art: t('pages.titles.art'),
+      people: t('pages.titles.people'),
+      aesthetics: t('pages.titles.aesthetics'),
+      wetlandfresk: t('pages.titles.wetlandfresk'),
+      wetland4life: t('pages.titles.wetland4life'),
+      wetlandEduRepo: t('pages.titles.wetlandEduRepo'),
+      treatmentwetlands: t('pages.titles.treatmentwetlands'),
+      bluegreen: t('pages.titles.bluegreen'),
+      environmentalToolbox: t('pages.titles.environmentalToolbox'),
+      privacy: t('pages.titles.privacy'),
+      cookies: t('pages.titles.cookies'),
+      termsofuse: t('pages.titles.termsofuse'),
     };
     // Update document title and send page view to analytics
     document.title = titleMap[currentPage];
     trackPageView(path, titleMap[currentPage]);
-  }, [currentPage]);
+  }, [currentPage, t]);
 
   return (
     <GameContainer>
@@ -379,6 +387,13 @@ function App() {
         />
       </div>
       {showCookieBanner && <CookieConsent onConsentChange={handleConsentChange} />}
+      {showLanguageModal && (
+        <LanguageSelectionModal
+          onLanguageSelected={() => {
+            setShowLanguageModal(false);
+          }}
+        />
+      )}
     </GameContainer>
   );
 }

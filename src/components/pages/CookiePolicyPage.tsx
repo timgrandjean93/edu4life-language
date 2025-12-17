@@ -1,14 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface CookiePolicyPageProps {
   onHomeClick: () => void;
 }
 
 export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick: _onHomeClick }) => {
+  const { t, i18n } = useTranslation();
+  
   return (
     <div className="page-container" style={{ paddingTop: '120px' }}>
       <h1 className="main-title" style={{ marginBottom: '40px' }}>
-        Cookie Policy
+        {t('cookiePolicyPage.title')}
       </h1>
 
       <div style={{
@@ -27,12 +30,10 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            What Are Cookies?
+            {t('cookiePolicyPage.section1.title')}
           </h2>
           <p>
-            Cookies are small text files that are placed on your device when you visit a website. 
-            They are widely used to make websites work more efficiently and to provide information 
-            to the website owners.
+            {t('cookiePolicyPage.section1.content')}
           </p>
         </section>
 
@@ -44,15 +45,14 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            Types of Cookies We Use
+            {t('cookiePolicyPage.section2.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            This website uses <strong>only analytical cookies</strong> via Google Analytics. 
-            We do not use necessary/essential cookies or functional cookies.
+            {t('cookiePolicyPage.section2.intro')} <strong>{t('cookiePolicyPage.section2.onlyAnalytical')}</strong> {t('cookiePolicyPage.section2.viaGoogleAnalytics')}{' '}
+            {t('cookiePolicyPage.section2.weDoNotUse')}
           </p>
           <p style={{ marginBottom: '12px', fontStyle: 'italic', color: '#666' }}>
-            <strong>Important:</strong> All cookies used on this website require your consent. 
-            No cookies are placed without your explicit permission.
+            <strong>{t('cookiePolicyPage.section2.important')}</strong> {t('cookiePolicyPage.section2.importantContent')}
           </p>
         </section>
 
@@ -64,26 +64,24 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            Analytical Cookies (Google Analytics)
+            {t('cookiePolicyPage.section3.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            We use Google Analytics to understand how visitors interact with our website. 
-            These cookies help us collect information about:
+            {t('cookiePolicyPage.section3.intro')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
-            <li style={{ marginBottom: '8px' }}>Number of visitors to the website</li>
-            <li style={{ marginBottom: '8px' }}>Which pages are viewed most frequently</li>
-            <li style={{ marginBottom: '8px' }}>How long visitors stay on the website</li>
-            <li style={{ marginBottom: '8px' }}>How visitors navigate through the website</li>
+            {t('cookiePolicyPage.section3.infoItems', { returnObjects: true }).map((item: string, index: number) => (
+              <li key={index} style={{ marginBottom: '8px' }}>{item}</li>
+            ))}
           </ul>
           <p style={{ marginBottom: '12px' }}>
-            <strong>Purpose:</strong> These cookies help us improve the website's functionality and user experience.
+            <strong>{t('cookiePolicyPage.section3.purpose')}</strong> {t('cookiePolicyPage.section3.purposeContent')}
           </p>
           <p style={{ marginBottom: '12px' }}>
-            <strong>Consent required:</strong> Yes - these cookies are only placed if you accept them via the cookie banner.
+            <strong>{t('cookiePolicyPage.section3.consentRequired')}</strong> {t('cookiePolicyPage.section3.consentRequiredContent')}
           </p>
           <p style={{ marginBottom: '12px' }}>
-            <strong>Data collected:</strong> All data is anonymous and aggregated. We cannot identify individual users.
+            <strong>{t('cookiePolicyPage.section3.dataCollected')}</strong> {t('cookiePolicyPage.section3.dataCollectedContent')}
           </p>
         </section>
 
@@ -95,79 +93,40 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            Specific Cookies Used
+            {t('cookiePolicyPage.section4.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            The following cookies are set by Google Analytics (only if you have accepted cookies):
+            {t('cookiePolicyPage.section4.intro')}
           </p>
           
-          <div style={{ 
-            backgroundColor: '#f5f5f5', 
-            padding: '20px', 
-            borderRadius: '8px',
-            marginBottom: '16px'
-          }}>
-            <h3 style={{ 
-              color: '#51727C', 
-              fontSize: '18px', 
-              fontWeight: 'bold',
-              marginBottom: '12px'
-            }}>
-              _ga
-            </h3>
-            <ul style={{ paddingLeft: '20px', marginBottom: '8px' }}>
-              <li style={{ marginBottom: '4px' }}><strong>Purpose:</strong> Distinguishes unique users</li>
-              <li style={{ marginBottom: '4px' }}><strong>Duration:</strong> 2 years</li>
-              <li style={{ marginBottom: '4px' }}><strong>Type:</strong> First-party cookie</li>
-            </ul>
-          </div>
-
-          <div style={{ 
-            backgroundColor: '#f5f5f5', 
-            padding: '20px', 
-            borderRadius: '8px',
-            marginBottom: '16px'
-          }}>
-            <h3 style={{ 
-              color: '#51727C', 
-              fontSize: '18px', 
-              fontWeight: 'bold',
-              marginBottom: '12px'
-            }}>
-              _gid
-            </h3>
-            <ul style={{ paddingLeft: '20px', marginBottom: '8px' }}>
-              <li style={{ marginBottom: '4px' }}><strong>Purpose:</strong> Distinguishes unique users</li>
-              <li style={{ marginBottom: '4px' }}><strong>Duration:</strong> 24 hours</li>
-              <li style={{ marginBottom: '4px' }}><strong>Type:</strong> First-party cookie</li>
-            </ul>
-          </div>
-
-          <div style={{ 
-            backgroundColor: '#f5f5f5', 
-            padding: '20px', 
-            borderRadius: '8px',
-            marginBottom: '16px'
-          }}>
-            <h3 style={{ 
-              color: '#51727C', 
-              fontSize: '18px', 
-              fontWeight: 'bold',
-              marginBottom: '12px'
-            }}>
-              _gat (or _gat_gtag_*)
-            </h3>
-            <ul style={{ paddingLeft: '20px', marginBottom: '8px' }}>
-              <li style={{ marginBottom: '4px' }}><strong>Purpose:</strong> Throttles request rate</li>
-              <li style={{ marginBottom: '4px' }}><strong>Duration:</strong> 1 minute</li>
-              <li style={{ marginBottom: '4px' }}><strong>Type:</strong> First-party cookie</li>
-            </ul>
-          </div>
+          {(['_ga', '_gid', '_gat'] as const).map((cookieKey) => {
+            const cookie = t(`cookiePolicyPage.section4.cookies.${cookieKey}`, { returnObjects: true }) as any;
+            return (
+              <div key={cookieKey} style={{ 
+                backgroundColor: '#f5f5f5', 
+                padding: '20px', 
+                borderRadius: '8px',
+                marginBottom: '16px'
+              }}>
+                <h3 style={{ 
+                  color: '#51727C', 
+                  fontSize: '18px', 
+                  fontWeight: 'bold',
+                  marginBottom: '12px'
+                }}>
+                  {cookie.name}
+                </h3>
+                <ul style={{ paddingLeft: '20px', marginBottom: '8px' }}>
+                  <li style={{ marginBottom: '4px' }}><strong>{cookie.purpose}</strong> {cookie.purposeContent}</li>
+                  <li style={{ marginBottom: '4px' }}><strong>{cookie.duration}</strong> {cookie.durationContent}</li>
+                  <li style={{ marginBottom: '4px' }}><strong>{cookie.type}</strong> {cookie.typeContent}</li>
+                </ul>
+              </div>
+            );
+          })}
 
           <p style={{ marginTop: '16px', fontStyle: 'italic', color: '#666' }}>
-            <strong>Note:</strong> These cookies are set by Google Analytics and are subject to Google's 
-            privacy policy. We have configured Google Analytics with privacy-friendly settings including 
-            IP anonymization and disabled Google Signals and Ad Personalization.
+            <strong>{t('cookiePolicyPage.section4.note')}</strong> {t('cookiePolicyPage.section4.noteContent')}
           </p>
         </section>
 
@@ -179,26 +138,17 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            Managing Your Cookie Preferences
+            {t('cookiePolicyPage.section5.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            You have full control over cookies on this website:
+            {t('cookiePolicyPage.section5.intro')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
-            <li style={{ marginBottom: '8px' }}>
-              <strong>Accept or Reject:</strong> When you first visit the website, you can accept or reject 
-              analytical cookies via the cookie banner at the bottom of the page.
-            </li>
-            <li style={{ marginBottom: '8px' }}>
-              <strong>Change your preference:</strong> You can change your cookie preferences at any time by 
-              clearing your browser cookies and revisiting the website. The cookie banner will appear again 
-              allowing you to make a new choice.
-            </li>
-            <li style={{ marginBottom: '8px' }}>
-              <strong>Browser settings:</strong> You can also manage cookies directly in your browser settings. 
-              Most browsers allow you to block or delete cookies. Please note that blocking cookies may 
-              affect your experience on some websites.
-            </li>
+            {t('cookiePolicyPage.section5.preferences', { returnObjects: true }).map((pref: any, index: number) => (
+              <li key={index} style={{ marginBottom: '8px' }}>
+                <strong>{pref.label}</strong> {pref.content}
+              </li>
+            ))}
           </ul>
         </section>
 
@@ -210,12 +160,10 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            Third-Party Cookies
+            {t('cookiePolicyPage.section6.title')}
           </h2>
           <p>
-            Google Analytics cookies are technically third-party cookies (set by Google), but they are 
-            used solely for our website analytics. We do not use any other third-party cookies for 
-            advertising, social media, or other purposes.
+            {t('cookiePolicyPage.section6.content')}
           </p>
         </section>
 
@@ -227,10 +175,10 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            More Information
+            {t('cookiePolicyPage.section7.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            For more information about cookies and how to manage them, you can visit:
+            {t('cookiePolicyPage.section7.intro')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
             <li style={{ marginBottom: '8px' }}>
@@ -240,7 +188,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
                 rel="noreferrer"
                 style={{ color: '#51727C', textDecoration: 'underline' }}
               >
-                www.allaboutcookies.org
+                {t('cookiePolicyPage.section7.links.allAboutCookies')}
               </a>
             </li>
             <li style={{ marginBottom: '8px' }}>
@@ -250,33 +198,33 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
                 rel="noreferrer"
                 style={{ color: '#51727C', textDecoration: 'underline' }}
               >
-                Google's Privacy Policy
+                {t('cookiePolicyPage.section7.links.googlePrivacy')}
               </a>
             </li>
           </ul>
           <p>
-            If you have questions about our use of cookies, please contact us via{' '}
+            {t('cookiePolicyPage.section7.contact')}{' '}
             <a 
               href="https://www.archipelagos.gr" 
               target="_blank" 
               rel="noreferrer"
               style={{ color: '#51727C', textDecoration: 'underline' }}
             >
-              www.archipelagos.gr
+              {t('cookiePolicyPage.section7.website')}
             </a>{' '}
-            or email{' '}
+            {t('cookiePolicyPage.section7.orEmail')}{' '}
             <a 
               href="mailto:info@archipelagos.gr"
               style={{ color: '#51727C', textDecoration: 'underline' }}
             >
-              info@archipelagos.gr
+              {t('cookiePolicyPage.section7.email')}
             </a>.
           </p>
         </section>
 
         <section style={{ marginTop: '48px', paddingTop: '24px', borderTop: '2px solid #51727C' }}>
           <p style={{ fontSize: '14px', color: '#666', fontStyle: 'italic' }}>
-            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {t('cookiePolicyPage.lastUpdated')} {new Date().toLocaleDateString(i18n.language === 'nl' ? 'nl-NL' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </section>
       </div>

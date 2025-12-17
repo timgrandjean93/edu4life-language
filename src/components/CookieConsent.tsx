@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type ConsentStatus = 'pending' | 'accepted' | 'rejected';
 
@@ -7,6 +8,7 @@ const CONSENT_STORAGE_KEY = 'cookie_consent';
 export const CookieConsent: React.FC<{
   onConsentChange: (accepted: boolean) => void;
 }> = ({ onConsentChange }) => {
+  const { t } = useTranslation();
   const [consentStatus, setConsentStatus] = useState<ConsentStatus>('pending');
 
   useEffect(() => {
@@ -63,8 +65,7 @@ export const CookieConsent: React.FC<{
       >
         <div style={{ flex: 1, minWidth: '300px' }}>
           <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.6' }}>
-            This website uses cookies for analytical purposes via Google Analytics. 
-            You can accept or reject these cookies. 
+            {t('cookieConsent.message')}{' '}
             <a 
               href="#" 
               onClick={(e) => {
@@ -79,7 +80,7 @@ export const CookieConsent: React.FC<{
                 cursor: 'pointer'
               }}
             >
-              Read more in our cookie policy
+              {t('cookieConsent.readMore')}
             </a>
           </p>
         </div>
@@ -105,7 +106,7 @@ export const CookieConsent: React.FC<{
               e.currentTarget.style.backgroundColor = 'transparent';
             }}
           >
-            Reject
+            {t('common.reject')}
           </button>
           <button
             onClick={handleAccept}
@@ -128,7 +129,7 @@ export const CookieConsent: React.FC<{
               e.currentTarget.style.backgroundColor = 'white';
             }}
           >
-            Accept
+            {t('common.accept')}
           </button>
         </div>
       </div>

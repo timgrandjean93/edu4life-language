@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { wetlandEduRepoData } from '../../data/wetlandEduRepoData';
 
 interface WetlandEduRepoPageProps {
@@ -11,6 +12,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
   onHomeClick: _onHomeClick,
   initialTopic = null
 }) => {
+  const { t } = useTranslation();
   // Get unique topics
   const uniqueTopics = React.useMemo(() => {
     const topics = new Set(wetlandEduRepoData.map(item => item.Topic));
@@ -82,7 +84,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
               }}>
                 <img
                   src="/assets/icons/edurepo.png"
-                  alt="Explore Wet-Edu Repository"
+                  alt={t('wetlandEduRepoPage.title')}
                   style={{
                     width: '100px',
                     height: '100px',
@@ -103,7 +105,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                       marginBottom: '10px'
                     }}
                   >
-                    Explore Wet-Edu Repository
+                    {t('wetlandEduRepoPage.title')}
                   </motion.h1>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
@@ -112,7 +114,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                     color: '#51727C',
                     marginBottom: '30px'
                   }}>
-                    Explore related projects and resources
+                    {t('wetlandEduRepoPage.subtitle')}
                   </div>
                 </div>
               </div>
@@ -158,7 +160,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                 }
               }}
             >
-              All Topics
+              {t('wetlandEduRepoPage.allTopics')}
             </button>
             
             {/* Topic Buttons */}
@@ -190,7 +192,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                   }
                 }}
               >
-                {topic}
+                {t(`wetlandEduRepoPage.topics.${topic}`) || topic}
               </button>
             ))}
           </div>
@@ -214,7 +216,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
             textAlign: 'center',
             marginBottom: '24px'
           }}>
-            Click on any project to open it in a new tab
+            {t('wetlandEduRepoPage.clickToOpen')}
           </div>
 
           {/* Repository Items - Two Columns */}
@@ -261,7 +263,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                 {item.Link && (
                   <img
                     src="/assets/icons/pointer.png"
-                    alt="Opens in new tab"
+                    alt={t('wetlandEduRepoPage.opensInNewTab')}
                     style={{ 
                       width: '24px', 
                       height: '24px',
@@ -291,7 +293,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                   color: '#51727C',
                   marginBottom: '0'
                 }}>
-                  {item.Topic}
+                  {t(`wetlandEduRepoPage.topics.${item.Topic}`) || item.Topic}
                 </div>
               </motion.div>
             ))}
@@ -332,7 +334,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                   }
                 }}
               >
-                Previous
+                {t('wetlandEduRepoPage.previous')}
               </button>
 
               <div style={{
@@ -341,7 +343,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                 fontWeight: 'bold',
                 color: '#406A46'
               }}>
-                Page {currentPage} of {totalPages}
+                {t('wetlandEduRepoPage.page')} {currentPage} {t('wetlandEduRepoPage.of')} {totalPages}
               </div>
 
               <button
@@ -370,7 +372,7 @@ export const WetlandEduRepoPage: React.FC<WetlandEduRepoPageProps> = ({
                   }
                 }}
               >
-                Next
+                {t('wetlandEduRepoPage.next')}
               </button>
             </div>
           )}

@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { usePageRouting } from '../../hooks/usePageRouting';
+import { LocalizedImage } from '../LocalizedImage';
 
 interface PeopleAquaticPageProps {
   onHomeClick: () => void;
@@ -24,6 +26,7 @@ const getImagePath = (page: number) => {
 export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   onHomeClick
 }) => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const [draggedItem, setDraggedItem] = React.useState<string | null>(null);
   const [droppedItems, setDroppedItems] = React.useState<Record<string, {x: number, y: number}>>({});
@@ -63,63 +66,63 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   const pressureLabels = [
     {
       id: 'cutting-meanders',
-      label: 'Cutting meanders',
-      description: 'Straightening the river (making the river shorter and straighter instead of meandering)'
+      label: t('peopleAquaticPage.pressureLabels.cutting-meanders.label'),
+      description: t('peopleAquaticPage.pressureLabels.cutting-meanders.description')
     },
     {
       id: 'building-dikes',
-      label: 'Building dikes',
-      description: 'Flood protection dikes (raised embankments along the river that keep the water inside the main channel and stop it from reaching the floodplain)'
+      label: t('peopleAquaticPage.pressureLabels.building-dikes.label'),
+      description: t('peopleAquaticPage.pressureLabels.building-dikes.description')
     },
     {
       id: 'channellizing-rivers',
-      label: 'Channellizing rivers', 
-      description: 'Channelizing the river (protecting the banks of straightened rivers from erosion by covering them by stones, or by building groynes [small transverse stone barriers] so the river cannot change its river bed any more)'
+      label: t('peopleAquaticPage.pressureLabels.channellizing-rivers.label'), 
+      description: t('peopleAquaticPage.pressureLabels.channellizing-rivers.description')
     },
     {
       id: 'draining-floodplains',
-      label: 'Draining floodplains',
-      description: 'Drying out wetlands (removing water from wetlands to make land usable for pastures, crop fields and settlements)'
+      label: t('peopleAquaticPage.pressureLabels.draining-floodplains.label'),
+      description: t('peopleAquaticPage.pressureLabels.draining-floodplains.description')
     },
     {
       id: 'urbanization',
-      label: 'Urbanization', 
-      description: 'Building settlements, roads, and cities, accompanied by wastewater discharge into the river.'
+      label: t('peopleAquaticPage.pressureLabels.urbanization.label'), 
+      description: t('peopleAquaticPage.pressureLabels.urbanization.description')
     },
     {
       id: 'agriculture-pesticides',
-      label: 'Agriculture using pesticides, insecticides, etc.',
-      description: 'Application of chemicals in farming against weeds and insects'
+      label: t('peopleAquaticPage.pressureLabels.agriculture-pesticides.label'),
+      description: t('peopleAquaticPage.pressureLabels.agriculture-pesticides.description')
     },
     {
       id: 'cutting-forests',
-      label: 'Cutting down forests',
-      description: 'Deforestation (removing trees from large areas)'
+      label: t('peopleAquaticPage.pressureLabels.cutting-forests.label'),
+      description: t('peopleAquaticPage.pressureLabels.cutting-forests.description')
     },
     {
       id: 'industrialization',
-      label: 'Industrialization',
-      description: 'Building factories and industries, often accompanied by air, soil or water pollution'
+      label: t('peopleAquaticPage.pressureLabels.industrialization.label'),
+      description: t('peopleAquaticPage.pressureLabels.industrialization.description')
     },
     {
       id: 'dams-hydroelectric',
-      label: 'Dams, hydroelectric power plants, etc.',
-      description: 'Construction of river barriers (transverse concrete structures that stop water, sediment and fish from moving freely)'
+      label: t('peopleAquaticPage.pressureLabels.dams-hydroelectric.label'),
+      description: t('peopleAquaticPage.pressureLabels.dams-hydroelectric.description')
     },
     {
       id: 'invasive-species',
-      label: 'Invasive species',
-      description: 'Newcomer species (plants or animals from other continents that spread massively and cause problems by their dominance)'
+      label: t('peopleAquaticPage.pressureLabels.invasive-species.label'),
+      description: t('peopleAquaticPage.pressureLabels.invasive-species.description')
     },
     {
       id: 'navigation',
-      label: 'Navigation',
-      description: 'Ships and canals (deepening and regulating rivers so big ships can travel along them)'
+      label: t('peopleAquaticPage.pressureLabels.navigation.label'),
+      description: t('peopleAquaticPage.pressureLabels.navigation.description')
     },
     {
       id: 'climate-change',
-      label: 'Climate change',
-      description: 'Global warming (more extreme weather conditions caused by humans)'
+      label: t('peopleAquaticPage.pressureLabels.climate-change.label'),
+      description: t('peopleAquaticPage.pressureLabels.climate-change.description')
     }
   ];
 
@@ -127,33 +130,33 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   const restorationMeasures = [
     {
       id: 'restoration-sidearms',
-      label: 'Restoration of river side-arms',
-      description: 'Re-opening old river branches so that water can flow there again, creating multiple habitats for fish, birds, and plants.'
+      label: t('peopleAquaticPage.restorationMeasures.restoration-sidearms.label'),
+      description: t('peopleAquaticPage.restorationMeasures.restoration-sidearms.description')
     },
     {
       id: 'dike-relocation',
-      label: 'Dike relocation for more space',
-      description: 'Moving dikes further away from the river to provide more space to the river and floodplain forests that may retain flood waters.'
+      label: t('peopleAquaticPage.restorationMeasures.dike-relocation.label'),
+      description: t('peopleAquaticPage.restorationMeasures.dike-relocation.description')
     },
     {
       id: 'buffer-strips',
-      label: 'Buffer strips',
-      description: 'Restoring narrow forests between agricultural fields and rivers so they can filter nutrients and hence protect water from pollution.'
+      label: t('peopleAquaticPage.restorationMeasures.buffer-strips.label'),
+      description: t('peopleAquaticPage.restorationMeasures.buffer-strips.description')
     },
     {
       id: 'fish-ramps',
-      label: 'Fish ramps or remove barriers',
-      description: 'Helping fish migrate by removing barriers or transforming them into ramps of stones enabling them to swim upstream again.'
+      label: t('peopleAquaticPage.restorationMeasures.fish-ramps.label'),
+      description: t('peopleAquaticPage.restorationMeasures.fish-ramps.description')
     },
     {
       id: 'bypass-channels',
-      label: 'Bypass channels',
-      description: 'Creating artificial side channels around barriers with gentle slopes where fish and other animals can move, or even live.'
+      label: t('peopleAquaticPage.restorationMeasures.bypass-channels.label'),
+      description: t('peopleAquaticPage.restorationMeasures.bypass-channels.description')
     },
     {
       id: 'native-species',
-      label: 'Support native species',
-      description: 'Restoring natural habitat conditions to support native plants and animals, making it harder for invasive species to spread.'
+      label: t('peopleAquaticPage.restorationMeasures.native-species.label'),
+      description: t('peopleAquaticPage.restorationMeasures.native-species.description')
     }
   ];
 
@@ -230,25 +233,25 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
   const quizData = {
     column1: {
       options: [
-        { id: 'A', text: 'Because the soil in the floodplain was too poor and nothing could grow there.' },
-        { id: 'B', text: 'Because farming was forbidden by the rulers of the Danube region in those times.' },
-        { id: 'C', text: 'Because the floodplain was still natural, offering many benefits for people and animals, but farming was not possible on flooded land.' }
+        { id: 'A', text: t('peopleAquaticPage.activity3.column1.options.A') },
+        { id: 'B', text: t('peopleAquaticPage.activity3.column1.options.B') },
+        { id: 'C', text: t('peopleAquaticPage.activity3.column1.options.C') }
       ],
       correct: 'C'
     },
     column2: {
       options: [
-        { id: 'A', text: 'Because the Danube\'s natural forests and wetlands expanded, increasing farming and timber production at the same time.' },
-        { id: 'B', text: 'Because dikes disconnected the floodplain from the river, protecting agriculture from floods but destroying many natural habitats and their benefits.' },
-        { id: 'C', text: 'Because no one lived near the Danube, so only a few services were used.' }
+        { id: 'A', text: t('peopleAquaticPage.activity3.column2.options.A') },
+        { id: 'B', text: t('peopleAquaticPage.activity3.column2.options.B') },
+        { id: 'C', text: t('peopleAquaticPage.activity3.column2.options.C') }
       ],
       correct: 'B'
     },
     column3: {
       options: [
-        { id: 'A', text: 'Because nature-based solutions restore side arms, wetlands, and forests, which bring back multiple benefits for both nature and people.' },
-        { id: 'B', text: 'Because people allowed the river to flood naturally, and removed all the pressures' },
-        { id: 'C', text: 'Because the Danube was cut off from its floodplains by dikes.' }
+        { id: 'A', text: t('peopleAquaticPage.activity3.column3.options.A') },
+        { id: 'B', text: t('peopleAquaticPage.activity3.column3.options.B') },
+        { id: 'C', text: t('peopleAquaticPage.activity3.column3.options.C') }
       ],
       correct: 'A'
     }
@@ -653,7 +656,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  The people and aquatic ecosystems
+                  {t('peopleAquaticPage.title')}
                 </motion.h1>
                 
                 {/* Subtitle - Only show for pages 1-3 */}
@@ -672,9 +675,9 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       marginBottom: '20px'
                     }}
                   >
-                    {currentPage === 1 && 'A. Natural floodplains'}
-                    {currentPage === 2 && 'B. Used and altered floodplains'}
-                    {currentPage === 3 && 'C. Restoring floodplains as a Nature-based Solution'}
+                    {currentPage === 1 && t('peopleAquaticPage.subtitle.page1')}
+                    {currentPage === 2 && t('peopleAquaticPage.subtitle.page2')}
+                    {currentPage === 3 && t('peopleAquaticPage.subtitle.page3')}
                   </motion.h2>
                 )}
                 
@@ -715,14 +718,13 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                         margin: 0,
                         lineHeight: '1.1'
                       }}>
-                        Activity 1
+                        {t('peopleAquaticPage.activity1.title')}
                       </h3>
                     </div>
                     <div>
-                      Look closely—this is how human actions have transformed the Danube and its floodplains. 
-                      Dikes, farming, navigation, and other pressures changed the landscape.
+                      {t('peopleAquaticPage.activity1.description')}
                       <br /><br />
-                      Can you help me by matching each pressure label to the right place in the picture?
+                      {t('peopleAquaticPage.activity1.question')}
                     </div>
                   </motion.div>
                 )}
@@ -764,13 +766,13 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                         margin: 0,
                         lineHeight: '1.1'
                       }}>
-                        Activity 2
+                        {t('peopleAquaticPage.activity2.title')}
                       </h3>
                     </div>
                     <div>
-                      To solve societal problems with this Nature-based Solution, you can now explore suitable restoration measures: each picture shows one way how people and nature may work together.
+                      {t('peopleAquaticPage.activity2.description')}
                       <br /><br />
-                      At the bottom, you will find a list with six measures. Can you match the number of the measure from the list with the respective image that shows it?
+                      {t('peopleAquaticPage.activity2.question')}
                     </div>
                   </motion.div>
                 )}
@@ -821,7 +823,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                 maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Explore how people rely on floodplains and aquatic ecosystems, and discover pathways to restore their benefits for communities and nature.
+                {t('peopleAquaticPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
@@ -871,7 +873,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access Teaching Materials
+                      {t('peopleAquaticPage.modal.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -929,7 +931,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Wet-Edu Repository
+                      {t('peopleAquaticPage.modal.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -949,7 +951,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Explore
+                        {t('peopleAquaticPage.intro.explore')}
                       </button>
                     </div>
                   </div>
@@ -967,7 +969,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   </div>
                   <div className="flex justify-center">
                     <div style={{ width: '100%', maxWidth: '1600px' }}>
-                      <img 
+                      <LocalizedImage 
                         src={getImagePath(currentPage)}
                         alt={`People and aquatic ecosystems page ${currentPage}`}
                         className="w-full h-auto"
@@ -997,7 +999,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           cursor: draggedItem ? 'crosshair' : 'default'
                         }}
                       >
-                        <img 
+                        <LocalizedImage 
                           src={getImagePath(currentPage)}
                           alt={`People and aquatic ecosystems page ${currentPage}`}
                           style={{ 
@@ -1055,7 +1057,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                   handleRemoveDroppedItem(itemId);
                                 }
                               }}
-                              title={showValidation ? (isCorrect ? 'Correct!' : 'Incorrect') : 'Click to remove and return to list'}
+                              title={showValidation ? (isCorrect ? t('peopleAquaticPage.ui.correctTooltip') : t('peopleAquaticPage.ui.incorrectTooltip')) : t('peopleAquaticPage.ui.clickToRemove')}
                               style={{
                                 position: 'absolute',
                                 left: `${position.x}%`,
@@ -1109,7 +1111,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             color: '#406A46',
                             marginBottom: '12px'
                           }}>
-                            Results
+                            {t('peopleAquaticPage.ui.results')}
                           </h4>
                           <div style={{
                             display: 'flex',
@@ -1141,7 +1143,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontWeight: 'bold',
                                 color: '#548235'
                               }}>
-                                {correctCount} Correct
+                                {correctCount} {t('peopleAquaticPage.ui.correct')}
                               </span>
                             </div>
                             <div style={{
@@ -1168,7 +1170,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontWeight: 'bold',
                                 color: '#C41904'
                               }}>
-                                {incorrectCount} Incorrect
+                                {incorrectCount} {t('peopleAquaticPage.ui.incorrect')}
                               </span>
                             </div>
                           </div>
@@ -1268,7 +1270,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     textAlign: 'left',
                     flexShrink: 0
                   }}>
-                    People cleared forests, transformed the floodplains into pastures and crop fields, and built villages and later cities near the banks of the Danube. To protect themselves from floods, they constructed dikes. The Danube was also developed as a navigational waterway and for hydropower production. As a result, the river lost many of its natural features: the balance of sediments in the riverbed was disturbed, and the connection between the river channel and its floodplains was largely cut off. Only a few remnants of the original floodplain remained, while many typical animals and plants disappeared.
+                    {t('peopleAquaticPage.activity1.instruction')}
                   </div>
                 </>
               ) : currentPage === 3 ? (
@@ -1290,7 +1292,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           cursor: draggedItem ? 'crosshair' : 'default'
                         }}
                       >
-                        <img 
+                        <LocalizedImage 
                           src={getImagePath(currentPage)}
                           alt={`People and aquatic ecosystems page ${currentPage}`}
                           style={{ 
@@ -1302,7 +1304,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           }}
                         />
                         
-                        {/* Drop zones for page 3 */}
+                        {/* Drop zones for page 3 - invisible */}
                         {!showValidation && currentRestorationDropZones.map((zone) => (
                           <div
                             key={zone.id}
@@ -1326,8 +1328,8 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                               height: `${zone.height}%`,
                               pointerEvents: 'auto',
                               cursor: editMode ? 'move' : (draggedItem ? 'pointer' : 'default'),
-                              backgroundColor: editMode ? 'rgba(255, 0, 0, 0.3)' : 'rgba(255, 255, 0, 0.3)',
-                              border: editMode ? '2px solid rgba(255, 0, 0, 0.8)' : '2px dashed rgba(255, 165, 0, 0.8)',
+                              backgroundColor: editMode ? 'rgba(255, 0, 0, 0.3)' : 'transparent',
+                              border: editMode ? '2px solid rgba(255, 0, 0, 0.8)' : 'none',
                               borderRadius: '4px',
                               boxSizing: 'border-box',
                               userSelect: 'none'
@@ -1446,7 +1448,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                   handleRemoveDroppedItem(itemId);
                                 }
                               }}
-                              title={showValidation ? (isCorrect ? 'Correct!' : 'Incorrect') : 'Click to remove and return to list'}
+                              title={showValidation ? (isCorrect ? t('peopleAquaticPage.ui.correctTooltip') : t('peopleAquaticPage.ui.incorrectTooltip')) : t('peopleAquaticPage.ui.clickToRemove')}
                               style={{
                                 position: 'absolute',
                                 left: `${position.x}%`,
@@ -1500,7 +1502,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                             color: '#406A46',
                             marginBottom: '12px'
                           }}>
-                            Results
+                            {t('peopleAquaticPage.ui.results')}
                           </h4>
                           <div style={{
                             display: 'flex',
@@ -1532,7 +1534,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontWeight: 'bold',
                                 color: '#548235'
                               }}>
-                                {correctCount} Correct
+                                {correctCount} {t('peopleAquaticPage.ui.correct')}
                               </span>
                             </div>
                             <div style={{
@@ -1559,7 +1561,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontWeight: 'bold',
                                 color: '#C41904'
                               }}>
-                                {incorrectCount} Incorrect
+                                {incorrectCount} {t('peopleAquaticPage.ui.incorrect')}
                               </span>
                             </div>
                           </div>
@@ -1659,7 +1661,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     textAlign: 'left',
                     flexShrink: 0
                   }}>
-                    Step by step, parts of the Danube floodplain are being reconnected to the river. Old side arms are reopened, forests and wetlands are restored, and natural flooding is allowed again wherever possible. These measures bring back habitats for fish, birds, and plants, while also helping people — by storing floodwaters, improving water quality, providing water during droughts, and offering space for recreation. These restoration Measures are called Nature-based Solution.
+                    {t('peopleAquaticPage.activity2.instruction')}
                   </div>
                 </>
               ) : (
@@ -1667,7 +1669,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                 <>
                   <div className="flex justify-center">
                     <div style={{ width: '100%', maxWidth: '1600px' }}>
-                      <img 
+                      <LocalizedImage 
                         src={getImagePath(currentPage)}
                         alt={`People and aquatic ecosystems page ${currentPage}`}
                         className="w-full h-auto"
@@ -1702,7 +1704,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   margin: 0,
                   lineHeight: '1.1'
                 }}>
-                  Activity 3
+                  {t('peopleAquaticPage.activity3.title')}
                 </h3>
               </div>
               
@@ -1717,7 +1719,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                 marginBottom: '40px',
                 width: '100%'
               }}>
-                These polar charts show how the Danube's ecosystem services change in three different scenarios: natural floodplains, altered floodplains with human pressures, and restored floodplains with nature-based solutions. Can you find out why the services look so different?
+                {t('peopleAquaticPage.activity3.description')}
               </div>
               
               {/* Three columns */}
@@ -1730,7 +1732,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     height: '100%'
                   }}>
                     {/* Column 1 Image */}
-                    <img 
+                    <LocalizedImage 
                       src="/assets/components/people/column1.png" 
                       alt="Original natural Floodplain" 
                       style={{
@@ -1750,7 +1752,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       margin: 0,
                       marginBottom: '16px'
                     }}>
-                      Original natural Floodplain
+                      {t('peopleAquaticPage.activity3.column1.title')}
                     </h4>
                     {/* Column 1 Question */}
                     <p style={{
@@ -1763,7 +1765,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       marginBottom: '20px',
                       lineHeight: '1.4'
                     }}>
-                      Looking at this polar chart, why are almost all ecosystem services very high, while agriculture is low?
+                      {t('peopleAquaticPage.activity3.column1.question')}
                     </p>
                     
                     {/* Column 1 Quiz Options */}
@@ -1800,7 +1802,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontWeight: 'bold',
                                 color: '#ffffff'
                               }}>
-                                Correct answer: ({quizData.column1.correct})
+                                {t('peopleAquaticPage.activity3.correctAnswer')} ({quizData.column1.correct})
                               </div>
                             )}
                           </div>
@@ -1818,7 +1820,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     height: '100%'
                   }}>
                     {/* Column 2 Image */}
-                    <img 
+                    <LocalizedImage 
                       src="/assets/components/people/column2.png" 
                       alt="Altered floodplain" 
                       style={{
@@ -1838,7 +1840,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       margin: 0,
                       marginBottom: '16px'
                     }}>
-                      Altered floodplain
+                      {t('peopleAquaticPage.activity3.column2.title')}
                     </h4>
                     {/* Column 2 Question */}
                     <p style={{
@@ -1851,7 +1853,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       marginBottom: '20px',
                       lineHeight: '1.4'
                     }}>
-                      Why is agricultural production so much provided in this status, while most other services are low?
+                      {t('peopleAquaticPage.activity3.column2.question')}
                     </p>
                     
                     {/* Column 2 Quiz Options */}
@@ -1888,7 +1890,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontWeight: 'bold',
                                 color: '#ffffff'
                               }}>
-                                Correct answer: ({quizData.column2.correct})
+                                {t('peopleAquaticPage.activity3.correctAnswer')} ({quizData.column2.correct})
                               </div>
                             )}
                           </div>
@@ -1906,7 +1908,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     height: '100%'
                   }}>
                     {/* Column 3 Image */}
-                    <img 
+                    <LocalizedImage 
                       src="/assets/components/people/column3.png" 
                       alt="Restored floodplain" 
                       style={{
@@ -1926,7 +1928,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       margin: 0,
                       marginBottom: '16px'
                     }}>
-                      Restored floodplain
+                      {t('peopleAquaticPage.activity3.column3.title')}
                     </h4>
                     {/* Column 3 Question */}
                     <p style={{
@@ -1939,7 +1941,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                       marginBottom: '20px',
                       lineHeight: '1.4'
                     }}>
-                      Why are the ecosystem services more balanced in this polar chart compared to the other two?
+                      {t('peopleAquaticPage.activity3.column3.question')}
                     </p>
                     
                     {/* Column 3 Quiz Options */}
@@ -1976,7 +1978,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                                 fontWeight: 'bold',
                                 color: '#ffffff'
                               }}>
-                                Correct answer: ({quizData.column3.correct})
+                                {t('peopleAquaticPage.activity3.correctAnswer')} ({quizData.column3.correct})
                               </div>
                             )}
                           </div>
@@ -2063,7 +2065,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   onClick={handleDownloadClick}
                   className="download-button relative flex items-center justify-center z-50"
                   style={{
-                    width: '480px',
+                    width: 'auto',
                     height: '50px',
                     backgroundColor: 'transparent',
                     border: 'none',
@@ -2071,11 +2073,11 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     flexShrink: 0
                   }}
             >
-                  <img 
+                  <LocalizedImage 
                     src="/assets/icons/download.png" 
                     alt="Download" 
                     style={{ 
-                      width: '480px',
+                      width: 'auto',
                       height: '50px',
                       opacity: 1
                     }}
@@ -2131,9 +2133,9 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                     cursor: 'pointer'
                   }}
                 >
-                  <img 
+                  <LocalizedImage 
                     src="/assets/icons/tryagain.png" 
-                    alt="Try Again" 
+                    alt={t('common.tryAgain')} 
                     style={{ 
                       width: '217px',
                       height: '60px',
@@ -2152,18 +2154,18 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                 disabled={(currentPage === 2 || currentPage === 3) && !allItemsPlaced}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: ((currentPage === 2 || currentPage === 3) && !allItemsPlaced) ? 'not-allowed' : 'pointer'
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
                   alt="Next" 
                   style={{ 
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: ((currentPage === 2 || currentPage === 3) && !allItemsPlaced) ? 0.3 : 1,
                     transition: 'opacity 0.3s ease'
@@ -2178,18 +2180,18 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                 onClick={onHomeClick}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer'
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
                   alt="Finish" 
                   style={{ 
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: 1,
                     transition: 'opacity 0.3s ease'
@@ -2258,7 +2260,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
               textAlign: 'center',
               marginBottom: '30px'
             }}>
-              Download Options
+              {t('peopleAquaticPage.modal.title')}
             </div>
 
             {/* Option 1: Zenodo */}
@@ -2309,7 +2311,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Access Teaching Materials
+                  {t('peopleAquaticPage.modal.accessTeachingMaterials')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -2318,7 +2320,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   color: 'rgba(255, 255, 255, 0.9)',
                   marginBottom: '6px'
                 }}>
-                  Based on 5E learning method and scientific research
+                  {t('peopleAquaticPage.modal.basedOn5E')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -2326,7 +2328,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.7)'
                 }}>
-                  (Opens in new tab: Zenodo)
+                  {t('peopleAquaticPage.modal.opensInNewTab')}
                 </div>
               </div>
             </button>
@@ -2378,7 +2380,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('peopleAquaticPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -2386,7 +2388,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.9)'
                 }}>
-                  Explore related projects and resources
+                  {t('peopleAquaticPage.modal.exploreRelated')}
                 </div>
               </div>
             </button>

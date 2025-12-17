@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { usePageRouting } from '../../hooks/usePageRouting';
+import { LocalizedImage } from '../LocalizedImage';
 
 type LayerSlotId = 'plant' | 'filter' | 'intermediate' | 'drainage';
 
@@ -25,80 +27,82 @@ interface LayerItem {
   tooltip: TooltipContent;
 }
 
-const LAYER_ITEMS: LayerItem[] = [
+// Layer items will be created inside component to access translations
+const createLayerItems = (t: (key: string) => string): LayerItem[] => [
   {
     id: 'rocky',
     slot: 'drainage',
-    name: 'Rocky the Drainer',
-    label: 'ROCKY THE DRAINER',
+    name: t('treatmentWetlandsPage.characters.rocky.name'),
+    label: t('treatmentWetlandsPage.characters.rocky.label'),
     characterImage: '/assets/components/constructed/page2/ROCKY.png',
     layerImage: '/assets/components/constructed/page2/drainage.png',
     layerDroppedImage: '/assets/components/constructed/page2/drainage-dropped.png',
     side: 'left',
     tooltip: {
-      first: "I’m Rocky the Drainer! I collect the cleaned water and let it flow out safely to the river. I keep the bottom open and full of air so the whole system can breathe.",
+      first: t('treatmentWetlandsPage.characters.rocky.tooltip.first'),
       firstColor: '#707070',
-      second: 'Function: Collects the cleaned water, ensures aeration from below, and directs flow to the outlet.',
+      second: t('treatmentWetlandsPage.characters.rocky.tooltip.second'),
       secondColor: '#2f5c36'
     }
   },
   {
     id: 'reeda',
     slot: 'plant',
-    name: 'Reeda the Flowkeeper',
-    label: 'REEDA THE FLOWKEEPER',
+    name: t('treatmentWetlandsPage.characters.reeda.name'),
+    label: t('treatmentWetlandsPage.characters.reeda.label'),
     characterImage: '/assets/components/constructed/page2/REEDA.png',
     layerImage: '/assets/components/constructed/page2/plant.png',
     layerDroppedImage: '/assets/components/constructed/page2/plant-dropped.png',
     side: 'left',
     tooltip: {
-      first: 'I’m Reeda, Flowkeeper! My roots keep the filter open so the water can pass through easily. I protect the wetland from heat and cold, bring in a bit of oxygen, and give microbes a good place to live.',
+      first: t('treatmentWetlandsPage.characters.reeda.tooltip.first'),
       firstColor: '#406A46',
-      second: 'Function: Root growth maintains hydraulic conductivity of the filter, provide insulation against heat (summer) and cold (winter), slows down inflow, supports microbes, and takes up some nutrients.',
+      second: t('treatmentWetlandsPage.characters.reeda.tooltip.second'),
       secondColor: '#2f5c36'
     }
   },
   {
     id: 'gravelia',
     slot: 'intermediate',
-    name: 'Gravelia the Distributor',
-    label: 'GRAVELIA THE DISTRIBUTOR',
+    name: t('treatmentWetlandsPage.characters.gravelia.name'),
+    label: t('treatmentWetlandsPage.characters.gravelia.label'),
     characterImage: '/assets/components/constructed/page2/GRAVELIA.png',
     layerImage: '/assets/components/constructed/page2/intermediate.png',
     layerDroppedImage: '/assets/components/constructed/page2/intermediate-dropped.png',
     side: 'right',
     tooltip: {
-      first: 'Hey there! I’m Gravelia the Distributor! I stop fine particles from blocking the bottom and spread the water evenly.  I keep everything balanced between Sandy above and Rocky below.',
+      first: t('treatmentWetlandsPage.characters.gravelia.tooltip.first'),
       firstColor: '#9F8B68',
-      second: 'Function: Distributes water evenly, prevents clogging, and protects the drainage zone below.',
+      second: t('treatmentWetlandsPage.characters.gravelia.tooltip.second'),
       secondColor: '#2f5c36'
     }
   },
   {
     id: 'sandy',
     slot: 'filter',
-    name: 'Sandy the Cleaner',
-    label: 'SANDY THE CLEANER',
+    name: t('treatmentWetlandsPage.characters.sandy.name'),
+    label: t('treatmentWetlandsPage.characters.sandy.label'),
     characterImage: '/assets/components/constructed/page2/SANDY.png',
     layerImage: '/assets/components/constructed/page2/filter.png',
     layerDroppedImage: '/assets/components/constructed/page2/filter-dropped.png',
     side: 'right',
     tooltip: {
-      first: 'I’m Sandy the Cleaner! Millions of microbes live between my grains — they eat waste and transform nitrogen and organic matter into harmless forms. I do most of the real cleaning work here!',
+      first: t('treatmentWetlandsPage.characters.sandy.tooltip.first'),
       firstColor: '#CE7C0A',
-      second: 'Function: Hosts microbial biofilms that perform most of the biological cleaning (nitrification, organic matter removal, some phosphorus binding). Fine texture slows water for longer contact time → better cleaning.',
+      second: t('treatmentWetlandsPage.characters.sandy.tooltip.second'),
       secondColor: '#2f5c36',
-      highlightText: 'perform most of the biological cleaning',
+      highlightText: t('treatmentWetlandsPage.characters.sandy.tooltip.highlightText'),
       highlightColor: '#CE7C0A'
     }
   }
 ];
 
-const LAYER_SLOTS: { id: LayerSlotId; label: string; accent: string }[] = [
-  { id: 'plant', label: 'Plant layer', accent: '#6FAF75' },
-  { id: 'filter', label: 'Filter layer', accent: '#F0A23B' },
-  { id: 'intermediate', label: 'Intermediate layer', accent: '#A07F55' },
-  { id: 'drainage', label: 'Drainage layer', accent: '#5B605F' }
+// Layer slots will be created inside component to access translations
+const createLayerSlots = (t: (key: string) => string): { id: LayerSlotId; label: string; accent: string }[] => [
+  { id: 'plant', label: t('treatmentWetlandsPage.layerSlots.plant'), accent: '#6FAF75' },
+  { id: 'filter', label: t('treatmentWetlandsPage.layerSlots.filter'), accent: '#F0A23B' },
+  { id: 'intermediate', label: t('treatmentWetlandsPage.layerSlots.intermediate'), accent: '#A07F55' },
+  { id: 'drainage', label: t('treatmentWetlandsPage.layerSlots.drainage'), accent: '#5B605F' }
 ];
 
 const BUCKET_BASE_IMAGE = '/assets/components/constructed/page2/bucket.png';
@@ -148,12 +152,12 @@ const RIGHT_DISPLAY_ORDER: { id: string; offset: number }[] = [
   { id: 'sandy', offset: 26 }
 ];
 
-// Page 3 configuration
-const PAGE3_STEPS = [
-  { id: 'rock', bucket: '/assets/components/constructed/page3/bucket-rock.png', character: '/assets/components/constructed/page3/ROCKY.png', name: 'Rocky', bucketWidth: 140, characterWidth: 347 },
-  { id: 'gravel', bucket: '/assets/components/constructed/page3/bucket-gravel.png', character: '/assets/components/constructed/page3/GRAVELIA.png', name: 'Gravelia', bucketWidth: 164, characterWidth: 405 },
-  { id: 'sand', bucket: '/assets/components/constructed/page3/bucket-sand.png', character: '/assets/components/constructed/page3/SANDY.png', name: 'Sandy', bucketWidth: 140, characterWidth: 350 },
-  { id: 'plant', bucket: '/assets/components/constructed/page3/bucket-plant.png', character: '/assets/components/constructed/page3/REEDA.png', name: 'Reeda', bucketWidth: 157, characterWidth: 400 }
+// Page 3 configuration - will be created inside component
+const createPage3Steps = (t: (key: string) => string) => [
+  { id: 'rock', bucket: '/assets/components/constructed/page3/bucket-rock.png', character: '/assets/components/constructed/page3/ROCKY.png', name: t('treatmentWetlandsPage.characters.rocky.name'), bucketWidth: 140, characterWidth: 347 },
+  { id: 'gravel', bucket: '/assets/components/constructed/page3/bucket-gravel.png', character: '/assets/components/constructed/page3/GRAVELIA.png', name: t('treatmentWetlandsPage.characters.gravelia.name'), bucketWidth: 164, characterWidth: 405 },
+  { id: 'sand', bucket: '/assets/components/constructed/page3/bucket-sand.png', character: '/assets/components/constructed/page3/SANDY.png', name: t('treatmentWetlandsPage.characters.sandy.name'), bucketWidth: 140, characterWidth: 350 },
+  { id: 'plant', bucket: '/assets/components/constructed/page3/bucket-plant.png', character: '/assets/components/constructed/page3/REEDA.png', name: t('treatmentWetlandsPage.characters.reeda.name'), bucketWidth: 157, characterWidth: 400 }
 ];
 
 const PAGE3_IMAGES = [
@@ -164,12 +168,12 @@ const PAGE3_IMAGES = [
   '/assets/components/constructed/page3/image5.png'
 ];
 
-// Page 4 hover zones configuration (positions in percentage)
-const PAGE4_HOVER_ZONES = [
-  { id: 1, text: "I turn ammonium into nitrate when oxygen is around!", top: 60, left: 40, width: 5, height: 20 },
-  { id: 2, text: "I work where there's no oxygen — I turn nitrate into nitrogen gas!", top: 63, left: 45, width: 5, height: 20 },
-  { id: 3, text: "I grab phosphorus and hold it tight in the gravel!", top: 66, left: 51, width: 5, height: 20 },
-  { id: 4, text: "I grab phosphorus and hold it tight in the gravel!", top: 64, left: 58, width: 5, height: 20 }
+// Page 4 hover zones configuration (positions in percentage) - will be created inside component
+const createPage4HoverZones = (t: (key: string) => string) => [
+  { id: 1, text: t('treatmentWetlandsPage.page4.hoverZones.zone1'), top: 60, left: 40, width: 5, height: 20 },
+  { id: 2, text: t('treatmentWetlandsPage.page4.hoverZones.zone2'), top: 63, left: 45, width: 5, height: 20 },
+  { id: 3, text: t('treatmentWetlandsPage.page4.hoverZones.zone3'), top: 66, left: 51, width: 5, height: 20 },
+  { id: 4, text: t('treatmentWetlandsPage.page4.hoverZones.zone4'), top: 64, left: 58, width: 5, height: 20 }
 ];
 
 interface TreatmentWetlandsPageProps {
@@ -185,7 +189,14 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
   onRepositoryClick,
   onAestheticsClick
 }) => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
+  
+  // Create translated data structures
+  const LAYER_ITEMS = React.useMemo(() => createLayerItems(t), [t]);
+  const LAYER_SLOTS = React.useMemo(() => createLayerSlots(t), [t]);
+  const PAGE3_STEPS = React.useMemo(() => createPage3Steps(t), [t]);
+  const PAGE4_HOVER_ZONES = React.useMemo(() => createPage4HoverZones(t), [t]);
   const [hoveredLayer, setHoveredLayer] = React.useState<string | null>(null);
   const [draggedLayer, setDraggedLayer] = React.useState<string | null>(null);
   const [placements, setPlacements] = React.useState<Record<LayerSlotId, string | null>>({
@@ -268,10 +279,10 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
   React.useEffect(() => {
     if (allLayersPlaced) {
-      setStatusMessage('Great job! You built the treatment wetland in the right order.');
+      setStatusMessage(t('treatmentWetlandsPage.page2.successMessage'));
       setStatusType('success');
     }
-  }, [allLayersPlaced]);
+  }, [allLayersPlaced, t]);
 
   const handleDragStart = (event: React.DragEvent, layerId: string) => {
     setDraggedLayer(layerId);
@@ -305,7 +316,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
     }
 
     if (layer.slot !== slotId) {
-      setStatusMessage(`${layer.name} belongs in a different layer. Try another spot!`);
+      setStatusMessage(t('treatmentWetlandsPage.page2.errorMessage', { name: layer.name }));
       setStatusType('error');
       setDraggedLayer(null);
       return;
@@ -422,7 +433,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
             zIndex: isDragged ? 10002 : 'auto'
           }}
         >
-          <img
+          <LocalizedImage
             draggable
             onDragStart={handleStart}
             onDragEnd={handleDragEnd}
@@ -483,10 +494,10 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
 
   const getTitleForPage = (page: number) => {
     const titles = [
-      "Nature's final filter – The Treatment Wetland",
-      "Layer by layer – Nature's cleaning crew",
-      "Let's build nature's filter - Vertical Flow Wetland",
-      "Tiny cleaners, big impact!"
+      t('treatmentWetlandsPage.title.page1'),
+      t('treatmentWetlandsPage.title.page2'),
+      t('treatmentWetlandsPage.title.page3'),
+      t('treatmentWetlandsPage.title.page4')
     ];
     return titles[page - 1];
   };
@@ -512,7 +523,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                     marginBottom: '20px'
                   }}
                 >
-                  Treatment wetlands
+                  {t('treatmentWetlandsPage.title.main')}
                 </motion.h1>
 
                 {/* Subtitle for current page - Only show when not on intro page */}
@@ -564,7 +575,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 {/* Single Illustration - Centered */}
                 <div className="flex justify-center mb-8" style={{ width: '100%', maxWidth: '600px' }}>
                   <div style={{ width: '100%', maxWidth: '600px' }}>
-                    <img 
+                    <LocalizedImage 
                       src="/assets/components/constructed/landing.png"
                       alt="Treatment wetlands"
                       style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
@@ -583,7 +594,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   maxWidth: '1200px',
                   lineHeight: '1.6'
                 }}>
-                  Learn about treatment wetlands and discover how constructed wetlands naturally filter and clean wastewater.
+                  {t('treatmentWetlandsPage.intro.description')}
                 </div>
 
                 {/* Call-to-Action Button */}
@@ -635,7 +646,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                         color: '#406A46',
                         marginBottom: '6px'
                       }}>
-                    Access Teaching Materials
+                    {t('treatmentWetlandsPage.intro.accessTeachingMaterials')}
                       </div>
                       <div style={{ marginBottom: '12px' }}>
                         <a
@@ -657,7 +668,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                             display: 'inline-block'
                           }}
                         >
-                          Open platform
+                          {t('treatmentWetlandsPage.intro.openPlatform')}
                         </a>
                       </div>
                       <div style={{
@@ -666,7 +677,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                         color: '#406A46',
                         fontStyle: 'italic'
                       }}>
-                        Opens new tab: Zenodo
+                        {t('treatmentWetlandsPage.intro.opensNewTab')}
                       </div>
                     </div>
                   </div>
@@ -695,7 +706,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                         color: '#406A46',
                         marginBottom: '6px'
                       }}>
-                    Explore Wet-Edu Repository
+                    {t('treatmentWetlandsPage.intro.exploreRepository')}
                       </div>
                       <div style={{ marginBottom: '12px' }}>
                         <button
@@ -715,7 +726,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                             display: 'inline-block'
                           }}
                         >
-                          Explore
+                          {t('treatmentWetlandsPage.intro.explore')}
                         </button>
                       </div>
                     </div>
@@ -726,7 +737,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               <div style={{
                 textAlign: 'center'
               }}>
-                <img
+                <LocalizedImage
                   src="/assets/components/constructed/page1.png"
                   alt="Nature's final filter – The Treatment Wetland"
                   style={{
@@ -749,9 +760,12 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   marginTop: '-20px',
                   marginBottom: '36px'
                 }}>
-                  Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky.
-                  <br />
-                  Drag each helper onto the wetland container to build the layers from bottom to top.
+                  {t('treatmentWetlandsPage.page2.instruction').split('\n').map((line, index, array) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      {index < array.length - 1 && <><br /></>}
+                    </React.Fragment>
+                  ))}
                 </div>
 
                 <div
@@ -797,7 +811,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                     }}
                     onClick={handleDebugClick}
                   >
-                    <img
+                    <LocalizedImage
                       src={BUCKET_BASE_IMAGE}
                       alt="Vertical flow wetland container"
                       style={{ width: '100%', display: 'block' }}
@@ -815,7 +829,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                       }
 
                       return (
-                        <img
+                        <LocalizedImage
                           key={`layer-visual-${slot.id}`}
                           src={layerImage}
                           alt={`${slot.label} layer`}
@@ -928,9 +942,12 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   marginTop: '-20px',
                   marginBottom: '36px'
               }}>
-                  Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top.
-                  <br />
-                  Watch how your wetland gets ready to clean the water naturally!
+                  {t('treatmentWetlandsPage.page3.instruction').split('\n').map((line, index, array) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      {index < array.length - 1 && <><br /></>}
+                    </React.Fragment>
+                  ))}
               </div>
 
                 {/* Main Layout: Characters (left) - Image (center) - Buckets (right) */}
@@ -978,7 +995,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                           onMouseEnter={() => setPage3HoveredCharacter(step.id)}
                           onMouseLeave={() => setPage3HoveredCharacter(null)}
                         >
-                          <img
+                          <LocalizedImage
                             src={step.character}
                             alt={step.name}
                             style={{
@@ -1046,7 +1063,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                         transition: 'border 0.2s ease'
                       }}
                     >
-                      <img
+                      <LocalizedImage
                         src={PAGE3_IMAGES[page3CurrentStep < PAGE3_STEPS.length ? page3CurrentStep : PAGE3_STEPS.length]}
                         alt={`Step ${page3CurrentStep + 1}`}
                         style={{
@@ -1071,7 +1088,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                           textShadow: '0 2px 4px rgba(0,0,0,0.3)',
                           pointerEvents: 'none'
                         }}>
-                          Drop bucket here!
+                          {t('treatmentWetlandsPage.page3.dropBucket')}
               </div>
             )}
                     </div>
@@ -1107,7 +1124,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                             filter: isUsed ? 'grayscale(60%)' : 'none'
                           }}
                         >
-                          <img
+                          <LocalizedImage
                             src={step.bucket}
                             alt={`${step.name} bucket`}
                             style={{
@@ -1142,7 +1159,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   width: '100%',
                   marginTop: '-20px'
               }}>
-                Now that the wetland is built, let's meet its hidden workers — the tiny microbes who do most of the cleaning job.
+                {t('treatmentWetlandsPage.page4.intro')}
               </div>
 
                 {/* Page 4 Image with Hover Zones */}
@@ -1153,7 +1170,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   justifyContent: 'center',
                   position: 'relative'
                 }}>
-                  <img
+                  <LocalizedImage
                     src="/assets/components/constructed/page4/page4.png"
                     alt="Treatment wetland microbes"
                     style={{
@@ -1227,7 +1244,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   lineHeight: '1.6',
                   width: '100%'
                 }}>
-                  Thanks to millions of tiny helpers like Nino, Dina, Phos, and Bacto, the water leaves the treatment wetland fresh and clean — ready to flow back to Danubius and start its journey again!
+                  {t('treatmentWetlandsPage.page4.conclusion')}
                 </div>
               </div>
             ) : null}
@@ -1307,7 +1324,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                 onClick={() => setShowDownloadModal(true)}
                 className="download-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '480px',
+                  width: 'auto',
                   height: '50px',
                   backgroundColor: 'transparent',
                   border: 'none',
@@ -1315,11 +1332,11 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   flexShrink: 0
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/download.png" 
                   alt="Download" 
                   style={{ 
-                    width: '480px',
+                    width: 'auto',
                     height: '50px',
                     opacity: 1
                   }}
@@ -1366,7 +1383,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   fontSize: '24px',
                   color: '#406A46'
                 }}>
-                  NEXT TOPIC: Floodplain Aesthetics
+                  {t('treatmentWetlandsPage.nextTopic')}
                 </span>
               </div>
             )}
@@ -1387,18 +1404,18 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               }}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer'
                 }}
               >
-                <img
+                <LocalizedImage
                   src="/assets/icons/next.png"
                 alt={currentPage === TOTAL_PAGES ? 'Floodplain Aesthetics' : 'Next'} 
                   style={{
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: 1
                   }}
@@ -1465,7 +1482,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
               textAlign: 'center',
               marginBottom: '30px'
             }}>
-              Download Options
+              {t('treatmentWetlandsPage.modal.title')}
             </div>
 
             {/* Option 1: Zenodo */}
@@ -1516,7 +1533,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Access Teaching Materials
+                  {t('treatmentWetlandsPage.modal.accessTeachingMaterials')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1525,7 +1542,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   color: 'rgba(255, 255, 255, 0.9)',
                   marginBottom: '6px'
                 }}>
-                  Based on 5E learning method and scientific research
+                  {t('treatmentWetlandsPage.modal.basedOn5E')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1533,7 +1550,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.7)'
                 }}>
-                  (Opens in new tab: Zenodo)
+                  {t('treatmentWetlandsPage.modal.opensInNewTab')}
                 </div>
               </div>
             </button>
@@ -1585,7 +1602,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('treatmentWetlandsPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1593,7 +1610,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.9)'
                 }}>
-                  Explore related projects and resources
+                  {t('treatmentWetlandsPage.modal.exploreRelated')}
                 </div>
               </div>
             </button>

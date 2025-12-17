@@ -1,14 +1,24 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface TermsOfUsePageProps {
   onHomeClick: () => void;
 }
 
 export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _onHomeClick }) => {
+  const { t, i18n } = useTranslation();
+  
+  const formatDate = (date: Date) => {
+    if (i18n.language === 'nl') {
+      return date.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  };
+  
   return (
     <div className="page-container" style={{ paddingTop: '120px' }}>
       <h1 className="main-title" style={{ marginBottom: '40px' }}>
-        Terms of Use
+        {t('termsOfUse.title')}
       </h1>
 
       <div style={{
@@ -27,22 +37,24 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            1. Introduction
+            {t('termsOfUse.section1.title')}
           </h2>
           <p>
-            Restore4Life (Restoration of wetland complexes as life supporting systems in the Danube Basin), 
-            herein referred to as "The Project", is a 48-month project that addresses the topic 
-            HORIZON-MISS-2022-OCEAN-01.
+            {t('termsOfUse.section1.p1')}
           </p>
           <p style={{ marginTop: '12px' }}>
-            The <strong>"LIVING FLOODPLAINS: LEARN, EXPLORE, RESTORE4LIFE TOOLBOX"</strong> (hereinafter referred to as 
-            "this platform" or "the Toolbox") has been developed within the framework of The Project.
+            {i18n.language === 'nl' ? (
+              <>
+                De <strong>&quot;{t('homePage.title')} {t('homePage.subtitle')} {t('homePage.subtitle2')}&quot;</strong> (hierna aangeduid als &quot;dit platform&quot; of &quot;de Toolbox&quot;) is ontwikkeld binnen het kader van Het Project.
+              </>
+            ) : (
+              <>
+                The <strong>&quot;{t('homePage.title')} {t('homePage.subtitle')} {t('homePage.subtitle2')}&quot;</strong> (hereinafter referred to as &quot;this platform&quot; or &quot;the Toolbox&quot;) has been developed within the framework of The Project.
+              </>
+            )}
           </p>
           <p style={{ marginTop: '12px' }}>
-            These Terms of Use govern your access to and use of this platform and all content, materials, 
-            and resources available within the Toolbox. All content in the Toolbox is part of The Project 
-            and is subject to these Terms of Use. By accessing or using this platform or any content within 
-            the Toolbox, you agree to be bound by these Terms of Use.
+            {t('termsOfUse.section1.p3')}
           </p>
         </section>
 
@@ -54,18 +66,13 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            2. Definitions
+            {t('termsOfUse.section2.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            <strong>"The Consortium"</strong> refers to all signatories, other than the European Commission, 
-            of the Grant Agreement 101112736, which may have single or joint intellectual property rights 
-            in relation to the project outcomes.
+            {t('termsOfUse.section2.consortium')}
           </p>
           <p style={{ marginBottom: '12px' }}>
-            <strong>"Materials"</strong> refer to all information, content, data, documents (e.g. white papers, 
-            brochures, datasheets, FAQs, templates, press releases, etc.), downloads, files, text, images, 
-            photographs, graphics, videos, webcasts, publications, tools, resources, software, code, programs, 
-            applications and products made available or enabled via the Website.
+            {t('termsOfUse.section2.materials')}
           </p>
         </section>
 
@@ -77,25 +84,21 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            3. Use of Materials
+            {t('termsOfUse.section3.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            The Materials on this website are developed as educational materials and are intended for 
-            educational and non-commercial purposes.
+            {t('termsOfUse.section3.p1')}
           </p>
           <p style={{ marginBottom: '12px' }}>
-            <strong>Educational Use:</strong> You may freely copy and use the Materials for educational 
-            purposes without seeking prior permission, provided that:
+            <strong>{t('termsOfUse.section3.educationalUse')}</strong> {t('termsOfUse.section3.educationalUseDesc')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
-            <li style={{ marginBottom: '8px' }}>The use is non-commercial and educational in nature</li>
-            <li style={{ marginBottom: '8px' }}>Appropriate attribution is given to the Restore4Life project</li>
-            <li style={{ marginBottom: '8px' }}>The Materials are not modified in a way that misrepresents the original content</li>
+            <li style={{ marginBottom: '8px' }}>{t('termsOfUse.section3.li1')}</li>
+            <li style={{ marginBottom: '8px' }}>{t('termsOfUse.section3.li2')}</li>
+            <li style={{ marginBottom: '8px' }}>{t('termsOfUse.section3.li3')}</li>
           </ul>
           <p style={{ marginBottom: '12px' }}>
-            <strong>Commercial Use:</strong> Copying or using Materials for economic or commercial purposes 
-            is not permitted without explicit prior written consent. For commercial use inquiries, please 
-            contact the rights holder:
+            <strong>{t('termsOfUse.section3.commercialUse')}</strong> {t('termsOfUse.section3.commercialUseDesc')}
           </p>
           <p style={{ 
             padding: '16px', 
@@ -121,21 +124,16 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            4. Disclaimer of Liability
+            {t('termsOfUse.section4.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            The Consortium and the Project are not responsible for any inaccuracies, errors, omissions, 
-            or problems that may arise from the use of the Materials or this website.
+            {t('termsOfUse.section4.p1')}
           </p>
           <p style={{ marginBottom: '12px' }}>
-            The Materials are provided "as is" without warranty of any kind, either express or implied, 
-            including but not limited to the implied warranties of merchantability, fitness for a particular 
-            purpose, or non-infringement.
+            {t('termsOfUse.section4.p2')}
           </p>
           <p>
-            The Consortium shall not be liable for any direct, indirect, incidental, special, consequential, 
-            or punitive damages arising out of or relating to the use of or inability to use the Materials 
-            or this website.
+            {t('termsOfUse.section4.p3')}
           </p>
         </section>
 
@@ -147,13 +145,10 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            5. Right to Modify Materials
+            {t('termsOfUse.section5.title')}
           </h2>
           <p>
-            The Consortium, as the rights holder, reserves the right to modify, update, or remove any 
-            Materials on this website at any time without prior notice and without assuming any 
-            responsibility for such modifications. The Consortium is not obligated to maintain or 
-            update the Materials and may discontinue or change any aspect of the website at its sole discretion.
+            {t('termsOfUse.section5.p1')}
           </p>
         </section>
 
@@ -165,15 +160,13 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            6. Intellectual Property Rights
+            {t('termsOfUse.section6.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            All Materials on this website are protected by intellectual property rights. The Consortium 
-            may have single or joint intellectual property rights in relation to the project outcomes.
+            {t('termsOfUse.section6.p1')}
           </p>
           <p>
-            While educational use is permitted as described above, all other rights are reserved. 
-            Unauthorized use of Materials may violate copyright, trademark, or other laws.
+            {t('termsOfUse.section6.p2')}
           </p>
         </section>
 
@@ -185,13 +178,10 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            7. Links to Third-Party Websites
+            {t('termsOfUse.section7.title')}
           </h2>
           <p>
-            This website may contain links to third-party websites. The Consortium is not responsible 
-            for the content, accuracy, or opinions expressed on such websites, and such websites are 
-            not investigated, monitored, or checked for accuracy or completeness by the Consortium. 
-            Inclusion of any linked website does not imply approval or endorsement by the Consortium.
+            {t('termsOfUse.section7.p1')}
           </p>
         </section>
 
@@ -203,12 +193,10 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            8. Changes to Terms of Use
+            {t('termsOfUse.section8.title')}
           </h2>
           <p>
-            The Consortium reserves the right to modify these Terms of Use at any time. Changes will be 
-            effective immediately upon posting on this website. Your continued use of the website after 
-            any changes constitutes your acceptance of the modified Terms of Use.
+            {t('termsOfUse.section8.p1')}
           </p>
         </section>
 
@@ -220,10 +208,10 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            9. Contact
+            {t('termsOfUse.section9.title')}
           </h2>
           <p style={{ marginBottom: '16px' }}>
-            <strong>For questions about the Materials or commercial use inquiries:</strong>
+            <strong>{t('termsOfUse.section9.materialsTitle')}</strong>
           </p>
           <p style={{ 
             padding: '16px', 
@@ -240,7 +228,7 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             </a>
           </p>
           <p style={{ marginBottom: '16px' }}>
-            <strong>For questions about these Terms of Use or the website in general:</strong>
+            <strong>{t('termsOfUse.section9.termsTitle')}</strong>
           </p>
           <p style={{ 
             padding: '16px', 
@@ -265,7 +253,7 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             </a>
           </p>
           <p>
-            For general inquiries about the Restore4Life project, please visit{' '}
+            {t('termsOfUse.section9.generalInquiries')}{' '}
             <a 
               href="https://www.restore4life.eu" 
               target="_blank" 
@@ -279,11 +267,10 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
 
         <section style={{ marginTop: '48px', paddingTop: '24px', borderTop: '2px solid #51727C' }}>
           <p style={{ fontSize: '14px', color: '#666', fontStyle: 'italic' }}>
-            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {t('termsOfUse.lastUpdated')} {formatDate(new Date())}
           </p>
         </section>
       </div>
     </div>
   );
 };
-

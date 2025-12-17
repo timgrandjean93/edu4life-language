@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface WetlandFreskPageProps {
   onHomeClick: () => void;
@@ -8,6 +9,7 @@ interface WetlandFreskPageProps {
 export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
   onHomeClick: _onHomeClick
 }) => {
+  const { t } = useTranslation();
   // Set page background
   React.useEffect(() => {
     const html = document.documentElement;
@@ -58,7 +60,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     marginBottom: '20px'
                   }}
                 >
-                  Wetland Fresk
+                  {t('wetlandFreskPage.title')}
                 </motion.h1>
               </div>
             </div>
@@ -85,7 +87,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
             lineHeight: '1.6',
             marginBottom: '50px'
           }}>
-            The Wetlands Fresk is a collaborative, interactive workshop designed to help participants explore how human activities impact wetland ecosystems (including tidal flats, salt marshes, lagoons, etc.), the consequences of those impacts, and the potential solutions. Participants work together to build a "map" of cause–effect relationships using a set of cards, and then move toward reflection and action.
+            {t('wetlandFreskPage.description')}
           </div>
 
           {/* Two Columns Layout */}
@@ -123,7 +125,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     color: '#406A46',
                     marginBottom: '4px'
                   }}>
-                    Duration
+                    {t('wetlandFreskPage.duration.label')}
                   </div>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
@@ -131,7 +133,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     fontWeight: 'bold',
                     color: '#51727C'
                   }}>
-                    90-120 minutes
+                    {t('wetlandFreskPage.duration.value')}
                   </div>
                 </div>
               </div>
@@ -166,7 +168,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     color: '#406A46',
                     marginBottom: '4px'
                   }}>
-                    Number of Cards
+                    {t('wetlandFreskPage.numberOfCards.label')}
                   </div>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
@@ -174,7 +176,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     fontWeight: 'bold',
                     color: '#51727C'
                   }}>
-                    24 cards
+                    {t('wetlandFreskPage.numberOfCards.value')}
                   </div>
                 </div>
               </div>
@@ -209,7 +211,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     color: '#406A46',
                     marginBottom: '4px'
                   }}>
-                    Team players
+                    {t('wetlandFreskPage.teamPlayers.label')}
                   </div>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
@@ -217,7 +219,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     fontWeight: 'bold',
                     color: '#51727C'
                   }}>
-                    4 - 8
+                    {t('wetlandFreskPage.teamPlayers.value')}
                   </div>
                 </div>
               </div>
@@ -252,7 +254,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     color: '#406A46',
                     marginBottom: '4px'
                   }}>
-                    Age
+                    {t('wetlandFreskPage.age.label')}
                   </div>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
@@ -260,7 +262,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     fontWeight: 'bold',
                     color: '#51727C'
                   }}>
-                    from ± 12 years
+                    {t('wetlandFreskPage.age.value')}
                   </div>
                 </div>
               </div>
@@ -343,7 +345,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                   textAlign: 'center',
                   marginTop: '8px'
                 }}>
-                  You will be directed to an external database
+                  {t('wetlandFreskPage.downloadNote')}
                 </div>
               </div>
             </div>

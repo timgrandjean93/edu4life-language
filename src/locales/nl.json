@@ -1,0 +1,1183 @@
+{
+  "common": {
+    "accept": "Accepteren",
+    "reject": "Weigeren",
+    "home": "Home",
+    "loading": "Laden...",
+    "close": "Sluiten",
+    "tryAgain": "Probeer opnieuw"
+  },
+  "header": {
+    "learningActivities": "Activiteiten",
+    "externalTools": "Externe tools",
+    "restore4Life": "Restore4Life",
+    "menuItems": {
+      "livingEnvironment": "Uiterwaarden vol leven",
+      "mapYourWetland": "Ontdek de uiterwaarden",
+      "exploringHabitats": "Ontdek de beek",
+      "floodplainSpongeEffect": "Uiterwaarden als een spons",
+      "climateCarbon": "Klimaat en koolstofopslag",
+      "purification": "Waterzuivering",
+      "treatmentWetlands": "Uiterwaarden als filter",
+      "aesthetics": "Uiterwaarden om te zien",
+      "sourcesOfInspiration": "Kunst uit de uiterwaarden",
+      "peopleAndAquatic": "Mensen en leven in het water"
+    },
+    "externalToolsItems": {
+      "blueGreenSpace4All": "Uiterwaarden voor iedereen",
+      "wetlandFresk": "Wetland Fresk",
+      "wetland4Life": "Wetland4Life",
+      "exploreWetEduRepository": "Uiterwaarden Educatie"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © {{year}} Restore4Life Consortium. Alle rechten voorbehouden.",
+    "privacyPolicy": "Privacybeleid",
+    "cookiePolicy": "Cookiebeleid",
+    "termsOfUse": "Gebruikersvoorwaarden"
+  },
+  "cookieConsent": {
+    "message": "Deze website maakt gebruik van cookies voor analytische doeleinden via Google Analytics. U kunt deze cookies accepteren of weigeren.",
+    "readMore": "Lees meer in ons cookiebeleid"
+  },
+  "homePage": {
+    "title": "LEVENDE UITERWAARDEN:",
+    "subtitle": "LEREN, ONTDEKKEN EN HERSTELLEN",
+    "subtitle2": "",
+    "credits": "Credits"
+  },
+  "languageModal": {
+    "title": "Selecteer uw taal",
+    "detecting": "Uw locatie wordt gedetecteerd...",
+    "suggested": "We hebben gedetecteerd dat u uit",
+    "suggestedQuestion": "Wilt u gebruiken",
+    "continueWith": "Doorgaan met"
+  },
+  "pages": {
+    "titles": {
+      "home": "Levende uiterwaarden: Leren, Ontdekken en Herstellen",
+      "riparian": "Oeverzone",
+      "mapwetland": "Verken de uiterwaarden",
+      "floodplain": "Uiterwaarden",
+      "floodcontrol": "Overstromingsbeheer",
+      "carbon": "Klimaat & koolstofopslag",
+      "selfpurification": "Waterzuivering",
+      "art": "Kunst uit de natuur",
+      "people": "Mens & aquatisch leven",
+      "aesthetics": "Esthetiek",
+      "wetlandfresk": "Wetland Fresk",
+      "wetland4life": "Wetland4Life",
+      "wetlandEduRepo": "Uiterwaardedn Edu Catalogus",
+      "treatmentwetlands": "Uiterwaarden als filter",
+      "bluegreen": "Uiterwaarden voor iedereen",
+      "environmentalToolbox": "Milieutoolbox",
+      "privacy": "Privacybeleid",
+      "cookies": "Cookiebeleid",
+      "termsofuse": "Gebruikersvoorwaarden"
+    }
+  },
+  "carbonPage": {
+    "title": {
+      "page0": "Klimaatbescherming en koolstofopslag",
+      "page1": "Waar koolstof op aarde wordt opgeslagen",
+      "page2": "De koolstofkringloop op land"
+    },
+    "intro": {
+      "description": "Ontdek hoe de natuur helpt bij klimaatbescherming en leer waarom het opslaan van koolstof belangrijk is voor de aarde.",
+      "accessTeachingMaterials": "Ga naar het lesmateriaal",
+      "openPlatform": "Open platform",
+      "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "explore": "Ontdek"
+    },
+    "page1": {
+      "title": "Koppel het ecosysteem",
+      "instruction1": "Bekijk de plaatjes boven de grafiek. Elk plaatje hoort bij een ander ecosysteem.",
+      "instruction2": "Jouw opdracht:",
+      "instruction3": "Sleep het juiste woord naar het bijpassende vraagteken.",
+      "hint": "Tip: Let op dingen zoals bomen, water, gras of droge grond.",
+      "checkAnswers": "Controleer je antwoorden",
+      "clickToRemove": "Klik om het woord te verwijderen",
+      "correct": "Goed",
+      "incorrect": "Niet goed",
+      "missed": "Gemist"
+    },
+    "page2": {
+      "instruction": "Beweeg over de afbeelding en ontdek hoe uiterwaarden koolstof opslaan",
+      "infoText": "Uiterwaarden bedekken maar een klein deel van de aarde, maar slaan heel veel koolstof op in hun bodem.",
+      "hoverAreas": {
+        "anthropogenic-release": "Door menselijk ingrijpen, zoals het weghalen van water, komt opgeslagen koolstof vrij in de lucht als CO₂.",
+        "carbon-sequestration": "Planten nemen CO₂ op uit de lucht en slaan dit op in hun groei.",
+        "natural-release": "Bij ademhaling en afbraak van planten komt koolstof weer vrij.",
+        "carbon-storage": "Dode planten worden bedekt door modder en slaan koolstof voor lange tijd op."
+      },
+      "modal": {
+        "title": "Wist je dat...?",
+        "fact": "De bodem van de aarde slaat meer koolstof op dan de lucht en alle planten en dieren samen.",
+        "question": "Welk ecosysteem slaat de meeste koolstof op?",
+        "selectEcosystem": "🌿 Kies een ecosysteem...",
+        "submitAnswer": "Antwoord versturen",
+        "nextPage": "Volgende pagina",
+        "feedback": {
+          "correct": "Goed! Uiterwaarden slaan de meeste koolstof op.",
+          "incorrect": "Niet goed. Het juiste antwoord is: uiterwaarden.",
+          "explanation": "Uiterwaarden zijn heel belangrijk omdat ze veel koolstof opslaan in hun bodem en planten."
+        }
+      }
+    },
+    "page3": {
+      "title": "Invuloefening",
+      "instruction1": "De aarde kan koolstof heel lang in de bodem bewaren. Maar sommige letters zijn verstopt!",
+      "instruction2": "Kun jij ze vinden en de tekst afmaken?",
+      "instruction3": "Klik op een letter in de afbeelding en plaats die op de juiste plek in de tekst.",
+      "checkAnswers": "Controleer je antwoorden",
+      "puzzleText": {
+        "part1": "Sommige k",
+        "part2": "lstof blijft lange tijd in de b",
+        "part3": "em opgeslagen — soms h",
+        "part4": "derden of zelfs d",
+        "part5": "zenden j",
+        "part6": "en!",
+        "part7": "Als we de bodem met rust laten, ",
+        "part8": "blijft deze koolstof veilig onder de gr",
+        "part9": " en komt niet in de lu",
+        "part10": "t terecht.",
+        "part11": "Bl",
+        "part12": "we koolstof, opgeslagen in kust- en uiterwaarden, helpt om klim",
+        "part13": "tverand",
+        "part14": "ing te vertragen."
+      },
+      "correctAnswers": {
+        "blank1": "oo",
+        "blank2": "od",
+        "blank3": "on",
+        "blank4": "ui",
+        "blank5": "ar",
+        "blank6": "ond",
+        "blank7": "ch",
+        "blank8": "au",
+        "blank9": "aa",
+        "blank10": "er"
+      },
+      "blankPositions": {
+        "blank1": "afterPart1",
+        "blank2": "afterPart2",
+        "blank3": "afterPart3",
+        "blank4": "afterPart4",
+        "blank5": "afterPart5",
+        "blank6": "afterPart8",
+        "blank7": "afterPart9",
+        "blank8": "afterPart11",
+        "blank9": "afterPart12",
+        "blank10": "afterPart13"
+      },
+      "hiddenLetters": {
+        "letter1": { "text": "oo", "x": 15, "y": 20 },
+        "letter2": { "text": "od", "x": 20, "y": 60 },
+        "letter3": { "text": "on", "x": 35, "y": 15 },
+        "letter4": { "text": "ui", "x": 45, "y": 25 },
+        "letter5": { "text": "ar", "x": 55, "y": 30 },
+        "letter6": { "text": "ond", "x": 25, "y": 50 },
+        "letter7": { "text": "ch", "x": 50, "y": 60 },
+        "letter8": { "text": "au", "x": 65, "y": 35 },
+        "letter9": { "text": "aa", "x": 75, "y": 20 },
+        "letter10": { "text": "er", "x": 70, "y": 70 }
+      }
+    },
+    "modal": {
+      "title": "Downloaden",
+      "carbonSequestrationSoils": "Koolstofopslag in bodems",
+      "carbonSequestrationFloodplains": "Koolstofopslag in uiterwaarden",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    },
+    "ecosystemLabels": {
+      "tropicalForests": "Tropische bossen",
+      "temperateForests": "Gematigde bossen",
+      "borealForests": "Noordelijke bossen",
+      "tropicalSavannas": "Savannes",
+      "temperateGrasslands": "Gematigde graslanden",
+      "desertsSemiDeserts": "Woestijnen",
+      "tundra": "Toendra",
+      "wetlands": "Uiterwaarden",
+      "croplands": "Landbouwgebieden"
+    },
+    "nextTopic": "VOLGEND ONDERWERP: Waterzuivering"
+  },
+  "floodplainPage": {
+  "title": "Uiterwaarden vol leven",
+  "intro": {
+    "question": "Zie jij het verschil tussen de twee plaatjes?",
+    "rainLabel": "Uiterwaarden in het natte seizoen",
+    "dryLabel": "Uiterwaarden in het droge seizoen",
+    "description": "Ontdek de uiterwaarden en leer over de verschillende plekken waar planten en dieren leven langs de rivier.",
+    "accessTeachingMaterials": "Ga naar het lesmateriaal",
+    "openPlatform": "Open platform",
+    "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+    "exploreRepository": "Uiterwaarden – educatie",
+    "explore": "Ontdek"
+  },
+  "page2": {
+    "title": "Uiterwaarden in het natte seizoen"
+  },
+  "page3": {
+    "title": "Uiterwaarden in het droge seizoen"
+  },
+  "page4": {
+    "sliderTitle": "Schuif om de verschillen te bekijken"
+  },
+  "modal": {
+    "title": "Downloaden",
+    "accessTeachingMaterials": "Lesmateriaal downloaden",
+    "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+    "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+    "exploreRepository": "Uiterwaarden – educatie",
+    "exploreRelated": "Bekijk meer projecten en materialen"
+  },
+  "nextTopic": "VOLGEND ONDERWERP: Ontdek de uiterwaarden"
+},
+  "mapWetlandPage": {
+    "title": "Ontdek de uiterwaarden",
+    "intro": {
+      "description": "Leer hoe we uiterwaarden in kaart brengen en ontdek welke plekken en kenmerken je van bovenaf kunt herkennen.",
+      "accessTeachingMaterials": "Ga naar het lesmateriaal",
+      "openPlatform": "Open platform",
+      "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "explore": "Ontdek"
+    },
+    "challenge": {
+      "title": "De adelaarsblik!",
+      "intro": "Hoog boven de uiterwaarden vliegt een zeearend. Van daarboven ziet hij de rivier, kleine meren, moerassen, bossen, dijken en dorpen. Kun jij ze ook vinden? Koppel elk onderdeel aan het juiste woord en kleur het landschap in. Elke juiste keuze laat de uiterwaarden tot leven komen, precies zoals de adelaar ze van boven ziet."
+    },
+    "quizItems": {
+      "WATERCOURSE": "RIVIER",
+      "SIDE_ARMS": "ZIJTAKKEN",
+      "DRAINAGE_CHANNELS": "SLOOTJES",
+      "FLOODPLAIN_LAKE": "MEER IN DE UITERWAARDEN",
+      "ISLANDS_MARSH": "EILANDJES (MOERAS)",
+      "FLOODPLAIN_FOREST": "BOS IN DE UITERWAARDEN",
+      "PASTURE_WITH_ANIMALS": "WEIDE MET DIEREN",
+      "GRASSLAND": "GRASLAND",
+      "PROTECTIVE_DIKE": "DIJK",
+      "HUMAN_SETTLEMENT": "DORP OF HUIZEN",
+      "AGRICULTURAL_FIELDS": "AKKERS"
+    },
+    "quiz": {
+      "letterPlaceholder": "Letter?",
+      "congratulations": "Goed gedaan!",
+      "successMessage": "Je hebt alle onderdelen van de uiterwaarden goed herkend!"
+    },
+    "modal": {
+      "title": "Downloaden",
+      "accessTeachingMaterials": "Lesmateriaal downloaden",
+      "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    },
+    "nextTopic": "VOLGEND ONDERWERP: Ontdek de leefomgeving van een beek"
+  },
+  "riparianPage": {
+    "title": {
+      "page0": "Ontdek de leefomgeving van een beek",
+      "page1": "Wat mensen doen langs rivieren",
+      "page2": "Delen van een beek: POEL, STROOMVERSNELLING en STROOM"
+    },
+    "intro": {
+      "description": "Ontdek hoe je leefgebieden kunt herkennen en leer welke planten, dieren en activiteiten je langs rivieren en beken kunt vinden.",
+      "accessTeachingMaterials": "Ga naar het lesmateriaal",
+      "openPlatform": "Open platform",
+      "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "explore": "Ontdek"
+    },
+    "page1": {
+      "introText": "Mensen gebruiken rivieren en hun omgeving al heel lang. Ze verbouwen er voedsel, bouwen huizen, vissen, reizen over het water en halen er water vandaan. Zo laten rivieren zien hoe mensen samenleven met het landschap langs het water.",
+      "instruction": "Kijk goed naar de twee plaatjes en kies welke",
+      "landUseActivities": "activiteiten",
+      "instructionEnd": "je kunt herkennen.",
+      "quizQuestion": "Klik op de activiteiten die je in de afbeeldingen ziet:",
+      "correct": "Goed",
+      "incorrect": "Niet goed",
+      "missed": "Gemist"
+    },
+    "page2": {
+      "instruction": "Lees eerst de uitleg van de woorden",
+      "and": "en",
+      "instructionEnd": "sleep daarna elk woord naar de juiste plek in de afbeeldingen.",
+      "correct": "Goed:",
+      "labels": {
+        "POOL": "POEL",
+        "RIFFLE": "STROOMVERSNELLING",
+        "RUN": "STROOM"
+      },
+      "definitions": {
+        "POOL": "Een dieper en rustiger deel van een beek waar het water langzaam stroomt. Poelen zijn fijne schuilplekken voor vissen.",
+        "RIFFLE": "Een ondiep deel van een beek waar het water snel stroomt over stenen. Het water borrelt hier en bevat veel zuurstof. Dit is een goede plek voor kleine waterdieren en vissen.",
+        "RUN": "Een deel van de beek waar het water rustig maar constant stroomt, tussen een stroomversnelling en een poel in. Hier komt veel zonlicht, waardoor algen kunnen groeien. Dat maakt dit een belangrijke voedselplek voor waterdieren."
+      }
+    },
+    "quizOptions": {
+      "human-settlements": "Huizen en dorpen",
+      "roads-bridges": "Wegen en bruggen",
+      "flood-protection": "Bescherming tegen hoog water (dijken en kades)",
+      "dams": "Dammen en waterkracht",
+      "pastures": "Weiden met vee",
+      "irrigation": "Waterkanalen voor landbouw",
+      "factory": "Fabriek of industrie",
+      "mining": "Zand- en grindwinning",
+      "cycling": "Fietsen",
+      "riparian-vegetation": "Planten en bomen langs de oever",
+      "floodplains": "Uiterwaarden en wetlands",
+      "agriculture": "Landbouw",
+      "recreation": "Vrije tijd (zwemmen, kanoën, kamperen)"
+    },
+    "modal": {
+      "title": "Downloaden",
+      "accessTeachingMaterials": "Lesmateriaal downloaden",
+      "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    }
+  },
+  "floodControlPage": {
+    "title": {
+      "page0": "Uiterwaarden werken als een spons",
+      "page1": "Hoogwater voorkomen – uiterwaarden als spons"
+    },
+    "intro": {
+      "description": "Ontdek hoe uiterwaarden helpen bij hoog water. Ze nemen water op en houden het tijdelijk vast, net als een spons.",
+      "accessTeachingMaterials": "Ga naar het lesmateriaal",
+      "openPlatform": "Open platform",
+      "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "explore": "Ontdek"
+    },
+    "page1": {
+      "instruction": "Beweeg met je muis over de afbeeldingen om weetjes te ontdekken.",
+      "didYouKnow": "Wist je dat?",
+      "hoverAreas": {
+        "left": {
+          "willows-banks": "Wilgen houden de oevers stevig vast met hun wortels en zorgen dat water beter in de bodem kan trekken.",
+          "reed-vegetation": "Dik riet remt het water af, vangt slib op en helpt het water schoon te houden.",
+          "native-grasses": "Inheemse grassen maken de bodem luchtiger, zodat water beter kan wegzakken.",
+          "leaf-litter": "Bladeren op de grond houden vocht vast en zorgen dat regenwater niet meteen wegspoelt.",
+          "deep-rooted-trees": "Bomen en struiken met diepe wortels houden de oevers beter vast dan ondiepe planten."
+        },
+        "right": {
+          "natural-filtration": "Door dijken kan de rivier zich niet verspreiden. Het water stijgt dan snel.",
+          "ecosystem-benefits": "Zonder planten stroomt water sneller weg en kan het niet in de bodem trekken.",
+          "groundwater-recharge": "Zonder oeverplanten komt meer vuil water in de rivier terecht en wordt het water minder schoon."
+        }
+      },
+      "didYouKnowContent": {
+        "left": {
+          "title": "Wist je dat?",
+          "items": [
+            "De bodem van uiterwaarden kan veel water opslaan",
+            "Bochtige rivieren vertragen het water",
+            "Planten helpen om water langer vast te houden",
+            "Natuurlijke uiterwaarden houden water dagen tot weken vast",
+            "Een deel van het water zakt weg naar het grondwater"
+          ]
+        },
+        "right": {
+          "title": "Wist je dat?",
+          "items": [
+            "Rechte rivieren veel minder water vast houden",
+            "Zonder planten kan de bodem minder water opslaan",
+            "Harde opgedroogde grond laat geen water door",
+            "Verstoorde uiterwaarden slaan veel minder water op"
+          ]
+        }
+      }
+    },
+    "page2": {
+      "activityTitle": "Activiteit 1",
+      "instruction": "Kun jij zien wat gezonde uiterwaarden goed doen? Koppel de zinnen aan de juiste afbeelding: gezonde uiterwaarden (links) en verstoorde uiterwaarden (rechts).",
+      "naturalFloodplain": "Gezonde uiterwaarden:",
+      "degradedFloodplain": "Verstoorde uiterwaarden:",
+      "descriptions": {
+        "left": [
+          "Een kronkelende rivier verspreidt water rustig over het land.",
+          "Planten langs de oever houden water en vuildeeltjes tegen.",
+          "Oude rivierarmen en plassen slaan extra water op en geven ruimte aan dieren."
+        ],
+        "right": [
+          "Bij veel regen kan het water snel stijgen en gevaarlijk worden.",
+          "Een rechte rivier laat water sneller stromen en droogt de omgeving uit.",
+          "Zonder planten kan water nergens worden vastgehouden."
+        ]
+      },
+      "correct": "Goed",
+      "incorrect": "Niet goed",
+      "correctLabel": "Goed:"
+    },
+    "page3": {
+      "title": "Invuloefening",
+      "intro1": "Uiterwaarden beschermen tegen hoog water!",
+      "intro2": "Wat doen uiterwaarden bij veel regen?",
+      "intro3": "Wat gebeurt er als een rivier genoeg ruimte krijgt?",
+      "completeSentence": "MAAK DE ZIN AF:",
+      "sentence1": "Uiterwaarden werken als een natuurlijke",
+      "sentence1End": "die water vasthoudt",
+      "sentence2": "en helpen zo om een",
+      "sentence2End": "te voorkomen.",
+      "placeholder1": "s____",
+      "placeholder2": "o__________g",
+      "correctAnswers": {
+        "answer1": "spons",
+        "answer2": "overstroming"
+      },
+      "feedback": {
+        "correctSponge": "Goed: spons",
+        "incorrectSponge": "Niet goed (antwoord: spons)",
+        "correctFlooding": "Goed: overstroming",
+        "incorrectFlooding": "Niet goed (antwoord: overstroming)"
+      }
+    },
+    "modal": {
+      "title": "Downloaden",
+      "accessTeachingMaterials": "Lesmateriaal downloaden",
+      "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    },
+    "nextTopic": "VOLGEND ONDERWERP: Klimaatbescherming en koolstofopslag"
+  },
+  "peopleAquaticPage": {
+    "title": "Mensen en leven in het water",
+    "subtitle": {
+      "page1": "A. Natuurlijke uiterwaarden",
+      "page2": "B. Uiterwaarden die door mensen zijn aangepast",
+      "page3": "C. Uiterwaarden herstellen met de natuur"
+    },
+    "intro": {
+      "description": "Ontdek hoe mensen leven van rivieren en uiterwaarden, en hoe we samen met de natuur kunnen zorgen voor gezonde watergebieden.",
+      "explore": "Ontdek"
+    },
+    "activity1": {
+      "title": "Activiteit 1",
+      "description": "Kijk goed. Zo hebben mensen de Donau en zijn uiterwaarden veranderd. Dijken, landbouw en scheepvaart hebben het landschap aangepast.",
+      "question": "Kun jij elk label bij de juiste plek in de afbeelding zetten?",
+      "instruction": "Mensen kapten bossen en maakten van uiterwaarden weilanden en akkers. Ze bouwden dorpen en later steden langs de rivier. Om droge voeten te houden, bouwden ze dijken. De Donau werd ook gebruikt voor scheepvaart en waterkracht. Daardoor veranderde de rivier sterk: slib raakte uit balans en de verbinding tussen de rivier en de uiterwaarden werd verbroken. Veel planten en dieren verdwenen en er bleven maar weinig natuurlijke uiterwaarden over."
+    },
+    "activity2": {
+      "title": "Activiteit 2",
+      "description": "Nu gaan we kijken hoe mensen problemen kunnen oplossen mét hulp van de natuur.",
+      "question": "Onderaan zie je zes oplossingen. Kun jij elk nummer koppelen aan de juiste afbeelding?",
+      "instruction": "Stap voor stap worden delen van de uiterwaarden weer verbonden met de rivier. Oude rivierarmen worden opnieuw geopend. Bossen en wetlands keren terug en overstromingen krijgen weer ruimte. Dit helpt dieren en planten, en ook mensen. Het water wordt schoner, overstromingen worden veiliger en er is ruimte om te ontspannen. Dit noemen we oplossingen met de natuur."
+    },
+    "activity3": {
+      "title": "Activiteit 3",
+      "description": "Deze ronde grafieken laten zien hoe de voordelen van de Donau veranderen in drie situaties: natuurlijk, aangepast door mensen en hersteld met de natuur.",
+      "column1": {
+        "title": "Natuurlijke uiterwaarden",
+        "question": "Waarom zijn bijna alle voordelen hier groot, maar landbouw klein?",
+        "options": {
+          "A": "Omdat de bodem slecht was en er niets kon groeien.",
+          "B": "Omdat landbouw toen verboden was.",
+          "C": "Omdat het land vaak overstroomde en daardoor veel natuur had, maar weinig ruimte voor landbouw."
+        }
+      },
+      "column2": {
+        "title": "Aangepaste uiterwaarden",
+        "question": "Waarom is landbouw hier groot, maar veel andere voordelen klein?",
+        "options": {
+          "A": "Omdat bossen en wetlands groter werden.",
+          "B": "Omdat dijken de rivier afsloten, landbouw mogelijk maakten, maar natuur verloren ging.",
+          "C": "Omdat er niemand langs de rivier woonde."
+        }
+      },
+      "column3": {
+        "title": "Herstelde uiterwaarden",
+        "question": "Waarom zijn de voordelen hier beter in balans?",
+        "options": {
+          "A": "Omdat herstel met de natuur meerdere voordelen terugbrengt voor mens en dier.",
+          "B": "Omdat alle menselijke invloed werd verwijderd.",
+          "C": "Omdat de rivier volledig werd afgesloten."
+        }
+      },
+      "correctAnswer": "Goed antwoord:"
+    },
+    "pressureLabels": {
+      "cutting-meanders": {
+        "label": "Bochten afsnijden",
+        "description": "De rivier recht maken in plaats van bochtig laten stromen."
+      },
+      "building-dikes": {
+        "label": "Dijken bouwen",
+        "description": "Hoge wallen langs de rivier om water tegen te houden."
+      },
+      "channellizing-rivers": {
+        "label": "Rivier vastleggen",
+        "description": "Oevers verstevigen met stenen zodat de rivier niet meer kan veranderen."
+      },
+      "draining-floodplains": {
+        "label": "Uiterwaarden droogleggen",
+        "description": "Water weghalen om land te gebruiken voor akkers en huizen."
+      },
+      "urbanization": {
+        "label": "Steden bouwen",
+        "description": "Huizen, wegen en steden bouwen langs de rivier."
+      },
+      "agriculture-pesticides": {
+        "label": "Landbouw met bestrijdingsmiddelen",
+        "description": "Gebruik van chemische middelen tegen onkruid en insecten."
+      },
+      "cutting-forests": {
+        "label": "Bossen kappen",
+        "description": "Bomen verwijderen uit grote gebieden."
+      },
+      "industrialization": {
+        "label": "Industrie",
+        "description": "Fabrieken bouwen die soms vervuiling veroorzaken."
+      },
+      "dams-hydroelectric": {
+        "label": "Dammen en waterkracht",
+        "description": "Barrières in de rivier die water, slib en vissen tegenhouden."
+      },
+      "invasive-species": {
+        "label": "Invasieve soorten",
+        "description": "Soorten van elders die andere planten en dieren verdringen."
+      },
+      "navigation": {
+        "label": "Scheepvaart",
+        "description": "Rivieren aanpassen zodat grote schepen kunnen varen."
+      },
+      "climate-change": {
+        "label": "Klimaatverandering",
+        "description": "Opwarming van de aarde met extremer weer."
+      }
+    },
+    "restorationMeasures": {
+      "restoration-sidearms": {
+        "label": "Zijarmen herstellen",
+        "description": "Oude riviertakken weer openen zodat water en dieren terugkeren."
+      },
+      "dike-relocation": {
+        "label": "Dijken verplaatsen",
+        "description": "Dijken verder van de rivier leggen om ruimte te geven aan water."
+      },
+      "buffer-strips": {
+        "label": "Groene stroken langs akkers",
+        "description": "Bomen en struiken die water schoonhouden."
+      },
+      "fish-ramps": {
+        "label": "Vistrappen",
+        "description": "Hulpmiddelen zodat vissen langs obstakels kunnen zwemmen."
+      },
+      "bypass-channels": {
+        "label": "Omleidingskanalen",
+        "description": "Extra waterwegen waar dieren veilig kunnen bewegen."
+      },
+      "native-species": {
+        "label": "Inheemse soorten helpen",
+        "description": "Zorgen voor goede leefgebieden voor planten en dieren van hier."
+      }
+    },
+    "ui": {
+      "results": "Resultaten",
+      "correct": "Goed",
+      "incorrect": "Niet goed",
+      "correctTooltip": "Goed gedaan!",
+      "incorrectTooltip": "Dat klopt nog niet",
+      "clickToRemove": "Klik om te verwijderen",
+      "checkAnswers": "Controleer antwoorden",
+      "tryAgain": "Probeer opnieuw"
+    },
+    "modal": {
+      "title": "Downloaden",
+      "accessTeachingMaterials": "Lesmateriaal downloaden",
+      "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    }
+  },
+  "artPage": {
+    "title": "Uiterwaarden als bron van inspiratie",
+    "intro": {
+      "description": "Ontdek hoe uiterwaarden mensen inspireren met verhalen, ambachten en creativiteit. Werk met natuurlijke materialen en maak je eigen kunstwerk.",
+      "accessTeachingMaterials": "Ga naar het lesmateriaal",
+      "openPlatform": "Open platform",
+      "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "explore": "Ontdek"
+    },
+    "instruction": {
+      "intro1": "Rivieren en uiterwaarden zijn plekken vol planten, dieren en verhalen. Al eeuwenlang halen mensen hier inspiratie uit. Ze vlechten manden van wilgentakken, maken tekeningen en bedenken liedjes en verhalen.",
+      "intro2": "Nu ben jij aan de beurt! Gebruik dingen uit de natuur om je eigen figuren en verhalen te maken. Laat de kleuren, vormen en geluiden van de rivier je helpen om creatief te zijn.",
+      "instruction": "Stel je voor dat je buiten bent en bladeren, takjes of veren verzamelt. Kun jij hiermee de vormen laten leven? Sleep de natuurlijke materialen naar de figuren en vul ze met kleur en vorm.",
+      "page3": {
+        "text1": "Er ontbreken nog stukjes in het landschap.",
+        "text2": "Sleep de figuren die je hebt gemaakt naar de juiste plek om het uiterwaardengebied compleet te maken.",
+        "trySnailFirst": "Probeer eerst de slak te plaatsen"
+      }
+    },
+    "nextTopic": "VOLGEND ONDERWERP: Mensen en leven in het water",
+    "modal": {
+      "title": "Downloaden",
+      "accessTeachingMaterials": "Lesmateriaal downloaden",
+      "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    }
+  },
+  "aestheticsPage": {
+    "title": {
+      "page0": "Uiterwaarden: mooi om te zien en belangrijk",
+      "page1": "Wat de Donau en zijn uiterwaarden ons geven",
+      "page2": "Ontdek wat uiterwaarden voor ons doen!"
+    },
+    "intro": {
+      "description": "Ontdek waarom uiterwaarden niet alleen mooi zijn, maar ons ook op veel manieren helpen in het dagelijks leven.",
+      "accessTeachingMaterials": "Ga naar het lesmateriaal",
+      "openPlatform": "Open platform",
+      "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "explore": "Ontdek"
+    },
+    "page1": {
+      "description": "De uiterwaarden en wetlands langs de Donau geven ons veel voordelen. Deze noemen we ecosysteemdiensten. Ze helpen mens en natuur op verschillende manieren:",
+      "provisioningServices": "Wat de natuur ons geeft",
+      "provisioningDescription": "Dingen die we direct gebruiken, zoals vis, schoon water en hout.",
+      "regulatingServices": "Wat de natuur regelt",
+      "regulatingDescription": "Processen die zorgen voor balans, zoals bescherming tegen overstromingen, schoon water en het vasthouden van koolstof.",
+      "culturalServices": "Wat de natuur ons laat beleven",
+      "culturalDescription": "Dingen die ons blij maken en laten leren, zoals ontspanning, spelen, leren en tradities.",
+      "activityQuestion": "Kun jij de taken van de natuur goed indelen?",
+      "activityInstruction": "Sleep elk plaatje naar het juiste vak.",
+      "results": "Resultaten",
+      "correct": "Goed",
+      "incorrect": "Niet goed",
+      "correctTooltip": "Goed gedaan!",
+      "incorrectTooltip": "Dat klopt nog niet",
+      "clickToRemove": "Klik om te verwijderen"
+    },
+    "page2": {
+      "instruction": "De uiterwaarden zitten vol verborgen helpers. Gebruik het vergrootglas om het landschap te bekijken en ontdek wat de natuur hier allemaal doet.\nBeweeg het vergrootglas over de afbeelding. Wat je vindt, verschijnt bij het juiste cirkel.\nSamen laten deze voorbeelden zien hoe de natuur ons elke dag helpt."
+    },
+    "ecosystemServices": {
+      "tourism": "Toerisme",
+      "recreation": "Recreatie en vissen",
+      "landscape": "Landschap en schoonheid",
+      "climate": "Klimaatregeling",
+      "carbon": "Koolstofopslag",
+      "nutrient": "Vasthouden van voedingsstoffen",
+      "flood": "Bescherming tegen overstromingen",
+      "habitat": "Leefgebied voor planten en dieren",
+      "water": "Oppervlakte- en grondwater",
+      "fish": "Vis",
+      "agriculture": "Landbouw",
+      "timber": "Hout"
+    },
+    "modal": {
+      "title": "Downloaden",
+      "accessTeachingMaterials": "Lesmateriaal downloaden",
+      "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    },
+    "nextTopic": "VOLGEND ONDERWERP: Uiterwaarden en kunst"
+  },
+  "treatmentWetlandsPage": {
+    "title": {
+      "main": "Uiterwaarden als filter",
+      "page1": "Het laatste natuurlijke filter – het zuiverend wetland",
+      "page2": "Laag voor laag – de natuurlijke schoonmakers",
+      "page3": "Bouw je eigen natuurlijke filter – een verticaal wetland",
+      "page4": "Kleine helpers, groot effect!"
+    },
+    "intro": {
+      "description": "Ontdek hoe zuiverende wetlands werken en hoe speciaal aangelegde wetlands afvalwater op een natuurlijke manier schoonmaken.",
+      "accessTeachingMaterials": "Ga naar het lesmateriaal",
+      "openPlatform": "Open platform",
+      "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "explore": "Ontdek"
+    },
+    "characters": {
+      "rocky": {
+        "name": "Rocky de Afvoerder",
+        "label": "ROCKY DE AFVOERDER",
+        "tooltip": {
+          "first": "Hoi! Ik ben Rocky de Afvoerder. Ik verzamel het schone water en zorg dat het veilig terugstroomt naar de rivier. Ik houd de bodem luchtig zodat alles goed kan blijven werken.",
+          "second": "Taak: voert het gezuiverde water af en zorgt voor lucht van onderaf."
+        }
+      },
+      "reeda": {
+        "name": "Reeda de Stroombewaker",
+        "label": "REEDA DE STROOMBEWAKER",
+        "tooltip": {
+          "first": "Ik ben Reeda! Mijn wortels houden het water in beweging en geven microben een fijne plek om te leven. Ik help ook tegen hitte en kou.",
+          "second": "Taak: houdt het filter open, vertraagt het water, helpt microben en neemt een beetje voeding op."
+        }
+      },
+      "gravelia": {
+        "name": "Gravelia de Verdeler",
+        "label": "GRAVELIA DE VERDELER",
+        "tooltip": {
+          "first": "Hallo! Ik ben Gravelia. Ik zorg dat het water netjes wordt verdeeld en voorkom dat alles verstopt raakt.",
+          "second": "Taak: verdeelt het water en beschermt de lagen eronder."
+        }
+      },
+      "sandy": {
+        "name": "Sandy de Schoonmaker",
+        "label": "SANDY DE SCHOONMAKER",
+        "tooltip": {
+          "first": "Ik ben Sandy! Tussen mijn zandkorrels wonen miljoenen microben. Zij ruimen afval op en maken het water schoon.",
+          "second": "Taak: hier gebeurt het meeste schoonmaakwerk door microben.",
+          "highlightText": "het meeste schoonmaakwerk"
+        }
+      }
+    },
+    "layerSlots": {
+      "plant": "Plantenlaag",
+      "filter": "Zandlaag",
+      "intermediate": "Grindlaag",
+      "drainage": "Afvoerlaag"
+    },
+    "page2": {
+      "instruction": "Leer de helpers kennen: Reeda, Sandy, Gravelia en Rocky.\n\nSleep ze in de juiste volgorde om het wetland van onder naar boven te bouwen.",
+      "successMessage": "Goed gedaan! Je hebt het wetland goed opgebouwd.",
+      "errorMessage": "{{name}} hoort op een andere plek. Probeer het opnieuw!"
+    },
+    "page3": {
+      "instruction": "Giet de materialen in de juiste volgorde in het wetland: eerst stenen, dan grind, daarna zand en bovenop de planten.\n\nZo maak je een natuurlijk waterfilter!",
+      "dropBucket": "Laat de emmer hier vallen!"
+    },
+    "page4": {
+      "intro": "Nu het wetland klaar is, maken we kennis met de kleinste helpers: de microben.",
+      "conclusion": "Dankzij miljoenen kleine helpers zoals Nino, Dina, Phoc en Bacto stroomt het water schoon terug naar Danubius.",
+      "hoverZones": {
+        "zone1": "Ik zet ammonium om in nitraat met hulp van zuurstof!",
+        "zone2": "Ik werk zonder zuurstof en maak van nitraat stikstofgas!",
+        "zone3": "Ik vang fosfor en houd het vast in het grind!",
+        "zone4": "Ik help fosfor vasthouden in de bodem!"
+      }
+    },
+    "modal": {
+      "title": "Downloaden",
+      "accessTeachingMaterials": "Lesmateriaal downloaden",
+      "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    },
+    "nextTopic": "VOLGEND ONDERWERP: Uiterwaarden en landschap"
+  },
+  "selfPurificationPage": {
+    "title": {
+      "main": "Water wordt vanzelf schoner",
+      "page1": "Waar stikstof de rivier binnenkomt",
+      "page2": "Hoe rivieren stikstof vasthouden en opruimen",
+      "page3": "Extra hulp van uiterwaarden bij stikstof",
+      "page4": "Waar fosfor de rivier binnenkomt",
+      "page5": "Hoe rivieren fosfor vasthouden",
+      "page6": "Extra hulp van uiterwaarden bij fosfor"
+    },
+    "intro": {
+      "description": "Ontdek hoe rivieren en uiterwaarden zichzelf kunnen schoonmaken. Water, bodem, planten en kleine organismen werken samen als een natuurlijk filter.",
+      "accessTeachingMaterials": "Ga naar het lesmateriaal",
+      "openPlatform": "Open platform",
+      "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "explore": "Ontdek"
+    },
+    "hoverAreas": {
+      "nutrients1": {
+        "area1": "Vervuiling die van veel plekken tegelijk komt, zoals van <span style=\"color: #1C00B8;\">akkers, wegen en steden</span>. Regen spoelt deze stoffen naar de rivier.",
+        "area2": "Vervuiling die uit één duidelijke plek komt, zoals een <span style=\"color: #1C00B8;\">afvoerbuis van een fabriek of rioolwaterzuivering</span>.",
+        "area3": "<span style=\"color: #1C00B8;\">Mest en kunstmest</span> lossen op in regenwater en stromen via de bodem of het land naar de rivier. Dit is de grootste bron van verspreide stikstof.",
+        "area4": "Regen spoelt stikstof van <span style=\"color: #1C00B8;\">straten, auto's en parken</span> naar sloten en rivieren.",
+        "area5": "<span style=\"color: #1C00B8;\">Gezuiverd afvalwater</span> bevat soms nog stikstof en stroomt via buizen de rivier in. Niet overal wordt stikstof even goed verwijderd.",
+        "area6": "<span style=\"color: #1C00B8;\">Sommige fabrieken</span> lozen stikstofrijk water, bijvoorbeeld uit voedsel- of chemische productie."
+      },
+      "nutrients2": {
+        "area1": "Stikstofdeeltjes <span style=\"color: #1C00B8;\">zakken naar de bodem</span> en worden daar afgebroken door kleine organismen.",
+        "area2": "Planten en algen <span style=\"color: #1C00B8;\">nemen stikstof op</span> om te groeien. Dit is tijdelijk.",
+        "area3": "<span style=\"color: #1C00B8;\">Ammonium wordt nitraat</span> met hulp van zuurstof. Dit is een eerste schoonmaakstap.",
+        "area4": "<span style=\"color: #1C00B8;\">Nitraat wordt stikstofgas</span> zonder zuurstof. Dit gas verdwijnt veilig in de lucht."
+      },
+      "nutrients3": {
+        "area1": "<span style=\"color: #1C00B8;\">Stikstof zakt neer op de uiterwaarden</span> tijdens overstromingen.",
+        "area2": "<span style=\"color: #1C00B8;\">Planten op uiterwaarden nemen stikstof op</span> en slaan het op in bladeren en hout.",
+        "area3": "<span style=\"color: #1C00B8;\">Microben maken stikstofgas</span> in natte bodems zonder zuurstof."
+      },
+      "nutrients4": {
+        "area1": "Fosfor komt van veel plekken tegelijk, zoals <span style=\"color: #CE7C0A;\">akkers, onverharde wegen en steden</span>.",
+        "area2": "Regen spoelt <span style=\"color: #CE7C0A;\">stof en vuil met fosfor</span> naar de rivier.",
+        "area3": "<span style=\"color: #CE7C0A;\">Fosfor plakt aan bodemdeeltjes</span> en komt zo in het water terecht.",
+        "area4": "<span style=\"color: #CE7C0A;\">Kunstmest</span> bevat fosfor dat langzaam naar rivieren stroomt.",
+        "area5": "Afvalwater kan <span style=\"color: #CE7C0A;\">fosfor bevatten</span>, zelfs na zuivering.",
+        "area6": "Niet overal wordt fosfor goed verwijderd uit afvalwater.",
+        "area7": "Sommige <span style=\"color: #CE7C0A;\">fabrieken</span> lozen fosforrijk water."
+      },
+      "nutrients5": {
+        "area1": "<span style=\"color: #CE7C0A;\">Fosfor hecht zich aan mineralen</span> in de bodem. Zonder zuurstof kan het weer loskomen.",
+        "area2": "<span style=\"color: #CE7C0A;\">Planten en algen nemen fosfor op</span> om te groeien. Dit is tijdelijk.",
+        "area3": "Fosfor <span style=\"color: #CE7C0A;\">zakt naar de bodem</span> in rustige delen van de rivier."
+      },
+      "nutrients6": {
+        "area1": "Bij overstromingen <span style=\"color: #CE7C0A;\">zakt fosforrijk slib</span> neer op de uiterwaarden.",
+        "area2": "<span style=\"color: #CE7C0A;\">Uiterwaardenplanten slaan fosfor op</span> in bladeren en wortels.",
+        "area3": "Fosfor <span style=\"color: #CE7C0A;\">blijft vastzitten in de bodem</span>, zolang er genoeg zuurstof is."
+      }
+    },
+    "quizModal": {
+      "content": "<p style=\"margin: 0;\">Ongeveer <span style=\"color: #619F6A;\">40% van het fosfor</span> dat in het Donaugebied wordt geloosd, bereikt de zee niet. Het blijft hangen in <span style=\"color: #619F6A;\">meren, stuwmeren en uiterwaarden</span> onderweg.</p>"
+    },
+    "modal": {
+      "title": "Downloaden",
+      "accessTeachingMaterials": "Lesmateriaal downloaden",
+      "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    },
+    "nextTopic": "VOLGEND ONDERWERP: Uiterwaarden als filter"
+  },
+  "termsOfUse": {
+    "title": "Gebruiksvoorwaarden",
+    "section1": {
+      "title": "1. Inleiding",
+      "p1": "Restore4Life (Restoration of wetland complexes as life supporting systems in the Danube Basin), hierna aangeduid als \"Project\", is een project van 48 maanden dat zich richt op het onderwerp HORIZON-MISS-2022-OCEAN-01.",
+      "p2": "De \"LEVENDE UITERWAARDEN: LEREN, ONTDEKKEN EN HERSTELLEN\" (hierna aangeduid als \"dit platform\" of \"de Toolbox\") is ontwikkeld binnen het kader van het Project.",
+      "p3": "Deze Gebruiksvoorwaarden regelen uw toegang tot en gebruik van dit platform en alle inhoud, materialen en middelen die beschikbaar zijn binnen de Toolbox. Alle inhoud in de Toolbox maakt deel uit van Het Project en valt onder deze Gebruiksvoorwaarden. Door toegang te krijgen tot of gebruik te maken van dit platform of enige inhoud binnen de Toolbox, gaat u akkoord met deze Gebruiksvoorwaarden."
+    },
+    "section2": {
+      "title": "2. Definities",
+      "consortium": "\"Het Consortium\" verwijst naar alle ondertekenaars, met uitzondering van de Europese Commissie, van de Grant Agreement 101112736, die afzonderlijke of gezamenlijke intellectuele eigendomsrechten kunnen hebben met betrekking tot de projectresultaten.",
+      "materials": "\"Materialen\" verwijst naar alle informatie, inhoud, gegevens, documenten (bijv. whitepapers, brochures, datasheets, FAQ’s, sjablonen, persberichten, enz.), downloads, bestanden, tekst, afbeeldingen, foto’s, grafieken, video’s, webcasts, publicaties, tools, middelen, software, code, programma’s, applicaties en producten die via de website beschikbaar worden gesteld."
+    },
+    "section3": {
+      "title": "3. Gebruik van Materialen",
+      "p1": "De Materialen op deze website zijn ontwikkeld als educatief materiaal en zijn bedoeld voor educatieve en niet-commerciële doeleinden.",
+      "educationalUse": "Educatief gebruik:",
+      "educationalUseDesc": "U mag de Materialen vrij kopiëren en gebruiken voor educatieve doeleinden zonder voorafgaande toestemming, mits:",
+      "li1": "Het gebruik niet-commercieel en educatief van aard is",
+      "li2": "Passende bronvermelding wordt gegeven aan het Restore4Life-project",
+      "li3": "De Materialen niet worden aangepast op een wijze die de oorspronkelijke inhoud verkeerd weergeeft",
+      "commercialUse": "Commercieel gebruik:",
+      "commercialUseDesc": "Het kopiëren of gebruiken van Materialen voor economische of commerciële doeleinden is niet toegestaan zonder uitdrukkelijke voorafgaande schriftelijke toestemming. Voor vragen over commercieel gebruik kunt u contact opnemen met de rechthebbende:"
+    },
+    "section4": {
+      "title": "4. Aansprakelijkheidsuitsluiting",
+      "p1": "Het Consortium en Het Project zijn niet verantwoordelijk voor eventuele onnauwkeurigheden, fouten, weglatingen of problemen die kunnen voortvloeien uit het gebruik van de Materialen of deze website.",
+      "p2": "De Materialen worden geleverd \"zoals ze zijn\" zonder enige garantie, expliciet of impliciet, met inbegrip van maar niet beperkt tot impliciete garanties van verkoopbaarheid, geschiktheid voor een bepaald doel of niet-inbreuk.",
+      "p3": "Het Consortium is niet aansprakelijk voor enige directe, indirecte, incidentele, bijzondere, gevolg- of strafschade die voortvloeit uit of verband houdt met het gebruik van of het onvermogen om gebruik te maken van de Materialen of deze website."
+    },
+    "section5": {
+      "title": "5. Recht op wijziging van Materialen",
+      "p1": "Het Consortium behoudt zich als rechthebbende het recht voor om op elk moment Materialen op deze website te wijzigen, bij te werken of te verwijderen zonder voorafgaande kennisgeving en zonder enige verantwoordelijkheid te aanvaarden voor dergelijke wijzigingen. Het Consortium is niet verplicht de Materialen te onderhouden of bij te werken en kan naar eigen inzicht elk aspect van de website stopzetten of wijzigen."
+    },
+    "section6": {
+      "title": "6. Intellectuele eigendomsrechten",
+      "p1": "Alle Materialen op deze website worden beschermd door intellectuele eigendomsrechten. Het Consortium kan afzonderlijke of gezamenlijke intellectuele eigendomsrechten hebben met betrekking tot de projectresultaten.",
+      "p2": "Hoewel educatief gebruik is toegestaan zoals hierboven beschreven, blijven alle andere rechten voorbehouden. Ongeautoriseerd gebruik van Materialen kan in strijd zijn met auteursrechten, merkenrechten of andere wetten."
+    },
+    "section7": {
+      "title": "7. Links naar websites van derden",
+      "p1": "Deze website kan links bevatten naar websites van derden. Het Consortium is niet verantwoordelijk voor de inhoud, nauwkeurigheid of meningen die op dergelijke websites worden geuit en dergelijke websites worden niet onderzocht, gemonitord of gecontroleerd op juistheid of volledigheid door het Consortium. Het opnemen van een gelinkte website impliceert geen goedkeuring of onderschrijving door het Consortium."
+    },
+    "section8": {
+      "title": "8. Wijzigingen in de Gebruiksvoorwaarden",
+      "p1": "Het Consortium behoudt zich het recht voor om deze Gebruiksvoorwaarden op elk moment te wijzigen. Wijzigingen worden van kracht zodra zij op deze website worden gepubliceerd. Door de website te blijven gebruiken na dergelijke wijzigingen, aanvaardt u de aangepaste Gebruiksvoorwaarden."
+    },
+    "section9": {
+      "title": "9. Contact",
+      "materialsTitle": "Voor vragen over de Materialen of verzoeken met betrekking tot commercieel gebruik:",
+      "termsTitle": "Voor vragen over deze Gebruiksvoorwaarden of de website in het algemeen:",
+      "generalInquiries": "Voor algemene vragen over het Restore4Life-project kunt u terecht op"
+    },
+    "lastUpdated": "Laatst bijgewerkt:"
+  },
+  "privacyPolicyPage": {
+    "title": "Privacybeleid",
+    "section1": {
+      "title": "1. Inleiding",
+      "content": "Dit privacybeleid beschrijft hoe wij omgaan met uw persoonsgegevens wanneer u deze website gebruikt. Wij respecteren uw privacy en zijn toegewijd aan het beschermen van uw persoonsgegevens in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG)."
+    },
+    "section2": {
+      "title": "2. Gegevensbeheerder",
+      "content": "Deze website wordt beheerd door het Restore4Life-project. De technische verantwoordelijkheid ligt bij Archipelagos Institute of Marine Conservation. Voor vragen over dit privacybeleid kunt u contact met ons opnemen via",
+      "website": "www.archipelagos.gr",
+      "orEmail": "of per e-mail",
+      "email": "info@archipelagos.gr"
+    },
+    "section3": {
+      "title": "3. Gegevens die wij verzamelen",
+      "intro": "Wij verzamelen alleen gegevens die nodig zijn voor het functioneren van deze website:",
+      "analyticalData": {
+        "label": "Analytische gegevens:",
+        "content": "Via Google Analytics verzamelen wij anonieme gebruiksstatistieken, zoals het aantal bezoekers, welke pagina's worden bekeken en hoe lang gebruikers op de website blijven. Deze gegevens worden alleen verzameld als u toestemming heeft gegeven voor het gebruik van cookies.",
+        "important": "Wij slaan geen persoonsgegevens op die individuele gebruikers kunnen identificeren."
+      },
+      "technicalData": {
+        "label": "Technische gegevens:",
+        "content": "Wij verzamelen automatisch bepaalde technische informatie, zoals uw IP-adres (geanonimiseerd), browsertype en besturingssysteem. Deze gegevens worden gebruikt voor technische doeleinden en worden niet gebruikt om u te identificeren."
+      },
+      "important": "Belangrijk:",
+      "importantContent": "Wij slaan geen persoonsgegevens op die kunnen worden gebruikt om individuele gebruikers te identificeren. De analytische gegevens die wij verzamelen zijn geaggregeerd en anoniem. Wij kunnen individuele bezoekers niet traceren of identificeren via Google Analytics."
+    },
+    "section4": {
+      "title": "4. Cookies",
+      "intro": "Deze website gebruikt cookies alleen voor analytische doeleinden via Google Analytics. Wij gebruiken de volgende soorten cookies:",
+      "analyticalCookies": {
+        "label": "Analytische cookies:",
+        "content": "Deze cookies helpen ons te begrijpen hoe bezoekers de website gebruiken. Deze cookies worden alleen geplaatst als u toestemming heeft gegeven."
+      },
+      "withdrawConsent": "U kunt uw toestemming voor cookies te allen tijde intrekken door cookies te verwijderen in uw browserinstellingen. Omdat wij geen persoonsgegevens opslaan die individuele gebruikers kunnen identificeren, kunnen wij geen specifieke gebruikersgegevens verwijderen op verzoek. U kunt echter altijd uw browsercookies wissen of cookies uitschakelen in uw browserinstellingen om toekomstige tracking te voorkomen."
+    },
+    "section5": {
+      "title": "5. Doeleinden van gegevensverwerking",
+      "intro": "Wij gebruiken uw gegevens voor de volgende doeleinden:",
+      "purposes": [
+        "Verbeteren van de functionaliteit en gebruikerservaring van de website",
+        "Analyseren van websitegebruik om content te optimaliseren",
+        "Waarborgen van de technische beveiliging van de website"
+      ]
+    },
+    "section6": {
+      "title": "6. Uw rechten",
+      "intro": "Onder de AVG hebben individuen bepaalde rechten met betrekking tot hun persoonsgegevens. Echter,",
+      "notApplicable": "deze rechten zijn niet van toepassing in ons geval",
+      "because": "omdat:",
+      "reasons": [
+        "Wij slaan geen persoonsgegevens op die individuele gebruikers kunnen identificeren",
+        "Alle analytische gegevens zijn anoniem en geaggregeerd",
+        "Wij kunnen individuele bezoekers niet traceren of identificeren"
+      ],
+      "therefore": "Daarom zijn de volgende AVG-rechten niet van toepassing:",
+      "rights": {
+        "access": {
+          "label": "Recht op inzage:",
+          "content": "Niet van toepassing - wij hebben geen persoonsgegevens over u om te verstrekken"
+        },
+        "rectification": {
+          "label": "Recht op rectificatie:",
+          "content": "Niet van toepassing - wij slaan geen persoonsgegevens op die kunnen worden gecorrigeerd"
+        },
+        "erasure": {
+          "label": "Recht op verwijdering:",
+          "content": "Niet van toepassing - wij hebben geen persoonsgegevens om te verwijderen. U kunt uw browsercookies te allen tijde wissen"
+        },
+        "restriction": {
+          "label": "Recht op beperking:",
+          "content": "U kunt uw toestemming voor cookies te allen tijde intrekken via uw browserinstellingen"
+        },
+        "object": {
+          "label": "Recht van bezwaar:",
+          "content": "U kunt cookies weigeren via de cookiebanner of cookies uitschakelen in uw browserinstellingen"
+        },
+        "portability": {
+          "label": "Recht op gegevensoverdraagbaarheid:",
+          "content": "Niet van toepassing - wij hebben geen persoonsgegevens om te exporteren"
+        }
+      },
+      "contact": "Als u vragen of zorgen heeft, kunt u contact met ons opnemen via",
+      "website": "www.archipelagos.gr",
+      "orEmail": "of per e-mail",
+      "email": "info@archipelagos.gr"
+    },
+    "section7": {
+      "title": "7. Beveiliging",
+      "content": "Wij nemen passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen tegen ongeautoriseerde toegang, verlies of vernietiging. Google Analytics gebruikt geanonimiseerde IP-adressen en wij hebben de instellingen geconfigureerd om de privacy te maximaliseren. Wij slaan geen persoonsgegevens op die individuele gebruikers kunnen identificeren."
+    },
+    "section8": {
+      "title": "8. Wijzigingen in dit privacybeleid",
+      "content": "Wij behouden ons het recht voor om dit privacybeleid te wijzigen. Wijzigingen worden op deze pagina gepubliceerd. Wij raden aan dat u deze pagina regelmatig raadpleegt om op de hoogte te blijven van eventuele wijzigingen."
+    },
+    "section9": {
+      "title": "9. Contact",
+      "content": "Voor vragen over dit privacybeleid of over de verwerking van uw persoonsgegevens kunt u contact met ons opnemen via",
+      "website": "www.archipelagos.gr",
+      "orEmail": "of per e-mail",
+      "email": "info@archipelagos.gr"
+    },
+    "lastUpdated": "Laatst bijgewerkt:"
+  },
+  "cookiePolicyPage": {
+    "title": "Cookiebeleid",
+    "section1": {
+      "title": "Wat zijn cookies?",
+      "content": "Cookies zijn kleine tekstbestanden die op uw apparaat worden geplaatst wanneer u een website bezoekt. Ze worden veel gebruikt om websites efficiënter te laten werken en om informatie te verstrekken aan de website-eigenaren."
+    },
+    "section2": {
+      "title": "Soorten cookies die wij gebruiken",
+      "intro": "Deze website gebruikt",
+      "onlyAnalytical": "alleen analytische cookies",
+      "viaGoogleAnalytics": "via Google Analytics.",
+      "weDoNotUse": "Wij gebruiken geen noodzakelijke/essentiële cookies of functionele cookies.",
+      "important": "Belangrijk:",
+      "importantContent": "Alle cookies die op deze website worden gebruikt, vereisen uw toestemming. Er worden geen cookies geplaatst zonder uw uitdrukkelijke toestemming."
+    },
+    "section3": {
+      "title": "Analytische cookies (Google Analytics)",
+      "intro": "Wij gebruiken Google Analytics om te begrijpen hoe bezoekers met onze website interacteren. Deze cookies helpen ons informatie te verzamelen over:",
+      "infoItems": [
+        "Het aantal bezoekers van de website",
+        "Welke pagina's het meest worden bekeken",
+        "Hoe lang bezoekers op de website blijven",
+        "Hoe bezoekers door de website navigeren"
+      ],
+      "purpose": "Doel:",
+      "purposeContent": "Deze cookies helpen ons de functionaliteit en gebruikerservaring van de website te verbeteren.",
+      "consentRequired": "Toestemming vereist:",
+      "consentRequiredContent": "Ja - deze cookies worden alleen geplaatst als u ze accepteert via de cookiebanner.",
+      "dataCollected": "Verzamelde gegevens:",
+      "dataCollectedContent": "Alle gegevens zijn anoniem en geaggregeerd. Wij kunnen individuele gebruikers niet identificeren."
+    },
+    "section4": {
+      "title": "Specifieke cookies die worden gebruikt",
+      "intro": "De volgende cookies worden ingesteld door Google Analytics (alleen als u cookies heeft geaccepteerd):",
+      "cookies": {
+        "_ga": {
+          "name": "_ga",
+          "purpose": "Doel:",
+          "purposeContent": "Onderscheidt unieke gebruikers",
+          "duration": "Duur:",
+          "durationContent": "2 jaar",
+          "type": "Type:",
+          "typeContent": "First-party cookie"
+        },
+        "_gid": {
+          "name": "_gid",
+          "purpose": "Doel:",
+          "purposeContent": "Onderscheidt unieke gebruikers",
+          "duration": "Duur:",
+          "durationContent": "24 uur",
+          "type": "Type:",
+          "typeContent": "First-party cookie"
+        },
+        "_gat": {
+          "name": "_gat (of _gat_gtag_*)",
+          "purpose": "Doel:",
+          "purposeContent": "Beperkt de aanvraagsnelheid",
+          "duration": "Duur:",
+          "durationContent": "1 minuut",
+          "type": "Type:",
+          "typeContent": "First-party cookie"
+        }
+      },
+      "note": "Opmerking:",
+      "noteContent": "Deze cookies worden ingesteld door Google Analytics en vallen onder het privacybeleid van Google. Wij hebben Google Analytics geconfigureerd met privacyvriendelijke instellingen, waaronder IP-anonimisering en uitgeschakelde Google Signals en Ad Personalization."
+    },
+    "section5": {
+      "title": "Uw cookievoorkeuren beheren",
+      "intro": "U heeft volledige controle over cookies op deze website:",
+      "preferences": [
+        {
+          "label": "Accepteren of weigeren:",
+          "content": "Wanneer u de website voor het eerst bezoekt, kunt u analytische cookies accepteren of weigeren via de cookiebanner onderaan de pagina."
+        },
+        {
+          "label": "Uw voorkeur wijzigen:",
+          "content": "U kunt uw cookievoorkeuren te allen tijde wijzigen door uw browsercookies te wissen en de website opnieuw te bezoeken. De cookiebanner verschijnt opnieuw, zodat u een nieuwe keuze kunt maken."
+        },
+        {
+          "label": "Browserinstellingen:",
+          "content": "U kunt cookies ook rechtstreeks beheren in uw browserinstellingen. De meeste browsers stellen u in staat om cookies te blokkeren of te verwijderen. Houd er rekening mee dat het blokkeren van cookies uw ervaring op sommige websites kan beïnvloeden."
+        }
+      ]
+    },
+    "section6": {
+      "title": "Third-party cookies",
+      "content": "Google Analytics-cookies zijn technisch gezien third-party cookies (ingesteld door Google), maar ze worden uitsluitend gebruikt voor onze website-analyses. Wij gebruiken geen andere third-party cookies voor advertenties, sociale media of andere doeleinden."
+    },
+    "section7": {
+      "title": "Meer informatie",
+      "intro": "Voor meer informatie over cookies en hoe u ze kunt beheren, kunt u bezoeken:",
+      "links": {
+        "allAboutCookies": "www.allaboutcookies.org",
+        "googlePrivacy": "Privacybeleid van Google"
+      },
+      "contact": "Als u vragen heeft over ons gebruik van cookies, kunt u contact met ons opnemen via",
+      "website": "www.archipelagos.gr",
+      "orEmail": "of per e-mail",
+      "email": "info@archipelagos.gr"
+    },
+    "lastUpdated": "Laatst bijgewerkt:"
+  },
+  "wetlandFreskPage": {
+    "title": "Wetland Fresk",
+    "description": "Wetland Fresk is een interactieve workshop waarin deelnemers samen ontdekken hoe menselijke activiteiten wetlands beïnvloeden, zoals uiterwaarden, wadden, zoutmoerassen en lagunes. Samen bouwen ze een kaart die laat zien wat oorzaken en gevolgen zijn, en denken ze na over oplossingen en acties.",
+    "duration": {
+      "label": "Duur",
+      "value": "90–120 minuten"
+    },
+    "numberOfCards": {
+      "label": "Aantal kaarten",
+      "value": "24 kaarten"
+    },
+    "teamPlayers": {
+      "label": "Aantal spelers",
+      "value": "4–8 personen"
+    },
+    "age": {
+      "label": "Leeftijd",
+      "value": "vanaf ongeveer 12 jaar"
+    },
+    "downloadNote": "Je wordt doorgestuurd naar een externe databank"
+  },
+  "wetland4LifePage": {
+    "title": "Wetland4Life",
+    "subtitle": "Ontdek het potentieel van uiterwaarden met een app",
+    "whatDoesItDo": {
+      "title": "Wat doet Wetland4Life?",
+      "description": "Wetland4Life maakt het in kaart brengen van uiterwaarden eenvoudig en toegankelijk. Met de app kun je snel bekijken hoe het met een uiterwaard gaat en waar kansen liggen voor herstel."
+    },
+    "howItWorks": {
+      "title": "Hoe werkt het?",
+      "description": "Je krijgt stap voor stap korte vragen die je helpen een plek te beoordelen. Elke locatie kost ongeveer",
+      "time": "5 minuten",
+      "timeEnd": "— snel, duidelijk en gebaseerd op wetenschap."
+    },
+    "academy": {
+      "title": "Wil je meer leren?",
+      "description": "In de app zit een kleine academie met uitleg over uiterwaarden: wat ze doen, welke problemen er zijn en hoe herstel werkt. Voor beginners én voor mensen die al veel weten."
+    },
+    "callToAction": "Uiterwaarden zijn heel belangrijk voor onze veiligheid, natuur en toekomst. Daarom is het nodig om te weten hoe ze eraan toe zijn en waar herstel mogelijk is. En daarbij kunnen we jouw hulp goed gebruiken!",
+    "visitButton": "Beschikbaar medio januari",
+    "externalLinkNote": "Deze link opent een externe website die vooral geschikt is voor mobiel gebruik. Op een computer kan de ervaring anders zijn.",
+    "websiteUrl": "https://wetland.restore4life-platform.eu"
+  },
+  "blueGreenSpace4AllPage": {
+    "title": "Uiterwaarden voor iedereen",
+    "subtitle": "Ga op reis met Otis de Otter langs de Donau!",
+    "description": "Een speels computerspel waarin je samen met Otis de Otter langs de Donau reist. Onderweg kom je natuur-, water- en mensenvragen tegen. Je kiest oplossingen, beantwoordt vragen en helpt de Donau stap voor stap gezonder te maken — terwijl je munten verzamelt.",
+    "quizHighlight": "Een leuke manier om te testen wat je hebt geleerd over uiterwaarden!",
+    "playButton": "Speel Uiterwaarden voor iedereen",
+    "externalLinkNote": "Deze knop opent een externe website met het spel.",
+    "websiteUrl": "http://game.restore4life-platform.eu"
+  },
+  "wetlandEduRepoPage": {
+    "title": "Uiterwaarden – educatie",
+    "subtitle": "Bekijk meer projecten en materialen",
+    "allTopics": "Alle onderwerpen",
+    "clickToOpen": "Klik op een project om het in een nieuw tabblad te openen",
+    "opensInNewTab": "Opent in nieuw tabblad",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Pagina",
+    "of": "van",
+    "topics": {
+      "Floodplain living environment": "Uiterwaarden vol leven",
+      "Floodplain mapping": "Ontdek de uiterwaarden",
+      "Flood control": "Uiterwaarden als een spons",
+      "Habitat assessment": "Ontdek de beek",
+      "Carbon sequestration": "Klimaat en koolstofopslag",
+      "Self purification": "Waterzuivering",
+      "Constructed wetlands": "Uiterwaarden als filter",
+      "Aesthetics": "Uiterwaarden om te zien",
+      "Art & Storytelling": "Kunst uit de uiterwaarden"
+    }
+  }
+}

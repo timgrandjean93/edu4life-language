@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { LocalizedImage } from './LocalizedImage';
 
 interface FooterProps {
   onPrivacyClick: () => void;
@@ -7,6 +9,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onCookiePolicyClick, onTermsOfUseClick }) => {
+  const { t } = useTranslation();
   return (
     <>
       {/* EU Logo Disclaimer Bar */}
@@ -23,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onCookiePolicyCl
         }}
         className="eu-disclaimer-bar"
       >
-        <img 
+        <LocalizedImage 
           src="/assets/icons/EU.png" 
           alt="Co-funded by the European Union" 
           style={{ 
@@ -59,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onCookiePolicyCl
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
-          <span>Copyright © {new Date().getFullYear()} Restore4Life Consortium. All Rights Reserved.</span>
+          <span>{t('footer.copyright', { year: new Date().getFullYear() })}</span>
           <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>|</span>
           <a
             href="https://www.restore4life.eu"
@@ -99,7 +102,7 @@ export const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onCookiePolicyCl
               e.currentTarget.style.opacity = '1';
             }}
           >
-            Privacy Policy
+            {t('footer.privacyPolicy')}
           </button>
           <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>|</span>
           <button
@@ -121,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onCookiePolicyCl
               e.currentTarget.style.opacity = '1';
             }}
           >
-            Cookie Policy
+            {t('footer.cookiePolicy')}
           </button>
           <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>|</span>
           <button
@@ -143,7 +146,7 @@ export const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onCookiePolicyCl
               e.currentTarget.style.opacity = '1';
             }}
           >
-            Terms of Use
+            {t('footer.termsOfUse')}
           </button>
         </div>
       </div>

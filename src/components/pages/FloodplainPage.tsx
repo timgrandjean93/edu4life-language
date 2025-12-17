@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { usePageRouting } from '../../hooks/usePageRouting';
+import { LocalizedImage } from '../LocalizedImage';
+import { useLocalizedImage } from '../../utils/localizedImage';
 
 interface FloodplainPageProps {
   onHomeClick: () => void;
@@ -23,6 +26,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
   onMapWetlandClick,
   onRepositoryClick
 }) => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const [currentSubPage, setCurrentSubPage] = React.useState(3); // Start with last photo on page 1
   const [sliderPosition, setSliderPosition] = React.useState(50); // For page 4 slider (0-100)
@@ -30,6 +34,10 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
   const [centerScale, setCenterScale] = React.useState(1); // Scale factor for center elements
   const centerSectionRef = React.useRef<HTMLDivElement>(null);
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  
+  // Get localized image paths for slider
+  const rainImagePath = useLocalizedImage('/assets/components/LivingEnvironment/rain.png');
+  const dryImagePath = useLocalizedImage('/assets/components/LivingEnvironment/dry.png');
 
   // Track window width for responsive navbar
   React.useEffect(() => {
@@ -162,7 +170,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  Floodplain Living Environment
+                  {t('floodplainPage.title')}
                 </motion.h1>
                 
               </div>
@@ -201,7 +209,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   color: '#406A46',
                   textAlign: 'center'
                 }}>
-                   Can you notice the difference between the illustrations?
+                   {t('floodplainPage.intro.question')}
                 </div>
               </div>
 
@@ -209,9 +217,9 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
               <div className="flex gap-8 justify-center items-stretch" style={{ width: '100%', maxWidth: '1200px', marginBottom: '48px' }}>
                 {/* Left Illustration - Rain */}
                 <div style={{ flex: 1, maxWidth: '600px', display: 'flex', flexDirection: 'column' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/LivingEnvironment/rain.png"
-                    alt="Floodplain in rainy season"
+                    alt={t('floodplainPage.intro.rainLabel')}
                     style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block', flex: '1 0 auto' }}
                   />
                   <div style={{
@@ -223,14 +231,14 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                     marginTop: '12px',
                     flex: '0 0 auto'
                   }}>
-                    Floodplain during a flooding event (wet season)
+                    {t('floodplainPage.intro.rainLabel')}
                   </div>
                 </div>
                 {/* Right Illustration - Dry */}
                 <div style={{ flex: 1, maxWidth: '600px', display: 'flex', flexDirection: 'column' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/LivingEnvironment/dry.png"
-                    alt="Floodplain in dry season"
+                    alt={t('floodplainPage.intro.dryLabel')}
                     style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block', flex: '1 0 auto' }}
                   />
                   <div style={{
@@ -242,7 +250,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                     marginTop: '12px',
                     flex: '0 0 auto'
                   }}>
-                    Floodplain during dry conditions
+                    {t('floodplainPage.intro.dryLabel')}
                   </div>
                 </div>
               </div>
@@ -258,7 +266,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                 maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Learn about Floodplain Living Environment and explore the diverse habitats and wildlife that thrive in these unique ecosystems.
+                {t('floodplainPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
@@ -273,7 +281,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   padding: 0
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/learnandtest.png"
                   alt="Learn and test your knowledge"
                   style={{ 
@@ -295,7 +303,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                     justifyContent: 'center',
                     flexShrink: 0
                   }}>
-                    <img 
+                    <LocalizedImage 
                       src="/assets/icons/edumaterial.png"
                       alt="Access Teaching Materials"
                       style={{ width: '150px', height: '110px' }}
@@ -310,7 +318,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access Teaching Materials
+                      {t('floodplainPage.intro.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -332,7 +340,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Open platform
+                        {t('floodplainPage.intro.openPlatform')}
                       </a>
                     </div>
                     <div style={{
@@ -341,7 +349,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                       color: '#406A46',
                       fontStyle: 'italic'
                     }}>
-                      Opens new tab: Zenodo
+                      {t('floodplainPage.intro.opensNewTab')}
                     </div>
                   </div>
                 </div>
@@ -355,7 +363,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                     justifyContent: 'center',
                     flexShrink: 0
                   }}>
-                    <img 
+                    <LocalizedImage 
                       src="/assets/icons/edurepo.png"
                       alt="Explore Wet-Edu Repository"
                       style={{ width: '120px', height: '120px' }}
@@ -370,7 +378,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Wet-Edu Repository
+                      {t('floodplainPage.intro.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -390,7 +398,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Explore
+                        {t('floodplainPage.intro.explore')}
                       </button>
                     </div>
                   </div>
@@ -415,7 +423,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                     color: '#406BB8',
                     textAlign: 'center'
                   }}>
-                    Floodplains in rainy season
+                    {t('floodplainPage.page2.title')}
                   </h3>
                 </div>
               )}
@@ -428,7 +436,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                     color: '#9F8B68',
                     textAlign: 'center'
                   }}>
-                    Floodplains in dry season
+                    {t('floodplainPage.page3.title')}
                   </h3>
                 </div>
               )}
@@ -436,7 +444,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
               {/* Image */}
               <div className="flex justify-center">
                 <div style={{ width: '100%', maxWidth: '1600px' }}>
-                  <img 
+                  <LocalizedImage 
                     src={getImagePath(currentPage, currentSubPage)}
                     alt={`Floodplain page ${currentPage}${currentPage === 1 ? `-${currentSubPage}` : ''}`}
                     className="w-full h-auto"
@@ -473,7 +481,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   color: '#406A46',
                   textAlign: 'center'
                 }}>
-                  Slide the bar to see the differences
+                  {t('floodplainPage.page4.sliderTitle')}
                 </h3>
               </div>
               
@@ -489,7 +497,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                       opacity: Math.max(0.3, sliderPosition / 100) // More transparent as slider moves left
                     }}
                   >
-                    <img 
+                    <LocalizedImage 
                       src="/assets/components/LivingEnvironment/icon-rain.png" 
                       alt="Rain" 
                       className="w-10 h-10"
@@ -513,7 +521,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   <div 
                     className="absolute inset-0 w-full h-full"
                     style={{
-                      backgroundImage: "url('/assets/components/LivingEnvironment/dry.png')",
+                      backgroundImage: `url('${dryImagePath}')`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat'
@@ -524,7 +532,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   <div 
                     className="absolute inset-0 w-full h-full"
                     style={{
-                      backgroundImage: "url('/assets/components/LivingEnvironment/rain.png')",
+                      backgroundImage: `url('${rainImagePath}')`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
@@ -613,7 +621,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                       opacity: Math.max(0.3, 1 - (sliderPosition / 100)) // More transparent as slider moves right
                     }}
                   >
-                    <img 
+                    <LocalizedImage 
                       src="/assets/components/LivingEnvironment/icon-dry.png" 
                       alt="Dry" 
                       className="w-10 h-10"
@@ -682,7 +690,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
               textAlign: 'center',
               marginBottom: '30px'
             }}>
-              Download Options
+              {t('floodplainPage.modal.title')}
             </div>
 
             {/* Option 1: Zenodo */}
@@ -716,7 +724,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/protocols.png" 
                   alt="Download" 
                   style={{ 
@@ -733,7 +741,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Access Teaching Materials
+                  {t('floodplainPage.modal.accessTeachingMaterials')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -742,7 +750,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   color: 'rgba(255, 255, 255, 0.9)',
                   marginBottom: '6px'
                 }}>
-                  Based on 5E learning method and scientific research
+                  {t('floodplainPage.modal.basedOn5E')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -750,7 +758,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.7)'
                 }}>
-                  (Opens in new tab: Zenodo)
+                  {t('floodplainPage.modal.opensInNewTab')}
                 </div>
               </div>
             </button>
@@ -785,7 +793,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/edurepo.png" 
                   alt="Explore Wet-Edu Repository" 
                   style={{ 
@@ -802,7 +810,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('floodplainPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -810,7 +818,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.9)'
                 }}>
-                  Explore related projects and resources
+                  {t('floodplainPage.modal.exploreRelated')}
                 </div>
               </div>
             </button>
@@ -857,7 +865,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                 cursor: 'pointer'
               }}
             >
-              <img 
+              <LocalizedImage 
                 src="/assets/icons/Home.png" 
                 alt="Home" 
                 style={{ 
@@ -891,7 +899,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                 onClick={handleDownloadClick}
                 className="download-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '480px',
+                  width: 'auto',
                   height: '50px',
                   backgroundColor: 'transparent',
                   border: 'none',
@@ -899,15 +907,15 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   flexShrink: 0
                 }}
               >
-                <img 
-                  src="/assets/icons/download.png" 
-                  alt="Download" 
-                  style={{ 
-                    width: '480px',
-                    height: '50px',
-                    opacity: 1
-                  }}
-                />
+              <LocalizedImage 
+                src="/assets/icons/download.png" 
+                alt="Download" 
+                style={{ 
+                  width: 'auto',
+                  height: '50px',
+                  opacity: 1
+                }}
+              />
               </button>
             )}
 
@@ -960,7 +968,7 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
                   fontSize: '24px',
                   color: '#406A46'
                 }}>
-                  NEXT TOPIC: Map your wetland
+                  {t('floodplainPage.nextTopic')}
                 </span>
               </div>
             )}
@@ -988,18 +996,18 @@ export const FloodplainPage: React.FC<FloodplainPageProps> = ({
             }}
             className="next-button relative flex items-center justify-center z-50"
             style={{
-              width: '158px',
+              width: 'auto',
               height: '60px',
               backgroundColor: 'transparent',
               border: 'none',
               cursor: 'pointer'
             }}
           >
-            <img 
+            <LocalizedImage 
               src="/assets/icons/next.png" 
-              alt={currentPage === TOTAL_PAGES ? 'Map your wetland' : 'Next'} 
+              alt={currentPage === TOTAL_PAGES ? t('pages.titles.mapwetland') : 'Next'} 
               style={{ 
-                width: '158px',
+                width: 'auto',
                 height: '60px',
                 opacity: 1
               }}

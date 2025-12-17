@@ -1,14 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface PrivacyPolicyPageProps {
   onHomeClick: () => void;
 }
 
 export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClick: _onHomeClick }) => {
+  const { t, i18n } = useTranslation();
+  
   return (
     <div className="page-container" style={{ paddingTop: '120px' }}>
       <h1 className="main-title" style={{ marginBottom: '40px' }}>
-        Privacy Policy
+        {t('privacyPolicyPage.title')}
       </h1>
 
       <div style={{
@@ -27,12 +30,10 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            1. Introduction
+            {t('privacyPolicyPage.section1.title')}
           </h2>
           <p>
-            This privacy policy describes how we handle your personal data when you use this website. 
-            We respect your privacy and are committed to protecting your personal data in accordance 
-            with the General Data Protection Regulation (GDPR).
+            {t('privacyPolicyPage.section1.content')}
           </p>
         </section>
 
@@ -44,26 +45,24 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            2. Data Controller
+            {t('privacyPolicyPage.section2.title')}
           </h2>
           <p>
-            This website is managed by the Restore4Life project. The technical responsibility lies with 
-            Archipelagos Institute of Marine Conservation. For questions about this privacy policy, 
-            please contact us via{' '}
+            {t('privacyPolicyPage.section2.content')}{' '}
             <a 
               href="https://www.archipelagos.gr" 
               target="_blank" 
               rel="noreferrer"
               style={{ color: '#51727C', textDecoration: 'underline' }}
             >
-              www.archipelagos.gr
+              {t('privacyPolicyPage.section2.website')}
             </a>{' '}
-            or email{' '}
+            {t('privacyPolicyPage.section2.orEmail')}{' '}
             <a 
               href="mailto:info@archipelagos.gr"
               style={{ color: '#51727C', textDecoration: 'underline' }}
             >
-              info@archipelagos.gr
+              {t('privacyPolicyPage.section2.email')}
             </a>.
           </p>
         </section>
@@ -76,28 +75,22 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            3. Data We Collect
+            {t('privacyPolicyPage.section3.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            We only collect data necessary for the operation of this website:
+            {t('privacyPolicyPage.section3.intro')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Analytical data:</strong> Via Google Analytics, we collect anonymous usage statistics, 
-              such as the number of visitors, which pages are viewed, and how long users stay on the website. 
-              This data is only collected if you have given consent for the use of cookies. 
-              <strong> We do not store any personal data that can identify individual users.</strong>
+              <strong>{t('privacyPolicyPage.section3.analyticalData.label')}</strong> {t('privacyPolicyPage.section3.analyticalData.content')}{' '}
+              <strong> {t('privacyPolicyPage.section3.analyticalData.important')}</strong>
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Technical data:</strong> We automatically collect certain technical information, such as 
-              your IP address (anonymized), browser type, and operating system. This data is used for 
-              technical purposes and is not used to identify you.
+              <strong>{t('privacyPolicyPage.section3.technicalData.label')}</strong> {t('privacyPolicyPage.section3.technicalData.content')}
             </li>
           </ul>
           <p style={{ marginTop: '12px', fontStyle: 'italic', color: '#666' }}>
-            <strong>Important:</strong> We do not store personal data that can be used to identify individual users. 
-            The analytics data we collect is aggregated and anonymous. We cannot trace or identify individual 
-            visitors through Google Analytics.
+            <strong>{t('privacyPolicyPage.section3.important')}</strong> {t('privacyPolicyPage.section3.importantContent')}
           </p>
         </section>
 
@@ -109,23 +102,18 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            4. Cookies
+            {t('privacyPolicyPage.section4.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            This website uses cookies only for analytical purposes via Google Analytics. 
-            We use the following types of cookies:
+            {t('privacyPolicyPage.section4.intro')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Analytical cookies:</strong> These cookies help us understand how visitors use the website. 
-              These cookies are only placed if you have given consent.
+              <strong>{t('privacyPolicyPage.section4.analyticalCookies.label')}</strong> {t('privacyPolicyPage.section4.analyticalCookies.content')}
             </li>
           </ul>
           <p>
-            You can withdraw your consent for cookies at any time by deleting cookies in your browser settings. 
-            Since we do not store personal data that can identify individual users, we cannot delete specific 
-            user data upon request. However, you can always clear your browser cookies or disable cookies 
-            in your browser settings to prevent future tracking.
+            {t('privacyPolicyPage.section4.withdrawConsent')}
           </p>
         </section>
 
@@ -137,15 +125,15 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            5. Purposes of Data Processing
+            {t('privacyPolicyPage.section5.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            We use your data for the following purposes:
+            {t('privacyPolicyPage.section5.intro')}
           </p>
           <ul style={{ paddingLeft: '24px' }}>
-            <li style={{ marginBottom: '8px' }}>Improving the functionality and user experience of the website</li>
-            <li style={{ marginBottom: '8px' }}>Analyzing website usage to optimize content</li>
-            <li style={{ marginBottom: '8px' }}>Ensuring the technical security of the website</li>
+            {t('privacyPolicyPage.section5.purposes', { returnObjects: true }).map((purpose: string, index: number) => (
+              <li key={index} style={{ marginBottom: '8px' }}>{purpose}</li>
+            ))}
           </ul>
         </section>
 
@@ -157,62 +145,56 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            6. Your Rights
+            {t('privacyPolicyPage.section6.title')}
           </h2>
           <p style={{ marginBottom: '12px' }}>
-            Under GDPR, individuals have certain rights regarding their personal data. However, 
-            <strong> these rights are not applicable in our case</strong> because:
+            {t('privacyPolicyPage.section6.intro')}{' '}
+            <strong> {t('privacyPolicyPage.section6.notApplicable')}</strong> {t('privacyPolicyPage.section6.because')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
-            <li style={{ marginBottom: '8px' }}>
-              We do not store personal data that can identify individual users
-            </li>
-            <li style={{ marginBottom: '8px' }}>
-              All analytics data is anonymous and aggregated
-            </li>
-            <li style={{ marginBottom: '8px' }}>
-              We cannot trace or identify individual visitors
-            </li>
+            {t('privacyPolicyPage.section6.reasons', { returnObjects: true }).map((reason: string, index: number) => (
+              <li key={index} style={{ marginBottom: '8px' }}>{reason}</li>
+            ))}
           </ul>
           <p style={{ marginBottom: '12px' }}>
-            Therefore, the following GDPR rights are not applicable:
+            {t('privacyPolicyPage.section6.therefore')}
           </p>
           <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Right of access:</strong> Not applicable - we have no personal data about you to provide
+              <strong>{t('privacyPolicyPage.section6.rights.access.label')}</strong> {t('privacyPolicyPage.section6.rights.access.content')}
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Right to rectification:</strong> Not applicable - we do not store personal data that can be corrected
+              <strong>{t('privacyPolicyPage.section6.rights.rectification.label')}</strong> {t('privacyPolicyPage.section6.rights.rectification.content')}
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Right to erasure:</strong> Not applicable - we have no personal data to delete. You can clear your browser cookies at any time
+              <strong>{t('privacyPolicyPage.section6.rights.erasure.label')}</strong> {t('privacyPolicyPage.section6.rights.erasure.content')}
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Right to restriction:</strong> You can withdraw your consent for cookies at any time via your browser settings
+              <strong>{t('privacyPolicyPage.section6.rights.restriction.label')}</strong> {t('privacyPolicyPage.section6.rights.restriction.content')}
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Right to object:</strong> You can reject cookies via the cookie banner or disable cookies in your browser settings
+              <strong>{t('privacyPolicyPage.section6.rights.object.label')}</strong> {t('privacyPolicyPage.section6.rights.object.content')}
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Right to data portability:</strong> Not applicable - we have no personal data to export
+              <strong>{t('privacyPolicyPage.section6.rights.portability.label')}</strong> {t('privacyPolicyPage.section6.rights.portability.content')}
             </li>
           </ul>
           <p style={{ marginTop: '12px' }}>
-            If you have any questions or concerns, you can contact us via{' '}
+            {t('privacyPolicyPage.section6.contact')}{' '}
             <a 
               href="https://www.archipelagos.gr" 
               target="_blank" 
               rel="noreferrer"
               style={{ color: '#51727C', textDecoration: 'underline' }}
             >
-              www.archipelagos.gr
+              {t('privacyPolicyPage.section6.website')}
             </a>{' '}
-            or email{' '}
+            {t('privacyPolicyPage.section6.orEmail')}{' '}
             <a 
               href="mailto:info@archipelagos.gr"
               style={{ color: '#51727C', textDecoration: 'underline' }}
             >
-              info@archipelagos.gr
+              {t('privacyPolicyPage.section6.email')}
             </a>.
           </p>
         </section>
@@ -225,13 +207,10 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            7. Security
+            {t('privacyPolicyPage.section7.title')}
           </h2>
           <p>
-            We take appropriate technical and organizational measures to protect your personal data against 
-            unauthorized access, loss, or destruction. Google Analytics uses anonymized IP addresses and 
-            we have configured the settings to maximize privacy. We do not store personal data that can 
-            identify individual users.
+            {t('privacyPolicyPage.section7.content')}
           </p>
         </section>
 
@@ -243,11 +222,10 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            8. Changes to This Privacy Policy
+            {t('privacyPolicyPage.section8.title')}
           </h2>
           <p>
-            We reserve the right to modify this privacy policy. Changes will be published on this page. 
-            We recommend that you consult this page regularly to stay informed of any changes.
+            {t('privacyPolicyPage.section8.content')}
           </p>
         </section>
 
@@ -259,31 +237,31 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onHomeClic
             marginBottom: '16px',
             marginTop: '32px'
           }}>
-            9. Contact
+            {t('privacyPolicyPage.section9.title')}
           </h2>
           <p>
-            For questions about this privacy policy or about the processing of your personal data, please contact us via{' '}
+            {t('privacyPolicyPage.section9.content')}{' '}
             <a 
               href="https://www.archipelagos.gr" 
               target="_blank" 
               rel="noreferrer"
               style={{ color: '#51727C', textDecoration: 'underline' }}
             >
-              www.archipelagos.gr
+              {t('privacyPolicyPage.section9.website')}
             </a>{' '}
-            or email{' '}
+            {t('privacyPolicyPage.section9.orEmail')}{' '}
             <a 
               href="mailto:info@archipelagos.gr"
               style={{ color: '#51727C', textDecoration: 'underline' }}
             >
-              info@archipelagos.gr
+              {t('privacyPolicyPage.section9.email')}
             </a>.
           </p>
         </section>
 
         <section style={{ marginTop: '48px', paddingTop: '24px', borderTop: '2px solid #51727C' }}>
           <p style={{ fontSize: '14px', color: '#666', fontStyle: 'italic' }}>
-            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {t('privacyPolicyPage.lastUpdated')} {new Date().toLocaleDateString(i18n.language === 'nl' ? 'nl-NL' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </section>
       </div>

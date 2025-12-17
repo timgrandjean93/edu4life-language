@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface BlueGreenSpace4AllPageProps {
   onHomeClick: () => void;
@@ -8,6 +9,7 @@ interface BlueGreenSpace4AllPageProps {
 export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
   onHomeClick: _onHomeClick
 }) => {
+  const { t } = useTranslation();
   React.useEffect(() => {
     const html = document.documentElement;
     const body = document.body;
@@ -53,7 +55,7 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
                     marginBottom: '20px'
                   }}
                 >
-                  Blue-Green Space4All
+                  {t('blueGreenSpace4AllPage.title')}
                 </motion.h1>
                 <div style={{ textAlign: 'center', marginTop: '10px', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
                   <img 
@@ -67,7 +69,7 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
                     fontWeight: 'bold',
                     color: '#406A46'
                   }}>
-                    Travel with Otis the Otter along the Danube and tackle challenges!
+                    {t('blueGreenSpace4AllPage.subtitle')}
                   </div>
                 </div>
               </div>
@@ -105,7 +107,7 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
                   lineHeight: '1.6',
                   marginBottom: '20px'
                 }}>
-                  A playful computer game where you travel with Otis the Otter along the Danube. Along the way, you will encounter biological, physical, chemical, and social challenges. Answer questions, choose solutions, and improve the Danube step by step — while collecting as many coins as possible.
+                  {t('blueGreenSpace4AllPage.description')}
                 </div>
                 {/* Quiz highlight replaces the goal sentence */}
                 <div style={{ width: '100%', marginTop: '8px', display: 'flex', justifyContent: 'center' }}>
@@ -121,7 +123,7 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
                       fontWeight: 'bold',
                       color: '#406A46'
                     }}>
-                      The perfect test of how much you've learned about wetlands!
+                      {t('blueGreenSpace4AllPage.quizHighlight')}
                     </div>
                   </div>
                 </div>
@@ -178,7 +180,7 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
                   e.currentTarget.style.backgroundColor = '#97C09D';
                 }}
               >
-                Play Blue-Green Space4All
+                {t('blueGreenSpace4AllPage.playButton')}
               </button>
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
@@ -187,10 +189,10 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
                 color: '#51727C',
                 marginTop: '12px'
               }}>
-                You will open an external website with the game.
+                {t('blueGreenSpace4AllPage.externalLinkNote')}
               </div>
               <a
-                href="http://game.restore4life-platform.eu"
+                href={t('blueGreenSpace4AllPage.websiteUrl')}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -204,7 +206,7 @@ export const BlueGreenSpace4AllPage: React.FC<BlueGreenSpace4AllPageProps> = ({
                   cursor: 'pointer'
                 }}
               >
-                http://game.restore4life-platform.eu
+                {t('blueGreenSpace4AllPage.websiteUrl')}
               </a>
             </div>
           </div>

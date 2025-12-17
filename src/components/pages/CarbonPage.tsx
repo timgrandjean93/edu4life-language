@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { HomeButton } from '../HomeButton';
 import { usePageRouting } from '../../hooks/usePageRouting';
+import { LocalizedImage } from '../LocalizedImage';
 
 interface CarbonPageProps {
   onHomeClick: () => void;
@@ -11,15 +13,15 @@ interface CarbonPageProps {
 
 const TOTAL_PAGES = 3;
 
-// Hover areas for the carbon info image
-const carbonHoverAreas = [
+// Hover areas will be created inside component to access translations
+const createCarbonHoverAreas = (t: (key: string) => string) => [
   {
     id: 'anthropogenic-release',
     x: 80,
     y: 10,
     width: 30,
     height: 25,
-    text: 'Anthropogenic carbon release through drainage or other human degradation of wetlands. Stored carbon is thus oxidized and released as CO₂.'
+    text: t('carbonPage.page2.hoverAreas.anthropogenic-release')
   },
   {
     id: 'carbon-sequestration',
@@ -27,7 +29,7 @@ const carbonHoverAreas = [
     y: 20,
     width: 30,
     height: 25,
-    text: 'Carbon sequestration through photosynthesis. Plants remove CO₂ from the air through photosynthesis and produce biomass.'
+    text: t('carbonPage.page2.hoverAreas.carbon-sequestration')
   },
   {
     id: 'natural-release',
@@ -35,7 +37,7 @@ const carbonHoverAreas = [
     y: 50,
     width: 30,
     height: 25,
-    text: 'Natural carbon release through respiration and biomass decomposition'
+    text: t('carbonPage.page2.hoverAreas.natural-release')
   },
   {
     id: 'carbon-storage',
@@ -43,51 +45,23 @@ const carbonHoverAreas = [
     y: 70,
     width: 30,
     height: 25,
-    text: 'Carbon storage by biomass buried in soil and sediments'
+    text: t('carbonPage.page2.hoverAreas.carbon-storage')
   }
 ];
 
-// Carbon puzzle data
-const puzzleBlanks = [
-  { id: 'blank1', position: 'c_rbon', correctAnswer: 'ar' },
-  { id: 'blank2', position: 's_il', correctAnswer: 'o' },
-  { id: 'blank3', position: 'h_dreds', correctAnswer: 'un' },
-  { id: 'blank4', position: 'tho_ands', correctAnswer: 'us' },
-  { id: 'blank5', position: 'y_rs', correctAnswer: 'ea' },
-  { id: 'blank6', position: 'un_sturbed', correctAnswer: 'di' },
-  { id: 'blank7', position: 'und_ground', correctAnswer: 'er' },
-  { id: 'blank8', position: 'a_mosphere', correctAnswer: 't' },
-  { id: 'blank9', position: 'B_ue', correctAnswer: 'l' },
-  { id: 'blank10', position: 'cl_mate', correctAnswer: 'im' },
-  { id: 'blank11', position: 'ch_ge', correctAnswer: 'an' }
-];
+// Carbon puzzle data - will be created dynamically based on language
 
-const hiddenLetters = [
-  { id: 'letter1', text: 'an', x: 15, y: 20 },
-  { id: 'letter2', text: 'ar', x: 20, y: 60 },
-  { id: 'letter3', text: 'o', x: 35, y: 15 },
-  { id: 'letter4', text: 'l', x: 45, y: 25 },
-  { id: 'letter5', text: 'us', x: 55, y: 30 },
-  { id: 'letter6', text: 'oi', x: 25, y: 50 },
-  { id: 'letter7', text: 'er', x: 50, y: 60 },
-  { id: 'letter8', text: 'un', x: 65, y: 35 },
-  { id: 'letter9', text: 't', x: 75, y: 20 },
-  { id: 'letter10', text: 'ea', x: 70, y: 70 },
-  { id: 'letter11', text: 'di', x: 80, y: 25 },
-  { id: 'letter12', text: 'im', x: 85, y: 45 }
-];
-
-// Ecosystem labels for drag and drop
-const ecosystemLabels = [
-  { id: 'tropical-forests', label: 'Tropical forests', correctPosition: 'tropical-forests' },
-  { id: 'temperate-forests', label: 'Temperate forests', correctPosition: 'temperate-forests' },
-  { id: 'boreal-forests', label: 'Boreal forests', correctPosition: 'boreal-forests' },
-  { id: 'tropical-savannas', label: 'Tropical savannas', correctPosition: 'tropical-savannas' },
-  { id: 'temperate-grasslands', label: 'Temperate grasslands', correctPosition: 'temperate-grasslands' },
-  { id: 'deserts-semi-deserts', label: 'Deserts and semi-deserts', correctPosition: 'deserts-semi-deserts' },
-  { id: 'tundra', label: 'Tundra', correctPosition: 'tundra' },
-  { id: 'wetlands', label: 'Wetlands', correctPosition: 'wetlands' },
-  { id: 'croplands', label: 'Croplands', correctPosition: 'croplands' }
+// Ecosystem labels will be created inside component to access translations
+const createEcosystemLabels = (t: (key: string) => string) => [
+  { id: 'tropical-forests', label: t('carbonPage.ecosystemLabels.tropicalForests'), correctPosition: 'tropical-forests' },
+  { id: 'temperate-forests', label: t('carbonPage.ecosystemLabels.temperateForests'), correctPosition: 'temperate-forests' },
+  { id: 'boreal-forests', label: t('carbonPage.ecosystemLabels.borealForests'), correctPosition: 'boreal-forests' },
+  { id: 'tropical-savannas', label: t('carbonPage.ecosystemLabels.tropicalSavannas'), correctPosition: 'tropical-savannas' },
+  { id: 'temperate-grasslands', label: t('carbonPage.ecosystemLabels.temperateGrasslands'), correctPosition: 'temperate-grasslands' },
+  { id: 'deserts-semi-deserts', label: t('carbonPage.ecosystemLabels.desertsSemiDeserts'), correctPosition: 'deserts-semi-deserts' },
+  { id: 'tundra', label: t('carbonPage.ecosystemLabels.tundra'), correctPosition: 'tundra' },
+  { id: 'wetlands', label: t('carbonPage.ecosystemLabels.wetlands'), correctPosition: 'wetlands' },
+  { id: 'croplands', label: t('carbonPage.ecosystemLabels.croplands'), correctPosition: 'croplands' }
 ];
 
 // Drop zones on the image (positions as percentages)
@@ -121,7 +95,41 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   onSelfPurificationClick,
   onRepositoryClick
 }) => {
+  const { t, i18n } = useTranslation();
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
+  
+  // Create translated data structures
+  const carbonHoverAreas = React.useMemo(() => createCarbonHoverAreas(t), [t]);
+  const ecosystemLabels = React.useMemo(() => createEcosystemLabels(t), [t]);
+  
+  // Create puzzle data dynamically based on language
+  const puzzleBlanks = React.useMemo(() => {
+    const correctAnswers = t('carbonPage.page3.correctAnswers', { returnObjects: true }) as Record<string, string>;
+    const blankPositions = t('carbonPage.page3.blankPositions', { returnObjects: true }) as Record<string, string>;
+    const blankIds = Object.keys(correctAnswers).sort();
+    return blankIds.map(id => ({
+      id,
+      position: blankPositions[id] || id,
+      correctAnswer: correctAnswers[id]
+    }));
+  }, [t]);
+  
+  // Helper function to get blank after a specific part
+  const getBlankAfterPart = (partNumber: number): string | null => {
+    const partKey = `afterPart${partNumber}`;
+    const blank = puzzleBlanks.find(b => b.position === partKey);
+    return blank ? blank.id : null;
+  };
+  
+  const hiddenLetters = React.useMemo(() => {
+    const letters = t('carbonPage.page3.hiddenLetters', { returnObjects: true }) as Record<string, { text: string; x: number; y: number }>;
+    return Object.keys(letters).sort().map((key, index) => ({
+      id: `letter${index + 1}`,
+      text: letters[key].text,
+      x: letters[key].x,
+      y: letters[key].y
+    }));
+  }, [t]);
   const [draggedLabel, setDraggedLabel] = React.useState<string | null>(null);
   const [placements, setPlacements] = React.useState<Record<string, string>>({});
   const [submitted, setSubmitted] = React.useState(false);
@@ -201,8 +209,9 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
   // Auto-submit page 3 when all blanks are filled
   React.useEffect(() => {
     if (currentPage === 3 && !puzzleSubmitted) {
-      const allBlanksFilled = Object.keys(puzzleAnswers).length >= 11 && 
-                              Object.values(puzzleAnswers).every(answer => answer && answer.trim() !== '');
+      const allBlanksFilled = Object.keys(puzzleAnswers).length >= puzzleBlanks.length && 
+                              Object.values(puzzleAnswers).every(answer => answer && answer.trim() !== '') &&
+                              puzzleBlanks.every(blank => puzzleAnswers[blank.id] && puzzleAnswers[blank.id].trim() !== '');
       if (allBlanksFilled) {
         // Small delay to allow the last fill animation to complete
         setTimeout(() => {
@@ -210,7 +219,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
         }, 300);
       }
     }
-  }, [puzzleAnswers, currentPage, puzzleSubmitted]);
+  }, [puzzleAnswers, currentPage, puzzleSubmitted, puzzleBlanks]);
 
   const handleDragStart = (labelId: string) => {
     if (submitted) return;
@@ -352,6 +361,34 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
     const blank = puzzleBlanks.find(b => b.id === blankId);
     return blank && puzzleAnswers[blankId] === blank.correctAnswer;
   };
+  
+  // Helper function to render a blank
+  const renderBlank = (blankId: string) => {
+    const blank = puzzleBlanks.find(b => b.id === blankId);
+    if (!blank) return null;
+    
+    return (
+      <span 
+        onClick={() => handleBlankClick(blankId)}
+        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
+          !puzzleAnswers[blankId] 
+            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
+            : ''
+        }`}
+        style={{
+          textDecoration: puzzleSubmitted && puzzleAnswers[blankId] && !isPuzzleAnswerCorrect(blankId) ? 'line-through' : 'none',
+          backgroundColor: puzzleSubmitted && puzzleAnswers[blankId] 
+            ? (isPuzzleAnswerCorrect(blankId) ? '#548235' : '#C41904')
+            : undefined,
+          color: puzzleSubmitted && puzzleAnswers[blankId] 
+            ? (isPuzzleAnswerCorrect(blankId) ? 'white' : 'white')
+            : undefined
+        }}
+      >
+        {puzzleAnswers[blankId] || '_'}
+      </span>
+    );
+  };
 
   // getPuzzleScore no longer used after removing feedback block
 
@@ -443,7 +480,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 marginBottom: '12px',
                 fontFamily: 'Comfortaa, sans-serif'
               }}>
-                Did you know...?
+                {t('carbonPage.page2.modal.title')}
               </h2>
             </div>
             
@@ -464,7 +501,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   fontWeight: '500',
                   margin: 0
                 }}>
-                  The Earth's soils represent a massive carbon pool, storing three times more carbon than the atmosphere and four times as much as all plants and animals.
+                  {t('carbonPage.page2.modal.fact')}
                 </p>
               </div>
               
@@ -482,7 +519,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   textAlign: 'center',
                   margin: '0 0 16px 0'
                 }}>
-                  Which of the ecosystems shown in the graph stores the most carbon?
+                  {t('carbonPage.page2.modal.question')}
                 </p>
                 
                 <div style={{ marginBottom: '16px' }}>
@@ -508,7 +545,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       e.currentTarget.style.borderColor = '#93c5fd';
                     }}
                   >
-                    <option value="">🌿 Select an ecosystem...</option>
+                    <option value="">{t('carbonPage.page2.modal.selectEcosystem')}</option>
                     {ecosystemLabels.map((label) => (
                       <option key={label.id} value={label.id}>
                         {label.label}
@@ -556,7 +593,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       )}
                     </div>
                     <span style={{ fontSize: '20px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: isQuizAnswerCorrect() ? '#548235' : '#C41904' }}>
-                      {isQuizAnswerCorrect() ? 'Correct! Wetlands store the most carbon.' : 'Incorrect. The correct answer is Wetlands.'}
+                      {isQuizAnswerCorrect() ? t('carbonPage.page2.modal.feedback.correct') : t('carbonPage.page2.modal.feedback.incorrect')}
                     </span>
                   </div>
                   <p style={{
@@ -565,7 +602,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     lineHeight: '1.6',
                     margin: 0
                   }}>
-                    Wetlands are among the most effective carbon sinks on Earth, storing massive amounts of carbon in their soils and vegetation.
+                    {t('carbonPage.page2.modal.feedback.explanation')}
                   </p>
                 </div>
               )}
@@ -602,7 +639,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 }}
               >
                 <span style={{ color: 'white', fontWeight: 'bold', fontSize: '20px', lineHeight: '1' }}>
-                  {quizSubmitted ? 'Next Page' : 'Submit Answer'}
+                  {quizSubmitted ? t('carbonPage.page2.modal.nextPage') : t('carbonPage.page2.modal.submitAnswer')}
                 </span>
                 {quizSubmitted && (
                   <svg 
@@ -641,9 +678,9 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  {currentPage === 1 ? 'Carbon pools on Earth' : 
-                   currentPage === 2 ? 'Carbon cycle in Earth\'s continental ecosystems' :
-                   'Climate protection and Carbon sink'}
+                  {currentPage === 0 ? t('carbonPage.title.page0') :
+                   currentPage === 1 ? t('carbonPage.title.page1') :
+                   t('carbonPage.title.page2')}
                 </motion.h1>
               </div>
             </div>
@@ -666,7 +703,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 <div style={{ width: '100%', maxWidth: '600px' }}>
                   <img 
                     src="/assets/components/carbon/carbon-info.png"
-                    alt="Climate protection and Carbon sink"
+                    alt={t('carbonPage.title.page0')}
                     style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
                   />
                 </div>
@@ -683,7 +720,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Learn about climate protection and discover how carbon sinks play a crucial role in mitigating climate change.
+                {t('carbonPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
@@ -735,7 +772,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                    Access Teaching Materials
+                    {t('carbonPage.intro.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -757,7 +794,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Open platform
+                        {t('carbonPage.intro.openPlatform')}
                       </a>
                     </div>
                     <div style={{
@@ -766,7 +803,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       color: '#406A46',
                       fontStyle: 'italic'
                     }}>
-                      Opens new tab: Zenodo
+                      {t('carbonPage.intro.opensNewTab')}
                     </div>
                   </div>
                 </div>
@@ -782,7 +819,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   }}>
                   <img 
                     src="/assets/icons/edurepo.png"
-                    alt="Explore Wet-Edu Repository"
+                    alt={t('carbonPage.modal.exploreRepository')}
                       style={{ width: '120px', height: '120px' }}
                     />
                   </div>
@@ -795,7 +832,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                    Explore Wet-Edu Repository
+                    {t('carbonPage.intro.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -815,7 +852,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Explore
+                        {t('carbonPage.intro.explore')}
                       </button>
                     </div>
                   </div>
@@ -847,7 +884,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   marginBottom: '15px',
                   lineHeight: '1.2'
                 }}>
-                  Match the ecosystem icons
+                  {t('carbonPage.page1.title')}
                 </h2>
 
                 {/* Instructions Text */}
@@ -861,10 +898,10 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   margin: '0 auto'
                 }}>
                   <p style={{ margin: 0 }}>
-                    Look at the icons on top of the graph – each shows a different ecosystem.
+                    {t('carbonPage.page1.instruction1')}
                   </p>
                   <p style={{ margin: '8px 0 0 0' }}>
-                    Your challenge: <span style={{ color: '#9F8B68' }}>Drag the correct label from below to the matching question mark.</span>
+                    {t('carbonPage.page1.instruction2')} <span style={{ color: '#9F8B68' }}>{t('carbonPage.page1.instruction3')}</span>
                   </p>
                 </div>
               </div>
@@ -1031,7 +1068,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         overflow: 'hidden',
                         fontFamily: 'Comfortaa, sans-serif'
                       }}
-                      title={placement && !submitted ? 'Click to remove label' : ''}
+                      title={placement && !submitted ? t('carbonPage.page1.clickToRemove') : ''}
                     >
                       {placement ? ecosystemLabels.find(l => l.id === placement)?.label : '?'}
                     </div>
@@ -1052,7 +1089,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       margin: 0,
                       lineHeight: '1.4'
                     }}>
-                    Hint: Focus on the features that make each ecosystem unique such as trees, water, grass, or landforms.
+                    {t('carbonPage.page1.hint')}
                   </p>
                   </div>
                 </div>
@@ -1079,7 +1116,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   fontSize: '20px'
                 }}
               >
-                Check Answers
+                {t('carbonPage.page1.checkAnswers')}
               </button>
             </div>
           )}
@@ -1107,7 +1144,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         </svg>
                       </div>
                       <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#548235' }}>
-                        {correctCount} Correct
+                        {correctCount} {t('carbonPage.page1.correct')}
                       </span>
                     </div>
 
@@ -1125,7 +1162,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         </svg>
                       </div>
                       <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#C41904' }}>
-                        {incorrectCount} Incorrect
+                        {incorrectCount} {t('carbonPage.page1.incorrect')}
                       </span>
                     </div>
 
@@ -1143,7 +1180,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         </svg>
                       </div>
                       <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#CE7C0A' }}>
-                        {missedCount} Missed
+                        {missedCount} {t('carbonPage.page1.missed')}
                       </span>
                     </div>
                   </div>
@@ -1163,7 +1200,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   maxWidth: '1000px',
                   margin: '0 auto'
                 }}>
-                  Hover over the image to find the carbon contribution of wetlands
+                  {t('carbonPage.page2.instruction')}
                 </p>
               </div>
 
@@ -1265,7 +1302,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   width: '100%',
                   margin: '0 auto'
                 }}>
-                  Wetlands cover only 5-6% of Earth's land but store 20-30% of all organic soil carbon
+                  {t('carbonPage.page2.infoText')}
                 </p>
               </div>
             </>
@@ -1294,7 +1331,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     margin: 0,
                     lineHeight: '1.2'
                   }}>
-                    Fill-in-the-blanks
+                    {t('carbonPage.page3.title')}
                 </h2>
                 </div>
 
@@ -1308,7 +1345,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   width: '100%',
                   margin: '0 auto 20px'
                 }}>
-                  Our planet has an amazing way of storing carbon in the ground for centuries! But some letters and syllables from the sentences below have been hidden in the drawing.
+                  {t('carbonPage.page3.instruction1')}
                 </p>
                 <p style={{ 
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1319,7 +1356,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   width: '100%',
                   margin: '0 auto 30px'
                 }}>
-                  Can you figure them out and complete the text?
+                  {t('carbonPage.page3.instruction2')}
                 </p>
               </div>
 
@@ -1338,233 +1375,35 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     lineHeight: '1.6'
                   }}>
                     <p className="mb-4">
-                      Some C{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank1')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank1'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank1'] && !isPuzzleAnswerCorrect('blank1') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank1'] 
-                            ? (isPuzzleAnswerCorrect('blank1') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank1'] 
-                            ? (isPuzzleAnswerCorrect('blank1') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank1'] || '_'}
-                      </span>
-                      bon stays locked in the s{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank2')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank2'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank2'] && !isPuzzleAnswerCorrect('blank2') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank2'] 
-                            ? (isPuzzleAnswerCorrect('blank2') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank2'] 
-                            ? (isPuzzleAnswerCorrect('blank2') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank2'] || '_'}
-                      </span>
-                      il for a very long time — sometimes h{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank3')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank3'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank3'] && !isPuzzleAnswerCorrect('blank3') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank3'] 
-                            ? (isPuzzleAnswerCorrect('blank3') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank3'] 
-                            ? (isPuzzleAnswerCorrect('blank3') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank3'] || '_'}
-                      </span>
-                      dreds or even tho{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank4')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank4'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank4'] && !isPuzzleAnswerCorrect('blank4') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank4'] 
-                            ? (isPuzzleAnswerCorrect('blank4') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank4'] 
-                            ? (isPuzzleAnswerCorrect('blank4') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank4'] || '_'}
-                      </span>
-                      ands of y{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank5')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank5'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank5'] && !isPuzzleAnswerCorrect('blank5') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank5'] 
-                            ? (isPuzzleAnswerCorrect('blank5') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank5'] 
-                            ? (isPuzzleAnswerCorrect('blank5') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank5'] || '_'}
-                      </span>
-                      rs!
+                      {t('carbonPage.page3.puzzleText.part1')}{''}
+                      {getBlankAfterPart(1) && renderBlank(getBlankAfterPart(1)!)}
+                      {t('carbonPage.page3.puzzleText.part2')}{''}
+                      {getBlankAfterPart(2) && renderBlank(getBlankAfterPart(2)!)}
+                      {t('carbonPage.page3.puzzleText.part3')}{''}
+                      {getBlankAfterPart(3) && renderBlank(getBlankAfterPart(3)!)}
+                      {t('carbonPage.page3.puzzleText.part4')}{''}
+                      {getBlankAfterPart(4) && renderBlank(getBlankAfterPart(4)!)}
+                      {t('carbonPage.page3.puzzleText.part5')}{''}
+                      {getBlankAfterPart(5) && renderBlank(getBlankAfterPart(5)!)}
+                      {t('carbonPage.page3.puzzleText.part6')}
                     </p>
                     <p className="mb-4">
-                      If we leave it un{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank6')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank6'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank6'] && !isPuzzleAnswerCorrect('blank6') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank6'] 
-                            ? (isPuzzleAnswerCorrect('blank6') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank6'] 
-                            ? (isPuzzleAnswerCorrect('blank6') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank6'] || '_'}
-                      </span>
-                      sturbed, this soil carbon remains safely und{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank7')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank7'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank7'] && !isPuzzleAnswerCorrect('blank7') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank7'] 
-                            ? (isPuzzleAnswerCorrect('blank7') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank7'] 
-                            ? (isPuzzleAnswerCorrect('blank7') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank7'] || '_'}
-                      </span>
-                      ground, instead of going into the a{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank8')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank8'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank8'] && !isPuzzleAnswerCorrect('blank8') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank8'] 
-                            ? (isPuzzleAnswerCorrect('blank8') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank8'] 
-                            ? (isPuzzleAnswerCorrect('blank8') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank8'] || '_'}
-                      </span>
-                      mosphere.
+                      {t('carbonPage.page3.puzzleText.part7')}{''}
+                      {getBlankAfterPart(7) && renderBlank(getBlankAfterPart(7)!)}
+                      {t('carbonPage.page3.puzzleText.part8')}{''}
+                      {getBlankAfterPart(8) && renderBlank(getBlankAfterPart(8)!)}
+                      {t('carbonPage.page3.puzzleText.part9')}{''}
+                      {getBlankAfterPart(9) && renderBlank(getBlankAfterPart(9)!)}
+                      {t('carbonPage.page3.puzzleText.part10')}
                     </p>
                     <p>
-                      B{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank9')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank9'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank9'] && !isPuzzleAnswerCorrect('blank9') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank9'] 
-                            ? (isPuzzleAnswerCorrect('blank9') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank9'] 
-                            ? (isPuzzleAnswerCorrect('blank9') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank9'] || '_'}
-                      </span>
-                      ue carbon, stored in coastal and wetland areas, also helps slow down cl{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank10')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank10'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank10'] && !isPuzzleAnswerCorrect('blank10') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank10'] 
-                            ? (isPuzzleAnswerCorrect('blank10') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank10'] 
-                            ? (isPuzzleAnswerCorrect('blank10') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank10'] || '_'}
-                      </span>
-                      ate ch{''}
-                      <span 
-                        onClick={() => handleBlankClick('blank11')}
-                        className={`inline-block px-6 py-1 rounded cursor-pointer transition-all duration-300 ${
-                          !puzzleAnswers['blank11'] 
-                            ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
-                            : ''
-                        }`}
-                        style={{
-                          textDecoration: puzzleSubmitted && puzzleAnswers['blank11'] && !isPuzzleAnswerCorrect('blank11') ? 'line-through' : 'none',
-                          backgroundColor: puzzleSubmitted && puzzleAnswers['blank11'] 
-                            ? (isPuzzleAnswerCorrect('blank11') ? '#548235' : '#C41904')
-                            : undefined,
-                          color: puzzleSubmitted && puzzleAnswers['blank11'] 
-                            ? (isPuzzleAnswerCorrect('blank11') ? 'white' : 'white')
-                            : undefined
-                        }}
-                      >
-                        {puzzleAnswers['blank11'] || '_'}
-                      </span>
-                      ge.
+                      {t('carbonPage.page3.puzzleText.part11')}{''}
+                      {getBlankAfterPart(11) && renderBlank(getBlankAfterPart(11)!)}
+                      {t('carbonPage.page3.puzzleText.part12')}{''}
+                      {getBlankAfterPart(12) && renderBlank(getBlankAfterPart(12)!)}
+                      {t('carbonPage.page3.puzzleText.part13')}{''}
+                      {getBlankAfterPart(13) && renderBlank(getBlankAfterPart(13)!)}
+                      {t('carbonPage.page3.puzzleText.part14')}
                     </p>
                   </div>
                 </div>
@@ -1623,7 +1462,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   margin: '20px auto 30px',
                   maxWidth: '800px'
                 }}>
-                  Click on a letter in the image above, then click on the corresponding gap in the text to place it. Click on a placed letter to remove it.
+                  {t('carbonPage.page3.instruction3')}
                 </p>
 
                 {/* Check Answers Button */}
@@ -1647,7 +1486,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                         fontSize: '20px'
                       }}
                     >
-                      Check Answers
+                      {t('carbonPage.page1.checkAnswers')}
                     </button>
                   </div>
                 )}
@@ -1713,7 +1552,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     onClick={handleDownloadClick}
                     className="download-button relative flex items-center justify-center z-50"
                     style={{
-                      width: '480px',
+                      width: 'auto',
                       height: '50px',
                       backgroundColor: 'transparent',
                       border: 'none',
@@ -1721,11 +1560,11 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       flexShrink: 0
                     }}
                   >
-                    <img 
+                    <LocalizedImage 
                       src="/assets/icons/download.png" 
                       alt="Download" 
                       style={{ 
-                        width: '480px',
+                        width: 'auto',
                         height: '50px',
                         opacity: 1
                       }}
@@ -1772,7 +1611,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                       fontSize: '24px',
                       color: '#406A46'
                     }}>
-                      NEXT TOPIC: Self Purification
+                      {t('carbonPage.nextTopic')}
                     </span>
                   </div>
                 )}
@@ -1819,20 +1658,21 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   onClick={handleRetry}
                   className="retry-button relative flex items-center justify-center z-50"
                   style={{
-                    width: '217px',
+                    width: '250px',
                     height: '60px',
                     backgroundColor: 'transparent',
                     border: 'none',
                     cursor: 'pointer'
                   }}
                 >
-                  <img 
+                  <LocalizedImage 
                     src="/assets/icons/tryagain.png" 
-                    alt="Try Again" 
+                    alt={t('common.tryAgain')} 
                     style={{ 
-                      width: '217px',
+                      width: '250px',
                       height: '60px',
-                      opacity: 1
+                      opacity: 1,
+                      objectFit: 'contain'
                     }}
                   />
                 </button>
@@ -1840,20 +1680,21 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   onClick={() => setShowModal(true)}
                   className="next-button relative flex items-center justify-center z-50"
                   style={{
-                    width: '158px',
+                    width: '250px',
                     height: '60px',
                     backgroundColor: 'transparent',
                     border: 'none',
                     cursor: 'pointer'
                   }}
                 >
-                  <img 
+                  <LocalizedImage 
                     src="/assets/icons/next.png" 
                     alt="Next" 
                     style={{ 
-                      width: '158px',
+                      width: '250px',
                       height: '60px',
-                      opacity: 1
+                      opacity: 1,
+                      objectFit: 'contain'
                     }}
                   />
                 </button>
@@ -1865,7 +1706,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
               onClick={() => setCurrentPage(3)}
               className="next-button relative flex items-center justify-center z-50"
               style={{
-                width: '158px',
+                width: '250px',
                 height: '60px',
                 backgroundColor: 'transparent',
                 border: 'none',
@@ -1875,13 +1716,14 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
               onMouseUp={(e) => e.currentTarget.style.cursor = 'grab'}
               onMouseLeave={(e) => e.currentTarget.style.cursor = 'grab'}
             >
-              <img 
+              <LocalizedImage 
                 src="/assets/icons/next.png" 
                 alt="Next" 
                 style={{ 
-                  width: '158px',
+                  width: '250px',
                   height: '60px',
-                  opacity: 1
+                  opacity: 1,
+                  objectFit: 'contain'
                 }}
               />
             </button>
@@ -1893,21 +1735,22 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
               <button
                 onClick={handleRetry}
                 className="retry-button relative flex items-center justify-center z-50"
-                style={{
-                  width: '158px',
-                  height: '60px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
+              style={{
+                width: '250px',
+                height: '60px',
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer'
+              }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/tryagain.png" 
-                  alt="Try Again" 
+                  alt={t('common.tryAgain')} 
                   style={{ 
-                    width: '158px',
+                    width: '250px',
                     height: '60px',
-                    opacity: 1
+                    opacity: 1,
+                    objectFit: 'contain'
                   }}
                 />
               </button>
@@ -1915,7 +1758,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 onClick={onSelfPurificationClick}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: '250px',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
@@ -1925,13 +1768,14 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 onMouseUp={(e) => e.currentTarget.style.cursor = 'grab'}
                 onMouseLeave={(e) => e.currentTarget.style.cursor = 'grab'}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
-                  alt="NEXT TOPIC: Self Purification" 
+                  alt={t('carbonPage.nextTopic')} 
                   style={{ 
-                    width: '158px',
+                    width: '250px',
                     height: '60px',
-                    opacity: 1
+                    opacity: 1,
+                    objectFit: 'contain'
                   }}
                 />
               </button>
@@ -1998,7 +1842,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
               textAlign: 'center',
               marginBottom: '30px'
             }}>
-              Download Options
+              {t('carbonPage.modal.title')}
             </div>
 
             {/* Option 1: Zenodo Link 1 */}
@@ -2049,7 +1893,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   color: 'white',
                   marginBottom: '6px'
                 }}>
-                  Carbon sequestration in soils
+                  {t('carbonPage.modal.carbonSequestrationSoils')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -2057,7 +1901,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.7)'
                 }}>
-                  (Opens in new tab: Zenodo)
+                  {t('carbonPage.modal.opensInNewTab')}
                 </div>
               </div>
             </button>
@@ -2110,7 +1954,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   color: 'white',
                   marginBottom: '6px'
                 }}>
-                  Carbon sequestration in floodplain forests
+                  {t('carbonPage.modal.carbonSequestrationFloodplains')}
         </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -2118,7 +1962,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.7)'
                 }}>
-                  (Opens in new tab: Zenodo)
+                  {t('carbonPage.modal.opensInNewTab')}
       </div>
               </div>
             </button>
@@ -2155,7 +1999,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
               }}>
                 <img 
                   src="/assets/icons/edurepo.png" 
-                  alt="Explore Wet-Edu Repository" 
+                  alt={t('carbonPage.modal.exploreRepository')} 
                   style={{ 
                     width: '50px',
                     height: '50px'
@@ -2170,7 +2014,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('carbonPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -2178,7 +2022,7 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.9)'
                 }}>
-                  Explore related projects and resources
+                  {t('carbonPage.modal.exploreRelated')}
                 </div>
               </div>
             </button>

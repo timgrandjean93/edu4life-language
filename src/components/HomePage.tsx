@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { RotationMessage } from './RotationMessage';
+import { LocalizedImage } from './LocalizedImage';
 import type { ClickableComponent } from '../data/clickableComponents';
 
 interface HomePageProps {
@@ -100,6 +102,7 @@ const IMAGE_STYLE: React.CSSProperties = {
 };
 
 export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onComponentClick, onNavigate }) => {
+  const { t } = useTranslation();
   const riverRef = useRef<HTMLDivElement>(null);
   const riverImgRef = useRef<HTMLImageElement>(null);
   const [showRotationMessage, setShowRotationMessage] = useState(false);
@@ -199,7 +202,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
           top: `${overlayBox.top + menuItem.y * overlayBox.s}px`,
         }}
       >
-        <img
+        <LocalizedImage
           src={item.imageSrc}
           alt={item.alt}
           style={{
@@ -298,14 +301,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
         zIndex: 50,
         cursor: 'pointer'
       }}>
-        <img
+        <LocalizedImage
           src="/assets/icons/menu/credits.png"
-          alt="Credits"
+          alt={t('homePage.credits')}
           onClick={() => setShowCreditsModal(true)}
           style={{
             maxWidth: '75px',
             height: 'auto',
-            display: 'block'
+            display: 'block',
+            cursor: 'pointer'
           }}
         />
       </div>
@@ -338,9 +342,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <img
+            <LocalizedImage
               src="/assets/icons/menu/creditsmodal.png"
-              alt="Credits Modal"
+              alt={t('homePage.credits')}
               style={{
                 maxWidth: '100%',
                 maxHeight: '90vh',
@@ -379,9 +383,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
       <div className="flex items-start justify-center" style={{ paddingTop: '16px', paddingBottom: '24px', marginTop: '80px' }}>
         <div className="w-full" style={{ padding: '0 100px' }}>
           <h1 className="main-title" style={{ fontSize: '36px', color: '#51727C' }}>
-            LIVING FLOODPLAINS:{' '}
-            <span style={{ color: '#548235' }}>LEARN, EXPLORE, RESTORE</span>
-            <span style={{ color: '#51727C' }}>4LIFE TOOLBOX</span>
+            {t('homePage.title')}{' '}
+            <span style={{ color: '#548235' }}>{t('homePage.subtitle')}</span>
+            <span style={{ color: '#51727C' }}>{t('homePage.subtitle2')}</span>
           </h1>
         </div>
       </div>
@@ -424,7 +428,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
             width: 'auto'
           }}
         >
-          <img 
+          <LocalizedImage 
             src="/assets/components/Click.png" 
             alt="Click instruction" 
             style={{ 
@@ -434,7 +438,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
               maxWidth: 'none'
             }}
           />
-          <img 
+          <LocalizedImage 
             src="/assets/components/Lau.png" 
             alt="Lau instruction" 
             style={{ 

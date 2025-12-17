@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface Wetland4LifePageProps {
   onHomeClick: () => void;
@@ -8,6 +9,7 @@ interface Wetland4LifePageProps {
 export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
   onHomeClick: _onHomeClick
 }) => {
+  const { t } = useTranslation();
   // Set page background
   React.useEffect(() => {
     const html = document.documentElement;
@@ -32,7 +34,8 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
   }, []);
 
   const handleVisitWebsite = () => {
-    window.open('https://wetland.restore4life-platform.eu', '_blank');
+    // App komt medio januari online - button is disabled
+    // window.open('https://wetland.restore4life-platform.eu', '_blank');
   };
 
   return (
@@ -57,7 +60,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                     marginBottom: '20px'
                   }}
                 >
-                  Wetland4Life
+                  {t('wetland4LifePage.title')}
                 </motion.h1>
                 <div style={{ textAlign: 'center', marginTop: '30px', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
                   <img 
@@ -74,7 +77,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                     fontWeight: 'bold',
                     color: '#406A46'
                   }}>
-                    Explore the potential of wetlands via an app!
+                    {t('wetland4LifePage.subtitle')}
                   </div>
                 </div>
               </div>
@@ -113,7 +116,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                   color: '#406A46',
                   marginBottom: '30px'
                 }}>
-                  What does Wetland4Life do?
+                  {t('wetland4LifePage.whatDoesItDo.title')}
                 </div>
 
                 <div style={{
@@ -126,7 +129,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                   lineHeight: '1.6',
                   marginBottom: '10px'
                 }}>
-                  Wetland4Life helps to make wetland mapping accessible to everyone. It offers simple, practical ways to assess wetland condition and identify restoration opportunities.
+                  {t('wetland4LifePage.whatDoesItDo.description')}
                 </div>
               </div>
 
@@ -165,7 +168,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                       }}
                     />
                   </div>
-                  <strong>How it works</strong>
+                  <strong>{t('wetland4LifePage.howItWorks.title')}</strong>
                 </div>
 
                 <div style={{
@@ -178,7 +181,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                   lineHeight: '1.6',
                   marginBottom: '10px'
                 }}>
-                  Step-by-step simple questions guide you through the mapping process. Each location takes approximately <strong style={{ color: '#406A46' }}>5 minutes</strong> to assess — quick, clear, and scientifically grounded.
+                  {t('wetland4LifePage.howItWorks.description')} <strong style={{ color: '#406A46' }}>{t('wetland4LifePage.howItWorks.time')}</strong> {t('wetland4LifePage.howItWorks.timeEnd')}
                 </div>
 
                 {/* Academy Section */}
@@ -216,7 +219,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                       }}
                     />
                   </div>
-                  Want to learn more?
+                  {t('wetland4LifePage.academy.title')}
                 </div>
 
                 <div style={{
@@ -229,7 +232,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                   lineHeight: '1.6',
                   marginBottom: '10px'
                 }}>
-                  The app includes a built-in academy with material about wetlands — like their functions, threats, and restoration. Whether you're a beginner or a professional, there's always something new to discover.
+                  {t('wetland4LifePage.academy.description')}
                 </div>
               </div>
             </div>
@@ -249,7 +252,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
               color: '#CE7C0A',
               lineHeight: '1.6'
             }}>
-              Because wetlands are so essential to our safety, our environment, and our future, it's crucial to understand their current state — and where we can restore what has been lost. So we need you!
+              {t('wetland4LifePage.callToAction')}
             </div>
           </div>
 
@@ -257,56 +260,24 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
             <button
               onClick={handleVisitWebsite}
+              disabled={true}
               style={{
                 backgroundColor: '#97C09D',
                 border: 'none',
                 borderRadius: '8px',
                 padding: '16px 32px',
-                cursor: 'pointer',
+                cursor: 'not-allowed',
                 fontFamily: 'Comfortaa, sans-serif',
                 fontSize: '20px',
                 fontWeight: 'bold',
                 color: 'white',
                 transition: 'background-color 0.3s',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#7FAF85';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#97C09D';
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                opacity: 0.7
               }}
             >
-              Visit Wetland4Life App
+              {t('wetland4LifePage.visitButton')}
             </button>
-            <div style={{
-              fontFamily: 'Comfortaa, sans-serif',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              color: '#51727C',
-              textAlign: 'center',
-              marginTop: '12px'
-            }}>
-              This link leads to an external website optimized for mobile. The experience may be less optimal on desktop.
-            </div>
-            <a
-              href="https://wetland.restore4life-platform.eu"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontFamily: 'Comfortaa, sans-serif',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                color: '#51727C',
-                textAlign: 'center',
-                marginTop: '8px',
-                display: 'block',
-                textDecoration: 'underline',
-                cursor: 'pointer'
-              }}
-            >
-              https://wetland.restore4life-platform.eu
-            </a>
           </div>
         </motion.div>
       </div>

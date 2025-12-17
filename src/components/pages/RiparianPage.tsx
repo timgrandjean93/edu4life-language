@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { usePageRouting } from '../../hooks/usePageRouting';
+import { LocalizedImage } from '../LocalizedImage';
 
 interface RiparianPageProps {
   onHomeClick: () => void;
@@ -10,21 +12,21 @@ interface RiparianPageProps {
 
 const TOTAL_PAGES = 2;
 
-// Quiz options with correct answers
+// Quiz options with correct answers - labels will be translated
 const quizOptions = [
-  { id: 'human-settlements', label: 'Human settlements', correct: true },
-  { id: 'roads-bridges', label: 'Roads and bridges', correct: true },
-  { id: 'flood-protection', label: 'Flood protection structures (dikes, embankments and bridges)', correct: true },
-  { id: 'dams', label: 'Dams & Hydropower', correct: false },
-  { id: 'pastures', label: 'Pastures and grazing areas for livestock', correct: true },
-  { id: 'irrigation', label: 'Irrigation canals and systems', correct: false },
-  { id: 'factory', label: 'Factory or industry', correct: true },
-  { id: 'mining', label: 'Sand and gravel mining', correct: false },
-  { id: 'cycling', label: 'Cycling', correct: true },
-  { id: 'riparian-vegetation', label: 'Riparian vegetation (trees and shrubs along the riverbanks)', correct: true },
-  { id: 'floodplains', label: 'Floodplains, wetlands', correct: true },
-  { id: 'agriculture', label: 'Agriculture/Farming', correct: true },
-  { id: 'recreation', label: 'Recreation (camping, swimming, canoeing, etc.)', correct: true }
+  { id: 'human-settlements', labelKey: 'human-settlements', correct: true },
+  { id: 'roads-bridges', labelKey: 'roads-bridges', correct: true },
+  { id: 'flood-protection', labelKey: 'flood-protection', correct: true },
+  { id: 'dams', labelKey: 'dams', correct: false },
+  { id: 'pastures', labelKey: 'pastures', correct: true },
+  { id: 'irrigation', labelKey: 'irrigation', correct: false },
+  { id: 'factory', labelKey: 'factory', correct: true },
+  { id: 'mining', labelKey: 'mining', correct: false },
+  { id: 'cycling', labelKey: 'cycling', correct: true },
+  { id: 'riparian-vegetation', labelKey: 'riparian-vegetation', correct: true },
+  { id: 'floodplains', labelKey: 'floodplains', correct: true },
+  { id: 'agriculture', labelKey: 'agriculture', correct: true },
+  { id: 'recreation', labelKey: 'recreation', correct: true }
 ];
 
 // Drop zones for page 2 - Stream habitats
@@ -53,6 +55,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
   onFloodControlClick,
   onRepositoryClick
 }) => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   
   // Page 1 state
@@ -254,9 +257,9 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  {currentPage === 0 ? 'Exploring the habitat of a stream' : 
-                   currentPage === 1 ? 'Land use along the rivers' : 
-                   'Stream habitats: RIFFLE, POOL, and RUN'}
+                  {currentPage === 0 ? t('riparianPage.title.page0') : 
+                   currentPage === 1 ? t('riparianPage.title.page1') : 
+                   t('riparianPage.title.page2')}
                 </motion.h1>
                 
                 {/* Subtitle */}
@@ -309,7 +312,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                 maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Learn about exploring habitats and discover the diverse riparian ecosystems and land use activities along rivers.
+                {t('riparianPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
@@ -361,7 +364,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access Teaching Materials
+                      {t('riparianPage.intro.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -383,7 +386,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Open platform
+                        {t('riparianPage.intro.openPlatform')}
                       </a>
                     </div>
                     <div style={{
@@ -392,7 +395,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                       color: '#406A46',
                       fontStyle: 'italic'
                     }}>
-                      Opens new tab: Zenodo
+                      {t('riparianPage.intro.opensNewTab')}
                     </div>
                   </div>
                 </div>
@@ -421,7 +424,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Wet-Edu Repository
+                      {t('riparianPage.intro.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -441,7 +444,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Explore
+                        {t('riparianPage.intro.explore')}
                       </button>
                     </div>
                   </div>
@@ -462,7 +465,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                     color: '#619F6A'
                   }}
                 >
-                  Rivers and their surroundings have been used by people since ancient times for many different activities, such as farming, building homes, fishing, traveling, and getting water. This land use shows how humans interact with and shape the areas around rivers.
+                  {t('riparianPage.page1.introText')}
                 </p>
                 
                 {/* Second paragraph with pencil icon */}
@@ -488,9 +491,9 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                         textAlign: 'left'
                   }}
                 >
-                      Look carefully at the both illustration and choose which{' '}
-                      <span style={{ color: '#D2847A' }}>land use activities</span>{' '}
-                      you can find.
+                      {t('riparianPage.page1.instruction')}{' '}
+                      <span style={{ color: '#D2847A' }}>{t('riparianPage.page1.landUseActivities')}</span>{' '}
+                      {t('riparianPage.page1.instructionEnd')}
                 </p>
                   </div>
                 </div>
@@ -539,7 +542,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   fontWeight: 'bold', 
                   color: '#406A46' 
                 }}>
-                  From the list below, click on the activities you can see in the pictures:
+                  {t('riparianPage.page1.quizQuestion')}
                 </h3>
 
                 {/* Quiz Options - Flowing Layout */}
@@ -620,7 +623,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                                    '#406A46'
                           }}
                         >
-                          {option.label}
+                          {t(`riparianPage.quizOptions.${option.labelKey}`)}
                         </span>
                       </button>
                     );
@@ -664,7 +667,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                             </svg>
                           </div>
                           <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#548235' }}>
-                            {correctCount} Correct
+                            {correctCount} {t('riparianPage.page1.correct')}
                           </span>
                         </div>
 
@@ -682,7 +685,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                             </svg>
                           </div>
                           <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#C41904' }}>
-                            {incorrectCount} Incorrect
+                            {incorrectCount} {t('riparianPage.page1.incorrect')}
                           </span>
                         </div>
 
@@ -700,7 +703,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                             </svg>
                           </div>
                           <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#CE7C0A' }}>
-                            {missedCount} Missed
+                            {missedCount} {t('riparianPage.page1.missed')}
                           </span>
                         </div>
                       </div>
@@ -736,7 +739,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                     color: '#406A46'
                   }}
                 >
-                  Read the definitions of the terms <span style={{ color: '#CE7C0A', fontWeight: 'bold' }}>RIFFLE</span>, <span style={{ color: '#0400D4', fontWeight: 'bold' }}>RUN</span>, and <span style={{ color: '#00AEFF', fontWeight: 'bold' }}>POOL</span> below,<br />then drag and drop each label to its correct place in the two images.
+                  {t('riparianPage.page2.instruction')} <span style={{ color: '#CE7C0A', fontWeight: 'bold' }}>{t('riparianPage.page2.labels.RIFFLE')}</span>, <span style={{ color: '#0400D4', fontWeight: 'bold' }}>{t('riparianPage.page2.labels.RUN')}</span>, {t('riparianPage.page2.and', { defaultValue: 'and' })} <span style={{ color: '#00AEFF', fontWeight: 'bold' }}>{t('riparianPage.page2.labels.POOL')}</span> {t('riparianPage.page2.instructionEnd')}
                 </p>
               </div>
 
@@ -822,7 +825,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
                               }}
                             >
-                              Correct: {zone.correctLabel}
+                              {t('riparianPage.page2.correct')} {t(`riparianPage.page2.labels.${zone.correctLabel}`)}
                             </div>
                           )}
                         </div>
@@ -836,6 +839,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                         const labelColor = labelColors[label as keyof typeof labelColors];
                         const isLightColor = label === 'POOL';
                         const textColor = isLightColor ? '#fff' : '#fff';
+                        const labelText = t(`riparianPage.page2.labels.${label}`);
                         
                         return (
                           <div
@@ -848,7 +852,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               backgroundColor: labelColor,
                               color: textColor,
                               borderRadius: '30px',
-                              padding: '10px 12px',
+                              padding: '10px 16px',
                               fontSize: '24px',
                               fontFamily: 'Comfortaa, sans-serif',
                               textAlign: 'center',
@@ -856,14 +860,15 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                               opacity: draggedLabel === label ? 0.5 : 1,
                               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
                               border: 'none',
-                              width: '120px',
-                              minWidth: '120px',
-                              display: 'flex',
+                              width: 'auto',
+                              minWidth: 'fit-content',
+                              display: 'inline-flex',
                               alignItems: 'center',
-                              justifyContent: 'center'
+                              justifyContent: 'center',
+                              whiteSpace: 'nowrap'
                             }}
                           >
-                            {label}
+                            {labelText}
                           </div>
                         );
                       })}
@@ -943,7 +948,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
                               }}
                             >
-                              Correct: {zone.correctLabel}
+                              {t('riparianPage.page2.correct')} {t(`riparianPage.page2.labels.${zone.correctLabel}`)}
                             </div>
                           )}
                         </div>
@@ -972,7 +977,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                     color: '#406A46',
                     lineHeight: '1.6' 
                   }}>
-                    <strong style={{ color: labelColors.POOL }}>POOL:</strong> A deeper, slower-moving section of a stream where water collects. Pools are quiet, calm, and provide shelter for fish.
+                    <strong style={{ color: labelColors.POOL }}>{t('riparianPage.page2.labels.POOL')}:</strong> {t('riparianPage.page2.definitions.POOL')}
                   </p>
                   <p style={{ 
                     fontSize: '24px', 
@@ -981,7 +986,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                     color: '#406A46',
                     lineHeight: '1.6' 
                   }}>
-                    <strong style={{ color: labelColors.RIFFLE }}>RIFFLE:</strong> A shallow, fast-flowing part of a stream with small waves and visible rocks. Riffles appear rough and bubbly, and are rich in oxygen, making them ideal habitats for insects and fish.
+                    <strong style={{ color: labelColors.RIFFLE }}>{t('riparianPage.page2.labels.RIFFLE')}:</strong> {t('riparianPage.page2.definitions.RIFFLE')}
                   </p>
                   <p style={{ 
                     fontSize: '24px', 
@@ -990,7 +995,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                     color: '#406A46',
                     lineHeight: '1.6' 
                   }}>
-                    <strong style={{ color: labelColors.RUN }}>RUN:</strong> A smooth, moderately deep section of a stream where water flows steadily between a riffle and a pool. Runs get plenty of sunlight, which helps algae grow. Insects feed on the algae, making runs good feeding spots for fish from pools and riffles. 
+                    <strong style={{ color: labelColors.RUN }}>{t('riparianPage.page2.labels.RUN')}:</strong> {t('riparianPage.page2.definitions.RUN')} 
                   </p>
                 </div>
               </motion.div>
@@ -1031,7 +1036,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                          </svg>
                        </div>
                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#548235' }}>
-                         {correctCount} Correct
+                         {correctCount} {t('riparianPage.page1.correct')}
                        </span>
                      </div>
 
@@ -1049,7 +1054,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                          </svg>
                        </div>
                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#C41904' }}>
-                         {incorrectCount} Incorrect
+                         {incorrectCount} {t('riparianPage.page1.incorrect')}
                        </span>
                      </div>
 
@@ -1067,7 +1072,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                          </svg>
                        </div>
                        <span style={{ fontSize: '22px', fontWeight: '600', color: '#CE7C0A' }}>
-                         {missedCount} Missed
+                         {missedCount} {t('riparianPage.page1.missed')}
                        </span>
                      </div>
                    </div>
@@ -1151,7 +1156,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                 onClick={handleDownloadClick}
                 className="download-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '480px',
+                  width: 'auto',
                   height: '50px',
                   backgroundColor: 'transparent',
                   border: 'none',
@@ -1159,11 +1164,11 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   flexShrink: 0
                 }}
               >
-                <img
+                <LocalizedImage
                   src="/assets/icons/download.png"
                   alt="Download"
                   style={{
-                    width: '480px',
+                    width: 'auto',
                     height: '50px',
                     opacity: 1
                   }}
@@ -1232,9 +1237,9 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   cursor: 'pointer'
                 }}
               >
-                <img
+                <LocalizedImage
                   src="/assets/icons/tryagain.png"
-                  alt="Try Again"
+                  alt={t('common.tryAgain')}
                   style={{
                     width: '217px',
                     height: '60px',
@@ -1251,18 +1256,18 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                 }}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer'
                 }}
               >
-                <img
+                <LocalizedImage
                   src="/assets/icons/next.png"
                   alt="Floodplains like a sponge"
                   style={{
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: 1
                   }}
@@ -1287,9 +1292,9 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                     cursor: 'pointer'
                   }}
                 >
-                  <img 
+                  <LocalizedImage 
                     src="/assets/icons/tryagain.png" 
-                    alt="Try Again" 
+                    alt={t('common.tryAgain')} 
                     style={{ 
                       width: '217px',
                       height: '60px',
@@ -1327,18 +1332,18 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                 }
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer'
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
                   alt={((currentPage === 1 && !quizSubmitted) || (currentPage === 2 && !page2Submitted)) ? 'Check Answers' : 'Next'} 
                   style={{ 
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: ((currentPage === 1 && !quizSubmitted && selectedOptions.length === 0) ||
                              (currentPage === 2 && !page2Submitted && Object.keys(placements).length === 0))
@@ -1513,7 +1518,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
               }}>
                 <img 
                   src="/assets/icons/edurepo.png" 
-                  alt="Explore Wet-Edu Repository" 
+                  alt={t('riparianPage.modal.exploreRepository')} 
                   style={{ 
                     width: '50px',
                     height: '50px'
@@ -1528,7 +1533,7 @@ export const RiparianPage: React.FC<RiparianPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('riparianPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',

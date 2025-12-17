@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { HomeButton } from '../HomeButton';
 import { usePageRouting } from '../../hooks/usePageRouting';
+import { LocalizedImage } from '../LocalizedImage';
 
 interface SelfPurificationPageProps {
   onHomeClick: () => void;
@@ -12,15 +14,15 @@ interface SelfPurificationPageProps {
 
 const TOTAL_PAGES = 6;
 
-// Hover areas for the nutrients image 1
-const nutrientsHoverAreas1 = [
+// Hover areas will be created inside component to access translations
+const createNutrientsHoverAreas1 = (t: (key: string) => string) => [
   {
     id: 'area-1',
     x: 9.5,
     y: 14.5,
     width: 15,
     height: 20,
-      text: 'Pollution that comes from many scattered places, such as <span style="color: #1C00B8;">farm fields, roads, or towns</span>, and is carried into rivers by rain or runoff.'
+      text: t('selfPurificationPage.hoverAreas.nutrients1.area1')
   },
   {
     id: 'area-2',
@@ -28,7 +30,7 @@ const nutrientsHoverAreas1 = [
     y: 33.5,
     width: 20,
     height: 15,
-      text: 'Pollution that comes from a single, identifiable place, such as a <span style="color: #1C00B8;">pipe from a factory or a wastewater treatment plant</span>.'
+      text: t('selfPurificationPage.hoverAreas.nutrients1.area2')
   },
   {
     id: 'area-3',
@@ -36,7 +38,7 @@ const nutrientsHoverAreas1 = [
     y: 64.2,
     width: 20,
     height: 15,
-      text: '<span style="color: #1C00B8;">Fertilizers and manure</span> dissolve in rainwater and move through the soil or across fields into rivers. This is the main source of diffuse nitrogen pollution.'
+      text: t('selfPurificationPage.hoverAreas.nutrients1.area3')
   },
   {
     id: 'area-4',
@@ -44,7 +46,7 @@ const nutrientsHoverAreas1 = [
     y: 30,
     width: 20,
     height: 15,
-      text: 'Rainwater carries nitrogen compounds from <span style="color: #1C00B8;">streets, vehicles, and urban green areas</span> into drains and rivers.'
+      text: t('selfPurificationPage.hoverAreas.nutrients1.area4')
   },
   {
     id: 'area-5',
@@ -52,7 +54,7 @@ const nutrientsHoverAreas1 = [
     y: 30,
     width: 20,
     height: 25,
-      text: '<span style="color: #1C00B8;">Treated water still contains some nitrogen</span> compounds that flow into rivers through outlet pipes. In some countries, modern plants remove most nitrogen efficiently, but in others, treatment is less advanced — or even missing.'
+      text: t('selfPurificationPage.hoverAreas.nutrients1.area5')
   },
   {
     id: 'area-6',
@@ -60,19 +62,17 @@ const nutrientsHoverAreas1 = [
     y: 21,
     width: 20,
     height: 20,
-      text: '<span style="color: #1C00B8;">Some factories</span> release nitrogen-rich wastewater from food processing, chemicals, or manufacturing activities. Usually regulated but still important locally.'
-  },
+      text: t('selfPurificationPage.hoverAreas.nutrients1.area6')
+  }
 ];
-
-// Hover areas for the nutrients image 2
-const nutrientsHoverAreas2 = [
+const createNutrientsHoverAreas2 = (t: (key: string) => string) => [
   {
     id: 'area-1',
     x: 15,
     y: 68,
     width: 18,
     height: 25,
-    text: 'Particulate N settles in sediments. Organic nitrogen particles <span style="color: #1C00B8;">sink down</span>, and thus become accessible for microbes living between sand grains — quiet zones of purification.'
+    text: t('selfPurificationPage.hoverAreas.nutrients2.area1')
   },
   {
     id: 'area-2',
@@ -80,7 +80,7 @@ const nutrientsHoverAreas2 = [
     y: 63.5,
     width: 20,
     height: 18,
-    text: 'Nutrients → Biomass (temporary). Algae and aquatic plants <span style="color: #1C00B8;">take up nitrate and ammonium</span>; nitrogen is stored in their tissues until they decay.'
+    text: t('selfPurificationPage.hoverAreas.nutrients2.area2')
   },
   {
     id: 'area-3',
@@ -88,7 +88,7 @@ const nutrientsHoverAreas2 = [
     y: 42,
     width: 15,
     height: 20,
-    text: '<span style="color: #1C00B8;">Ammonium → Nitrate (needs oxygen)</span>. Tiny microbes in oxygen-rich sediments convert ammonium into nitrate — the first step of purification.'
+    text: t('selfPurificationPage.hoverAreas.nutrients2.area3')
   },
   {
     id: 'area-4',
@@ -96,19 +96,17 @@ const nutrientsHoverAreas2 = [
     y: 50,
     width: 25,
     height: 15,
-    text: '<span style="color: #1C00B8;">Nitrate → Nitrogen gas (no oxygen)</span> Bacteria in low-oxygen zones turn nitrate into nitrogen gas — the key process for nitrogen loss.'
+    text: t('selfPurificationPage.hoverAreas.nutrients2.area4')
   }
 ];
-
-// Hover areas for the nutrients image 3
-const nutrientsHoverAreas3 = [
+const createNutrientsHoverAreas3 = (t: (key: string) => string) => [
     {
       id: 'area-1',
       x: 65,
       y: 70,
       width: 20,
       height: 20,
-      text: '<span style="color: #1C00B8;">Nitrogen bound to particles settles.</span> During floods, suspended particles with nitrogen are trapped and deposited on the floodplain surface.'
+      text: t('selfPurificationPage.hoverAreas.nutrients3.area1')
     },
     {
       id: 'area-2',
@@ -116,7 +114,7 @@ const nutrientsHoverAreas3 = [
       y: 75,
       width: 20,
       height: 20,
-      text: '<span style="color: #1C00B8;">Nutrients → Biomass (temporary).</span> Floodplain plants absorb nitrogen during the growing season and store it in wood and leaves.'
+      text: t('selfPurificationPage.hoverAreas.nutrients3.area2')
     },
     {
       id: 'area-3',
@@ -124,19 +122,17 @@ const nutrientsHoverAreas3 = [
       y: 82,
       width: 20,
       height: 20,
-      text: '<span style="color: #1C00B8;">Nitrate → Nitrogen gas (no oxygen).</span> In flooded soils, microbes breathe without oxygen and transform nitrate into nitrogen gas — permanent nitrogen removal.'
+      text: t('selfPurificationPage.hoverAreas.nutrients3.area3')
     }
 ];
-
-// Hover areas for the nutrients image 4
-const nutrientsHoverAreas4 = [
+const createNutrientsHoverAreas4 = (t: (key: string) => string) => [
     {
       id: 'area-1',
       x: 9.5,
       y: 17.6,
       width: 18,
       height: 15,
-      text: 'Pollution that comes from many scattered places, such as <span style="color: #CE7C0A;">farmland, unpaved roads, or towns</span>.'
+      text: t('selfPurificationPage.hoverAreas.nutrients4.area1')
     },
   {
     id: 'area-2',
@@ -144,7 +140,7 @@ const nutrientsHoverAreas4 = [
     y: 32.5,
     width: 20,
     height: 18,
-    text: 'Rainwater carries <span style="color: #CE7C0A;">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers. '
+    text: t('selfPurificationPage.hoverAreas.nutrients4.area2')
   },
   {
     id: 'area-3',
@@ -152,7 +148,7 @@ const nutrientsHoverAreas4 = [
     y: 52,
     width: 15,
     height: 15,
-    text: 'Phosphorus <span style="color: #CE7C0A;">bound to soil particles</span> is washed into rivers during rain or floods.'
+    text: t('selfPurificationPage.hoverAreas.nutrients4.area3')
   },
   {
     id: 'area-4',
@@ -160,7 +156,7 @@ const nutrientsHoverAreas4 = [
     y: 62,
     width: 25,
     height: 15,
-    text: '<span style="color: #CE7C0A;">Fertilizer</span> phosphorus dissolves in water and slowly reaches rivers through the soil or overland flow. A smaller but steady diffuse source.'
+    text: t('selfPurificationPage.hoverAreas.nutrients4.area4')
   },
   {
     id: 'area-5',
@@ -168,7 +164,7 @@ const nutrientsHoverAreas4 = [
     y: 32,
     width: 20,
     height: 15,
-    text: 'Rainwater carries <span style="color: #CE7C0A;">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers.'
+    text: t('selfPurificationPage.hoverAreas.nutrients4.area5')
   },
   {
     id: 'area-6',
@@ -176,7 +172,7 @@ const nutrientsHoverAreas4 = [
     y: 32.5,
     width: 20,
     height: 20,
-    text: '<span style="color: #CE7C0A;">Even after treatment, part of the</span> phosphorus remains in discharged water. Many countries have upgraded their plants, but others still lack efficient systems or any wastewater treatment at all.'
+    text: t('selfPurificationPage.hoverAreas.nutrients4.area6')
   },
   {
     id: 'area-7',
@@ -184,19 +180,17 @@ const nutrientsHoverAreas4 = [
     y: 21,
     width: 20,
     height: 18,
-    text: 'Certain factories release phosphorus-containing wastewater from <span style="color: #CE7C0A;">cleaning, processing, or production activities</span>. Usually regulated but still significant in some areas.'
+    text: t('selfPurificationPage.hoverAreas.nutrients4.area7')
   }
 ];
-
-// Hover areas for the nutrients image 5
-const nutrientsHoverAreas5 = [
+const createNutrientsHoverAreas5 = (t: (key: string) => string) => [
     {
       id: 'area-1',
       x: 24.5,
       y: 68,
       width: 20,
       height: 20,
-      text: '<span style="color: #CE7C0A;">Dissolved phosphate sticks to minerals</span> such as iron, aluminium, or lime. When oxygen is present, phosphorus stays bound; but if oxygen is missing, it can be released again back into the water.'
+      text: t('selfPurificationPage.hoverAreas.nutrients5.area1')
     },
     {
       id: 'area-2',
@@ -204,7 +198,7 @@ const nutrientsHoverAreas5 = [
       y: 64,
       width: 20,
       height: 18,
-      text: '<span style="color: #CE7C0A;">Algae, aquatic plants, and biofilms take up phosphorus</span> and use it for growth. This retention is temporary — when the organisms die or decay, the phosphorus is released to the water.'
+      text: t('selfPurificationPage.hoverAreas.nutrients5.area2')
     },
   {
     id: 'area-3',
@@ -212,19 +206,17 @@ const nutrientsHoverAreas5 = [
     y: 73,
     width: 25,
     height: 20,
-    text: 'Phosphorus attached to soil and organic particles sinks down to the riverbed. This happens mainly in calm areas or where the flow is slow — forming a temporary "phosphorus storage" in the sediment.'
+    text: t('selfPurificationPage.hoverAreas.nutrients5.area3')
   }
 ];
-
-// Hover areas for the nutrients image 6
-const nutrientsHoverAreas6 = [
+const createNutrientsHoverAreas6 = (t: (key: string) => string) => [
   {
     id: 'area-1',
     x: 61.5,
     y: 66,
     width: 28,
     height: 15,
-    text: 'When floodwaters spread across the land, they slow down and drop suspended particles rich in phosphorus. This is one of the most effective ways floodplains trap and store phosphorus.'
+    text: t('selfPurificationPage.hoverAreas.nutrients6.area1')
   },
   {
     id: 'area-2',
@@ -232,7 +224,7 @@ const nutrientsHoverAreas6 = [
     y: 71,
     width: 30,
     height: 18,
-    text: 'Floodplain plants absorb phosphorus as they grow, storing it in leaves and roots. This retention is temporary, but some phosphorus stays longer in litter and humus after plants die.'
+    text: t('selfPurificationPage.hoverAreas.nutrients6.area2')
   },
   {
     id: 'area-3',
@@ -240,7 +232,7 @@ const nutrientsHoverAreas6 = [
     y: 76,
     width: 25,
     height: 20,
-    text: 'Dissolved phosphorus binds to iron, aluminium, or calcium compounds in the soil. This keeps phosphorus locked away — unless oxygen runs out, when it can be released again.'
+    text: t('selfPurificationPage.hoverAreas.nutrients6.area3')
   }
 ];
 
@@ -249,7 +241,16 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
   onRepositoryClick,
   onTreatmentWetlandsClick
 }) => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
+  
+  // Create translated hover areas
+  const nutrientsHoverAreas1 = React.useMemo(() => createNutrientsHoverAreas1(t), [t]);
+  const nutrientsHoverAreas2 = React.useMemo(() => createNutrientsHoverAreas2(t), [t]);
+  const nutrientsHoverAreas3 = React.useMemo(() => createNutrientsHoverAreas3(t), [t]);
+  const nutrientsHoverAreas4 = React.useMemo(() => createNutrientsHoverAreas4(t), [t]);
+  const nutrientsHoverAreas5 = React.useMemo(() => createNutrientsHoverAreas5(t), [t]);
+  const nutrientsHoverAreas6 = React.useMemo(() => createNutrientsHoverAreas6(t), [t]);
   const [hoveredArea, setHoveredArea] = React.useState<string | null>(null);
   const [showQuizModal, setShowQuizModal] = React.useState(false);
   const [showDownloadModal, setShowDownloadModal] = React.useState(false);
@@ -491,7 +492,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  Self purification function
+                  {t('selfPurificationPage.title.main')}
                 </motion.h1>
                 
                 {/* Subtitle - Only show when not on intro page */}
@@ -508,12 +509,12 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                     margin: '0'
                   }}
                 >
-                  {currentPage === 1 ? 'Nitrogen input into rivers' :
-                   currentPage === 2 ? 'Retention of nitrogen by rivers' :
-                   currentPage === 3 ? 'Additional retention of nitrogen by floodplains' :
-                   currentPage === 4 ? 'Phosphorous input into rivers' :
-                   currentPage === 5 ? 'Retention of phosphorous by rivers' :
-                     'Additional retention of phosphorous by floodplains'}
+                  {currentPage === 1 ? t('selfPurificationPage.title.page1') :
+                   currentPage === 2 ? t('selfPurificationPage.title.page2') :
+                   currentPage === 3 ? t('selfPurificationPage.title.page3') :
+                   currentPage === 4 ? t('selfPurificationPage.title.page4') :
+                   currentPage === 5 ? t('selfPurificationPage.title.page5') :
+                     t('selfPurificationPage.title.page6')}
                 </motion.h2>
                 )}
               </div>
@@ -537,7 +538,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               {/* Single Illustration - Centered */}
               <div className="flex justify-center mb-8" style={{ width: '100%', maxWidth: '600px' }}>
                 <div style={{ width: '100%', maxWidth: '600px' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/nutrients/landing.png"
                     alt="Self purification function"
                     style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
@@ -556,7 +557,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                 maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Learn about self purification functions and discover how rivers and floodplains naturally filter and clean water.
+                {t('selfPurificationPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
@@ -608,7 +609,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access Teaching Materials
+                      {t('selfPurificationPage.intro.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -630,7 +631,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Open platform
+                        {t('selfPurificationPage.intro.openPlatform')}
                       </a>
                     </div>
                     <div style={{
@@ -639,7 +640,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       color: '#406A46',
                       fontStyle: 'italic'
                     }}>
-                      Opens new tab: Zenodo
+                      {t('selfPurificationPage.intro.opensNewTab')}
                     </div>
                   </div>
                 </div>
@@ -668,7 +669,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Wet-Edu Repository
+                      {t('selfPurificationPage.intro.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -688,7 +689,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Explore
+                        {t('selfPurificationPage.intro.explore')}
                       </button>
                     </div>
                   </div>
@@ -700,7 +701,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               {/* Page 1 Content - Nutrients Image with Hover Areas */}
               <div className="flex justify-center items-start">
                 <div ref={imageContainerRef1} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/nutrients/image1.png"
                     alt="Nutrients in wetlands"
                     className="w-full h-auto rounded-lg shadow-lg transition-opacity duration-300"
@@ -800,7 +801,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               {/* Page 2 Content - Nutrients Image 2 with Hover Areas */}
               <div className="flex justify-center items-start">
                 <div ref={imageContainerRef2} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/nutrients/image2.png"
                     alt="Nutrients in wetlands"
                     className="w-full h-auto rounded-lg shadow-lg transition-opacity duration-300"
@@ -1023,7 +1024,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               {/* Page 3 Content - Nutrients Image 3 with Hover Areas */}
               <div className="flex justify-center items-start">
                 <div ref={imageContainerRef3} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/nutrients/image3.png"
                     alt="Additional nitrogen retention by floodplains"
                     className="w-full h-auto rounded-lg shadow-lg transition-opacity duration-300"
@@ -1232,7 +1233,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               {/* Page 4 Content - Nutrients Image 4 with Hover Areas */}
               <div className="flex justify-center items-start">
                 <div ref={imageContainerRef4} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/nutrients/image4.png"
                     alt="Nitrogen sources and processing in floodplains"
                     className="w-full h-auto rounded-lg shadow-lg transition-opacity duration-300"
@@ -1332,7 +1333,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               {/* Page 5 Content - Nutrients Image 5 with Hover Areas */}
               <div className="flex justify-center items-start">
                 <div ref={imageContainerRef5} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/nutrients/image5.png"
                     alt="Retention of phosphorous by rivers"
                     className="w-full h-auto rounded-lg shadow-lg transition-opacity duration-300"
@@ -1432,7 +1433,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               {/* Page 6 Content - Nutrients Image 6 with Hover Areas and Quiz */}
               <div className="flex justify-center items-start">
                 <div ref={imageContainerRef6} className="relative" style={{ width: '100%', maxWidth: '1600px', display: 'inline-block' }}>
-                  <img 
+                  <LocalizedImage 
                     src="/assets/components/nutrients/image6.png"
                     alt="Additional retention of phosphorous by floodplains"
                     className="w-full h-auto rounded-lg shadow-lg transition-opacity duration-300"
@@ -1611,11 +1612,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             textAlign: 'left'
                           }}
                           dangerouslySetInnerHTML={{
-                            __html: `
-                              <p style="margin: 0;">
-                                About <span style="color: #619F6A;">40% of phosphorus</span> released into the Danube Basin never reaches the river mouth — it settles and is trapped in <span style="color: #619F6A;">reservoirs and floodplains</span> along the way.
-                              </p>
-                            `
+                            __html: t('selfPurificationPage.quizModal.content')
                           }}
                         />
                       </div>
@@ -1683,7 +1680,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                     onClick={handleDownloadClick}
                     className="download-button relative flex items-center justify-center z-50"
                     style={{
-                      width: '480px',
+                      width: 'auto',
                       height: '50px',
                       backgroundColor: 'transparent',
                       border: 'none',
@@ -1691,11 +1688,11 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       flexShrink: 0
                     }}
                   >
-                    <img 
+                    <LocalizedImage 
                       src="/assets/icons/download.png" 
                       alt="Download" 
                       style={{ 
-                        width: '480px',
+                        width: 'auto',
                         height: '50px',
                         opacity: 1
                       }}
@@ -1742,7 +1739,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                       fontSize: '24px',
                       color: '#406A46'
                     }}>
-                      NEXT TOPIC: Treatment wetlands
+                      {t('selfPurificationPage.nextTopic')}
                     </span>
                   </div>
                 )}
@@ -1785,17 +1782,17 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               <button
                 onClick={() => setCurrentPage(currentPage + 1)}
                 className="next-button relative flex items-center justify-center z-50"
-                style={{ width: '158px', height: '60px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
+                style={{ width: 'auto', height: '60px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
               >
-                <img src="/assets/icons/next.png" alt="Next" style={{ width: '158px', height: '60px', opacity: 1 }} />
+                <LocalizedImage src="/assets/icons/next.png" alt="Next" style={{ width: 'auto', height: '60px', opacity: 1 }} />
               </button>
             ) : (
               <button
                 onClick={onTreatmentWetlandsClick}
                 className="next-button relative flex items-center justify-center z-50"
-                style={{ width: '158px', height: '60px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
+                style={{ width: 'auto', height: '60px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
               >
-                <img src="/assets/icons/next.png" alt="NEXT TOPIC: Treatment wetlands" style={{ width: '158px', height: '60px', opacity: 1 }} />
+                <LocalizedImage src="/assets/icons/next.png" alt={t('selfPurificationPage.nextTopic')} style={{ width: 'auto', height: '60px', opacity: 1 }} />
               </button>
             )}
           </div>
@@ -1859,7 +1856,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
               textAlign: 'center',
               marginBottom: '30px'
             }}>
-              Download Options
+              {t('selfPurificationPage.modal.title')}
             </div>
 
             {/* Option 1: Zenodo */}
@@ -1910,7 +1907,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Access Teaching Materials
+                  {t('selfPurificationPage.modal.accessTeachingMaterials')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1919,7 +1916,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   color: 'rgba(255, 255, 255, 0.9)',
                   marginBottom: '6px'
                 }}>
-                  Based on 5E learning method and scientific research
+                  {t('selfPurificationPage.modal.basedOn5E')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1927,7 +1924,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.7)'
                 }}>
-                  (Opens in new tab: Zenodo)
+                  {t('selfPurificationPage.modal.opensInNewTab')}
                 </div>
               </div>
             </button>
@@ -1979,7 +1976,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('selfPurificationPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -1987,7 +1984,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.9)'
                 }}>
-                  Explore related projects and resources
+                  {t('selfPurificationPage.modal.exploreRelated')}
                 </div>
               </div>
             </button>

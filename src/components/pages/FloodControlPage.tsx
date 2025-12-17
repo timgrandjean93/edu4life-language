@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { usePageRouting } from '../../hooks/usePageRouting';
 import { HomeButton } from '../HomeButton';
+import { LocalizedImage } from '../LocalizedImage';
 
 interface FloodControlPageProps {
   onHomeClick: () => void;
@@ -9,103 +11,9 @@ interface FloodControlPageProps {
   onRepositoryClick?: () => void;
 }
 
-// Hover areas for the images
-const leftImageHoverAreas = [
-  {
-    id: 'willows-banks',
-    x: 60,
-    y: 20,
-    width: 30,
-    height: 25,
-    text: 'Willows stabilize banks and increase soil porosity through extensive root systems.'
-  },
-  {
-    id: 'reed-vegetation',
-    x: 60,
-    y: 50,
-    width: 35,
-    height: 20,
-    text: 'Dense reed vegetation slows water flow, traps sediments, and improves water quality.'
-  },
-  {
-    id: 'native-grasses',
-    x: 70,
-    y: 80,
-    width: 30,
-    height: 20,
-    text: 'Native grasses improve soil porosity and water infiltration'
-  },
-  {
-    id: 'leaf-litter',
-    x: 10,
-    y: 80,
-    width: 40,
-    height: 15,
-    text: 'Leaf litter on the forest floor retains moisture and reduces surface runoff.'
-  },
-  {
-    id: 'deep-rooted-trees',
-    x: 10,
-    y: 60,
-    width: 30,
-    height: 20,
-    text: 'Deep-rooted trees and shrubs offer stronger bank stabilization than shallow-rooted grasses.'
-  }
-];
-
-const rightImageHoverAreas = [
-  {
-    id: 'natural-filtration',
-    x: 20,
-    y: 35,
-    width: 60,
-    height: 15,
-    text: "The river is confined by dikes like a tight corset.  It can't spread out or reach the floodplain, so floodwaters rise quickly"
-  },
-  {
-    id: 'ecosystem-benefits',
-    x: 20,
-    y: 60,
-    width: 30,
-    height: 25,
-    text: 'Without riverside plants, there’s nothing to slow down runoff or absorb water. The soil becomes cracked and compacted—water can’t soak in.'
-  },
-  {
-    id: 'groundwater-recharge',
-    x: 60,
-    y: 60,
-    width: 35,
-    height: 20,
-    text: 'Without plants along the banks, runoff flows faster, more sediments and nutrients enter the river, and water quality declines'
-  }
-];
-
-// Did you know content - Left image (Natural floodplain)
-const didYouKnowContentLeft = {
-  title: "Did you know?",
-  items: [
-    "Floodplain soils store 3,000-4,000 m³ of water per hectare",
-    "Meanders increase retention time by 30-50%",
-    "Floodplain vegetation stores 30-40% of total retention capacity",
-    "Natural floodplain absorbs floodwater for 20-30 days",
-    "Groundwater recharge: 500-1,000 m³ per hectare per year"
-  ]
-};
-
-// Did you know content - Right image (Degraded floodplain)
-const didYouKnowContentRight = {
-  title: "Did you know?",
-  items: [
-    "Channelization reduces retention by: 60-80%",
-    "Loss of vegetation decreases capacity by: 40-50%",
-    "Soil compaction reduces storage by: 30-40%",
-    "Degraded floodplain retains only: 1,000-2,000 m³ per hectare"
-  ]
-};
-
 const TOTAL_PAGES = 3;
 
-// Page 2 drop zones and descriptions
+// Page 2 drop zones
 const leftImageDropZones = [
   { id: 'left-1', x: 45, y: 47, correctNumber: 1 },
   { id: 'left-2', x: 50, y: 30, correctNumber: 3 },
@@ -118,24 +26,125 @@ const rightImageDropZones = [
   { id: 'right-3', x: 70, y: 65, correctNumber: 3 }
 ];
 
-const leftDescriptions = [
-  "A meandering river flows in gentle curves, spreading water across the floodplain, slowing flow, and nourishing the land.",
-  "Plants along riverbanks slow runoff, trap sediments, and absorb excess nutrients, helping to keep the water clean.",
-  "Floodplain lakes and oxbows store excess floodwater, support rich biodiversity, and help recharge groundwater"
-];
-
-const rightDescriptions = [
-  "In heavy rain, floods can build up, break dikes, and threaten nearby villages.",
-  "In a straightened, channelized river, faster flow causes erosion and riverbed deepening, which dries out nearby floodplains",
-  "Without riverside plants, there's nothing to slow down runoff or absorb water."
-];
-
 export const FloodControlPage: React.FC<FloodControlPageProps> = ({
   onHomeClick,
   onCarbonClick,
   onRepositoryClick
 }) => {
+  const { t, i18n } = useTranslation();
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
+  const currentLanguage = i18n.language;
+  
+  // Calculate input width based on language (Dutch words are longer)
+  const getInputWidth = () => {
+    return currentLanguage === 'nl' ? '250px' : '200px';
+  };
+  
+  // Hover areas with translations
+  const leftImageHoverAreasTranslated = [
+    {
+      id: 'willows-banks',
+      x: 60,
+      y: 20,
+      width: 30,
+      height: 25,
+      text: t('floodControlPage.page1.hoverAreas.left.willows-banks')
+    },
+    {
+      id: 'reed-vegetation',
+      x: 60,
+      y: 50,
+      width: 35,
+      height: 20,
+      text: t('floodControlPage.page1.hoverAreas.left.reed-vegetation')
+    },
+    {
+      id: 'native-grasses',
+      x: 70,
+      y: 80,
+      width: 30,
+      height: 20,
+      text: t('floodControlPage.page1.hoverAreas.left.native-grasses')
+    },
+    {
+      id: 'leaf-litter',
+      x: 10,
+      y: 80,
+      width: 40,
+      height: 15,
+      text: t('floodControlPage.page1.hoverAreas.left.leaf-litter')
+    },
+    {
+      id: 'deep-rooted-trees',
+      x: 10,
+      y: 60,
+      width: 30,
+      height: 20,
+      text: t('floodControlPage.page1.hoverAreas.left.deep-rooted-trees')
+    }
+  ];
+
+  const rightImageHoverAreasTranslated = [
+    {
+      id: 'natural-filtration',
+      x: 20,
+      y: 35,
+      width: 60,
+      height: 15,
+      text: t('floodControlPage.page1.hoverAreas.right.natural-filtration')
+    },
+    {
+      id: 'ecosystem-benefits',
+      x: 20,
+      y: 60,
+      width: 30,
+      height: 25,
+      text: t('floodControlPage.page1.hoverAreas.right.ecosystem-benefits')
+    },
+    {
+      id: 'groundwater-recharge',
+      x: 60,
+      y: 60,
+      width: 35,
+      height: 20,
+      text: t('floodControlPage.page1.hoverAreas.right.groundwater-recharge')
+    }
+  ];
+
+  // Did you know content with translations
+  const didYouKnowContentLeftTranslated = {
+    title: t('floodControlPage.page1.didYouKnowContent.left.title'),
+    items: [
+      t('floodControlPage.page1.didYouKnowContent.left.items.0'),
+      t('floodControlPage.page1.didYouKnowContent.left.items.1'),
+      t('floodControlPage.page1.didYouKnowContent.left.items.2'),
+      t('floodControlPage.page1.didYouKnowContent.left.items.3'),
+      t('floodControlPage.page1.didYouKnowContent.left.items.4')
+    ]
+  };
+
+  const didYouKnowContentRightTranslated = {
+    title: t('floodControlPage.page1.didYouKnowContent.right.title'),
+    items: [
+      t('floodControlPage.page1.didYouKnowContent.right.items.0'),
+      t('floodControlPage.page1.didYouKnowContent.right.items.1'),
+      t('floodControlPage.page1.didYouKnowContent.right.items.2'),
+      t('floodControlPage.page1.didYouKnowContent.right.items.3')
+    ]
+  };
+
+  // Page 2 descriptions with translations
+  const leftDescriptionsTranslated = [
+    t('floodControlPage.page2.descriptions.left.0'),
+    t('floodControlPage.page2.descriptions.left.1'),
+    t('floodControlPage.page2.descriptions.left.2')
+  ];
+
+  const rightDescriptionsTranslated = [
+    t('floodControlPage.page2.descriptions.right.0'),
+    t('floodControlPage.page2.descriptions.right.1'),
+    t('floodControlPage.page2.descriptions.right.2')
+  ];
   const [hoveredArea, setHoveredArea] = React.useState<string | null>(null);
   const [showDidYouKnowLeft, setShowDidYouKnowLeft] = React.useState(false);
   const [showDidYouKnowRight, setShowDidYouKnowRight] = React.useState(false);
@@ -351,15 +360,20 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
   };
 
   const handleSubmitPage3 = () => {
-    // Auto-correct shortened answers to full words
+    // Get correct answers from translations
+    const correctAnswer1 = t('floodControlPage.page3.correctAnswers.answer1').toLowerCase().trim();
+    const correctAnswer2 = t('floodControlPage.page3.correctAnswers.answer2').toLowerCase().trim();
+    
+    // Auto-correct shortened answers to full words (for English)
     const ans1 = answer1.toLowerCase().trim();
     const ans2 = answer2.toLowerCase().trim();
     
-    if (ans1 === 'pong') {
-      setAnswer1('sponge');
+    // Handle common typos/shortened answers
+    if (ans1 === 'pong' || ans1 === 'spon') {
+      setAnswer1(correctAnswer1);
     }
-    if (ans2 === 'loodin') {
-      setAnswer2('flooding');
+    if (ans2 === 'loodin' || ans2 === 'floodin') {
+      setAnswer2(correctAnswer2);
     }
     
     setPage3Submitted(true);
@@ -402,11 +416,19 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
 
   const isAnswer1Correct = () => {
     const ans = answer1.toLowerCase().trim();
-    return ans === 'sponge' || ans === 'pong';
+    const correctAnswer = t('floodControlPage.page3.correctAnswers.answer1').toLowerCase().trim();
+    // Handle common typos/shortened answers
+    return ans === correctAnswer || 
+           (correctAnswer === 'sponge' && (ans === 'pong' || ans === 'spon')) ||
+           (correctAnswer === 'spons' && ans === 'spon');
   };
   const isAnswer2Correct = () => {
     const ans = answer2.toLowerCase().trim();
-    return ans === 'flooding' || ans === 'loodin';
+    const correctAnswer = t('floodControlPage.page3.correctAnswers.answer2').toLowerCase().trim();
+    // Handle common typos/shortened answers
+    return ans === correctAnswer || 
+           (correctAnswer === 'flooding' && (ans === 'loodin' || ans === 'floodin')) ||
+           (correctAnswer === 'overstroming' && (ans === 'overstromin' || ans === 'overstrom'));
   };
 
   return (
@@ -427,8 +449,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   transition={{ delay: 0.3 }}
                   className="main-title mb-2"
                 >
-                  {currentPage === 0 ? 'Floodplains are like a sponge' : 
-                   'Flood control function – Floodplains like a sponge'}
+                  {currentPage === 0 ? t('floodControlPage.title.page0') : 
+                   t('floodControlPage.title.page1')}
                 </motion.h1>
                 
                 {/* Subtitle */}
@@ -480,7 +502,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 maxWidth: '1200px',
                 lineHeight: '1.6'
               }}>
-                Learn about flood control functions and discover how floodplains act as natural sponges that absorb and store water.
+                {t('floodControlPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
@@ -532,7 +554,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Access Teaching Materials
+                      {t('floodControlPage.intro.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <a
@@ -554,7 +576,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Open platform
+                        {t('floodControlPage.intro.openPlatform')}
                       </a>
                     </div>
                     <div style={{
@@ -563,7 +585,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       color: '#406A46',
                       fontStyle: 'italic'
                     }}>
-                      Opens new tab: Zenodo
+                      {t('floodControlPage.intro.opensNewTab')}
                     </div>
                   </div>
                 </div>
@@ -592,7 +614,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       color: '#406A46',
                       marginBottom: '6px'
                     }}>
-                      Explore Wet-Edu Repository
+                      {t('floodControlPage.intro.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
@@ -612,7 +634,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Explore
+                        {t('floodControlPage.intro.explore')}
                       </button>
                     </div>
                   </div>
@@ -645,7 +667,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   color: '#406A46',
                   lineHeight: '1.5'
                 }}>
-                  Hover over different areas of the images to reveal useful facts.
+                  {t('floodControlPage.page1.instruction')}
                 </p>
               </div>
 
@@ -719,10 +741,10 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           color: '#51727C'
                         }}
                       >
-                        {didYouKnowContentLeft.title}
+                        {didYouKnowContentLeftTranslated.title}
                       </h3>
                       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                        {didYouKnowContentLeft.items.map((item, index) => (
+                        {didYouKnowContentLeftTranslated.items.map((item, index) => (
                           <li key={index} className="flex items-start" style={{ marginBottom: '16px' }}>
                             <span className="text-green-600 font-bold mr-3" style={{ 
                               fontSize: '22px', 
@@ -744,7 +766,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               )}
               
               {/* Hover Areas for Left Image */}
-              {leftImageHoverAreas.map((area) => (
+              {leftImageHoverAreasTranslated.map((area) => (
                 <div
                   key={area.id}
                   className="absolute cursor-pointer transition-all duration-300"
@@ -885,10 +907,10 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           color: '#51727C'
                         }}
                       >
-                        {didYouKnowContentRight.title}
+                        {didYouKnowContentRightTranslated.title}
                       </h3>
                       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                        {didYouKnowContentRight.items.map((item, index) => (
+                        {didYouKnowContentRightTranslated.items.map((item, index) => (
                           <li key={index} className="flex items-start" style={{ marginBottom: '16px' }}>
                             <span className="text-green-600 font-bold mr-3" style={{ 
                               fontSize: '22px', 
@@ -910,7 +932,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               )}
               
               {/* Hover Areas for Right Image */}
-              {rightImageHoverAreas.map((area) => (
+              {rightImageHoverAreasTranslated.map((area) => (
                 <div
                   key={area.id}
                   className="absolute cursor-pointer transition-all duration-300"
@@ -1014,7 +1036,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   fontSize: '24px', 
                   lineHeight: '1' 
                 }}>
-                  Did you know?
+                  {t('floodControlPage.page1.didYouKnow')}
                 </span>
               </motion.button>
             </div>
@@ -1046,7 +1068,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   fontSize: '24px', 
                   lineHeight: '1' 
                 }}>
-                  Did you know?
+                  {t('floodControlPage.page1.didYouKnow')}
                 </span>
               </motion.button>
             </div>
@@ -1074,7 +1096,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     color: '#406A46',
                     margin: '0'
                   }}>
-                    Activity 1
+                    {t('floodControlPage.page2.activityTitle')}
                   </h2>
                 </div>
               </div>
@@ -1090,7 +1112,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   width: '100%',
                   margin: '0 auto'
                 }}>
-                  Can you spot the missing floodplain superpowers? Match the description numbers to the healthy floodplain (left) and degraded floodplain (right).
+                  {t('floodControlPage.page2.instruction')}
                 </p>
               </div>
 
@@ -1168,7 +1190,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                               boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
                             }}
                           >
-                            Correct: {zone.correctNumber}
+                            {t('floodControlPage.page2.correctLabel')} {zone.correctNumber}
                           </div>
                         )}
                       </div>
@@ -1295,7 +1317,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                               boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
                             }}
                           >
-                            Correct: {zone.correctNumber}
+                            {t('floodControlPage.page2.correctLabel')} {zone.correctNumber}
                           </div>
                         )}
                       </div>
@@ -1355,8 +1377,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               <div className="flex justify-center gap-8 mt-4">
                 {/* Left Descriptions */}
                 <div style={{ width: '45%', maxWidth: '800px', paddingLeft: '10px' }}>
-                  <h4 className="font-bold text-blue-900 mb-4" style={{ fontSize: '20px' }}>Natural Floodplain:</h4>
-                  {leftDescriptions.map((desc, index) => (
+                  <h4 className="font-bold text-blue-900 mb-4" style={{ fontSize: '20px' }}>{t('floodControlPage.page2.naturalFloodplain')}</h4>
+                  {leftDescriptionsTranslated.map((desc, index) => (
                     <div key={index} className="flex items-center" style={{ gap: '12px', marginBottom: '20px' }}>
                       {/* Draggable Number */}
                       <div
@@ -1391,8 +1413,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
 
                 {/* Right Descriptions */}
                 <div style={{ width: '45%', maxWidth: '800px', paddingLeft: '10px' }}>
-                  <h4 className="font-bold text-blue-900 mb-4" style={{ fontSize: '20px' }}>Degraded Floodplain:</h4>
-                  {rightDescriptions.map((desc, index) => (
+                  <h4 className="font-bold text-blue-900 mb-4" style={{ fontSize: '20px' }}>{t('floodControlPage.page2.degradedFloodplain')}</h4>
+                  {rightDescriptionsTranslated.map((desc, index) => (
                     <div key={index} className="flex items-center" style={{ gap: '12px', marginBottom: '20px' }}>
                       {/* Draggable Number */}
                       <div
@@ -1463,7 +1485,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           </svg>
                         </div>
                         <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#548235' }}>
-                          {correctCount} Correct
+                          {correctCount} {t('floodControlPage.page2.correct')}
                         </span>
                       </div>
 
@@ -1481,7 +1503,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           </svg>
                         </div>
                         <span style={{ fontSize: '22px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#C41904' }}>
-                          {incorrectCount} Incorrect
+                          {incorrectCount} {t('floodControlPage.page2.incorrect')}
                         </span>
                       </div>
                     </div>
@@ -1511,7 +1533,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     color: '#406A46',
                     margin: 0
                   }}>
-                    Fill-in-the-blanks challenge
+                    {t('floodControlPage.page3.title')}
                   </h2>
                 </div>
               </div>
@@ -1533,7 +1555,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     margin: '0 0 20px',
                     textAlign: 'center'
                   }}>
-                    Floodplains are nature's buffer zones!
+                    {t('floodControlPage.page3.intro1')}
                   </p>
                   <p style={{
                     fontSize: '24px',
@@ -1544,8 +1566,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     margin: '0 0 30px',
                     textAlign: 'center'
                   }}>
-                    How does the floodplain help in times of heavy rain?<br />
-                    What happens to floodwater when a river has space to spread out?
+                    {t('floodControlPage.page3.intro2')}<br />
+                    {t('floodControlPage.page3.intro3')}
                   </p>
                   <p style={{
                     fontSize: '24px',
@@ -1555,7 +1577,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     textAlign: 'center',
                     margin: '0 0 30px'
                   }}>
-                    COMPLETE THE SENTENCE:
+                    {t('floodControlPage.page3.completeSentence')}
                   </p>
 
                   {/* Fill in the blank inputs */}
@@ -1567,15 +1589,15 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     textAlign: 'center',
                     color: '#406A46'
                   }}>
-                    <p style={{ marginBottom: '30px' }}>
-                      Floodplains act as natural{' '}
+                    <p style={{ margin: 0 }}>
+                      {t('floodControlPage.page3.sentence1')}{' '}
                       <input
                         type="text"
                         value={answer1}
                         onChange={(e) => !page3Submitted && setAnswer1(e.target.value)}
                         disabled={page3Submitted}
                         style={{
-                          width: '200px',
+                          width: getInputWidth(),
                           padding: '8px 16px',
                           fontSize: '20px',
                           textAlign: 'center',
@@ -1585,21 +1607,21 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           borderRadius: '8px',
                           backgroundColor: page3Submitted ? '#f3f4f6' : 'white',
                           outline: 'none',
-                          transition: 'all 0.3s ease'
+                          transition: 'all 0.3s ease',
+                          display: 'inline-block',
+                          verticalAlign: 'middle'
                         }}
-                        placeholder="s____e"
+                        placeholder={t('floodControlPage.page3.placeholder1')}
                       />
-                      {' '}to hold floodwater
-                    </p>
-                    <p style={{ margin: 0 }}>
-                      and reduce the risk of{' '}
+                      {' '}{t('floodControlPage.page3.sentence1End')}{' '}
+                      {t('floodControlPage.page3.sentence2')}{' '}
                       <input
                         type="text"
                         value={answer2}
                         onChange={(e) => !page3Submitted && setAnswer2(e.target.value)}
                         disabled={page3Submitted}
                         style={{
-                          width: '200px',
+                          width: getInputWidth(),
                           padding: '8px 16px',
                           fontSize: '20px',
                           textAlign: 'center',
@@ -1609,11 +1631,13 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           borderRadius: '8px',
                           backgroundColor: page3Submitted ? '#f3f4f6' : 'white',
                           outline: 'none',
-                          transition: 'all 0.3s ease'
+                          transition: 'all 0.3s ease',
+                          display: 'inline-block',
+                          verticalAlign: 'middle'
                         }}
-                        placeholder="f___g"
+                        placeholder={t('floodControlPage.page3.placeholder2')}
                       />
-                      .
+                      {' '}{t('floodControlPage.page3.sentence2End')}
                     </p>
                   </div>
 
@@ -1650,7 +1674,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                             fontWeight: '600', 
                             color: isAnswer1Correct() ? '#548235' : '#C41904' 
                           }}>
-                            {isAnswer1Correct() ? 'Correct: sponge' : `Incorrect (Answer: sponge)`}
+                            {isAnswer1Correct() ? t('floodControlPage.page3.feedback.correctSponge') : t('floodControlPage.page3.feedback.incorrectSponge')}
                           </span>
                         </div>
 
@@ -1678,7 +1702,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                             fontWeight: '600', 
                             color: isAnswer2Correct() ? '#548235' : '#C41904' 
                           }}>
-                            {isAnswer2Correct() ? 'Correct: flooding' : `Incorrect (Answer: flooding)`}
+                            {isAnswer2Correct() ? t('floodControlPage.page3.feedback.correctFlooding') : t('floodControlPage.page3.feedback.incorrectFlooding')}
                           </span>
                         </div>
                       </div>
@@ -1745,7 +1769,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     onClick={handleDownloadClick}
                     className="download-button relative flex items-center justify-center z-50"
                     style={{
-                      width: '480px',
+                      width: 'auto',
                       height: '50px',
                       backgroundColor: 'transparent',
                       border: 'none',
@@ -1753,11 +1777,11 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         flexShrink: 0
                     }}
                   >
-                    <img 
+                    <LocalizedImage 
                       src="/assets/icons/download.png" 
                       alt="Download" 
                       style={{ 
-                        width: '480px',
+                        width: 'auto',
                         height: '50px',
                         opacity: 1
                       }}
@@ -1805,7 +1829,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       fontSize: '24px',
                       color: '#406A46'
                     }}>
-                      NEXT TOPIC: Climate protection and carbon sink
+                      {t('floodControlPage.nextTopic')}
                     </span>
                   </div>
                 )}
@@ -1859,9 +1883,9 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   cursor: 'pointer'
                 }}
               >
-                <img
+                <LocalizedImage
                   src="/assets/icons/tryagain.png"
-                  alt="Try Again"
+                  alt={t('common.tryAgain')}
                   style={{
                     width: '217px',
                     height: '60px',
@@ -1877,18 +1901,18 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 }}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer'
                 }}
               >
-                <img
+                <LocalizedImage
                   src="/assets/icons/next.png"
                   alt="Climate protection and carbon sink"
                   style={{
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: 1
                   }}
@@ -1906,18 +1930,18 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   onClick={handleRetry}
                   className="retry-button relative flex items-center justify-center z-50"
                   style={{
-                    width: '158px',
+                    width: '217px',
                     height: '60px',
                     backgroundColor: 'transparent',
                     border: 'none',
                     cursor: 'pointer'
                   }}
                 >
-                  <img 
+                  <LocalizedImage 
                     src="/assets/icons/tryagain.png" 
-                    alt="Try Again" 
+                    alt={t('common.tryAgain')} 
                     style={{ 
-                      width: '158px',
+                      width: '217px',
                       height: '60px',
                       opacity: 1
                     }}
@@ -1939,17 +1963,17 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 disabled={!(page2Submitted || Object.keys(placements).length >= 6)}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none'
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
                   alt={page2Submitted ? 'Next' : 'Check Answers'} 
                   style={{ 
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: page2Submitted || Object.keys(placements).length >= 6 ? 1 : 0.5
                   }}
@@ -1966,17 +1990,17 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 disabled={!(answer1.trim() && answer2.trim())}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none'
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
                   alt="Check Answers" 
                   style={{ 
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: (answer1.trim() && answer2.trim()) ? 1 : 0.5
                   }}
@@ -1992,17 +2016,17 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 }}
                 className="next-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '158px',
+                  width: 'auto',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none'
                 }}
               >
-                <img 
+                <LocalizedImage 
                   src="/assets/icons/next.png" 
                   alt="Next" 
                   style={{ 
-                    width: '158px',
+                    width: 'auto',
                     height: '60px',
                     opacity: 1
                   }}
@@ -2071,7 +2095,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               textAlign: 'center',
               marginBottom: '30px'
             }}>
-              Download Options
+              {t('floodControlPage.modal.title')}
             </div>
 
             {/* Option 1: Zenodo */}
@@ -2131,7 +2155,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   color: 'rgba(255, 255, 255, 0.9)',
                   marginBottom: '6px'
                 }}>
-                  Based on 5E learning method and scientific research
+                  {t('floodControlPage.modal.basedOn5E')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -2176,7 +2200,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               }}>
                 <img 
                   src="/assets/icons/edurepo.png" 
-                  alt="Explore Wet-Edu Repository" 
+                  alt={t('floodControlPage.modal.exploreRepository')} 
                   style={{ 
                     width: '50px',
                     height: '50px'
@@ -2191,7 +2215,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   color: 'white',
                   marginBottom: '8px'
                 }}>
-                  Explore Wet-Edu Repository
+                  {t('floodControlPage.modal.exploreRepository')}
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
@@ -2199,7 +2223,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   fontWeight: 'bold',
                   color: 'rgba(255, 255, 255, 0.9)'
                 }}>
-                  Explore related projects and resources
+                  {t('floodControlPage.modal.exploreRelated')}
                 </div>
               </div>
             </button>
