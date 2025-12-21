@@ -1,0 +1,1250 @@
+{
+  "common": {
+    "accept": "Prijať",
+    "reject": "Odmietnuť",
+    "home": "Home",
+    "loading": "Loading...",
+    "close": "Close",
+    "tryAgain": "SKÚS ZNOVA",
+    "learnAndTestButton": "NAUČ SA A OTESTUJ SI SVOJE ZNALOSTI"
+  },
+  "header": {
+    "learningActivities": "Vzdelávacie aktivity",
+    "externalTools": "Externé nástroje",
+    "restore4Life": "Restore4Life",
+    "menuItems": {
+      "livingEnvironment": "Životné prostredie",
+      "mapYourWetland": "Zmapujte svoju mokraď",
+      "exploringHabitats": "Preskúmavanie biotopov",
+      "floodplainSpongeEffect": "Špongiový efekt záplavového územia",
+      "climateCarbon": "Klíma a uhlík",
+      "purification": "Čistenie",
+      "treatmentWetlands": "Mokraďné čistiarne",
+      "aesthetics": "Estetika",
+      "sourcesOfInspiration": "Záplavové územia ako zdroje inšpirácie",
+      "peopleAndAquatic": "Ľudia a vodné ekosystémy"
+    },
+    "externalToolsItems": {
+      "blueGreenSpace4All": "Blue-Green Space4All",
+      "wetlandFresk": "Wetlands Fresk",
+      "wetland4Life": "Wetland4Life",
+      "exploreWetEduRepository": "WET-EDU archív "
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © {{year}} Restore4Life Consortium. All Rights Reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "termsOfUse": "Terms of Use",
+    "creativeCommons": "Licensed under CC BY-NC 4.0"
+  },
+  "cookieConsent": {
+    "message": "Táto webová stránka používa súbory cookie na analytické účely prostredníctvom služby Google Analytics. Môžete tieto súbory cookie prijať alebo odmietnuť.",
+    "readMore": "Prečítajte si viac v našej politike súborov cookie"
+  },
+  "homePage": {
+    "title": "ŽIVÉ ZÁPLAVOVÉ ÚZEMIA:",
+    "subtitle": "UČIŤ SA, OBJAVOVAŤ, OBNOVOVAŤ",
+    "subtitle2": "- 4LIFE TOOLBOX",
+    "credits": "Poďakovanie / Autori"
+  },
+  "languageModal": {
+    "title": "Select Your Language",
+    "detecting": "Detecting your location...",
+    "suggested": "We detected you're from",
+    "suggestedQuestion": "Would you like to use",
+    "continueWith": "Continue with"
+  },
+  "pages": {
+    "titles": {
+      "home": "ŽIVÉ ZÁPLAVOVÉ ÚZEMIA: UČIŤ SA, OBJAVOVAŤ, OBNOVOVAŤ - 4LIFE TOOLBOX",
+      "riparian": "Riparian Page",
+      "mapwetland": "Map Wetland Page",
+      "floodplain": "Záplavové územie",
+      "floodcontrol": "Povodňová ochrana",
+      "carbon": "Carbon Page",
+      "selfpurification": "Samočistiaca funkcia",
+      "art": "Art Page",
+      "people": "Ľudia a vodné ekosystémy",
+      "aesthetics": "Estetika",
+      "wetlandfresk": "Wetlands Fresk je kolaboratívny, interaktívny workshop,",
+      "wetland4life": "Wetland4Life pomáha sprístupniť mapovanie mokradí",
+      "wetlandEduRepo": "Wetland Edu Repo",
+      "treatmentwetlands": "Mokraďné čistiarne",
+      "bluegreen": "Blue-Green Space4All",
+      "environmentalToolbox": "Environmental Toolbox",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "termsofuse": "Terms of Use"
+    }
+  },
+  "carbonPage": {
+    "title": {
+      "page0": "Ochrana klímy a zásobáreň uhlíka",
+      "page1": "Uhlíkové zásoby na Zemi",
+      "page2": "Uhlíkový cyklus v pevninských ekosystémoch Zeme"
+    },
+    "intro": {
+      "description": "Nauč sa o ochrane klímy a zisti, akú dôležitú úlohu zohrávajú uhlíkové zásobárne pri znižovaní dopadov klimatickej zmeny. ",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "openPlatform": "OTVORENÁ PLATFORMA",
+      "opensNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "explore": "Objavte"
+    },
+    "page1": {
+      "title": "Priraďte ikony ekosystémov",
+      "instruction1": "Pozrite sa na ikony nad grafom – každá predstavuje iný ekosystém.",
+      "instruction2": "Vaša výzva: ",
+      "instruction3": "Presuňte správny názov z nižšie uvedeného zoznamu k zodpovedajúcemu otázniku.",
+      "hint": "Nápoveda: Zamerajte sa na vlastnosti, ktoré robia každý ekosystém jedinečným, ako sú stromy, voda, tráva alebo reliéf.",
+      "checkAnswers": "Skontrolovať odpovede",
+      "clickToRemove": "Kliknite na odstránenie označenia",
+      "correct": "Správne",
+      "incorrect": "Nesprávne",
+      "missed": "Vynechané"
+    },
+    "page2": {
+      "instruction": "Prejdite kurzorom nad obrázok a zistite uhlíkový prínos mokradí",
+      "infoText": "Mokrade pokrývajú len 5–6 % pevniny Zeme, ale ukladajú 20–30 % všetkého organického uhlíka v pôde",
+      "hoverAreas": {
+        "anthropogenic-release": "Uvoľňovanie uhlíka spôsobené človekom: Odvodňovaním alebo inou degradáciou mokradí dochádza k oxidácii uloženého uhlíka a jeho uvoľneniu vo forme CO₂.",
+        "carbon-sequestration": "Zachytávanie uhlíka prostredníctvom fotosyntézy: Rastliny odstraňujú CO₂ z ovzdušia prostredníctvom fotosyntézy a vytvárajú biomasu",
+        "natural-release": "Prírodné uvoľňovanie uhlíka prostredníctvom respirácie a rozkladu biomasy.",
+        "carbon-storage": "Ukladanie uhlíka prostredníctvom biomasy uložené v pôde a sedimentoch."
+      },
+      "modal": {
+        "title": "Vedeli ste, že…?",
+        "fact": "Pôdy Zeme predstavujú obrovskú zásobáreň uhlíka, ukladajú trikrát viac uhlíka než atmosféra a štyrikrát viac než všetky rastliny a živočíchy spolu.",
+        "question": "Ktorý z ekosystémov zobrazených na grafe ukladá najviac uhlíka?",
+        "selectEcosystem": "Vyberte ekosystém",
+        "submitAnswer": "Odoslať odpoveď",
+        "nextPage": "Ďalšia stránka",
+        "feedback": {
+          "correct": "Správne! Mokrade ukladajú najviac uhlíka.",
+          "incorrect": "Nesprávne. Správna odpoveď je: mokrade.",
+          "explanation": "Mokrade patria medzi najefektívnejšie zásobárne uhlíka na Zemi, pretože ukladajú obrovské množstvá uhlíka vo svojej pôde a vegetácii."
+        }
+      }
+    },
+    "page3": {
+      "title": "Doplňte chýbajúce slová",
+      "instruction1": "Naša planéta má úžasný spôsob, ako ukladať uhlík do pôdy na stáročia! Niektoré písmená a slabiky z nasledujúcich viet sú však skryté v obrázku.",
+      "instruction2": "Dokážeš ich uhádnuť a doplniť text?",
+      "instruction3": "Kliknite na písmeno na obrázku vyššie a potom kliknite na príslušnú medzeru v texte, aby ste ho tam vložili. Kliknutím na vložené písmeno ho môžete odstrániť.",
+
+      "checkAnswers": "Skontrolovať odpovede",
+      "puzzleText": {
+        "part1": "Niektorý u",
+        "part2": "lík zostáva uzamknutý v p",
+        "part3": "de na veľmi dlhú dobu — niekedy st",
+        "part4": "ky alebo dokonca t",
+        "part5": "íce r",
+        "part6": "ov! ",
+        "part7": "Ak ho necháme ",
+        "part8": "rušený, tento pô",
+        "part9": "ny uhlík zostáva bezpečne pod z",
+        "part10": "ou, namiesto toho, aby sa dostal do atmo",
+        "part11": "sféry. Mo",
+        "part12": "rý uhlík, uložený v pobrežných a mokradných oblastiach, tiež pomáha spomaliť zm",
+        "part13": "nu k",
+        "part14": "my."
+        },
+      "correctAnswers": {
+            "blank1": "h",
+            "blank2": "ô",
+            "blank3": "ov",
+            "blank4": "is",
+            "blank5": "ok",
+            "blank6": "ne",
+            "blank7": "dn",
+            "blank8": "em",
+            "blank10": "dr",
+            "blank11": "e",
+            "blank12": "lí"
+        },
+      "blankPositions": {
+        "blank1": "afterPart1",
+        "blank2": "afterPart2",
+        "blank3": "afterPart3",
+        "blank4": "afterPart4",
+        "blank5": "afterPart5",
+        "blank6": "afterPart7",
+        "blank7": "afterPart8",
+        "blank8": "afterPart9",
+        "blank10": "afterPart11",
+        "blank11": "afterPart12",
+        "blank12": "afterPart13"
+        },
+      "hiddenLetters": {
+        "letter1": {
+          "text": "ne",
+          "x": 15,
+          "y": 20
+        },
+        "letter2": {
+          "text": "em",
+          "x": 20,
+          "y": 60
+        },
+        "letter3": {
+          "text": "ov",
+          "x": 35,
+          "y": 15
+        },
+        "letter4": {
+          "text": "dn",
+          "x": 45,
+          "y": 25
+        },
+        "letter5": {
+          "text": "ok",
+          "x": 55,
+          "y": 30
+        },
+        "letter7": {
+          "text": "dr",
+          "x": 50,
+          "y": 60
+        },
+        "letter8": {
+          "text": "ô",
+          "x": 65,
+          "y": 35
+        },
+        "letter9": {
+          "text": "e",
+          "x": 75,
+          "y": 20
+        },
+        "letter10": {
+          "text": "is",
+          "x": 70,
+          "y": 70
+        },
+        "letter11": {
+          "text": "lí",
+          "x": 80,
+          "y": 25
+        },
+        "letter12": {
+          "text": "h",
+          "x": 85,
+          "y": 45
+        }
+      }
+    },
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "carbonSequestrationSoils": "Zachytávanie uhlíka",
+      "carbonSequestrationFloodplains": "Carbon sequestration in floodplain forests",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    },
+    "ecosystemLabels": {
+      "tropicalForests": "Tropické lesy",
+      "temperateForests": "Lesy mierneho pásma",
+      "borealForests": "Boreálne lesy",
+      "tropicalSavannas": "Tropické savany",
+      "temperateGrasslands": "Trávnaté oblasti",
+      "desertsSemiDeserts": "Púšte a polopúšte",
+      "tundra": "Tundra",
+      "wetlands": "Mokrade",
+      "croplands": "Poľnohospodárska pôda"
+    },
+    "nextTopic": "Samočistiaca funkcia"
+  },
+  "floodplainPage": {
+    "title": "Životné prostredie záplavových území",
+    "intro": {
+      "question": "Všimneš si rozdiel medzi ilustráciami?",
+      "rainLabel": "Záplavové územie počas povodne (obdobie dažďov)",
+      "dryLabel": "Záplavové územie počas obdobia sucha", 
+      "description": "Spoznaj životné prostredie záplavových území a objav rozmanité biotopy a živočíchy, ktorým sa darí v týchto jedinečných ekosystémoch.",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "openPlatform": "OTVORENÁ PLATFORMA",
+      "opensNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "explore": "Objavte"
+    },
+    "page2": {
+      "title": "Záplavové územia počas obdobia dažďa"
+    },
+    "page3": {
+      "title": "Záplavové územia počas obdobia sucha" 
+    },
+    "page4": {
+      "sliderTitle": "Posuňte posuvník, aby ste videli rozdiely." 
+    },
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "basedOn5E": "Na základe vzdelávacieho modelu 5E a vedeckého výskumu",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    },
+    "nextTopic": "Zmapujte svoju mokraď"
+  },
+  "mapWetlandPage": {
+    "title": "Zmapujte svoju mokraď",
+    "intro": {
+      "description": "Nauč sa mapovať mokrade a preskúmaj rozmanité biotopy a prvky, ktoré možno identifikovať zhora.",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "openPlatform": "OTVORENÁ PLATFORMA",
+      "opensNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "explore": "Objavte"
+    },
+    "challenge": {
+      "title": "Výzva orlieho oka!",
+      "intro": "Z vysoka nad záplavovým územím náš priateľ – orliak morský – vidí kľukatiacu sa rieku, skryté jazerá, močiare, lesy, hrádzu aj dediny. Dokážeš ich nájsť aj ty? Priraď ku každému prvku správny názov a oživ ho farbami! Vždy, keď označíš správne miesto, krajina zažiari vo svojich skutočných farbách – presne tak, ako ju orol vidí z oblohy."
+    },
+    "quizItems": {
+      "WATERCOURSE": "Rieka",
+      "SIDE_ARMS": "Bočné ramená",
+      "DRAINAGE_CHANNELS": "Odtokové kanály",
+      "FLOODPLAIN_LAKE": "Jazero na záplavovom území",
+      "ISLANDS_MARSH": "Ostrovy (močiar)",
+      "FLOODPLAIN_FOREST": "Záplavový les",
+      "PASTURE_WITH_ANIMALS": "Lúka so zvieratami / pastvina",
+      "GRASSLAND": "Trávnatá plocha",
+      "PROTECTIVE_DIKE": "Ochranná hrádza",
+      "HUMAN_SETTLEMENT": "Ľudské sídlo / osada",
+      "AGRICULTURAL_FIELDS": "Poľnohospodárske polia"
+    },
+    "quiz": {
+      "letterPlaceholder": "Letter?",
+      "congratulations": "Gratulujeme!",
+      "successMessage": "Úspešne ste označili všetky prvky mokrade!"
+    },
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "basedOn5E": "Na základe vzdelávacieho modelu 5E a vedeckého výskumu",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    },
+    "nextTopic": "6. Samočistiaca funkcia"
+  },
+  "riparianPage": {
+    "title": {
+      "page0": "Objavovanie biotopu toku",
+      "page1": "Využitie krajiny pozdĺž riek",
+      "page2": "Morfológia potoka: plytčina, priehlbina a výbeh"
+    },
+    "intro": {
+      "description": "Nauč sa skúmať biotopoy a objav rozmanité pobrežné (ripariálne) ekosystémy a spôsoby využívania krajiny pozdĺž riek.",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "openPlatform": "OTVORENÁ PLATFORMA",
+      "opensNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "explore": "Objavte"
+    },
+    "page1": {
+      "introText": "Rieky a ich okolie ľudia využívajú už od staroveku na rôzne aktivity, ako je poľnohospodárstvo, stavba domov, rybolov, cestovanie alebo získavanie vody. Toto využívanie krajiny ukazuje, ako ľudia zasahujú do prostredia okolo riek a formujú ho.",
+      "instruction": "Pozorne si prezrite obe ilustrácie a vyberte, ktoré aktivity využitia ",
+      "landUseActivities": "aktivity využitia",
+      "instructionEnd": "krajiny dokážete nájsť.",
+      "quizQuestion": "Z nižšie uvedeného zoznamu kliknite na aktivity, ktoré vidíte na obrázkoch:",
+      "correct": "Správne",
+      "incorrect": "Nesprávne",
+      "missed": "Vynechané"
+    },
+    "page2": {
+      "instruction": "Prečítajte si nižšie definície pojmov",
+      "and": "a",
+      "instructionEnd": "a potom presuňte každý názov na správne miesto na oboch obrázkoch.",
+      "correct": "Správne",
+      "labels": {
+        "POOL": "PRIEHLBINA ",
+        "RIFFLE": "PLYTČINA",
+        "RUN": "VÝBEH"
+      },
+      "definitions": {
+        "POOL": "Hlbšia, pomaly tečúca časť potoka, kde sa voda zhromažďuje. Priehlbiny sú tiché a pokojné a poskytujú úkryt rybám.",
+        "RIFFLE": "Plytká, rýchlo tečúca časť potoka s malými vlnkami a viditeľnými kameňmi. Plytké prúdy pôsobia drsne a penivo a sú bohaté na kyslík, čo ich robí ideálnym biotopom pre hmyz a ryby.",
+        "RUN": "Hladká, mierne hlboká časť potoka, kde voda tečie rovnomerne medzi plytkým prúdom a hlbinou. Výbehy dostávajú veľa slnečného svetla, čo pomáha rastu rias. Hmyz sa živí riasami, čím sú výbehy dobrými miestami na kŕmenie pre ryby z priehlbín a plytčín."
+      }
+    },
+    "quizOptions": {
+      "human-settlements": "Ľudské sídla / osady",
+      "roads-bridges": "Cesty a mosty",
+      "flood-protection": "Protipovodňové stavby (hrádze, násypy a mosty)",
+      "dams": "Hrádze a hydroelektrická energia",
+      "pastures": "Pastviny a pasienky pre dobytok",
+      "irrigation": "Zavlažovacie kanály a systémy",
+      "factory": "Továreň alebo priemysel",
+      "mining": "Ťažba piesku a štrku",
+      "cycling": "Cyklistika",
+      "riparian-vegetation": "Brehové porasty (stromy a kríky pozdĺž brehov rieky)",
+      "floodplains": "Záplavové územia, mokrade",
+      "agriculture": "Poľnohospodárstvo / farmárčenie",
+      "recreation": "Rekreácia (kempovanie, plávanie, kanoistika a pod.)"
+    },
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "basedOn5E": "Na základe vzdelávacieho modelu 5E a vedeckého výskumu",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    }
+  },
+  "floodControlPage": {
+    "title": {
+      "page0": "Záplavové územia ako špongia",
+      "page1": "Funkcia protipovodňovej ochrany – Záplavové územia ako špongia"
+    },
+    "intro": {
+      "description": "Dozviete sa o funkcii protipovodňovej ochrany a prečo sú záplavové územia ako špongia, a otestujte si svoje vedomosti zábavnými aktivitami.",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "openPlatform": "OTVORENÁ PLATFORMA",
+      "opensNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "explore": "Objavte"
+    },
+    "page1": {
+      "instruction": "Prejdite myšou ponad rôzne časti obrázkov a odhaľte užitočné fakty.",
+      "didYouKnow": "Vedeli ste, že…?",
+      "hoverAreas": {
+        "left": {
+          "willows-banks": "Vŕby stabilizujú brehy a zvyšujú pórovitosť pôdy vďaka rozvetveným koreňovým systémom.",
+          "reed-vegetation": "Hustá vegetácia trstiny spomaľuje prúd vody, zachytáva sedimenty a zlepšuje kvalitu vody.",
+          "native-grasses": "Pôvodné trávy zlepšujú pórovitosť pôdy a infiltráciu vody.",
+          "leaf-litter": "Opadané listy na lesnej pôde zadržiavajú vlhkosť a znižujú povrchový odtok.",
+          "deep-rooted-trees": "Hlboko zakorenené stromy a kríky poskytujú silnejšiu stabilizáciu brehov ako plytko zakorenené trávy."
+        },
+        "right": {
+          "natural-filtration": "Rieka je stiahnutá hrádzami ako tesným korzetom. Nemôže sa rozlievať na záplavové územie, takže hladina vody rýchlo stúpa.",
+          "ecosystem-benefits": "Bez rastlín pozdĺž rieky nič nespomaľuje prúd ani neabsorbuje vodu. Pôda praská a zhutňuje sa – voda do nej nemôže vsiaknuť.",
+          "groundwater-recharge": "Bez rastlín pozdĺž brehov odteká voda rýchlejšie, do rieky sa dostáva viac sedimentov a živín a kvalita vody klesá."
+        }
+      },
+      "didYouKnowContent": {
+        "left": {
+          "title": "Vedeli ste, že…?",
+          "items": [
+            "Pôdy záplavového územia zadržiavajú 3 000–4 000 m³ vody na hektár.",
+            "Kľukatenie rieky zvyšuje dobu zadržiavania vody o 30–50 %.",
+            "Vegetácia na záplavovom území zadržiava 30–40 % z celkovej kapacity zadržiavania vody.",
+            "Prirodzené záplavové územie absorbuje povodňovú vodu po dobu 20–30 dní.",
+            "Dopĺňanie podzemnej vody: 500–1 000 m³ na hektár za rok."
+          ]
+        },
+        "right": {
+          "title": "Vedeli ste, že…?",
+          "items": [
+            "Regulácia riek znižuje zadržiavanie vody o 60–80 %.",
+            "Strata vegetácie znižuje kapacitu zadržiavania vody o 40–50 %.",
+            "Zhutnenie pôdy znižuje zadržiavanie vody o 30–40 %.",
+            "Degradované záplavové územie zadržiava iba 1 000–2 000 m³ vody na hektár."
+          ]
+        }
+      }
+    },
+    "page2": {
+      "activityTitle": "Aktivita 1",
+      "instruction": "Dokážete odhaliť chýbajúce „super schopnosti“ záplavového územia? Priraďte čísla popisov k zdravému záplavovému územiu (vľavo) a k degradovanému záplavovému územiu (vpravo).",
+      "naturalFloodplain": "Pôvodné prirodzené záplavové územie",
+      "degradedFloodplain": "Zmenené záplavové územie",
+      "descriptions": {
+        "left": [
+          "Kľukatiaca sa rieka tečie jemnými zákrutami, rozlieva vodu po záplavovom území, spomaľuje prúd a vyživuje pôdu.",
+          "Rastliny pozdĺž brehov rieky spomaľujú prúd, zachytávajú sedimenty a absorbujú nadbytočné živiny, čím prispievajú k čistej vode.",
+          "Jazerá a mŕtve ramená záplavového územia zadržiavajú nadbytočnú povodňovú vodu, podporujú bohatú biodiverzitu a pomáhajú dopĺňať podzemnú vodu."
+        ],
+        "right": [
+          "Pri silnom daždi sa môžu tvoriť povodne, poškodzovať hrádze a ohrozovať blízke dediny.",
+          "Vo vyrovnanej, zregulovanej rieke rýchlejší prúd spôsobuje eróziu a prehĺbenie koryta, čo vysušuje blízke záplavové územia.",
+          "Bez rastlín pozdĺž rieky nič nespomaľuje prúd, ani neabsorbuje vodu."
+        ]
+      },
+      "correct": "Správne",
+      "incorrect": "Nesprávne",
+      "correctLabel": "Správne"
+    },
+    "page3": {
+      "title": "Výzva – doplňovanie slov",
+      "intro1": "Záplavové územia sú prírodné ochranné pásma!",
+      "intro2": "Ako záplavové územie pomáha počas silného dažďa?",
+      "intro3": "Čo sa stane s povodňovou vodou, keď má rieka priestor na rozlievanie?",
+      "completeSentence": "Doplňte vetu:",
+      "sentence1": "Záplavové územia pôsobia ako prírodná ",
+      "sentence1End": "na zadržiavanie povodňovej vody a znižovanie ",
+      "sentence2": "",
+      "sentence2End": "rizika nižšie po prúde.",
+      "placeholder1": "š____a",
+      "placeholder2": "p____o",
+      "correctAnswers": {
+        "answer1": "špongia",
+        "answer2": "povodňového"
+      },
+      "feedback": {
+        "correctSponge": "Správne: špongia",
+        "incorrectSponge": "Nesprávne (správna odpoveď: špongia)",
+        "correctFlooding": "Správne: povodňového",
+        "incorrectFlooding": "Nesprávne (správna odpoveď: povodňového)"
+      }
+    },
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "basedOn5E": "Na základe vzdelávacieho modelu 5E a vedeckého výskumu",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    },
+    "nextTopic": "Ochrana klímy a zásobáreň uhlíka"
+  },
+  "peopleAquaticPage": {
+    "title": "Ľudia a vodné ekosystémy",
+    "subtitle": {
+      "page1": "Pôvodné prirodzené záplavové územie",
+      "page2": "Využívané a pozmenené záplavové územia",
+      "page3": "Obnova záplavových území ako prírode blízke opatrenia "
+    },
+    "intro": {
+      "description": "Preskúmajte, ako ľudia využívajú záplavové územia a vodné ekosystémy, a objavte spôsoby, ako obnoviť ich prínosy pre komunity a prírodu.",
+      "explore": "Objavte"
+    },
+    "activity1": {
+      "title": "Aktivita 1",
+      "description": "Pozorne sa pozrite — takto ľudské aktivity zmenili Dunaj a jeho záplavové územia. Protipovodňové hrádze, poľnohospodárstvo, lodná doprava a ďalšie vplyvy zmenili krajinu.",
+      "question": "Môžete mi pomôcť priradiť jednotlivé vplyvy k príslušným miestam na obrázku?",
+      "instruction": "Ľudia odlesnili krajinu, premenili nivy na pasienky a poľnohospodárske polia. Pri brehoch Dunaja postavili dediny a neskôr mestá. Aby sa chránili pred povodňami, vybudovali hrádze. Dunaj bol tiež upravený ako dopravná vodná cesta a pre výrobu vodnej energie. V dôsledku toho rieka stratila mnoho svojich prirodzených znakov: rovnováha sedimentov v koryte bola narušená a spojenie medzi riekou a jej záplavovými územiami bolo do veľkej miery prerušené. Z pôvodného záplavového územia zostali len malé zvyšky, zatiaľ čo mnohé typické živočíchy a rastliny zmizli."
+    },
+    "activity2": {
+      "title": "Aktivita 2",
+      "description": "Aby sme pomocou tohto prírode blízkeho opatrenia dokázali riešiť spoločenské problémy, môžeš teraz preskúmať vhodné obnovné opatrenia: každý obrázok ukazuje jeden spôsob, ako môžu ľudia a príroda spolupracovať.",
+      "question": "Dole nájdeš zoznam so šiestimi opatreniami. Dokážeš priradiť každé opatrenie k obrázku, ktorý ho zobrazuje? Potiahni a pusti opatrenia zo zoznamu na zodpovedajúci obrázok.",
+      "instruction": "Postupne sa časti Dunajského záplavového územia opäť pripájajú k rieke. Staré bočné ramená sa znovu otvárajú, obnovujú sa lesy a mokrade a tam, kde je to možné, sa umožňuje prirodzené zaplavovanie. Tieto opatrenia prinášajú späť biotopy pre ryby, vtáky a rastliny, a zároveň pomáhajú ľuďom – zadržiavaním povodňovej vody, zlepšovaním kvality vody, poskytovaním vody počas sucha a vytváraním priestoru pre rekreáciu. Tieto obnovné opatrenia sa nazývajú prírode blízke opatrenia (Nature-based Solution)."
+    },
+    "activity3": {
+      "title": "Aktivita 3",
+      "description": "Tieto polárne diagramy ukazujú, ako sa ekosystémové služby Dunaja menia v troch rôznych scenároch: prirodzené záplavové územia, zmenené záplavové územia pod vplyvom ľudských aktivít a obnovené záplavové územia prírode blízkymi opatreniami. Dokážeš zistiť, prečo služby vyzerajú tak odlišne?",
+      "column1": {
+        "title": "Pôvodné prirodzené záplavové územie",
+        "question": "Keď sa pozrieme na tento polárny diagram, prečo sú takmer všetky ekosystémové služby veľmi vysoké, ale poľnohospodárstvo nízke?",
+        "options": {
+          "A": "Pretože pôda v záplavovom území bola príliš chudobná a nič tam nemohlo rásť.",
+          "B": "Pretože poľnohospodárstvo bolo zakázané panovníkmi Dunajského regiónu v tých časoch.",
+          "C": "Pretože záplavové územie bolo stále prirodzené, ponúkalo množstvo výhod pre ľudí a zvieratá, ale poľnohospodárska činnosť nebola možné na zaplavenej pôde."
+        }
+      },
+      "column2": {
+        "title": "Zmenené záplavové územie",
+        "question": "Prečo je poľnohospodárska produkcia v tomto diagrame taká vysoká, zatiaľ čo väčšina ostatných služieb je nízka?",
+        "options": {
+          "A": "Pretože sa rozšírili prirodzené lesy a mokrade Dunaja, čím sa súčasne zvýšila produkcia poľnohospodárskych plodín a dreva.",
+          "B": "Pretože hrádze odrezali záplavové územie od rieky, čím chránili poľnohospodársku pôdu pred povodňami, ale zničili mnoho prirodzených biotopov a ich prínosy.",
+          "C": "Pretože pri Dunaji nikto nežil, takže sa využívalo len niekoľko služieb."
+        }
+      },
+      "column3": {
+        "title": "Obnovené záplavové územie",
+        "question": "Prečo sú ekosystémovy služby na tomto polárnom diagrame vyváženejšie v porovnaní s dvoma predchádzajúcimi?",
+        "options": {
+          "A": "Pretože prírode blízke riešenia obnovujú bočné ramená, mokrade a lesy, ktoré prinášajú množstvo výhod pre prírodu aj ľudí.",
+          "B": "Pretože ľudia umožnili prirodzené rozlievanie rieky počas povodne  a odstránili všetky tlaky.",
+          "C": "Pretože Dunaj bol od svojich záplavových území odrezaný hrádzami."
+        }
+      },
+      "correctAnswer": "Správna odpoveď:"
+    },
+    "pressureLabels": {
+      "cutting-meanders": {
+        "label": "Odrezanie meandrov",
+        "description": "Napriamovanie rieky (rieka je kratšia a narovnaná namiesto meandrov)."
+      },
+      "building-dikes": {
+        "label": "Výstavba hrádzí",
+        "description": "Protipovodňové hrádze (vyvýšené násypy pozdĺž rieky, ktoré udržiavajú vodu v hlavnom koryte a bránia jej rozliatiu na záplavové územie)."
+      },
+      "channellizing-rivers": {
+        "label": "Napriamovanie riek do koryta",
+        "description": "Regulácia rieky (ochrana brehov narovnaných riek pred eróziou pokrytím kameňmi alebo výstavbou priečnych kameňových prekážok (malé priečne kamenné zábrany), aby rieka nemohla meniť svoje koryto)."
+      },
+      "draining-floodplains": {
+        "label": "Odvodňovanie záplavových území ",
+        "description": "Vysúšanie mokradí (odstraňovanie vody z mokradí, aby sa pôda dala využiť na pastviny, poľnohospodárske plochy alebo osídlenie)."
+      },
+      "urbanization": {
+        "label": "Urbanizácia",
+        "description": "Výstavba sídiel, ciest a miest, sprevádzaná vypúšťaním odpadových vôd do rieky."
+      },
+      "agriculture-pesticides": {
+        "label": "Poľnohospodárstvo s použitím pesticídov, insekticídov, atď. ",
+        "description": "Používanie chemikálií v poľnohospodárstve proti burine a hmyzu."
+      },
+      "cutting-forests": {
+        "label": "Rúbanie lesov",
+        "description": "Odlesňovanie (odstraňovanie stromov z veľkých oblastí)."
+      },
+      "industrialization": {
+        "label": "Industrializácia ",
+        "description": "Výstavba tovární a priemyselných objektov, často sprevádzaná znečistením ovzdušia, pôdy alebo vody."
+      },
+      "dams-hydroelectric": {
+        "label": "Priehrady, vodné elektrárne atď. (pozdlžna konektivita)",
+        "description": "Výstavba prekážok na riekach (priečne betónové stavby, ktoré bránia voľnému pohybu vody, sedimentov a rýb)."
+      },
+      "invasive-species": {
+        "label": "Invázne druhy",
+        "description": "Nové druhy (rastliny alebo zvieratá z iných kontinentov, ktoré sa masívne šíria a spôsobujú problémy svojou dominanciou)."
+      },
+      "navigation": {
+        "label": "Lodná doprava",
+        "description": "Lode a kanály (prehlbovanie a regulácia riek, aby po nich mohli plávať veľké lode)."
+      },
+      "climate-change": {
+        "label": "Zmena klímy",
+        "description": "Globálne otepľovanie (extrémnejšie poveternostné podmienky spôsobené ľudskou činnosťou)."
+      }
+    },
+    "restorationMeasures": {
+      "restoration-sidearms": {
+        "label": "Obnova bočných ramien rieky",
+        "description": "Opätovné otváranie starých riečnych ramien, aby nimi mohla znovu prúdiť voda, čím sa vytvára viacero biotopov pre ryby, vtáky a rastliny."
+      },
+      "dike-relocation": {
+        "label": "Presunutie hrádzí, aby vznikol väčší priestor",
+        "description": "Posunutie hrádzí ďalej od rieky, aby sa rieke poskytol väčší priestor a aby sa obnovili lužné lesy, ktoré môžu zadržiavať povodňovú vodu."
+      },
+      "buffer-strips": {
+        "label": "Nárazníkové pásy",
+        "description": "Obnova úzkych pásov lesa medzi poľnohospodárskou pôdou a riekou, ktoré filtrujú živiny a tým chránia vodu pred znečistením. "
+      },
+      "fish-ramps": {
+        "label": "Rybie priechody alebo odstraňovanie prekážok",
+        "description": "Pomoc rybám pri migrácii odstránením prekážok alebo ich premenou na kamenné priechody, ktoré umožnia rybám opäť plávať proti prúdu."
+      },
+      "bypass-channels": {
+        "label": "Odtokové kanály",
+        "description": "Vytváranie umelých bočných kanálov okolo prekážok s miernym sklonom, kde sa ryby a iné živočíchy môžu pohybovať alebo dokonca žiť."
+      },
+      "native-species": {
+        "label": "Podpora pôvodných druhov",
+        "description": "Obnova prirodzených podmienok prostredia na podporu pôvodných rastlín a živočíchov, čím sa sťažuje šírenie inváznych druhov."
+      }
+    },
+    "ui": {
+      "results": "Výsledky",
+      "correct": "Správne",
+      "incorrect": "Nesprávne",
+      "correctTooltip": "Správne",
+      "incorrectTooltip": "Nesprávne",
+      "clickToRemove": "Kliknite na odstránenie a návrat do zoznamu",
+      "checkAnswers": "Skontrolovať odpovede",
+      "tryAgain": "SKÚS ZNOVA"
+    },
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "basedOn5E": "Na základe vzdelávacieho modelu 5E a vedeckého výskumu",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    }
+  },
+  "artPage": {
+    "title": "Záplavové územia ako zdroje inšpirácie",
+    "intro": {
+      "description": "Objavte, ako záplavové územia inšpirujú príbehy, remeslá a kreativitu. Preskúmajte umenie s materiálmi z prírody, než vytvoríte svoje vlastné majstrovské diela.",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "openPlatform": "OTVORENÁ PLATFORMA",
+      "opensNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "explore": "Objavte"
+    },
+    "instruction": {
+      "intro1": "Rieky a ich záplavové územia sú domovom mnohých zvierat a rastlín, zároveň sú to živé krajiny plné príbehov, ktoré ľudí inšpirovali po stáročia. Od pletenia košíkov z vŕbového prútia až po tvorbu piesní, legiend a kresieb — záplavové územia spájajú prírodu s kultúrou.",
+      "intro2": "Teraz je rad na vás – bavte sa pri využívaní prírodných prvkov na tvorbu vlastných obrázkov a príbehov.",
+      "instruction": "Predstavte si, že ste vonku v prírode a zbierate listy, konáriky alebo perie, aby ste vytvorili svoje vlastné postavy. Dokážete týmto obrysom vdýchnuť život? Presuňte a pusťte prírodné prvky do tvarov, až kým nebudú naplnené formou a farbou.",
+      "page3": {
+        "text1": "Niektoré časti krajiny chýbajú.",
+        "text2": "Pomôžte obrysom ožiť — presuňte a pusťte prírodné prvky do tvarov, až kým nebudú kompletné.",
+        "trySnailFirst": "Skúste najprv umiestniť slimáka."
+      }
+    },
+    "nextTopic": "Ľudia a vodné ekosystémy A. Obnova záplavových území ako prírode blízke A. Restoring opatrenia floodplains as a Nature-based Solution",
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "basedOn5E": "Na základe vzdelávacieho modelu 5E a vedeckého výskumu",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    }
+  },
+  "aestheticsPage": {
+    "title": {
+      "page0": "Estetika záplavových území verzus funkcie záplavových území",
+      "page1": "Prírodné dary, ktoré ponúka Dunaj a jeho záplavové územia",
+      "page2": "Objavte skryté služby záplavového územia!"
+    },
+    "intro": {
+      "description": "Spoznaj estetiku a objav skryté služby a kultúrne hodnoty, ktoré záplavové územia poskytujú.",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "openPlatform": "OTVORENÁ PLATFORMA",
+      "opensNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "explore": "Objavte"
+    },
+    "page1": {
+      "description": "Záplavové územia a mokrade Dunaja nám poskytujú mnoho výhod, nazývaných ekosystémové služby. Tie sa prejavujú rôznymi formami:",
+      "provisioningServices": "Zásobovacie služby",
+      "provisioningDescription": "zdroje, ktoré môžeme priamo využívať, ako ryby, čistá voda alebo drevo.",
+      "regulatingServices": "Regulačné služby",
+      "regulatingDescription": "procesy, ktoré udržiavajú rovnováhu v prírode, ako regulácia povodní, čistenie vody alebo ukladanie uhlíka.",
+      "culturalServices": "Kultúrne služby",
+      "culturalDescription": "prínosy, ktoré obohacujú náš život, napríklad rekreácia, vzdelávanie a kultúrne tradície.",
+      "activityQuestion": "Dokážete priradiť služby prírody do skupín?",
+      "activityInstruction": "Presuňte každú ikonu do správnej skupiny.",
+      "results": "Výsledky",
+      "correct": "Správne",
+      "incorrect": "Nesprávne",
+      "correctTooltip": "Správne",
+      "incorrectTooltip": "Nesprávne",
+      "clickToRemove": "Kliknite na odstránenie"
+    },
+    "page2": {
+      "instruction": "Objavte skryté služby záplavového územia! Záplavové územie Dunaja je plné skrytých pokladov — niektoré však nie je ľahké zahliadnuť! Použite lupu na preskúmanie krajiny a nájdite ikony ekosystémových služieb. Keď prejdete lupou nad ikonou, zmizne z obrázku a objaví sa pri zodpovedajúcej značke na okraji ilustrácie."
+    },
+    "ecosystemServices": {
+      "tourism": "Turizmus",
+      "recreation": "Rekreácia a rybolov",
+      "landscape": "Estetika krajiny",
+      "climate": "Regulácia klímy",
+      "carbon": "Zachytávanie uhlíka",
+      "nutrient": "Zadržiavanie živín",
+      "flood": "Regulácia povodní",
+      "habitat": "Úžitky ktoré poskytujú biotopy",
+      "water": "Povrchová a podzemná voda",
+      "fish": "Ryby",
+      "agriculture": "Poľnohospodárstvo",
+      "timber": "Drevo"
+    },
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "basedOn5E": "Na základe vzdelávacieho modelu 5E a vedeckého výskumu",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    },
+    "nextTopic": "NEXT TOPIC: Floodplain Art"
+  },
+  "treatmentWetlandsPage": {
+    "title": {
+      "main": "Mokraďné čistiarne",
+      "page1": "Posledný prírodný filter – mokraďová čistiareň",
+      "page2": "Vrstva po vrstve – čistiaci tím prírody",
+      "page3": "Postavme prírodný filter – Vertikálna prietoková mokraď",
+      "page4": "Malí čističi, veľký účinok!"
+    },
+    "intro": {
+      "description": "Spoznaj mokraďové čistiarne a zisti, ako umelé mokrade prirodzene filtrujú a čistia odpadovú vodu.",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "openPlatform": "OTVORENÁ PLATFORMA",
+      "opensNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "explore": "Objavte"
+    },
+    "characters": {
+      "rocky": {
+        "name": "Rocky, Odvádzač",
+        "label": "Rocky, Odvádzač",
+        "tooltip": {
+          "first": "Som Rocky, Odvádzač! Zhromažďujem vyčistenú vodu a bezpečne ju odvádzam do rieky. Udržiavam dno otvorené a prevzdušnené, aby celý systém mohol „dýchať.“",
+          "second": "Funkcia: Zhromažďuje vyčistenú vodu, zabezpečuje prevzdušnenie zo spodnej strany a usmerňuje tok k odtoku."
+        }
+      },
+      "reeda": {
+        "name": "Reeda, Strážkyňa prúdu",
+        "label": "Reeda, Strážkyňa prúdu",
+        "tooltip": {
+          "first": "Som Reeda, Strážkyňa prúdu! Moje korene udržiavajú filter otvorený, aby voda mohla ľahko pretekať. Chránim mokraď pred horúčavou a chladom, prinášam trochu kyslíka a poskytujem mikroorganizmom dobré miesto na život.",
+          "second": "Funkcia: Rast koreňov udržiava hydraulickú priepustnosť filtra, poskytuje izoláciu proti horúčave (v lete) a chladu (v zime), spomaľuje prítok vody, podporuje mikroorganizmy a vstrebáva časť živín."
+        }
+      },
+      "gravelia": {
+        "name": "Gravelia, Distribútorka",
+        "label": "Gravelia, Distribútorka",
+        "tooltip": {
+          "first": "Ahoj! Som Gravelia, Distribútorka! Zabraňujem, aby jemné častice upchali dno, a rozdeľujem vodu rovnomerne. Udržiavam rovnováhu medzi Sandy nadomnou a Rocky podomnou.",
+          "second": "Funkcia: Rovnomerne rozdeľuje vodu, zabraňuje upchatiu a chráni drenážnu zónu pod sebou."
+        }
+      },
+      "sandy": {
+        "name": "Sandy, Čistička",
+        "label": "Sandy, Čistička",
+        "tooltip": {
+          "first": "Som Sandy, Čistička! Milióny mikróbov žijú medzi mojimi zrnkami — konzumujú odpad a premieňajú dusík a organické látky na neškodné formy. Práve ja vykonávam väčšinu skutočného čistenia!",
+          "second": "Funkcia: Poskytuje útočisko mikróbnym biofilmom, ktoré vykonávajú väčšinu biologického čistenia (nitrifikácia, odstraňovanie organickej hmoty, čiastočné viazanie fosforu). Jemná štruktúra spomaľuje prietok vody, čím umožňuje dlhší kontakt → lepšie čistenie."
+        }
+      }
+    },
+    "layerSlots": {
+      "plant": "Vrstva rastlín",
+      "filter": "Filtračná vrstva",
+      "intermediate": "Medzivrstva",
+      "drainage": "Drenážna vrstva"
+    },
+    "page2": {
+      "instruction": "Spoznaj postavy, ktoré predstavujú vrstvy mokraďnej čistiarne — Reeda, Sandy, Gravelia a Rocky. \n\nPresuň označenia vrstiev na správne miesta v nádobke a potom skontroluj, či máš poradie správne!",
+      "successMessage": "Výborne! Vybudovali ste čistiacu mokraď v správnom poradí.",
+      "errorMessage": "{{name}} patrí do inej vrstvy. Skúste iné miesto!"
+    },
+    "page3": {
+      "instruction": "Nalejte materiály z vedierok v správnom poradí, aby ste postavili svoju vertikálnu mokraďnú čistiareň — najprv kamene, potom štrk, piesok a nakoniec na vrch vysaďte trstinu. Sledujte, ako sa vaša mokraď pripravuje na prirodzené čistenie vody!",
+      "dropBucket": "Presuňte vedro sem!"
+    },
+    "page4": {
+      "intro": "Teraz, keď je mokraď postavená, spoznajme jej skrytých pracovníkov — drobné mikróby, ktoré vykonávajú väčšinu čistiacej práce.",
+      "conclusion": "Rozkladám organický odpad na jednoduché látky, ktorými sa môžem živiť! Vďaka miliónom drobných pomocníkov, ako sú Nino, Dina, Phos a Bacto, opúšťa voda mokraďnú čistiareň svieža a čistá — pripravená vrátiť sa do Dunaja a začať svoju cestu znova!",
+      "hoverZones": {
+        "zone1": "Premieňam amónium na dusičnany, keď je k dispozícii kyslík!",
+        "zone2": "Pracujem tam, kde nie je kyslík — premieňam dusičnany na dusík!",
+        "zone3": "Chytám fosfor a pevne ho držím v štrku!",
+        "zone4": "Rozkladám organický odpad na jednoduché látky, ktorými sa môžem živiť!"
+      }
+    },
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "basedOn5E": "Na základe vzdelávacieho modelu 5E a vedeckého výskumu",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    },
+    "nextTopic": "NEXT TOPIC: Floodplain Aesthetics"
+  },
+  "selfPurificationPage": {
+    "title": {
+      "main": "Samočistiaca funkcia",
+      "page1": "Znečistenie riek dusíkom",
+      "page2": "Zachytávanie dusíka riekami",
+      "page3": "Additional retention of nitrogen by floodplains",
+      "page4": "Prísun fosforu do riek",
+      "page5": "Zachytávanie fosforu riekami",
+      "page6": "Zachytávanie fosforu riekami"
+    },
+    "intro": {
+      "description": "Naučte sa o samočistiacicha funkciách a objavte, ako rieky a záplavové oblasti prirodzene filtrujú a čistia vodu.",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "openPlatform": "OTVORENÁ PLATFORMA",
+      "opensNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "explore": "Objavte"
+    },
+    "hoverAreas": {
+      "nutrients1": {
+        "area1": "Znečistenie, ktoré pochádza z mnohých rozptýlených miest, ako sú poľnohospodárske polia, cesty alebo mestá, a do riek je spláchnuté dažďom alebo povrchovým odtokom.",
+        "area2": "Znečistenie, ktoré pochádza z jedného, identifikovateľného miesta, napríklad potrubia z továrne alebo čističky odpadových vôd.",
+        "area3": "Hnojivá a hnoj sa rozpúšťajú v dažďovej vode a prechádzajú pôdou alebo cez polia do riek. Toto je hlavný zdroj difúzneho znečistenia dusíkom.",
+        "area4": "Dažďová voda prenáša dusíkové zlúčeniny z ulíc, vozidiel a mestských zelených plôch do kanalizácie a riek.",
+        "area5": "Očistená voda stále obsahuje niektoré dusíkové zlúčeniny, ktoré prúdia do riek cez výpustné potrubia. V niektorých krajinách moderné čističky efektívne odstraňujú väčšinu dusíka, ale v iných je čistenie menej pokročilé — alebo dokonca chýba.",
+        "area6": "Niektoré továrne uvoľňujú odpadové vody bohaté na dusík z potravinárskej výroby, chemického priemyslu alebo výrobných aktivít. Zvyčajne je to regulované, no stále to má lokálny význam."
+      },
+      "nutrients2": {
+        "area1": "Častice dusíka sa usadzujú v sedimentoch. Organické dusíkové častice klesajú na dno, a tým sa stávajú prístupné pre mikroorganizmy žijúce medzi zrnami piesku — tiché zóny samočistenia.",
+        "area2": "Živiny → Biomasa (dočasne). Riasy a vodné rastliny pohlcujú dusičnan a amónium; dusík je uložený v ich tkanivách, kým sa nerozložia.",
+        "area3": "Amónium → Dusičnan (vyžaduje kyslík). Malé mikroorganizmy v sedimentoch bohatých na kyslík premieňajú amónium na dusičnan — prvý krok samočistenia.",
+        "area4": "Dusičnan → Dusík (plyn, bez kyslíka). Baktérie v zóne s nízkym obsahom kyslíka premieňajú dusičnan na dusík vo forme plynu — kľúčový proces straty dusíka."
+      },
+      "nutrients3": {
+        "area1": "Dusičnan → Dusík (plyn, bez kyslíka). V zaplavených pôdach mikroorganizmy dýchajú bez kyslíka a premieňajú dusičnan na dusík vo forme plynu — trvalé odstránenie dusíka.",
+        "area2": "Živiny → Biomasa (dočasne). Rastliny v záplavovom území absorbujú dusík počas vegetačného obdobia a ukladajú ho do dreva a listov.",
+        "area3": "Dusík viazaný na častice sa usadzuje. Počas záplav sú zavesené častice s dusíkom zachytené a uložené na povrchu záplavového územia."
+      },
+      "nutrients4": {
+        "area1": "Znečistenie, ktoré pochádza z mnohých rozptýlených miest, ako sú poľnohospodárske oblasti, nespevnéné cesty alebo mestá.",
+        "area2": "Znečistenie, ktoré pochádza z jedného jasného zdroja, napríklad potrubia z čističky odpadových vôd alebo z továrne.",
+        "area3": "Fosfor viazaný na častice pôdy sa počas dažďa alebo povodní splavuje do riek.",
+        "area4": "Fosfor z hnojív sa rozpúšťa vo vode a pomaly sa dostáva do riek cez pôdu alebo povrchový odtok. Menší, ale stály difúzny zdroj.",
+        "area5": "Dažďová voda splavuje prach, pracie prostriedky a odpadové častice bohaté na fosfor do kanalizácie a riek.",
+        "area6": "Aj po čistení zostáva časť fosforu vo vypúšťanej vode. Mnohé krajiny svoje čistiarne modernizovali, no iné stále nemajú efektívne systémy alebo nemajú žiadne čistiarne odpadových vôd.",
+        "area7": "Niektoré továrne uvoľňujú odpadovú vodu obsahujúcu fosfor z čistiacich, spracovateľských alebo výrobných činností. Zvyčajne je to regulované, no v niektorých oblastiach stále významné znečistenie."
+      },
+      "nutrients5": {
+        "area1": "Rozpustený fosfát sa viaže na minerály ako železo, hliník alebo vápno. Keď je prítomný kyslík, fosfor zostáva viazaný; ak však kyslík chýba, môže sa opäť uvoľniť späť do vody.",
+        "area2": "Riasy, vodné rastliny a biofilmy vstrebávajú fosfor a využívajú ho na rast. Táto retencia je dočasná — keď organizmy odumrú alebo sa rozložia, fosfor sa uvoľní späť do vody.",
+        "area3": "Fosfor viazaný na pôdne a organické častice sa usadzuje na dne rieky. Toto sa deje hlavne v pokojnejších úsekoch alebo tam, kde je prúd pomalý — tvorí sa tak dočasné „uložisko fosforu“ v sedimente."
+      },
+      "nutrients6": {
+        "area1": "Keď sa povodňové vody rozšíria po krajine, spomaľujú a usadzujú suspendované častice bohaté na fosfor. Toto je jeden z najefektívnejších spôsobov, ako záplavové územia zachytávajú a ukladajú fosfor.",
+        "area2": "Rastliny na záplavových územiach vstrebávajú fosfor počas rastu a ukladajú ho v listoch a koreňoch. Táto retencia je dočasná, ale časť fosforu zostáva aj dlhšie, v opade a humuse po odumretí rastlín.",
+        "area3": "Rozpustený fosfor sa viaže na zlúčeniny železa, hliníka alebo vápnika v pôde. Tým zostáva fosfor „uzamknutý“ — pokiaľ kyslík nedôjde, potom sa môže opäť uvoľniť."
+      }
+    },
+    "quizModal": {
+      "content": "Približne 40 % fosforu, ktorý sa uvoľní do Povodia Dunaja, nikdy nedosiahne ústie rieky — usadzuje sa a zachytáva sa v nádržiach a záplavových územiach pozdĺž toku."
+    },
+    "didYouKnow": {
+      "nitrogenRivers": {
+        "title": "Vieš, koľko dusíka rieky odstraňujú?",
+        "content": "Každý rok rieky v záplavových územiach prirodzene zachytia približne 25 000 ton dusíka (asi 5 % z celkových emisií) — rovnaké množstvo dusíka, ktoré by približne 5,5 milióna ľudí vylúčilo za rok! To je približne počet obyvateľov Slovenska. Naprieč celým Povodím Dunaja rieky odstraňujú ešte viac: približne 30 % dusíka, ktorý vstupuje do riečneho systému, sa zachytí počas toku v rieke, hlavne prostredníctvom denitrifikácie. To ukazuje, akú čistiacu silu majú rieky, ešte skôr než voda dosiahne záplavové územia."
+      },
+      "nitrogenFloodplains": {
+        "title": "Vieš, koľko dusíka zachytia Dunajské záplavové územia?",
+        "content": "Zvyšné aktívne záplavové územia Povodia Dunaja poskytujú dodatočný krok čistenia, pričom zachytávajú približne 7 700 ton dusíka ročne — to je približne toľko, koľko by ročne vylúčilo 1,6 milióna ľudí (obyvateľov Belehradu)."
+      }
+    },
+    "modal": {
+      "title": "Možnosti stiahnutia",
+      "accessTeachingMaterials": "Prístup k výučbovým materiálom",
+      "basedOn5E": "Na základe vzdelávacieho modelu 5E a vedeckého výskumu",
+      "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+      "exploreRepository": "Preskúmajte WET-EDU archív ",
+      "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
+    },
+    "nextTopic": "Mokraďné čistiarne"
+  },
+  "termsOfUse": {
+    "title": "Terms of Use",
+    "section1": {
+      "title": "1. Introduction",
+      "p1": "Restore4Life (Restoration of wetland complexes as life supporting systems in the Danube Basin), herein referred to as \"The Project\", is a 48-month project that addresses the topic HORIZON-MISS-2022-OCEAN-01.",
+      "p2": "The \"LIVING FLOODPLAINS: LEARN, EXPLORE, RESTORE4LIFE TOOLBOX\" (hereinafter referred to as \"this platform\" or \"the Toolbox\") has been developed within the framework of The Project.",
+      "p3": "These Terms of Use govern your access to and use of this platform and all content, materials, and resources available within the Toolbox. All content in the Toolbox is part of The Project and is subject to these Terms of Use. By accessing or using this platform or any content within the Toolbox, you agree to be bound by these Terms of Use."
+    },
+    "section2": {
+      "title": "2. Definitions",
+      "consortium": "\"The Consortium\" refers to all signatories, other than the European Commission, of the Grant Agreement 101112736, which may have single or joint intellectual property rights in relation to the project outcomes.",
+      "materials": "\"Materials\" refer to all information, content, data, documents (e.g. white papers, brochures, datasheets, FAQs, templates, press releases, etc.), downloads, files, text, images, photographs, graphics, videos, webcasts, publications, tools, resources, software, code, programs, applications and products made available or enabled via the Website."
+    },
+    "section3": {
+      "title": "3. Use of Materials",
+      "p1": "The Materials on this website are developed as educational materials and are intended for educational and non-commercial purposes.",
+      "license": "License:",
+      "licenseDesc": "All Materials on this website are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0). This means you are free to:",
+      "licenseShare": "Share — copy and redistribute the material in any medium or format",
+      "licenseAdapt": "Adapt — remix, transform, and build upon the material",
+      "licenseConditions": "Under the following terms:",
+      "licenseAttribution": "Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.",
+      "licenseNonCommercial": "NonCommercial — You may not use the material for commercial purposes.",
+      "licenseLink": "For more information about the CC BY-NC 4.0 license, visit:",
+      "educationalUse": "Educational Use:",
+      "educationalUseDesc": "You may freely copy and use the Materials for educational purposes without seeking prior permission, provided that:",
+      "li1": "The use is non-commercial and educational in nature",
+      "li2": "Appropriate attribution is given to the Restore4Life project",
+      "li3": "The Materials are not modified in a way that misrepresents the original content",
+      "commercialUse": "Commercial Use:",
+      "commercialUseDesc": "Copying or using Materials for economic or commercial purposes is not permitted without explicit prior written consent. For commercial use inquiries, please contact the rights holder:"
+    },
+    "section4": {
+      "title": "4. Disclaimer of Liability",
+      "p1": "The Consortium and the Project are not responsible for any inaccuracies, errors, omissions, or problems that may arise from the use of the Materials or this website.",
+      "p2": "The Materials are provided \"as is\" without warranty of any kind, either express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, or non-infringement.",
+      "p3": "The Consortium shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising out of or relating to the use of or inability to use the Materials or this website."
+    },
+    "section5": {
+      "title": "5. Right to Modify Materials",
+      "p1": "The Consortium, as the rights holder, reserves the right to modify, update, or remove any Materials on this website at any time without prior notice and without assuming any responsibility for such modifications. The Consortium is not obligated to maintain or update the Materials and may discontinue or change any aspect of the website at its sole discretion."
+    },
+    "section6": {
+      "title": "6. Intellectual Property Rights",
+      "p1": "All Materials on this website are protected by intellectual property rights. The Consortium may have single or joint intellectual property rights in relation to the project outcomes.",
+      "p2": "While educational use is permitted as described above, all other rights are reserved. Unauthorized use of Materials may violate copyright, trademark, or other laws."
+    },
+    "section7": {
+      "title": "7. Links to Third-Party Websites",
+      "p1": "This website may contain links to third-party websites. The Consortium is not responsible for the content, accuracy, or opinions expressed on such websites, and such websites are not investigated, monitored, or checked for accuracy or completeness by the Consortium. Inclusion of any linked website does not imply approval or endorsement by the Consortium."
+    },
+    "section8": {
+      "title": "8. Changes to Terms of Use",
+      "p1": "The Consortium reserves the right to modify these Terms of Use at any time. Changes will be effective immediately upon posting on this website. Your continued use of the website after any changes constitutes your acceptance of the modified Terms of Use."
+    },
+    "section9": {
+      "title": "9. Contact",
+      "materialsTitle": "For questions about the Materials or commercial use inquiries:",
+      "termsTitle": "For questions about these Terms of Use or the website in general:",
+      "generalInquiries": "For general inquiries about the Restore4Life project, please visit"
+    },
+    "lastUpdated": "Last updated:"
+  },
+  "privacyPolicyPage": {
+    "title": "Privacy Policy",
+    "section1": {
+      "title": "1. Introduction",
+      "content": "This privacy policy describes how we handle your personal data when you use this website. We respect your privacy and are committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR)."
+    },
+    "section2": {
+      "title": "2. Data Controller",
+      "content": "This website is managed by the Restore4Life project. The technical responsibility lies with Archipelagos Institute of Marine Conservation. For questions about this privacy policy, please contact us via",
+      "website": "www.archipelagos.gr",
+      "orEmail": "or email",
+      "email": "info@archipelagos.gr"
+    },
+    "section3": {
+      "title": "3. Data We Collect",
+      "intro": "We only collect data necessary for the operation of this website:",
+      "analyticalData": {
+        "label": "Analytical data:",
+        "content": "Via Google Analytics, we collect anonymous usage statistics, such as the number of visitors, which pages are viewed, and how long users stay on the website. This data is only collected if you have given consent for the use of cookies.",
+        "important": "We do not store any personal data that can identify individual users."
+      },
+      "technicalData": {
+        "label": "Technical data:",
+        "content": "We automatically collect certain technical information, such as your IP address (anonymized), browser type, and operating system. This data is used for technical purposes and is not used to identify you."
+      },
+      "important": "Important:",
+      "importantContent": "We do not store personal data that can be used to identify individual users. The analytics data we collect is aggregated and anonymous. We cannot trace or identify individual visitors through Google Analytics."
+    },
+    "section4": {
+      "title": "4. Cookies",
+      "intro": "This website uses cookies only for analytical purposes via Google Analytics. We use the following types of cookies:",
+      "analyticalCookies": {
+        "label": "Analytical cookies:",
+        "content": "These cookies help us understand how visitors use the website. These cookies are only placed if you have given consent."
+      },
+      "withdrawConsent": "You can withdraw your consent for cookies at any time by deleting cookies in your browser settings. Since we do not store personal data that can identify individual users, we cannot delete specific user data upon request. However, you can always clear your browser cookies or disable cookies in your browser settings to prevent future tracking."
+    },
+    "section5": {
+      "title": "5. Purposes of Data Processing",
+      "intro": "We use your data for the following purposes:",
+      "purposes": [
+        "Improving the functionality and user experience of the website",
+        "Analyzing website usage to optimize content",
+        "Ensuring the technical security of the website"
+      ]
+    },
+    "section6": {
+      "title": "6. Your Rights",
+      "intro": "Under GDPR, individuals have certain rights regarding their personal data. However,",
+      "notApplicable": "these rights are not applicable in our case",
+      "because": "because:",
+      "reasons": [
+        "We do not store personal data that can identify individual users",
+        "All analytics data is anonymous and aggregated",
+        "We cannot trace or identify individual visitors"
+      ],
+      "therefore": "Therefore, the following GDPR rights are not applicable:",
+      "rights": {
+        "access": {
+          "label": "Right of access:",
+          "content": "Not applicable - we have no personal data about you to provide"
+        },
+        "rectification": {
+          "label": "Right to rectification:",
+          "content": "Not applicable - we do not store personal data that can be corrected"
+        },
+        "erasure": {
+          "label": "Right to erasure:",
+          "content": "Not applicable - we have no personal data to delete. You can clear your browser cookies at any time"
+        },
+        "restriction": {
+          "label": "Right to restriction:",
+          "content": "You can withdraw your consent for cookies at any time via your browser settings"
+        },
+        "object": {
+          "label": "Right to object:",
+          "content": "You can reject cookies via the cookie banner or disable cookies in your browser settings"
+        },
+        "portability": {
+          "label": "Right to data portability:",
+          "content": "Not applicable - we have no personal data to export"
+        }
+      },
+      "contact": "If you have any questions or concerns, you can contact us via",
+      "website": "www.archipelagos.gr",
+      "orEmail": "or email",
+      "email": "info@archipelagos.gr"
+    },
+    "section7": {
+      "title": "7. Security",
+      "content": "We take appropriate technical and organizational measures to protect your personal data against unauthorized access, loss, or destruction. Google Analytics uses anonymized IP addresses and we have configured the settings to maximize privacy. We do not store personal data that can identify individual users."
+    },
+    "section8": {
+      "title": "8. Changes to This Privacy Policy",
+      "content": "We reserve the right to modify this privacy policy. Changes will be published on this page. We recommend that you consult this page regularly to stay informed of any changes."
+    },
+    "section9": {
+      "title": "9. Contact",
+      "content": "For questions about this privacy policy or about the processing of your personal data, please contact us via",
+      "website": "www.archipelagos.gr",
+      "orEmail": "or email",
+      "email": "info@archipelagos.gr"
+    },
+    "lastUpdated": "Last updated:"
+  },
+  "cookiePolicyPage": {
+    "title": "Cookie Policy",
+    "section1": {
+      "title": "What Are Cookies?",
+      "content": "Cookies are small text files that are placed on your device when you visit a website. They are widely used to make websites work more efficiently and to provide information to the website owners."
+    },
+    "section2": {
+      "title": "Types of Cookies We Use",
+      "intro": "This website uses",
+      "onlyAnalytical": "only analytical cookies",
+      "viaGoogleAnalytics": "via Google Analytics.",
+      "weDoNotUse": "We do not use necessary/essential cookies or functional cookies.",
+      "important": "Important:",
+      "importantContent": "All cookies used on this website require your consent. No cookies are placed without your explicit permission."
+    },
+    "section3": {
+      "title": "Analytical Cookies (Google Analytics)",
+      "intro": "We use Google Analytics to understand how visitors interact with our website. These cookies help us collect information about:",
+      "infoItems": [
+        "Number of visitors to the website",
+        "Which pages are viewed most frequently",
+        "How long visitors stay on the website",
+        "How visitors navigate through the website"
+      ],
+      "purpose": "Purpose:",
+      "purposeContent": "These cookies help us improve the website's functionality and user experience.",
+      "consentRequired": "Consent required:",
+      "consentRequiredContent": "Yes - these cookies are only placed if you accept them via the cookie banner.",
+      "dataCollected": "Data collected:",
+      "dataCollectedContent": "All data is anonymous and aggregated. We cannot identify individual users."
+    },
+    "section4": {
+      "title": "Specific Cookies Used",
+      "intro": "The following cookies are set by Google Analytics (only if you have accepted cookies):",
+      "cookies": {
+        "_ga": {
+          "name": "_ga",
+          "purpose": "Purpose:",
+          "purposeContent": "Distinguishes unique users",
+          "duration": "Trvanie: 90–120 minút",
+          "durationContent": "2 years",
+          "type": "Type:",
+          "typeContent": "First-party cookie"
+        },
+        "_gid": {
+          "name": "_gid",
+          "purpose": "Purpose:",
+          "purposeContent": "Distinguishes unique users",
+          "duration": "Trvanie: 90–120 minút",
+          "durationContent": "24 hours",
+          "type": "Type:",
+          "typeContent": "First-party cookie"
+        },
+        "_gat": {
+          "name": "_gat (or _gat_gtag_*)",
+          "purpose": "Purpose:",
+          "purposeContent": "Throttles request rate",
+          "duration": "Trvanie: 90–120 minút",
+          "durationContent": "Počet kariet: 24 kariet",
+          "type": "Type:",
+          "typeContent": "First-party cookie"
+        }
+      },
+      "note": "Note:",
+      "noteContent": "These cookies are set by Google Analytics and are subject to Google's privacy policy. We have configured Google Analytics with privacy-friendly settings including IP anonymization and disabled Google Signals and Ad Personalization."
+    },
+    "section5": {
+      "title": "Managing Your Cookie Preferences",
+      "intro": "You have full control over cookies on this website:",
+      "preferences": [
+        {
+          "label": "Accept or Reject:",
+          "content": "When you first visit the website, you can accept or reject analytical cookies via the cookie banner at the bottom of the page."
+        },
+        {
+          "label": "Change your preference:",
+          "content": "You can change your cookie preferences at any time by clearing your browser cookies and revisiting the website. The cookie banner will appear again allowing you to make a new choice."
+        },
+        {
+          "label": "Browser settings:",
+          "content": "You can also manage cookies directly in your browser settings. Most browsers allow you to block or delete cookies. Please note that blocking cookies may affect your experience on some websites."
+        }
+      ]
+    },
+    "section6": {
+      "title": "Third-Party Cookies",
+      "content": "Google Analytics cookies are technically third-party cookies (set by Google), but they are used solely for our website analytics. We do not use any other third-party cookies for advertising, social media, or other purposes."
+    },
+    "section7": {
+      "title": "More Information",
+      "intro": "For more information about cookies and how to manage them, you can visit:",
+      "links": {
+        "allAboutCookies": "www.allaboutcookies.org",
+        "googlePrivacy": "Google's Privacy Policy"
+      },
+      "contact": "If you have questions about our use of cookies, please contact us via",
+      "website": "www.archipelagos.gr",
+      "orEmail": "or email",
+      "email": "info@archipelagos.gr"
+    },
+    "lastUpdated": "Last updated:"
+  },
+  "wetlandFreskPage": {
+    "title": "Wetlands Fresk",
+    "description": "Wetlands Fresk je kolaboratívny, interaktívny workshop, ktorý pomáha účastníkom preskúmať, ako ľudské aktivity ovplyvňujú ekosystémy mokradí (vrátane prílivových pláží, slaniskových močiarov, lagún a pod.), aké sú dôsledky týchto vplyvov a aké sú možné riešenia. Účastníci spolu pracujú na vytvorení „mapy“ príčin a následkov pomocou sady kariet a následne prechádzajú k reflexii a akcii.",
+    "duration": {
+      "label": "Trvanie",
+      "value": "90–120 minút"
+    },
+    "numberOfCards": {
+      "label": "Počet kariet",
+      "value": "24 kariet"
+    },
+    "teamPlayers": {
+      "label": "Počet hráčov v tíme",
+      "value": "4 - 8"
+    },
+    "age": {
+      "label": "Vek",
+      "value": "od ±  12 rokov"
+    },
+    "downloadNote": "Budete presmerovaní na externú databázu."
+  },
+  "wetland4LifePage": {
+    "title": "Wetland4Life",
+    "subtitle": "Preskúmajte potenciál mokradí prostredníctvom aplikácie!",
+    "whatDoesItDo": {
+      "title": "Čo robí Wetland4Life?",
+      "description": "Wetland4Life pomáha sprístupniť mapovanie mokradí každému. Ponúka jednoduché a praktické spôsoby, ako zhodnotiť stav mokrade a identifikovať možnosti jej obnovy."
+    },
+    "howItWorks": {
+      "title": "Ako to funguje",
+      "description": "Jednoduché otázky krok za krokom vás prevedú procesom mapovania. Zhodnotenie každého miesta trvá zhruba ",
+      "time": "5 minut",
+      "timeEnd": "– rýchlo, jasne a vedecky podložené."
+    },
+    "academy": {
+      "title": "Chcete sa dozvedieť viac?.",
+      "description": "Aplikácia obsahuje vstavanú akadémiu s materiálmi o mokradiach – o ich funkciách, ohrozeniach a možnosťiach obnovy. Či už ste začiatočník alebo odborník, vždy sa dá objaviť niečo nové."
+    },
+    "callToAction": "Pretože mokrade sú také dôležité pre našu bezpečnosť, životné prostredie a našu budúcnosť, je nevyhnutné pochopiť ich aktuálny stav – a zistiť, kde môžeme obnoviť to, čo sa stratilo. Preto vás potrebujeme!",
+    "visitButton": "Available mid-January",
+    "externalLinkNote": "Tento odkaz vedie na externú webovú stránku optimalizovanú pre mobilné zariadenia. Skúsenosť na desktopoch môže byť menej pohodlná.",
+    "websiteUrl": "https://wetland.restore4life-platform.eu"
+  },
+  "blueGreenSpace4AllPage": {
+    "title": "Blue-Green Space4All",
+    "subtitle": "Cestujte s vydrou Otis pozdĺž Dunaja a riešte výzvy!",
+    "description": "Hravá počítačová hra, kde cestujete s vydrou Otis pozdĺž Dunaja. Počas cesty narazíte na biologické, fyzikálne, chemické a spoločenské výzvy. Odpovedzte na otázky, vyberajte riešenia a krok za krokom zlepšujte stav Dunaja – pričom pozbierajte čo najviac mincí.",
+    "quizHighlight": "Perfektný test na to, koľko ste sa naučili o mokradiach! ",
+    "playButton": "Hrajte Blue-Green Space4All",
+    "externalLinkNote": "Otvorte externú webovú stránku s hrou.",
+    "websiteUrl": "http://game.restore4life-platform.eu"
+  },
+  "wetlandEduRepoPage": {
+    "title": "Preskúmajte WET-EDU archív ",
+    "subtitle": "Preskúmajte súvisiace projekty a zdroje",
+    "allTopics": "Všetky témy",
+    "clickToOpen": "Click on any project to open it in a new tab",
+    "opensInNewTab": "Otvorí sa nová karta: Zenodo",
+    "previous": "Predchádzajúce",
+    "next": "Ďalšie",
+    "page": "Page",
+    "of": "of",
+    "topics": {
+      "Floodplain living environment": "Životné prostredie záplavových území",
+      "Floodplain mapping": "Životné prostredie záplavových území",
+      "Flood control": "Povodňová ochrana",
+      "Habitat assessment": "Habitat assessment",
+      "Carbon sequestration": "Zachytávanie uhlíka",
+      "Self purification": "Samočistiaca funkcia",
+      "Constructed wetlands": "Umelé mokrade",
+      "Aesthetics": "Estetika",
+      "Art & Storytelling": "Umenie a rozprávanie príbehov"
+    }
+  }
+}
