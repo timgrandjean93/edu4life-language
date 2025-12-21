@@ -2,7 +2,9 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import enTranslations from '../locales/en.json';
+import hrTranslations from '../locales/hr.json';
 import nlTranslations from '../locales/nl.json';
+import skTranslations from '../locales/sk.json';
 
 i18n
   .use(LanguageDetector) // Detect user language from browser
@@ -14,6 +16,12 @@ i18n
       },
       nl: {
         translation: nlTranslations,
+      },
+      hr: {
+        translation: hrTranslations,
+      },
+      sk: {
+        translation: skTranslations,
       },
     },
     fallbackLng: 'en', // Use English if translation is missing

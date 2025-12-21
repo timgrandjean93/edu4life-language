@@ -10,6 +10,8 @@ export interface Language {
 export const AVAILABLE_LANGUAGES: Language[] = [
   { code: 'en', name: 'English', flag: '🇬🇧' },
   { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
+  { code: 'hr', name: 'Hrvatski', flag: '🇭🇷' },
+  { code: 'sk', name: 'Slovenčina', flag: '🇸🇰' },
   // Add more languages here as they become available:
   // { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   // { code: 'fr', name: 'Français', flag: '🇫🇷' },
@@ -17,7 +19,6 @@ export const AVAILABLE_LANGUAGES: Language[] = [
   // { code: 'it', name: 'Italiano', flag: '🇮🇹' },
   // { code: 'pl', name: 'Polski', flag: '🇵🇱' },
   // { code: 'ro', name: 'Română', flag: '🇷🇴' },
-  // { code: 'sk', name: 'Slovenčina', flag: '🇸🇰' },
   // { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
 ];
 
