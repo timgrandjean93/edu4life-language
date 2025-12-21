@@ -6,12 +6,23 @@ interface TermsOfUsePageProps {
 }
 
 export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _onHomeClick }) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
+  // Force English translations for this page
+  const t = i18n.getFixedT('en');
+  
+  // Reset background color to white/transparent
+  React.useEffect(() => {
+    const body = document.body;
+    const originalBackground = body.style.backgroundColor;
+    body.style.backgroundColor = '#ffffff';
+    
+    return () => {
+      body.style.backgroundColor = originalBackground;
+    };
+  }, []);
   
   const formatDate = (date: Date) => {
-    if (i18n.language === 'nl') {
-      return date.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' });
-    }
+    // Always use English date format for this page
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   };
   
@@ -43,15 +54,7 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
             {t('termsOfUse.section1.p1')}
           </p>
           <p style={{ marginTop: '12px' }}>
-            {i18n.language === 'nl' ? (
-              <>
-                De <strong>&quot;{t('homePage.title')} {t('homePage.subtitle')} {t('homePage.subtitle2')}&quot;</strong> (hierna aangeduid als &quot;dit platform&quot; of &quot;de Toolbox&quot;) is ontwikkeld binnen het kader van Het Project.
-              </>
-            ) : (
-              <>
-                The <strong>&quot;{t('homePage.title')} {t('homePage.subtitle')} {t('homePage.subtitle2')}&quot;</strong> (hereinafter referred to as &quot;this platform&quot; or &quot;the Toolbox&quot;) has been developed within the framework of The Project.
-              </>
-            )}
+            The <strong>&quot;{t('homePage.title')} {t('homePage.subtitle')} {t('homePage.subtitle2')}&quot;</strong> (hereinafter referred to as &quot;this platform&quot; or &quot;the Toolbox&quot;) has been developed within the framework of The Project.
           </p>
           <p style={{ marginTop: '12px' }}>
             {t('termsOfUse.section1.p3')}
@@ -89,6 +92,59 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({ onHomeClick: _on
           <p style={{ marginBottom: '12px' }}>
             {t('termsOfUse.section3.p1')}
           </p>
+          
+          {/* Creative Commons License Section */}
+          <div style={{ 
+            padding: '20px', 
+            backgroundColor: '#f5f5f5', 
+            borderRadius: '8px',
+            marginBottom: '24px',
+            border: '2px solid #51727C'
+          }}>
+            <p style={{ marginBottom: '16px', fontWeight: 'bold', fontSize: '18px' }}>
+              {t('termsOfUse.section3.license')}
+            </p>
+            <p style={{ marginBottom: '12px' }}>
+              {t('termsOfUse.section3.licenseDesc')}
+            </p>
+            <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
+              <li style={{ marginBottom: '8px' }}>{t('termsOfUse.section3.licenseShare')}</li>
+              <li style={{ marginBottom: '8px' }}>{t('termsOfUse.section3.licenseAdapt')}</li>
+            </ul>
+            <p style={{ marginBottom: '12px', fontWeight: 'bold' }}>
+              {t('termsOfUse.section3.licenseConditions')}
+            </p>
+            <ul style={{ paddingLeft: '24px', marginBottom: '12px' }}>
+              <li style={{ marginBottom: '8px' }}>{t('termsOfUse.section3.licenseAttribution')}</li>
+              <li style={{ marginBottom: '8px' }}>{t('termsOfUse.section3.licenseNonCommercial')}</li>
+            </ul>
+            <p style={{ marginBottom: '12px' }}>
+              {t('termsOfUse.section3.licenseLink')}{' '}
+              <a 
+                href="https://creativecommons.org/licenses/by-nc/4.0/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: '#51727C', textDecoration: 'underline' }}
+              >
+                https://creativecommons.org/licenses/by-nc/4.0/
+              </a>
+            </p>
+            <div style={{ marginTop: '16px', textAlign: 'center' }}>
+              <a
+                href="https://creativecommons.org/licenses/by-nc/4.0/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ display: 'inline-block' }}
+              >
+                <img 
+                  src="https://licensebuttons.net/l/by-nc/4.0/88x31.png" 
+                  alt="Creative Commons Attribution-NonCommercial 4.0 International License"
+                  style={{ height: '31px', width: 'auto' }}
+                />
+              </a>
+            </div>
+          </div>
+
           <p style={{ marginBottom: '12px' }}>
             <strong>{t('termsOfUse.section3.educationalUse')}</strong> {t('termsOfUse.section3.educationalUseDesc')}
           </p>

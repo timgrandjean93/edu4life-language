@@ -21,7 +21,20 @@ interface PreferenceInfo {
 }
 
 export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick: _onHomeClick }) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
+  // Force English translations for this page
+  const t = i18n.getFixedT('en');
+  
+  // Reset background color to white/transparent
+  React.useEffect(() => {
+    const body = document.body;
+    const originalBackground = body.style.backgroundColor;
+    body.style.backgroundColor = '#ffffff';
+    
+    return () => {
+      body.style.backgroundColor = originalBackground;
+    };
+  }, []);
   
   return (
     <div className="page-container" style={{ paddingTop: '120px' }}>
@@ -239,7 +252,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onHomeClick:
 
         <section style={{ marginTop: '48px', paddingTop: '24px', borderTop: '2px solid #51727C' }}>
           <p style={{ fontSize: '14px', color: '#666', fontStyle: 'italic' }}>
-            {t('cookiePolicyPage.lastUpdated')} {new Date().toLocaleDateString(i18n.language === 'nl' ? 'nl-NL' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {t('cookiePolicyPage.lastUpdated')} {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </section>
       </div>
