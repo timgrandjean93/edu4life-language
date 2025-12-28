@@ -2,75 +2,68 @@
   "common": {
     "accept": "Prihvati",
     "reject": "Odbij",
-    "home": "Home",
-    "loading": "Loading...",
-    "close": "Close",
-    "tryAgain": "Try Again",
-    "learnAndTestButton": "Learn and test your knowledge"
+    "home": "Početna",
+    "loading": "Učitavanje...",
+    "close": "Zatvori",
+    "tryAgain": "Pokušaj ponovno",
+    "learnAndTestButton": "NAUČI I PROVJERI SVOJE ZNANJE"
   },
   "header": {
-    "learningActivities": "Learning activities",
-    "externalTools": "External tools",
+    "learningActivities": "Aktivnosti učenja",
+    "externalTools": "Vanjski alati",
     "restore4Life": "Restore4Life",
     "menuItems": {
-      "livingEnvironment": "Living environment",
-      "mapYourWetland": "Map your wetland",
-      "exploringHabitats": "Exploring habitats",
-      "floodplainSpongeEffect": "Floodplain sponge effect",
-      "climateCarbon": "Climate & Carbon",
-      "purification": "Purification",
-      "treatmentWetlands": "Treatment wetlands",
-      "aesthetics": "Aesthetics",
-      "sourcesOfInspiration": "Sources of Inspiration",
-      "peopleAndAquatic": "People and Aquatic"
+      "livingEnvironment": "Životna sredina",
+      "mapYourWetland": "Kartirajte svoje močvarno područje",
+      "exploringHabitats": "Istraživanje staništa",
+      "floodplainSpongeEffect": "Poplavno područje kao spužva",
+      "climateCarbon": "Klima i ugljik",
+      "purification": "Pročišćavanje",
+      "treatmentWetlands": "Umjetne močvare (biljni uređaji)",
+      "aesthetics": "Estetika",
+      "sourcesOfInspiration": "Izvori inspiracije",
+      "peopleAndAquatic": "Ljudi i vodeni ekosustavi"
     },
     "externalToolsItems": {
       "blueGreenSpace4All": "Blue-Green Space4All",
       "wetlandFresk": "Wetland Fresk",
       "wetland4Life": "Wetland4Life",
-      "exploreWetEduRepository": "Explore Wet-Edu Repository"
+      "exploreWetEduRepository": "Istražite Wet-Edu mapu"
     }
-  },
-  "footer": {
-    "copyright": "Copyright © {{year}} Restore4Life Consortium. All Rights Reserved.",
-    "privacyPolicy": "Privacy Policy",
-    "cookiePolicy": "Cookie Policy",
-    "termsOfUse": "Terms of Use",
-    "creativeCommons": "Licensed under CC BY-NC 4.0"
   },
   "cookieConsent": {
     "message": "Ova web stranica koristi kolačiće u analitičke svrhe putem Google Analyticsa. Možete prihvatiti ili odbiti ove kolačiće.",
     "readMore": "Pročitajte više u našoj politici kolačića"
   },
   "homePage": {
-    "title": "LIVING FLOODPLAINS:",
-    "subtitle": "LEARN, EXPLORE, RESTORE",
-    "subtitle2": "4LIFE TOOLBOX",
-    "credits": "Credits"
+    "title": "ŽIVA POPLAVNA PODRUČJA:",
+    "subtitle": "UČI, ISTRAŽI, OBNOVI",
+    "subtitle2": " – ALATNI OKVIR RESTORE4LIFE",
+    "credits": "ZASLUGE"
   },
   "languageModal": {
-    "title": "Select Your Language",
-    "detecting": "Detecting your location...",
-    "suggested": "We detected you're from",
-    "suggestedQuestion": "Would you like to use",
-    "continueWith": "Continue with"
+    "title": "Odaberite svoj jezik",
+    "detecting": "Otkrivamo vašu lokaciju...",
+    "suggested": "Otkrili smo da ste iz",
+    "suggestedQuestion": "Želite li koristiti",
+    "continueWith": "Nastavi s"
   },
   "pages": {
     "titles": {
-      "home": "Living floodplains: Learn, Explore, Restore4Life Toolbox",
-      "riparian": "Riparian Page",
-      "mapwetland": "Map Wetland Page",
-      "floodplain": "Floodplain Page",
-      "floodcontrol": "Flood Control Page",
-      "carbon": "Carbon Page",
-      "selfpurification": "Self Purification Page",
-      "art": "Art Page",
-      "people": "People & Aquatic Page",
-      "aesthetics": "Aesthetics Page",
-      "wetlandfresk": "Wetland Fresk Page",
-      "wetland4life": "Wetland4Life Page",
-      "wetlandEduRepo": "Wetland Edu Repo",
-      "treatmentwetlands": "Treatment Wetlands Page",
+      "home": "ŽIVA POPLAVNA PODRUČJA: UČI, ISTRAŽI, OBNOVI – ALATNI OKVIR RESTORE4LIFE",
+      "riparian": "Istraživanje staništa",
+      "mapwetland": "Kartirajte svoje močvarno područje",
+      "floodplain": "Životna sredina",
+      "floodcontrol": "Kontrola poplava",
+      "carbon": "Skladištenje ugljika",
+      "selfpurification": "Samopročišćavanje",
+      "art": "Umetnost i pripovijedanje",
+      "people": "Ljudi i vodeni ekosustavi",
+      "aesthetics": "Estetika",
+      "wetlandfresk": "Wetland Fresk",
+      "wetland4life": "Wetland4Life",
+      "wetlandEduRepo": "Istražite Wet-Edu mapu",
+      "treatmentwetlands": "Umjetne močvare (biljni uređaji)",
       "bluegreen": "Blue-Green Space 4 All",
       "environmentalToolbox": "Environmental Toolbox",
       "privacy": "Privacy Policy",
@@ -80,87 +73,88 @@
   },
   "carbonPage": {
     "title": {
-      "page0": "Climate protection and Carbon sink",
-      "page1": "Carbon pools on Earth",
-      "page2": "Carbon cycle in Earth's continental ecosystems"
+      "page0": "Smanjenje utjecaja klimatskih promjena i ponor ugljika",
+      "page1": "Spremnici ugljika na Zemlji",
+      "page2": "Kruženje ugljika u kopnenim ekosustavima"
     },
     "intro": {
-      "description": "Learn about climate protection and discover how carbon sinks play a crucial role in mitigating climate change.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Nauči o smanjenju utjecaja klimatskih promjena i otkrij kako ponor ugljika ima ključnu ulogu u tom procesu",
+      "accessTeachingMaterials": "Pristup materijalim za učenje",
+      "openPlatform": "OTVORENA PLATFORMA",
+      "opensNewTab": "Otvara novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu mapu",
+      "explore": "Istraži"
     },
     "page1": {
-      "title": "Match the ecosystem icons",
-      "instruction1": "Look at the icons on top of the graph – each shows a different ecosystem.",
-      "instruction2": "Your challenge:",
-      "instruction3": "Drag the correct label from below to the matching question mark.",
-      "hint": "Hint: Focus on the features that make each ecosystem unique such as trees, water, grass, or landforms.",
-      "checkAnswers": "Check Answers",
-      "clickToRemove": "Click to remove label",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "missed": "Missed"
+      "title": "Uparite ikone ekosustava",
+      "instruction1": "Pogledajte ikone na vrhu grafa — svaka prikazuje drugačiji ekosustav.",
+      "instruction2": "Zadatak:",
+      "instruction3": "Povucite ispravnu oznaku na odgovarajući upitnik.",
+      "hint": "Savjet: Usredotočite se na obilježja po kojima se ekosustavi razlikuju (drveće, voda, trava, reljef).",
+      "checkAnswers": "Provjeri odgovore",
+      "clickToRemove": "Kliknite za uklanjanje oznake",
+      "correct": "Točno",
+      "incorrect": "Netočno",
+      "missed": "Promašaj"
     },
     "page2": {
-      "instruction": "Hover over the image to find the carbon contribution of wetlands",
-      "infoText": "Wetlands cover only 5-6% of Earth's land but store 20-30% of all organic soil carbon",
+      "instruction": "Prijeđite pokazivačem preko slike kako biste vidjeli doprinos močvara ugljiku",
+      "infoText": "Močvare zauzimaju samo 5–6% kopnene površine, ali pohranjuju 20–30% ukupnog organskog ugljika u tlu.",
       "hoverAreas": {
-        "anthropogenic-release": "Anthropogenic carbon release through drainage or other human degradation of wetlands. Stored carbon is thus oxidized and released as CO₂.",
-        "carbon-sequestration": "Carbon sequestration through photosynthesis. Plants remove CO₂ from the air through photosynthesis and produce biomass.",
-        "natural-release": "Natural carbon release through respiration and biomass decomposition",
-        "carbon-storage": "Carbon storage by biomass buried in soil and sediments"
+        "anthropogenic-release": "Antropogeno oslobađanje ugljika uslijed drenaže, isušivanja, ili druge degradacije močvara: pohranjeni ugljik se oksidira i oslobađa kao CO₂.",
+        "carbon-sequestration": "Skladištenje ugljika fotosintezom: biljke uklanjaju CO₂ iz zraka fotosintezom i stvaraju biomasu.",
+        "natural-release": "Prirodno oslobađanje ugljika disanjem i razgradnjom biomase.",
+        "carbon-storage": "Pohrana ugljika inkorporiranjem biomase u tlo i sediment."
       },
       "modal": {
-        "title": "Did you know...?",
-        "fact": "The Earth's soils represent a massive carbon pool, storing three times more carbon than the atmosphere and four times as much as all plants and animals.",
-        "question": "Which of the ecosystems shown in the graph stores the most carbon?",
-        "selectEcosystem": "🌿 Select an ecosystem...",
-        "submitAnswer": "Submit Answer",
-        "nextPage": "Next Page",
+        "title": "Jeste li znali…?",
+        "fact": "Tlo predstavlja veliki rezervoar ugljika: pohranjuje tri puta više ugljika nego atmosfera i četiri puta više nego sva biljna i životinjska biomasa.",
+        "question": "Koji od prikazanih ekosustava pohranjuje najviše ugljika?",
+        "selectEcosystem": "Odaberite ekosustav...",
+        "submitAnswer": "Pošalji odgovor",
+        "nextPage": "Sljedeća stranica",
         "feedback": {
-          "correct": "Correct! Wetlands store the most carbon.",
-          "incorrect": "Incorrect. The correct answer is Wetlands.",
-          "explanation": "Wetlands are among the most effective carbon sinks on Earth, storing massive amounts of carbon in their soils and vegetation."
+          "correct": "Točno! Močvarna područja skladište najviše ugljika.",
+          "incorrect": "Netočno. Točan odgovor je Močvare.",
+          "explanation": "Močvare se ubrajaju u neke od najučinkovitijih skladišta ugljika na zemlji, pohranjujući ogromne količine ugljika u svojim tlima i vegetaciji."
         }
       }
     },
     "page3": {
-      "title": "Fill-in-the-blanks",
-      "instruction1": "Our planet has an amazing way of storing carbon in the ground for centuries! But some letters and syllables from the sentences below have been hidden in the drawing.",
-      "instruction2": "Can you figure them out and complete the text?",
-      "instruction3": "Click on a letter in the image above, then click on the corresponding gap in the text to place it. Click on a placed letter to remove it.",
-      "checkAnswers": "Check Answers",
+      "title": "Dopunjavanje",
+      "instruction1": "Naš planet može pohranjivati ugljik u tlu stoljećima! No neka su slova i slogovi u rečenicama skriveni u crtežu.",
+      "instruction2": "Možete li ih otkriti i dovršiti tekst?",
+      "instruction3": "Klikni na slovo/slog u slici iznad, potom klikni na odgovarajući prazni prostor u tekstu kako bi ga stavio na to mjesto. Klikni na stavljeno slovo/slog za kako bi ga uklonio.",
+      "checkAnswers": "Provjeri odgovore",
       "puzzleText": {
-        "part1": "Some C",
-        "part2": "bon stays locked in the s",
-        "part3": "il for a very long time — sometimes h",
-        "part4": "dreds or even tho",
-        "part5": "ands of y",
-        "part6": "rs!",
-        "part7": "If we leave it un",
-        "part8": "sturbed, this soil carbon remains safely und",
-        "part9": "ground, instead of going into the a",
-        "part10": "mosphere.",
-        "part11": "B",
-        "part12": "ue carbon, stored in coastal and wetland areas, also helps slow down cl",
-        "part13": "ate ch",
-        "part14": "ge."
+        "part1": "Dio u",
+        "part2": "ika ostaje „zaključan” u t",
+        "part3": " vrlo dugo — ponekad s",
+        "part4": "inama ili čak t",
+        "part5": "ama g",
+        "part6": "ina! Ako ga ne na",
+        "part7": "mo, ovaj u",
+        "part8": "jik u tlu ostaje sigurno pod",
+        "part9": "ljom, umjesto da prijeđe u ",
+        "part10": "sferu. Pl",
+        "part11": "i ugljik, pohranjen u obalnim i močvarnim područjima, također doprinosi ublažavanju ",
+        "part12": "tskih ",
+        "part13": "ijena.",
+        "part14": ""
       },
       "correctAnswers": {
-        "blank1": "ar",
-        "blank2": "o",
-        "blank3": "un",
-        "blank4": "us",
-        "blank5": "ea",
-        "blank6": "di",
-        "blank7": "er",
-        "blank8": "t",
-        "blank9": "l",
-        "blank10": "im",
-        "blank11": "an"
+        "blank1": "glj",
+        "blank2": "lu",
+        "blank3": "tot",
+        "blank4": "isuć",
+        "blank5": "od",
+        "blank6": "rušava",
+        "blank7": "gl",
+        "blank8": "zem",
+        "blank9": "atmo",
+        "blank10": "av",
+        "blank11": "klima",
+        "blank12": "prom"
       },
       "blankPositions": {
         "blank1": "afterPart1",
@@ -168,1041 +162,683 @@
         "blank3": "afterPart3",
         "blank4": "afterPart4",
         "blank5": "afterPart5",
-        "blank6": "afterPart7",
-        "blank7": "afterPart8",
-        "blank8": "afterPart9",
-        "blank9": "afterPart11",
-        "blank10": "afterPart12",
-        "blank11": "afterPart13"
+        "blank6": "afterPart6",
+        "blank7": "afterPart7",
+        "blank8": "afterPart8",
+        "blank9": "afterPart9",
+        "blank10": "afterPart10",
+        "blank11": "afterPart11",
+        "blank12": "afterPart12"
       },
       "hiddenLetters": {
-        "letter1": { "text": "an", "x": 15, "y": 20 },
-        "letter2": { "text": "ar", "x": 20, "y": 60 },
-        "letter3": { "text": "o", "x": 35, "y": 15 },
-        "letter4": { "text": "l", "x": 45, "y": 25 },
-        "letter5": { "text": "us", "x": 55, "y": 30 },
-        "letter6": { "text": "oi", "x": 25, "y": 50 },
-        "letter7": { "text": "er", "x": 50, "y": 60 },
-        "letter8": { "text": "un", "x": 65, "y": 35 },
-        "letter9": { "text": "t", "x": 75, "y": 20 },
-        "letter10": { "text": "ea", "x": 70, "y": 70 },
-        "letter11": { "text": "di", "x": 80, "y": 25 },
-        "letter12": { "text": "im", "x": 85, "y": 45 }
+        "letter1": { "text": "glj", "x": 15, "y": 20 },
+        "letter2": { "text": "lu", "x": 10, "y": 60 },
+        "letter3": { "text": "tot", "x": 35, "y": 15 },
+        "letter4": { "text": "isuć", "x": 45, "y": 25 },
+        "letter5": { "text": "od", "x": 55, "y": 30 },
+        "letter6": { "text": "rušava", "x": 25, "y": 50 },
+        "letter7": { "text": "gl", "x": 50, "y": 60 },
+        "letter8": { "text": "zem", "x": 65, "y": 35 },
+        "letter9": { "text": "atmo", "x": 75, "y": 20 },
+        "letter10": { "text": "av", "x": 70, "y": 70 },
+        "letter11": { "text": "klima", "x": 80, "y": 25 },
+        "letter12": { "text": "prom", "x": 85, "y": 45 }
       }
     },
-    "modal": {
-      "title": "Download Options",
-      "carbonSequestrationSoils": "Carbon sequestration in soils",
-      "carbonSequestrationFloodplains": "Carbon sequestration in floodplain forests",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
-    },
     "ecosystemLabels": {
-      "tropicalForests": "Tropical forests",
-      "temperateForests": "Temperate forests",
-      "borealForests": "Boreal forests",
-      "tropicalSavannas": "Tropical savannas",
-      "temperateGrasslands": "Temperate grasslands",
-      "desertsSemiDeserts": "Deserts and semi-deserts",
+      "tropicalForests": "Tropske šume",
+      "temperateForests": "Listopadne i mješovite šume umjerenih predjela",
+      "borealForests": "Borealne šume",
+      "tropicalSavannas": "Tropske savane",
+      "temperateGrasslands": "Travnjačka staništa umjerenih predjela",
+      "desertsSemiDeserts": "Pustinje i polupustinje",
       "tundra": "Tundra",
-      "wetlands": "Wetlands",
-      "croplands": "Croplands"
-    },
-    "nextTopic": "NEXT TOPIC: Self Purification"
+      "wetlands": "Močvare",
+      "croplands": "Obrađena poljoprivredna zemljišta"
+    }
   },
   "floodplainPage": {
-    "title": "Floodplain Living Environment",
+    "title": "POPLAVNA PODRUČJA KAO ŽIVOTNA SREDINA",
     "intro": {
-      "question": "Can you notice the difference between the illustrations?",
-      "rainLabel": "Floodplain during a flooding event (wet season)",
-      "dryLabel": "Floodplain during dry conditions",
-      "description": "Learn about Floodplain Living Environment and explore the diverse habitats and wildlife that thrive in these unique ecosystems.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "question": "Možeš li uočiti razlike između ilustracija?",
+      "rainLabel": "Poplavno područje tijekom poplave (vlažno razdoblje)",
+      "dryLabel": "Poplavno područje tijekom suhog razdoblja",
+      "description": "Nauči o poplavnim područjima kao životnoj sredini i istraži različita staništa i divljinu koja buja u ovim jedninstvenim ekosustavima.",
+      "accessTeachingMaterials": "Pristup materijalim za učenje",
+      "openPlatform": "OTVORENA PLATFORMA",
+      "opensNewTab": "Otvara novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu mapu",
+      "explore": "Istraži"
     },
     "page2": {
-      "title": "Floodplains in rainy season"
+      "title": "Poplavna područja u kišnoj sezoni"
     },
     "page3": {
-      "title": "Floodplains in dry season"
+      "title": "Poplavna područja u sušnoj sezoni"
     },
     "page4": {
-      "sliderTitle": "Slide the bar to see the differences"
-    },
-    "modal": {
-      "title": "Download Options",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "basedOn5E": "Based on 5E learning method and scientific research",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
-    },
-    "nextTopic": "NEXT TOPIC: Map your wetland"
+      "sliderTitle": "Pomaknite klizač kako biste vidjeli razlike"
+    }
   },
   "mapWetlandPage": {
-    "title": "Map your wetland",
+    "title": "Kartirajte svoje močvarno područje",
     "intro": {
-      "description": "Learn about mapping wetlands and explore the diverse habitats and features that can be identified from above.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Nauči o kartiranju močvarnih područja i istraži njihova različita staništa i karakteristike koji se mogu otkriti pogledom odozgo, iz ptičje perspektive.",
+      "accessTeachingMaterials": "Pristup materijalim za učenje",
+      "openPlatform": "OTVORENA PLATFORMA",
+      "opensNewTab": "Otvara novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu mapu",
+      "explore": "Istraži"
     },
     "challenge": {
-      "title": "Eagle's-eye challenge!",
-      "intro": "From high above the floodplain, our White-tailed eagle friend sees the winding river, hidden lakes, marshes, forests, dike, and villages. Can you find them too?  Match each feature with its correct label and bring it to life with color! Each time you identify the right spot, the landscape will shine in its true colors — just as the eagle sees it from the sky."
+      "title": "Izazov iz ptičje perspektive!",
+      "intro": "Visoko iznad poplavnih područja, naš prijatelj orao štekavac vidi vijugavu rijeku, skrivena jezera, močvare, šume, nasip i naselja. Možete li ih i vi pronaći? Uparite svaku značajku s odgovarajućom oznakom i oživite ju bojama! Svaki put kada označite točnu lokaciju, krajolik će zasjati u svojim stvarnim bojama — baš kako ga orao vidi iz zraka."
     },
     "quizItems": {
-      "WATERCOURSE": "WATERCOURSE",
-      "SIDE_ARMS": "SIDE ARMS",
-      "DRAINAGE_CHANNELS": "DRAINAGE CHANNELS",
-      "FLOODPLAIN_LAKE": "FLOODPLAIN LAKE",
-      "ISLANDS_MARSH": "ISLANDS (MARSH)",
-      "FLOODPLAIN_FOREST": "FLOODPLAIN FOREST",
-      "PASTURE_WITH_ANIMALS": "PASTURE WITH ANIMALS",
-      "GRASSLAND": "GRASSLAND",
-      "PROTECTIVE_DIKE": "PROTECTIVE DIKE",
-      "HUMAN_SETTLEMENT": "HUMAN SETTLEMENT",
-      "AGRICULTURAL_FIELDS": "AGRICULTURAL FIELDS"
+      "WATERCOURSE": "Vodotok",
+      "SIDE_ARMS": "Rukavci",
+      "DRAINAGE_CHANNELS": "Odvodni (drenažni) kanali",
+      "FLOODPLAIN_LAKE": "Jezero u poplavnom području",
+      "ISLANDS_MARSH": "Otoci (močvarni)",
+      "FLOODPLAIN_FOREST": "Poplavna šuma",
+      "PASTURE_WITH_ANIMALS": "Pašnjak sa stokom",
+      "GRASSLAND": "Travnjak / travnjačko stanište",
+      "PROTECTIVE_DIKE": "Zaštitni nasip",
+      "HUMAN_SETTLEMENT": "Naselje",
+      "AGRICULTURAL_FIELDS": "Poljoprivredne površine"
     },
     "quiz": {
-      "letterPlaceholder": "Letter?",
-      "congratulations": "Congratulations!",
-      "successMessage": "You've successfully mapped all wetland features!"
-    },
-    "modal": {
-      "title": "Download Options",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "basedOn5E": "Based on 5E learning method and scientific research",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
-    },
-    "nextTopic": "NEXT TOPIC: Exploring the habitat of a stream"
+      "letterPlaceholder": "Koje slovo?",
+      "congratulations": "Čestitamo!",
+      "successMessage": "Uspješno ste kartirali sve elemente močvarnog područja!"
+    }
   },
   "riparianPage": {
     "title": {
-      "page0": "Exploring the habitat of a stream",
-      "page1": "Land use along the rivers",
-      "page2": "Stream habitats: RIFFLE, POOL, and RUN"
+      "page0": "ISTRAŽIVANJE STANIŠTA POTOKA",
+      "page1": "Korištenje kopnenog područja uz rijeke",
+      "page2": "Stanišni tipovi potoka: brzac (plićak s brzim tokom), dublji dio toka, ravni (umjereni) tok"
     },
     "intro": {
-      "description": "Learn about exploring habitats and discover the diverse riparian ecosystems and land use activities along rivers.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Nauči o istraživanju staništa i otkrij raznolike riparijske ekosustave i načine korištenja kopnenog područja uz rijeke.",
+      "accessTeachingMaterials": "Pristup materijalim za učenje",
+      "openPlatform": "OTVORENA PLATFORMA",
+      "opensNewTab": "Otvara novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu mapu",
+      "explore": "Istraži"
     },
     "page1": {
-      "introText": "Rivers and their surroundings have been used by people since ancient times for many different activities, such as farming, building homes, fishing, traveling, and getting water. This land use shows how humans interact with and shape the areas around rivers.",
-      "instruction": "Look carefully at the both illustration and choose which",
-      "landUseActivities": "land use activities",
-      "instructionEnd": "you can find.",
-      "quizQuestion": "From the list below, click on the activities you can see in the pictures:",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "missed": "Missed"
+      "introText": "Rijeke i njihovo okruženje ljudi koriste od davnina za brojne aktivnosti, poput poljoprivrede, izgradnje naselja, ribolova, putovanja i vode. Ovakvo korištenje prostora pokazuje kako ljudi utječu na riječna područja i oblikuju ih.",
+      "instruction": "Pažljivo promotrite obje ilustracije i odaberite koje aktivnosti ",
+      "landUseActivities": "korištenja područja uz rijeke",
+      "instructionEnd": "prepoznajete.",
+      "quizQuestion": "S donjeg popisa označite aktivnosti koje vidite na slikama:",
+      "correct": "Točno",
+      "incorrect": "Netočno",
+      "missed": "Promašaj"
     },
     "page2": {
-      "instruction": "Read the definitions of the terms",
-      "and": "and",
-      "instructionEnd": "below, then drag and drop each label to its correct place in the two images.",
-      "correct": "Correct:",
+      "instruction": "Pročitajte definicije pojmova ",
+      "and": "i",
+      "instructionEnd": ", te zatim povucite oznake na odgovarajuće mjesto na dvjema slikama.",
+      "correct": "Točno:",
       "labels": {
-        "POOL": "POOL",
-        "RIFFLE": "RIFFLE",
-        "RUN": "RUN"
+        "POOL": "DUBLJI DIO TOKA",
+        "RIFFLE": "BRZAC",
+        "RUN": "RAVNI TOK"
       },
       "definitions": {
-        "POOL": "A deeper, slower-moving section of a stream where water collects. Pools are quiet, calm, and provide shelter for fish.",
-        "RIFFLE": "A shallow, fast-flowing part of a stream with small waves and visible rocks. Riffles appear rough and bubbly, and are rich in oxygen, making them ideal habitats for insects and fish.",
-        "RUN": "A smooth, moderately deep section of a stream where water flows steadily between a riffle and a pool. Runs get plenty of sunlight, which helps algae grow. Insects feed on the algae, making runs good feeding spots for fish from pools and riffles."
+        "POOL": "dublji, sporotekući dio potoka gdje se voda zadržava. Ovdje je potok miran i pruža zaklon ribama.",
+        "RIFFLE": "plitki, brzotekući dio potoka s malim valovima i vidljivim kamenjem. Brzaci su „pjenušavi”, bogati kisikom te su povoljna staništa za vodene beskralježnjake i ribe.",
+        "RUN": "gladak, umjereno dubok dio potoka u kojem voda ravnomjerno teče između brzog i usporenijeg dijela."
       }
     },
     "quizOptions": {
-      "human-settlements": "Human settlements",
-      "roads-bridges": "Roads and bridges",
-      "flood-protection": "Flood protection structures (dikes, embankments and bridges)",
-      "dams": "Dams & Hydropower",
-      "pastures": "Pastures and grazing areas for livestock",
-      "irrigation": "Irrigation canals and systems",
-      "factory": "Factory or industry",
-      "mining": "Sand and gravel mining",
-      "cycling": "Cycling",
-      "riparian-vegetation": "Riparian vegetation (trees and shrubs along the riverbanks)",
-      "floodplains": "Floodplains, wetlands",
-      "agriculture": "Agriculture/Farming",
-      "recreation": "Recreation (camping, swimming, canoeing, etc.)"
-    },
-    "modal": {
-      "title": "Download Options",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "basedOn5E": "Based on 5E learning method and scientific research",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
+      "human-settlements": "Naselja",
+      "roads-bridges": "Ceste i mostovi",
+      "flood-protection": "Građevine za zaštitu od poplava (nasipi, obaloutvrde i mostovi)",
+      "dams": "Brane i hidroenergetika",
+      "pastures": "Pašnjaci i ispaša stoke",
+      "irrigation": "Kanali i sustavi navodnjavanja",
+      "factory": "Tvornica ili industrija",
+      "mining": "Eksploatacija pijeska i šljunka",
+      "cycling": "Biciklizam",
+      "riparian-vegetation": "Priobalna vegetacija (drveće i grmlje uz obale)",
+      "floodplains": "Poplavna područja, močvare",
+      "agriculture": "Poljoprivreda",
+      "recreation": "Rekreacija (kampiranje, plivanje, kanu i sl.)"
     }
   },
   "floodControlPage": {
     "title": {
-      "page0": "Floodplains are like a sponge",
-      "page1": "Flood control function – Floodplains like a sponge"
+      "page0": "Poplavna područja kao spužva",
+      "page1": "Funkcija ublažavanja poplava – poplavna područja djeluju poput spužve"
     },
     "intro": {
-      "description": "Learn about flood control functions and discover how floodplains act as natural sponges that absorb and store water.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Saznajte kako poplavna područja ublažavaju poplave i zašto djeluju poput spužve te provjerite znanje kroz zabavne aktivnosti.",
+      "accessTeachingMaterials": "Pristup materijalim za učenje",
+      "openPlatform": "OTVORENA PLATFORMA",
+      "opensNewTab": "Otvara novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu mapu",
+      "explore": "Istraži"
     },
     "page1": {
-      "instruction": "Hover over different areas of the images to reveal useful facts.",
-      "didYouKnow": "Did you know?",
+      "instruction": "Prijeđite pokazivačem preko različitih dijelova slike kako biste otkrili korisne činjenice.",
+      "didYouKnow": "Jeste li znali…?",
       "hoverAreas": {
         "left": {
-          "willows-banks": "Willows stabilize banks and increase soil porosity through extensive root systems.",
-          "reed-vegetation": "Dense reed vegetation slows water flow, traps sediments, and improves water quality.",
-          "native-grasses": "Native grasses improve soil porosity and water infiltration",
-          "leaf-litter": "Leaf litter on the forest floor retains moisture and reduces surface runoff.",
-          "deep-rooted-trees": "Deep-rooted trees and shrubs offer stronger bank stabilization than shallow-rooted grasses."
+          "willows-banks": "Vrbe stabiliziraju obale i povećavaju poroznost tla zahvaljujući dobro razvijenom korijenovu sustavu.",
+          "reed-vegetation": "Gusti tršćak usporava tok, zadržava sediment i poboljšava kakvoću vode.",
+          "native-grasses": "Autohtone trave poboljšavaju poroznost tla i infiltraciju vode.",
+          "leaf-litter": "Lisna stelja na šumskom tlu zadržava vlagu i smanjuje površinsko otjecanje.",
+          "deep-rooted-trees": "Drveće i grmlje s dubokim korijenjem stabiliziraju obale učinkovitije od plitkoukorijenjenih trava."
         },
         "right": {
-          "natural-filtration": "The river is confined by dikes like a tight corset.  It can't spread out or reach the floodplain, so floodwaters rise quickly",
-          "ecosystem-benefits": "Without riverside plants, there's nothing to slow down runoff or absorb water. The soil becomes cracked and compacted—water can't soak in.",
-          "groundwater-recharge": "Without plants along the banks, runoff flows faster, more sediments and nutrients enter the river, and water quality declines"
+          "natural-filtration": "Nasipi „stežu” rijeku poput korzeta. Ne može se razliti niti dosegnuti poplavnu nizinu, pa razina poplavne vode brzo raste.",
+          "ecosystem-benefits": "Bez obalne vegetacije nema što usporiti otjecanja niti upiti vodu. Tlo puca i zbijeno je, pa voda ne može prodrijeti unutra.",
+          "groundwater-recharge": "Bez vegetacije uz obale otjecanje je brže, više sedimenta i nutrijenata ulazi u rijeku, a kvaliteta vode se pogoršava."
         }
       },
       "didYouKnowContent": {
         "left": {
-          "title": "Did you know?",
+          "title": "Jeste li znali…?",
           "items": [
-            "Floodplain soils store 3,000-4,000 m³ of water per hectare",
-            "Meanders increase retention time by 30-50%",
-            "Floodplain vegetation stores 30-40% of total retention capacity",
-            "Natural floodplain absorbs floodwater for 20-30 days",
-            "Groundwater recharge: 500-1,000 m³ per hectare per year"
+            "Tla poplavnih područja pohranjuju 3000–4000 m³ vode po hektaru.",
+            "Meandri povećavaju vrijeme zadržavanja vode za 30–50%.",
+            "Vegetacija poplavnih područja osigurava 30–40% ukupnog retencijskog kapaciteta.",
+            "Prirodno poplavno područje može zadržati poplavnu vodu 20–30 dana.",
+            "Prihrana podzemnih voda: 500–1000 m³ po hektaru godišnje."
           ]
         },
         "right": {
-          "title": "Did you know?",
+          "title": "Jeste li znali…?",
           "items": [
-            "Channelization reduces retention by: 60-80%",
-            "Loss of vegetation decreases capacity by: 40-50%",
-            "Soil compaction reduces storage by: 30-40%",
-            "Degraded floodplain retains only: 1,000-2,000 m³ per hectare"
+            "Kanaliziranje (ispravljanje/uređenje) korita smanjuje retenciju za 60–80%.",
+            "Gubitak vegetacije smanjuje kapacitet za 40–50%.",
+            "Zbijanje tla smanjuje vodni kapacitet za 30–40%.",
+            "Degradirano poplavno područje zadržava samo 1000–2000 m³ po hektaru."
           ]
         }
       }
     },
     "page2": {
-      "activityTitle": "Activity 1",
-      "instruction": "Can you spot the missing floodplain superpowers? Match the description numbers to the healthy floodplain (left) and degraded floodplain (right).",
-      "naturalFloodplain": "Natural Floodplain:",
-      "degradedFloodplain": "Degraded Floodplain:",
+      "activityTitle": "Aktivnost 1",
+      "instruction": "Možete li prepoznati „supermoći” koje nedostaju? Povežite brojeve opisa s očuvanim poplavnim područjem (lijevo) te degradiranim poplavnim područjem (desno).",
+      "naturalFloodplain": "Prirodno poplavno područje:",
+      "degradedFloodplain": "Degradirano poplavno područje:",
       "descriptions": {
         "left": [
-          "A meandering river flows in gentle curves, spreading water across the floodplain, slowing flow, and nourishing the land.",
-          "Plants along riverbanks slow runoff, trap sediments, and absorb excess nutrients, helping to keep the water clean.",
-          "Floodplain lakes and oxbows store excess floodwater, support rich biodiversity, and help recharge groundwater"
+          "Meandrirajuća rijeka teče blagim zavojima, razlijeva se po nizini, usporava tok i obogaćuje tlo.",
+          "Biljke uz obalu usporavaju otjecanje, zadržavaju sediment i usvajaju višak nutrijenata, čime doprinose očuvanju kakvoće vode.",
+          "Poplavna jezera i mrtvaje pohranjuju višak poplavne vode, podržavaju visoku bioraznolikost i doprinose povišenju razine podzemnih voda."
         ],
         "right": [
-          "In heavy rain, floods can build up, break dikes, and threaten nearby villages.",
-          "In a straightened, channelized river, faster flow causes erosion and riverbed deepening, which dries out nearby floodplains",
-          "Without riverside plants, there's nothing to slow down runoff or absorb water."
+          "Tijekom obilnih oborina poplavni val može narasti, probiti nasip i ugroziti obližnja naselja.",
+          "U ispravljenom i kanaliziranom toku veća brzina uzrokuje eroziju i usijecanje korita, što isušuje okolna poplavna područja.",
+          "Bez obalne vegetacije nema usporavanja otjecanja niti upijanja vode."
         ]
       },
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "correctLabel": "Correct:"
+      "correct": "Točno",
+      "incorrect": "Netočno",
+      "correctLabel": "Točno:"
     },
     "page3": {
-      "title": "Fill-in-the-blanks challenge",
-      "intro1": "Floodplains are nature's buffer zones!",
-      "intro2": "How does the floodplain help in times of heavy rain?",
-      "intro3": "What happens to floodwater when a river has space to spread out?",
-      "completeSentence": "COMPLETE THE SENTENCE:",
-      "sentence1": "Floodplains act as natural",
-      "sentence1End": "to hold floodwater",
-      "sentence2": "and reduce the risk of",
-      "sentence2End": ".",
-      "placeholder1": "s____e",
-      "placeholder2": "f___g",
+      "title": "Izazov – dopunjavanje rečenica",
+      "intro1": "Poplavna područja su prirodne tampon-zone! ",
+      "intro2": "Kako pomažu tijekom obilnih kiša?",
+      "intro3": "Što se događa s poplavnom vodom kada rijeka ima prostor za razlijevanje?”",
+      "completeSentence": "DOVRŠITE REČENICU:",
+      "sentence1": "Dovršite rečenicu: poplavna područja djeluju kao prirodna",
+      "sentence1End": "koja zadržava poplavnu ",
+      "sentence2": "vodu i smanjuje",
+      "sentence2End": "od poplava nizvodno.",
+      "placeholder1": "s____a",
+      "placeholder2": "r___k",
       "correctAnswers": {
-        "answer1": "sponge",
-        "answer2": "flooding"
+        "answer1": "spužva",
+        "answer2": "rizik"
       },
       "feedback": {
-        "correctSponge": "Correct: sponge",
-        "incorrectSponge": "Incorrect (Answer: sponge)",
-        "correctFlooding": "Correct: flooding",
-        "incorrectFlooding": "Incorrect (Answer: flooding)"
+        "correctSponge": "Točno: spužva",
+        "incorrectSponge": "Netočno (odgovor: spužva)",
+        "correctFlooding": "Točno: rizik",
+        "incorrectFlooding": "Netočno (odgovor: rizik)"
       }
-    },
-    "modal": {
-      "title": "Download Options",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "basedOn5E": "Based on 5E learning method and scientific research",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
-    },
-    "nextTopic": "NEXT TOPIC: Climate protection and carbon sink"
+    }
   },
   "peopleAquaticPage": {
-    "title": "The people and aquatic ecosystems",
+    "title": "Ljudi i vodeni ekosustavi",
     "subtitle": {
-      "page1": "A. Natural floodplains",
-      "page2": "B. Used and altered floodplains",
-      "page3": "C. Restoring floodplains as a Nature-based Solution"
+      "page1": "A. Prirodna poplavna područja",
+      "page2": "B. Korištena i izmijenjena poplavna područja",
+      "page3": "C. Obnova poplavnih nizina kao rješenje temeljeno na prirodi"
     },
     "intro": {
-      "description": "Explore how people rely on floodplains and aquatic ecosystems, and discover pathways to restore their benefits for communities and nature.",
-      "explore": "Explore"
+      "description": "Istraži kako se ljudi oslanjaju na poplavna područja i vodene ekosustave, i otkrij načine kako obnoviti njihove pogodnosti za zajednicu i prirodu.",
+      "explore": "Istraži"
     },
     "activity1": {
-      "title": "Activity 1",
-      "description": "Look closely—this is how human actions have transformed the Danube and its floodplains. Dikes, farming, navigation, and other pressures changed the landscape.",
-      "question": "Can you help me by matching each pressure label to the right place in the picture?",
-      "instruction": "People cleared forests, transformed the floodplains into pastures and crop fields, and built villages and later cities near the banks of the Danube. To protect themselves from floods, they constructed dikes. The Danube was also developed as a navigational waterway and for hydropower production. As a result, the river lost many of its natural features: the balance of sediments in the riverbed was disturbed, and the connection between the river channel and its floodplains was largely cut off. Only a few remnants of the original floodplain remained, while many typical animals and plants disappeared."
+      "title": "Aktivnost 1",
+      "description": "Pogledajte pažljivo — ovako su ljudske aktivnosti promijenile Dunav i njegova poplavna područja.",
+      "question": "Možete li pomoći tako da svaku oznaku antropogenog utjecaja uparite s odgovarajućim mjestom na slici?",
+      "instruction": "Krčile su se šume, nizine pretvarale u pašnjake i oranice, te su se gradila sela, a kasnije i gradovi uz obale Dunava. Radi zaštite od poplava gradili su nasipe. Dunav je razvijan i kao plovni put, te za proizvodnju hidroenergije. Posljedično je rijeka izgubila mnoga prirodna obilježja… a povezanost između korita i poplavnih područja uvelike je prekinuta. Ostalo je tek nekoliko ostataka izvornih poplavnih područja, dok su mnoge tipične biljne i životinjkse vrste nestale."
     },
     "activity2": {
-      "title": "Activity 2",
-      "description": "To solve societal problems with this Nature-based Solution, you can now explore suitable restoration measures: each picture shows one way how people and nature may work together.",
-      "question": "At the bottom, you will find a list with six measures. Can you match the number of the measure from the list with the respective image that shows it?",
-      "instruction": "Step by step, parts of the Danube floodplain are being reconnected to the river. Old side arms are reopened, forests and wetlands are restored, and natural flooding is allowed again wherever possible. These measures bring back habitats for fish, birds, and plants, while also helping people — by storing floodwaters, improving water quality, providing water during droughts, and offering space for recreation. These restoration Measures are called Nature-based Solution."
+      "title": "Aktivnost 2",
+      "description": "Kako bi se rješavanju društvenih problema pristupalo pomoću rješenja temeljenih na prirodi, istražite odgovarajuće mjere obnove: svaka slika pokazuje jedan način na koji ljudi i priroda mogu da rade zajedno.",
+      "question": "Na dnu se nalazi popis šest mjera. Možete li povezati broj mjere s popisa s odgovarajućom slikom koja ju prikazuje?",
+      "instruction": "Korak po korak, dijelovi dunavskih poplavnih područja ponovno se povezuju s rijekom. Stari rukavci se ponovno otvaraju, obnavljaju se šume i močvare, te se tamo gdje je moguće, ponovno omogućuje prirodno plavljenje. Ove mjere doprinose obnovi različitih staništa te istodobno pomažu ljudima - zadržavanjem poplavnih voda, poboljšanjem kakvoće vode, osiguravanjem vode tijekom suša i stvaranjem prostora za rekreaciju. Ovakve mjere obnove nazivaju se rješenja temeljena na prirodi (Nature-based Solutions)."
     },
     "activity3": {
-      "title": "Activity 3",
-      "description": "These polar charts show how the Danube's ecosystem services change in three different scenarios: natural floodplains, altered floodplains with human pressures, and restored floodplains with nature-based solutions. Can you find out why the services look so different?",
+      "title": "Aktivnost 3",
+      "description": "Ovi polarni dijagrami prikazuju promjene usluga ekosustava u tri scenarija: prirodne nizine, izmijenjene nizine pod pritiscima i obnovljena poplavna područja s mjerama koje su u skladu s prirodom. Možeš li otkriti zašto se usluge ekosustava toliko razlikuju?",
       "column1": {
-        "title": "Original natural Floodplain",
-        "question": "Looking at this polar chart, why are almost all ecosystem services very high, while agriculture is low?",
+        "title": "Izvorna prirodna poplavna područja",
+        "question": "Zašto su gotovo sve usluge ekosustava vrlo visoke, a poljoprivreda niska?",
         "options": {
-          "A": "Because the soil in the floodplain was too poor and nothing could grow there.",
-          "B": "Because farming was forbidden by the rulers of the Danube region in those times.",
-          "C": "Because the floodplain was still natural, offering many benefits for people and animals, but farming was not possible on flooded land."
+          "A": "Zato što je tlo u poplavnom području bilo previše siromašno i ništa nije moglo rasti i uspjevati.",
+          "B": "Zato što je poljoprivreda bila zabranjena u području Dunava, u tom razdoblju.",
+          "C": "Zato što je poplavno područje bilo i dalje prirodno, pružajući mnoge koristi ljudima i životinjama, no poljoprivreda nije bila moguća na poplavljenom tlu."
         }
       },
       "column2": {
-        "title": "Altered floodplain",
-        "question": "Why is agricultural production so much provided in this status, while most other services are low?",
+        "title": "Izmijenjena poplavna područja",
+        "question": "Zašto je poljoprivredna proizvodnja razmjerno visoka u usporedbi s niskom razinom pružanja ostalih usluga usluga poplavnih područja?",
         "options": {
-          "A": "Because the Danube's natural forests and wetlands expanded, increasing farming and timber production at the same time.",
-          "B": "Because dikes disconnected the floodplain from the river, protecting agriculture from floods but destroying many natural habitats and their benefits.",
-          "C": "Because no one lived near the Danube, so only a few services were used."
+          "A": "Zato što su se prirodne šume i vlažna područja Dunava proširile,  povećavajući istovremeno poljoprivredu i proizvodnju drvne mase.",
+          "B": "Zato što su nasipi prekinuli vezu poplavnog područja i rijeke, štiteći poljoprivredna područja od poplava, pritom uništavajući mnoga prirodna staništa.",
+          "C": "Zato što nitko nije živio uz Dunava, pa su korištene samo neke od usluga ekosustava."
         }
       },
       "column3": {
-        "title": "Restored floodplain",
-        "question": "Why are the ecosystem services more balanced in this polar chart compared to the other two?",
+        "title": "Obnovljena poplavna područja",
+        "question": "Zašto su usluge ekosustava u većoj ravnoteži nego u druga dva scenarija?",
         "options": {
-          "A": "Because nature-based solutions restore side arms, wetlands, and forests, which bring back multiple benefits for both nature and people.",
-          "B": "Because people allowed the river to flood naturally, and removed all the pressures",
-          "C": "Because the Danube was cut off from its floodplains by dikes."
+          "A": "Zato što rješenja temeljena na prirodi obnavljaju rukavce, močvare i šume, što vraća brojne dobrobiti i za prirodu i za ljude.",
+          "B": "Zato što su ljudi dozvolili rijeci da se prirodno izlijeva, te uklonili sve pritiske.",
+          "C": "Zato što je Dunav nasipima bio odsječen od poplavnih područja."
         }
       },
-      "correctAnswer": "Correct answer:"
+      "correctAnswer": "Točan odgovor:"
     },
     "pressureLabels": {
       "cutting-meanders": {
-        "label": "Cutting meanders",
-        "description": "Straightening the river (making the river shorter and straighter instead of meandering)"
+        "label": "Presijecanje meandara",
+        "description": "Ispravljanje toka (skraćivanje i poravnavanje rijeke)."
       },
       "building-dikes": {
-        "label": "Building dikes",
-        "description": "Flood protection dikes (raised embankments along the river that keep the water inside the main channel and stop it from reaching the floodplain)"
+        "label": "Izgradnja nasipa",
+        "description": "Nasipi za zaštitu od poplava (uzdignuti zemljani nasipi koji zadržavaju vodu u koritu i sprječavaju razlijevanje u nizinu)."
       },
       "channellizing-rivers": {
-        "label": "Channellizing rivers",
-        "description": "Channelizing the river (protecting the banks of straightened rivers from erosion by covering them by stones, or by building groynes [small transverse stone barriers] so the river cannot change its river bed any more)"
+        "label": "Kanaliziranje rijeka",
+        "description": "Stabilizacija obala i dna (npr. oblaganje kamenom ili izgradnja pera) kako bi se spriječila prirodna promjena korita."
       },
       "draining-floodplains": {
-        "label": "Draining floodplains",
-        "description": "Drying out wetlands (removing water from wetlands to make land usable for pastures, crop fields and settlements)"
+        "label": "Isušivanje poplavnih nizina",
+        "description": "Isušivanje poplavnih područja uklanjanjem vode iz močvara radi prenamjene u pašnjake, oranice i naselja."
       },
       "urbanization": {
-        "label": "Urbanization",
-        "description": "Building settlements, roads, and cities, accompanied by wastewater discharge into the river."
+        "label": "Urbanizacija",
+        "description": "Izgradnja naselja, cesta i gradova uz ispuštanje otpadnih voda u rijeku."
       },
       "agriculture-pesticides": {
-        "label": "Agriculture using pesticides, insecticides, etc.",
-        "description": "Application of chemicals in farming against weeds and insects"
+        "label": "Poljoprivreda uz primjenu pesticida i insekticida",
+        "description": "Primjena kemikalija u poljoprivredi protiv korova i štetnika."
       },
       "cutting-forests": {
-        "label": "Cutting down forests",
-        "description": "Deforestation (removing trees from large areas)"
+        "label": "Krčenje šuma",
+        "description": "Deforestacija (uklanjanje drveća s većih površina)."
       },
       "industrialization": {
-        "label": "Industrialization",
-        "description": "Building factories and industries, often accompanied by air, soil or water pollution"
+        "label": "Industrijalizacija",
+        "description": "Izgradnja industrijskih pogona često praćena onečišćenjem zraka, tla i voda."
       },
       "dams-hydroelectric": {
-        "label": "Dams, hydroelectric power plants, etc.",
-        "description": "Construction of river barriers (transverse concrete structures that stop water, sediment and fish from moving freely)"
+        "label": "Brane i hidroelektrane",
+        "description": "Izgradnja poprečnih barijera koje onemogućuju slobodno kretanje vode, sedimenta i riba."
       },
       "invasive-species": {
-        "label": "Invasive species",
-        "description": "Newcomer species (plants or animals from other continents that spread massively and cause problems by their dominance)"
+        "label": "Invazivne vrste",
+        "description": "Alohtone vrste koje se snažno šire i potiskuju zavičajne vrste."
       },
       "navigation": {
-        "label": "Navigation",
-        "description": "Ships and canals (deepening and regulating rivers so big ships can travel along them)"
+        "label": "Plovidba",
+        "description": "Brodovi i kanali — produbljivanje i regulacija rijeka kako bi velika plovila mogla ploviti."
       },
       "climate-change": {
-        "label": "Climate change",
-        "description": "Global warming (more extreme weather conditions caused by humans)"
+        "label": "Klimatske promjene",
+        "description": "Globalno zatopljenje i češći ekstremni vremenski uvjeti uzrokovani ljudskim djelovanjem."
       }
     },
     "restorationMeasures": {
       "restoration-sidearms": {
-        "label": "Restoration of river side-arms",
-        "description": "Re-opening old river branches so that water can flow there again, creating multiple habitats for fish, birds, and plants."
+        "label": "Obnova riječnih rukavaca",
+        "description": "Ponovno povezivanje starih rukavaca s matičnom rijekom, kako bi voda mogla ponovo teći, stvarajući brojna staništa za ribe, ptice i biljke."
       },
       "dike-relocation": {
-        "label": "Dike relocation for more space",
-        "description": "Moving dikes further away from the river to provide more space to the river and floodplain forests that may retain flood waters."
+        "label": "Pomicanje nasipa kako bi se dobilo više prostora",
+        "description": "Pomicanje nasipa dalje od rijeke kako bi se osigurao širi prostor za rijeku i poplavne šume koje mogu zadržati poplavne vode."
       },
       "buffer-strips": {
-        "label": "Buffer strips",
-        "description": "Restoring narrow forests between agricultural fields and rivers so they can filter nutrients and hence protect water from pollution."
+        "label": "Zaštitni pojasevi",
+        "description": "Obnova uskih šumskih pojaseva između poljoprivrednih površina i rijeke koji filtriranjem nutrijenata štite vodotok od onečišćenja."
       },
       "fish-ramps": {
-        "label": "Fish ramps or remove barriers",
-        "description": "Helping fish migrate by removing barriers or transforming them into ramps of stones enabling them to swim upstream again."
+        "label": "Riblje staze s kamenim pregradama",
+        "description": "Omogućavanje migracije riba uklanjanjem prepreka ili njihovom prenamjenom u kamene staze koje omogućuju prolaz uzvodno."
       },
       "bypass-channels": {
-        "label": "Bypass channels",
-        "description": "Creating artificial side channels around barriers with gentle slopes where fish and other animals can move, or even live."
+        "label": "Riblje staze kao obilazni kanali",
+        "description": "Umjetno stvaranje obilaznih kanala oko prepreka, s blagim nagibima, gdje se ribe i druge životinje mogu kretati ili čak živjeti."
       },
       "native-species": {
-        "label": "Support native species",
-        "description": "Restoring natural habitat conditions to support native plants and animals, making it harder for invasive species to spread."
+        "label": "Potpora autohtonih vrsta",
+        "description": "Obnavljanje prirodnih uvjeta staništa što pomaže autohtonim biljkama i životinjama, a otežava širenje invazivnih vrsta."
       }
     },
     "ui": {
-      "results": "Results",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "correctTooltip": "Correct!",
-      "incorrectTooltip": "Incorrect",
-      "clickToRemove": "Click to remove and return to list",
-      "checkAnswers": "Check Answers",
-      "tryAgain": "Try Again"
-    },
-    "modal": {
-      "title": "Download Options",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "basedOn5E": "Based on 5E learning method and scientific research",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
+      "results": "Rezultati",
+      "correct": "Točno",
+      "incorrect": "Netočno",
+      "correctTooltip": "Točno!",
+      "incorrectTooltip": "Netočno",
+      "clickToRemove": "Kliknite za uklanjanje i povratak na popis",
+      "checkAnswers": "Provjeri odgovore",
+      "tryAgain": "Pokušaj ponovno"
     }
   },
   "artPage": {
-    "title": "Floodplains as sources of inspiration",
+    "title": "Poplavna područja kao izvor inspiracije",
     "intro": {
-      "description": "Discover how floodplains inspire stories, crafts, and creativity. Explore the art of nature-based materials before building your own masterpieces.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Otkrij kako poplavna područja inspiriraju priče, izradu i zanate, i kreativnost. Istraži umjetnost prirodnih materijala prije nego izradiš svoje remek- djelo.",
+      "accessTeachingMaterials": "Pristup materijalim za učenje",
+      "openPlatform": "OTVORENA PLATFORMA",
+      "opensNewTab": "Otvara novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu mapu",
+      "explore": "Istraži"
     },
     "instruction": {
-      "intro1": "Rivers and their floodplains are home to numerous animals and plants, and they are also living landscapes full of stories that have inspired people for centuries. From weaving baskets with willow branches to creating songs, legends, and drawings, floodplains connect nature with culture.",
-      "intro2": "Now it's your turn - have fun using natural elements to create your own pictures and stories. By the river, let its colors, shapes, and sounds inspire you discover the joy of shaping your own story from the floodplain.",
-      "instruction": "Imagine you are out in nature, collecting leaves, branches, or feathers to create your own characters. Could you help these outlines come to life? Drag and drop the natural elements into the shapes until they are filled with form and color.",
+      "intro1": "Rijeke i njihova poplavna područja su stanište brojnih biljnih i životinjskih vrsta, te živi krajobrazi bogati pričama koje nadahnjuju ljude stoljećima. Od pletenja košara od vrbovih grana do stvaranja pjesama, legendi i crteža, poplavna područja povezuju prirodu i kulturu.",
+      "intro2": "Sada je red na vama — koristite prirodne elemente kako biste stvorili vlastite slike i priče. Uz rijeku dopustite da vas boje, oblici i zvukovi nadahnu te otkrijte zadovoljstvo stvaranja vlastite priče iz poplavnih područja.",
+      "instruction": "Zamislite da ste u prirodi i prikupljate lišće, grančice ili perje kako biste stvorili vlastite likove. Možete li oživjeti ove obrise? Povucite prirodne elemente u oblike dok ne dobiju formu i boju.",
       "page3": {
-        "text1": "Some parts of the landscape are missing.",
-        "text2": "Drag and drop the figures you created into the right places to complete the floodplain scene.",
-        "trySnailFirst": "Try placing the snail first"
+        "text1": "Neki dijelovi krajobraza nedostaju.",
+        "text2": "Povucite figure koje ste izradili na odgovarajuća mjesta kako biste dovršili prizor poplavnih područja.",
+        "trySnailFirst": "Pokušaj prvo postaviti puža"
       }
-    },
-    "nextTopic": "NEXT TOPIC: People and aquatic ecosystems",
-    "modal": {
-      "title": "Download Options",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "basedOn5E": "Based on 5E learning method and scientific research",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
     }
   },
   "aestheticsPage": {
     "title": {
-      "page0": "Floodplain aesthetics versus Floodplain functions",
-      "page1": "Nature's presents offered by the Danube and its floodplains",
-      "page2": "Discover the hidden services of the floodplain!"
+      "page0": "Estetske vrijednosti poplavnih područja nasuprot njihovim funkcijama",
+      "page1": "Prirodni „darovi” Dunava i njegovih poplavnih nizina",
+      "page2": "Otkrijte skrivene usluge poplavnih područja"
     },
     "intro": {
-      "description": "Learn about aesthetics and discover the hidden services and cultural values that floodplains offer.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Nauči o estetskim vrijednostima i otkrij skrivene usluge i kulturne vrijednosti poplavnih područja.",
+      "accessTeachingMaterials": "Pristup materijalim za učenje",
+      "openPlatform": "OTVORENA PLATFORMA",
+      "opensNewTab": "Otvara novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu mapu",
+      "explore": "Istraži"
     },
     "page1": {
-      "description": "The floodplains and wetlands of the Danube give us many benefits, called ecosystem services. These come in different forms:",
-      "provisioningServices": "Provisioning services",
-      "provisioningDescription": "resources we can use directly, like fish, clean water, or wood.",
-      "regulatingServices": "Regulating services",
-      "regulatingDescription": "processes that keep nature in balance, like reducing floods, cleaning water, or storing carbon.",
-      "culturalServices": "Cultural services",
-      "culturalDescription": "benefits that enrich our lives, such as recreation, learning, and cultural traditions.",
-      "activityQuestion": "Can you sort nature's services into groups?",
-      "activityInstruction": "Please drag and drop each icon to its matching labeled box on the right.",
-      "results": "Results",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "correctTooltip": "Correct!",
-      "incorrectTooltip": "Incorrect",
-      "clickToRemove": "Click to remove"
+      "description": "Poplavna područja i močvare Dunava pružaju brojne koristi, tzv. usluge ekosustava. One se očituju u različitim oblicima:",
+      "provisioningServices": "Opskrbne usluge",
+      "provisioningDescription": "resursi koje izravno koristimo, poput ribe, čiste vode ili drva.",
+      "regulatingServices": "Regulacijske usluge",
+      "regulatingDescription": "procesi koji održavaju prirodnu ravnotežu, npr. ublažavanje poplava, pročišćavanje vode ili pohrana ugljika.",
+      "culturalServices": "Kulturne usluge",
+      "culturalDescription": "koristi koje obogaćuju kvalitetu života, poput rekreacije, učenja i kulturnih tradicija.",
+      "activityQuestion": "Možete li razvrstati usluge prirode u skupine?",
+      "activityInstruction": "Povuci i ispusti svaku ikonu do odgovarajuće označene kućice na desnoj strani.",
+      "results": "Rezultati",
+      "correct": "Točno",
+      "incorrect": "Netočno",
+      "correctTooltip": "Točno!",
+      "incorrectTooltip": "Netočno",
+      "clickToRemove": "Kliknite za uklanjanje"
     },
     "page2": {
-      "instruction": "The Danube floodplain is full of hidden treasures — but some are tricky to see!\n\nUse the magnifying glass to explore the landscape and spot the ecosystem service icons.\nWhen you hover over one with the magnifying glass, it will disappear from the image and appear at the matching label at the edge of the illustration.\n\nTogether, these services reveal how nature supports our lives every day."
+      "instruction": "Dunavsko poplavno područje puno je skrivenih vrijednosti — ali neke je teško uočiti! Koristite povećalo kako biste istražili krajolik i pronašli ikone usluga ekosustava. Kada prijeđeš preko jedne ikone s povećalom, nestat će sa slike i pojavit će se odgovarajuća oznaka na rubu ilustracije. Zajedno, ove usluge pokazuju kako priroda svakodnevno podupire naš život."
     },
     "ecosystemServices": {
-      "tourism": "Tourism",
-      "recreation": "Recreation and fishing",
-      "landscape": "Landscape aesthetics",
-      "climate": "Climate regulation",
-      "carbon": "Carbon sequestration",
-      "nutrient": "Nutrient retention",
-      "flood": "Flood regulation",
-      "habitat": "Habitat provision",
-      "water": "Surface and groundwater",
-      "fish": "Fish",
-      "agriculture": "Agriculture",
-      "timber": "Timber"
-    },
-    "modal": {
-      "title": "Download Options",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "basedOn5E": "Based on 5E learning method and scientific research",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
-    },
-    "nextTopic": "NEXT TOPIC: Floodplain Art"
+      "tourism": "Turizam",
+      "recreation": "Rekreacija i ribolov",
+      "landscape": "Estetska vrijednost krajobraza",
+      "climate": "Regulacija klime",
+      "carbon": "Skladištenje ugljika",
+      "nutrient": "Zadržavanje nutrijenata",
+      "flood": "Regulacija poplava",
+      "habitat": "Pružanje staništa",
+      "water": "Površinske i podzemne vode",
+      "fish": "Riba",
+      "agriculture": "Poljoprivreda",
+      "timber": "Drvna masa"
+    }
   },
   "treatmentWetlandsPage": {
     "title": {
-      "main": "Treatment wetlands",
-      "page1": "Nature's final filter – The Treatment Wetland",
-      "page2": "Layer by layer – Nature's cleaning crew",
-      "page3": "Let's build nature's filter - Vertical Flow Wetland",
-      "page4": "Tiny cleaners, big impact!"
+      "main": "Umjetne močvare (biljni uređaji)",
+      "page1": "Prirodni završni filter – umjetna močvara (biljni uređaj)",
+      "page2": "Sloj po sloj – prirodna „ekipa za čišćenje”",
+      "page3": "Izgradimo prirodni filter – vertikalno-protočna umjetna močvara",
+      "page4": "Sitni čistači, velik učinak!"
     },
     "intro": {
-      "description": "Learn about treatment wetlands and discover how constructed wetlands naturally filter and clean wastewater.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Nauči o umjetnim močvarama za pročišćavanje vode i otkrij kako prirodno filtriraju i čiste otpadne vode.",
+      "accessTeachingMaterials": "Pristup materijalim za učenje",
+      "openPlatform": "OTVORENA PLATFORMA",
+      "opensNewTab": "Otvara novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu mapu",
+      "explore": "Istraži"
     },
     "characters": {
       "rocky": {
-        "name": "Rocky the Drainer",
-        "label": "ROCKY THE DRAINER",
+        "name": "Rocky – odvodnjavač",
+        "label": "Rocky – odvodnjavač",
         "tooltip": {
-          "first": "I'm Rocky the Drainer! I collect the cleaned water and let it flow out safely to the river. I keep the bottom open and full of air so the whole system can breathe.",
-          "second": "Function: Collects the cleaned water, ensures aeration from below, and directs flow to the outlet."
+          "first": "Ja sam Rocky, odvodnjavač! Prikupljam pročišćenu vodu i sigurno ju odvodim u vodotok. Održavam donju zonu prozračnom kako bi sustav „disao”.",
+          "second": "Funkcija: prikuplja pročišćenu vodu, osigurava prozračivanje odozdo i usmjerava tok prema ispustu."
         }
       },
       "reeda": {
-        "name": "Reeda the Flowkeeper",
-        "label": "REEDA THE FLOWKEEPER",
+        "name": "Reeda – čuvarica protoka",
+        "label": "Reeda – čuvarica protoka",
         "tooltip": {
-          "first": "I'm Reeda, Flowkeeper! My roots keep the filter open so the water can pass through easily. I protect the wetland from heat and cold, bring in a bit of oxygen, and give microbes a good place to live.",
-          "second": "Function: Root growth maintains hydraulic conductivity of the filter, provide insulation against heat (summer) and cold (winter), slows down inflow, supports microbes, and takes up some nutrients."
+          "first": "Ja sam Reeda, čuvarica protoka! Moje korijenje održava filtar propusnim, štiti sustav od topline i hladnoće, unosi nešto kisika te pruža stanište mikroorganizmima.",
+          "second": "Funkcija: rast korijenja održava hidrauličku vodljivost filtera, osigurava izolaciju od topline (ljeto) i hladnoće (zima), usporava dotok, podupire razvoj mikrobne zajednice i apsorbira dio nutrijenata."
         }
       },
       "gravelia": {
-        "name": "Gravelia the Distributor",
-        "label": "GRAVELIA THE DISTRIBUTOR",
+        "name": "Gravelia – raspodjeljivačica",
+        "label": "Gravelia – raspodjeljivačica",
         "tooltip": {
-          "first": "Hey there! I'm Gravelia the Distributor! I stop fine particles from blocking the bottom and spread the water evenly.  I keep everything balanced between Sandy above and Rocky below.",
-          "second": "Function: Distributes water evenly, prevents clogging, and protects the drainage zone below."
+          "first": "Ja sam Gravelia, raspodjeljivačica! Sprječavam začepljenje finim česticama, ravnomjerno raspoređujem vodu i održavam ravnotežu između sloja Sandy iznad i Rocky ispod.",
+          "second": "Funkcija: ravnomjerno raspoređuje vodu, sprječava začepljenje i štiti drenažnu zonu ispod."
         }
       },
       "sandy": {
-        "name": "Sandy the Cleaner",
-        "label": "SANDY THE CLEANER",
+        "name": "Sandy – čistačica",
+        "label": "Sandy – čistačica",
         "tooltip": {
-          "first": "I'm Sandy the Cleaner! Millions of microbes live between my grains — they eat waste and transform nitrogen and organic matter into harmless forms. I do most of the real cleaning work here!",
-          "second": "Function: Hosts microbial biofilms that perform most of the biological cleaning (nitrification, organic matter removal, some phosphorus binding). Fine texture slows water for longer contact time → better cleaning.",
-          "highlightText": "perform most of the biological cleaning"
+          "first": "Ja sam Sandy, čistačica! Milijuni mikroorganizama žive između mojih zrnaca — razgrađuju onečišćenja i pretvaraju dušik i organsku tvar u neškodljive oblike.",
+          "second": "Funkcija: nositelj mikrobnih biofilmova koji obavljaju većinu biološkog pročišćavanja (nitrifikacija, uklanjanje organske tvari, dio vezanja fosfora). Sitnija tekstura usporava protok i povećava vrijeme kontakta → učinkovitije pročišćavanje.",
+          "highlightText": " "
         }
       }
     },
     "layerSlots": {
-      "plant": "Plant layer",
-      "filter": "Filter layer",
-      "intermediate": "Intermediate layer",
-      "drainage": "Drainage layer"
+      "plant": "Biljni sloj",
+      "filter": "Filtracijski sloj",
+      "intermediate": "Prijelazni sloj",
+      "drainage": "Drenažni sloj"
     },
     "page2": {
-      "instruction": "Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky.\n\nDrag each helper onto the wetland container to build the layers from bottom to top.",
-      "successMessage": "Great job! You built the treatment wetland in the right order.",
-      "errorMessage": "{{name}} belongs in a different layer. Try another spot!"
+      "instruction": "Upoznajte likove koji predstavljaju slojeve konstruirane močvare — Reeda, Sandy, Gravelia i Rocky.\n\nPovucite oznake slojeva na odgovarajuće mjesto u spremniku i provjerite je li redoslijed točan!",
+      "successMessage": "Odličan posao! Pravilno si posložio sve slojeve i uspješno napravio umjetnu močvaru.",
+      "errorMessage": "{{name}} treba biti u drugom sloju. Pokušaj ponovno!"
     },
     "page3": {
-      "instruction": "Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top.\n\nWatch how your wetland gets ready to clean the water naturally!",
-      "dropBucket": "Drop bucket here!"
+      "instruction": "Ulijte materijale pravilnim redoslijedom: najprije kamenje, zatim šljunak, pijesak i na kraju posadite trsku na vrh. Promatrajte kako se sustav priprema za prirodno pročišćavanje vode!",
+      "dropBucket": "Ovdje ispustite kantu!"
     },
     "page4": {
-      "intro": "Now that the wetland is built, let's meet its hidden workers — the tiny microbes who do most of the cleaning job.",
-      "conclusion": "Thanks to millions of tiny helpers like Nino, Dina, Phos, and Bacto, the water leaves the treatment wetland fresh and clean — ready to flow back to Danubius and start its journey again!",
+      "intro": "Sada kada je močvara izgrađena, upoznajmo skrivene radnike — mikroorganizme koji obavljaju većinu pročišćavanja.",
+      "conclusion": "Zahvaljujući milijunima sitnih pomagača, voda napušta konstruiranu močvaru čišća te se vraća u vodotok — spremna za nastavak svog puta.",
       "hoverZones": {
-        "zone1": "I turn ammonium into nitrate when oxygen is around!",
-        "zone2": "I work where there's no oxygen — I turn nitrate into nitrogen gas!",
-        "zone3": "I grab phosphorus and hold it tight in the gravel!",
-        "zone4": "I grab phosphorus and hold it tight in the gravel!"
+        "zone1": "Pretvaram amonij u nitrat kada je prisutan kisik!",
+        "zone2": "Djelujem gdje nema kisika — pretvaram nitrat u plin N₂!",
+        "zone3": "Vežem fosfor i zadržavam ga u šljunku!",
+        "zone4": "Razgrađujem organski otpad u jednostavnije tvari kojima se mogu hraniti!"
       }
-    },
-    "modal": {
-      "title": "Download Options",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "basedOn5E": "Based on 5E learning method and scientific research",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
-    },
-    "nextTopic": "NEXT TOPIC: Floodplain Aesthetics"
+    }
   },
   "selfPurificationPage": {
     "title": {
-      "main": "Self purification function",
-      "page1": "Nitrogen input into rivers",
-      "page2": "Retention of nitrogen by rivers",
-      "page3": "Additional retention of nitrogen by floodplains",
-      "page4": "Phosphorous input into rivers",
-      "page5": "Retention of phosphorous by rivers",
-      "page6": "Additional retention of phosphorous by floodplains"
+      "main": "Funkcija samopročišćavanja",
+      "page1": "Unos dušika u rijeke",
+      "page2": "Zadržavanje (retencija) dušika u rijekama",
+      "page3": "Dodatna retencija dušika u poplavnim nizinama",
+      "page4": "Unos fosfora u rijeke",
+      "page5": "Retencija fosfora u rijekama",
+      "page6": "Dodatna retencija fosfora u poplavnim područjima"
     },
     "intro": {
-      "description": "Learn about self purification functions and discover how rivers and floodplains naturally filter and clean water.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Nauči o procesu samopročišćavanja i otkrij kako rijeke i poplavna područja filtriraju i pročišćuju vodu na prirodan način.",
+      "accessTeachingMaterials": "Pristup materijalim za učenje",
+      "openPlatform": "OTVORENA PLATFORMA",
+      "opensNewTab": "Otvara novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu mapu",
+      "explore": "Istraži"
     },
     "hoverAreas": {
       "nutrients1": {
-        "area1": "Pollution that comes from many scattered places, such as <span style=\"color: #1C00B8;\">farm fields, roads, or towns</span>, and is carried into rivers by rain or runoff.",
-        "area2": "Pollution that comes from a single, identifiable place, such as a <span style=\"color: #1C00B8;\">pipe from a factory or a wastewater treatment plant</span>.",
-        "area3": "<span style=\"color: #1C00B8;\">Fertilizers and manure</span> dissolve in rainwater and move through the soil or across fields into rivers. This is the main source of diffuse nitrogen pollution.",
-        "area4": "Rainwater carries nitrogen compounds from <span style=\"color: #1C00B8;\">streets, vehicles, and urban green areas</span> into drains and rivers.",
-        "area5": "<span style=\"color: #1C00B8;\">Treated water still contains some nitrogen</span> compounds that flow into rivers through outlet pipes. In some countries, modern plants remove most nitrogen efficiently, but in others, treatment is less advanced — or even missing.",
-        "area6": "<span style=\"color: #1C00B8;\">Some factories</span> release nitrogen-rich wastewater from food processing, chemicals, or manufacturing activities. Usually regulated but still important locally."
+        "area1": "Onečišćenje koje potječe s brojnih raspršenih lokacija, kao što su <span style=\"color: #1C00B8;\">poljoprivredne površine, ceste ili naselja</span>, i koje se kišom ili otjecanjem unosi u rijeke.",
+        "area2": "Onečišćenje koje dolazi s jedne jasno prepoznatljive lokacije, kao što je <span style=\"color: #1C00B8;\">ispust iz tvornice ili uređaja za pročišćavanje otpadnih voda</span>.",
+        "area3": "<span style=\"color: #1C00B8;\">Gnojiva i stajski gnoj</span> otapaju se u oborinskoj vodi te procjeđivanjem kroz tlo ili površinskim otjecanjem dospijevaju u rijeke. To je glavni izvor difuznog onečišćenja dušikom.",
+        "area4": "Oborinska voda prenosi spojeve dušika s <span style=\"color: #1C00B8;\">ulica, vozila i urbanih zelenih površina</span> u odvodnju i rijeke.",
+        "area5": "<span style=\"color: #1C00B8;\">I nakon obrade, pročišćena voda može sadržavati dio spojeva dušika</span> koji se ispustima unose u rijeke. U nekim državama suvremeni sustavi učinkovito uklanjaju većinu dušika, dok je drugdje obrada slabije razvijena ili izostaje.",
+        "area6": "<span style=\"color: #1C00B8;\">Pojedine tvornice</span> ispuštaju otpadne vode bogate dušikom iz prehrambene industrije, kemijske industrije ili proizvodnih procesa. U pravilu je to regulirano, ali lokalno može imati značajan utjecaj."
       },
       "nutrients2": {
-        "area1": "Particulate N settles in sediments. Organic nitrogen particles <span style=\"color: #1C00B8;\">sink down</span>, and thus become accessible for microbes living between sand grains — quiet zones of purification.",
-        "area2": "Nutrients → Biomass (temporary). Algae and aquatic plants <span style=\"color: #1C00B8;\">take up nitrate and ammonium</span>; nitrogen is stored in their tissues until they decay.",
-        "area3": "<span style=\"color: #1C00B8;\">Ammonium → Nitrate (needs oxygen)</span>. Tiny microbes in oxygen-rich sediments convert ammonium into nitrate — the first step of purification.",
-        "area4": "<span style=\"color: #1C00B8;\">Nitrate → Nitrogen gas (no oxygen)</span> Bacteria in low-oxygen zones turn nitrate into nitrogen gas — the key process for nitrogen loss."
+        "area1": "Sedimentacija: čestični dušik taloži se u sediment. Organske čestice s dušikom <span style=\"color: #1C00B8;\">tonu</span> te postaju dostupne mikroorganizmima između zrnaca pijeska — u mirnim zonama pročišćavanja.",
+        "area2": "Asimilacija: nutrijenti → biomasa (privremeno). Alge i vodene biljke <span style=\"color: #1C00B8;\">usvajaju nitrat i amonij</span>; dušik je pohranjen u njihovim tkivima do razgradnje.",
+        "area3": "<span style=\"color: #1C00B8;\">Nitrifikacija: amonij → nitrat (potreban kisik)</span>. Mikroorganizmi u sedimentu bogatom kisikom pretvaraju amonij u nitrat — prvi korak pročišćavanja.",
+        "area4": "<span style=\"color: #1C00B8;\">Denitrifikacija: nitrat → plin N₂ (bez kisika)</span>. Bakterije u zonama s malo kisika pretvaraju nitrat u dušik (N₂) — ključni proces trajnog uklanjanja dušika."
       },
       "nutrients3": {
-        "area1": "<span style=\"color: #1C00B8;\">Nitrogen bound to particles settles.</span> During floods, suspended particles with nitrogen are trapped and deposited on the floodplain surface.",
-        "area2": "<span style=\"color: #1C00B8;\">Nutrients → Biomass (temporary).</span> Floodplain plants absorb nitrogen during the growing season and store it in wood and leaves.",
-        "area3": "<span style=\"color: #1C00B8;\">Nitrate → Nitrogen gas (no oxygen).</span> In flooded soils, microbes breathe without oxygen and transform nitrate into nitrogen gas — permanent nitrogen removal."
+        "area1": "<span style=\"color: #1C00B8;\">Dušik vezan uz čestice se taloži.</span> Tijekom poplava suspendirane čestice s dušikom zadržavaju se i talože na površini poplavnih područja.",
+        "area2": "<span style=\"color: #1C00B8;\">Nutrijenti → biomasa (privremeno).</span> Biljke poplavnih područja apsorbiraju dušik tijekom vegetacijske sezone i pohranjuju ga u stablima i listovima.",
+        "area3": "<span style=\"color: #1C00B8;\">Nitrat → plin N₂ (bez kisika).</span> U poplavljenim tlima mikroorganizmi pretvaraju nitrat u dušik (N₂) — trajno uklanjanje dušika."
       },
       "nutrients4": {
-        "area1": "Pollution that comes from many scattered places, such as <span style=\"color: #CE7C0A;\">farmland, unpaved roads, or towns</span>.",
-        "area2": "Rainwater carries <span style=\"color: #CE7C0A;\">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers. ",
-        "area3": "Phosphorus <span style=\"color: #CE7C0A;\">bound to soil particles</span> is washed into rivers during rain or floods.",
-        "area4": "<span style=\"color: #CE7C0A;\">Fertilizer</span> phosphorus dissolves in water and slowly reaches rivers through the soil or overland flow. A smaller but steady diffuse source.",
-        "area5": "Rainwater carries <span style=\"color: #CE7C0A;\">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers.",
-        "area6": "<span style=\"color: #CE7C0A;\">Even after treatment, part of the</span> phosphorus remains in discharged water. Many countries have upgraded their plants, but others still lack efficient systems or any wastewater treatment at all.",
-        "area7": "Certain factories release phosphorus-containing wastewater from <span style=\"color: #CE7C0A;\">cleaning, processing, or production activities</span>. Usually regulated but still significant in some areas."
+        "area1": "Onečišćenje koje potječe s brojnih raspršenih mjesta, kao što su <span style=\"color: #CE7C0A;\">poljoprivreda, neasfaltirane ceste ili naselja</span>.",
+        "area2": "Oborinska voda prenosi <span style=\"color: #CE7C0A;\">prašinu, deterdžente i otpadne čestice bogate</span> fosforom u odvodnju i rijeke.",
+        "area3": "Fosfor <span style=\"color: #CE7C0A;\">vezan uz čestice tla</span> ispire se u rijeke tijekom kiše ili poplava.",
+        "area4": "Fosfor iz <span style=\"color: #CE7C0A;\">gnojiva</span> otapa se u vodi te sporo dospijeva u rijeke procjeđivanjem kroz tlo ili površinskim otjecanjem. Manji, ali stalan difuzni izvor.",
+        "area5": "Oborinska voda prenosi <span style=\"color: #CE7C0A;\">prašinu, deterdžente i otpadne čestice bogate</span> fosforom u odvodnju i rijeke.",
+        "area6": "<span style=\"color: #CE7C0A;\">I nakon obrade, dio</span> fosfora ostaje u ispuštenoj vodi. Mnoge su države unaprijedile sustave, no drugdje učinkovita obrada izostaje ili ne postoji.",
+        "area7": "Pojedine tvornice ispuštaju otpadne vode s fosforom iz <span style=\"color: #CE7C0A;\">procesa čišćenja, prerade ili proizvodnje</span>. U pravilu je to regulirano, ali u nekim područjima i dalje značajno."
       },
       "nutrients5": {
-        "area1": "<span style=\"color: #CE7C0A;\">Dissolved phosphate sticks to minerals</span> such as iron, aluminium, or lime. When oxygen is present, phosphorus stays bound; but if oxygen is missing, it can be released again back into the water.",
-        "area2": "<span style=\"color: #CE7C0A;\">Algae, aquatic plants, and biofilms take up phosphorus</span> and use it for growth. This retention is temporary — when the organisms die or decay, the phosphorus is released to the water.",
-        "area3": "Phosphorus attached to soil and organic particles sinks down to the riverbed. This happens mainly in calm areas or where the flow is slow — forming a temporary \"phosphorus storage\" in the sediment."
+        "area1": "<span style=\"color: #CE7C0A;\">Otopljeni fosfat veže se na minerale</span> poput željeza, aluminija ili vapna. U prisutnosti kisika fosfor ostaje vezan, a u anoksičnim uvjetima može se ponovno osloboditi u vodu.",
+        "area2": "<span style=\"color: #CE7C0A;\">Alge, vodene biljke i biofilm upijaju fosfor</span> i koriste ga za rast. Ta je retencija privremena — nakon uginuća i razgradnje fosfor se vraća u vodu.",
+        "area3": "Fosfor vezan uz čestice tla i organske tvari tone u korito rijeke. To se događa ponajprije u mirnim zonama ili pri sporom toku te stvara privremeni „skladišni” fosfor u sedimentu."
       },
       "nutrients6": {
-        "area1": "When floodwaters spread across the land, they slow down and drop suspended particles rich in phosphorus. This is one of the most effective ways floodplains trap and store phosphorus.",
-        "area2": "Floodplain plants absorb phosphorus as they grow, storing it in leaves and roots. This retention is temporary, but some phosphorus stays longer in litter and humus after plants die.",
-        "area3": "Dissolved phosphorus binds to iron, aluminium, or calcium compounds in the soil. This keeps phosphorus locked away — unless oxygen runs out, when it can be released again."
+        "area1": "Kada se poplavna voda razlije, tok usporava i taloži suspendirane čestice bogate fosforom. To je jedan od najučinkovitijih mehanizama zadržavanja fosfora u nizinama.",
+        "area2": "Biljke poplavnih područja apsorbiraju fosfor tijekom rasta i pohranjuju ga u listovima i korijenu. Retencija je privremena, ali dio fosfora može dulje ostati u lisnoj stelji i humusu.",
+        "area3": "Otopljeni fosfor veže se na spojeve željeza, aluminija ili kalcija u tlu. Time ostaje „zaključan”, osim u uvjetima manjka kisika kada se može osloboditi."
       }
     },
     "quizModal": {
-      "content": "<p style=\"margin: 0;\">About <span style=\"color: #619F6A;\">40% of phosphorus</span> released into the Danube Basin never reaches the river mouth — it settles and is trapped in <span style=\"color: #619F6A;\">reservoirs and floodplains</span> along the way.</p>"
+      "content": "<p style=\"margin: 0;\">Oko <span style=\"color: #619F6A;\">40% fosfora</span> unesenog u sliv Dunava nikada ne dosegne ušće — taloži se i zadržava u <span style=\"color: #619F6A;\">akumulacijama i poplavnim nizinama</span> duž toka.</p>"
     },
     "didYouKnow": {
       "nitrogenRivers": {
-        "title": "Do you know how much nitrogen remove rivers?",
-        "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Every year, rivers in floodplain areas naturally retain around 25,000 tonnes of nitrogen (about 5% of total emissions)</span> — the same amount of nitrogen that roughly 5.5 million people would excrete in a year! That's roughly the population of Slovakia.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Across the entire Danube Basin, rivers remove even more: about 30%</span> of the nitrogen entering the river system is retained during in-stream transport, mainly through <span style=\"color: #619F6A;\">denitrification</span>.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">This shows how much cleaning power rivers have, even before the water reaches floodplains.</span></p>"
+        "title": "Znate li koliko dušika uklanjaju rijeke?",
+        "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Svake godine rijeke u područjima poplavnih nizina prirodno zadrže oko 25000 tona dušika (oko 5% ukupnih emisija)</span> — približno jednaku količinu dušika kakvu bi godišnje izlučilo oko 5,5 milijuna ljudi, što je otprilike broj stanovnika Slovačke.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">U cijelom slivu Dunava rijeke uklanjaju još više: oko 30% dušika koji uđe u riječni sustav</span> zadržava se tijekom transporta u koritu, ponajprije <span style=\"color: #619F6A;\">denitrifikacijom</span>.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">To pokazuje kolika je sposobnost pročišćavanja rijeka već i prije nego što voda dosegne poplavna područja.</span></p>"
       },
       "nitrogenFloodplains": {
-        "title": "Do you know how much nitrogen remove the Danube floodplains?",
-        "content": "<p style=\"margin: 0;\">The <span style=\"color: #619F6A;\">remaining active floodplains</span> of the Danube Basin provide an extra cleaning step, retaining around <span style=\"color: #619F6A;\">7,700 tonnes of nitrogen per year</span> — about as much as <span style=\"color: #619F6A;\">1.6 million people</span> (the population of Belgrade) would excrete in a year.</p>"
+        "title": "Znate li koliko dušika uklanjaju dunavska poplavna područja?",
+        "content": "<p style=\"margin: 0;\">Preostala <span style=\"color: #619F6A;\">aktivna poplavna područja</span> sliva Dunava daju dodatni „korak pročišćavanja”, zadržavajući oko <span style=\"color: #619F6A;\">7700 tona dušika godišnje</span> — približno koliko bi u godinu dana izlučilo <span style=\"color: #619F6A;\">1,6 milijuna ljudi</span> (otprilike broj stanovnika Beograda).</p>"
       }
-    },
-    "modal": {
-      "title": "Download Options",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "basedOn5E": "Based on 5E learning method and scientific research",
-      "opensInNewTab": "(Opens in new tab: Zenodo)",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "exploreRelated": "Explore related projects and resources"
-    },
-    "nextTopic": "NEXT TOPIC: Treatment wetlands"
-  },
-  "termsOfUse": {
-    "title": "Terms of Use",
-    "section1": {
-      "title": "1. Introduction",
-      "p1": "Restore4Life (Restoration of wetland complexes as life supporting systems in the Danube Basin), herein referred to as \"The Project\", is a 48-month project that addresses the topic HORIZON-MISS-2022-OCEAN-01.",
-      "p2": "The \"LIVING FLOODPLAINS: LEARN, EXPLORE, RESTORE4LIFE TOOLBOX\" (hereinafter referred to as \"this platform\" or \"the Toolbox\") has been developed within the framework of The Project.",
-      "p3": "These Terms of Use govern your access to and use of this platform and all content, materials, and resources available within the Toolbox. All content in the Toolbox is part of The Project and is subject to these Terms of Use. By accessing or using this platform or any content within the Toolbox, you agree to be bound by these Terms of Use."
-    },
-    "section2": {
-      "title": "2. Definitions",
-      "consortium": "\"The Consortium\" refers to all signatories, other than the European Commission, of the Grant Agreement 101112736, which may have single or joint intellectual property rights in relation to the project outcomes.",
-      "materials": "\"Materials\" refer to all information, content, data, documents (e.g. white papers, brochures, datasheets, FAQs, templates, press releases, etc.), downloads, files, text, images, photographs, graphics, videos, webcasts, publications, tools, resources, software, code, programs, applications and products made available or enabled via the Website."
-    },
-    "section3": {
-      "title": "3. Use of Materials",
-      "p1": "The Materials on this website are developed as educational materials and are intended for educational and non-commercial purposes.",
-      "license": "License:",
-      "licenseDesc": "All Materials on this website are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0). This means you are free to:",
-      "licenseShare": "Share — copy and redistribute the material in any medium or format",
-      "licenseAdapt": "Adapt — remix, transform, and build upon the material",
-      "licenseConditions": "Under the following terms:",
-      "licenseAttribution": "Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.",
-      "licenseNonCommercial": "NonCommercial — You may not use the material for commercial purposes.",
-      "licenseLink": "For more information about the CC BY-NC 4.0 license, visit:",
-      "educationalUse": "Educational Use:",
-      "educationalUseDesc": "You may freely copy and use the Materials for educational purposes without seeking prior permission, provided that:",
-      "li1": "The use is non-commercial and educational in nature",
-      "li2": "Appropriate attribution is given to the Restore4Life project",
-      "li3": "The Materials are not modified in a way that misrepresents the original content",
-      "commercialUse": "Commercial Use:",
-      "commercialUseDesc": "Copying or using Materials for economic or commercial purposes is not permitted without explicit prior written consent. For commercial use inquiries, please contact the rights holder:"
-    },
-    "section4": {
-      "title": "4. Disclaimer of Liability",
-      "p1": "The Consortium and the Project are not responsible for any inaccuracies, errors, omissions, or problems that may arise from the use of the Materials or this website.",
-      "p2": "The Materials are provided \"as is\" without warranty of any kind, either express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, or non-infringement.",
-      "p3": "The Consortium shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising out of or relating to the use of or inability to use the Materials or this website."
-    },
-    "section5": {
-      "title": "5. Right to Modify Materials",
-      "p1": "The Consortium, as the rights holder, reserves the right to modify, update, or remove any Materials on this website at any time without prior notice and without assuming any responsibility for such modifications. The Consortium is not obligated to maintain or update the Materials and may discontinue or change any aspect of the website at its sole discretion."
-    },
-    "section6": {
-      "title": "6. Intellectual Property Rights",
-      "p1": "All Materials on this website are protected by intellectual property rights. The Consortium may have single or joint intellectual property rights in relation to the project outcomes.",
-      "p2": "While educational use is permitted as described above, all other rights are reserved. Unauthorized use of Materials may violate copyright, trademark, or other laws."
-    },
-    "section7": {
-      "title": "7. Links to Third-Party Websites",
-      "p1": "This website may contain links to third-party websites. The Consortium is not responsible for the content, accuracy, or opinions expressed on such websites, and such websites are not investigated, monitored, or checked for accuracy or completeness by the Consortium. Inclusion of any linked website does not imply approval or endorsement by the Consortium."
-    },
-    "section8": {
-      "title": "8. Changes to Terms of Use",
-      "p1": "The Consortium reserves the right to modify these Terms of Use at any time. Changes will be effective immediately upon posting on this website. Your continued use of the website after any changes constitutes your acceptance of the modified Terms of Use."
-    },
-    "section9": {
-      "title": "9. Contact",
-      "materialsTitle": "For questions about the Materials or commercial use inquiries:",
-      "termsTitle": "For questions about these Terms of Use or the website in general:",
-      "generalInquiries": "For general inquiries about the Restore4Life project, please visit"
-    },
-    "lastUpdated": "Last updated:"
-  },
-  "privacyPolicyPage": {
-    "title": "Privacy Policy",
-    "section1": {
-      "title": "1. Introduction",
-      "content": "This privacy policy describes how we handle your personal data when you use this website. We respect your privacy and are committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR)."
-    },
-    "section2": {
-      "title": "2. Data Controller",
-      "content": "This website is managed by the Restore4Life project. The technical responsibility lies with Archipelagos Institute of Marine Conservation. For questions about this privacy policy, please contact us via",
-      "website": "www.archipelagos.gr",
-      "orEmail": "or email",
-      "email": "info@archipelagos.gr"
-    },
-    "section3": {
-      "title": "3. Data We Collect",
-      "intro": "We only collect data necessary for the operation of this website:",
-      "analyticalData": {
-        "label": "Analytical data:",
-        "content": "Via Google Analytics, we collect anonymous usage statistics, such as the number of visitors, which pages are viewed, and how long users stay on the website. This data is only collected if you have given consent for the use of cookies.",
-        "important": "We do not store any personal data that can identify individual users."
-      },
-      "technicalData": {
-        "label": "Technical data:",
-        "content": "We automatically collect certain technical information, such as your IP address (anonymized), browser type, and operating system. This data is used for technical purposes and is not used to identify you."
-      },
-      "important": "Important:",
-      "importantContent": "We do not store personal data that can be used to identify individual users. The analytics data we collect is aggregated and anonymous. We cannot trace or identify individual visitors through Google Analytics."
-    },
-    "section4": {
-      "title": "4. Cookies",
-      "intro": "This website uses cookies only for analytical purposes via Google Analytics. We use the following types of cookies:",
-      "analyticalCookies": {
-        "label": "Analytical cookies:",
-        "content": "These cookies help us understand how visitors use the website. These cookies are only placed if you have given consent."
-      },
-      "withdrawConsent": "You can withdraw your consent for cookies at any time by deleting cookies in your browser settings. Since we do not store personal data that can identify individual users, we cannot delete specific user data upon request. However, you can always clear your browser cookies or disable cookies in your browser settings to prevent future tracking."
-    },
-    "section5": {
-      "title": "5. Purposes of Data Processing",
-      "intro": "We use your data for the following purposes:",
-      "purposes": [
-        "Improving the functionality and user experience of the website",
-        "Analyzing website usage to optimize content",
-        "Ensuring the technical security of the website"
-      ]
-    },
-    "section6": {
-      "title": "6. Your Rights",
-      "intro": "Under GDPR, individuals have certain rights regarding their personal data. However,",
-      "notApplicable": "these rights are not applicable in our case",
-      "because": "because:",
-      "reasons": [
-        "We do not store personal data that can identify individual users",
-        "All analytics data is anonymous and aggregated",
-        "We cannot trace or identify individual visitors"
-      ],
-      "therefore": "Therefore, the following GDPR rights are not applicable:",
-      "rights": {
-        "access": {
-          "label": "Right of access:",
-          "content": "Not applicable - we have no personal data about you to provide"
-        },
-        "rectification": {
-          "label": "Right to rectification:",
-          "content": "Not applicable - we do not store personal data that can be corrected"
-        },
-        "erasure": {
-          "label": "Right to erasure:",
-          "content": "Not applicable - we have no personal data to delete. You can clear your browser cookies at any time"
-        },
-        "restriction": {
-          "label": "Right to restriction:",
-          "content": "You can withdraw your consent for cookies at any time via your browser settings"
-        },
-        "object": {
-          "label": "Right to object:",
-          "content": "You can reject cookies via the cookie banner or disable cookies in your browser settings"
-        },
-        "portability": {
-          "label": "Right to data portability:",
-          "content": "Not applicable - we have no personal data to export"
-        }
-      },
-      "contact": "If you have any questions or concerns, you can contact us via",
-      "website": "www.archipelagos.gr",
-      "orEmail": "or email",
-      "email": "info@archipelagos.gr"
-    },
-    "section7": {
-      "title": "7. Security",
-      "content": "We take appropriate technical and organizational measures to protect your personal data against unauthorized access, loss, or destruction. Google Analytics uses anonymized IP addresses and we have configured the settings to maximize privacy. We do not store personal data that can identify individual users."
-    },
-    "section8": {
-      "title": "8. Changes to This Privacy Policy",
-      "content": "We reserve the right to modify this privacy policy. Changes will be published on this page. We recommend that you consult this page regularly to stay informed of any changes."
-    },
-    "section9": {
-      "title": "9. Contact",
-      "content": "For questions about this privacy policy or about the processing of your personal data, please contact us via",
-      "website": "www.archipelagos.gr",
-      "orEmail": "or email",
-      "email": "info@archipelagos.gr"
-    },
-    "lastUpdated": "Last updated:"
-  },
-  "cookiePolicyPage": {
-    "title": "Cookie Policy",
-    "section1": {
-      "title": "What Are Cookies?",
-      "content": "Cookies are small text files that are placed on your device when you visit a website. They are widely used to make websites work more efficiently and to provide information to the website owners."
-    },
-    "section2": {
-      "title": "Types of Cookies We Use",
-      "intro": "This website uses",
-      "onlyAnalytical": "only analytical cookies",
-      "viaGoogleAnalytics": "via Google Analytics.",
-      "weDoNotUse": "We do not use necessary/essential cookies or functional cookies.",
-      "important": "Important:",
-      "importantContent": "All cookies used on this website require your consent. No cookies are placed without your explicit permission."
-    },
-    "section3": {
-      "title": "Analytical Cookies (Google Analytics)",
-      "intro": "We use Google Analytics to understand how visitors interact with our website. These cookies help us collect information about:",
-      "infoItems": [
-        "Number of visitors to the website",
-        "Which pages are viewed most frequently",
-        "How long visitors stay on the website",
-        "How visitors navigate through the website"
-      ],
-      "purpose": "Purpose:",
-      "purposeContent": "These cookies help us improve the website's functionality and user experience.",
-      "consentRequired": "Consent required:",
-      "consentRequiredContent": "Yes - these cookies are only placed if you accept them via the cookie banner.",
-      "dataCollected": "Data collected:",
-      "dataCollectedContent": "All data is anonymous and aggregated. We cannot identify individual users."
-    },
-    "section4": {
-      "title": "Specific Cookies Used",
-      "intro": "The following cookies are set by Google Analytics (only if you have accepted cookies):",
-      "cookies": {
-        "_ga": {
-          "name": "_ga",
-          "purpose": "Purpose:",
-          "purposeContent": "Distinguishes unique users",
-          "duration": "Duration:",
-          "durationContent": "2 years",
-          "type": "Type:",
-          "typeContent": "First-party cookie"
-        },
-        "_gid": {
-          "name": "_gid",
-          "purpose": "Purpose:",
-          "purposeContent": "Distinguishes unique users",
-          "duration": "Duration:",
-          "durationContent": "24 hours",
-          "type": "Type:",
-          "typeContent": "First-party cookie"
-        },
-        "_gat": {
-          "name": "_gat (or _gat_gtag_*)",
-          "purpose": "Purpose:",
-          "purposeContent": "Throttles request rate",
-          "duration": "Duration:",
-          "durationContent": "1 minute",
-          "type": "Type:",
-          "typeContent": "First-party cookie"
-        }
-      },
-      "note": "Note:",
-      "noteContent": "These cookies are set by Google Analytics and are subject to Google's privacy policy. We have configured Google Analytics with privacy-friendly settings including IP anonymization and disabled Google Signals and Ad Personalization."
-    },
-    "section5": {
-      "title": "Managing Your Cookie Preferences",
-      "intro": "You have full control over cookies on this website:",
-      "preferences": [
-        {
-          "label": "Accept or Reject:",
-          "content": "When you first visit the website, you can accept or reject analytical cookies via the cookie banner at the bottom of the page."
-        },
-        {
-          "label": "Change your preference:",
-          "content": "You can change your cookie preferences at any time by clearing your browser cookies and revisiting the website. The cookie banner will appear again allowing you to make a new choice."
-        },
-        {
-          "label": "Browser settings:",
-          "content": "You can also manage cookies directly in your browser settings. Most browsers allow you to block or delete cookies. Please note that blocking cookies may affect your experience on some websites."
-        }
-      ]
-    },
-    "section6": {
-      "title": "Third-Party Cookies",
-      "content": "Google Analytics cookies are technically third-party cookies (set by Google), but they are used solely for our website analytics. We do not use any other third-party cookies for advertising, social media, or other purposes."
-    },
-    "section7": {
-      "title": "More Information",
-      "intro": "For more information about cookies and how to manage them, you can visit:",
-      "links": {
-        "allAboutCookies": "www.allaboutcookies.org",
-        "googlePrivacy": "Google's Privacy Policy"
-      },
-      "contact": "If you have questions about our use of cookies, please contact us via",
-      "website": "www.archipelagos.gr",
-      "orEmail": "or email",
-      "email": "info@archipelagos.gr"
-    },
-    "lastUpdated": "Last updated:"
+    }
   },
   "wetlandFreskPage": {
     "title": "Wetland Fresk",
-    "description": "The Wetlands Fresk is a collaborative, interactive workshop designed to help participants explore how human activities impact wetland ecosystems (including tidal flats, salt marshes, lagoons, etc.), the consequences of those impacts, and the potential solutions. Participants work together to build a \"map\" of cause–effect relationships using a set of cards, and then move toward reflection and action.",
+    "description": "Močvarni kolaž (Wetlands Fresk) je kolaborativna, interaktivna radionica osmišljena da sudionicima pomogne istražiti koje ljudske aktivnosti utječu na poplavne ekosustave (uključujući obalne ravnice pod utjecajem plime i oseke, slane močvare, lagune, itd.), posljedice tih aktivnosti, te moguća rješenja nastalih problema. Sudionici igre zajedno izrađuju \"kartu\" uzročno- posljedičnih odnosa koristeći kartice, a zatim slijedi razmišljanje i djelovanje.",
     "duration": {
-      "label": "Duration",
-      "value": "90-120 minutes"
+      "label": "Trajanje",
+      "value": "90-120 minuta"
     },
     "numberOfCards": {
-      "label": "Number of Cards",
-      "value": "24 cards"
+      "label": "Broj kartica",
+      "value": "24 kartice"
     },
     "teamPlayers": {
-      "label": "Team players",
+      "label": "Broj igrača",
       "value": "4 - 8"
     },
     "age": {
-      "label": "Age",
-      "value": "from ± 12 years"
+      "label": "Uzrast",
+      "value": "± 12 godina"
     },
-    "downloadNote": "You will be directed to an external database"
+    "downloadNote": "Bit ćete preusmjereni na vanjsku bazu podataka."
   },
   "wetland4LifePage": {
     "title": "Wetland4Life",
-    "subtitle": "Explore the potential of wetlands via an app!",
+    "subtitle": "Istražite potencijal močvarnih staništa pomoću aplikacije!",
     "whatDoesItDo": {
-      "title": "What does Wetland4Life do?",
-      "description": "Wetland4Life helps to make wetland mapping accessible to everyone. It offers simple, practical ways to assess wetland condition and identify restoration opportunities."
+      "title": "Šta radi Wetland4Life?",
+      "description": "Wetland4Life pomaže da kartiranje poplavnih i močvarnih područja bude dostupno svima. Nudi jednostavne i praktične načine za procjenu stanja ovih područja i pronađe mogućnosti za njihovu obnovu."
     },
     "howItWorks": {
-      "title": "How it works",
-      "description": "Step-by-step simple questions guide you through the mapping process. Each location takes approximately",
-      "time": "5 minutes",
-      "timeEnd": "to assess — quick, clear, and scientifically grounded."
+      "title": "Kako to radi",
+      "description": "Korak po korak, jednostavna pitanja će vas voditi kroz proces kartiranja. Procjena svake lokacije traje otprilike ",
+      "time": "5 minuta",
+      "timeEnd": "— brzo, jasno i znanstveno utemeljeno."
     },
     "academy": {
-      "title": "Want to learn more?",
-      "description": "The app includes a built-in academy with material about wetlands — like their functions, threats, and restoration. Whether you're a beginner or a professional, there's always something new to discover."
+      "title": "Želite li više naučiti?",
+      "description": "Aplikacija uključuje i edukacijski materijale o poplavnim i močvarnim područjima – o njihovim funkcijama, kojim pritiscima su izložena i koje su mogućnost njihove obnove. Bez obzira jeste li početnik ili stručnjak, uvijek postoji mogućnost otkriti nešto novo."
     },
-    "callToAction": "Because wetlands are so essential to our safety, our environment, and our future, it's crucial to understand their current state — and where we can restore what has been lost. So we need you!",
-    "visitButton": "Available mid-January",
-    "externalLinkNote": "This link leads to an external website optimized for mobile. The experience may be less optimal on desktop.",
+    "callToAction": "S obzirom da su poplavna i močvarna područja nužna za našu sigurnost, okoliš i budućnost, ključno je razumijeti njihovo trenutno stanje - i gdje je moguće obnoviti ono što je izgubljeno. Za to trebamo vas!",
+    "visitButton": "Pogledajte aplikaciju Wetland4Life",
+    "externalLinkNote": "Ovaj link vodi do vanjske internetske stranice optimizirane za mobilne uređaje. Primjena računala može biti manje optimalna.",
     "websiteUrl": "https://wetland.restore4life-platform.eu"
   },
   "blueGreenSpace4AllPage": {
     "title": "Blue-Green Space4All",
-    "subtitle": "Travel with Otis the Otter along the Danube and tackle challenges!",
-    "description": "A playful computer game where you travel with Otis the Otter along the Danube. Along the way, you will encounter biological, physical, chemical, and social challenges. Answer questions, choose solutions, and improve the Danube step by step — while collecting as many coins as possible.",
-    "quizHighlight": "The perfect test of how much you've learned about wetlands!",
-    "playButton": "Play Blue-Green Space4All",
-    "externalLinkNote": "You will open an external website with the game.",
+    "subtitle": "Putujte sa vidrom Otis duž Dunava i savladajte izazove!",
+    "description": "Zabavna računalna igra u kojoj putujete s vidrom Otis duž Dunava. Usput ćete se susresti s biološkim, fizikalnim, kemijskim i društvenim izazovima. Odgovarajte na pitanja, birajte rješenja i korak po korak poboljšavajte Dunav - prikupljajući što više novčića.",
+    "quizHighlight": "Savršen test da provjerite koliko ste naučili o poplavnim i močvarnim područjima!",
+    "playButton": "Igrajte Blue-Green Space4All",
+    "externalLinkNote": "Otvorit ćete vanjsku internetsku stranicu na kojoj je igra.",
     "websiteUrl": "http://game.restore4life-platform.eu"
   },
   "wetlandEduRepoPage": {
-    "title": "Explore Wet-Edu Repository",
-    "subtitle": "Explore related projects and resources",
-    "allTopics": "All Topics",
-    "clickToOpen": "Click on any project to open it in a new tab",
-    "opensInNewTab": "Opens in new tab",
-    "previous": "Previous",
-    "next": "Next",
-    "page": "Page",
-    "of": "of",
+    "title": "Istražite Wet-Edu mapu",
+    "subtitle": "Istražite povezane projekte i izvore",
+    "allTopics": "Sve teme",
+    "clickToOpen": "Kliknite na bilo koji projekt da biste ga otvorili u novoj kartici",
+    "opensInNewTab": "Otvara se u novoj kartici",
+    "page": "Stranica",
+    "of": "od",
+    "previous": "Prethodno",
+    "next": "Sljedeće",
     "topics": {
-      "Floodplain living environment": "Floodplain living environment",
-      "Floodplain mapping": "Floodplain mapping",
-      "Flood control": "Flood control",
-      "Habitat assessment": "Habitat assessment",
-      "Carbon sequestration": "Carbon sequestration",
-      "Self purification": "Self purification",
-      "Constructed wetlands": "Constructed wetlands",
-      "Aesthetics": "Aesthetics",
-      "Art & Storytelling": "Art & Storytelling"
+      "Floodplain living environment": "Životna sredina poplavnih područja",
+      "Floodplain mapping": "Kartiranje poplavnih područja",
+      "Flood control": "Kontrola poplava",
+      "Habitat assessment": "Procijena staništa",
+      "Carbon sequestration": "Skladištenje ugljika",
+      "Self purification": "Samopročišćavanje",
+      "Constructed wetlands": "Umjetne močvare (biljni uređaji)",
+      "Aesthetics": "Estetika",
+      "Art & Storytelling": "Umetnost i pripovijedanje"
     }
   }
 }
-

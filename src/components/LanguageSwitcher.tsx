@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AVAILABLE_LANGUAGES } from '../i18n/languages';
+import { AVAILABLE_LANGUAGES, getOrderedLanguages } from '../i18n/languages';
 
 export const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
@@ -8,6 +8,7 @@ export const LanguageSwitcher: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const currentLanguage = AVAILABLE_LANGUAGES.find(lang => lang.code === i18n.language) || AVAILABLE_LANGUAGES[0];
+  const orderedLanguages = getOrderedLanguages();
 
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
@@ -81,7 +82,7 @@ export const LanguageSwitcher: React.FC = () => {
             overflow: 'hidden',
           }}
         >
-          {AVAILABLE_LANGUAGES.map((lang) => (
+          {orderedLanguages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => changeLanguage(lang.code)}

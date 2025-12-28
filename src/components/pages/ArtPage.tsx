@@ -696,21 +696,23 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
       console.log(`✓ Drop accepted in zone ${targetZone.id} for element ${draggedElement}`);
       const newPlacedElements = { ...placedElements, [targetZone.id]: draggedElement };
       
+      // If element has multipleDropZones, place it in all zones that accept it
+      if ('multipleDropZones' in element && (element as { multipleDropZones?: boolean }).multipleDropZones) {
+        const elementZones = getCurrentOutline().dropZones.filter(zone => zone.accepts.includes(element.id));
+        elementZones.forEach(zone => {
+          if (!newPlacedElements[zone.id]) {
+            newPlacedElements[zone.id] = draggedElement;
+          }
+        });
+      }
+      
       setPlacedElements(newPlacedElements);
 
-      // Only mark element as used if it doesn't have multiple drop zones
-      // OR if all zones for this element are now filled
-      if (!('multipleDropZones' in element && (element as { multipleDropZones?: boolean }).multipleDropZones)) {
+      // Mark element as used immediately if it has multipleDropZones (since we place it in all zones at once)
+      if ('multipleDropZones' in element && (element as { multipleDropZones?: boolean }).multipleDropZones) {
         setUsedElements(prev => new Set([...prev, draggedElement]));
       } else {
-        // Check if all zones for this element are filled
-        const elementZones = getCurrentOutline().dropZones.filter(zone => zone.accepts.includes(element.id));
-        const filledElementZones = elementZones.filter(zone => newPlacedElements[zone.id] === element.id);
-        
-        // Mark as used only if all zones for this element are filled
-        if (filledElementZones.length >= elementZones.length) {
-          setUsedElements(prev => new Set([...prev, draggedElement]));
-        }
+        setUsedElements(prev => new Set([...prev, draggedElement]));
       }
 
       // Check if all drop zones are filled
@@ -743,6 +745,13 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
   const handleZenodoLink = () => {
     window.open('https://doi.org/10.5281/zenodo.17478185', '_blank');
     setShowDownloadModal(false);
+  };
+
+  // Retry function to reset current page
+  const handleRetry = () => {
+    setPlacedElements({});
+    setIsCompleted(false);
+    setUsedElements(new Set());
   };
 
   const handleDashboardLink = () => {
@@ -1519,36 +1528,61 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
             )}
             </motion.div>
 
-          {/* Next/Back Home Button - Right */}
-            <div className="flex items-center" style={{ paddingRight: '16px' }}>
-          <button
-              onClick={isCompleted ? (currentPage === TOTAL_PAGES ? onPeopleAquaticClick : () => {
-              setCurrentPage(currentPage + 1);
-              setPlacedElements({});
-              setIsCompleted(false);
-              setUsedElements(new Set());
-            }) : undefined}
-              className="next-button relative flex items-center justify-center z-50"
-            style={{
-              width: 'auto',
-              height: '60px',
-              backgroundColor: 'transparent',
-              border: 'none',
-                cursor: isCompleted ? 'pointer' : 'not-allowed'
-            }}
-          >
-            <LocalizedImage 
-              src="/assets/icons/next.png" 
-                alt={currentPage === TOTAL_PAGES ? t('artPage.nextTopic').replace('NEXT TOPIC: ', '') : 'Next'} 
-              style={{ 
-                width: 'auto',
+          {/* Retry and Next/Back Home Button - Right */}
+            <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
+              {/* Retry Button - Show when elements are placed */}
+              {Object.keys(placedElements).length > 0 && (
+                <button
+                  onClick={handleRetry}
+                  className="retry-button relative flex items-center justify-center z-50"
+                  style={{
+                    height: '60px',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0
+                  }}
+                >
+                  <LocalizedImage 
+                    src="/assets/icons/tryagain.png" 
+                    alt={t('common.tryAgain')} 
+                    style={{ 
+                      height: '60px',
+                      width: 'auto',
+                      opacity: 1,
+                      objectFit: 'contain'
+                    }}
+                  />
+                </button>
+              )}
+              <button
+                  onClick={isCompleted ? (currentPage === TOTAL_PAGES ? onPeopleAquaticClick : () => {
+                  setCurrentPage(currentPage + 1);
+                  setPlacedElements({});
+                  setIsCompleted(false);
+                  setUsedElements(new Set());
+                }) : undefined}
+                  className="next-button relative flex items-center justify-center z-50"
+                style={{
+                  width: 'auto',
                   height: '60px',
-                  opacity: isCompleted ? 1 : 0.3,
-                  transition: 'opacity 0.3s ease'
-              }}
-            />
-          </button>
-        </div>
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                    cursor: isCompleted ? 'pointer' : 'not-allowed'
+                }}
+              >
+                <LocalizedImage 
+                  src="/assets/icons/next.png" 
+                    alt={currentPage === TOTAL_PAGES ? t('artPage.nextTopic') : 'Next'} 
+                  style={{ 
+                    width: 'auto',
+                      height: '60px',
+                      opacity: isCompleted ? 1 : 0.3,
+                      transition: 'opacity 0.3s ease'
+                  }}
+                />
+              </button>
+            </div>
       </div>
       </div>
       )}

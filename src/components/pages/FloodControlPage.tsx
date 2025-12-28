@@ -1876,20 +1876,21 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 onClick={handleRetry}
                 className="retry-button relative flex items-center justify-center z-50"
                 style={{
-                  width: '217px',
                   height: '60px',
                   backgroundColor: 'transparent',
                   border: 'none',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  padding: 0
                 }}
               >
                 <LocalizedImage
                   src="/assets/icons/tryagain.png"
                   alt={t('common.tryAgain')}
                   style={{
-                    width: '217px',
                     height: '60px',
-                    opacity: 1
+                    width: 'auto',
+                    opacity: 1,
+                    objectFit: 'contain'
                   }}
                 />
               </button>
@@ -1930,20 +1931,21 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   onClick={handleRetry}
                   className="retry-button relative flex items-center justify-center z-50"
                   style={{
-                    width: '217px',
                     height: '60px',
                     backgroundColor: 'transparent',
                     border: 'none',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    padding: 0
                   }}
                 >
                   <LocalizedImage 
                     src="/assets/icons/tryagain.png" 
                     alt={t('common.tryAgain')} 
                     style={{ 
-                      width: '217px',
                       height: '60px',
-                      opacity: 1
+                      width: 'auto',
+                      opacity: 1,
+                      objectFit: 'contain'
                     }}
                   />
                 </button>

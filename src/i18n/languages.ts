@@ -12,6 +12,9 @@ export const AVAILABLE_LANGUAGES: Language[] = [
   { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
   { code: 'hr', name: 'Hrvatski', flag: '🇭🇷' },
   { code: 'sk', name: 'Slovenčina', flag: '🇸🇰' },
+  { code: 'sr', name: 'Српски', flag: '🇷🇸' },
+  { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
+  { code: 'bs', name: 'Bosanski', flag: '🇧🇦' },
   // Add more languages here as they become available:
   // { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   // { code: 'fr', name: 'Français', flag: '🇫🇷' },
@@ -19,8 +22,19 @@ export const AVAILABLE_LANGUAGES: Language[] = [
   // { code: 'it', name: 'Italiano', flag: '🇮🇹' },
   // { code: 'pl', name: 'Polski', flag: '🇵🇱' },
   // { code: 'ro', name: 'Română', flag: '🇷🇴' },
-  // { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
 ];
+
+/**
+ * Languages as shown in dropdowns.
+ * We keep English pinned to the top, then sort the rest by their native names.
+ */
+export const getOrderedLanguages = (): Language[] => {
+  return [...AVAILABLE_LANGUAGES].sort((a, b) => {
+    if (a.code === 'en') return -1;
+    if (b.code === 'en') return 1;
+    return a.name.localeCompare(b.name, 'en', { sensitivity: 'base' });
+  });
+};
 
 export const getLanguageName = (code: string): string => {
   const lang = AVAILABLE_LANGUAGES.find(l => l.code === code);

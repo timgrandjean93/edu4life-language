@@ -390,6 +390,112 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
     );
   };
 
+  /**
+   * Render puzzle text so that line breaks can only happen at spaces.
+   * Browsers can otherwise break lines between inline React nodes (e.g. between part + blank),
+   * which can split things like "p_omena" across lines.
+   *
+   * Strategy:
+   * - For every boundary where there is NO whitespace, glue the last word-fragment of the left side
+   *   to the first word-fragment of the right side using a `whiteSpace: 'nowrap'` span.
+   * - This includes boundaries around blanks and between adjacent parts.
+   */
+  const renderPuzzleText = () => {
+    const PARTS_COUNT = 14;
+    const parts: Record<number, string> = {};
+    for (let i = 1; i <= PARTS_COUNT; i++) {
+      parts[i] = t(`carbonPage.page3.puzzleText.part${i}`);
+    }
+
+    const takeLeadingSpaces = (text: string) => {
+      const m = text.match(/^\s+/);
+      const spaces = m?.[0] ?? '';
+      return { spaces, rest: text.slice(spaces.length) };
+    };
+
+    const splitAtLastSpace = (text: string) => {
+      const idx = text.lastIndexOf(' ');
+      if (idx === -1) return { head: '', tail: text };
+      return { head: text.slice(0, idx + 1), tail: text.slice(idx + 1) };
+    };
+
+    const splitAtFirstSpace = (text: string) => {
+      const idx = text.indexOf(' ');
+      if (idx === -1) return { first: text, rest: '' };
+      return { first: text.slice(0, idx), rest: text.slice(idx) }; // rest keeps leading space
+    };
+
+    const endsWithWhitespace = (text: string) => /\s$/.test(text);
+
+    // If a previous boundary glued the first word-fragment of a part, we'll store the remaining suffix here.
+    const remaining: Record<number, string> = {};
+    const nodes: React.ReactNode[] = [];
+
+    for (let i = 1; i <= PARTS_COUNT; i++) {
+      const currentText = remaining[i] ?? parts[i];
+      const blankAfter = getBlankAfterPart(i);
+      const nextTextRaw = i < PARTS_COUNT ? (remaining[i + 1] ?? parts[i + 1]) : '';
+
+      // If there's a blank after this part, always glue current tail + blank + next prefix (when next exists).
+      if (blankAfter) {
+        const { head, tail } = splitAtLastSpace(currentText);
+        if (head) nodes.push(head);
+
+        if (i < PARTS_COUNT) {
+          const { spaces, rest: nextNoLeadSpaces } = takeLeadingSpaces(nextTextRaw);
+          const { first, rest } = splitAtFirstSpace(nextNoLeadSpaces);
+          remaining[i + 1] = spaces + rest;
+
+          nodes.push(
+            <span key={`glue-${i}-blank`} style={{ whiteSpace: 'nowrap' }}>
+              {tail}
+              {renderBlank(blankAfter)}
+              {first}
+            </span>
+          );
+        } else {
+          // (Not expected, but safe)
+          nodes.push(
+            <span key={`glue-${i}-blank`} style={{ whiteSpace: 'nowrap' }}>
+              {tail}
+              {renderBlank(blankAfter)}
+            </span>
+          );
+        }
+
+        continue;
+      }
+
+      // No blank after this part: only glue boundary to next part if there is no whitespace at the boundary.
+      if (i < PARTS_COUNT) {
+        const nextText = nextTextRaw;
+        const boundaryHasSpace = endsWithWhitespace(currentText) || /^\s/.test(nextText);
+
+        if (!boundaryHasSpace) {
+          const { head, tail } = splitAtLastSpace(currentText);
+          if (head) nodes.push(head);
+
+          const { spaces, rest: nextNoLeadSpaces } = takeLeadingSpaces(nextText);
+          const { first, rest } = splitAtFirstSpace(nextNoLeadSpaces);
+          remaining[i + 1] = spaces + rest;
+
+          nodes.push(
+            <span key={`glue-${i}-part`} style={{ whiteSpace: 'nowrap' }}>
+              {tail}
+              {first}
+            </span>
+          );
+          continue;
+        }
+      }
+
+      // Normal case: just render the part text as-is.
+      nodes.push(<React.Fragment key={`part-${i}`}>{currentText}</React.Fragment>);
+    }
+
+    return nodes;
+  };
+
   // getPuzzleScore no longer used after removing feedback block
 
   const isPlacementCorrect = (zoneId: string): boolean => {
@@ -1374,37 +1480,9 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                     color: '#406A46',
                     lineHeight: '1.6'
                   }}>
-                    <p className="mb-4">
-                      {t('carbonPage.page3.puzzleText.part1')}{''}
-                      {getBlankAfterPart(1) && renderBlank(getBlankAfterPart(1)!)}
-                      {t('carbonPage.page3.puzzleText.part2')}{''}
-                      {getBlankAfterPart(2) && renderBlank(getBlankAfterPart(2)!)}
-                      {t('carbonPage.page3.puzzleText.part3')}{''}
-                      {getBlankAfterPart(3) && renderBlank(getBlankAfterPart(3)!)}
-                      {t('carbonPage.page3.puzzleText.part4')}{''}
-                      {getBlankAfterPart(4) && renderBlank(getBlankAfterPart(4)!)}
-                      {t('carbonPage.page3.puzzleText.part5')}{''}
-                      {getBlankAfterPart(5) && renderBlank(getBlankAfterPart(5)!)}
-                      {t('carbonPage.page3.puzzleText.part6')}
-                    </p>
-                    <p className="mb-4">
-                      {t('carbonPage.page3.puzzleText.part7')}{''}
-                      {getBlankAfterPart(7) && renderBlank(getBlankAfterPart(7)!)}
-                      {t('carbonPage.page3.puzzleText.part8')}{''}
-                      {getBlankAfterPart(8) && renderBlank(getBlankAfterPart(8)!)}
-                      {t('carbonPage.page3.puzzleText.part9')}{''}
-                      {getBlankAfterPart(9) && renderBlank(getBlankAfterPart(9)!)}
-                      {t('carbonPage.page3.puzzleText.part10')}
-                    </p>
-                    <p>
-                      {t('carbonPage.page3.puzzleText.part11')}{''}
-                      {getBlankAfterPart(11) && renderBlank(getBlankAfterPart(11)!)}
-                      {t('carbonPage.page3.puzzleText.part12')}{''}
-                      {getBlankAfterPart(12) && renderBlank(getBlankAfterPart(12)!)}
-                      {t('carbonPage.page3.puzzleText.part13')}{''}
-                      {getBlankAfterPart(13) && renderBlank(getBlankAfterPart(13)!)}
-                      {t('carbonPage.page3.puzzleText.part14')}
-                    </p>
+                    <div>
+                      {renderPuzzleText()}
+                    </div>
                   </div>
                 </div>
 
@@ -1658,19 +1736,19 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                   onClick={handleRetry}
                   className="retry-button relative flex items-center justify-center z-50"
                   style={{
-                    width: '250px',
                     height: '60px',
                     backgroundColor: 'transparent',
                     border: 'none',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    padding: 0
                   }}
                 >
                   <LocalizedImage 
                     src="/assets/icons/tryagain.png" 
                     alt={t('common.tryAgain')} 
                     style={{ 
-                      width: '250px',
                       height: '60px',
+                      width: 'auto',
                       opacity: 1,
                       objectFit: 'contain'
                     }}
@@ -1736,19 +1814,19 @@ export const CarbonPage: React.FC<CarbonPageProps> = ({
                 onClick={handleRetry}
                 className="retry-button relative flex items-center justify-center z-50"
               style={{
-                width: '250px',
                 height: '60px',
                 backgroundColor: 'transparent',
                 border: 'none',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                padding: 0
               }}
               >
                 <LocalizedImage 
                   src="/assets/icons/tryagain.png" 
                   alt={t('common.tryAgain')} 
                   style={{ 
-                    width: '250px',
                     height: '60px',
+                    width: 'auto',
                     opacity: 1,
                     objectFit: 'contain'
                   }}

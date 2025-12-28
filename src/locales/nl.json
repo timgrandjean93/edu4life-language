@@ -35,7 +35,8 @@
     "copyright": "Copyright © {{year}} Restore4Life Consortium. Alle rechten voorbehouden.",
     "privacyPolicy": "Privacybeleid",
     "cookiePolicy": "Cookiebeleid",
-    "termsOfUse": "Gebruikersvoorwaarden"
+    "termsOfUse": "Gebruikersvoorwaarden",
+    "creativeCommons": "Gelicenseerd onder CC BY-NC 4.0"
   },
   "cookieConsent": {
     "message": "Deze website maakt gebruik van cookies voor analytische doeleinden via Google Analytics. U kunt deze cookies accepteren of weigeren.",
@@ -138,11 +139,11 @@
         "part3": "em opgeslagen — soms h",
         "part4": "derden of zelfs d",
         "part5": "zenden j",
-        "part6": "en!",
+        "part6": "en! ",
         "part7": "Als we de bodem met rust laten, ",
         "part8": "blijft deze koolstof veilig onder de gr",
         "part9": " en komt niet in de lu",
-        "part10": "t terecht.",
+        "part10": "t terecht. ",
         "part11": "Bl",
         "part12": "we koolstof, opgeslagen in kust- en uiterwaarden, helpt om klim",
         "part13": "tverand",
@@ -173,16 +174,56 @@
         "blank10": "afterPart13"
       },
       "hiddenLetters": {
-        "letter1": { "text": "oo", "x": 15, "y": 20 },
-        "letter2": { "text": "od", "x": 20, "y": 60 },
-        "letter3": { "text": "on", "x": 35, "y": 15 },
-        "letter4": { "text": "ui", "x": 45, "y": 25 },
-        "letter5": { "text": "ar", "x": 55, "y": 30 },
-        "letter6": { "text": "ond", "x": 25, "y": 50 },
-        "letter7": { "text": "ch", "x": 50, "y": 60 },
-        "letter8": { "text": "au", "x": 65, "y": 35 },
-        "letter9": { "text": "aa", "x": 75, "y": 20 },
-        "letter10": { "text": "er", "x": 70, "y": 70 }
+        "letter1": {
+          "text": "oo",
+          "x": 15,
+          "y": 20
+        },
+        "letter2": {
+          "text": "od",
+          "x": 20,
+          "y": 60
+        },
+        "letter3": {
+          "text": "on",
+          "x": 35,
+          "y": 15
+        },
+        "letter4": {
+          "text": "ui",
+          "x": 45,
+          "y": 25
+        },
+        "letter5": {
+          "text": "ar",
+          "x": 55,
+          "y": 30
+        },
+        "letter6": {
+          "text": "ond",
+          "x": 25,
+          "y": 50
+        },
+        "letter7": {
+          "text": "ch",
+          "x": 50,
+          "y": 60
+        },
+        "letter8": {
+          "text": "au",
+          "x": 65,
+          "y": 35
+        },
+        "letter9": {
+          "text": "aa",
+          "x": 75,
+          "y": 20
+        },
+        "letter10": {
+          "text": "er",
+          "x": 70,
+          "y": 70
+        }
       }
     },
     "modal": {
@@ -204,40 +245,40 @@
       "wetlands": "Uiterwaarden",
       "croplands": "Landbouwgebieden"
     },
-    "nextTopic": "VOLGEND ONDERWERP: Waterzuivering"
+    "nextTopic": "Volgend onderwerp"
   },
   "floodplainPage": {
-  "title": "Uiterwaarden vol leven",
-  "intro": {
-    "question": "Zie jij het verschil tussen de twee plaatjes?",
-    "rainLabel": "Uiterwaarden in het natte seizoen",
-    "dryLabel": "Uiterwaarden in het droge seizoen",
-    "description": "Ontdek de uiterwaarden en leer over de verschillende plekken waar planten en dieren leven langs de rivier.",
-    "accessTeachingMaterials": "Ga naar het lesmateriaal",
-    "openPlatform": "Open platform",
-    "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
-    "exploreRepository": "Uiterwaarden – educatie",
-    "explore": "Ontdek"
+    "title": "Uiterwaarden vol leven",
+    "intro": {
+      "question": "Zie jij het verschil tussen de twee plaatjes?",
+      "rainLabel": "Uiterwaarden in het natte seizoen",
+      "dryLabel": "Uiterwaarden in het droge seizoen",
+      "description": "Ontdek de uiterwaarden en leer over de verschillende plekken waar planten en dieren leven langs de rivier.",
+      "accessTeachingMaterials": "Ga naar het lesmateriaal",
+      "openPlatform": "Open platform",
+      "opensNewTab": "Opent in een nieuw tabblad: Zenodo",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "explore": "Ontdek"
+    },
+    "page2": {
+      "title": "Uiterwaarden in het natte seizoen"
+    },
+    "page3": {
+      "title": "Uiterwaarden in het droge seizoen"
+    },
+    "page4": {
+      "sliderTitle": "Schuif om de verschillen te bekijken"
+    },
+    "modal": {
+      "title": "Downloaden",
+      "accessTeachingMaterials": "Lesmateriaal downloaden",
+      "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
+      "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
+      "exploreRepository": "Uiterwaarden – educatie",
+      "exploreRelated": "Bekijk meer projecten en materialen"
+    },
+    "nextTopic": "Volgend onderwerp"
   },
-  "page2": {
-    "title": "Uiterwaarden in het natte seizoen"
-  },
-  "page3": {
-    "title": "Uiterwaarden in het droge seizoen"
-  },
-  "page4": {
-    "sliderTitle": "Schuif om de verschillen te bekijken"
-  },
-  "modal": {
-    "title": "Downloaden",
-    "accessTeachingMaterials": "Lesmateriaal downloaden",
-    "basedOn5E": "Gebaseerd op de 5E-leermethode en wetenschappelijk onderzoek",
-    "opensInNewTab": "(Opent in een nieuw tabblad: Zenodo)",
-    "exploreRepository": "Uiterwaarden – educatie",
-    "exploreRelated": "Bekijk meer projecten en materialen"
-  },
-  "nextTopic": "VOLGEND ONDERWERP: Ontdek de uiterwaarden"
-},
   "mapWetlandPage": {
     "title": "Ontdek de uiterwaarden",
     "intro": {
@@ -278,7 +319,7 @@
       "exploreRepository": "Uiterwaarden – educatie",
       "exploreRelated": "Bekijk meer projecten en materialen"
     },
-    "nextTopic": "VOLGEND ONDERWERP: Ontdek de leefomgeving van een beek"
+    "nextTopic": "Volgend onderwerp"
   },
   "riparianPage": {
     "title": {
@@ -425,7 +466,7 @@
       "completeSentence": "MAAK DE ZIN AF:",
       "sentence1": "Uiterwaarden werken als een natuurlijke",
       "sentence1End": "die water vasthoudt",
-      "sentence2": "en helpen zo om een",
+      "sentence2": "en zo helpt om een",
       "sentence2End": "te voorkomen.",
       "placeholder1": "s____",
       "placeholder2": "o__________g",
@@ -448,7 +489,7 @@
       "exploreRepository": "Uiterwaarden – educatie",
       "exploreRelated": "Bekijk meer projecten en materialen"
     },
-    "nextTopic": "VOLGEND ONDERWERP: Klimaatbescherming en koolstofopslag"
+    "nextTopic": "Volgend onderwerp"
   },
   "peopleAquaticPage": {
     "title": "Mensen en leven in het water",
@@ -620,7 +661,7 @@
         "trySnailFirst": "Probeer eerst de slak te plaatsen"
       }
     },
-    "nextTopic": "VOLGEND ONDERWERP: Mensen en leven in het water",
+    "nextTopic": "Volgend onderwerp",
     "modal": {
       "title": "Downloaden",
       "accessTeachingMaterials": "Lesmateriaal downloaden",
@@ -686,7 +727,7 @@
       "exploreRepository": "Uiterwaarden – educatie",
       "exploreRelated": "Bekijk meer projecten en materialen"
     },
-    "nextTopic": "VOLGEND ONDERWERP: Uiterwaarden en kunst"
+    "nextTopic": "Volgend onderwerp"
   },
   "treatmentWetlandsPage": {
     "title": {
@@ -772,7 +813,7 @@
       "exploreRepository": "Uiterwaarden – educatie",
       "exploreRelated": "Bekijk meer projecten en materialen"
     },
-    "nextTopic": "VOLGEND ONDERWERP: Uiterwaarden en landschap"
+    "nextTopic": "Volgend onderwerp"
   },
   "selfPurificationPage": {
     "title": {
@@ -835,6 +876,16 @@
     "quizModal": {
       "content": "<p style=\"margin: 0;\">Ongeveer <span style=\"color: #619F6A;\">40% van het fosfor</span> dat in het Donaugebied wordt geloosd, bereikt de zee niet. Het blijft hangen in <span style=\"color: #619F6A;\">meren, stuwmeren en uiterwaarden</span> onderweg.</p>"
     },
+    "didYouKnow": {
+      "nitrogenRivers": {
+        "title": "Wist je hoeveel stikstof rivieren verwijderen?",
+        "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Elk jaar houden rivieren in uiterwaardgebieden natuurlijk ongeveer 25.000 ton stikstof vast (ongeveer 5% van de totale uitstoot)</span> — dezelfde hoeveelheid stikstof die ongeveer 5,5 miljoen mensen in een jaar zouden uitscheiden! Dat is ongeveer de bevolking van Slowakije.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">In het hele Donau-bekken verwijderen rivieren nog meer: ongeveer 30%</span> van de stikstof die het riviersysteem binnenkomt, wordt vastgehouden tijdens het transport in de rivier, voornamelijk door <span style=\"color: #619F6A;\">denitrificatie</span>.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">Dit laat zien hoeveel reinigingskracht rivieren hebben, zelfs voordat het water de uiterwaarden bereikt.</span></p>"
+      },
+      "nitrogenFloodplains": {
+        "title": "Wist je hoeveel stikstof de Donau-uiterwaarden verwijderen?",
+        "content": "<p style=\"margin: 0;\">De <span style=\"color: #619F6A;\">resterende actieve uiterwaarden</span> van het Donau-bekken zorgen voor een extra reinigingsstap en houden ongeveer <span style=\"color: #619F6A;\">7.700 ton stikstof per jaar</span> vast — ongeveer evenveel als <span style=\"color: #619F6A;\">1,6 miljoen mensen</span> (de bevolking van Belgrado) in een jaar zouden uitscheiden.</p>"
+      }
+    },
     "modal": {
       "title": "Downloaden",
       "accessTeachingMaterials": "Lesmateriaal downloaden",
@@ -843,7 +894,7 @@
       "exploreRepository": "Uiterwaarden – educatie",
       "exploreRelated": "Bekijk meer projecten en materialen"
     },
-    "nextTopic": "VOLGEND ONDERWERP: Uiterwaarden als filter"
+    "nextTopic": "Volgend onderwerp"
   },
   "termsOfUse": {
     "title": "Gebruiksvoorwaarden",
@@ -861,6 +912,14 @@
     "section3": {
       "title": "3. Gebruik van Materialen",
       "p1": "De Materialen op deze website zijn ontwikkeld als educatief materiaal en zijn bedoeld voor educatieve en niet-commerciële doeleinden.",
+      "license": "Licentie:",
+      "licenseDesc": "Alle Materialen op deze website zijn gelicenseerd onder een Creative Commons Naamsvermelding-NietCommercieel 4.0 Internationaal Licentie (CC BY-NC 4.0). Dit betekent dat u vrij bent om:",
+      "licenseShare": "Delen — het materiaal te kopiëren en te verspreiden in elk medium of formaat",
+      "licenseAdapt": "Aanpassen — het materiaal te remixen, te transformeren en erop voort te bouwen",
+      "licenseConditions": "Onder de volgende voorwaarden:",
+      "licenseAttribution": "Naamsvermelding — U moet passende naamsvermelding geven, een link naar de licentie verstrekken en aangeven of er wijzigingen zijn aangebracht. U mag dit op elke redelijke manier doen, maar niet op een manier die suggereert dat de licentiegever u of uw gebruik onderschrijft.",
+      "licenseNonCommercial": "NietCommercieel — U mag het materiaal niet gebruiken voor commerciële doeleinden.",
+      "licenseLink": "Voor meer informatie over de CC BY-NC 4.0 licentie, bezoek:",
       "educationalUse": "Educatief gebruik:",
       "educationalUseDesc": "U mag de Materialen vrij kopiëren en gebruiken voor educatieve doeleinden zonder voorafgaande toestemming, mits:",
       "li1": "Het gebruik niet-commercieel en educatief van aard is",

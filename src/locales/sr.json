@@ -1,0 +1,892 @@
+{
+  "common": {
+    "accept": "Prihvati",
+    "reject": "Odbij",
+    "home": "Početna",
+    "loading": "Učitavanje...",
+    "close": "Zatvori",
+    "tryAgain": "Pokušaj ponovo",
+    "learnAndTestButton": "Uči i testiraj svoje znanje"
+  },
+  "header": {
+    "learningActivities": "Aktivnosti učenja",
+    "externalTools": "Spoljni alati",
+    "restore4Life": "Restore4Life",
+    "menuItems": {
+      "livingEnvironment": "Životno okruženje plavnih ravnica",
+      "mapYourWetland": "Mapirajte svoje vlažno područje",
+      "exploringHabitats": "Istraživanje staništa vodotoka",
+      "floodplainSpongeEffect": "Plavna ravnica kao sunđer",
+      "climateCarbon": "Klima i ugljenik",
+      "purification": "Prečišćavanje",
+      "treatmentWetlands": "Mokra polja za prečišćavanje vode",
+      "aesthetics": "Estetika",
+      "sourcesOfInspiration": "Izvori inspiracije",
+      "peopleAndAquatic": "Ljudi i vodeni ekosistemi"
+    },
+    "externalToolsItems": {
+      "blueGreenSpace4All": "Blue-Green Space4All",
+      "wetlandFresk": "Wetland Fresk",
+      "wetland4Life": "Wetland4Life",
+      "exploreWetEduRepository": "Istražite Wet-Edu folder"
+    }
+  },
+  "cookieConsent": {
+    "message": "Ovaj veb-sajt koristi kolačiće u analitičke svrhe putem Google Analytics-a. Možete prihvatiti ili odbiti ove kolačiće.",
+    "readMore": "Pročitajte više u našoj politici kolačića"
+  },
+  "homePage": {
+    "title": "PLAVNE RAVNICE:",
+    "subtitle": "UČITE, ISTRAŽUJTE",
+    "subtitle2": ", RESTORE4LIFE ALATI",
+    "credits": "Credits"
+  },
+  "languageModal": {
+    "title": "Izaberite svoj jezik",
+    "detecting": "Otkrivamo vašu lokaciju...",
+    "suggested": "Otkrili smo da ste iz",
+    "suggestedQuestion": "Da li želite da koristite",
+    "continueWith": "Nastavi sa"
+  },
+  "pages": {
+    "titles": {
+      "home": "PLAVNE RAVNICE: UČITE, ISTRAŽUJTE, RESTORE4LIFE ALATI",
+      "riparian": "Priobalna staništa",
+      "mapwetland": "Mapiranje vlažnih područja",
+      "floodplain": "Plavne ravnice",
+      "floodcontrol": "Kontrola poplava",
+      "carbon": "Ugljenik i klima",
+      "selfpurification": "Samoprečišćavanje",
+      "art": "Umetnost",
+      "people": "Ljudi i vodeni ekosistemi",
+      "aesthetics": "Estetika",
+      "wetlandfresk": "Wetland Fresk",
+      "wetland4life": "Wetland4Life",
+      "wetlandEduRepo": "Wetland Edu Repo",
+      "treatmentwetlands": "Mokra polja za prečišćavanje vode",
+      "bluegreen": "Blue-Green Space4All",
+      "environmentalToolbox": "Environmental Toolbox",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "termsofuse": "Terms of Use"
+    }
+  },
+  "carbonPage": {
+    "title": {
+      "page0": "Klima i skladištenje ugljenika",
+      "page1": "Rezervoari ugljenika na Zemlji",
+      "page2": "Ciklus ugljenika u kopnenim ekosistemima Zemlje"
+    },
+    "intro": {
+      "description": "Saznajte više o zaštiti klime i otkrijte kako rezervoari ugljenika igraju ključnu ulogu u ublažavanju klimatskih promena.",
+      "accessTeachingMaterials": "Pristup nastavnim materijalima",
+      "openPlatform": "PRISTUPI  PLATFORMI",
+      "opensNewTab": "Otvara se novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu folder",
+      "explore": "Istraži"
+    },
+    "page1": {
+      "title": "Povežite simbole ekosistema",
+      "instruction1": "Pogledajte simbole na vrhu grafikona – svaki prikazuje drugačiji ekosistem.",
+      "instruction2": "Vaš zadatak:",
+      "instruction3": "Prevucite odgovarajući simbol na mesto označeno upitnikom.",
+      "hint": "Savet: Fokusirajte se na karakteristike koje čine svaki ekosistem jedinstvenim, kao što su drveće, voda, trava ili oblici reljefa.",
+      "checkAnswers": "Proveri odgovore",
+      "clickToRemove": "Kliknite da uklonite oznaku",
+      "correct": "Tačno",
+      "incorrect": "Netačno",
+      "missed": "Bez odgovora"
+    },
+    "page2": {
+      "instruction": "Pređite kursorom preko slike da biste videli doprinos vlažnih područja ugljeniku.",
+      "infoText": "Vlažna područja pokrivaju samo 5-6% kopna Zemlje, ali skladište 20-30% ukupnog organskog ugljenika u zemljište.",
+      "hoverAreas": {
+        "anthropogenic-release": "Antropogeno oslobađanje ugljenika kao posledica odvodnjavanja ili druge ljudske aktivnosti koje degradiraju vlažna područja. Uskladišteni ugljenik se tako oksiduje i oslobađa kao CO₂.",
+        "carbon-sequestration": "Skladištenje ugljenika putem fotosinteze. Biljke uklanjaju CO₂ iz vazduha kroz fotosintezu i stvaraju biomasu.",
+        "natural-release": "Prirodno oslobađanje ugljenika putem respiracije i razgradnje biomase.",
+        "carbon-storage": "Skladištenje ugljenika u biomasi zakopanoj u zemljištu i sedimentima."
+      },
+      "modal": {
+        "title": "Da li ste znali...?",
+        "fact": "Zemljišta na našoj planeti predstavljaju ogroman rezervoar ugljenika i skladište tri puta više ugljenika od atmosfere i četiri puta više od svih biljaka i životinja.",
+        "question": "Koji od  prikazanih ekosistema na grafikonu skladišti najviše ugljenika?",
+        "selectEcosystem": "Izaberite ekosistem...",
+        "submitAnswer": "Pošalji odgovor",
+        "nextPage": "Sledeća strana",
+        "feedback": {
+          "correct": "Tačno! Vlažna područja skladište najviše ugljenika.",
+          "incorrect": "Netačno. Tačan odgovor su vlažna područja.",
+          "explanation": "Vlažna područja spadaju među najefikasnije rezervoare ugljenika na Zemlji, skladišteći ogromne količine ugljenika u svojim zemljištima i vegetaciji."
+        }
+      }
+    },
+    "page3": {
+      "title": "Popunite prazna polja",
+      "instruction1": "Naša planeta vekovima ima neverovatan način skladištenja ugljenika u zemlji! Ali neka slova i slogovi iz rečenica ispod su skriveni na crtežu.",
+      "instruction2": "Možete li ih prepoznati i dovršiti tekst?",
+      "instruction3": "Kliknite na slovo na slici iznad, a zatim kliknite na odgovarajući prazni prostor u tekstu da ga postavite. Kliknite na postavljeno slovo da ga uklonite.",
+      "checkAnswers": "Proveri odgovore",
+      "puzzleText": {
+        "part1": "Neki u",
+        "part2": "ljenici ostaju zarobljeni u z",
+        "part3": "lji veoma dugo vremena — ponekad s",
+        "part4": "tinama ili čak h",
+        "part5": "jadama g",
+        "part6": "dina! Ako ga ostavimo ne",
+        "part7": "aknutog, ovaj z",
+        "part8": "mljišni ugljenik ostaje bezbedno pod ",
+        "part9": "mljom, umesto da ode u a",
+        "part10": "mosferu. P",
+        "part11": "avi ugljenik, koji se skladišti u priobalnim i močvarnim područjima, takođe pomaže u usporavanju kl",
+        "part12": "matskih p",
+        "part13": "omena",
+        "part14": "."
+      },
+      "correctAnswers": {
+        "blank1": "g",
+        "blank2": "em",
+        "blank3": "to",
+        "blank4": "il",
+        "blank5": "o",
+        "blank6": "t",
+        "blank7": "e",
+        "blank8": "ze",
+        "blank9": "tm",
+        "blank10": "l",
+        "blank11": "i",
+        "blank12": "r"
+      },
+      "blankPositions": {
+        "blank1": "afterPart1",
+        "blank2": "afterPart2",
+        "blank3": "afterPart3",
+        "blank4": "afterPart4",
+        "blank5": "afterPart5",
+        "blank6": "afterPart6",
+        "blank7": "afterPart7",
+        "blank8": "afterPart8",
+        "blank9": "afterPart9",
+        "blank10": "afterPart10",
+        "blank11": "afterPart11",
+        "blank12": "afterPart12"
+      },
+      "hiddenLetters": {
+        "letter1": {
+          "text": "g",
+          "x": 15,
+          "y": 20
+        },
+        "letter2": {
+          "text": "em",
+          "x": 20,
+          "y": 60
+        },
+        "letter3": {
+          "text": "e",
+          "x": 28,
+          "y": 52
+        },
+        "letter4": {
+          "text": "ze",
+          "x": 36,
+          "y": 68
+        },
+        "letter5": {
+          "text": "to",
+          "x": 35,
+          "y": 15
+        },
+        "letter6": {
+          "text": "t",
+          "x": 62,
+          "y": 38
+        },
+        "letter7": {
+          "text": "tm",
+          "x": 74,
+          "y": 22
+        },
+        "letter8": {
+          "text": "il",
+          "x": 45,
+          "y": 25
+        },
+        "letter9": {
+          "text": "i",
+          "x": 83,
+          "y": 44
+        },
+        "letter10": {
+          "text": "o",
+          "x": 55,
+          "y": 30
+        },
+        "letter11": {
+          "text": "l",
+          "x": 70,
+          "y": 70
+        },
+        "letter12": {
+          "text": "r",
+          "x": 80,
+          "y": 25
+        }
+      }
+    },
+    "ecosystemLabels": {
+      "tropicalForests": "Tropske šume",
+      "temperateForests": "Šume umerenog klimatskog pojasa",
+      "borealForests": "Tajga",
+      "tropicalSavannas": "Tropske savane",
+      "temperateGrasslands": "Stepa",
+      "desertsSemiDeserts": "Pustinje i polupustinje ",
+      "tundra": "Tundre",
+      "wetlands": "Vlažno područje",
+      "croplands": "Obradive površine"
+    }
+  },
+  "floodplainPage": {
+    "title": "ŽIVOTNO OKRUŽENJE PLAVNIH RAVNICA - DINAMIČNI SVET",
+    "intro": {
+      "question": "Možete li uočiti razliku između ilustracija?",
+      "rainLabel": "Plavna ravnica tokom poplave (vlažna sezona)",
+      "dryLabel": "Plavna ravnica tokom suše",
+      "description": "Saznajte više o životnoj sredini plavnih ravnica i istražite različita staništa i biljni i životinjski svet koji uspevaju u ovim jedinstvenim ekosistemima.",
+      "accessTeachingMaterials": "Pristup nastavnim materijalima",
+      "openPlatform": "PRISTUPI  PLATFORMI",
+      "opensNewTab": "Otvara se novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu folder",
+      "explore": "Istražite"
+    },
+    "page2": {
+      "title": "Plavne ravnice u kišnoj sezoni"
+    },
+    "page3": {
+      "title": "Plavne ravnice u sušnoj sezoni"
+    },
+    "page4": {
+      "sliderTitle": "Pomerite traku da biste videli razlike"
+    }
+  },
+  "mapWetlandPage": {
+    "title": "Mapirajte svoje vlažno područje ",
+    "intro": {
+      "description": "Saznajte više o mapiranju vlažnih područja i istražite raznovrsna staništa i karakteristike koje se mogu prepoznati iz vazduha.",
+      "accessTeachingMaterials": "Pristup nastavnim materijalima",
+      "openPlatform": "PRISTUPI  PLATFORMI",
+      "opensNewTab": "Otvara se novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu folder",
+      "explore": "Istraži"
+    },
+    "challenge": {
+      "title": "Izazov orlovog oka!",
+      "intro": "Visoko iznad plavne ravnice, naš prijatelj orao belorepan vidi krivudavu reku, skrivena jezera, močvare, šume, nasipe i sela. Možete li ih i vi pronaći?  Uskladite svaku funkciju sa ispravnim nazivom i oživite je bojom! Svaki put kada identifikujete pravo mesto, pejzaž će zasjati u svojim pravim bojama - baš kao što ga orao vidi sa neba."
+    },
+    "quizItems": {
+      "WATERCOURSE": "Vodotok",
+      "SIDE_ARMS": "Rukavci",
+      "DRAINAGE_CHANNELS": "Kanali za odvodnjavanje",
+      "FLOODPLAIN_LAKE": "Jezero u plavnoj ravnici",
+      "ISLANDS_MARSH": "Ostrva (močvara)",
+      "FLOODPLAIN_FOREST": "Šuma plavne ravnice",
+      "PASTURE_WITH_ANIMALS": "Pašnjak sa životinjama",
+      "GRASSLAND": "Travnjak",
+      "PROTECTIVE_DIKE": "Zaštitni nasip",
+      "HUMAN_SETTLEMENT": "Ljudska naselja",
+      "AGRICULTURAL_FIELDS": "Poljoprivredno zemljište"
+    },
+    "quiz": {
+      "letterPlaceholder": "Slovo?",
+      "congratulations": "Čestitam!",
+      "successMessage": "Uspešno ste mapirali sve karakteristike močvara!"
+    }
+  },
+  "riparianPage": {
+    "title": {
+      "page0": "ISTRAŽIVANJE STANIŠTA REČNOG TOKA",
+      "page1": "Korišćenje zemljišta duž reka",
+      "page2": "Staništa rečnog toka: brzaci, duboke vode (bazen) i miran tok"
+    },
+    "intro": {
+      "description": "Saznajte više o istraživanju staništa i otkrijte raznovrsne priobalne ekosisteme i vidove korišćenja zemljišta duž reka.",
+      "accessTeachingMaterials": "Pristup nastavnim materijalima",
+      "openPlatform": "PRISTUPI  PLATFORMI",
+      "opensNewTab": "Otvara se novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu folder",
+      "explore": "Istraži"
+    },
+    "page1": {
+      "introText": "Ljudi od davnina koriste reke i njihovo okruženje za mnoge aktivnosti, kao što su poljoprivreda, izgradnja domova, ribolov, putovanja i snabdevanje vode. Raznolikost aktivnosti ukazuje na to kako sve ljudi oblikuju područja oko reka.",
+      "instruction": "Pažljivo pogledajte obe ilustracije i izaberite koje ",
+      "landUseActivities": "načine korišćenja zemljišta",
+      "instructionEnd": "možete pronaći.",
+      "quizQuestion": "Sa liste ispod, kliknite na načine korišćenja koje možete videti na slikama:",
+      "correct": "Tačno",
+      "incorrect": "Netačno",
+      "missed": "Bez odgovora"
+    },
+    "page2": {
+      "instruction": "Pročitajte definicije pojmova",
+      "and": "i",
+      "instructionEnd": "ispod, a zatim prevucite svaku oznaku na odgovarajuće  mesto na obe slike.",
+      "correct": "Tačno:",
+      "labels": {
+        "POOL": "mirna struja",
+        "RIFFLE": "brzaci",
+        "RUN": "duboka voda"
+      },
+      "definitions": {
+        "POOL": "Dublji, sporije tekući deo rečnog toka u kojem se skuplja voda. Bazeni su tihi, mirni i pružaju sklonište za ribe. ",
+        "RIFFLE": "Plitak, brzo tekući deo rečnog toka sa malim talasima i vidljivim kamenjem. Brzaci izgledaju hrapavo i penušavo, bogati su kiseonikom, što ih čini idealnim staništima za insekte i ribe.",
+        "RUN": "Glatki, umereno dubok deo rečnog toka gde voda teče stalno između brzaka i bazena."
+      }
+    },
+    "quizOptions": {
+      "human-settlements": "Ljudska naselja",
+      "roads-bridges": "Putevi i mostovi",
+      "flood-protection": "Objekti za zaštitu od poplava (nasipi, nasute brane i mostovi)",
+      "dams": "Brane i hidroelektrane",
+      "pastures": "Livade i pašnjaci",
+      "irrigation": "Kanali i sistemi za navodnjavanje",
+      "factory": "Fabrika ili industrija",
+      "mining": "Eksploatacija peska i šljunka",
+      "cycling": "Biciklizam",
+      "riparian-vegetation": "Priobalna vegetacija (drveće i žbunje duž obala reke)",
+      "floodplains": "Plavna ravnica, vlažna područja",
+      "agriculture": "Poljoprivreda",
+      "recreation": "Rekreacija (kampovanje, plivanje, vožnja kanuom, itd.)"
+    }
+  },
+  "floodControlPage": {
+    "title": {
+      "page0": "Plavne ravnice kao sunđeri",
+      "page1": "Funkcija kontrole poplava – Plavne ravnice kao sunđeri"
+    },
+    "intro": {
+      "description": "Saznajte više o funkciji kontrole poplava i zašto su plavne ravnice poput sunđera i testirajte svoje znanje zabavnim aktivnostima.",
+      "accessTeachingMaterials": "Pristup nastavnim materijalima",
+      "openPlatform": "PRISTUPI  PLATFORMI",
+      "opensNewTab": "Otvara se novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu folder",
+      "explore": "Istraži"
+    },
+    "page1": {
+      "instruction": "Zadržite pokazivač iznad različitih područja slika da biste otkrili zanimljive činjenice.",
+      "didYouKnow": "Da li ste znali...?",
+      "hoverAreas": {
+        "left": {
+          "willows-banks": "Vrbe stabilizuju obale i povećavaju propustljivost zemljišta zahvaljujući razvijenim korenskim sistemima.",
+          "reed-vegetation": "Gusta trska usporava protok vode, zadržava sedimente i poboljšava kvalitet vode.",
+          "native-grasses": "Autohtone vrste biljaka poboljšavaju propustljivost tla i infiltraciju vode.",
+          "leaf-litter": "Lišće na šumskom tlu zadržava vlagu i smanjuje površinsko oticanje.",
+          "deep-rooted-trees": "Duboko ukorenjeno drveće i grmlje nude jaču stabilizaciju obale od plitko ukorenjenih biljaka (trava)."
+        },
+        "right": {
+          "natural-filtration": "Reka je ograničena nasipima poput čvrstog korseta. Ne može se proširiti ili doći do plavne ravnice, tako da nivo vode tokom poplave brzo raste.",
+          "ecosystem-benefits": "Ako nema biljaka na obali reke, nema ničega što bi usporilo površinsko oticanje vode ili što bi apsorbovalo vodu. Tlo postaje napuklo i zbijeno - voda ne može da se upije.",
+          "groundwater-recharge": "Bez biljaka duž obala, površinski oticaj je brži, nosi sa sobom više sedimenata i hranljivih materija koje odlaze u reku, a kvalitet vode opada."
+        }
+      },
+      "didYouKnowContent": {
+        "left": {
+          "title": "Da li ste znali...?",
+          "items": [
+            "Plavne ravnice skladište 3.000-4.000 m³ vode po hektaru.",
+            "Meandri povećavaju vreme zadržavanja vode za 30-50%.",
+            "Vegetacija plavne ravnice zadržava 30-40% ukupnog retencionog kapaciteta (količina vode koju posmatrani prirodni prostor može da zadrži tokom određenog vremenskog perioda).",
+            "Prirodna plavna ravnica apsorbuje poplavne vode tokom 20-30 dana.",
+            "Punjenje izvorišta podzemnih voda: 500-1.000 m³ po hektaru godišnje."
+          ]
+        },
+        "right": {
+          "title": "Da li ste znali...?",
+          "items": [
+            "Kanalisanje smanjuje zadržavanje poplavnih voda za 60-80%.",
+            "Gubitak vegetacije smanjuje kapacitet zadržavanja poplavnih voda za 40-50%.",
+            "Zbijanje zemljišta smanjuje skladištenje poplavnih voda za 30-40%.",
+            "Degradirano plavna ravnica zadržava samo 1.000-2.000 m³ poplavnih voda po hektaru."
+          ]
+        }
+      }
+    },
+    "page2": {
+      "activityTitle": "Aktivnost 1",
+      "instruction": "Možete li uočiti koje „supermoći” plavnih ravnica nedostaju? Povežite brojeve opisa sa očuvanom plavnom ravnicom (levo) i degradiranom plavnom ravnicom (desno).",
+      "naturalFloodplain": "Očuvanom plavnom ravnicom:",
+      "degradedFloodplain": "Degradiranom plavnom ravnicom:",
+      "descriptions": {
+        "left": [
+          "Reka vijuga u blagim krivinama šireći vodu po plavnoj ravnici, usporavajući proticaj i hraneći zemljište. ",
+          "Biljke duž obala reka usporavaju oticanje vode, zadržavaju  sedimente i apsorbuju višak hranljivih materija, pomažući da voda bude čista. ",
+          "Jezera i rukavci plavne ravnice skladište višak poplavnih voda, pružaju uslove za bogatiji biodiverzitet i pomažu u prihranjivanju podzemnih voda."
+        ],
+        "right": [
+          "Tokom oblinih padavina, nivo vode u rekama se može naglo povećati, probiti nasipe i ugroziti obližnja naselja. ",
+          "U kanalisanoj reci nastaje brži tok koji izaziva eroziju i produbljivanje korita, što isušuje obližnje plavne ravnice.",
+          "Ako nema biljaka na obali reke, nema ničega što bi usporilo površinsko oticanje vode ili što bi apsorbovalo vodu."
+        ]
+      },
+      "correct": "Tačno",
+      "incorrect": "Netačno",
+      "correctLabel": "Tačno:"
+    },
+    "page3": {
+      "title": "Izazov sa dopunjavanjem",
+      "intro1": "Plavne ravnice su prirodne tampon zone",
+      "intro2": "Kako plavna ravnica pomaže tokom jakih kiša?",
+      "intro3": "Šta se dešava sa poplavnim vodama kada reka ima prostora da se razlije?",
+      "completeSentence": "Dopunite rečenicu:",
+      "sentence1": "Plavne ravnice deluju kao prirodni",
+      "sentence1End": "za zadržavanje poplavnih voda i smanjenje rizika nizvodnog",
+      "sentence2": "",
+      "sentence2End": ".",
+      "placeholder1": "s____r",
+      "placeholder2": "p____a",
+      "correctAnswers": {
+        "answer1": "sunder",
+        "answer2": "plavljenja"
+      },
+      "feedback": {
+        "correctSponge": "Tačno: sunder",
+        "incorrectSponge": "Netačno (Odgovor: sunder)",
+        "correctFlooding": "Tačno: plavljenja",
+        "incorrectFlooding": "Netačno (Odgovor: plavljenja)"
+      }
+    }
+  },
+  "peopleAquaticPage": {
+    "title": "Ljudi i vodeni ekosistemi",
+    "subtitle": {
+      "page1": "A. Prirodna plavne ravnice",
+      "page2": "B. Korišćene i izmenjene plavne ravnice",
+      "page3": "C. Obnavljanje plavnih ravnica kao rešenja zasnovana na prirodi (Nature-based Solution)"
+    },
+    "intro": {
+      "description": "Istražite kako ljudi zavise od plavnih ravnica i vodenih ekosistema i otkrijte načine obnove ovih područja od koje će koristi imati i ljudi i priroda.",
+      "explore": "Istraži"
+    },
+    "activity1": {
+      "title": "Aktivnost 1",
+      "description": "Pogledajte pažljivo – ovako su ljudske aktivnosti transformisale Dunav i njegova plavne ravnice. Nasipi, poljoprivreda, plovidba i drugi pritisci promenili su pejzaž.",
+      "question": "Možete li mi pomoći tako što ćete svaku oznaku pritiska postaviti na odgovarajuće mesto na slici?",
+      "instruction": "Ljudi su krčili šume, pretvarali plavne ravnice u pašnjake i njive, gradili sela, a kasnije i gradove u blizini obala Dunava. Kako bi se zaštitili od poplava, gradili su i nasipe. Dunav je takođe korišćen i kao plovni put i za proizvodnju hidroenergije. Kao rezultat toga, reka je izgubila mnoge svoje prirodne karakteristike: poremećen je balans sedimenta u koritu reke, a veza između rečnog korita i plavne ravnice je u velikoj meri prekinuta. Ostalo je samo nekoliko ostataka prvobitnih plavnih ravnica, dok su mnoge životinjske i biljne vrste, tipične za plavne ravnice, nestale."
+    },
+    "activity2": {
+      "title": "Aktivnost 2",
+      "description": "Kako bi se društveni problemi rešavali rešenjima zasnovanim na prirodi, istražite odgovarajuće mere obnove: svaka slika pokazuje jedan način na koji ljudi i priroda mogu da rade zajedno. ",
+      "question": "Na dnu ćete pronaći listu od šest mera. Možete li povezati svaku meru sa slikom koja je prikazuje? Prevucite i ispustite mere sa liste na odgovarajuću sliku.",
+      "instruction": "Korak po korak, delovi dunavskih plavnih ravnica ponovo se povezuju sa rekom. Stari rukavci se ponovo protočni, šume i vlažna područja se obnavljaju, a poplavnim vodama se ponovo dopušta da se izliju gde god je to moguće. Ove mere vraćaju staništa za ribe, ptice i biljke, a istovremeno pomažu i ljudima - skladištenjem poplavnih voda, poboljšanjem kvaliteta vode, obezbeđivanjem vode tokom suša i pružanjem prostora za rekreaciju. Ove mere obnove nazivaju se rešenja zasnovana na prirodi."
+    },
+    "activity3": {
+      "title": "Aktivnost 3",
+      "description": "Ovi zvezdasti dijagrami pokazuju kako se ekosistemske usluge Dunava menjaju u tri različita scenarija: prirodne plavne ravnice, izmenjena plavne ravnice pod  pritiscima izazvanim ljudskim aktivnostima i obnovljena plavne ravnice pomoću rešenja zasnovanih na prirodi. Možete li otkriti zašto usluge izgledaju toliko različito?",
+      "column1": {
+        "title": "Prvobitno prirodna plavna ravnica",
+        "question": "Posmatrajući ovaj zvezdasti dijagram, odgovorite zašto je vrednost skoro svih ostalih ekosistemskih usluga veoma visoka, osim  poljoprivrede?",
+        "options": {
+          "A": "Zato što je zemljište u plavnoj ravnici bilo previše siromašno i ništa nije moglo da raste tamo.",
+          "B": "Zato što je poljoprivreda bila zabranjena od strane vladara dunavskog regiona u to vreme.",
+          "C": "Zato što je plavna ravnica i dalje prirodno, pružajući mnoge koristi ljudima i životinjama, ali poljoprivreda nije bila moguća na poplavljenom zemljištu."
+        }
+      },
+      "column2": {
+        "title": "Izmenjena plavna ravnica",
+        "question": "Zašto je vrednost poljoprivredne proizvodnje kao ekosistemske usluge  toliko visoka u ovom stanju, dok je vrednost većine drugih ekosistemskih usluga niska?",
+        "options": {
+          "A": "Zato što su se prirodne šume i vlažna područja Dunava proširile,  povećavajući istovremeno poljoprivredu i proizvodnju drveta.",
+          "B": "Zato što su nasipi prekinuli vezu plavne ravnice sa rekom, štiteći poljoprivredu od poplava, ali i uništavajući mnoga prirodna staništa i njihove koristi.",
+          "C": "Zato što niko nije živeo u blizini Dunava, pa su korišćene samo neke od ekosistemskih usluga."
+        }
+      },
+      "column3": {
+        "title": "Obnovljena plavna ravnica",
+        "question": "Zašto su ekosistemske usluge u ovom zvezdastom dijagramu više uravnotežene u poređenju sa druga dva?",
+        "options": {
+          "A": "Zato što rešenja zasnovana na prirodi obnavljaju rukavce, vlažna područja i šume, što omogućava brojne koristi i za prirodu i za ljude.",
+          "B": "Zato što su ljudi dozvolili reci da se prirodno izliva i uklonili sve pritiske.",
+          "C": "Zato što je Dunav bio odsečen od svojih plavnih ravnica nasipima."
+        }
+      },
+      "correctAnswer": "Tačan odgovor:"
+    },
+    "pressureLabels": {
+      "cutting-meanders": {
+        "label": "Odsecanje meandra",
+        "description": "Ispravljanje reke      (umesto da krivuda, rečni tok se skraćuje i ispravlja)"
+      },
+      "building-dikes": {
+        "label": "Izgradnja nasipa",
+        "description": "Nasipi za zaštitu od poplava (nasipi duž reke zadržavaju vodu unutar glavnog kanala i sprečavaju je da dođe do plavne ravnice)."
+      },
+      "channellizing-rivers": {
+        "label": "Kanalisanje reka",
+        "description": "Kanalisanje reke (zaštita od erozije pokrivanjem kamenjem ili izgradnjom brana [malih poprečnih kamenih barijera],  tako da reka više ne može da menja svoje korito)"
+      },
+      "draining-floodplains": {
+        "label": "Isušivanje plavnih ravnica ",
+        "description": "Isušivanje vlažnih područja (uklanjanje vode iz vlažnog područja kako bi se zemljište koristilo dalje za pašnjake, njive i naselja)"
+      },
+      "urbanization": {
+        "label": "Urbanizacija",
+        "description": "Izgradnja naselja, puteva i gradova, uz ispuštanje otpadnih voda u reku."
+      },
+      "agriculture-pesticides": {
+        "label": "Poljoprivreda",
+        "description": "Primena hemikalija (pesticidi, insekticidi, itd.) u poljoprivredi protiv korova i insekata"
+      },
+      "cutting-forests": {
+        "label": "Seča šuma",
+        "description": "Krčenje šuma (uklanjanje drveća sa velikih površina)"
+      },
+      "industrialization": {
+        "label": "Industrijalizacija",
+        "description": "Izgradnja fabrika i industrija, često praćena zagađenjem vazduha, zemljišta ili vode"
+      },
+      "dams-hydroelectric": {
+        "label": "Brane, hidroelektrane i sl. (longitudalna povezanost)",
+        "description": "Izgradnja rečnih barijera (poprečne betonske konstrukcije koje sprečavaju slobodno kretanje vode, sedimenta i riba)"
+      },
+      "invasive-species": {
+        "label": "Invazivne vrste ",
+        "description": "Strane vrste (biljke ili životinje sa drugih kontinenata koje se masovno šire i izazivaju probleme svojom dominacijom)"
+      },
+      "navigation": {
+        "label": "Plovidba",
+        "description": "Brodovi i kanali (produbljivanje i regulisanje reka kako bi veliki brodovi mogli da njima plove)"
+      },
+      "climate-change": {
+        "label": "Klimatske promene",
+        "description": "Globalno zagrevanje (ekstremniji vremenski uslovi izazvani ljudskim aktivnostima)"
+      }
+    },
+    "restorationMeasures": {
+      "restoration-sidearms": {
+        "label": "Obnova rukavaca reke",
+        "description": "Ponovno povezivanje starih rečnih rukavaca sa rečnim tokom kako bi voda mogla ponovo da protiče, stvarajući raznovrsna staništa za ribe, ptice i biljke."
+      },
+      "dike-relocation": {
+        "label": "Pomeranje nasipa kako bi se dobilo više prostora za plavnu ravnicu",
+        "description": "Pomeranje nasipa dalje od reke kako bi se obezbedilo više prostora za reku i plavne šume koje mogu zadržati poplavne vode."
+      },
+      "buffer-strips": {
+        "label": "Zaštitni pojasevi ",
+        "description": "Obnavljanje uskih šuma između poljoprivrednih polja i reka kako bi mogli filtrirati hranljive materije i na taj način zaštititi vodu od zagađenja."
+      },
+      "fish-ramps": {
+        "label": "Riblji prolazi ili uklanjanje prepreka ",
+        "description": "Pomoć ribama da migriraju uklanjanjem prepreka ili ih pretvarajući u kamene rampe koje im omogućavaju da ponovo plivaju uzvodno."
+      },
+      "bypass-channels": {
+        "label": "Sporedni kanali",
+        "description": "Stvaranje veštačkih sporednih kanala oko prepreka sa blagim nagibima, gde ribe i druge životinje mogu da se kreću ili čak žive."
+      },
+      "native-species": {
+        "label": "Podrška autohtonim vrstama ",
+        "description": "Obnavljanje prirodnih uslova staništa za podršku autohtonim biljkama i životinjama, što ujedno otežava širenje invazivnih vrsta."
+      }
+    },
+    "ui": {
+      "results": "Rezultati",
+      "correct": "Tačno",
+      "incorrect": "Netačno",
+      "correctTooltip": "Tačno!",
+      "incorrectTooltip": "Netačno",
+      "clickToRemove": "Kliknite da uklonite i vratite se na listu",
+      "checkAnswers": "Proveri odgovore",
+      "tryAgain": "Pokušaj ponovo"
+    }
+  },
+  "artPage": {
+    "title": "Plavne ravnice kao izvor inspiracije",
+    "intro": {
+      "description": "Otkrijte kako plavne ravnice inspirišu ljude da stvaraju priče i rukotvorine i podstiču kreativnost. Pre nego što napravite svoja umetnička dela, istražite koja sve umetnička dela mogu nastati od materijala iz prirode.",
+      "accessTeachingMaterials": "Pristup nastavnim materijalima",
+      "openPlatform": "PRISTUPI  PLATFORMI",
+      "opensNewTab": "Otvara se novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu folder",
+      "explore": "Istraži"
+    },
+    "instruction": {
+      "intro1": "Reke i njihova plavne ravnice su dom brojnim životinjama i biljkama, ali su takođe i živi pejzaži puni priča koje  vekovima inspirišu ljude. Od pletenja korpi od vrbovog pruća do stvaranja pesama, legendi i crteža, plavne ravnice povezuju prirodu i kulturu.",
+      "intro2": "Sada je vaš red - zabavite se koristeći prirodne elemente da napravite svoje slike i priče. Kada ste pored reke, dozvolite da vas njene boje, oblici i zvuci inspirišu – otkrijte radost stvaranje sopstvene priče o plavnoj ravnici.  ",
+      "instruction": "Zamislite da ste u prirodi, sakupljate lišće, grane ili perje kako biste napravili svoje likove. Možete li pomoći da ove skice ožive? Prevucite i ispustite prirodne elemente u oblike dok se ne popune formom i bojom.",
+      "page3": {
+        "text1": "Neki delovi pejzaža nedostaju.",
+        "text2": "Povucite i ispustite slike koje ste napravili na odgovarajuća mesta da bi kompletirali pejzaž plavne ravnice.",
+        "trySnailFirst": "Pokušajte prvo da postavite puža."
+      }
+    }
+  },
+  "aestheticsPage": {
+    "title": {
+      "page0": "Lepota pejzaža plavnih ravnica nasuprot njihovim funkcijama",
+      "page1": "Pokloni prirode koje nude Dunav i njegove plavne ravnice",
+      "page2": "Otkrijte skrivene usluge plavne ravnice!"
+    },
+    "intro": {
+      "description": "Saznajte više o lepoti pejsaža i otkrijte skrivene usluge i kulturne vrednosti koje pružaju plavne ravnice.",
+      "accessTeachingMaterials": "Pristup nastavnim materijalima",
+      "openPlatform": "PRISTUPI  PLATFORMI",
+      "opensNewTab": "Otvara se novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu folder",
+      "explore": "Istraži"
+    },
+    "page1": {
+      "description": "The floodplains and wetlands of the Danube give us many benefits, called ecosystem services. These come in different forms:",
+      "provisioningServices": "Usluge snabdevanja",
+      "provisioningDescription": "resursi koje možemo koristiti direktno , poput ribe, čiste vode ili drveta kao prirodnog materijala.",
+      "regulatingServices": "Usluge regulacije",
+      "regulatingDescription": "procesi koji održavaju prirodu u ravnoteži, poput smanjenje poplavnih talasa, prečišćavanja vode ili skladištenja ugljenika.",
+      "culturalServices": "Usluge kulture",
+      "culturalDescription": "koristi koje obogaćuju naše živote, poput rekreacije, mogućnosti za učenje i kulturnih tradicija.",
+      "activityQuestion": "Možete li svrstati ekosistemske usluge u grupe? ",
+      "activityInstruction": "Pokušajte da prevučete i povežete svaki simbol sa odgovarajućom grupom.",
+      "results": "Rezultati",
+      "correct": "Tačno",
+      "incorrect": "Netačno",
+      "correctTooltip": "Tačno!",
+      "incorrectTooltip": "Netačno",
+      "clickToRemove": "Kliknite da uklonite"
+    },
+    "page2": {
+      "instruction": "Dunavske plavne ravnice puna su skrivenih dragocenosti – ali neke je teško uočiti!  \nKoristite lupu da istražite pejzaž i uočite simbole ekosistemskih usluga. \nKada pređete mišem preko jedne ekosistemske usluge pomoću lupe, ona će nestati sa slike i pojaviti se pored odgovarajuće oznake na  ilustraciji. \nZajedno, ove usluge otkrivaju kako nas priroda svakodnevno podržava."
+    },
+    "ecosystemServices": {
+      "tourism": "Tourism",
+      "recreation": "Recreation and fishing",
+      "landscape": "Landscape aesthetics",
+      "climate": "Climate regulation",
+      "carbon": "Carbon sequestration",
+      "nutrient": "Nutrient retention",
+      "flood": "Flood regulation",
+      "habitat": "Habitat provision",
+      "water": "Surface and groundwater",
+      "fish": "Fish",
+      "agriculture": "Agriculture",
+      "timber": "Timber"
+    }
+  },
+  "treatmentWetlandsPage": {
+    "title": {
+      "main": "Mokra polja za prečišćavanje vode",
+      "page1": "Prirodni završni filter – Mokra polja",
+      "page2": "Sloj po sloj – ekipa za čišćenje prirode",
+      "page3": "Hajde da napravimo prirodni filter – vertikalni model mokrog polja za prečišćavanje vode",
+      "page4": "Sitni čistači, veliki uticaj! "
+    },
+    "intro": {
+      "description": "Saznajte više o prečišćavanju otpadnih voda putem mokrih polja i otkrijte na koji način se prirodnim putem vrši filtriranje i prečišćavanje vode.",
+      "accessTeachingMaterials": "Pristup nastavnim materijalima",
+      "openPlatform": "PRISTUPI  PLATFORMI",
+      "opensNewTab": "Otvara se novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu folder",
+      "explore": "Istraži"
+    },
+    "characters": {
+      "rocky": {
+        "name": "Rocky - Majstor odvođenja vode",
+        "label": "ROCKY THE DRAINER",
+        "tooltip": {
+          "first": "Ja sam Rocky - Majstor odvođenja vode! Sakupljam očišćenu vodu i bezbedno je puštam u reku. Držim dno otvoreno i obezbeđujem da bude puno vazduha kako bi ceo sistem mogao da diše.",
+          "second": "Funkcija: Prikuplja očišćenu vodu, obezbeđuje prozračivanje od dole i usmerava protok vode na izlaz."
+        }
+      },
+      "reeda": {
+        "name": "Reeda - Čuvar toka",
+        "label": "REEDA THE FLOWKEEPER",
+        "tooltip": {
+          "first": "Ja sam Reeda - Čuvar toka! Moji koreni drže filter otvoren tako da voda može lako da prođe. Štitim mokro polje od vrućine i hladnoće, dovodim malo kiseonika i pružam mikroorganizmima dobro mesto za život.",
+          "second": "Funkcija: Rast korena održava hidrauličnu provodljivost filtera, obezbeđuju izolaciju od toplote (tokom leta) i hladnoće (tokom zime), usporava priliv, podržava rast mikroorganizama i usvaja deo hranljivih materija."
+        }
+      },
+      "gravelia": {
+        "name": "Gravelia - Šefica raspodele vode",
+        "label": "GRAVELIA THE DISTRIBUTOR",
+        "tooltip": {
+          "first": "Zdravo! Ja sam Gravelia – Šefica raspodele vode! Sprečavam da sitne čestice začepe dno i ravnomerno raspoređujem vodu. Održavam ravnotežu između Sandy iznad i Rocky ispod.",
+          "second": "Funkcija: Ravnomerno raspoređuje vodu, sprečava začepljenje i štiti drenažnu zonu ispod."
+        }
+      },
+      "sandy": {
+        "name": "Sandy - Čistač",
+        "label": "SANDY THE CLEANER",
+        "tooltip": {
+          "first": "Ja sam Sandy - Čistač! Milioni mikroorganizama žive između mojih zrna - oni se hrane otpadom i pretvaraju azot i organsku materiju u bezopasne oblike. Ja ovde obavljam najveći deo stvarnog čišćenja!",
+          "second": "Funkcija: Domaćini mikroorganizmima u biofilmovima koji obavljaju većinu biološkog čišćenja (nitrifikacija, uklanjanje organske materije, delimično vezivanje fosfora). Fina tekstura usporava vodu za duže vreme kontakta → bolje čišćenje.",
+          "highlightText": "     "
+        }
+      }
+    },
+    "layerSlots": {
+      "plant": "Plant layer",
+      "filter": "Filter layer",
+      "intermediate": "Intermediate layer",
+      "drainage": "Drainage layer"
+    },
+    "page2": {
+      "instruction": "Saznajte više o likovima koji predstavljaju slojeve mokrog polja za prečišćavanje vode - Reeda, Sandi, Gravelia i Rocky. \n\nPrevucite svaki  simbol sloja na odgovarajuće mesto u posudi, a zatim proverite da li ste postavili pravilno redosled!",
+      "successMessage": "Odlično! Redosled slojeva u mokrom polju je pravilan.",
+      "errorMessage": "{{name}} ne pripada ovde. Pokušajte na drugom mestu!"
+    },
+    "page3": {
+      "instruction": "Sipajte materijale iz kanti pravilnim redosledom kako biste napravili svoj vertikalni model mokrog polja za prečišćavanje vode - prvo kamenje, zatim šljunak, pesak i na kraju posadite trsku na vrhu. \n\nGledajte kako se vaše mokro polje sprema za prirodno čišćenje vode!",
+      "dropBucket": "Prevucite kantu ovde!"
+    },
+    "page4": {
+      "intro": "Sada kada je mokro polje napravljeno, upoznajmo njene skrivene radnike – sitne mikroorganizme koji obavljaju većinu posla čišćenja.",
+      "conclusion": "Zahvaljujući milionima sitnih pomagača kao što su Nino, Dina, Phoc i Bacto, voda napušta mokro polje sveža i čista - spremna da se vrati u Dunav i ponovo započne svoje putovanje!",
+      "hoverZones": {
+        "zone1": "Pretvaram amonijum u nitrat kada je kiseonik u blizini!",
+        "zone2": "Radim tamo gde nema kiseonika — pretvaram nitrat u azotni gas!",
+        "zone3": "Zgrabim fosfor i čvrsto ga držim u šljunku!",
+        "zone4": "Organski otpad razgrađujem u jednostavne supstance kojima se mogu hraniti!"
+      }
+    }
+  },
+  "selfPurificationPage": {
+    "title": {
+      "main": "Funkcija samoprečišćavanja",
+      "page1": "Unos azota u reke",
+      "page2": "Zadržavanje azota u rekama",
+      "page3": "Dodatno zadržavanje azota u plavnim ravnicama",
+      "page4": "Unos fosfora u reke",
+      "page5": "Zadržavanje fosfora u rekama",
+      "page6": "Dodatno zadržavanje fosfora u plavnim ravnicama"
+    },
+    "intro": {
+      "description": "Saznajte više o funkcijama samoprečišćavanja i otkrijte kako reke i plavne ravnice prirodno filtriraju i prečišćavaju vodu.",
+      "accessTeachingMaterials": "Pristup nastavnim materijalima",
+      "openPlatform": "PRISTUPI  PLATFORMI",
+      "opensNewTab": "Otvara se novi tab: Zenodo",
+      "exploreRepository": "Istražite Wet-Edu folder",
+      "explore": "Istraži"
+    },
+    "hoverAreas": {
+      "nutrients1": {
+        "area1": "Zagađenje koje potiče sa mnogih rasutih mesta, kao što su poljoprivredna polja, putevi ili gradovi, i koje kiša ili oticanje vode nosi u reke.",
+        "area2": "Zagađenje koje dolazi iz jednog, prepoznatljivog mesta, kao što je cev iz fabrike ili postrojenja za prečišćavanje otpadnih voda.",
+        "area3": "Đubriva i stajnjak se rastvaraju u kišnici i kreću se kroz zemlju ili preko polja do reke. Ovo je glavni izvor difuznog zagađenja azotom.",
+        "area4": "Kišnica nosi jedinjenja azota sa ulica, vozila i gradskih zelenih površina u odvode i reke.",
+        "area5": "Prečišćena voda i dalje sadrži neka azotna jedinjenja koja putem izlaznih cevi odlaze u reke. U nekim zemljama savremena postrojenja efikasno uklanjaju većinu azota, dok je u drugima tretman manje razvijen - ili ga uopšte nema.",
+        "area6": "Neke fabrike ispuštaju otpadne vode bogate azotom iz prerade hrane, hemijske obrade ili proizvodnih aktivnosti. Ovakav način zagađivanja je obično regulisan, ali je i dalje značajan vid zagađenja na lokalnom nivou."
+      },
+      "nutrients2": {
+        "area1": "Čestica azota (N) se taloži u sedimentima Organske azotne čestice tonu i tako postaju dostupne mikroorganizmima koji žive između zrna peska  -  tihim zonama prečišćavanja.",
+        "area2": "Hranljive materije → Biomasa (privremeno). Alge i vodene biljke uzimaju nitrat i amonijum; azot se skladišti u njihovim tkivima dok se ne raspadnu.",
+        "area3": "Amonijum → nitrat (potreban kiseonik) Sitni mikroorganizmi u sedimentima bogatim kiseonikom pretvaraju amonijum u nitrat - prvi korak prečišćavanja.",
+        "area4": "Nitrat → gas azota (bez kiseonika) Bakterije u zonama sa niskim sadržajem kiseonika pretvaraju nitrat u azotni gas - ključni proces eliminacije azota."
+      },
+      "nutrients3": {
+        "area1": "Azot vezan za čestice se taloži Tokom poplava, suspendovane čestice sa azotom se zadržavaju i talože na površini plavne ravnice.",
+        "area2": "Hranljive materije → biomasa (privremeno). Biljke plavnih ravnica apsorbuju azot tokom vegetacionog perioda i čuvaju ga u drvetu i listovima.",
+        "area3": "Nitrat → gas azot (bez kiseonika).  U poplavljenim područjima, mikroorganizmi dišu bez kiseonika i pretvaraju nitrat u azotni gas – čime se vrši trajno uklanjanje azota."
+      },
+      "nutrients4": {
+        "area1": "Zagađenje koje potiče sa mnogih rasutih mesta, kao što su poljoprivredna zemljišta, neasfaltirani putevi ili gradovi.",
+        "area2": "Zagađenje koje dolazi iz jednog konkretnog izvora, kao što je cev iz postrojenja za prečišćavanje otpadnih voda ili iz fabrike.",
+        "area3": "Fosfor vezan za čestice zemlijšta se spira u reke tokom kiše ili poplava. ",
+        "area4": "Fosfor iz đubriva se rastvara u vodi i polako dospeva do reka kroz zemljište ili oticanjem po površini. Ovo predstavlja manji, ali stalni difuzni izvor.",
+        "area5": "Kišnica nosi prašinu, deterdžente i čestice otpada bogate fosforom u odvode i reke.",
+        "area6": "Čak i nakon tretmana, deo fosfora ostaje u ispuštenoj vodi. Mnoge zemlje su modernizovale svoja postrojenja, ali druge još nemaju efikasne sisteme ili uopšte nemaju postrojenja za prečišćavanje otpadnih voda.",
+        "area7": "Određene fabrike oslobađaju otpadne vode koje sadrže fosfor iz procesa čišćenja, prerade ili proizvodnih aktivnosti. Obično je ovakav način ispuštanja regulisan, ali i dalje značajan izvor zagađenja u nekim oblastima."
+      },
+      "nutrients5": {
+        "area1": "Rastvoreni fosfat se vezuje za čestice gvožđa, aluminijuma ili kreča. Kada je prisutan kiseonik, fosfor ostaje vezan; ali kada nema kiseonika, može se ponovo osloboditi nazad u vodu.  ",
+        "area2": "Alge, vodene biljke i biofilm usvajaju fosfor i koriste ga za rast. Ovo zadržavanje je privremeno - kada organizmi uginu ili se raspadnu, fosfor se oslobađa nazad u vodu.",
+        "area3": "Fosfor koji je vezan za zemljište i organske čestice tone do rečnog dna. Ovo se dešava uglavnom u područjima gde je vodeni tok spor - formirajući privremeno 'skladište fosfora' u sedimentu."
+      },
+      "nutrients6": {
+        "area1": "Kada se poplavne vode razliju po zemlji, usporavaju i talože suspendovane čestice bogate fosforom. Ovo je jedan od najefikasnijih načina na koji plavne ravnice zadržavaju i skladište fosfor.",
+        "area2": "Biljke plavnih ravnica apsorbuju fosfor dok rastu, skladišteći ga u listovima i korenima. Ovo zadržavanje je privremeno, ali deo fosfora ostaje duže u biljnim ostacima i humusu nakon što biljke uvenu.",
+        "area3": "Rastvoreni fosfor se vezuje za jedinjenja gvožđa, aluminijuma ili kalcijuma u zemljištu, zarobljavajući fosfor – međutm, ako kiseonik nestane, fosfor se može ponovo osloboditi."
+      }
+    },
+    "quizModal": {
+      "content": "Oko 40% fosfora koji se oslobađa u slivu Dunava nikada ne stigne do ušća reke - taloži se i zadržava u akumulacijama i plavnim ravnicama duž toka."
+    },
+    "didYouKnow": {
+      "nitrogenRivers": {
+        "title": "Da li znate koliko azota mogu ukloniti reke?",
+        "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Svake godine, reke u plavnim ravnicama prirodno zadržavaju oko 25.000 tona azota (oko 5% ukupnih emisija)  </span> – što je približno ista količina azota koju bi, putem mokraće i izmeta, oko 5,5 miliona ljudi proizvelo za godinu dana! Taj broj je sličan ukupnom broju stanovnika Slovačke.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Kroz čitav sliv Dunava, reke uklanjaju još više: oko 30% </span> azota koji ulazi u rečni sistem zadržava se tokom transporta u samoj reci, uglavnom putem  <span style=\"color: #619F6A;\">denitrifikacije</span>.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">To pokazuje koliku prečišćavajuću moć imaju reke, čak i pre nego što voda stigne do plavnih ravnica.</span></p>"
+      },
+      "nitrogenFloodplains": {
+        "title": "Da li znate koliko azota uklanjaju plavne ravnice  Dunava?",
+        "content": "Preostala aktivne plavne ravnice Dunavskog sliva pružaju dodatni korak prečišćavanja, zadržavajući oko 7.700 tona azota godišnje - otprilike koliko bi 1,6 miliona ljudi (ukupan broj stanovnika Beograda) proizvelo za godinu dana."
+      }
+    }
+  },
+  "wetlandFreskPage": {
+    "title": "Wetland Fresk",
+    "description": "Wetlands Fresk je kolaborativna, interaktivna radionica osmišljena da pomogne učesnicima kako da istraže  koje ljudske aktivnosti utiču na ekosisteme vlažnih područja (uključujući obalne ravnice pod uticajem plime i oseke, slane močvare, lagune itd.), posledice tih uticaja i moguće načine rešavanja problema. Učesnici zajedno prave 'mapu' uzročno-posledičnih veza koristeći skup kartica, a zatim prelaze na fazu razmišljanja i delovanja.",
+    "duration": {
+      "label": "Trajanje",
+      "value": "90-120 minuta"
+    },
+    "numberOfCards": {
+      "label": "Broj kartica",
+      "value": "24 kartice"
+    },
+    "teamPlayers": {
+      "label": "Broj igrača",
+      "value": "4 - 8"
+    },
+    "age": {
+      "label": "Uzrast",
+      "value": "± 12 godina"
+    },
+    "downloadNote": "Bićete preusmereni na eksternu bazu podataka."
+  },
+  "wetland4LifePage": {
+    "title": "Wetland4Life",
+    "subtitle": "Istražite potencijal vlažnih područja pomoću aplikacije!",
+    "whatDoesItDo": {
+      "title": "Šta radi Wetland4Life?",
+      "description": "Wetland4Life pomaže da mapiranje vlažnih područja bude dostupno svima. Nudi jednostavne i praktične metode za procenu stanja vlažnih područja i identifikovanje mogućnosti za njihovu obnovu."
+    },
+    "howItWorks": {
+      "title": "Kako funkcioniše",
+      "description": "Jednostavna pitanja, korak po korak, vodiće vas kroz proces mapiranja. Procena svake lokacije traje otprilike ",
+      "time": "5 minuta",
+      "timeEnd": "— brzo, jasno i zasnovano na naučnim osnovama."
+    },
+    "academy": {
+      "title": "Želite da saznate više?",
+      "description": "Aplikacija uključuje i edukativni deo o vlažnim područjima – naučite više o njihovim funkcijama kojim su rizicima izložena i koje su mogućnost njihove obnove. Bez obzira da li ste početnik ili stručnjak, uvek postoji nešto novo što možete da otkrijete."
+    },
+    "callToAction": "Budući da su vlažna područja toliko bitna za našu sigurnost, životnu sredinu i našu budućnost, ključno je razumeti njihovo trenutno stanje i gde možemo obnoviti ono što je izgubljeno. Zato nam trebate upravo vi!",
+    "visitButton": "Pronađite aplikaciju Wetland4Life",
+    "externalLinkNote": "Ovaj link vodi do spoljne veb stranice optimizovane za mobilne uređaje. Iskustvo korišćenja na računaru može biti manje optimalno.",
+    "websiteUrl": "https://wetland.restore4life-platform.eu"
+  },
+  "blueGreenSpace4AllPage": {
+    "title": "Blue-Green Space4All",
+    "subtitle": "Putujte sa vidrom Otis duž Dunava i savladajte izazove!",
+    "description": "Zabavna kompjuterska igra u kojoj putujete sa vidrom Otis duž Dunava. Usput ćete se susresti sa biološkim, fizičkim, hemijskim i društvenim izazovima. Odgovarajte na pitanja, birajte rešenja i korak po korak poboljšavajte Dunav prikupljajući što više novčića.",
+    "quizHighlight": "Savršen test da proverite koliko ste naučili o vlažnim područjima!",
+    "playButton": "Igrajte Blue-Green Space4All",
+    "externalLinkNote": "Otvorićete eksterni veb-sajt sa igrom.",
+    "websiteUrl": "http://game.restore4life-platform.eu"
+  },
+  "wetlandEduRepoPage": {
+    "title": "Istražite Wet-Edu folder",
+    "subtitle": "Istražite slične/povezane projekte i resurse",
+    "allTopics": "Sve teme",
+    "clickToOpen": "Kliknite na bilo koji projekat da biste ga otvorili u novoj kartici",
+    "opensInNewTab": "Otvara se u novoj kartici",
+    "previous": "Prethodna",
+    "next": "Sledeća",
+    "page": "Strana",
+    "of": "od",
+    "topics": {
+      "Floodplain living environment": "Životno okruženje plavnih ravnica ",
+      "Floodplain mapping": "Mapiranje plavnih ravnica",
+      "Flood control": "Kontrola poplava",
+      "Habitat assessment": "Ocena staništa",
+      "Carbon sequestration": "Skladištenje ugljenika",
+      "Self purification": "Samoprečišćavanje",
+      "Constructed wetlands": "Konstruisana mokra polja",
+      "Aesthetics": "Estetika",
+      "Art & Storytelling": "Umetnost i pripovedanje"
+    }
+  }
+}

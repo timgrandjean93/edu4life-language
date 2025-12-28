@@ -5,6 +5,9 @@ import enTranslations from '../locales/en.json';
 import hrTranslations from '../locales/hr.json';
 import nlTranslations from '../locales/nl.json';
 import skTranslations from '../locales/sk.json';
+import srTranslations from '../locales/sr.json';
+import huTranslations from '../locales/hu.json';
+import bsTranslations from '../locales/bs.json';
 
 i18n
   .use(LanguageDetector) // Detect user language from browser
@@ -22,6 +25,15 @@ i18n
       },
       sk: {
         translation: skTranslations,
+      },
+      sr: {
+        translation: srTranslations,
+      },
+      hu: {
+        translation: huTranslations,
+      },
+      bs: {
+        translation: bsTranslations,
       },
     },
     fallbackLng: 'en', // Use English if translation is missing

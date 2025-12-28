@@ -988,7 +988,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             textAlign: 'center'
                           }}
                         >
-                          Do you know how much nitrogen remove rivers?
+                          {t('selfPurificationPage.didYouKnow.nitrogenRivers.title')}
                         </h3>
                         <div 
                           style={{ 
@@ -1000,17 +1000,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             textAlign: 'left'
                           }}
                           dangerouslySetInnerHTML={{
-                            __html: `
-                              <p style="margin-bottom: 16px;">
-                                <span style="color: #619F6A;">Every year, rivers in floodplain areas naturally retain around 25,000 tonnes of nitrogen (about 5% of total emissions)</span> — the same amount of nitrogen that roughly 5.5 million people would excrete in a year! That's roughly the population of Slovakia.
-                              </p>
-                              <p style="margin-bottom: 16px;">
-                                <span style="color: #619F6A;">Across the entire Danube Basin, rivers remove even more: about 30%</span> of the nitrogen entering the river system is retained during in-stream transport, mainly through <span style="color: #619F6A;">denitrification</span>.
-                              </p>
-                              <p style="margin: 0;">
-                                <span style="color: #619F6A;">This shows how much cleaning power rivers have, even before the water reaches floodplains.</span>
-                              </p>
-                            `
+                            __html: t('selfPurificationPage.didYouKnow.nitrogenRivers.content')
                           }}
                         />
                       </div>
@@ -1203,7 +1193,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             textAlign: 'center'
                           }}
                         >
-                          Do you know how much nitrogen remove the Danube floodplains?
+                          {t('selfPurificationPage.didYouKnow.nitrogenFloodplains.title')}
                         </h3>
                         <div 
                           style={{ 
@@ -1215,11 +1205,7 @@ export const SelfPurificationPage: React.FC<SelfPurificationPageProps> = ({
                             textAlign: 'left'
                           }}
                           dangerouslySetInnerHTML={{
-                            __html: `
-                              <p style="margin: 0;">
-                                The <span style="color: #619F6A;">remaining active floodplains</span> of the Danube Basin provide an extra cleaning step, retaining around <span style="color: #619F6A;">7,700 tonnes of nitrogen per year</span> — about as much as <span style="color: #619F6A;">1.6 million people</span> (the population of Belgrade) would excrete in a year.
-                              </p>
-                            `
+                            __html: t('selfPurificationPage.didYouKnow.nitrogenFloodplains.content')
                           }}
                         />
                       </div>

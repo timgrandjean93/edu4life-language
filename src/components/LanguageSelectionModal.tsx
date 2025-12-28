@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AVAILABLE_LANGUAGES } from '../i18n/languages';
+import { AVAILABLE_LANGUAGES, getOrderedLanguages } from '../i18n/languages';
 import { detectLanguageFromIP, getCountryName } from '../utils/geolocation';
 
 const LANGUAGE_MODAL_SHOWN_KEY = 'language_modal_shown';
@@ -58,6 +58,7 @@ export const LanguageSelectionModal: React.FC<LanguageSelectionModalProps> = ({ 
   const suggestedLangObj = suggestedLanguage 
     ? AVAILABLE_LANGUAGES.find(lang => lang.code === suggestedLanguage)
     : null;
+  const orderedLanguages = getOrderedLanguages();
 
   return (
     <div
@@ -169,7 +170,7 @@ export const LanguageSelectionModal: React.FC<LanguageSelectionModalProps> = ({ 
                   gap: '12px',
                 }}
               >
-                {AVAILABLE_LANGUAGES.map((lang) => (
+                {orderedLanguages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => handleLanguageSelect(lang.code)}

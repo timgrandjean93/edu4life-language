@@ -149,6 +149,25 @@ export const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onCookiePolicyCl
             {t('footer.termsOfUse')}
           </button>
         </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <a
+            href="https://creativecommons.org/licenses/by-nc/4.0/"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+            title="Creative Commons Attribution-NonCommercial 4.0 International License"
+          >
+            <img 
+              src="https://licensebuttons.net/l/by-nc/4.0/88x31.png" 
+              alt="CC BY-NC 4.0" 
+              style={{ height: '31px', width: 'auto' }}
+            />
+          </a>
+        </div>
       </div>
     </footer>
     </>

@@ -2020,7 +2020,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
           }} />
           <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
           {/* Home Button - Left */}
-            <div className="flex items-center" style={{ paddingLeft: '16px' }}>
+            <div className="flex items-center" style={{ paddingLeft: '16px', flex: '0 0 auto' }}>
             <button
               onClick={onHomeClick}
               className="home-button relative flex items-center justify-center z-50"
@@ -2119,27 +2119,28 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
 
           {/* Next Button - Right (Hide on last page) */}
           {currentPage < TOTAL_PAGES && (
-              <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
+              <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px', flex: '0 0 auto' }}>
               {/* Retry Button - Show when validation is active */}
               {showValidation && (currentPage === 2 || currentPage === 3) && (
                 <button
                   onClick={handleRetry}
                   className="retry-button relative flex items-center justify-center z-50"
                   style={{
-                    width: '217px',
                     height: '60px',
                     backgroundColor: 'transparent',
                     border: 'none',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    padding: 0
                   }}
                 >
                   <LocalizedImage 
                     src="/assets/icons/tryagain.png" 
                     alt={t('common.tryAgain')} 
                     style={{ 
-                      width: '217px',
                       height: '60px',
-                      opacity: 1
+                      width: 'auto',
+                      opacity: 1,
+                      objectFit: 'contain'
                     }}
                   />
                 </button>
@@ -2175,7 +2176,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
             </div>
           )}
           {currentPage === TOTAL_PAGES && (
-              <div className="flex items-center" style={{ paddingRight: '16px' }}>
+              <div className="flex items-center" style={{ paddingRight: '16px', flex: '0 0 auto' }}>
               <button
                 onClick={onHomeClick}
                 className="next-button relative flex items-center justify-center z-50"

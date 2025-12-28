@@ -132,7 +132,6 @@
       "instruction1": "Naša planéta má úžasný spôsob, ako ukladať uhlík do pôdy na stáročia! Niektoré písmená a slabiky z nasledujúcich viet sú však skryté v obrázku.",
       "instruction2": "Dokážeš ich uhádnuť a doplniť text?",
       "instruction3": "Kliknite na písmeno na obrázku vyššie a potom kliknite na príslušnú medzeru v texte, aby ste ho tam vložili. Kliknutím na vložené písmeno ho môžete odstrániť.",
-
       "checkAnswers": "Skontrolovať odpovede",
       "puzzleText": {
         "part1": "Niektorý u",
@@ -149,20 +148,20 @@
         "part12": "rý uhlík, uložený v pobrežných a mokradných oblastiach, tiež pomáha spomaliť zm",
         "part13": "nu k",
         "part14": "my."
-        },
+      },
       "correctAnswers": {
-            "blank1": "h",
-            "blank2": "ô",
-            "blank3": "ov",
-            "blank4": "is",
-            "blank5": "ok",
-            "blank6": "ne",
-            "blank7": "dn",
-            "blank8": "em",
-            "blank10": "dr",
-            "blank11": "e",
-            "blank12": "lí"
-        },
+        "blank1": "h",
+        "blank2": "ô",
+        "blank3": "ov",
+        "blank4": "is",
+        "blank5": "ok",
+        "blank6": "ne",
+        "blank7": "dn",
+        "blank8": "em",
+        "blank10": "dr",
+        "blank11": "e",
+        "blank12": "lí"
+      },
       "blankPositions": {
         "blank1": "afterPart1",
         "blank2": "afterPart2",
@@ -175,7 +174,7 @@
         "blank10": "afterPart11",
         "blank11": "afterPart12",
         "blank12": "afterPart13"
-        },
+      },
       "hiddenLetters": {
         "letter1": {
           "text": "ne",
@@ -253,14 +252,14 @@
       "wetlands": "Mokrade",
       "croplands": "Poľnohospodárska pôda"
     },
-    "nextTopic": "Samočistiaca funkcia"
+    "nextTopic": "Ďalšia téma"
   },
   "floodplainPage": {
     "title": "Životné prostredie záplavových území",
     "intro": {
       "question": "Všimneš si rozdiel medzi ilustráciami?",
       "rainLabel": "Záplavové územie počas povodne (obdobie dažďov)",
-      "dryLabel": "Záplavové územie počas obdobia sucha", 
+      "dryLabel": "Záplavové územie počas obdobia sucha",
       "description": "Spoznaj životné prostredie záplavových území a objav rozmanité biotopy a živočíchy, ktorým sa darí v týchto jedinečných ekosystémoch.",
       "accessTeachingMaterials": "Prístup k výučbovým materiálom",
       "openPlatform": "OTVORENÁ PLATFORMA",
@@ -272,10 +271,10 @@
       "title": "Záplavové územia počas obdobia dažďa"
     },
     "page3": {
-      "title": "Záplavové územia počas obdobia sucha" 
+      "title": "Záplavové územia počas obdobia sucha"
     },
     "page4": {
-      "sliderTitle": "Posuňte posuvník, aby ste videli rozdiely." 
+      "sliderTitle": "Posuňte posuvník, aby ste videli rozdiely."
     },
     "modal": {
       "title": "Možnosti stiahnutia",
@@ -285,7 +284,7 @@
       "exploreRepository": "Preskúmajte WET-EDU archív ",
       "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
     },
-    "nextTopic": "Zmapujte svoju mokraď"
+    "nextTopic": "Ďalšia téma"
   },
   "mapWetlandPage": {
     "title": "Zmapujte svoju mokraď",
@@ -327,7 +326,7 @@
       "exploreRepository": "Preskúmajte WET-EDU archív ",
       "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
     },
-    "nextTopic": "6. Samočistiaca funkcia"
+    "nextTopic": "Ďalšia téma"
   },
   "riparianPage": {
     "title": {
@@ -497,7 +496,7 @@
       "exploreRepository": "Preskúmajte WET-EDU archív ",
       "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
     },
-    "nextTopic": "Ochrana klímy a zásobáreň uhlíka"
+    "nextTopic": "Ďalšia téma"
   },
   "peopleAquaticPage": {
     "title": "Ľudia a vodné ekosystémy",
@@ -669,7 +668,7 @@
         "trySnailFirst": "Skúste najprv umiestniť slimáka."
       }
     },
-    "nextTopic": "Ľudia a vodné ekosystémy A. Obnova záplavových území ako prírode blízke A. Restoring opatrenia floodplains as a Nature-based Solution",
+    "nextTopic": "Ďalšia téma",
     "modal": {
       "title": "Možnosti stiahnutia",
       "accessTeachingMaterials": "Prístup k výučbovým materiálom",
@@ -735,7 +734,7 @@
       "exploreRepository": "Preskúmajte WET-EDU archív ",
       "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
     },
-    "nextTopic": "NEXT TOPIC: Floodplain Art"
+    "nextTopic": "Ďalšia téma"
   },
   "treatmentWetlandsPage": {
     "title": {
@@ -820,7 +819,7 @@
       "exploreRepository": "Preskúmajte WET-EDU archív ",
       "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
     },
-    "nextTopic": "NEXT TOPIC: Floodplain Aesthetics"
+    "nextTopic": "Ďalšia téma"
   },
   "selfPurificationPage": {
     "title": {
@@ -901,7 +900,7 @@
       "exploreRepository": "Preskúmajte WET-EDU archív ",
       "exploreRelated": "Preskúmajte súvisiace projekty a zdroje"
     },
-    "nextTopic": "Mokraďné čistiarne"
+    "nextTopic": "Ďalšia téma"
   },
   "termsOfUse": {
     "title": "Terms of Use",
