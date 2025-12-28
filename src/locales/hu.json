@@ -1,70 +1,70 @@
 {
   "common": {
-    "accept": "Accept",
-    "reject": "Reject",
-    "home": "Home",
-    "loading": "Loading...",
-    "close": "Close",
-    "tryAgain": "Try Again",
-    "learnAndTestButton": "Learn and test your knowledge"
+    "accept": "Elfogadás",
+    "reject": "Elutasítás",
+    "home": "Főoldal",
+    "loading": "Betöltés...",
+    "close": "Bezárás",
+    "tryAgain": "Próbáld újra",
+    "learnAndTestButton": "Tanulj és teszteld a tudásodat"
   },
   "header": {
-    "learningActivities": "Learning activities",
-    "externalTools": "External tools",
+    "learningActivities": "Tanulási tevékenységek",
+    "externalTools": "Külső eszközök",
     "restore4Life": "Restore4Life",
     "menuItems": {
-      "livingEnvironment": "Living environment",
-      "mapYourWetland": "Map your wetland",
-      "exploringHabitats": "Exploring habitats",
-      "floodplainSpongeEffect": "Floodplain sponge effect",
-      "climateCarbon": "Climate & Carbon",
-      "purification": "Purification",
-      "treatmentWetlands": "Treatment wetlands",
-      "aesthetics": "Aesthetics",
-      "sourcesOfInspiration": "Sources of Inspiration",
-      "peopleAndAquatic": "People and Aquatic"
+      "livingEnvironment": "Élő környezet",
+      "mapYourWetland": "Térképezd fel a vizes élőhelyedet",
+      "exploringHabitats": "Élőhelyek felfedezése",
+      "floodplainSpongeEffect": "Ártéri szivacshatás",
+      "climateCarbon": "Klíma és szén-dioxid",
+      "purification": "Tisztítás",
+      "treatmentWetlands": "Vizes élőhelyek kezelése",
+      "aesthetics": "Esztétika",
+      "sourcesOfInspiration": "Inspiráció forrásai",
+      "peopleAndAquatic": "Emberek és vízi élőhelyek"
     },
     "externalToolsItems": {
-      "blueGreenSpace4All": "Blue-Green Space4All",
+      "blueGreenSpace4All": "Kék-zöld Space4All",
       "wetlandFresk": "Wetland Fresk",
       "wetland4Life": "Wetland4Life",
-      "exploreWetEduRepository": "Explore Wet-Edu Repository"
+      "exploreWetEduRepository": "Fedezze fel a Wet-Edu adattárat"
     }
   },
   "cookieConsent": {
-    "message": "This website uses cookies for analytical purposes via Google Analytics. You can accept or reject these cookies.",
-    "readMore": "Read more in our cookie policy"
+    "message": "Ez a weboldal a Google Analytics segítségével analitikai célokra sütiket használ. Ezeket a sütiket elfogadhatja vagy elutasíthatja.",
+    "readMore": "További információk a sütikezelési irányelveinkben"
   },
   "homePage": {
-    "title": "LIVING FLOODPLAINS:",
-    "subtitle": "LEARN, EXPLORE, RESTORE",
-    "subtitle2": "4LIFE TOOLBOX",
-    "credits": "Credits"
+    "title": "ÉLŐ ÁRTÉREK:",
+    "subtitle": "TANULJ, FELFEDEZZ, HELYREÁLLÍTS ",
+    "subtitle2": "AZ ÉLET ESZKÖZTÁRÁBAN",
+    "credits": "HITELEK"
   },
   "languageModal": {
-    "title": "Select Your Language",
-    "detecting": "Detecting your location...",
-    "suggested": "We detected you're from",
-    "suggestedQuestion": "Would you like to use",
-    "continueWith": "Continue with"
+    "title": "Válassza ki a nyelvet",
+    "detecting": "A tartózkodási hely meghatározása folyamatban...",
+    "suggested": "A rendszer észlelte, hogy Ön innen származik:",
+    "suggestedQuestion": "Szeretné ezt a nyelvet használni:",
+    "continueWith": "Folytatás ezzel"
   },
   "pages": {
     "titles": {
-      "home": "Living floodplains: Learn, Explore, Restore4Life Toolbox",
-      "riparian": "Riparian Page",
-      "mapwetland": "Map Wetland Page",
-      "floodplain": "Floodplain Page",
-      "floodcontrol": "Flood Control Page",
-      "carbon": "Carbon Page",
-      "selfpurification": "Self Purification Page",
-      "art": "Art Page",
-      "people": "People & Aquatic Page",
-      "aesthetics": "Aesthetics Page",
-      "wetlandfresk": "Wetland Fresk Page",
-      "wetland4life": "Wetland4Life Page",
-      "wetlandEduRepo": "Wetland Edu Repo",
+      "home": "ÉLŐ ÁRTÉREK: TANULJ, FELFEDEZZ, HELYREÁLLÍTS AZ ÉLET ESZKÖZTÁRÁBAN",
+      "riparian": "Élőhelyek felfedezése",
+      "mapwetland": "Térképezd fel a vizes élőhelyed",
+      "floodplain": "Élő környezet",
+      "floodcontrol": "Ártéri szivacshatás",
+      "carbon": "Klíma és szén-dioxid",
+      "selfpurification": "Tisztítás",
+      "art": "Inspiráció forrásai",
+      "people": "Emberek és vízi élőhelyek",
+      "aesthetics": "Esztétika",
+      "wetlandfresk": "Wetland Fresk",
+      "wetland4life": "Wetland4Life",
+      "wetlandEduRepo": "Wet-Edu adattárat",
       "treatmentwetlands": "Treatment Wetlands Page",
-      "bluegreen": "Blue-Green Space 4 All",
+      "bluegreen": "Kék-zöld Space4All",
       "environmentalToolbox": "Environmental Toolbox",
       "privacy": "Privacy Policy",
       "cookies": "Cookie Policy",
@@ -73,820 +73,772 @@
   },
   "carbonPage": {
     "title": {
-      "page0": "Climate protection and Carbon sink",
-      "page1": "Carbon pools on Earth",
-      "page2": "Carbon cycle in Earth's continental ecosystems"
+      "page0": "Klímavédelem és szén-dioxid-elnyelő",
+      "page1": "Szénkészletek a Földön",
+      "page2": "Szénciklus a Föld kontinentális ökoszisztémáiban"
     },
     "intro": {
-      "description": "Learn about climate protection and discover how carbon sinks play a crucial role in mitigating climate change.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Ismerje meg a klímavédelmet, és fedezze fel, hogy a szén-dioxid-elnyelők milyen kulcsfontosságú szerepet játszanak a klímaváltozás mérséklésében.",
+      "accessTeachingMaterials": "Hozzáférés az oktatási anyagokhoz",
+      "openPlatform": "NYÍLT PLATFORM",
+      "opensNewTab": "Új lap megnyitása: Zenodo",
+      "exploreRepository": "Fedezze fel a Wet-Edu adattárat",
+      "explore": "Felfedezés"
     },
     "page1": {
-      "title": "Match the ecosystem icons",
-      "instruction1": "Look at the icons on top of the graph – each shows a different ecosystem.",
-      "instruction2": "Your challenge:",
-      "instruction3": "Drag the correct label from below to the matching question mark.",
-      "hint": "Hint: Focus on the features that make each ecosystem unique such as trees, water, grass, or landforms.",
-      "checkAnswers": "Check Answers",
-      "clickToRemove": "Click to remove label",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "missed": "Missed"
+      "title": "Párosítsd az ökoszisztéma ikonjait",
+      "instruction1": "Nézd meg a grafikon tetején található ikonokat – mindegyik más-más ökoszisztémát mutat.",
+      "instruction2": "A feladatod:",
+      "instruction3": "Húzd a megfelelő címkét alulról a megfelelő kérdőjelre.",
+      "hint": "Tipp: Koncentrálj azokra a jellemzőkre, amelyek egyedivé teszik az egyes ökoszisztémákat, például fákra, vízre, fűre vagy felszíni formákra.",
+      "checkAnswers": "Válaszok ellenőrzése",
+      "clickToRemove": "Kattintson a címke eltávolításához",
+      "correct": "Helyes",
+      "incorrect": "Helytelen",
+      "missed": "Elmulasztott"
     },
     "page2": {
       "instruction": "Hover over the image to find the carbon contribution of wetlands",
-      "infoText": "Wetlands cover only 5-6% of Earth's land but store 20-30% of all organic soil carbon",
+      "infoText": "A vizes élőhelyek a Föld szárazföldjének mindössze 5-6%-át borítják, de a talaj összes szerves széntartalmának 20-30%-át tárolják.",
       "hoverAreas": {
-        "anthropogenic-release": "Anthropogenic carbon release through drainage or other human degradation of wetlands. Stored carbon is thus oxidized and released as CO₂.",
-        "carbon-sequestration": "Carbon sequestration through photosynthesis. Plants remove CO₂ from the air through photosynthesis and produce biomass.",
-        "natural-release": "Natural carbon release through respiration and biomass decomposition",
-        "carbon-storage": "Carbon storage by biomass buried in soil and sediments"
+        "anthropogenic-release": "Antropogén szén-dioxid-kibocsátás a vizes élőhelyek lecsapolása vagy egyéb emberi tevékenység révén. A tárolt szén így oxidálódik és CO₂-ként szabadul fel .",
+        "carbon-sequestration": "Szén-dioxid-megkötés fotoszintézissel. A növények fotoszintézissel vonják ki a CO₂-t a levegőből, és biomasszát termelnek.",
+        "natural-release": "Természetes szénfelszabadulás légzés és biomassza bomlás útján.",
+        "carbon-storage": "Szén-dioxid-tárolás a talajban és üledékben eltemetett biomassza által."
       },
       "modal": {
-        "title": "Did you know...?",
-        "fact": "The Earth's soils represent a massive carbon pool, storing three times more carbon than the atmosphere and four times as much as all plants and animals.",
-        "question": "Which of the ecosystems shown in the graph stores the most carbon?",
-        "selectEcosystem": "🌿 Select an ecosystem...",
-        "submitAnswer": "Submit Answer",
-        "nextPage": "Next Page",
+        "title": "Tudtad...?",
+        "fact": "A Föld talaja hatalmas szénkészletet képvisel, háromszor annyi szenet tárol, mint a légkör, és négyszer annyit, mint az összes növény és állat.",
+        "question": "A grafikonon látható ökoszisztémák közül melyik tárolja a legtöbb szenet?",
+        "selectEcosystem": "🌿 Válasszon egy ökoszisztémát...",
+        "submitAnswer": "Válasz elküldése",
+        "nextPage": "Következő oldal",
         "feedback": {
-          "correct": "Correct! Wetlands store the most carbon.",
-          "incorrect": "Incorrect. The correct answer is Wetlands.",
-          "explanation": "Wetlands are among the most effective carbon sinks on Earth, storing massive amounts of carbon in their soils and vegetation."
+          "correct": "Így van! A vizes élőhelyek tárolják a legtöbb szenet.",
+          "incorrect": "Helytelen. A helyes válasz: vizes élőhelyek.",
+          "explanation": "A vizes élőhelyek a Föld leghatékonyabb szén-dioxid-megkötő ökoszisztémái közé tartoznak, és hatalmas mennyiségű szenet tárolnak a talajukban és a növényzetükben."
         }
       }
     },
     "page3": {
-      "title": "Fill-in-the-blanks",
-      "instruction1": "Our planet has an amazing way of storing carbon in the ground for centuries! But some letters and syllables from the sentences below have been hidden in the drawing.",
-      "instruction2": "Can you figure them out and complete the text?",
-      "instruction3": "Click on a letter in the image above, then click on the corresponding gap in the text to place it. Click on a placed letter to remove it.",
-      "checkAnswers": "Check Answers",
+      "title": "Kiegészítők",
+      "instruction1": "Bolygónk évszázadokon át bámulatos módon képes a szenet a talajban tárolni! De az alábbi mondatok néhány betűje és szótagja elrejtve maradt a rajzban.",
+      "instruction2": "Ki tudod találni őket, és ki tudod egészíteni a szöveget?",
+      "instruction3": "Kattintson egy betűre a fenti képen, majd kattintson a szövegben lévő megfelelő üres helyre az elhelyezéséhez. Kattintson egy elhelyezett betűre az eltávolításához.",
+      "checkAnswers": "Válaszok ellenőrzése",
       "puzzleText": {
-        "part1": "Some C",
-        "part2": "bon stays locked in the s",
-        "part3": "il for a very long time — sometimes h",
-        "part4": "dreds or even tho",
-        "part5": "ands of y",
-        "part6": "rs! ",
-        "part7": "If we leave it un",
-        "part8": "sturbed, this soil carbon remains safely und",
-        "part9": "ground, instead of going into the a",
-        "part10": "mosphere. ",
-        "part11": "B",
-        "part12": "ue carbon, stored in coastal and wetland areas, also helps slow down cl",
-        "part13": "ate ch",
-        "part14": "ge."
+          "part1": "Egyes sz",
+          "part2": " hosszú időn át a t",
+          "part3": "ajbn mar",
+          "part4": "d — néha s",
+          "part5": "z vagy a",
+          "part6": "r ezer é",
+          "part7": "g! Ha bolyg",
+          "part8": "atlanul hagyjuk, ez a talajszn biz",
+          "part9": "ságosan  a f",
+          "part10": "d alatt marad, és nem kerül a l",
+          "part11": "körbe. A k",
+          "part12": "k szén a parti és vizes élőhelyeken a kl",
+          "part13": "aváltozást is lassítja.",
+          "part14": ""
       },
       "correctAnswers": {
-        "blank1": "ar",
-        "blank2": "o",
-        "blank3": "un",
-        "blank4": "us",
-        "blank5": "ea",
-        "blank6": "di",
-        "blank7": "er",
-        "blank8": "t",
-        "blank9": "l",
-        "blank10": "im",
-        "blank11": "an",
-        "blank12": "r"
+          "blank1": "én",
+          "blank2": "al",
+          "blank3": "zá",
+          "blank4": "ze",
+          "blank5": "ká",
+          "blank6": "vi",
+          "blank7": "gat",
+          "blank8": "ton",
+          "blank9": "öl",
+          "blank10": "ég",
+          "blank11": "é",
+          "blank12": "ím"
       },
       "blankPositions": {
-        "blank1": "afterPart1",
-        "blank2": "afterPart2",
-        "blank3": "afterPart3",
-        "blank4": "afterPart4",
-        "blank5": "afterPart5",
-        "blank6": "afterPart7",
-        "blank7": "afterPart8",
-        "blank8": "afterPart9",
-        "blank9": "afterPart11",
-        "blank10": "afterPart12",
-        "blank11": "afterPart13",
-        "blank12": "afterPart12"
+          "blank1": "afterPart1",
+          "blank2": "afterPart2",
+          "blank3": "afterPart3",
+          "blank4": "afterPart4",
+          "blank5": "afterPart5",
+          "blank6": "afterPart6",
+          "blank7": "afterPart7",
+          "blank8": "afterPart8",
+          "blank9": "afterPart9",
+          "blank10": "afterPart10",
+          "blank11": "afterPart11",
+          "blank12": "afterPart12"
       },
       "hiddenLetters": {
-        "letter1": {
-          "text": "an",
-          "x": 15,
-          "y": 20
-        },
-        "letter2": {
-          "text": "ar",
-          "x": 20,
-          "y": 60
-        },
-        "letter3": {
-          "text": "o",
-          "x": 35,
-          "y": 15
-        },
-        "letter4": {
-          "text": "l",
-          "x": 45,
-          "y": 25
-        },
-        "letter5": {
-          "text": "us",
-          "x": 55,
-          "y": 30
-        },
-        "letter6": {
-          "text": "oi",
-          "x": 25,
-          "y": 50
-        },
-        "letter7": {
-          "text": "er",
-          "x": 50,
-          "y": 60
-        },
-        "letter8": {
-          "text": "un",
-          "x": 65,
-          "y": 35
-        },
-        "letter9": {
-          "text": "t",
-          "x": 75,
-          "y": 20
-        },
-        "letter10": {
-          "text": "ea",
-          "x": 70,
-          "y": 70
-        },
-        "letter11": {
-          "text": "di",
-          "x": 80,
-          "y": 25
-        },
-        "letter12": {
-          "text": "im",
-          "x": 85,
-          "y": 45
-        }
+        "letter1": { "text": "én", "x": 15, "y": 20 },
+        "letter2": { "text": "al", "x": 20, "y": 60 },
+        "letter3": { "text": "zá", "x": 35, "y": 15 },
+        "letter4": { "text": "ze", "x": 45, "y": 25 },
+        "letter5": { "text": "ká", "x": 55, "y": 30 },
+        "letter6": { "text": "vi", "x": 25, "y": 50 },
+        "letter7": { "text": "gat", "x": 50, "y": 60 },
+        "letter8": { "text": "ton", "x": 65, "y": 35 },
+        "letter9": { "text": "öl", "x": 75, "y": 20 },
+        "letter10": { "text": "ég", "x": 70, "y": 70 },
+        "letter11": { "text": "é", "x": 80, "y": 25 },
+        "letter12": { "text": "ím", "x": 85, "y": 45 }
       }
     },
     "ecosystemLabels": {
-      "tropicalForests": "Tropical forests",
-      "temperateForests": "Temperate forests",
-      "borealForests": "Boreal forests",
-      "tropicalSavannas": "Tropical savannas",
-      "temperateGrasslands": "Temperate grasslands",
-      "desertsSemiDeserts": "Deserts and semi-deserts",
+      "tropicalForests": "Trópusi erdők",
+      "temperateForests": "mérsékelt égövi erdők",
+      "borealForests": "Boreális erdők",
+      "tropicalSavannas": "Trópusi szavannák",
+      "temperateGrasslands": "Mérsékelt égövi üvegházak",
+      "desertsSemiDeserts": "Sivatagok és félsivatagok",
       "tundra": "Tundra",
-      "wetlands": "Wetlands",
-      "croplands": "Croplands"
+      "wetlands": "Vizes élőhelyek",
+      "croplands": "Termőföldek"
     }
   },
   "floodplainPage": {
-    "title": "Floodplain Living Environment",
+    "title": "ÁRTÉREK ÉLŐKÖRNYEZET",
     "intro": {
-      "question": "Can you notice the difference between the illustrations?",
-      "rainLabel": "Floodplain during a flooding event (wet season)",
-      "dryLabel": "Floodplain during dry conditions",
-      "description": "Learn about Floodplain Living Environment and explore the diverse habitats and wildlife that thrive in these unique ecosystems.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "question": "Észreveszed a különbséget az illusztrációk között?",
+      "rainLabel": "Árterület árvíz esetén (nedves évszak)",
+      "dryLabel": "Árterület száraz körülmények között",
+      "description": "Ismerje meg az ártéri élővilágot, és fedezze fel a változatos élőhelyeket és vadvilágot, amelyek ezekben az egyedülálló ökoszisztémákban virágoznak.",
+      "accessTeachingMaterials": "Hozzáférés az oktatási anyagokhoz",
+      "openPlatform": "NYÍLT PLATFORM",
+      "opensNewTab": "Új lap megnyitása: Zenodo",
+      "exploreRepository": "Fedezze fel a Wet-Edu adattárat",
+      "explore": "Felfedezés"
     },
     "page2": {
-      "title": "Floodplains in rainy season"
+      "title": "Árterületek az esős évszakban"
     },
     "page3": {
-      "title": "Floodplains in dry season"
+      "title": "Árterületek száraz évszakban"
     },
     "page4": {
-      "sliderTitle": "Slide the bar to see the differences"
+      "sliderTitle": "Csúsztassa a sávot a különbségek megtekintéséhez"
     }
   },
   "mapWetlandPage": {
-    "title": "Map your wetland",
+    "title": "Térképezd fel a vizes élőhelyedet",
     "intro": {
-      "description": "Learn about mapping wetlands and explore the diverse habitats and features that can be identified from above.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Ismerje meg a vizes élőhelyek feltérképezését, és fedezze fel a felülről azonosítható változatos élőhelyeket és jellemzőket.",
+      "accessTeachingMaterials": "Hozzáférés az oktatási anyagokhoz",
+      "openPlatform": "NYÍLT PLATFORM",
+      "opensNewTab": "Új lap megnyitása: Zenodo",
+      "exploreRepository": "Fedezze fel a Wet-Edu adattárat",
+      "explore": "Felfedezés"
     },
     "challenge": {
-      "title": "Eagle's-eye challenge!",
-      "intro": "From high above the floodplain, our White-tailed eagle friend sees the winding river, hidden lakes, marshes, forests, dike, and villages. Can you find them too?  Match each feature with its correct label and bring it to life with color! Each time you identify the right spot, the landscape will shine in its true colors — just as the eagle sees it from the sky."
+      "title": "Sasszem kihívás!",
+      "intro": "Magasan az ártér felett rétisas barátunk megpillantja a kanyargós folyót, a rejtett tavakat, mocsarakat, erdőket, gátakat és falvakat. Te is megtalálod őket? Párosítsd az egyes tereptárgyakat a megfelelő címkével, és keltsd életre őket színekkel! Minden alkalommal, amikor beazonosítod a megfelelő helyet, a táj igazi színeiben fog ragyogni – ahogyan a sas látja az égből."
     },
     "quizItems": {
-      "WATERCOURSE": "WATERCOURSE",
-      "SIDE_ARMS": "SIDE ARMS",
-      "DRAINAGE_CHANNELS": "DRAINAGE CHANNELS",
-      "FLOODPLAIN_LAKE": "FLOODPLAIN LAKE",
-      "ISLANDS_MARSH": "ISLANDS (MARSH)",
-      "FLOODPLAIN_FOREST": "FLOODPLAIN FOREST",
-      "PASTURE_WITH_ANIMALS": "PASTURE WITH ANIMALS",
-      "GRASSLAND": "GRASSLAND",
-      "PROTECTIVE_DIKE": "PROTECTIVE DIKE",
-      "HUMAN_SETTLEMENT": "HUMAN SETTLEMENT",
-      "AGRICULTURAL_FIELDS": "AGRICULTURAL FIELDS"
+      "WATERCOURSE": "Vízfolyás",
+      "SIDE_ARMS": "Oldalsó karok",
+      "DRAINAGE_CHANNELS": "Vízelvezető csatornák",
+      "FLOODPLAIN_LAKE": "Ártéri tó",
+      "ISLANDS_MARSH": "Szigetek (mocsár)",
+      "FLOODPLAIN_FOREST": "Ártéri erdő",
+      "PASTURE_WITH_ANIMALS": "Legelő állatokkal",
+      "GRASSLAND": "Gyepterület",
+      "PROTECTIVE_DIKE": "Védőgát",
+      "HUMAN_SETTLEMENT": "Emberi település",
+      "AGRICULTURAL_FIELDS": "Mezőgazdasági területek"
     },
     "quiz": {
-      "letterPlaceholder": "Letter?",
-      "congratulations": "Congratulations!",
-      "successMessage": "You've successfully mapped all wetland features!"
+      "letterPlaceholder": "Betű?",
+      "congratulations": "Gratulálok!",
+      "successMessage": "Sikeresen feltérképezted az összes vizes élőhely jellemzőit!"
     }
   },
   "riparianPage": {
     "title": {
-      "page0": "Exploring the habitat of a stream",
-      "page1": "Land use along the rivers",
-      "page2": "Stream habitats: RIFFLE, POOL, and RUN"
+      "page0": "PATAK ÉLŐHELYÉNEK FELFEDEZÉSE",
+      "page1": "Földhasználat a folyók mentén",
+      "page2": "Patak élőhelyei: zuhatag, tavacska és folyóvíz"
     },
     "intro": {
-      "description": "Learn about exploring habitats and discover the diverse riparian ecosystems and land use activities along rivers.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Ismerje meg az élőhelyek felfedezésének módjait , és fedezze fel a folyók mentén található",
+      "accessTeachingMaterials": "Hozzáférés az oktatási anyagokhoz",
+      "openPlatform": "NYÍLT PLATFORM",
+      "opensNewTab": "Új lap megnyitása: Zenodo",
+      "exploreRepository": "Fedezze fel a Wet-Edu adattárat",
+      "explore": "Felfedezés"
     },
     "page1": {
-      "introText": "Rivers and their surroundings have been used by people since ancient times for many different activities, such as farming, building homes, fishing, traveling, and getting water. This land use shows how humans interact with and shape the areas around rivers.",
-      "instruction": "Look carefully at the both illustration and choose which",
-      "landUseActivities": "land use activities",
-      "instructionEnd": "you can find.",
-      "quizQuestion": "From the list below, click on the activities you can see in the pictures:",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "missed": "Missed"
+      "introText": "A folyókat és környezetüket az emberek ősidők óta használják számos különböző tevékenységre, például mezőgazdaságra, házépítésre, halászatra, utazásra és vízszerzésre. Ez a földhasználat megmutatja, hogyan hatnak egymásra az emberek a folyók körüli területekkel, és hogyan alakítják azokat.",
+      "instruction": "Nézd meg figyelmesen mindkét illusztrációt, és válaszd ki, melyik ",
+      "landUseActivities": "földhasználati tevékenységeket",
+      "instructionEnd": "találod.",
+      "quizQuestion": "Az alábbi listából kattintson a képeken látható tevékenységekre:",
+      "correct": "Helyes",
+      "incorrect": "Helytelen",
+      "missed": "Elmulasztott"
     },
     "page2": {
-      "instruction": "Read the definitions of the terms",
-      "and": "and",
-      "instructionEnd": "below, then drag and drop each label to its correct place in the two images.",
-      "correct": "Correct:",
+      "instruction": "Olvassa el a fogalmak meghatározásait",
+      "and": "és ",
+      "instructionEnd": "kifejezések definícióit alább, majd húzd át a címkéket a megfelelő helyre a két képen.",
+      "correct": "Helyes:",
       "labels": {
-        "POOL": "POOL",
+        "POOL": "MEDENCE",
         "RIFFLE": "RIFFLE",
-        "RUN": "RUN"
+        "RUN": "FUTÁS"
       },
       "definitions": {
-        "POOL": "A deeper, slower-moving section of a stream where water collects. Pools are quiet, calm, and provide shelter for fish.",
-        "RIFFLE": "A shallow, fast-flowing part of a stream with small waves and visible rocks. Riffles appear rough and bubbly, and are rich in oxygen, making them ideal habitats for insects and fish.",
-        "RUN": "A smooth, moderately deep section of a stream where water flows steadily between a riffle and a pool. Runs get plenty of sunlight, which helps algae grow. Insects feed on the algae, making runs good feeding spots for fish from pools and riffles."
+        "POOL": "A patak mélyebb, lassabban folyó szakasza, ahol a víz összegyűlik. A medencék csendesek, nyugodtak, és menedéket nyújtanak a halaknak.",
+        "RIFFLE": "A patak sekély, gyors folyású része kis hullámokkal és látható sziklákkal. A gátak durvák és bugyborékosak, és oxigénben gazdagok, így ideális élőhelyek a rovarok és halak számára.",
+        "RUN": "A patak sima, mérsékelten mély szakasza, ahol a víz egyenletesen folyik egy zuhatag és egy medence között."
       }
     },
     "quizOptions": {
-      "human-settlements": "Human settlements",
-      "roads-bridges": "Roads and bridges",
-      "flood-protection": "Flood protection structures (dikes, embankments and bridges)",
-      "dams": "Dams & Hydropower",
-      "pastures": "Pastures and grazing areas for livestock",
-      "irrigation": "Irrigation canals and systems",
-      "factory": "Factory or industry",
-      "mining": "Sand and gravel mining",
-      "cycling": "Cycling",
-      "riparian-vegetation": "Riparian vegetation (trees and shrubs along the riverbanks)",
-      "floodplains": "Floodplains, wetlands",
-      "agriculture": "Agriculture/Farming",
-      "recreation": "Recreation (camping, swimming, canoeing, etc.)"
+      "human-settlements": "Emberi települések",
+      "roads-bridges": "Utak és hidak",
+      "flood-protection": "Árvízvédelmi építmények (gátak, töltések és hidak)",
+      "dams": "Gátak és vízerőművek",
+      "pastures": "Legelők és legelőterületek az állatállomány számára",
+      "irrigation": "Öntözőcsatornák és öntözőrendszerek",
+      "factory": "Gyár vagy ipar",
+      "mining": "Homok- és kavicsbányászat",
+      "cycling": "Kerékpározás",
+      "riparian-vegetation": "Folyóparti növényzet (fák és cserjék a folyóparton)",
+      "floodplains": "Árterek és vizes élőhelyek",
+      "agriculture": "Mezőgazdaság / gazdálkodás",
+      "recreation": "Kikapcsolódás (kempingezés, úszás, kenuzás stb.)"
     }
   },
   "floodControlPage": {
     "title": {
-      "page0": "Floodplains are like a sponge",
-      "page1": "Flood control function – Floodplains like a sponge"
+      "page0": "Az árterek, mint egy szivacs",
+      "page1": "Árvízvédelmi funkció – Az árterek olyanok, mint egy szivacs"
     },
     "intro": {
-      "description": "Learn about flood control functions and discover how floodplains act as natural sponges that absorb and store water.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Ismerd meg az árvízvédelmi funkciót és azt, hogy miért olyanok az árterek, mint egy szivacs, és teszteld tudásodat szórakoztató tevékenységekkel.",
+      "accessTeachingMaterials": "Hozzáférés az oktatási anyagokhoz",
+      "openPlatform": "NYÍLT PLATFORM",
+      "opensNewTab": "Új lap megnyitása: Zenodo",
+      "exploreRepository": "Fedezze fel a Wet-Edu adattárat",
+      "explore": "Felfedezés"
     },
     "page1": {
-      "instruction": "Hover over different areas of the images to reveal useful facts.",
-      "didYouKnow": "Did you know?",
+      "instruction": "Vigye az egérmutatót a képek különböző részei fölé, hogy hasznos tényeket tárjon fel.",
+      "didYouKnow": "Tudtad...?",
       "hoverAreas": {
         "left": {
-          "willows-banks": "Willows stabilize banks and increase soil porosity through extensive root systems.",
-          "reed-vegetation": "Dense reed vegetation slows water flow, traps sediments, and improves water quality.",
-          "native-grasses": "Native grasses improve soil porosity and water infiltration",
-          "leaf-litter": "Leaf litter on the forest floor retains moisture and reduces surface runoff.",
-          "deep-rooted-trees": "Deep-rooted trees and shrubs offer stronger bank stabilization than shallow-rooted grasses."
+          "willows-banks": "A fűzfák kiterjedt gyökérrendszerükön keresztül stabilizálják a partokat és növelik a talaj porozitását.",
+          "reed-vegetation": "A sűrű nádnövényzet lassítja a víz áramlását, csapdába ejti az üledéket és javítja a vízminőséget.",
+          "native-grasses": "Az őshonos fűfélék javítják a talaj porozitását és a vízbeszivárgást.",
+          "leaf-litter": "Az erdő talaján lévő avar megtartja a nedvességet és csökkenti a felszíni lefolyást.",
+          "deep-rooted-trees": "A mélyen gyökerező fák és cserjék erősebb partstabilizációt biztosítanak, mint a sekélyen gyökerező fűfélék."
         },
         "right": {
-          "natural-filtration": "The river is confined by dikes like a tight corset.  It can't spread out or reach the floodplain, so floodwaters rise quickly",
-          "ecosystem-benefits": "Without riverside plants, there's nothing to slow down runoff or absorb water. The soil becomes cracked and compacted—water can't soak in.",
-          "groundwater-recharge": "Without plants along the banks, runoff flows faster, more sediments and nutrients enter the river, and water quality declines"
+          "natural-filtration": "A folyót szoros fűzőként gátak határolják. Nem tud szétterjedni vagy elérni az árterületet, így az árvíz gyorsan emelkedik.",
+          "ecosystem-benefits": "Folyóparti növények nélkül semmi sem lassítja a lefolyást vagy nyeli el a vizet. A talaj repedezetté és tömörödötté válik – a víz nem tud beszívódni.",
+          "groundwater-recharge": "Növények nélkül a part mentén a lefolyás gyorsabban folyik, több üledék és tápanyag kerül a folyóba, és a vízminőség romlik."
         }
       },
       "didYouKnowContent": {
         "left": {
-          "title": "Did you know?",
+          "title": "Tudtad...?",
           "items": [
-            "Floodplain soils store 3,000-4,000 m³ of water per hectare",
-            "Meanders increase retention time by 30-50%",
-            "Floodplain vegetation stores 30-40% of total retention capacity",
-            "Natural floodplain absorbs floodwater for 20-30 days",
-            "Groundwater recharge: 500-1,000 m³ per hectare per year"
+            "Az ártéri talajok hektáronként 3 000–4 000 m³ vizet tárolnak",
+            "A kanyarulatok 30–50%-kal növelik a víz tartózkodási idejét",
+            "Az ártéri növényzet a teljes vízvisszatartó kapacitás 30–40%-át adja",
+            "A természetes ártér 20–30 napig képes elnyelni az árvízvizet",
+            "Talajvíz-utánpótlás: évente 500–1 000 m³ hektáronként"
           ]
         },
         "right": {
-          "title": "Did you know?",
+          "title": "Tudtad...?",
           "items": [
-            "Channelization reduces retention by: 60-80%",
-            "Loss of vegetation decreases capacity by: 40-50%",
-            "Soil compaction reduces storage by: 30-40%",
-            "Degraded floodplain retains only: 1,000-2,000 m³ per hectare"
+            "A csatornázás 60–80%-kal csökkenti a vízvisszatartást",
+            "A növényzet elvesztése 40–50%-kal csökkenti a kapacitást",
+            "A talajtömörödés 30–40%-kal csökkenti a víztárolást",
+            "A leromlott ártér csak 1 000–2 000 m³ vizet tart vissza hektáronként"
           ]
         }
       }
     },
     "page2": {
-      "activityTitle": "Activity 1",
-      "instruction": "Can you spot the missing floodplain superpowers? Match the description numbers to the healthy floodplain (left) and degraded floodplain (right).",
-      "naturalFloodplain": "Natural Floodplain:",
-      "degradedFloodplain": "Degraded Floodplain:",
+      "activityTitle": "Tevékenység 1",
+      "instruction": "Megtalálod a hiányzó ártéri szuperképességeket? Párosítsd a leírások számát az egészséges ártérrel (balra) és a leromlott ártérrel (jobbra).",
+      "naturalFloodplain": "Egészséges ártérrel:",
+      "degradedFloodplain": "Leromlott ártérrel:",
       "descriptions": {
         "left": [
-          "A meandering river flows in gentle curves, spreading water across the floodplain, slowing flow, and nourishing the land.",
-          "Plants along riverbanks slow runoff, trap sediments, and absorb excess nutrients, helping to keep the water clean.",
-          "Floodplain lakes and oxbows store excess floodwater, support rich biodiversity, and help recharge groundwater"
+          "Egy kanyargós folyó szelíd ívekben hömpölyög, szétteríti a vizet az ártéren, lelassítja a folyást és táplálja a földet.",
+          "A folyóparti növények lassítják a lefolyást, csapdába ejtik az üledéket és felszívják a felesleges tápanyagokat, segítve a víz tisztán tartását.",
+          "Az ártéri tavak és holtágak tárolják a felesleges árvizet, gazdag biodiverzitást támogatnak, és segítenek a talajvíz feltöltődésében."
         ],
         "right": [
-          "In heavy rain, floods can build up, break dikes, and threaten nearby villages.",
-          "In a straightened, channelized river, faster flow causes erosion and riverbed deepening, which dries out nearby floodplains",
-          "Without riverside plants, there's nothing to slow down runoff or absorb water."
+          "Heves esőzések esetén az árvizek felhalmozódhatnak, gátakat szakíthatnak át, és veszélyeztethetik a közeli falvakat.",
+          "Egy kiegyenesített, mederes folyóban a gyorsabb áramlás eróziót és medermélyülést okoz, ami kiszárítja a közeli ártereket.",
+          "Folyóparti növények nélkül semmi sem lassítja a lefolyást vagy nyeli el a vizet."
         ]
       },
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "correctLabel": "Correct:"
+      "correct": "Helyes",
+      "incorrect": "Helytelen",
+      "correctLabel": "Helyes:"
     },
     "page3": {
-      "title": "Fill-in-the-blanks challenge",
-      "intro1": "Floodplains are nature's buffer zones!",
-      "intro2": "How does the floodplain help in times of heavy rain?",
-      "intro3": "What happens to floodwater when a river has space to spread out?",
-      "completeSentence": "COMPLETE THE SENTENCE:",
-      "sentence1": "Floodplains act as natural",
-      "sentence1End": "to hold floodwater",
-      "sentence2": "and reduce the risk of",
-      "sentence2End": ".",
-      "placeholder1": "s____e",
-      "placeholder2": "f___g",
+      "title": "Kiegészítő feladat",
+      "intro1": "Az árterek a természet pufferzónái! ",
+      "intro2": "Hogyan segít az ártér heves esőzések idején? ",
+      "intro3": "Mi történik az árvízzel, ha a folyónak van helye a szétterjedésre?”",
+      "completeSentence": "Egészítse ki a mondatot:",
+      "sentence1": "Az árterek természetes",
+      "sentence1End": "működnek az árvíz visszatartására",
+      "sentence2": "és csökkentik az",
+      "sentence2End": "kockázatát.",
+      "placeholder1": "sz_____",
+      "placeholder2": "ár____",
       "correctAnswers": {
-        "answer1": "sponge",
-        "answer2": "flooding"
+        "answer1": "szivacs",
+        "answer2": "árvíz"
       },
       "feedback": {
-        "correctSponge": "Correct: sponge",
-        "incorrectSponge": "Incorrect (Answer: sponge)",
-        "correctFlooding": "Correct: flooding",
-        "incorrectFlooding": "Incorrect (Answer: flooding)"
+        "correctSponge": "Helyes: szivacs",
+        "incorrectSponge": "Helytelen (helyes válasz: szivacs)",
+        "correctFlooding": "Helyes: árvíz",
+        "incorrectFlooding": "Helytelen (helyes válasz: árvíz)"
       }
     }
   },
   "peopleAquaticPage": {
-    "title": "The people and aquatic ecosystems",
+    "title": "Emberek és vízi ökoszisztémák",
     "subtitle": {
-      "page1": "A. Natural floodplains",
-      "page2": "B. Used and altered floodplains",
-      "page3": "C. Restoring floodplains as a Nature-based Solution"
+      "page1": "A. Természetes árterek",
+      "page2": "B. Használt és átalakított árterek",
+      "page3": "C. Az árterek helyreállítása természetalapú megoldásként"
     },
     "intro": {
-      "description": "Explore how people rely on floodplains and aquatic ecosystems, and discover pathways to restore their benefits for communities and nature.",
-      "explore": "Explore"
+      "description": "Fedezze fel, hogyan támaszkodnak az emberek az árterekre és a vízi ökoszisztémákra, és fedezze fel azokat az utakat, amelyekkel helyreállíthatja azok előnyeit a közösségek és a természet számára.",
+      "explore": "Felfedezés"
     },
     "activity1": {
-      "title": "Activity 1",
-      "description": "Look closely—this is how human actions have transformed the Danube and its floodplains. Dikes, farming, navigation, and other pressures changed the landscape.",
-      "question": "Can you help me by matching each pressure label to the right place in the picture?",
-      "instruction": "People cleared forests, transformed the floodplains into pastures and crop fields, and built villages and later cities near the banks of the Danube. To protect themselves from floods, they constructed dikes. The Danube was also developed as a navigational waterway and for hydropower production. As a result, the river lost many of its natural features: the balance of sediments in the riverbed was disturbed, and the connection between the river channel and its floodplains was largely cut off. Only a few remnants of the original floodplain remained, while many typical animals and plants disappeared."
+      "title": "Tevékenység 1",
+      "description": "Figyeljük meg alaposan – így alakították át az emberi tevékenységek a Dunát és ártereit. A gátak, a mezőgazdaság, a hajózás és egyéb nyomások megváltoztatták a tájat.",
+      "question": "Tudnál segíteni abban, hogy minden nyomáscímkét a képen a megfelelő helyre párosítasz?",
+      "instruction": "Az emberek erdőket irtottak, az ártereket legelőkké és termőföldekké alakították át, falvakat, majd később városokat építettek a Duna partjainál. Az árvizek elleni védekezésül gátakat építettek. A Dunát hajózási útként és vízenergia-termelésre is fejlesztették. Ennek eredményeként a folyó elvesztette számos természetes jellemzőjét: a mederben lévő üledék egyensúlya felborult, és a folyómeder és az árterek közötti kapcsolat nagyrészt megszakadt. Az eredeti ártérnek csak néhány maradványa maradt meg, míg számos tipikus állat és növény eltűnt."
     },
     "activity2": {
-      "title": "Activity 2",
-      "description": "To solve societal problems with this Nature-based Solution, you can now explore suitable restoration measures: each picture shows one way how people and nature may work together.",
-      "question": "At the bottom, you will find a list with six measures. Can you match the number of the measure from the list with the respective image that shows it?",
-      "instruction": "Step by step, parts of the Danube floodplain are being reconnected to the river. Old side arms are reopened, forests and wetlands are restored, and natural flooding is allowed again wherever possible. These measures bring back habitats for fish, birds, and plants, while also helping people — by storing floodwaters, improving water quality, providing water during droughts, and offering space for recreation. These restoration Measures are called Nature-based Solution."
+      "title": "Tevékenység 2",
+      "description": "A társadalmi problémák természetalapú megoldással történő megoldásához most felfedezheted a megfelelő helyreállítási intézkedéseket: minden kép egy módot mutat be arra, hogyan működhetnek együtt az emberek és a természet.",
+      "question": "Alul egy hat ütemet tartalmazó listát találsz. Meg tudod párosítani a listában szereplő ütem számát a megfelelő képpel , amelyen az ütem látható?",
+      "instruction": "Lépésről lépésre a Duna árterületének egyes részeit újra összekapcsolják a folyóval. Régi mellékágakat nyitnak meg újra, erdőket és vizes élőhelyeket állítanak helyre, és ahol csak lehetséges, újra engedélyezik a természetes áradásokat. Ezek az intézkedések visszaállítják a halak, madarak és növények élőhelyeit, miközben az embereknek is segítenek – az árvíz tárolásával, a vízminőség javításával, aszály idején vízellátás biztosításával és a kikapcsolódáshoz szükséges terek biztosításával. Ezeket a helyreállítási intézkedéseket természetalapú megoldásoknak nevezik."
     },
     "activity3": {
-      "title": "Activity 3",
-      "description": "These polar charts show how the Danube's ecosystem services change in three different scenarios: natural floodplains, altered floodplains with human pressures, and restored floodplains with nature-based solutions. Can you find out why the services look so different?",
+      "title": "Tevékenység 3",
+      "description": "Ezek a poláris térképek azt mutatják be, hogyan változnak a Duna ökoszisztéma-szolgáltatásai három különböző forgatókönyvben: természetes árterek, emberi beavatkozással módosított árterek és természetalapú megoldásokkal helyreállított árterek. Meg tudod nézni, miért tűnnek annyira eltérőnek a szolgáltatások?",
       "column1": {
-        "title": "Original natural Floodplain",
-        "question": "Looking at this polar chart, why are almost all ecosystem services very high, while agriculture is low?",
+        "title": "Eredeti természetes ártér.",
+        "question": "Ha ezt a poláris térképet nézzük, miért van az, hogy szinte az összes ökoszisztéma-szolgáltatás szintje nagyon magas, míg a mezőgazdaságé alacsony?",
         "options": {
-          "A": "Because the soil in the floodplain was too poor and nothing could grow there.",
-          "B": "Because farming was forbidden by the rulers of the Danube region in those times.",
-          "C": "Because the floodplain was still natural, offering many benefits for people and animals, but farming was not possible on flooded land."
+          "A": "Mert az ártér talaja túl szegény volt, és semmi sem tudott ott megteremni.",
+          "B": "Mert a Duna-menti uralkodók akkoriban tiltották a földművelést.",
+          "C": "Mivel az árterület még természetes volt, számos előnnyel járt az emberek és az állatok számára, de a mezőgazdaság nem volt lehetséges az elárasztott területeken."
         }
       },
       "column2": {
-        "title": "Altered floodplain",
-        "question": "Why is agricultural production so much provided in this status, while most other services are low?",
+        "title": "Megváltozott ártér",
+        "question": "Miért van az, hogy a mezőgazdasági termelés ilyen mértékű, míg a legtöbb más szolgáltatás alacsony szintű?",
         "options": {
-          "A": "Because the Danube's natural forests and wetlands expanded, increasing farming and timber production at the same time.",
-          "B": "Because dikes disconnected the floodplain from the river, protecting agriculture from floods but destroying many natural habitats and their benefits.",
-          "C": "Because no one lived near the Danube, so only a few services were used."
+          "A": "Mivel a Duna természetes erdei és vizes élőhelyei kiterjeszkedtek, egyidejűleg fokozva a mezőgazdaságot és a faanyagtermelést.",
+          "B": "Mivel a gátak elválasztották az árterületet a folyótól, védve a mezőgazdaságot az árvizektől, de számos természetes élőhelyet és azok előnyeit elpusztítva.",
+          "C": "Mivel senki sem lakott a Duna közelében, így csak néhány szolgáltatást vettek igénybe."
         }
       },
       "column3": {
-        "title": "Restored floodplain",
-        "question": "Why are the ecosystem services more balanced in this polar chart compared to the other two?",
+        "title": "Helyreállított ártér",
+        "question": "Miért kiegyensúlyozottabbak az ökoszisztéma- szolgáltatások ezen a poláris térképen a másik kettőhöz képest?",
         "options": {
-          "A": "Because nature-based solutions restore side arms, wetlands, and forests, which bring back multiple benefits for both nature and people.",
-          "B": "Because people allowed the river to flood naturally, and removed all the pressures",
-          "C": "Because the Danube was cut off from its floodplains by dikes."
+          "A": "Mert a természetalapú megoldások helyreállítják a mellékágakat, vizes élőhelyeket és erdőket, ami számos előnnyel jár mind a természet, mind az emberek számára.",
+          "B": "Mert az emberek hagyták, hogy a folyó természetes módon kiáradjon, és ezzel megszüntették a rá nehezedő nyomást.",
+          "C": "Mert a Dunát gátak választották el az árterétől."
         }
       },
-      "correctAnswer": "Correct answer:"
+      "correctAnswer": "Helyes válasz:"
     },
     "pressureLabels": {
       "cutting-meanders": {
-        "label": "Cutting meanders",
-        "description": "Straightening the river (making the river shorter and straighter instead of meandering)"
+        "label": "Kanyarulatok átvágása",
+        "description": "A folyó kiegyenesítése (a folyó rövidebbé és egyenesebbé tétele a kanyargás helyett)"
       },
       "building-dikes": {
-        "label": "Building dikes",
-        "description": "Flood protection dikes (raised embankments along the river that keep the water inside the main channel and stop it from reaching the floodplain)"
+        "label": "Gátépítés",
+        "description": "Árvízvédelmi gátak (a folyó mentén emelt töltések, amelyek a vizet a főmederben tartják, és megakadályozzák, hogy elérje az árterületet)"
       },
       "channellizing-rivers": {
-        "label": "Channellizing rivers",
-        "description": "Channelizing the river (protecting the banks of straightened rivers from erosion by covering them by stones, or by building groynes [small transverse stone barriers] so the river cannot change its river bed any more)"
+        "label": "Folyók csatornázása",
+        "description": "A folyó csatornázása (a kiegyenesített folyók partjainak erózió elleni védelme kövekkel vagy terelőgátak építésével, hogy a folyó többé ne tudja megváltoztatni a medrét)"
       },
       "draining-floodplains": {
-        "label": "Draining floodplains",
-        "description": "Drying out wetlands (removing water from wetlands to make land usable for pastures, crop fields and settlements)"
+        "label": "Árterületek lecsapolása",
+        "description": "Vizes élőhelyek kiszárítása (víz eltávolítása az árterekről annak érdekében, hogy legelők, termőföldek és települések számára használhatóvá váljanak)"
       },
       "urbanization": {
-        "label": "Urbanization",
-        "description": "Building settlements, roads, and cities, accompanied by wastewater discharge into the river."
+        "label": "Urbanizáció",
+        "description": "Települések, utak és városok építése, a szennyvíz folyóba történő kibocsátásával együtt"
       },
       "agriculture-pesticides": {
-        "label": "Agriculture using pesticides, insecticides, etc.",
-        "description": "Application of chemicals in farming against weeds and insects"
+        "label": "Vegyszereket használó mezőgazdaság",
+        "description": "Vegyi anyagok alkalmazása a mezőgazdaságban gyomok és rovarok ellen"
       },
       "cutting-forests": {
-        "label": "Cutting down forests",
-        "description": "Deforestation (removing trees from large areas)"
+        "label": "Erdők kivágása",
+        "description": "Erdőirtás (fák eltávolítása nagy területekről)"
       },
       "industrialization": {
-        "label": "Industrialization",
-        "description": "Building factories and industries, often accompanied by air, soil or water pollution"
+        "label": "Iparosítás",
+        "description": "Gyárak és iparágak építése, gyakran levegő-, talaj- vagy vízszennyezéssel együtt"
       },
       "dams-hydroelectric": {
-        "label": "Dams, hydroelectric power plants, etc.",
-        "description": "Construction of river barriers (transverse concrete structures that stop water, sediment and fish from moving freely)"
+        "label": "Gátak és vízerőművek",
+        "description": "Folyami akadályok építése (keresztirányú betonszerkezetek, amelyek megakadályozzák a víz, az üledék és a halak szabad mozgását)"
       },
       "invasive-species": {
-        "label": "Invasive species",
-        "description": "Newcomer species (plants or animals from other continents that spread massively and cause problems by their dominance)"
+        "label": "Invazív fajok",
+        "description": "Újonnan megjelenő fajok (más kontinensekről származó növények vagy állatok, amelyek tömegesen terjednek és dominanciájukkal problémákat okoznak)"
       },
       "navigation": {
-        "label": "Navigation",
-        "description": "Ships and canals (deepening and regulating rivers so big ships can travel along them)"
+        "label": "Hajózás",
+        "description": "Hajók és csatornák (folyók mélyítése és szabályozása annak érdekében, hogy nagy hajók közlekedhessenek rajtuk)"
       },
       "climate-change": {
-        "label": "Climate change",
-        "description": "Global warming (more extreme weather conditions caused by humans)"
+        "label": "Klímaváltozás",
+        "description": "Globális felmelegedés (emberi tevékenység által okozott egyre szélsőségesebb időjárási viszonyok)"
       }
     },
     "restorationMeasures": {
       "restoration-sidearms": {
-        "label": "Restoration of river side-arms",
-        "description": "Re-opening old river branches so that water can flow there again, creating multiple habitats for fish, birds, and plants."
+        "label": "Folyóágak helyreállítása",
+        "description": "Régi folyóágak újranyitása annak érdekében, hogy a víz újra befolyhasson oda, és több élőhely jöjjön létre a halak, madarak és növények számára."
       },
       "dike-relocation": {
-        "label": "Dike relocation for more space",
-        "description": "Moving dikes further away from the river to provide more space to the river and floodplain forests that may retain flood waters."
+        "label": "Gátak áthelyezése a nagyobb tér érdekében",
+        "description": "A gátak távolabb helyezése a folyótól, hogy több hely jusson a folyónak és az ártereknek, illetve az ártéri erdőknek, amelyek képesek visszatartani az árvizet."
       },
       "buffer-strips": {
-        "label": "Buffer strips",
-        "description": "Restoring narrow forests between agricultural fields and rivers so they can filter nutrients and hence protect water from pollution."
+        "label": "Védelmi sávok",
+        "description": "Keskeny erdősávok helyreállítása a mezőgazdasági területek és a folyók között, hogy kiszűrjék a tápanyagokat, és ezáltal megvédjék a vizeket a szennyezéstől."
       },
       "fish-ramps": {
-        "label": "Fish ramps or remove barriers",
-        "description": "Helping fish migrate by removing barriers or transforming them into ramps of stones enabling them to swim upstream again."
+        "label": "Halrámpák vagy akadályok eltávolítása",
+        "description": "A halak vándorlásának segítése az akadályok eltávolításával vagy kőrámpákká alakításával, amelyek lehetővé teszik számukra, hogy ismét felfelé úszhassanak."
       },
       "bypass-channels": {
-        "label": "Bypass channels",
-        "description": "Creating artificial side channels around barriers with gentle slopes where fish and other animals can move, or even live."
+        "label": "Elterelő csatornák",
+        "description": "Mesterséges oldalcsatornák létrehozása enyhe lejtőkkel az akadályok körül, ahol a halak és más állatok mozoghatnak, vagy akár élhetnek is."
       },
       "native-species": {
-        "label": "Support native species",
-        "description": "Restoring natural habitat conditions to support native plants and animals, making it harder for invasive species to spread."
+        "label": "Őshonos fajok támogatása",
+        "description": "A természetes élőhelyfeltételek helyreállítása az őshonos növények és állatok támogatása érdekében, megnehezítve az invazív fajok terjedését."
       }
     },
     "ui": {
-      "results": "Results",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "correctTooltip": "Correct!",
-      "incorrectTooltip": "Incorrect",
-      "clickToRemove": "Click to remove and return to list",
-      "checkAnswers": "Check Answers",
-      "tryAgain": "Try Again"
+      "results": "Eredmények",
+      "correct": "Helyes",
+      "incorrect": "Helytelen",
+      "correctTooltip": "Így van!",
+      "incorrectTooltip": "Helytelen",
+      "clickToRemove": "Kattintson az eltávolításhoz és a listához való visszatéréshez",
+      "checkAnswers": "Válaszok ellenőrzése",
+      "tryAgain": "PRÓBÁLJA ÚJRA"
     }
   },
   "artPage": {
-    "title": "Floodplains as sources of inspiration",
+    "title": "Az árterek mint inspirációs források",
     "intro": {
-      "description": "Discover how floodplains inspire stories, crafts, and creativity. Explore the art of nature-based materials before building your own masterpieces.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Fedezd fel, hogyan inspirálnak történeteket, kézműveskedést és kreativitást az árterek. Fedezd fel a természetalapú anyagok művészetét, mielőtt megépítenéd saját remekműveidet.",
+      "accessTeachingMaterials": "Hozzáférés az oktatási anyagokhoz",
+      "openPlatform": "NYÍLT PLATFORM",
+      "opensNewTab": "Új lap megnyitása: Zenodo",
+      "exploreRepository": "Fedezze fel a Wet-Edu adattárat",
+      "explore": "Felfedezés"
     },
     "instruction": {
-      "intro1": "Rivers and their floodplains are home to numerous animals and plants, and they are also living landscapes full of stories that have inspired people for centuries. From weaving baskets with willow branches to creating songs, legends, and drawings, floodplains connect nature with culture.",
-      "intro2": "Now it's your turn - have fun using natural elements to create your own pictures and stories. By the river, let its colors, shapes, and sounds inspire you discover the joy of shaping your own story from the floodplain.",
-      "instruction": "Imagine you are out in nature, collecting leaves, branches, or feathers to create your own characters. Could you help these outlines come to life? Drag and drop the natural elements into the shapes until they are filled with form and color.",
+      "intro1": "A folyók és ártereik számos állatnak és növénynek adnak otthont, valamint élő tájak, tele történetekkel, amelyek évszázadok óta inspirálják az embereket. A fűzfaágakból font kosaraktól a dalok, legendák és rajzok alkotásáig az árterek összekapcsolják a természetet a kultúrával.",
+      "intro2": "Most rajtad a sor - használd a természeti elemeket saját képeid és történeteid megalkotásához. A folyóparton hagyd, hogy színei, formái és hangjai inspiráljanak, és felfedezd az ártérből merített saját történet megformálásának örömét.",
+      "instruction": "Képzeld el, hogy kint vagy a természetben, és leveleket, ágakat vagy tollakat gyűjtesz, hogy megalkosd a saját karaktereidet. Tudnál segíteni ezeknek a vázlatoknak életre kelni? Húzd a természetes elemeket a formákba, amíg azok meg nem telik formával és színnel.",
       "page3": {
-        "text1": "Some parts of the landscape are missing.",
-        "text2": "Drag and drop the figures you created into the right places to complete the floodplain scene.",
-        "trySnailFirst": "Try placing the snail first"
+        "text1": "A táj egyes részei hiányoznak.",
+        "text2": "Húzd át a létrehozott figurákat a megfelelő helyekre az ártéri jelenet befejezéséhez.",
+        "trySnailFirst": "Próbáld meg először a csigát elhelyezni"
       }
     }
   },
   "aestheticsPage": {
     "title": {
-      "page0": "Floodplain aesthetics versus Floodplain functions",
-      "page1": "Nature's presents offered by the Danube and its floodplains",
-      "page2": "Discover the hidden services of the floodplain!"
+      "page0": "A szerves hulladékot egyszerű anyagokká bontom, amelyekkel táplálkozhatok!",
+      "page1": "A Duna és árterei által kínált természeti ajándékok",
+      "page2": "Fedezze fel az ártér rejtett szolgáltatásait!"
     },
     "intro": {
-      "description": "Learn about aesthetics and discover the hidden services and cultural values that floodplains offer.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Ismerje meg az esztétikát, és fedezze fel az árterek rejtett szolgáltatásokat és kulturális értékeit.",
+      "accessTeachingMaterials": "Hozzáférés az oktatási anyagokhoz",
+      "openPlatform": "NYÍLT PLATFORM",
+      "opensNewTab": "Új lap megnyitása: Zenodo",
+      "exploreRepository": "Fedezze fel a Wet-Edu adattárat",
+      "explore": "Felfedezés"
     },
     "page1": {
-      "description": "The floodplains and wetlands of the Danube give us many benefits, called ecosystem services. These come in different forms:",
-      "provisioningServices": "Provisioning services",
-      "provisioningDescription": "resources we can use directly, like fish, clean water, or wood.",
-      "regulatingServices": "Regulating services",
-      "regulatingDescription": "processes that keep nature in balance, like reducing floods, cleaning water, or storing carbon.",
-      "culturalServices": "Cultural services",
-      "culturalDescription": "benefits that enrich our lives, such as recreation, learning, and cultural traditions.",
-      "activityQuestion": "Can you sort nature's services into groups?",
-      "activityInstruction": "Please drag and drop each icon to its matching labeled box on the right.",
-      "results": "Results",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "correctTooltip": "Correct!",
-      "incorrectTooltip": "Incorrect",
-      "clickToRemove": "Click to remove"
+      "description": "A Duna árterein és vizes élőhelyein számos előnyhöz jutunk, amelyeket ökoszisztéma-szolgáltatásoknak nevezünk. Ezek különböző formákban jelentkeznek:",
+      "provisioningServices": "Ellátási szolgáltatások",
+      "provisioningDescription": "olyan erőforrások, amelyeket közvetlenül felhasználhatunk, például hal, tiszta víz vagy fa.",
+      "regulatingServices": "Szabályozó szolgáltatások",
+      "regulatingDescription": "olyan folyamatok, amelyek egyensúlyban tartják a természetet, például az árvizek csökkentése, a víz tisztítása vagy a szén-dioxid tárolása.",
+      "culturalServices": "Kulturális szolgáltatások",
+      "culturalDescription": "olyan előnyök, amelyek gazdagítják életünket, például a kikapcsolódás, a tanulás és a kulturális hagyományok.",
+      "activityQuestion": "soportokba tudod rendezni a természet szolgáltatásait? ",
+      "activityInstruction": "Próbáld meg az egyes ikonokat a megfelelő csoportba húzni: Ellátás, Szabályozás vagy Kulturális.",
+      "results": "Eredmények",
+      "correct": "Helyes",
+      "incorrect": "Helytelen",
+      "correctTooltip": "Így van!",
+      "incorrectTooltip": "Helytelen",
+      "clickToRemove": "Kattintson az eltávolításhoz"
     },
     "page2": {
-      "instruction": "The Danube floodplain is full of hidden treasures — but some are tricky to see!\n\nUse the magnifying glass to explore the landscape and spot the ecosystem service icons.\nWhen you hover over one with the magnifying glass, it will disappear from the image and appear at the matching label at the edge of the illustration.\n\nTogether, these services reveal how nature supports our lives every day."
+      "instruction": "A Duna ártere tele van rejtett kincsekkel – de némelyiket nehéz észrevenni!\n\nUse the magnifying glass to explore the landscape and spot the ecosystem service icons.\nAmikor a nagyítóval az egyik fölé viszed az egeret, az eltűnik a képről, és a megfelelő címkénél jelenik meg az illusztráció szélén."
     },
     "ecosystemServices": {
-      "tourism": "Tourism",
-      "recreation": "Recreation and fishing",
-      "landscape": "Landscape aesthetics",
-      "climate": "Climate regulation",
-      "carbon": "Carbon sequestration",
-      "nutrient": "Nutrient retention",
-      "flood": "Flood regulation",
-      "habitat": "Habitat provision",
-      "water": "Surface and groundwater",
-      "fish": "Fish",
-      "agriculture": "Agriculture",
-      "timber": "Timber"
+      "tourism": "Turizmus",
+      "water": "Felszíni és felszín alatti vizek",
+      "recreation": "Rekreáció és halászat",
+      "fish": "Halászat",
+      "agriculture": "Mezőgazdaság",
+      "landscape": "Tájesztétika",
+      "timber": "Faanyag",
+      "climate": "Klímaszabályozás",
+      "flood": "Árvízszabályozás",
+      "carbon": "Szén-dioxid-megkötés",
+      "habitat": "Élőhely biztosítása",
+      "nutrient": "Tápanyag-megtartás"
     }
   },
   "treatmentWetlandsPage": {
     "title": {
-      "main": "Treatment wetlands",
-      "page1": "Nature's final filter – The Treatment Wetland",
-      "page2": "Layer by layer – Nature's cleaning crew",
-      "page3": "Let's build nature's filter - Vertical Flow Wetland",
-      "page4": "Tiny cleaners, big impact!"
+      "main": "Vizes élőhelyek kezelése",
+      "page1": "A természet végső szűrője – A Kezelő Vizes Élőhely",
+      "page2": "Rétegről rétegre – A természet takarítócsapata",
+      "page3": "Építsük meg a természet szűrőjét - Vertical Flow Wetland",
+      "page4": "Apró takarítók, nagy hatás!"
     },
     "intro": {
-      "description": "Learn about treatment wetlands and discover how constructed wetlands naturally filter and clean wastewater.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Ismerje meg a kezelt vizes élőhelyeket, és fedezze fel, hogyan szűrik és tisztítják természetes módon a mesterséges vizes élőhelyek a szennyvizet.",
+      "accessTeachingMaterials": "Hozzáférés az oktatási anyagokhoz",
+      "openPlatform": "NYÍLT PLATFORM",
+      "opensNewTab": "Új lap megnyitása: Zenodo",
+      "exploreRepository": "Fedezze fel a Wet-Edu adattárat",
+      "explore": "Felfedezés"
     },
     "characters": {
       "rocky": {
-        "name": "Rocky the Drainer",
-        "label": "ROCKY THE DRAINER",
+        "name": "Sandy, a tisztító",
+        "label": "Sandy, a tisztító",
         "tooltip": {
-          "first": "I'm Rocky the Drainer! I collect the cleaned water and let it flow out safely to the river. I keep the bottom open and full of air so the whole system can breathe.",
-          "second": "Function: Collects the cleaned water, ensures aeration from below, and directs flow to the outlet."
+          "first": "Én vagyok Rocky, a Csepegtető! Összegyűjtöm a tisztított vizet, és biztonságosan a folyóba engedem. A víz alját nyitva és levegővel feltöltve tartom, hogy az egész rendszer lélegezni tudjon.",
+          "second": "Funkció: Összegyűjti a tisztított vizet, biztosítja az alulról történő levegőztetést, és az áramlást a kimenet felé irányítja."
         }
       },
       "reeda": {
-        "name": "Reeda the Flowkeeper",
-        "label": "REEDA THE FLOWKEEPER",
+        "name": "Reeda, az áramlásfenntartó",
+        "label": "Reeda, az áramlásfenntartó",
         "tooltip": {
-          "first": "I'm Reeda, Flowkeeper! My roots keep the filter open so the water can pass through easily. I protect the wetland from heat and cold, bring in a bit of oxygen, and give microbes a good place to live.",
-          "second": "Function: Root growth maintains hydraulic conductivity of the filter, provide insulation against heat (summer) and cold (winter), slows down inflow, supports microbes, and takes up some nutrients."
+          "first": "Reeda vagyok, az áramlás őrzője! A gyökereim nyitva tartják a szűrőt, hogy a víz könnyen átfolyhasson rajta. Védem a vizes élőhelyet a melegtől és a hidegtől, egy kis oxigént hozok be, és jó élőhelyet biztosítok a mikrobáknak.",
+          "second": "Funkció: A gyökérzet fenntartja a szűrő hidraulikus vezetőképességét, szigetelést biztosít a hő (nyáron) és a hideg (télen) ellen, lassítja a beáramlást, támogatja a mikrobákat és felvesz bizonyos tápanyagokat."
         }
       },
       "gravelia": {
-        "name": "Gravelia the Distributor",
-        "label": "GRAVELIA THE DISTRIBUTOR",
+        "name": "Gravelia, az elosztó",
+        "label": "Gravelia, az elosztó",
         "tooltip": {
-          "first": "Hey there! I'm Gravelia the Distributor! I stop fine particles from blocking the bottom and spread the water evenly.  I keep everything balanced between Sandy above and Rocky below.",
-          "second": "Function: Distributes water evenly, prevents clogging, and protects the drainage zone below."
+          "first": "Sziasztok! Gravelia vagyok, a Forgalmazó! Megakadályozom, hogy a finom részecskék eltömítsék az alját, és egyenletesen osztom el a vizet. Mindent egyensúlyban tartok a Sandy és a Rocky között alul.",
+          "second": "Funkció: Egyenletesen elosztja a vizet, megakadályozza az eltömődést és védi az alatta lévő vízelvezető zónát."
         }
       },
       "sandy": {
-        "name": "Sandy the Cleaner",
-        "label": "SANDY THE CLEANER",
+        "name": "Sandy, a tisztító",
+        "label": "Sandy, a tisztító",
         "tooltip": {
-          "first": "I'm Sandy the Cleaner! Millions of microbes live between my grains — they eat waste and transform nitrogen and organic matter into harmless forms. I do most of the real cleaning work here!",
-          "second": "Function: Hosts microbial biofilms that perform most of the biological cleaning (nitrification, organic matter removal, some phosphorus binding). Fine texture slows water for longer contact time → better cleaning.",
-          "highlightText": "perform most of the biological cleaning"
+          "first": "Én vagyok Sandy, a takarító! Milliónyi mikroba él a szemcséim között – hulladékot esznek, és a nitrogént és a szerves anyagokat ártalmatlan formákká alakítják. A valódi takarítási munka nagy részét én végzem itt!",
+          "second": "Funkció: Mikrobiális biofilmeket képez, amelyek elvégzik a biológiai tisztítás nagy részét (nitrifikáció, szerves anyagok eltávolítása, némi foszformegkötés). A finom textúra lassítja a vizet a hosszabb behatási idő érdekében → jobb tisztítás.",
+          "highlightText": "  s"
         }
       }
     },
     "layerSlots": {
-      "plant": "Plant layer",
-      "filter": "Filter layer",
-      "intermediate": "Intermediate layer",
-      "drainage": "Drainage layer"
+      "plant": "Növényi réteg",
+      "filter": "Szűrőréteg",
+      "intermediate": "Közbenső réteg",
+      "drainage": "Drénréteg"
     },
     "page2": {
-      "instruction": "Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky.\n\nDrag each helper onto the wetland container to build the layers from bottom to top.",
-      "successMessage": "Great job! You built the treatment wetland in the right order.",
-      "errorMessage": "{{name}} belongs in a different layer. Try another spot!"
+      "instruction": "Ismerje meg azokat a szereplőket, amelyek egy kezelő vizes élőhely rétegeit jelképezik — Reeda, Sandy, Gravelia és Rocky.\n\nHúzza az egyes segítőket a vizes élőhely tartályára, hogy alulról felfelé felépítse a rétegeket.",
+      "successMessage": "Nagyszerű munka! A megfelelő sorrendben építetted meg a kezelővizes élőhelyet.",
+      "errorMessage": "{{name}} egy másik rétegbe tartozik. Próbálj ki egy másik helyet!"
     },
     "page3": {
-      "instruction": "Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top.\n\nWatch how your wetland gets ready to clean the water naturally!",
-      "dropBucket": "Drop bucket here!"
+      "instruction": "Öntsd az anyagokat a vödrökből a megfelelő sorrendben a függőleges kezelésű vizes élőhely megépítéséhez – először kövek, majd kavics, homok, végül pedig ültesd a nádat a tetejére. Figyeld meg, hogyan készül fel a vizes élőhelyed a víz természetes tisztítására!",
+      "dropBucket": "Helyezze ide a gyűjtőt!"
     },
     "page4": {
-      "intro": "Now that the wetland is built, let's meet its hidden workers — the tiny microbes who do most of the cleaning job.",
-      "conclusion": "Thanks to millions of tiny helpers like Nino, Dina, Phos, and Bacto, the water leaves the treatment wetland fresh and clean — ready to flow back to Danubius and start its journey again!",
+      "intro": "Most, hogy a vizes élőhely megépült, ismerkedjünk meg rejtett munkásaival – az apró mikrobákkal, akik a takarítási munka nagy részét végzik.",
+      "conclusion": "Ninónak, Dinának, Phosnak és Bactónak köszönhetően a víz frissen és tisztán hagyja el a kezelt vizes élőhelyet – készen arra, hogy visszafolyjon a Danubiushoz és újra megkezdje útját!",
       "hoverZones": {
-        "zone1": "I turn ammonium into nitrate when oxygen is around!",
-        "zone2": "I work where there's no oxygen — I turn nitrate into nitrogen gas!",
-        "zone3": "I grab phosphorus and hold it tight in the gravel!",
-        "zone4": "I grab phosphorus and hold it tight in the gravel!"
+        "zone1": "Oxigén jelenlétében az ammóniát nitráttá alakítom!",
+        "zone2": "Oxigénmentes helyen dolgozom – nitrogéngázzá alakítom a nitrátot!",
+        "zone3": "Foszfort fogok, és erősen tartom a kavicsban!",
+        "zone4": "A szerves hulladékot egyszerű anyagokká bontom, amelyekkel táplálkozhatok!"
       }
     }
   },
   "selfPurificationPage": {
     "title": {
-      "main": "Self purification function",
-      "page1": "Nitrogen input into rivers",
-      "page2": "Retention of nitrogen by rivers",
-      "page3": "Additional retention of nitrogen by floodplains",
-      "page4": "Phosphorous input into rivers",
-      "page5": "Retention of phosphorous by rivers",
-      "page6": "Additional retention of phosphorous by floodplains"
+      "main": "Öntisztító funkció",
+      "page1": "Nitrogén bevitel a folyókba",
+      "page2": "A folyók nitrogén-visszatartása",
+      "page3": "Az árterek további nitrogén-visszatartása",
+      "page4": "Foszfor bevitel a folyókba",
+      "page5": "A foszfor visszatartása a folyók által",
+      "page6": "Az árterek további foszfor-visszatartása"
     },
     "intro": {
-      "description": "Learn about self purification functions and discover how rivers and floodplains naturally filter and clean water.",
-      "accessTeachingMaterials": "Access Teaching Materials",
-      "openPlatform": "Open platform",
-      "opensNewTab": "Opens new tab: Zenodo",
-      "exploreRepository": "Explore Wet-Edu Repository",
-      "explore": "Explore"
+      "description": "Ismerje meg az öntisztító funkciókat, és fedezze fel, hogyan szűrik és tisztítják természetes módon a folyók és árterek a vizet.",
+      "accessTeachingMaterials": "Hozzáférés az oktatási anyagokhoz",
+      "openPlatform": "NYÍLT PLATFORM",
+      "opensNewTab": "Új lap megnyitása: Zenodo",
+      "exploreRepository": "Fedezze fel a Wet-Edu adattárat",
+      "explore": "Felfedezés"
     },
     "hoverAreas": {
       "nutrients1": {
-        "area1": "Pollution that comes from many scattered places, such as <span style=\"color: #1C00B8;\">farm fields, roads, or towns</span>, and is carried into rivers by rain or runoff.",
-        "area2": "Pollution that comes from a single, identifiable place, such as a <span style=\"color: #1C00B8;\">pipe from a factory or a wastewater treatment plant</span>.",
-        "area3": "<span style=\"color: #1C00B8;\">Fertilizers and manure</span> dissolve in rainwater and move through the soil or across fields into rivers. This is the main source of diffuse nitrogen pollution.",
-        "area4": "Rainwater carries nitrogen compounds from <span style=\"color: #1C00B8;\">streets, vehicles, and urban green areas</span> into drains and rivers.",
-        "area5": "<span style=\"color: #1C00B8;\">Treated water still contains some nitrogen</span> compounds that flow into rivers through outlet pipes. In some countries, modern plants remove most nitrogen efficiently, but in others, treatment is less advanced — or even missing.",
-        "area6": "<span style=\"color: #1C00B8;\">Some factories</span> release nitrogen-rich wastewater from food processing, chemicals, or manufacturing activities. Usually regulated but still important locally."
+        "area1": "Olyan szennyezés, amely sok szétszórt helyről származik, például <span style=\"color: #1C00B8;\">mezőgazdasági területekről, utakról vagy városokból</span>, és esővel vagy felszíni lefolyással a folyókba kerül.",
+        "area2": "Olyan szennyezés, amely egyetlen, jól azonosítható helyről származik, például egy <span style=\"color: #1C00B8;\">gyár vagy egy szennyvíztisztító telep csővezetékéből</span>.",
+        "area3": "A <span style=\"color: #1C00B8;\">műtrágyák és a trágya</span> feloldódnak az esővízben, majd a talajon keresztül vagy a felszínen a folyókba jutnak. Ez a diffúz nitrogénszennyezés fő forrása.",
+        "area4": "Az esővíz nitrogénvegyületeket szállít az <span style=\"color: #1C00B8;\">utcákról, járművekről és városi zöldterületekről</span> a csatornákba és a folyókba.",
+        "area5": "A <span style=\"color: #1C00B8;\">kezelt szennyvíz még mindig tartalmaz bizonyos nitrogénvegyületeket</span>, amelyek a kifolyócsöveken keresztül a folyókba jutnak. Egyes országokban a modern telepek hatékonyan eltávolítják a nitrogén nagy részét, míg máshol a kezelés kevésbé fejlett – vagy akár hiányzik is.",
+        "area6": "<span style=\"color: #1C00B8;\">Egyes gyárak</span> nitrogénben gazdag szennyvizet bocsátanak ki élelmiszer-feldolgozás, vegyipari vagy gyártási tevékenységek során. Ezek általában szabályozottak, de helyi szinten továbbra is jelentős hatásúak."
       },
       "nutrients2": {
-        "area1": "Particulate N settles in sediments. Organic nitrogen particles <span style=\"color: #1C00B8;\">sink down</span>, and thus become accessible for microbes living between sand grains — quiet zones of purification.",
-        "area2": "Nutrients → Biomass (temporary). Algae and aquatic plants <span style=\"color: #1C00B8;\">take up nitrate and ammonium</span>; nitrogen is stored in their tissues until they decay.",
-        "area3": "<span style=\"color: #1C00B8;\">Ammonium → Nitrate (needs oxygen)</span>. Tiny microbes in oxygen-rich sediments convert ammonium into nitrate — the first step of purification.",
-        "area4": "<span style=\"color: #1C00B8;\">Nitrate → Nitrogen gas (no oxygen)</span> Bacteria in low-oxygen zones turn nitrate into nitrogen gas — the key process for nitrogen loss."
+        "area1": "A részecskékből álló nitrogén az üledékbe ülepszik. A szerves nitrogénrészecskék <span style=\"color: #1C00B8;\">lesüllyednek</span>, és így hozzáférhetővé válnak a homokszemcsék között élő mikrobák számára – a tisztulás csendes zónáiban.",
+        "area2": "Tápanyagok → Biomassza (ideiglenes). Az algák és a vízinövények <span style=\"color: #1C00B8;\">nitrátot és ammóniumot vesznek fel</span>; a nitrogén a szöveteikben tárolódik egészen a lebomlásukig.",
+        "area3": "<span style=\"color: #1C00B8;\">Ammónium → Nitrát (oxigént igényel)</span>. Az oxigénben gazdag üledékekben élő apró mikrobák az ammóniumot nitráttá alakítják – ez a tisztulás első lépése.",
+        "area4": "<span style=\"color: #1C00B8;\">Nitrát → Nitrogéngáz (oxigénmentes)</span>. Az alacsony oxigéntartalmú zónákban élő baktériumok a nitrátot nitrogéngázzá alakítják – ez a nitrogén eltávolításának kulcsfolyamata."
       },
       "nutrients3": {
-        "area1": "<span style=\"color: #1C00B8;\">Nitrogen bound to particles settles.</span> During floods, suspended particles with nitrogen are trapped and deposited on the floodplain surface.",
-        "area2": "<span style=\"color: #1C00B8;\">Nutrients → Biomass (temporary).</span> Floodplain plants absorb nitrogen during the growing season and store it in wood and leaves.",
-        "area3": "<span style=\"color: #1C00B8;\">Nitrate → Nitrogen gas (no oxygen).</span> In flooded soils, microbes breathe without oxygen and transform nitrate into nitrogen gas — permanent nitrogen removal."
+        "area1": "<span style=\"color: #1C00B8;\">A részecskékhez kötött nitrogén leülepedik.</span> Árvizek idején a nitrogént tartalmazó lebegő részecskék csapdába esnek, és lerakódnak az ártér felszínén.",
+        "area2": "<span style=\"color: #1C00B8;\">Tápanyagok → Biomassza (ideiglenes).</span> Az ártéri növények a vegetációs időszakban felveszik a nitrogént, és azt a fában és a levelekben tárolják.",
+        "area3": "<span style=\"color: #1C00B8;\">Nitrát → Nitrogéngáz (oxigénmentes).</span> Az elárasztott talajokban a mikrobák oxigén nélkül „lélegeznek”, és a nitrátot nitrogéngázzá alakítják – ez a nitrogén végleges eltávolítását jelenti."
       },
       "nutrients4": {
-        "area1": "Pollution that comes from many scattered places, such as <span style=\"color: #CE7C0A;\">farmland, unpaved roads, or towns</span>.",
-        "area2": "Rainwater carries <span style=\"color: #CE7C0A;\">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers. ",
-        "area3": "Phosphorus <span style=\"color: #CE7C0A;\">bound to soil particles</span> is washed into rivers during rain or floods.",
-        "area4": "<span style=\"color: #CE7C0A;\">Fertilizer</span> phosphorus dissolves in water and slowly reaches rivers through the soil or overland flow. A smaller but steady diffuse source.",
-        "area5": "Rainwater carries <span style=\"color: #CE7C0A;\">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers.",
-        "area6": "<span style=\"color: #CE7C0A;\">Even after treatment, part of the</span> phosphorus remains in discharged water. Many countries have upgraded their plants, but others still lack efficient systems or any wastewater treatment at all.",
-        "area7": "Certain factories release phosphorus-containing wastewater from <span style=\"color: #CE7C0A;\">cleaning, processing, or production activities</span>. Usually regulated but still significant in some areas."
+        "area1": "Olyan szennyezés, amely sok szétszórt helyről származik, például <span style=\"color: #CE7C0A;\">mezőgazdasági területekről, burkolatlan utakról vagy városokból</span>.",
+        "area2": "Az esővíz <span style=\"color: #CE7C0A;\">port, mosószereket és foszforban gazdag hulladékrészecskéket</span> szállít a csatornákba és a folyókba.",
+        "area3": "A <span style=\"color: #CE7C0A;\">talajrészecskékhez kötött</span> foszfor eső vagy árvizek során a folyókba mosódik.",
+        "area4": "A <span style=\"color: #CE7C0A;\">műtrágyából származó</span> foszfor vízben oldódik, és lassan a talajon vagy a felszíni lefolyáson keresztül eléri a folyókat. Ez kisebb, de állandó diffúz forrás.",
+        "area5": "Az esővíz <span style=\"color: #CE7C0A;\">port, mosószereket és foszforban gazdag hulladékrészecskéket</span> szállít a csatornákba és a folyókba.",
+        "area6": "<span style=\"color: #CE7C0A;\">A kezelés után is a foszfor egy része</span> a kibocsátott vízben marad. Sok ország korszerűsítette szennyvíztisztító telepeit, de máshol továbbra sincsenek hatékony rendszerek, vagy egyáltalán nincs szennyvíztisztítás.",
+        "area7": "Bizonyos gyárak foszfortartalmú szennyvizet bocsátanak ki <span style=\"color: #CE7C0A;\">tisztítási, feldolgozási vagy termelési tevékenységek</span> során. Ezek általában szabályozottak, de egyes területeken továbbra is jelentős hatásúak."
       },
       "nutrients5": {
-        "area1": "<span style=\"color: #CE7C0A;\">Dissolved phosphate sticks to minerals</span> such as iron, aluminium, or lime. When oxygen is present, phosphorus stays bound; but if oxygen is missing, it can be released again back into the water.",
-        "area2": "<span style=\"color: #CE7C0A;\">Algae, aquatic plants, and biofilms take up phosphorus</span> and use it for growth. This retention is temporary — when the organisms die or decay, the phosphorus is released to the water.",
-        "area3": "Phosphorus attached to soil and organic particles sinks down to the riverbed. This happens mainly in calm areas or where the flow is slow — forming a temporary \"phosphorus storage\" in the sediment."
+        "area1": "<span style=\"color: #CE7C0A;\">Az oldott foszfát ásványi anyagokhoz tapad</span>, például vashoz, alumíniumhoz vagy mészhez. Oxigén jelenlétében a foszfor megkötve marad, de oxigénhiány esetén ismét felszabadulhat és visszakerülhet a vízbe.",
+        "area2": "<span style=\"color: #CE7C0A;\">Az algák, a vízinövények és a biofilmek felveszik a foszfort</span>, és azt növekedésükhöz használják. Ez a visszatartás ideiglenes – amikor az élőlények elpusztulnak vagy lebomlanak, a foszfor visszakerül a vízbe.",
+        "area3": "A talaj- és szerves részecskékhez kötött foszfor lesüllyed a folyómederbe. Ez főként nyugodt vagy lassú áramlású területeken történik – ideiglenes „foszfortárolót” képezve az üledékben."
       },
       "nutrients6": {
-        "area1": "When floodwaters spread across the land, they slow down and drop suspended particles rich in phosphorus. This is one of the most effective ways floodplains trap and store phosphorus.",
-        "area2": "Floodplain plants absorb phosphorus as they grow, storing it in leaves and roots. This retention is temporary, but some phosphorus stays longer in litter and humus after plants die.",
-        "area3": "Dissolved phosphorus binds to iron, aluminium, or calcium compounds in the soil. This keeps phosphorus locked away — unless oxygen runs out, when it can be released again."
+        "area1": "Amikor az árvíz elterjed a szárazföldön, lelassul, és foszforban gazdag lebegő részecskéket hullat a levegőbe. Ez az egyik leghatékonyabb módja annak, hogy az árterek megkössék és tárolják a foszfort.",
+        "area2": "Az ártéri növények növekedésük során felveszik a foszfort, amelyet a levelekben és a gyökerekben tárolnak. Ez a visszatartás átmeneti, de némi foszfor hosszabb ideig megmarad az avarban és a humuszban a növények elpusztulása után.",
+        "area3": "Az oldott foszfor a talajban található vas-, alumínium- vagy kalciumvegyületekhez kötődik. Ezáltal a foszfor elzárva marad – kivéve, ha elfogy az oxigén, amikor az újra felszabadulhat."
       }
     },
     "quizModal": {
-      "content": "<p style=\"margin: 0;\">About <span style=\"color: #619F6A;\">40% of phosphorus</span> released into the Danube Basin never reaches the river mouth — it settles and is trapped in <span style=\"color: #619F6A;\">reservoirs and floodplains</span> along the way.</p>"
+      "content": "<p style=\"margin: 0;\">A Duna vízgyűjtő területére kibocsátott <span style=\"color: #619F6A;\">foszfor mintegy 40%-a</span> soha nem éri el a folyó torkolatát – leülepszik, és útközben <span style=\"color: #619F6A;\">víztározókban és ártereken</span> csapdába esik.</p>"
     },
     "didYouKnow": {
       "nitrogenRivers": {
-        "title": "Do you know how much nitrogen remove rivers?",
-        "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Every year, rivers in floodplain areas naturally retain around 25,000 tonnes of nitrogen (about 5% of total emissions)</span> — the same amount of nitrogen that roughly 5.5 million people would excrete in a year! That's roughly the population of Slovakia.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Across the entire Danube Basin, rivers remove even more: about 30%</span> of the nitrogen entering the river system is retained during in-stream transport, mainly through <span style=\"color: #619F6A;\">denitrification</span>.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">This shows how much cleaning power rivers have, even before the water reaches floodplains.</span></p>"
+        "title": "Tudod, mennyi nitrogént von el a folyók?",
+        "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Az árterületeken található folyók évente természetes módon körülbelül 25 000 tonna nitrogént tartanak vissza (a teljes kibocsátás mintegy 5%-át)</span> – ez nagyjából annyi nitrogén, amennyit kb. 5,5 millió ember ürítene ki egy év alatt. Ez megközelítőleg Szlovákia lakosságának felel meg.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">A teljes Duna-vízgyűjtő területen a folyók ennél is többet távolítanak el: mintegy 30%</span>-át a folyórendszerbe jutó nitrogénnek a vízfolyáson belüli szállítás során visszatartják, elsősorban <span style=\"color: #619F6A;\">denitrifikáció</span> révén.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">Ez jól mutatja, mekkora természetes tisztítókapacitással rendelkeznek a folyók, még mielőtt a víz elérné az ártereket.</span></p>"
       },
       "nitrogenFloodplains": {
-        "title": "Do you know how much nitrogen remove the Danube floodplains?",
-        "content": "<p style=\"margin: 0;\">The <span style=\"color: #619F6A;\">remaining active floodplains</span> of the Danube Basin provide an extra cleaning step, retaining around <span style=\"color: #619F6A;\">7,700 tonnes of nitrogen per year</span> — about as much as <span style=\"color: #619F6A;\">1.6 million people</span> (the population of Belgrade) would excrete in a year.</p>"
+        "title": "Tudod, mennyi nitrogént távolít el a Duna ártere?",
+        "content": "<p style=\"margin: 0;\">A Duna-vízgyűjtő terület <span style=\"color: #619F6A;\">fennmaradó aktív árterei</span> további tisztítási lépést jelentenek, és évente körülbelül <span style=\"color: #619F6A;\">7 700 tonna nitrogént</span> tartanak vissza – ez nagyjából annyi, amennyit <span style=\"color: #619F6A;\">1,6 millió ember</span> (Belgrád lakossága) ürítene ki egy év alatt.</p>"
       }
     }
   },
   "wetlandFreskPage": {
     "title": "Wetland Fresk",
-    "description": "The Wetlands Fresk is a collaborative, interactive workshop designed to help participants explore how human activities impact wetland ecosystems (including tidal flats, salt marshes, lagoons, etc.), the consequences of those impacts, and the potential solutions. Participants work together to build a \"map\" of cause–effect relationships using a set of cards, and then move toward reflection and action.",
+    "description": "A Wetlands Fresk egy együttműködésen alapuló, interaktív workshop, amelynek célja, hogy segítsen a résztvevőknek felfedezni, hogy az emberi tevékenységek hogyan hatnak a vizes ökoszisztémákra (beleértve az árapály-laposokat, sós mocsarakat, lagúnákat stb.), e hatások következményeit és a lehetséges megoldásokat. A résztvevők közösen kártyák segítségével felépítik az ok-okozati összefüggések „térképét”, majd továbblépnek a reflexió és a cselekvés felé.",
     "duration": {
-      "label": "Duration",
-      "value": "90-120 minutes"
+      "label": "Időtartam",
+      "value": "90-120 perc"
     },
     "numberOfCards": {
-      "label": "Number of Cards",
-      "value": "24 cards"
+      "label": "Kártyák száma",
+      "value": "24 kártya"
     },
     "teamPlayers": {
-      "label": "Team players",
+      "label": "Csapatjátékosok",
       "value": "4 - 8"
     },
     "age": {
-      "label": "Age",
-      "value": "from ± 12 years"
+      "label": "Kor",
+      "value": "± 12 éves kortól"
     },
-    "downloadNote": "You will be directed to an external database"
+    "downloadNote": "Egy külső adatbázisba leszel átirányítva."
   },
   "wetland4LifePage": {
     "title": "Wetland4Life",
-    "subtitle": "Explore the potential of wetlands via an app!",
+    "subtitle": "Fedezd fel a vizes élőhelyekben rejlő lehetőségeket egy alkalmazáson keresztül!",
     "whatDoesItDo": {
-      "title": "What does Wetland4Life do?",
-      "description": "Wetland4Life helps to make wetland mapping accessible to everyone. It offers simple, practical ways to assess wetland condition and identify restoration opportunities."
+      "title": "Mit csinál a Wetland4Life?",
+      "description": "A Wetland4Life segít abban, hogy a vizes élőhelyek térképezése mindenki számára elérhető legyen. Egyszerű, praktikus módszereket kínál a vizes élőhelyek állapotának felmérésére és a helyreállítási lehetőségek azonosítására."
     },
     "howItWorks": {
-      "title": "How it works",
-      "description": "Step-by-step simple questions guide you through the mapping process. Each location takes approximately",
-      "time": "5 minutes",
-      "timeEnd": "to assess — quick, clear, and scientifically grounded."
+      "title": "Hogyan működik",
+      "description": "Lépésről lépésre egyszerű kérdések vezetik végig a térképezési folyamaton. Minden helyszín felmérése körülbelül ",
+      "time": "5 percet",
+      "timeEnd": "vesz igénybe – gyors, világos és tudományosan megalapozott."
     },
     "academy": {
-      "title": "Want to learn more?",
-      "description": "The app includes a built-in academy with material about wetlands — like their functions, threats, and restoration. Whether you're a beginner or a professional, there's always something new to discover."
+      "title": "Többet szeretne megtudni?",
+      "description": "Az alkalmazás beépített akadémiát tartalmaz, amely a vizes élőhelyekről szóló anyagokat tartalmaz – például funkcióikról, veszélyeikről és helyreállításukról. Akár kezdő, akár profi vagy, mindig találsz valami újat felfedezni."
     },
-    "callToAction": "Because wetlands are so essential to our safety, our environment, and our future, it's crucial to understand their current state — and where we can restore what has been lost. So we need you!",
-    "visitButton": "Available mid-January",
-    "externalLinkNote": "This link leads to an external website optimized for mobile. The experience may be less optimal on desktop.",
+    "callToAction": "Mivel a vizes élőhelyek elengedhetetlenek a biztonságunk, a környezetünk és a jövőnk szempontjából, kulcsfontosságú megérteni jelenlegi állapotukat – és azt, hogy hol tudjuk helyreállítani az elveszetteket. Tehát rád van szükségünk!",
+    "visitButton": "Látogassa meg a Wetland4Life alkalmazást",
+    "externalLinkNote": "Ez a link egy mobilra optimalizált külső weboldalra mutat. Előfordulhat, hogy az élmény asztali gépen kevésbé optimális.",
     "websiteUrl": "https://wetland.restore4life-platform.eu"
   },
   "blueGreenSpace4AllPage": {
-    "title": "Blue-Green Space4All",
-    "subtitle": "Travel with Otis the Otter along the Danube and tackle challenges!",
-    "description": "A playful computer game where you travel with Otis the Otter along the Danube. Along the way, you will encounter biological, physical, chemical, and social challenges. Answer questions, choose solutions, and improve the Danube step by step — while collecting as many coins as possible.",
-    "quizHighlight": "The perfect test of how much you've learned about wetlands!",
-    "playButton": "Play Blue-Green Space4All",
-    "externalLinkNote": "You will open an external website with the game.",
+    "title": "Kék-zöld Space4All",
+    "subtitle": "Utazz Otisszal, a vidrával a Duna mentén, és küzdj le a kihívásokkal!",
+    "description": "Egy játékos számítógépes játék, amelyben Otisszal, a vidrával utazol a Duna mentén. Útközben biológiai, fizikai, kémiai és társadalmi kihívásokkal fogsz szembesülni. Válaszolj a kérdésekre, válassz megoldásokat, és lépésről lépésre fejleszd a Dunát – miközben annyi érmét gyűjtesz, amennyit csak tudsz.",
+    "quizHighlight": "A tökéletes teszt, hogy mennyit tanultál a vizes élőhelyekről!",
+    "playButton": "Játssz Kék-Zöld Space4All-t",
+    "externalLinkNote": "Megnyitsz egy külső weboldalt a játékkal.",
     "websiteUrl": "http://game.restore4life-platform.eu"
   },
   "wetlandEduRepoPage": {
-    "title": "Explore Wet-Edu Repository",
-    "subtitle": "Explore related projects and resources",
-    "allTopics": "All Topics",
-    "clickToOpen": "Click on any project to open it in a new tab",
-    "opensInNewTab": "Opens in new tab",
-    "previous": "Previous",
-    "next": "Next",
-    "page": "Page",
-    "of": "of",
+    "title": "Fedezze fel a Wet-Edu adattárat",
+    "subtitle": "Kapcsolódó projektek és források felfedezése",
+    "allTopics": "Minden téma",
+    "clickToOpen": "Kattintson bármely projektre, hogy új lapon nyissa meg",
+    "opensInNewTab": "Új lapon nyílik meg",
+    "previous": "Előző",
+    "next": "Következő",
+    "page": "Oldal",
+    "of": " / ",
     "topics": {
-      "Floodplain living environment": "Floodplain living environment",
-      "Floodplain mapping": "Floodplain mapping",
-      "Flood control": "Flood control",
-      "Habitat assessment": "Habitat assessment",
-      "Carbon sequestration": "Carbon sequestration",
-      "Self purification": "Self purification",
-      "Constructed wetlands": "Constructed wetlands",
-      "Aesthetics": "Aesthetics",
-      "Art & Storytelling": "Art & Storytelling"
+      "Floodplain living environment": "Ártéri élőhely",
+      "Floodplain mapping": "Ártéri térképezés",
+      "Flood control": "Árvízvédelem",
+      "Habitat assessment": "Élőhely-felmérés",
+      "Carbon sequestration": "Szén-megkötés",
+      "Self purification": "Öntisztítás",
+      "Constructed wetlands": "Mesterséges vizes élőhelyek",
+      "Aesthetics": "Esztétika",
+      "Art & Storytelling": "Művészet és történetmesélés"
     }
   }
 }

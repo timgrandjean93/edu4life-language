@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local temp / extraction artifacts
+tmp/
+
+# Office temporary files
+~$*.docx
