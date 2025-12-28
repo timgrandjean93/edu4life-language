@@ -1,4 +1,6 @@
 import { useTranslation } from 'react-i18next';
+import { useDailyCacheKey } from '../hooks/useDailyCacheKey';
+import { addCacheBuster, getDailyCacheKey } from './cacheBusting';
 
 /**
  * Get the localized version of an image path
@@ -39,7 +41,9 @@ export function useLocalizedImage(basePath: string): string {
   const { i18n } = useTranslation();
   const currentLanguage = i18n.language || 'en';
   
-  return getLocalizedImagePath(basePath, currentLanguage);
+  const dailyCacheKey = useDailyCacheKey();
+  const localized = getLocalizedImagePath(basePath, currentLanguage);
+  return addCacheBuster(localized, dailyCacheKey);
 }
 
 /**
@@ -65,11 +69,14 @@ export async function getBestImagePath(
 ): Promise<string> {
   // If English, return base path
   if (currentLanguage === 'en') {
-    return basePath;
+    return addCacheBuster(basePath, getDailyCacheKey());
   }
 
   // Try localized version
-  const localizedPath = getLocalizedImagePath(basePath, currentLanguage);
+  const localizedPath = addCacheBuster(
+    getLocalizedImagePath(basePath, currentLanguage),
+    getDailyCacheKey()
+  );
   const exists = await checkImageExists(localizedPath);
   
   if (exists) {
@@ -77,6 +84,6 @@ export async function getBestImagePath(
   }
 
   // Fallback to English
-  return basePath;
+  return addCacheBuster(basePath, getDailyCacheKey());
 }
 

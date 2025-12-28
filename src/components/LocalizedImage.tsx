@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getLocalizedImagePath, checkImageExists } from '../utils/localizedImage';
+import { useDailyCacheKey } from '../hooks/useDailyCacheKey';
+import { addCacheBuster } from '../utils/cacheBusting';
 
 interface LocalizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -17,6 +19,7 @@ export const LocalizedImage: React.FC<LocalizedImageProps> = ({
   ...imgProps
 }) => {
   const { i18n } = useTranslation();
+  const dailyCacheKey = useDailyCacheKey();
   const [imageSrc, setImageSrc] = useState<string>(src);
 
   useEffect(() => {
@@ -25,24 +28,27 @@ export const LocalizedImage: React.FC<LocalizedImageProps> = ({
 
       // If English, use base path
       if (currentLanguage === 'en') {
-        setImageSrc(src);
+        setImageSrc(addCacheBuster(src, dailyCacheKey));
         return;
       }
 
       // Try localized version
-      const localizedPath = getLocalizedImagePath(src, currentLanguage);
+      const localizedPath = addCacheBuster(
+        getLocalizedImagePath(src, currentLanguage),
+        dailyCacheKey
+      );
       const exists = await checkImageExists(localizedPath);
 
       if (exists) {
         setImageSrc(localizedPath);
       } else {
         // Fallback to English (base path)
-        setImageSrc(fallbackSrc || src);
+        setImageSrc(addCacheBuster(fallbackSrc || src, dailyCacheKey));
       }
     };
 
     loadImage();
-  }, [src, i18n.language, fallbackSrc]);
+  }, [src, i18n.language, fallbackSrc, dailyCacheKey]);
 
   return (
     <img
@@ -50,8 +56,9 @@ export const LocalizedImage: React.FC<LocalizedImageProps> = ({
       src={imageSrc}
       onError={(e) => {
         // If localized image fails to load, try fallback or base
-        if (imageSrc !== src && imageSrc !== fallbackSrc) {
-          setImageSrc(fallbackSrc || src);
+        const fallback = addCacheBuster(fallbackSrc || src, dailyCacheKey);
+        if (imageSrc !== fallback) {
+          setImageSrc(fallback);
         }
         // Call original onError if provided
         if (imgProps.onError) {
