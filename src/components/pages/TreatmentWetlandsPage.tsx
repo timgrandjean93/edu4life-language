@@ -514,6 +514,7 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
+                  className="main-title"
                   style={{
                     fontFamily: 'Comfortaa, sans-serif',
                     fontSize: '48px',
@@ -535,7 +536,8 @@ export const TreatmentWetlandsPage: React.FC<TreatmentWetlandsPageProps> = ({
                   color: '#406A46',
                   margin: 0,
                   marginTop: '10px',
-                  marginBottom: currentPage > 1 ? '-10px' : '0'
+                  marginBottom: currentPage > 1 ? '-10px' : '0',
+                  textTransform: 'capitalize'
                 }}>
                   {getTitleForPage(currentPage)}
                 </h2>

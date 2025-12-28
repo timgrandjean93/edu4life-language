@@ -51,6 +51,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
+                  className="main-title"
                   style={{
                     fontFamily: 'Comfortaa, sans-serif',
                     fontSize: '48px',
