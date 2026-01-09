@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { useOrientation } from '../hooks/useOrientation';
 
 interface HeaderProps {
   onNavigate?: (page: 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox') => void;
@@ -8,6 +9,46 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   const { t } = useTranslation();
+  const { isMobile } = useOrientation();
+  
+  // Mobile version: logo and language switcher
+  if (isMobile) {
+    return (
+      <div
+        style={{
+          width: '100%',
+          height: '80px',
+          backgroundColor: '#51727C',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          zIndex: 200,
+        }}
+      >
+        <div style={{
+          width: '100%', 
+          height: '100%', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between',
+          paddingLeft: '20px',
+          paddingRight: '20px'
+        }}>
+          {/* Logo - not clickable */}
+          <img
+            src="/assets/icons/Restore4Life_white.png"
+            alt="Restore4Life"
+            style={{ height: '60px', width: 'auto', display: 'block' }}
+          />
+          
+          {/* Language Switcher */}
+          <LanguageSwitcher />
+        </div>
+      </div>
+    );
+  }
+  
+  // Desktop version: full header with navigation
   return (
     <div
       style={{

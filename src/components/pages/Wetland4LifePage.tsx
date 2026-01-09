@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useOrientation } from '../../hooks/useOrientation';
 
 interface Wetland4LifePageProps {
   onHomeClick: () => void;
@@ -10,6 +11,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
   onHomeClick: _onHomeClick
 }) => {
   const { t } = useTranslation();
+  const { isMobile } = useOrientation();
   // Set page background
   React.useEffect(() => {
     const html = document.documentElement;
@@ -42,7 +44,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {/* Header with title */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
-        <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: isMobile ? '20px' : '40px', paddingBottom: isMobile ? '20px' : '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
               {/* Title */}
@@ -54,27 +56,27 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                   className="main-title"
                   style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '48px',
+                    fontSize: isMobile ? '32px' : '48px',
                     fontWeight: 'bold',
                     color: '#51727C',
                     margin: 0,
-                    marginBottom: '20px'
+                    marginBottom: isMobile ? '15px' : '20px'
                   }}
                 >
                   {t('wetland4LifePage.title')}
                 </motion.h1>
-                <div style={{ textAlign: 'center', marginTop: '30px', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
+                <div style={{ textAlign: 'center', marginTop: isMobile ? '20px' : '30px', marginBottom: isMobile ? '15px' : '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? '10px' : '16px', flexWrap: 'wrap' }}>
                   <img 
                     src="/assets/icons/pointer.png" 
                     alt="Pointer" 
                     style={{ 
-                      width: '60px',
-                      height: '60px'
+                      width: isMobile ? '40px' : '60px',
+                      height: isMobile ? '40px' : '60px'
                     }}
                   />
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '36px',
+                    fontSize: isMobile ? '24px' : '36px',
                     fontWeight: 'bold',
                     color: '#406A46'
                   }}>
@@ -88,7 +90,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: '120px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: isMobile ? '80px' : '120px' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,62 +98,66 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
           className="max-w-6xl mx-auto"
         >
           {/* Two Columns Layout */}
-          <div style={{ width: '90%', margin: '0 auto' }}>
-            <div className="flex gap-12" style={{ alignItems: 'flex-start' }}>
+          <div style={{ width: isMobile ? '100%' : '90%', margin: '0 auto' }}>
+            <div className={isMobile ? 'flex flex-col' : 'flex'} style={{ alignItems: 'flex-start', gap: isMobile ? '30px' : '48px' }}>
               {/* Left Column - What does Wetland4Life do? */}
-              <div className="flex flex-col" style={{ width: '50%', flex: 1 }}>
-                <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'flex-start' }}>
+              <div className="flex flex-col" style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
+                <div style={{ marginBottom: isMobile ? '15px' : '10px', display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
                   <img 
                     src="/assets/icons/Wetland4Life.png" 
                     alt="Wetland4Life Logo" 
                     style={{ 
-                      maxWidth: '450px',
+                      maxWidth: isMobile ? '280px' : '450px',
                       height: 'auto'
                     }}
                   />
                 </div>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
-                  fontSize: '28px',
+                  fontSize: isMobile ? '22px' : '28px',
                   fontWeight: 'bold',
                   color: '#406A46',
-                  marginBottom: '30px'
+                  marginBottom: isMobile ? '20px' : '30px',
+                  textAlign: isMobile ? 'center' : 'left'
                 }}>
                   {t('wetland4LifePage.whatDoesItDo.title')}
                 </div>
 
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
-                  fontSize: '24px',
+                  fontSize: isMobile ? '18px' : '24px',
                   fontWeight: 'bold',
                   color: '#406A46',
-                  textAlign: 'left',
-                  width: '90%',
+                  textAlign: isMobile ? 'center' : 'left',
+                  width: isMobile ? '100%' : '90%',
                   lineHeight: '1.6',
-                  marginBottom: '10px'
+                  marginBottom: '10px',
+                  padding: isMobile ? '0 10px' : '0'
                 }}>
                   {t('wetland4LifePage.whatDoesItDo.description')}
                 </div>
               </div>
 
               {/* Right Column - How it works */}
-              <div className="flex flex-col" style={{ width: '50%', flex: 1 }}>
+              <div className="flex flex-col" style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
-                  fontSize: '28px',
+                  fontSize: isMobile ? '22px' : '28px',
                   fontWeight: 'bold',
                   color: '#406A46',
-                  textAlign: 'left',
+                  textAlign: isMobile ? 'center' : 'left',
                   width: '100%',
                   lineHeight: '1.6',
                   marginBottom: '20px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '16px'
+                  justifyContent: isMobile ? 'center' : 'flex-start',
+                  gap: isMobile ? '12px' : '16px',
+                  flexWrap: 'wrap'
                 }}>
                   <div style={{ 
-                    width: '60px', 
-                    height: '60px', 
+                    width: isMobile ? '50px' : '60px', 
+                    height: isMobile ? '50px' : '60px', 
                     flexShrink: 0,
                     display: 'flex',
                     alignItems: 'center',
@@ -163,8 +169,8 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                       src="/assets/icons/works.png" 
                       alt="Works" 
                       style={{ 
-                        width: '60px',
-                        height: '60px',
+                        width: isMobile ? '50px' : '60px',
+                        height: isMobile ? '50px' : '60px',
                         filter: 'brightness(0) invert(1)'
                       }}
                     />
@@ -174,13 +180,14 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
 
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
-                  fontSize: '20px',
+                  fontSize: isMobile ? '16px' : '20px',
                   fontWeight: 'bold',
                   color: '#51727C',
-                  textAlign: 'left',
+                  textAlign: isMobile ? 'center' : 'left',
                   width: '100%',
                   lineHeight: '1.6',
-                  marginBottom: '10px'
+                  marginBottom: '10px',
+                  padding: isMobile ? '0 10px' : '0'
                 }}>
                   {t('wetland4LifePage.howItWorks.description')} <strong style={{ color: '#406A46' }}>{t('wetland4LifePage.howItWorks.time')}</strong> {t('wetland4LifePage.howItWorks.timeEnd')}
                 </div>
@@ -188,21 +195,23 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                 {/* Academy Section */}
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
-                  fontSize: '28px',
+                  fontSize: isMobile ? '22px' : '28px',
                   fontWeight: 'bold',
                   color: '#406A46',
-                  textAlign: 'left',
+                  textAlign: isMobile ? 'center' : 'left',
                   width: '100%',
                   lineHeight: '1.6',
                   marginBottom: '20px',
                   marginTop: '20px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '16px'
+                  justifyContent: isMobile ? 'center' : 'flex-start',
+                  gap: isMobile ? '12px' : '16px',
+                  flexWrap: 'wrap'
                 }}>
                   <div style={{ 
-                    width: '60px', 
-                    height: '60px', 
+                    width: isMobile ? '50px' : '60px', 
+                    height: isMobile ? '50px' : '60px', 
                     flexShrink: 0,
                     display: 'flex',
                     alignItems: 'center',
@@ -214,8 +223,8 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                       src="/assets/icons/learn.png" 
                       alt="Learn" 
                       style={{ 
-                        width: '60px',
-                        height: '60px',
+                        width: isMobile ? '50px' : '60px',
+                        height: isMobile ? '50px' : '60px',
                         filter: 'brightness(0) invert(1)'
                       }}
                     />
@@ -225,13 +234,14 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
 
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
-                  fontSize: '20px',
+                  fontSize: isMobile ? '16px' : '20px',
                   fontWeight: 'bold',
                   color: '#51727C',
-                  textAlign: 'left',
+                  textAlign: isMobile ? 'center' : 'left',
                   width: '100%',
                   lineHeight: '1.6',
-                  marginBottom: '10px'
+                  marginBottom: '10px',
+                  padding: isMobile ? '0 10px' : '0'
                 }}>
                   {t('wetland4LifePage.academy.description')}
                 </div>
@@ -242,23 +252,24 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
           {/* Full width text */}
           <div style={{ 
             width: '100%',
-            marginTop: '20px',
-            marginBottom: '40px',
+            marginTop: isMobile ? '30px' : '20px',
+            marginBottom: isMobile ? '30px' : '40px',
             textAlign: 'center'
           }}>
             <div style={{
               fontFamily: 'Comfortaa, sans-serif',
-              fontSize: '28px',
+              fontSize: isMobile ? '22px' : '28px',
               fontWeight: 'bold',
               color: '#CE7C0A',
-              lineHeight: '1.6'
+              lineHeight: '1.6',
+              padding: isMobile ? '0 10px' : '0'
             }}>
               {t('wetland4LifePage.callToAction')}
             </div>
           </div>
 
           {/* Visit Website Button */}
-          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <div style={{ textAlign: 'center', marginTop: isMobile ? '30px' : '40px' }}>
             <button
               onClick={handleVisitWebsite}
               disabled={true}
@@ -266,10 +277,10 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
                 backgroundColor: '#97C09D',
                 border: 'none',
                 borderRadius: '8px',
-                padding: '16px 32px',
+                padding: isMobile ? '12px 24px' : '16px 32px',
                 cursor: 'not-allowed',
                 fontFamily: 'Comfortaa, sans-serif',
-                fontSize: '20px',
+                fontSize: isMobile ? '18px' : '20px',
                 fontWeight: 'bold',
                 color: 'white',
                 transition: 'background-color 0.3s',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useOrientation } from '../../hooks/useOrientation';
 
 interface WetlandFreskPageProps {
   onHomeClick: () => void;
@@ -10,6 +11,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
   onHomeClick: _onHomeClick
 }) => {
   const { t } = useTranslation();
+  const { isMobile } = useOrientation();
   // Set page background
   React.useEffect(() => {
     const html = document.documentElement;
@@ -42,7 +44,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {/* Header with title */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
-        <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: isMobile ? '20px' : '40px', paddingBottom: isMobile ? '20px' : '40px' }}>
           <div className="w-full max-w-6xl px-4">
             <div className="relative">
               {/* Title */}
@@ -54,11 +56,11 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                   className="main-title"
                   style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '48px',
+                    fontSize: isMobile ? '32px' : '48px',
                     fontWeight: 'bold',
                     color: '#51727C',
                     margin: 0,
-                    marginBottom: '20px'
+                    marginBottom: isMobile ? '15px' : '20px'
                   }}
                 >
                   {t('wetlandFreskPage.title')}
@@ -70,7 +72,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: '120px' }}>
+      <div className="relative z-10 px-4 pb-8" style={{ flex: 1, paddingBottom: isMobile ? '80px' : '120px' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -80,27 +82,28 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
           {/* Description Text - Full Width */}
           <div style={{
             fontFamily: 'Comfortaa, sans-serif',
-            fontSize: '24px',
+            fontSize: isMobile ? '18px' : '24px',
             fontWeight: 'bold',
             color: '#406A46',
             textAlign: 'center',
             width: '100%',
             lineHeight: '1.6',
-            marginBottom: '50px'
+            marginBottom: isMobile ? '30px' : '50px',
+            padding: isMobile ? '0 10px' : '0'
           }}>
             {t('wetlandFreskPage.description')}
           </div>
 
           {/* Two Columns Layout */}
-          <div style={{ width: '60%', margin: '0 auto' }}>
-            <div className="flex gap-12" style={{ alignItems: 'flex-start' }}>
+          <div style={{ width: isMobile ? '100%' : '60%', margin: '0 auto' }}>
+            <div className={isMobile ? 'flex flex-col' : 'flex'} style={{ alignItems: 'flex-start', gap: isMobile ? '30px' : '48px' }}>
               {/* Left Column - Information */}
-            <div className="flex flex-col" style={{ width: '50%', flex: 1 }}>
+            <div className="flex flex-col" style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
               {/* Duration */}
-              <div className="flex items-start" style={{ marginBottom: '40px' }}>
+              <div className="flex items-start" style={{ marginBottom: isMobile ? '25px' : '40px' }}>
                 <div style={{ 
-                  width: '60px', 
-                  height: '60px', 
+                  width: isMobile ? '50px' : '60px', 
+                  height: isMobile ? '50px' : '60px', 
                   flexShrink: 0,
                   display: 'flex',
                   alignItems: 'center',
@@ -112,16 +115,16 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     src="/assets/icons/clock.png" 
                     alt="Duration" 
                     style={{ 
-                      width: '50px',
-                      height: '50px',
+                      width: isMobile ? '40px' : '50px',
+                      height: isMobile ? '40px' : '50px',
                       filter: 'brightness(0) invert(1)'
                     }}
                   />
                 </div>
-                <div style={{ marginLeft: '40px' }}>
+                <div style={{ marginLeft: isMobile ? '20px' : '40px' }}>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '24px',
+                    fontSize: isMobile ? '18px' : '24px',
                     fontWeight: 'bold',
                     color: '#406A46',
                     marginBottom: '4px'
@@ -130,7 +133,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                   </div>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '20px',
+                    fontSize: isMobile ? '16px' : '20px',
                     fontWeight: 'bold',
                     color: '#51727C'
                   }}>
@@ -140,10 +143,10 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
               </div>
 
               {/* Number of Cards */}
-              <div className="flex items-start" style={{ marginBottom: '40px' }}>
+              <div className="flex items-start" style={{ marginBottom: isMobile ? '25px' : '40px' }}>
                 <div style={{ 
-                  width: '60px', 
-                  height: '60px', 
+                  width: isMobile ? '50px' : '60px', 
+                  height: isMobile ? '50px' : '60px', 
                   flexShrink: 0,
                   display: 'flex',
                   alignItems: 'center',
@@ -155,16 +158,16 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     src="/assets/icons/cards.png" 
                     alt="Cards" 
                     style={{ 
-                      width: '55px',
-                      height: '55px',
+                      width: isMobile ? '45px' : '55px',
+                      height: isMobile ? '45px' : '55px',
                       filter: 'brightness(0) invert(1)'
                     }}
                   />
                 </div>
-                <div style={{ marginLeft: '40px' }}>
+                <div style={{ marginLeft: isMobile ? '20px' : '40px' }}>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '24px',
+                    fontSize: isMobile ? '18px' : '24px',
                     fontWeight: 'bold',
                     color: '#406A46',
                     marginBottom: '4px'
@@ -173,7 +176,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                   </div>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '20px',
+                    fontSize: isMobile ? '16px' : '20px',
                     fontWeight: 'bold',
                     color: '#51727C'
                   }}>
@@ -183,10 +186,10 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
               </div>
 
               {/* Team players */}
-              <div className="flex items-start" style={{ marginBottom: '40px' }}>
+              <div className="flex items-start" style={{ marginBottom: isMobile ? '25px' : '40px' }}>
                 <div style={{ 
-                  width: '60px', 
-                  height: '60px', 
+                  width: isMobile ? '50px' : '60px', 
+                  height: isMobile ? '50px' : '60px', 
                   flexShrink: 0,
                   display: 'flex',
                   alignItems: 'center',
@@ -198,16 +201,16 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     src="/assets/icons/players.png" 
                     alt="Team players" 
                     style={{ 
-                      width: '40px',
-                      height: '40px',
+                      width: isMobile ? '35px' : '40px',
+                      height: isMobile ? '35px' : '40px',
                       filter: 'brightness(0) invert(1)'
                     }}
                   />
                 </div>
-                <div style={{ marginLeft: '40px' }}>
+                <div style={{ marginLeft: isMobile ? '20px' : '40px' }}>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '24px',
+                    fontSize: isMobile ? '18px' : '24px',
                     fontWeight: 'bold',
                     color: '#406A46',
                     marginBottom: '4px'
@@ -216,7 +219,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                   </div>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '20px',
+                    fontSize: isMobile ? '16px' : '20px',
                     fontWeight: 'bold',
                     color: '#51727C'
                   }}>
@@ -228,8 +231,8 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
               {/* Age */}
               <div className="flex items-start">
                 <div style={{ 
-                  width: '60px', 
-                  height: '60px', 
+                  width: isMobile ? '50px' : '60px', 
+                  height: isMobile ? '50px' : '60px', 
                   flexShrink: 0,
                   display: 'flex',
                   alignItems: 'center',
@@ -241,16 +244,16 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                     src="/assets/icons/age.png" 
                     alt="Age" 
                     style={{ 
-                      width: '55px',
-                      height: '55px',
+                      width: isMobile ? '45px' : '55px',
+                      height: isMobile ? '45px' : '55px',
                       filter: 'brightness(0) invert(1)'
                     }}
                   />
                 </div>
-                <div style={{ marginLeft: '40px' }}>
+                <div style={{ marginLeft: isMobile ? '20px' : '40px' }}>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '24px',
+                    fontSize: isMobile ? '18px' : '24px',
                     fontWeight: 'bold',
                     color: '#406A46',
                     marginBottom: '4px'
@@ -259,7 +262,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                   </div>
                   <div style={{
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: '20px',
+                    fontSize: isMobile ? '16px' : '20px',
                     fontWeight: 'bold',
                     color: '#51727C'
                   }}>
@@ -270,14 +273,14 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
             </div>
 
             {/* Right Column - Logo and Download */}
-            <div className="flex flex-col items-center gap-6" style={{ width: '50%', flex: 1 }}>
+            <div className="flex flex-col items-center gap-6" style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
               {/* Logo */}
-              <div style={{ marginBottom: '20px' }}>
+              <div style={{ marginBottom: isMobile ? '15px' : '20px' }}>
                 <img 
                   src="/assets/icons/Space4all.png" 
                   alt="Space4all Logo" 
                   style={{ 
-                    maxWidth: '300px',
+                    maxWidth: isMobile ? '250px' : '300px',
                     height: 'auto'
                   }}
                 />
@@ -340,11 +343,12 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
                 </button>
                 <div style={{
                   fontFamily: 'Comfortaa, sans-serif',
-                  fontSize: '14px',
+                  fontSize: isMobile ? '12px' : '14px',
                   fontWeight: 'bold',
                   color: '#406A46',
                   textAlign: 'center',
-                  marginTop: '8px'
+                  marginTop: '8px',
+                  padding: isMobile ? '0 10px' : '0'
                 }}>
                   {t('wetlandFreskPage.downloadNote')}
                 </div>

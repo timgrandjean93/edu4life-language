@@ -365,7 +365,7 @@ function App() {
   }, [currentPage, t]);
 
   return (
-    <GameContainer>
+    <GameContainer currentPage={currentPage}>
       <Header onNavigate={navigateTo} />
       <div style={{ 
         display: 'flex', 
