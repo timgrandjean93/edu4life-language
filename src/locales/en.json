@@ -512,6 +512,7 @@
     },
     "intro": {
       "description": "Explore how people rely on floodplains and aquatic ecosystems, and discover pathways to restore their benefits for communities and nature.",
+      "openPlatform": "Open platform",
       "explore": "Explore"
     },
     "activity1": {
@@ -867,7 +868,7 @@
       },
       "nutrients4": {
         "area1": "Pollution that comes from many scattered places, such as <span style=\"color: #CE7C0A;\">farmland, unpaved roads, or towns</span>.",
-        "area2": "Rainwater carries <span style=\"color: #CE7C0A;\">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers. ",
+        "area2": "Pollution that comes from one clear source, such as a pipe from a wastewater treatment plant or a factory.",
         "area3": "Phosphorus <span style=\"color: #CE7C0A;\">bound to soil particles</span> is washed into rivers during rain or floods.",
         "area4": "<span style=\"color: #CE7C0A;\">Fertilizer</span> phosphorus dissolves in water and slowly reaches rivers through the soil or overland flow. A smaller but steady diffuse source.",
         "area5": "Rainwater carries <span style=\"color: #CE7C0A;\">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers.",

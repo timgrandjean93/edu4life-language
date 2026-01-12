@@ -15,8 +15,8 @@ export const AVAILABLE_LANGUAGES: Language[] = [
   { code: 'sr', name: 'Srpski', flag: '🇷🇸' },
   { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
   { code: 'bs', name: 'Bosanski', flag: '🇧🇦' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   // Add more languages here as they become available:
-  // { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   // { code: 'fr', name: 'Français', flag: '🇫🇷' },
   // { code: 'es', name: 'Español', flag: '🇪🇸' },
   // { code: 'it', name: 'Italiano', flag: '🇮🇹' },

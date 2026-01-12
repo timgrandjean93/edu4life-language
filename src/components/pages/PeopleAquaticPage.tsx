@@ -895,7 +895,7 @@ export const PeopleAquaticPage: React.FC<PeopleAquaticPageProps> = ({
                           display: 'inline-block'
                         }}
                       >
-                        Open platform
+                        {t('peopleAquaticPage.intro.openPlatform')}
                       </a>
                     </div>
                     <div style={{

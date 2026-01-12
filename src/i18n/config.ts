@@ -8,6 +8,7 @@ import skTranslations from '../locales/sk.json';
 import srTranslations from '../locales/sr.json';
 import huTranslations from '../locales/hu.json';
 import bsTranslations from '../locales/bs.json';
+import deTranslations from '../locales/de.json';
 
 i18n
   .use(LanguageDetector) // Detect user language from browser
@@ -34,6 +35,9 @@ i18n
       },
       bs: {
         translation: bsTranslations,
+      },
+      de: {
+        translation: deTranslations,
       },
     },
     fallbackLng: 'en', // Use English if translation is missing

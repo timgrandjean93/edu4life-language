@@ -1,0 +1,974 @@
+{
+  "common": {
+  "accept": "Akzeptieren",
+  "reject": "Ablehnen",
+  "home": "Startseite",
+  "loading": "Wird geladen...",
+  "close": "Schließen",
+  "tryAgain": "Versuch’s noch einmal",
+  "learnAndTestButton": "LERNEN UND WISSEN TESTEN"
+  },
+  "header": {
+    "learningActivities": "Lernaktivitäten",
+    "externalTools": "Externe Werkzeuge",
+    "restore4Life": "Restore4Life",
+    "menuItems": {
+      "livingEnvironment": "Auen als Lebensraum",
+      "mapYourWetland": "Kartiere dein Feuchtgebiet",
+      "exploringHabitats": "Lebensräume erkunden",
+      "floodplainSpongeEffect": "Schwammwirkung der Auen",
+      "climateCarbon": "Klima & Kohlenstoff",
+      "purification": "Reinigung",
+      "treatmentWetlands": "Konstruierte Feuchtgebiete",
+      "aesthetics": "Ästhetik",
+      "sourcesOfInspiration": "Inspirationsquellen",
+      "peopleAndAquatic": "Menschen und aquatische Ökosysteme"
+    },
+    "externalToolsItems": {
+      "blueGreenSpace4All": "Blue-Green Space4All",
+      "wetlandFresk": "Wetland Fresk",
+      "wetland4Life": "Wetland4Life",
+      "exploreWetEduRepository": "Erkunde das Wet-Edu-Repository"
+    }
+  },
+  "cookieConsent": {
+    "message": "Diese Website verwendet Cookies zu Analysezwecken über Google Analytics. Sie können diese Cookies akzeptieren oder ablehnen.",
+    "readMore": "Mehr dazu in unserer Cookie-Richtlinie"
+  },
+  "homePage": {
+    "title": "LEBENDE AUEN:",
+    "subtitle": "LERNEN, ERKUNDEN, RESTORE",
+    "subtitle2": "4LIFE TOOLBOX",
+    "credits": "Mitwirkende"
+  },
+  "languageModal": {
+  "title": "Sprache auswählen",
+  "detecting": "Ihr Standort wird ermittelt...",
+  "suggested": "Wir haben erkannt, dass Sie aus",
+  "suggestedQuestion": "Möchten Sie verwenden",
+  "continueWith": "Weiter mit"
+  },
+  "pages": {
+    "titles": {
+      "home": "LEBENDE AUEN: LERNEN, ERKUNDEN, RESTORE4LIFE TOOLBOX",
+      "riparian": "Lebensräume erkunden",
+      "mapwetland": "Kartiere dein Feuchtgebiet",
+      "floodplain": "Auen als Lebensraum",
+      "floodcontrol": "Schwammwirkung der Auen",
+      "carbon": "Klima & Kohlenstoff",
+      "selfpurification": "Reinigung",
+      "art": "Inspirationsquellen",
+      "people": "Menschen und aquatische Ökosysteme",
+      "aesthetics": "Ästhetik",
+      "wetlandfresk": "Wetland Fresk",
+      "wetland4life": "Wetland4Life",
+      "wetlandEduRepo": "Wet-Edu-Repository",
+      "treatmentwetlands": "Konstruierte Feuchtgebiete",
+      "bluegreen": "Blue-Green Space 4 All",
+      "environmentalToolbox": "Wet-Edu-Repository",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "termsofuse": "Terms of Use"
+    }
+  },
+  "carbonPage": {
+    "title": {
+      "page0": "Klimaschutz und Kohlenstoffsenken",
+      "page1": "Kohlenstoffspeicher der Erde",
+      "page2": "Kohlenstoffkreislauf in terrestrischen Ökosystemen"
+    },
+    "intro": {
+      "description": "Lerne mehr über den Klimaschutz und entdecke, welche zentrale Rolle Kohlenstoffsenken bei der Abschwächung des Klimawandels spielen.",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "openPlatform": "Plattform öffnen",
+      "opensNewTab": "Öffnet neuen Tab: Zenodo",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "explore": "Erkunde"
+    },
+    "page1": {
+      "title": "Ordne die Ökosystem-Piktogramme zu",
+      "instruction1": "Sieh dir die Piktogramme oben im Diagramm an – jedes steht für ein anderes Ökosystem.",
+      "instruction2": "Deine Aufgabe:",
+      "instruction3": "Ziehe die passenden Bezeichnungen unten im Diagramm zu den Fragezeichen.",
+      "hint": "Hinweis: Achte darauf, was jedes Ökosystem einzigartig macht, Bäume, Wasser, Gras oder typische Landschaftsformen.",
+      "checkAnswers": "Antworten überprüfen",
+      "clickToRemove": "Klicken, um das Label zu entfernen",
+      "correct": "Richtig",
+      "incorrect": "Falsch",
+      "missed": "Übersehen"
+    },
+    "page2": {
+      "instruction": "Fahre mit der Maus über das Bild, um den Kohlenstoffbeitrag der Feuchtgebiete zu sehen.",
+      "infoText": "Feuchtgebiete bedecken zwar nur 5–6 % der Landfläche der Erde, speichern aber 20–30 % des gesamten im Boden enthaltenen organischen Kohlenstoffs.",
+      "hoverAreas": {
+        "anthropogenic-release": "Anthropogene Kohlenstofffreisetzung durch Entwässerung oder andere vom Menschen verursachte Degradation von Feuchtgebieten. Der gespeicherte Kohlenstoff wird dadurch oxidiert und als CO₂ freigesetzt.",
+        "carbon-sequestration": "Die Kohlenstoffbindung erfolgt durch Photosynthese. Dabei entziehen Pflanzen der Luft CO₂ und bilden Biomasse.",
+        "natural-release": "Natürliche Kohlenstofffreisetzung: durch Respiration und den Abbau von Biomasse.",
+        "carbon-storage": "Kohlenstoffspeicherung durch in Boden und Sedimenten vergrabene Biomasse."
+      },
+      "modal": {
+        "title": "Wusstest du schon …?",
+        "fact": "Die Böden der Erde stellen einen gewaltigen Kohlenstoffspeicher dar: Sie speichern dreimal so viel Kohlenstoff wie die Atmosphäre und viermal so viel wie alle Pflanzen und Tiere zusammen.",
+        "question": "Welches der in der Grafik dargestellten Ökosysteme speichert am meisten Kohlenstoff?",
+        "selectEcosystem": "Ökosystem auswählen...",
+        "submitAnswer": "Antwort senden",
+        "nextPage": "Nächste Seite",
+        "feedback": {
+          "correct": "Richtig! Feuchtgebiete speichern am meisten Kohlenstoff.",
+          "incorrect": "Falsch. Die richtige Antwort ist: Feuchtgebiete.",
+          "explanation": "Feuchtgebiete gehören zu den effektivsten Kohlenstoffsenken der Erde und speichern riesige Mengen an Kohlenstoff in ihren Böden und ihrer Vegetation."
+        }
+      }
+    },
+    "page3": {
+      "title": "Lückentext",
+      "instruction1": "Unser Planet verfügt über eine erstaunliche Fähigkeit, Kohlenstoff über Jahrhunderte im Boden zu speichern!In der Abbildung wurden einige Buchstaben und Silben aus den folgenden Sätzen versteckt.",
+      "instruction2": "Kannst du sie finden und den Text vervollständigen?",
+      "instruction3": "Klicke auf einen Buchstaben im Bild und anschließend auf die entsprechende Lücke im Text, um den Buchstaben dort einzufügen. Klicke auf einen bereits eingefügten Buchstaben, um ihn wieder zu entfernen.",
+      "checkAnswers": "Antworten überprüfen",
+      "puzzleText": {
+        "part1": "Ein Teil des ",
+        "part2": "lenstoffs bleibt sehr lange im ",
+        "part3": "den gebunden – manchmal H",
+        "part4": "nderte oder sogar ",
+        "part5": "sende von ",
+        "part6": "ren! ",
+        "part7": "Wenn wir den Boden un",
+        "part8": "stört lassen, bleibt dieser Kohlenstoff im Boden ge",
+        "part9": "eichert, anstatt in die Atmo",
+        "part10": "re freigesetzt zu werden. Bl",
+        "part11": "uer Kohlenstoff, der in Küsten- und Feuchtgebieten gespeichert ist, trägt ebenfalls dazu bei, den Kli",
+        "part12": "wan",
+        "part13": " ",
+        "part14": "zu verlangsamen."
+      },
+      "correctAnswers": {
+        "blank1": "Koh",
+        "blank2": "Bo",
+        "blank3": "u",
+        "blank4": "Tau",
+        "blank5": "Jah",
+        "blank6": "ge",
+        "blank7": "sp",
+        "blank8": "sphä",
+        "blank9": "a",
+        "blank10": "ma",
+        "blank11": "del"
+      },
+      "blankPositions": {
+        "blank1": "afterPart1",
+        "blank2": "afterPart2",
+        "blank3": "afterPart3",
+        "blank4": "afterPart4",
+        "blank5": "afterPart5",
+        "blank6": "afterPart7",
+        "blank7": "afterPart8",
+        "blank8": "afterPart9",
+        "blank9": "afterPart10",
+        "blank10": "afterPart11",
+        "blank11": "afterPart12"
+      },
+      "hiddenLetters": {
+        "letter1": {
+          "text": "Koh",
+          "x": 15,
+          "y": 20
+        },
+        "letter2": {
+          "text": "Bo",
+          "x": 20,
+          "y": 60
+        },
+        "letter3": {
+          "text": "u",
+          "x": 35,
+          "y": 15
+        },
+        "letter4": {
+          "text": "Tau",
+          "x": 45,
+          "y": 25
+        },
+        "letter5": {
+          "text": "Jah",
+          "x": 55,
+          "y": 30
+        },
+        "letter6": {
+          "text": "ge",
+          "x": 25,
+          "y": 50
+        },
+        "letter7": {
+          "text": "sp",
+          "x": 50,
+          "y": 60
+        },
+        "letter8": {
+          "text": "sphä",
+          "x": 65,
+          "y": 35
+        },
+        "letter9": {
+          "text": "a",
+          "x": 75,
+          "y": 20
+        },
+        "letter10": {
+          "text": "ma",
+          "x": 70,
+          "y": 70
+        },
+        "letter11": {
+          "text": "del",
+          "x": 80,
+          "y": 25
+        }
+      }
+    },
+    "modal": {
+      "title": "Download-Optionen",
+      "carbonSequestrationSoils": "Kohlenstoffbindung in Böden",
+      "carbonSequestrationFloodplains": "Kohlenstoffbindung in Auenwäldern",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    },
+    "ecosystemLabels": {
+      "tropicalForests": "Tropische Wälder",
+      "temperateForests": "Gemäßigte Wälder",
+      "borealForests": "Boreale Wälder",
+      "tropicalSavannas": "Tropische Savannen",
+      "temperateGrasslands": "Gemäßigte Graslandschaft",
+      "desertsSemiDeserts": "Wüsten und Halbwüsten",
+      "tundra": "Tundra",
+      "wetlands": "Feuchtgebiete",
+      "croplands": "Ackerland"
+    },
+    "nextTopic": "NÄCHSTES THEMA"
+  },
+  "floodplainPage": {
+    "title": "AUEN ALS LEBENSRAUM",
+    "intro": {
+      "question": "Kannst du den Unterschied zwischen den Abbildungen erkennen?",
+      "rainLabel": "Aue während eines Hochwasserereignisses (Regenzeit)",
+      "dryLabel": "Aue unter trockenen Bedingungen",
+      "description": "Lerne mehr über Auen als Lebensraum und entdecke die vielfältigen Habitate und die Tierwelt, die in diesen einzigartigen Ökosystemen gedeihen.",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "openPlatform": "Plattform öffnen",
+      "opensNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "explore": "Erkunde"
+    },
+    "page2": {
+      "title": "Auen in der Regenzeit"
+    },
+    "page3": {
+      "title": "Auen in der Trockenzeit"
+    },
+    "page4": {
+      "sliderTitle": "Schiebe den Regler, um die Unterschiede zu sehen"
+    },
+    "modal": {
+      "title": "Download-Optionen",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "basedOn5E": "Basierend auf der 5E-Lernmethode und wissenschaftlicher Forschung",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    },
+    "nextTopic": "NÄCHSTES THEMA"
+  },
+  "mapWetlandPage": {
+    "title": "Kartiere dein Feuchtgebiet",
+    "intro": {
+      "description": "Erfahre mehr über die Kartierung von Feuchtgebieten und erkunde die unterschiedlichen Habitate und Strukturelemente, die aus der Luft sichtbar werden.",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "openPlatform": "Plattform öffnen",
+      "opensNewTab": "Öffnet neuen Tab: Zenodo",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "explore": "Erkunde"
+    },
+    "challenge": {
+      "title": "Aufgabe aus der Vogelperspektive!",
+      "intro": "Hoch über der Aue sieht unser Seeadlerfreund den gewundenen Fluss, versteckte Seen, Sümpfe, Wälder, einen Deich und Dörfer. Kannst du sie auch entdecken? Ordne jedem Element die richtige Bezeichnung zu und erwecke es mit Farbe zum Leben! Jedes Mal, wenn du den richtigen Ort erkennst, erscheint die Landschaft in ihren echten Farben – genau so, wie der Adler sie aus der Luft sieht."
+    },
+    "quizItems": {
+      "WATERCOURSE": "Wasserlauf",
+      "SIDE_ARMS": "Nebenarme",
+      "DRAINAGE_CHANNELS": "Entwässerungsrinnen",
+      "FLOODPLAIN_LAKE": "Auensee",
+      "ISLANDS_MARSH": "Inseln (Marschland)",
+      "FLOODPLAIN_FOREST": "Auwald",
+      "PASTURE_WITH_ANIMALS": "Weide mit Nutztieren",
+      "GRASSLAND": "Grünland",
+      "PROTECTIVE_DIKE": "Schutzdeich",
+      "HUMAN_SETTLEMENT": "Siedlung",
+      "AGRICULTURAL_FIELDS": "Landwirtschaftliche Flächen"
+    },
+    "quiz": {
+      "letterPlaceholder": "Buchstabe?",
+      "congratulations": "Glückwunsch!",
+      "successMessage": "Du hast alle Feuchtgebietselemente erfolgreich kartiert!"
+    },
+    "modal": {
+      "title": "Download-Optionen",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "basedOn5E": "Basierend auf der 5E-Lernmethode und wissenschaftlicher Forschung",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    },
+    "nextTopic": "NÄCHSTES THEMA"
+  },
+  "riparianPage": {
+    "title": {
+      "page0": "Den Lebensraum eines Fließgewässers erkunden",
+      "page1": "Landnutzung entlang von Flüssen",
+      "page2": "Lebensräume im Fließgewässer: Rausche, Kolk und Gleite"
+    },
+    "intro": {
+      "description": "Erfahre mehr über die Erkundung von Lebensräumen und entdecke die vielfältigen Uferökosysteme und Landnutzungsformen an Flüssen.",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "openPlatform": "Plattform öffnen",
+      "opensNewTab": "Öffnet neuen Tab: Zenodo",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "explore": "Erkunde"
+    },
+    "page1": {
+      "introText": "Seit sehr langer Zeit werden Flüsse und ihre Umgebung von Menschen für unterschiedlichste Aktivitäten genutzt, darunter Landwirtschaft,Siedlungsbau, Fischerei, Transport und die Versorgung mit Wasser.Diese Formen der Landnutzung zeigen, wie Menschen mit Flüssen interagieren und wie sie die Flusslandschaften prägen.",
+      "instruction": "Sieh dir die beiden Abbildungen genau an und entscheide, welche ",
+      "landUseActivities": "Landnutzungsformen",
+      "instructionEnd": "du dort erkennen kannst.",
+      "quizQuestion": "Klicke in der Liste auf die Aktivitäten, die du auf den Bildern sehen kannst:",
+      "correct": "Richtig",
+      "incorrect": "Falsch",
+      "missed": "Übersehen"
+    },
+    "page2": {
+      "instruction": "Lies die Definitionen der Begriffe ",
+      "and": "und",
+      "instructionEnd": "unten durch und ziehe dann jedes Label an die richtige Stelle in den beiden Abbildungen.",
+      "correct": "Richtig:",
+      "labels": {
+        "POOL": "KOLK",
+        "RIFFLE": "RAUSCHE",
+        "RUN": "GLEITE"
+      },
+      "definitions": {
+        "POOL": "Ein tieferer, langsamer fließender Abschnitt eines Baches, in dem sich Wasser sammelt. Kolke sind ruhig, still und bieten Fischen Schutz.",
+        "RIFFLE": "Ein flacher, schnell fließender Abschnitt eines Baches mit kleinen Wellen und sichtbaren Steinen. Rauschen wirken rau und schäumend und sind reich an Sauerstoff, was sie zu idealen Lebensräumen für Insekten und Fische macht.",
+        "RUN": "Ein glatter, mäßig tiefer Abschnitt eines Baches, in dem das Wasser gleichmäßig fließt zwischen einer Rausche und einem Kolk."
+      }
+    },
+    "quizOptions": {
+      "human-settlements": "Siedlungen",
+      "roads-bridges": "Straßen und Brücken",
+      "flood-protection": "Hochwasserschutzanlagen (Dämme, Uferbefestigungen und Brücken)",
+      "dams": "Staudämme & Wasserkraft",
+      "pastures": "Weiden und Viehweideflächen",
+      "irrigation": "Bewässerungskanäle und -systeme",
+      "factory": "Fabrik oder Industrie",
+      "mining": "Sand- und Kiesabbau",
+      "cycling": "Radfahren",
+      "riparian-vegetation": "Ufervegetation (Bäume und Sträucher entlang der Flussufer)",
+      "floodplains": "Auen, Feuchtgebiete",
+      "agriculture": "Landwirtschaft",
+      "recreation": "Erholung (Camping, Schwimmen, Kanufahren usw.)"
+    },
+    "modal": {
+      "title": "Download-Optionen",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "basedOn5E": "Basierend auf der 5E-Lernmethode und wissenschaftlicher Forschung",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    }
+  },
+  "floodControlPage": {
+    "title": {
+      "page0": "Auen wirken wie ein Schwamm",
+      "page1": "Hochwasserschutzfunktion - Auen wirken wie ein Schwamm"
+    },
+    "intro": {
+      "description": "Erfahre mehr über die Funktionen des Hochwasserschutzes und entdecke, wie Auen wie natürliche Schwämme wirken, indem sie Wasser aufnehmen und speichern.",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "openPlatform": "Plattform öffnen",
+      "opensNewTab": "Öffnet neuen Tab: Zenodo",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "explore": "Erkunde"
+    },
+    "page1": {
+      "instruction": "Fahre mit der Maus über die verschiedenen Bereiche der Bilder, um interessante Fakten zu entdecken.",
+      "didYouKnow": "Wusstest du schon…?",
+      "hoverAreas": {
+        "left": {
+          "willows-banks": "Weiden stabilisieren die Ufer und erhöhen durch ihre weitreichenden Wurzelsysteme die Bodenporosität.",
+          "reed-vegetation": "Dichte Schilfvegetation verlangsamt den Wasserfluss, hält Sedimente zurück und verbessert die Wasserqualität.",
+          "native-grasses": "Heimische Gräser erhöhen die Bodenporosität und fördern die Wasserinfiltration.",
+          "leaf-litter": "Laubstreu auf dem Waldboden speichert Feuchtigkeit und verringert den Oberflächenabfluss.",
+          "deep-rooted-trees": "Tiefwurzelnde Bäume und Sträucher stabilisieren Ufer stärker als flachwurzelnde Gräser."
+        },
+        "right": {
+          "natural-filtration": "Der Fluss ist durch Deiche wie in ein enges Korsett gezwängt. Er kann sich nicht ausbreiten oder die Aue erreichen, sodass Hochwasser schnell ansteigt.",
+          "ecosystem-benefits": "Ohne Ufervegetation fehlt alles, was Abfluss verlangsamt oder Wasser aufnimmt. Der Boden reißt auf und verdichtet sich – Wasser kann nicht versickern.",
+          "groundwater-recharge": "Fehlende Ufervegetation führt zu schnellerem Abfluss, mehr Sedimente und Nährstoffe werden in den Fluss eingetragen und damit verschlechtert sich die Wasserqualität."
+        }
+      },
+      "didYouKnowContent": {
+        "left": {
+          "title": "Wusstest du schon…?",
+          "items": [
+            "Auensedimente speichern 3.000–4.000 m³ Wasser pro Hektar",
+            "Mäander erhöhen die Retentionszeit um 30–50 %",
+            "Auenvegetation speichert 30–40 % der gesamten Rückhaltekapazität",
+            "Naturnahe Auen können 20–30 Tage lang Hochwasser aufnehmen",
+            "Grundwasserneubildung: 500–1.000 m³ pro Hektar und Jahr"
+          ]
+        },
+        "right": {
+          "title": "Wusstest du schon…?",
+          "items": [
+            "Flussbegradigung reduziert die Retention um 60–80 %",
+            "Verlust der Vegetation verringert die Kapazität um 40–50 %",
+            "Bodenverdichtung reduziert das Speichervermögen um 30–40 %",
+            "Degradierte Auen halten nur noch 1.000–2.000 m³ pro Hektar zurück"
+          ]
+        }
+      }
+    },
+    "page2": {
+      "activityTitle": "Aktivität 1",
+      "instruction": "Kannst du die fehlenden Superkräfte einer Aue erkennen? Ordne die Zahlen der gesunden Aue (links) und der degradierten Aue (rechts) zu.",
+      "naturalFloodplain": "Gesunden Aue :",
+      "degradedFloodplain": "Degradierten Aue:",
+      "descriptions": {
+        "left": [
+          "Ein mäandrierender Fluss fließt in sanften Kurven, breitet Wasser über der Aue aus, verlangsamt den Abfluss und nährt das Land.",
+          "Uferpflanzen verlangsamen den Abfluss, halten Sedimente zurück und nehmen überschüssige Nährstoffe auf, dadurch bleibt das Wasser sauber.",
+          "Auenseen und Altarme speichern überschüssiges Hochwasser, fördern eine hohe Biodiversität und fördern die Grundwasserneubildung."
+        ],
+        "right": [
+          "Starkregen kann Überschwemmungen verursachen, Deiche brechen und nahegelegene Dörfer gefährden.",
+          "In einem begradigten, kanalisierten Fluss führt schnellerer Abfluss zu Ufererosion und einer Vertiefung des Flussbettes, wodurch nahegelegene Auen austrocknen.",
+          "Ohne Ufervegetation fehlt alles, was Abfluss verlangsamt oder Wasser aufnimmt."
+        ]
+      },
+      "correct": "Richtig",
+      "incorrect": "Falsch",
+      "missed": "Übersehen"
+    },
+    "page3": {
+      "title": "Lückentext-Aufgabe",
+      "intro1": "Auen sind natürliche Pufferzonen!",
+      "intro2": "Wie hilft die Aue bei starken Regenfällen?",
+      "intro3": "Was passiert mit dem Hochwasser, wenn ein Fluss genügend Raum hat, sich auszubreiten?",
+      "completeSentence": "Vervollständige den Satz:",
+      "sentence1": "Auen wirken wie ein natürlicher ",
+      "sentence1End": ", ",
+      "sentence2": " die Hochwasser zurückhalten und das ",
+      "sentence2End": "-Risiko flussabwärts reduzieren.",
+      "placeholder1": "S___m",
+      "placeholder2": "H___r",
+      "correctAnswers": {
+        "answer1": "Schwamm",
+        "answer2": "Hochwasser"
+      },
+      "feedback": {
+        "correctSponge": "Richtig: Schwamm",
+        "incorrectSponge": "Falsch (Lösung: Schwamm)",
+        "correctFlooding": "Richtig: Hochwasser",
+        "incorrectFlooding": "Falsch (Lösung: Hochwasser)"
+      }
+    },
+    "modal": {
+      "title": "Download-Optionen",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "basedOn5E": "Basierend auf der 5E-Lernmethode und wissenschaftlicher Forschung",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    },
+    "nextTopic": "NÄCHSTES THEMA"
+  },
+  "peopleAquaticPage": {
+    "title": "Menschen und aquatische Ökosysteme",
+    "subtitle": {
+      "page1": "Natürliche Auen",
+      "page2": "Genutzte und veränderte Auen",
+      "page3": "Wiederherstellung von Auen als naturbasierte Lösung"
+    },
+    "intro": {
+      "description": "Erfahre, wie Menschen von Auen und aquatischen Ökosystemen abhängen, und entdecke Wege, ihre Vorteile für Gemeinschaften und die Natur wiederherzustellen.",
+      "openPlatform": "Plattform öffnen",
+      "explore": "Erkunde"
+    },
+    "activity1": {
+      "title": "Aktivität 1",
+      "description": "Schau genau hin – so haben menschliche Aktivitäten die Donau und ihre Auen verändert. Deiche, Landwirtschaft, Schifffahrt und weitere Belastungen haben die Landschaft verändert.",
+      "question": "Kannst du mir helfen, indem du jede Belastung der richtigen Stelle im Bild zuordnest?",
+      "instruction": "Die Menschen rodeten Wälder, wandelten die Auen in Weiden und Ackerflächen um und errichteten Dörfer und später Städte nahe den Ufern der Donau. Um sich vor Hochwasser zu schützen, bauten sie Deiche. Zudem wurde die Donau als Schifffahrtsweg erschlossen und zur Erzeugung von Wasserkraft genutzt. In der Folge verlor der Fluss viele seiner natürlichen Eigenschaften: Das Gleichgewicht der Sedimente im Flussbett wurde gestört und der Fluss wurde weitgehend von seiner Aue abgeschnitten. Nur wenige Überreste der ursprünglichen Auen blieben erhalten, während viele typische Tier- und Pflanzenarten verschwanden."
+    },
+    "activity2": {
+      "title": "Aktivität 2",
+      "description": "Um gesellschaftliche Herausforderungen mit diesen naturbasierten Lösungen zu bewältigen, kannst du nun geeignete Renaturierungsmaßnahmen erkunden: Jedes Bild zeigt eine Möglichkeit, wie Menschen und Natur zusammenarbeiten können.",
+      "question": "Unten findest du eine Liste mit sechs Maßnahmen. Kannst du jede Maßnahme dem entsprechenden Bild zuordnen? Ziehe die Maßnahmen aus der Liste per Drag & Drop auf das passende Bild.",
+      "instruction": "Schritt für Schritt werden Teile der Donauauen wieder mit dem Fluss verbunden. Alte Nebenarme werden wieder angebunden, Wälder und Feuchtgebiete werden wiederhergestellt, und natürliche Überflutungen werden dort zugelassen, wo immer es möglich ist. Diese Maßnahmen bringen Lebensräume für Fische, Vögel und Pflanzen zurück und helfen zugleich den Menschen – durch Hochwasserrückhalt, verbesserte Wasserqualität, Wasserversorgung während Dürren sicherstellen und Erholungsräume schaffen. Diese Renaturierungsmaßnahmen werden als naturbasierte Lösungen bezeichnet."
+    },
+    "activity3": {
+      "title": "Aktivität 3",
+      "description": "Diese Radardiagramme zeigen, wie sich die Ökosystemleistungen der Donau in drei unterschiedlichen Szenarien verändern: natürliche Auen, veränderte Auen unter menschlichem Einfluss und renaturierte Auen mit naturbasierten Lösungen. Kannst du herausfinden, warum die Leistungen so unterschiedlich ausfallen?",
+      "column1": {
+        "title": "Ursprünglich natürliche Aue",
+        "question": "Wenn du dieses Radardiagramm betrachtest, warum sind fast alle Ökosystemleistungen sehr hoch, während die Landwirtschaft gering ausgeprägt ist?",
+        "options": {
+          "A": "Weil die Böden in der Aue zu nährstoffarm waren und dort nichts wachsen konnte.",
+          "B": "Weil Landwirtschaft in dieser Zeit von den Herrschern der Donauregion verboten war.",
+          "C": "Weil die Aue noch natürlich war und viele Vorteile für Menschen und Tiere bot, aber auf überfluteten Flächen keine Landwirtschaft betrieben werden konnte."
+        }
+      },
+      "column2": {
+        "title": "Veränderte Aue",
+        "question": "Warum ist die landwirtschaftliche Produktion in diesem Zustand stark ausgeprägt, während die meisten anderen Leistungen gering sind?",
+        "options": {
+          "A": "Weil sich die natürlichen Wälder und Feuchtgebiete der Donau ausgedehnt haben und gleichzeitig Landwirtschaft und Holzproduktion zunahmen.",
+          "B": "Weil Deiche die Aue vom Fluss trennen, schützen sie die Landwirtschaft vor Überflutungen, zerstören aber viele natürliche Lebensräume und ihre Leistungen.",
+          "C": "Weil niemand in der Nähe der Donau lebte und daher nur wenige Leistungen genutzt wurden."
+        }
+      },
+      "column3": {
+        "title": "Wiederhergestellte Aue",
+        "question": "Warum sind die Ökosystemleistungen in diesem Radardiagramme ausgewogener als in den beiden anderen?",
+        "options": {
+          "A": "Weil naturbasierte Lösungen Nebenarme, Feuchtgebiete und Wälder wiederherstellen und so vielfältige Vorteile für Natur und Menschen schaffen.",
+          "B": "Weil die Menschen dem Fluss erlaubten, wieder natürlich zu überfluten, und alle Belastungen beseitigten.",
+          "C": "Weil die Donau durch Deiche vollständig von ihren Auen abgeschnitten wurde."
+        }
+      },
+      "correctAnswer": "Richtige Antwort:"
+    },
+    "pressureLabels": {
+      "cutting-meanders": {
+        "label": "Mäanderdurchstich",
+        "description": "Begradigung des Flusses (der Fluss wird verkürzt und begradigt, anstatt in Mäandern zu fließen)."
+      },
+      "building-dikes": {
+        "label": "Bau von Deichen ",
+        "description": "Hochwasserschutzdeiche (aufgeschüttete Dämme entlang des Flusses, die das Wasser im Hauptgerinne halten und verhindern, dass es die Aue erreicht)."
+      },
+      "channellizing-rivers": {
+        "label": "Kanalisierung von Flüssen ",
+        "description": "Kanalisierung des Flusses (Sicherung der Ufer begradigter Flüsse gegen Ufererosion durch Abdeckung der Ufer mit Steinen oder den Bau von Buhnen [kleine querstehende Steinbauwerke], sodass der Fluss sein Bett nicht mehr verändern kann)."
+      },
+      "draining-floodplains": {
+        "label": "Entwässerung von Auen ",
+        "description": "Trockenlegen von Feuchtgebieten (Ausleiten von Wasser aus Feuchtgebieten, um Flächen für Weiden, Ackerland und Siedlungen nutzbar zu machen)."
+      },
+      "urbanization": {
+        "label": "Urbanisierung ",
+        "description": "Bau von Siedlungen, Straßen und Städten, begleitet von Abwassereinleitungen in den Fluss."
+      },
+      "agriculture-pesticides": {
+        "label": "Landwirtschaft mit Einsatz von Pestiziden, Insektiziden usw. ",
+        "description": "Einsatz von Chemikalien in der Landwirtschaft zur Bekämpfung von Unkräutern und Insekten."
+      },
+      "cutting-forests": {
+        "label": "Abholzung von Wäldern ",
+        "description": "Entwaldung (Entfernung von Bäumen auf großen Flächen)."
+      },
+      "industrialization": {
+        "label": "Industrialisierung",
+        "description": "Bau von Fabriken und Industrieanlagen, häufig verbunden mit Luft-, Boden- oder Wasserverschmutzung."
+      },
+      "dams-hydroelectric": {
+        "label": "Staudämme, Wasserkraftwerke usw. ",
+        "description": "Bau von Flussbarrieren (Querbauwerken aus Beton, hindern Wasser, Sedimente und Fische daran, sich frei zu bewegen)."
+      },
+      "invasive-species": {
+        "label": "Invasive Arten ",
+        "description": "Gebietsfremde Arten (Pflanzen oder Tiere aus anderen Kontinenten, die sich stark ausbreiten und durch ihre Dominanz Probleme verursachen)."
+      },
+      "navigation": {
+        "label": "Schifffahrt",
+        "description": "Schiffe und Kanäle (Vertiefung und Regulierung von Flüssen, damit sie von großen Schiffen befahren werden können)."
+      },
+      "climate-change": {
+        "label": "Klimawandel",
+        "description": "Globale Erwärmung (vom Menschen verursachte Klimaänderungen mit häufigeren Extremwetterereignissen)."
+      }
+    },
+    "restorationMeasures": {
+      "restoration-sidearms": {
+        "label": "Renaturierung von Flussnebenarmen ",
+        "description": "Wiederanbindung alter Flussarme, damit dort wieder Wasser fließen kann und vielfältige Lebensräume für Fische, Vögel und Pflanzen entstehen."
+      },
+      "dike-relocation": {
+        "label": "Deichrückverlegung für mehr Raum ",
+        "description": "Verlegung von Deichen weiter weg vom Fluss, um mehr Raum für den Fluss und Auwälder zu schaffen, die Hochwasser zurückhalten können."
+      },
+      "buffer-strips": {
+        "label": "Gewässerrandstreifen ",
+        "description": "Wiederherstellung schmaler Waldstreifen zwischen landwirtschaftlichen Flächen und Flüssen, die Nährstoffe filtern und Gewässer vor Verschmutzung schützen."
+      },
+      "fish-ramps": {
+        "label": "Fischtreppen oder Rückbau von Barrieren",
+        "description": "Unterstützung der Fischwanderung durch den Rückbau von Barrieren oder deren Umgestaltung in Rampen aus Steinen, mit die Fische wieder flussaufwärts schwimmen können."
+      },
+      "bypass-channels": {
+        "label": "Umgehungsgewässer",
+        "description": "Schaffung künstlicher Seitenkanäle um Barrieren mit sanften Hängen, in denen Fische und andere Tiere sich bewegen oder sogar leben können."
+      },
+      "native-species": {
+        "label": "Förderung heimischer Arten ",
+        "description": "Renaturierung natürlicher Lebensraumbedingungen zur Förderung heimischer Pflanzen und Tiere, wodurch sich invasive Arten schwerer ausbreiten können."
+      }
+    },
+    "ui": {
+      "results": "Ergebnisse",
+      "correct": "Richtig",
+      "incorrect": "Falsch",
+      "correctTooltip": "Richting!",
+      "incorrectTooltip": "Falsch",
+     "clickToRemove": "Klicken, um zu entfernen und zur Liste zurückzukehren",
+    "checkAnswers": "Antworten überprüfen",
+    "tryAgain": "Versuch’s noch einmal"
+    },
+    "modal": {
+      "title": "Download-Optionen",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "basedOn5E": "Basierend auf der 5E-Lernmethode und wissenschaftlicher Forschung",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    }
+  },
+  "artPage": {
+    "title": "Auen als Inspirationsquelle",
+    "intro": {
+      "description": "Entdecke, wie Überschwemmungsgebiete Menschen zu Geschichten, Handwerk und Kreativität inspirieren. Erforsche die Kunst naturbasierter Materialien, bevor du deine eigenen kleinen Kunstwerke gestaltest.",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "openPlatform": "Plattform öffnen",
+      "opensNewTab": "Öffnet neuen Tab: Zenodo",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "explore": "Erkunde"
+    },
+    "instruction": {
+      "intro1": "Flüsse und ihre Auen sind Lebensraum für zahlreiche Tiere und Pflanzen, zugleich sind sie lebendige Landschaften voller Geschichten, die Menschen seit Jahrhunderten inspirieren. Vom Flechten von Körben aus Weidenzweigen bis hin zum Erschaffen von Liedern, Legenden und Zeichnungen verbinden Auen Natur und Kultur.",
+      "intro2": "Jetzt bist du an der Reihe – hab Spaß dabei, mit natürlichen Elementen deine eigenen Bilder und Geschichten zu gestalten. Lass dich am Fluss von seinen Farben, Formen und Klängen inspirieren und entdecke die Freude, deine eigene Geschichte in der Auenlandschaft zu erschaffen.",
+      "instruction": "Stell dir vor, du bist draußen in der Natur und sammelst Blätter, Zweige oder Federn, um deine eigenen Figuren zu gestalten. Kannst du diesen Umrissen Leben einhauchen? Ziehe die natürlichen Elemente in die Formen, bis sie mit Gestalt und Farbe gefüllt sind.",
+      "page3": {
+        "text1": "Einige Teile der Landschaft fehlen.",
+        "text2": "Ziehe die von dir gestalteten Figuren an die richtigen Stellen, um die Auenlandschaft zu vervollständigen.",
+        "trySnailFirst": "Versuche zuerst die Schnecke zu platzieren."
+      }
+    },
+    "nextTopic": "NÄCHSTES THEMA",
+    "modal": {
+      "title": "Download-Optionen",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "basedOn5E": "Basierend auf der 5E-Lernmethode und wissenschaftlicher Forschung",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    }
+  },
+  "aestheticsPage": {
+    "title": {
+      "page0": "Auenästhetik versus Auenfunktionen",
+      "page1": "Naturgeschenke der Donau und ihrer Auen",
+      "page2": "Entdecke die verborgenen Leistungen der Aue!"
+    },
+    "intro": {
+      "description": "Erfahre mehr über Ästhetik und entdecke die verborgenen Leistungen und kulturellen Werte, die Auen zu bieten haben.",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "openPlatform": "Plattform öffnen",
+      "opensNewTab": "Öffnet neuen Tab: Zenodo",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "explore": "Erkunde"
+    },
+    "page1": {
+      "description": "Die Auen und Feuchtgebiete der Donau bieten uns viele Vorteile, die als Ökosystemleistungen bezeichnet werden. Diese treten in unterschiedlichen Formen auf:",
+      "provisioningServices": "Versorgende Leistungen",
+      "provisioningDescription": "Ressourcen, die wir direkt nutzen können, wie Fisch, sauberes Wasser oder Holz.",
+      "regulatingServices": "Regulative Leistungen ",
+      "regulatingDescription": "Prozesse, die die Natur im Gleichgewicht halten, wie Hochwasserrückhalt, Wasserreinigung oder Kohlenstoffspeicherung.",
+      "culturalServices": "Kulturelle Leistungen",
+      "culturalDescription": "Vorteile, die unser Leben bereichern, wie Erholung, Lernen und kulturelle Traditionen.",
+      "activityQuestion": "Kannst du die Leistungen der Natur den richtigen Gruppen zuordnen? ",
+      "activityInstruction": "Bitte ziehe jedes Symbol in das entsprechend beschriftete Feld auf der rechten Seite.",
+      "results": "Ergebnisse",
+      "correct": "Richtig",
+      "incorrect": "Falsch",
+      "correctTooltip": "Richtig!",
+      "incorrectTooltip": "Falsch",
+      "clickToRemove": "Klicken, um zu entfernen"
+    },
+    "page2": {
+      "instruction": "Die Donauauen sind voller verborgener Schätze – doch manche sind schwer zu erkennen!\nNutze die Lupe, um die Landschaft zu erkunden und die Symbole der Ökosystemleistungen zu entdecken.\nWenn du mit der Lupe über ein Symbol fährst, verschwindet es aus der Abbildung und erscheint bei der entsprechenden Beschriftung am Rand.\n\nGemeinsam zeigen diese Leistungen, wie die Natur unser tägliches Leben unterstützt."
+    },
+    "ecosystemServices": {
+      "tourism": "Tourismus",
+      "recreation": "Erholung und Fischerei ",
+      "landscape": "Landschaftsästhetik ",
+      "climate": "Landschaftsästhetik ",
+      "carbon": "Kohlenstoffbindung ",
+      "nutrient": "Nährstoffretention",
+      "flood": "Hochwasserregulierung ",
+      "habitat": "Bereitstellung von Lebensraum ",
+      "water": "Oberflächenwasser und Grundwasser ",
+      "fish": "Fisch",
+      "agriculture": "Landwirtschaft",
+      "timber": "Holz"
+    },
+    "modal": {
+      "title": "Download-Optionen",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "basedOn5E": "Basierend auf der 5E-Lernmethode und wissenschaftlicher Forschung",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    },
+    "nextTopic": "NÄCHSTES THEMA"
+  },
+  "treatmentWetlandsPage": {
+    "title": {
+      "main": "Konstruierte Feuchtgebiete",
+      "page1": "Der letzte Filter der Natur – das Konstruierte Feuchtgebiet",
+      "page2": "Schicht für Schicht – das Reinigungsteam der Natur",
+      "page3": "Lasst uns den Filter der Natur bauen – vertikal durchströmtes Feuchtgebiet",
+      "page4": "Kleine Helfer, große Wirkung!"
+    },
+    "intro": {
+      "description": "Erfahre mehr über Konstruierte Feuchtgebiete und entdecke, wie künstlich angelegte Feuchtgebiete Abwasser auf natürliche Weise filtern und reinigen.",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "openPlatform": "Plattform öffnen",
+      "opensNewTab": "Öffnet neuen Tab: Zenodo",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "explore": "Erkunde"
+    },
+    "characters": {
+      "rocky": {
+        "name": "Rocky die Entwässererin",
+        "label": "Rocky die Entwässererin",
+        "tooltip": {
+          "first": "Ich bin Rocky, die Entwässererin! Ich sammle das gereinigte Wasser und leite es sicher in den Fluss ab. Ich halte den Untergrund offen und gut belüftet, damit das gesamte System atmen kann.",
+          "second": "Funktion: Sammelt das gereinigte Wasser, gewährleistet die Belüftung von unten und leitet den Abfluss zum Auslass."
+        }
+      },
+      "reeda": {
+        "name": "Reeda der Durchflusswächter",
+        "label": "Reeda der Durchflusswächter",
+        "tooltip": {
+          "first": "Ich bin Reeda, der Durchflusswächter! Meine Wurzeln halten den Filter offen, sodass das Wasser leicht hindurchfließen kann. Ich schütze das Feuchtgebiet vor Hitze und Kälte, bringe etwas Sauerstoff ein und biete Mikroorganismen einen geeigneten Lebensraum.",
+          "second": "Funktion: Das Wurzelwachstum erhält die hydraulische Leitfähigkeit des Filters, sorgt für Isolierung gegen Hitze (Sommer) und Kälte (Winter), verlangsamt den Zufluss, unterstützt Mikroorganismen und nimmt einen Teil der Nährstoffe auf."
+        }
+      },
+      "gravelia": {
+        "name": "Gravelia die Verteilerin",
+        "label": "Gravelia die Verteilerin",
+        "tooltip": {
+          "first": "Hallo! Ich bin Gravelia, die Verteilerin! Ich verhindere, dass feine Partikel den Boden verstopfen, und verteile das Wasser gleichmäßig. Ich halte das Gleichgewicht zwischen Sandy oberhalb und Rocky unterhalb.",
+          "second": "Funktion: Sorgt für eine gleichmäßige Wasserverteilung, verhindert Verstopfung und schützt die darunterliegende Dränagezone."
+        }
+      },
+      "sandy": {
+        "name": "Sandy der Reiniger",
+        "label": "Sandy der Reiniger",
+        "tooltip": {
+          "first": "Ich bin Sandy, der Reiniger! Millionen von Mikroorganismen leben zwischen meinen Körnern – sie bauen Schadstoffe ab und wandeln Stickstoff und organische Substanz in harmlose Formen um. Ich übernehme hier den Großteil der eigentlichen Reinigungsarbeit!",
+          "second": "Funktion: Träger mikrobieller Biofilme, die den Großteil der biologischen Reinigung leisten (Nitrifikation, Abbau organischer Substanz, teilweise Phosphorbindung). Die feine Körnung verlangsamt den Wasserfluss und verlängert die Kontaktzeit → bessere Reinigungsleistung.",
+          "highlightText": "    "
+        }
+      }
+    },
+    "layerSlots": {
+      "plant": "Pflanzenschicht",
+      "filter": "Filterschicht",
+      "intermediate": "Zwischenschicht",
+      "drainage": "Dränageschicht"
+    },
+    "page2": {
+      "instruction": "Lerne die Figuren kennen, die die Schichten eines Konstruierten Feuchtgebietes repräsentieren – Reeda, Sandy, Gravelia und Rocky. Ziehe jede Schicht an die richtige Stelle im Behälter und überprüfe anschließend, ob du die Reihenfolge korrekt gewählt hast!",
+      "successMessage": "Großartige Arbeit! du hast das konstruierte Feuchtgebiet in der richtigen Reihenfolge aufgebaut.",
+      "errorMessage": "{{name}} gehört in eine andere Ebene. Versuche es an einer anderen Stelle!"
+    },
+    "page3": {
+      "instruction": "Schütte die Materialien aus den Eimern in der richtigen Reihenfolge ein, um dein vertikales konstruiertes Feuchtgebiet aufzubauen – zuerst Steine, dann Kies, Sand und schließlich werden die Schilfpflanzen eingesetzt. \n\n Beobachte, wie dein Feuchtgebiet bereit wird, das Wasser auf natürliche Weise zu reinigen!",
+      "dropBucket": "Eimer hier absetzen!"
+    },
+    "page4": {
+      "intro": "Jetzt, da das Feuchtgebiet gebaut ist, lernen wir seine verborgenen Akteure kennen – die winzigen Mikroorganismen, die den Großteil der Reinigungsarbeit übernehmen.",
+      "conclusion": "Dank Millionen winziger Helfer wie Nino, Dina, Phoc und Bacto verlässt das Wasser das konstruierte Feuchtgebiet sauber und klar – bereit, zu Danubius zurückzufließen und seine Reise erneut zu beginnen!",
+      "hoverZones": {
+        "zone1": "Ich wandle Ammonium in Nitrat um, wenn Sauerstoff vorhanden ist!",
+        "zone2": "Ich arbeite dort, wo kein Sauerstoff vorhanden ist – ich wandle Nitrat in Stickstoffgas um!",
+        "zone3": "Ich wandle Ammonium in Nitrat um, wenn Sauerstoff vorhanden ist!",
+        "zone4": "Ich schnappe mir Phosphor und halte ihn fest im Kies! "
+      }
+    },
+    "modal": {
+      "title": "Download-Optionen",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "basedOn5E": "Basierend auf der 5E-Lernmethode und wissenschaftlicher Forschung",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    },
+    "nextTopic": "NÄCHSTES THEMA"
+  },
+  "selfPurificationPage": {
+    "title": {
+      "main": "Selbstreinigungsfunktion",
+      "page1": "Stickstoffeinträge in Flüsse",
+      "page2": "Stickstoffretention in Flüssen",
+      "page3": "Zusätzliche Stickstoffretention durch Auen",
+      "page4": "Phosphoreintrag in Flüsse",
+      "page5": "Retention von Phosphor durch Flüsse",
+      "page6": "Zusätzliche Phosphorretention durch Auen"
+    },
+    "intro": {
+      "description": "Lerne mehr über Selbstreinigungsfunktionen und entdecke, wie Flüsse und Auen Wasser auf natürliche Weise filtern und reinigen.",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "openPlatform": "Plattform öffnen",
+      "opensNewTab": "Öffnet neuen Tab: Zenodo",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "explore": "Erkunde"
+    },
+    "hoverAreas": {
+      "nutrients1": {
+        "area1": "Verschmutzungen, die aus vielen verstreuten Bereichen stammen – etwa von landwirtschaftlichen Flächen, Straßen oder Siedlungen und durch Regen oder Abfluss in die Flüsse gelangen.",
+        "area2": "Verschmutzungen aus einem einzelnen, eindeutig identifizierbaren Ursprung, beispielsweise einem Rohr aus einer Fabrik oder einer Kläranlage.",
+        "area3": "Düngemittel und Gülle lösen sich im Regenwasser auf und gelangen über den Boden oder Felder in Flüsse. Dies ist die Hauptquelle für diffuse Stickstoffverschmutzung.",
+        "area4": "Regenwasser spült Stickstoffverbindungen von Straßen, Fahrzeugen und städtischen Grünflächen in die Kanalisation und Flüsse.",
+        "area5": "Auch gereinigtes Abwasser enthält noch Stickstoffverbindungen, die über Abflussrohre in Flüsse gelangen. In einigen Ländern entfernen moderne Anlagen den Großteil des Stickstoffs sehr effizient, in anderen ist die Behandlung weniger weit fortgeschritten – oder fehlt sogar.",
+        "area6": "Bestimmte Betriebe, beispielsweise aus der Lebensmittelverarbeitung, der chemischen Industrie oder der Fertigung, leiten stickstoffreiches Abwasser ein. In der Regel wird dies reguliert, lokal ist es dennoch von Bedeutung."
+      },
+      "nutrients2": {
+        "area1": "Partikelgebundener Stickstoff setzt sich in Sedimenten ab. Organische Stickstoffpartikel sinken nach unten und werden so für Mikroben, die zwischen Sandkörnern leben, zugänglich. Dies sind ruhige Zonen der Reinigung.",
+        "area2": "Nährstoffe → Biomasse (vorübergehend). Algen und Wasserpflanzen nehmen Nitrat und Ammonium auf. Der Stickstoff wird in ihrer Biomasse gespeichert, bis sie absterben und mineralisiert werden.",
+        "area3": "Ammonium → Nitrat (braucht Sauerstoff). In sauerstoffreichen Sedimenten wandeln winzige Mikroben Ammonium in Nitrat um – dies ist der erste Schritt der Reinigung.",
+        "area4": "Nitrat → Stickstoffgas (ohne Sauerstoff). In sauerstoffarmen Zonen wandeln Bakterien Nitrat in Stickstoffgas um – ein zentraler Prozess für den dauerhaften Stickstoffverlust."
+      },
+      "nutrients3": {
+        "area1": "Partikelgebundener Stickstoff setzt sich ab. Während Hochwasser werden suspendierte Partikel mit Stickstoff in der Aue zurückgehalten und auf der Oberfläche abgelagert.",
+        "area2": "Nährstoffe → Biomasse (temporär). Auenpflanzen nehmen während der Vegetationszeit Stickstoff auf und speichern ihn in Holz, Stängeln und Blättern.",
+        "area3": "Nitrat → Stickstoffgas (ohne Sauerstoff). In überfluteten Böden atmen Mikroben ohne Sauerstoff und verwandeln Nitrat in Stickstoffgas – ein dauerhafter Stickstoffentzug."
+      },
+      "nutrients4": {
+        "area1": "Verschmutzung, die von vielen verstreuten Orten stammt, wie z. B. Ackerland, unbefestigte Straßen oder Städte.",
+        "area5": "Regenwasser spült Staub, Reinigungsmittel und phosphorreiche Abfallpartikel in die Kanalisation und in Flüsse.",
+        "area3": "An Bodenpartikel gebundener Phosphor wird bei Regen oder Überschwemmungen in Flüsse gespült. ",
+        "area4": "Phosphor aus Düngemitteln löst sich im Wasser und gelangt langsam über den Boden oder als Oberflächenabfluss in die Flüsse. Dies ist eine kleinere, aber stetige diffuse Quelle.",
+        "area2": "Verschmutzung, die aus einer eindeutigen Quelle stammt, beispielsweise aus einem Rohr einer Kläranlage oder einer Fabrik.",
+        "area6": "Auch nach der Reinigung bleibt ein Teil des Phosphors im eingeleiteten Abwasser zurück. Viele Länder haben ihre Anlagen modernisiert, in anderen fehlen jedoch noch immer effiziente Systeme oder sogar jede Form der Abwasserbehandlung.",
+        "area7": "Bestimmte Betriebe leiten phosphorhaltiges Abwasser aus Reinigungs-, Verarbeitungs- oder Produktionsprozessen ein. Dies wird zwar in der Regel reguliert, ist aber in einigen Regionen dennoch von Bedeutung."
+      },
+      "nutrients5": {
+        "area1": "Gelöstes Phosphat haftet an Mineralien wie Eisen, Aluminium oder Kalk. Wenn Sauerstoff vorhanden ist, bleibt der Phosphor gebunden; fehlt Sauerstoff, kann er wieder ins Wasser freigesetzt werden.",
+        "area2": "Algen, Wasserpflanzen und Biofilme nehmen Phosphor auf und nutzen ihn für ihr Wachstum. Diese Retention ist vorübergehend – wenn die Organismen absterben oder zersetzt werden, wird der Phosphor wieder an das Wasser abgegeben.",
+        "area3": "An Boden und organische Partikel gebundener Phosphor sinkt auf das Flussbett. Dies geschieht vor allem in ruhigen Bereichen oder dort, wo die Strömung langsam ist – es entsteht ein temporärer „Phosphorspeicher“ im Sediment."
+      },
+      "nutrients6": {
+        "area1": "Wenn Hochwasser sich über das Land ausbreitet, verlangsamt es sich und lässt suspendierte, phosphorreiche Partikel absinken. Dies ist eine der effektivsten Möglichkeiten, wie Auen Phosphor zurückhalten und speichern.",
+        "area2": "Auenpflanzen nehmen während des Wachstums Phosphor auf und speichern ihn in Blättern und Wurzeln. Diese Retention ist vorübergehend, aber ein Teil des Phosphors bleibt nach dem Absterben der Pflanzen länger in der Streu und im Humus gebunden.",
+        "area3": "Gelöster Phosphor bindet sich an Eisen-, Aluminium- oder Kalziumverbindungen im Boden. Dadurch bleibt der Phosphor gebunden  – außer wenn der Sauerstoff ausgeht, dann kann er wieder freigesetzt werden."
+      }
+    },
+    "quizModal": {
+      "content": "Etwa 40 % des Phosphors, der in das Donaubecken gelangt, erreichen niemals die Flussmündung  – er setzt sich unterwegs in Stauseen und Auen ab und wird dort zurückgehalten."
+    },
+    "didYouKnow": {
+      "nitrogenRivers": {
+        "title": "Weißt du, wie viel Stickstoff Flüsse entfernen?",
+        "content": "Jedes Jahr binden Flüsse in Auengebieten auf natürliche Weise rund 25.000 Tonnen Stickstoff (5 % der Gesamtemissionen) - Das entspricht der Stickstoffmenge, die etwa 5,5 Millionen Menschen in einem Jahr ausscheiden würden! Das ist etwa die Bevölkerung der Slowakei. \n Im gesamten Donaubecken entfernen Flüsse sogar noch mehr: Etwa 30% des Stickstoffs, der in das Flusssystem gelangt, werden während des Transports im Flussbett zurückgehalten, hauptsächlich durch Denitrifikation. \n Dies zeigt, welche enorme Reinigungskraft Flüsse haben, noch bevor das Wasser die Auen erreicht."
+      },
+      "nitrogenFloodplains": {
+        "title": "Weißt du, wie viel Stickstoff die Donauauen entfernen?",
+        "content": "Die verbliebenen aktiven Auen im Donaueinzugsgebiet bieten einen zusätzlichen Reinigungsschritt und halten rund 7.700 Tonnen Stickstoff pro Jahr zurück – etwa so viel, wie 1,6 Millionen Menschen (die Bevölkerung Belgrads) in einem Jahr ausscheiden würden."
+      }
+    },
+    "modal": {
+      "title": "Download-Optionen",
+      "accessTeachingMaterials": "Zugriff auf Unterrichtsmaterialien",
+      "basedOn5E": "Basierend auf der 5E-Lernmethode und wissenschaftlicher Forschung",
+      "opensInNewTab": "(Öffnet neuen Tab: Zenodo)",
+      "exploreRepository": "Erkunde das Wet-Edu-Repository",
+      "exploreRelated": "Zugehörige Projekte und Ressourcen erkunden"
+    },
+    "nextTopic": "NÄCHSTES THEMA"
+  },
+  "wetlandFreskPage": {
+    "title": "Wetland Fresk",
+    "description": "Wetlands Fresk ist ein kollaborativer, interaktiver Workshop, der den Teilnehmenden dabei helfen soll, zu erkunden, welche Auswirkungen menschliche Aktivitäten auf Feuchtgebietsökosysteme (inklusive Watt, Salzwiesen und Lagunen) haben, welche Folgen diese Auswirkungen haben und welche möglichen Lösungen es gibt. Die Teilnehmenden arbeiten gemeinsam daran, mithilfe eines Kartensatzes eine „Karte” der Ursache-Wirkungs-Beziehungen zu erstellen. Anschließend reflektieren sie und ergreifen Maßnahmen.",
+    "duration": {
+      "label": "Dauer",
+      "value": "90-120 Minuten"
+    },
+    "numberOfCards": {
+      "label": "Anzahl der Karten",
+      "value": "24 Karten"
+    },
+    "teamPlayers": {
+      "label": "Teilnehmende pro Gruppe",
+      "value": "4 - 8"
+    },
+    "age": {
+      "label": "Alter",
+      "value": "ab ca. 12 Jahren"
+    },
+    "downloadNote": "Du wirst zu einer externen Datenbank weitergeleitet"
+  },
+  "wetland4LifePage": {
+    "title": "Wetland4Life",
+    "subtitle": "Entdecke das Potenzial von Feuchtgebieten mit einer App!",
+    "whatDoesItDo": {
+      "title": "Was kann Wetland4Life?",
+      "description": "Wetland4Life hilft dabei, die Kartierung von Feuchtgebieten für alle zugänglich zu machen. Die App bietet einfache, praxisnahe Möglichkeiten, den Zustand von Feuchtgebieten zu bewerten und Renaturierungspotenziale zu erkennen."
+    },
+    "howItWorks": {
+      "title": "So funktioniert es",
+      "description": "Einfache Schritt-für-Schritt-Fragen führen dich durch den Kartierungsprozess. Die Bewertung eines Standorts dauert etwa ",
+      "time": "5 Minuten",
+      "timeEnd": " – schnell, übersichtlich und wissenschaftlich fundiert."
+    },
+    "academy": {
+      "title": "Möchtest du mehr erfahren?",
+      "description": "Die App enthält eine integrierte Lernplattform mit Materialien zu Feuchtgebieten – etwa zu ihren Funktionen, Gefährdungen und Renaturierungsmöglichkeiten. Egal, ob du gerade erst anfängst oder schon Profi bist, es gibt immer Neues zu entdecken."
+    },
+    "callToAction": "Da Feuchtgebiete für unsere Sicherheit, unsere Umwelt und unsere Zukunft von entscheidender Bedeutung sind, ist es wichtig, ihren aktuellen Zustand zu verstehen – und zu erkennen, wo wir Verlorenes wiederherstellen können. Dafür brauchen wir dich!",
+    "visitButton": "Available mid-January",
+    "externalLinkNote": "Dieser Link führt zu einer externen, für Mobilgeräte optimierten Website. Auf dem Desktop kann die Darstellung eingeschränkt sein.",
+    "websiteUrl": "https://wetland.restore4life-platform.eu"
+  },
+  "blueGreenSpace4AllPage": {
+    "title": "Blue-Green Space4All",
+    "subtitle": "Reise mit Otis dem Otter entlang der Donau und meistere spannende Herausforderungen!",
+    "description": "Ein interaktives Computerspiel, bei dem du mit Otis dem Otter entlang der Donau reist. Unterwegs begegnest du biologischen, physikalischen, chemischen und gesellschaftlichen Herausforderungen. Beantworte Fragen, wähle Lösungen und verbessere die Donau Schritt für Schritt – während du möglichst viele Münzen sammelst.",
+    "quizHighlight": "Der perfekte Test, um zu zeigen, wie viel du über Feuchtgebiete gelernt hast!",
+    "playButton": "Blue-Green Space4All spielen",
+    "externalLinkNote": "Du öffnest eine externe Website mit dem Spiel.",
+    "websiteUrl": "http://game.restore4life-platform.eu"
+  },
+  "wetlandEduRepoPage": {
+    "title": "Erkunde das Wet-Edu-Repository",
+    "subtitle": "Entdecke verwandte Projekte und Ressourcen",
+    "allTopics": "Alle Themen",
+    "clickToOpen": "Klicken Sie auf ein Projekt, um es in einem neuen Tab zu öffnen",
+    "opensInNewTab": "Öffnet in neuem Tab",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "page": "Seite",
+    "of": "von",
+    "topics": {
+      "Floodplain living environment": "Lebensraum",
+      "Floodplain mapping": "Kartiere dein Feuchtgebiet",
+      "Flood control": "Schwammwirkung der Auen",
+      "Habitat assessment": "Lebensräume erkunden",
+      "Carbon sequestration": "Klima & Kohlenstoff",
+      "Self purification": "Reinigung",
+      "Constructed wetlands": "Konstruierte Feuchtgebiete",
+      "Aesthetics": "Ästhetik",
+      "Art & Storytelling": "Menschen und aquatische Ökosysteme"
+    }
+  }
+}
