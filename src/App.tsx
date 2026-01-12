@@ -25,6 +25,7 @@ import { TermsOfUsePage } from './components/pages/TermsOfUsePage';
 import { trackPageView, initAnalytics, revokeAnalytics } from './analytics';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelectionModal } from './components/LanguageSelectionModal';
+import { Analytics } from '@vercel/analytics/react';
 
 type PageType = 'home' | 'riparian' | 'mapwetland' | 'floodplain' | 'floodcontrol' | 'carbon' | 'selfpurification' | 'art' | 'people' | 'aesthetics' | 'wetlandfresk' | 'wetland4life' | 'wetlandEduRepo' | 'treatmentwetlands' | 'bluegreen' | 'environmentalToolbox' | 'privacy' | 'cookies' | 'termsofuse';
 
@@ -390,6 +391,7 @@ function App() {
           }}
         />
       )}
+      <Analytics />
     </GameContainer>
   );
 }
