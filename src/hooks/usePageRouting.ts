@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 /**
  * Custom hook for managing page routing with URL parameters
@@ -33,6 +33,18 @@ export const usePageRouting = (totalPages: number): [number, React.Dispatch<Reac
   };
 
   const [currentPage, setCurrentPage] = useState(getPageFromURL());
+  const pathnameRef = useRef(window.location.pathname);
+
+  // Reset to page 0 when pathname changes (navigating to a new topic)
+  useEffect(() => {
+    const currentPathname = window.location.pathname;
+    if (currentPathname !== pathnameRef.current) {
+      pathnameRef.current = currentPathname;
+      // Reset to page 0 (intro) when navigating to a new topic
+      setCurrentPage(0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }); // Run on every render to check for pathname changes
 
   // Initialize URL on mount if needed (only if URL doesn't match current page)
   useEffect(() => {

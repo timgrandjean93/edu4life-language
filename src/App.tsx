@@ -88,9 +88,10 @@ function App() {
 
   const navigateTo = (page: PageType, topic?: string | null) => {
     setCurrentPage(page);
-    // Preserve query parameters for pages with subpages (they're handled by their respective components)
-    const preserveQuery = pagesWithSubpages.includes(page);
-    updateURL(page, preserveQuery);
+    // Don't preserve query parameters when navigating to a new topic
+    // Each topic should always start at page 1 (homepage)
+    // Query parameters are only preserved when navigating within the same topic (handled by page components)
+    updateURL(page, false);
     if (page === 'wetlandEduRepo') {
       // Set topic if provided, otherwise keep existing or set to null
       setRepositoryTopic(topic !== undefined ? topic : null);
@@ -161,7 +162,6 @@ function App() {
       window.removeEventListener('showPrivacyPolicy', handleShowPrivacyPolicy);
       window.removeEventListener('showCookiePolicy', handleShowCookiePolicy);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // navigateTo is stable, no need to include
 
   const renderCurrentPage = () => {
