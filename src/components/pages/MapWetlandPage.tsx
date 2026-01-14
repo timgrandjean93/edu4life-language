@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { LocalizedImage } from '../LocalizedImage';
+import { useOrientation } from '../../hooks/useOrientation';
 
 interface MapWetlandPageProps {
   onHomeClick: () => void;
@@ -33,7 +34,8 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
   onRepositoryClick
 }) => {
   const { t } = useTranslation();
-  const [currentPage, setCurrentPage] = React.useState(0); // Start with intro page
+  const { isMobile } = useOrientation();
+  const [currentPage, setCurrentPage] = React.useState(0); // 0 = intro, 1 = challenge intro (mobile only), 2 = quiz
   const [currentStep, setCurrentStep] = React.useState(1);
   const [selectedLetter, setSelectedLetter] = React.useState<string | null>(null);
   const [showError, setShowError] = React.useState(false);
@@ -86,6 +88,39 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
     // TODO: Navigate to repository
   };
 
+  // Handle letter selection (used for mobile)
+  const handleLetterSelect = (letter: string) => {
+    const currentItem = quizItems.find(item => item.id === currentStep);
+    if (!currentItem) return;
+
+    setSelectedLetter(letter);
+
+    if (letter === currentItem.correctLetter) {
+      // Correct answer
+      setCompletedSteps([...completedSteps, currentItem.id]);
+      setUsedLetters([...usedLetters, letter]);
+      setSelectedLetter(null);
+      setShowError(false);
+      
+      // Move to next step
+      if (currentItem.id < quizItems.length) {
+        setCurrentStep(currentItem.id + 1);
+      } else {
+        setCurrentStep(currentItem.id + 1); // Completion state
+      }
+    } else {
+      // Wrong answer
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+        setSelectedLetter(null);
+      }, 2000);
+    }
+  };
+
+  // Get current item for mobile view
+  const currentItem = quizItems.find(item => item.id === currentStep);
+
   return (
     <div className="relative w-full page-container" style={{ backgroundColor: '#dfebf5' }}>
       {/* Header with title and home button */}
@@ -135,41 +170,47 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
               {/* Descriptive Text */}
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
-                fontSize: '24px',
+                fontSize: isMobile ? '18px' : '24px',
                 fontWeight: 'bold',
                 color: '#406A46',
                 textAlign: 'center',
-                marginBottom: '40px',
+                marginBottom: isMobile ? '24px' : '40px',
                 maxWidth: '1200px',
-                lineHeight: '1.6'
+                lineHeight: '1.6',
+                padding: isMobile ? '0 16px' : '0'
               }}>
                 {t('mapWetlandPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
               <button
-                className="learn-test-button"
-                onClick={() => setCurrentPage(1)}
+                onClick={() => setCurrentPage(isMobile ? 1 : 2)}
                 style={{
-                  background: 'transparent',
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: isMobile ? '18px' : '20px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  backgroundColor: '#51727C',
+                  padding: isMobile ? '14px 32px' : '16px 40px',
+                  borderRadius: '8px',
                   border: 'none',
                   cursor: 'pointer',
-                  marginBottom: '40px',
-                  padding: 0
+                  textTransform: 'uppercase',
+                  marginBottom: isMobile ? '24px' : '40px',
+                  transition: 'background-color 0.2s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#406A46';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#51727C';
                 }}
               >
-                <LocalizedImage 
-                  src="/assets/icons/learnandtest.png"
-                  alt={t('common.learnAndTestButton')}
-                  style={{ 
-                    height: 'auto',
-                    maxWidth: '500px',
-                    width: 'auto'
-                  }}
-                />
+                {t('carbonPage.intro.explore')}
               </button>
 
-              {/* Download Section */}
+              {/* Download Section - Hidden on mobile */}
+              {!isMobile && (
               <div className="flex justify-center" style={{ width: '100%', maxWidth: '1400px', paddingTop: '20px', position: 'relative', marginBottom: '20px', minHeight: '180px' }}>
                 {/* Left Download Section */}
                 <div className="flex items-center" style={{ gap: '32px', position: 'absolute', right: 'calc(50% + 50px)', alignItems: 'center' }}>
@@ -281,38 +322,34 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   </div>
                 </div>
               </div>
+              )}
             </div>
-          ) : !isCompleted ? (
-            <>
-              {/* Eagle's-eye challenge */}
-              <div className="text-center mx-auto" style={{ maxWidth: '80%'}}>
-                <div className="flex items-center justify-center" style={{ gap: '10px' }}>
-                  <img 
-                    src="/assets/icons/pencil.png" 
-                    alt="Pencil" 
-                    style={{ 
-                      width: '84px',
-                      height: '84px',
-                      backgroundColor: 'transparent'
-                    }}
-                  />
-                  <span style={{ 
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
-                    fontSize: '36px',
-                    color: '#406A46'
-                  }}>
-                    {t('mapWetlandPage.challenge.title')}
-                  </span>
-                </div>
+          ) : currentPage === 1 && isMobile ? (
+            // Mobile: Challenge intro page with image, text and next button
+            <div className="flex flex-col items-center" style={{ gap: '24px', paddingBottom: '40px' }}>
+              {/* Image */}
+              <div style={{ width: '100%', maxWidth: '400px', padding: '0 16px' }}>
+                <img 
+                  src="/assets/components/Mapping/map13.png"
+                  alt={t('mapWetlandPage.title')}
+                  className="w-full h-auto shadow-lg"
+                  style={{ 
+                    backgroundColor: 'white',
+                    borderRadius: '16px'
+                  }}
+                />
               </div>
 
-              {/* Intro Text */}
-              <div className="text-center mx-auto" style={{ maxWidth: '90%', marginBottom: '20px' }}>
+              {/* Challenge Intro Text */}
+              <div style={{ 
+                maxWidth: '95%', 
+                padding: '0 16px',
+                textAlign: 'center'
+              }}>
                 <p 
                   className="leading-relaxed"
                   style={{ 
-                    fontSize: '22px',
+                    fontSize: '16px',
                     fontFamily: 'Comfortaa, sans-serif',
                     fontWeight: 'bold',
                     color: '#406A46'
@@ -322,7 +359,204 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                 </p>
               </div>
 
-              {/* Main Content Area - Image and Quiz */}
+              {/* Next Button */}
+              <div style={{ marginTop: '20px' }}>
+                <button
+                  onClick={() => setCurrentPage(2)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0
+                  }}
+                >
+                  <LocalizedImage 
+                    src="/assets/icons/next.png"
+                    alt="Next"
+                    style={{ 
+                      height: '60px',
+                      width: 'auto'
+                    }}
+                  />
+                </button>
+              </div>
+            </div>
+          ) : !isCompleted ? (
+            <>
+              {/* Eagle's-eye challenge - Only on desktop */}
+              {!isMobile && (
+                <>
+                  <div className="text-center mx-auto" style={{ maxWidth: '80%'}}>
+                    <div className="flex items-center justify-center" style={{ gap: '10px' }}>
+                      <img 
+                        src="/assets/icons/pencil.png" 
+                        alt="Pencil" 
+                        style={{ 
+                          width: '84px',
+                          height: '84px',
+                          backgroundColor: 'transparent'
+                        }}
+                      />
+                      <span style={{ 
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontWeight: 'bold',
+                        fontSize: '36px',
+                        color: '#406A46'
+                      }}>
+                        {t('mapWetlandPage.challenge.title')}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Intro Text */}
+                  <div className="text-center mx-auto" style={{ maxWidth: '90%', marginBottom: '20px' }}>
+                    <p 
+                      className="leading-relaxed"
+                      style={{ 
+                        fontSize: '22px',
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontWeight: 'bold',
+                        color: '#406A46'
+                      }}
+                    >
+                      {t('mapWetlandPage.challenge.intro')}
+                    </p>
+                  </div>
+                </>
+              )}
+
+              {isMobile ? (
+                // Mobile Layout: Centered image, one category at a time with letter buttons
+                <div className="flex flex-col items-center" style={{ gap: '20px' }}>
+                  {/* Centered Image */}
+                  <div style={{ width: '100%', maxWidth: '400px', padding: '0 16px' }}>
+                    <img 
+                      src={`/assets/components/Mapping/map${completedSteps.length + 1}.png`}
+                      alt={t('mapWetlandPage.title')}
+                      className="w-full h-auto shadow-lg"
+                      style={{ 
+                        backgroundColor: 'white',
+                        borderRadius: '16px'
+                      }}
+                    />
+                  </div>
+
+                  {/* Current Category */}
+                  {currentItem && (
+                    <div className="flex flex-col items-center" style={{ width: '100%', padding: '0 16px', gap: '20px' }}>
+                      {/* Category Name */}
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '12px',
+                          backgroundColor: '#51727C',
+                          padding: '12px 24px',
+                          borderRadius: '30px',
+                          marginBottom: '16px'
+                        }}>
+                          <div style={{
+                            width: '40px',
+                            height: '40px',
+                            borderRadius: '50%',
+                            backgroundColor: 'white',
+                            color: '#51727C',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontWeight: 'bold',
+                            fontSize: '20px'
+                          }}>
+                            {currentItem.id}
+                          </div>
+                          <span style={{
+                            fontFamily: 'Comfortaa, sans-serif',
+                            fontWeight: 'bold',
+                            fontSize: '18px',
+                            color: 'white'
+                          }}>
+                            {t(`mapWetlandPage.quizItems.${currentItem.nameKey}`)}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Error Message */}
+                      {showError && (
+                        <motion.div
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          style={{
+                            backgroundColor: '#dc3545',
+                            color: 'white',
+                            padding: '12px 24px',
+                            borderRadius: '20px',
+                            fontFamily: 'Comfortaa, sans-serif',
+                            fontWeight: 'bold',
+                            fontSize: '16px'
+                          }}
+                        >
+                          {t('common.tryAgain')}
+                        </motion.div>
+                      )}
+
+                      {/* Letter Buttons */}
+                      <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(5, 1fr)',
+                        gap: '10px',
+                        width: '100%',
+                        maxWidth: '100%',
+                        padding: '0 16px'
+                      }}>
+                        {allLetters.map((letter) => {
+                          const isUsed = usedLetters.includes(letter);
+                          const isSelected = selectedLetter === letter;
+                          
+                          return (
+                            <motion.button
+                              key={letter}
+                              onClick={() => !isUsed && handleLetterSelect(letter)}
+                              disabled={isUsed}
+                              whileTap={{ scale: 0.95 }}
+                              style={{
+                                width: '50px',
+                                height: '50px',
+                                borderRadius: '50%',
+                                border: 'none',
+                                backgroundColor: isUsed ? '#e5e7eb' : isSelected ? '#51727C' : '#97C09D',
+                                color: isUsed ? '#9ca3af' : 'white',
+                                fontFamily: 'Comfortaa, sans-serif',
+                                fontWeight: 'bold',
+                                fontSize: '24px',
+                                cursor: isUsed ? 'not-allowed' : 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                boxShadow: isUsed ? 'none' : '0 4px 8px rgba(0, 0, 0, 0.2)',
+                                transition: 'all 0.2s'
+                              }}
+                            >
+                              {letter}
+                            </motion.button>
+                          );
+                        })}
+                      </div>
+
+                      {/* Progress indicator */}
+                      <div style={{
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontWeight: 'bold',
+                        fontSize: '16px',
+                        color: '#406A46',
+                        textAlign: 'center'
+                      }}>
+                        {currentItem.id} / {quizItems.length}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                // Desktop Layout: Original layout with image and all categories
               <div className="flex justify-center items-start gap-[3%]">
                 {/* Left: Image */}
                 <div style={{ width: '50%' }}>
@@ -517,26 +751,27 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   </div>
                 </div>
               </div>
+              )}
             </>
           ) : (
             // Completion Screen - Eagle's-eye challenge centered, then image and congratulations
             <>
               {/* Eagle's-eye challenge - Centered */}
-              <div className="text-center mx-auto" style={{ maxWidth: '80%'}}>
-                <div className="flex items-center justify-center" style={{ gap: '10px' }}>
+              <div className="text-center mx-auto" style={{ maxWidth: isMobile ? '95%' : '80%'}}>
+                <div className="flex items-center justify-center" style={{ gap: isMobile ? '8px' : '10px' }}>
                   <img 
                     src="/assets/icons/pencil.png" 
                     alt="Pencil" 
                     style={{ 
-                      width: '84px',
-                      height: '84px',
+                      width: isMobile ? '60px' : '84px',
+                      height: isMobile ? '60px' : '84px',
                       backgroundColor: 'transparent'
                     }}
                   />
                   <span style={{ 
                     fontFamily: 'Comfortaa, sans-serif',
                     fontWeight: 'bold',
-                    fontSize: '36px',
+                    fontSize: isMobile ? '24px' : '36px',
                     color: '#406A46'
                   }}>
                     {t('mapWetlandPage.challenge.title')}
@@ -544,13 +779,13 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                 </div>
               </div>
 
-              <div className="flex justify-center items-center gap-8 mb-8" style={{marginTop: '-50px' }}>
-                {/* Left - Map Image */}
+              <div className={isMobile ? "flex flex-col" : "flex justify-center items-center"} style={{gap: isMobile ? '24px' : '8px', marginTop: isMobile ? '20px' : '-50px', marginBottom: isMobile ? '24px' : '8px' }}>
+                {/* Map Image */}
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: isMobile ? 0 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  style={{ width: '55%', maxWidth: '800px' }}
+                  style={{ width: isMobile ? '100%' : '55%', maxWidth: isMobile ? '400px' : '800px', margin: isMobile ? '0 auto' : '0' }}
                 >
                   <img 
                     src="/assets/components/Mapping/map13.png"
@@ -563,29 +798,29 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                   />
                 </motion.div>
 
-                {/* Right - Congratulations */}
+                {/* Congratulations */}
                 <motion.div
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: isMobile ? 0 : 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 }}
-                  style={{ width: '45%', maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
+                  style={{ width: isMobile ? '100%' : '45%', maxWidth: isMobile ? '100%' : '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: isMobile ? '0 16px' : '0' }}
                 >
                   <h2 style={{ 
-                    fontSize: '48px', 
+                    fontSize: isMobile ? '32px' : '48px', 
                     fontFamily: 'Comfortaa, sans-serif',
                     fontWeight: 'bold', 
                     color: '#406A46', 
-                    marginBottom: '20px', 
+                    marginBottom: isMobile ? '16px' : '20px', 
                     textAlign: 'center' 
                   }}>
                     {t('mapWetlandPage.quiz.congratulations')}
                   </h2>
                   <p style={{ 
-                    fontSize: '22px', 
+                    fontSize: isMobile ? '18px' : '22px', 
                     fontFamily: 'Comfortaa, sans-serif',
                     fontWeight: 'bold',
                     color: '#406A46', 
-                    marginBottom: '40px', 
+                    marginBottom: isMobile ? '24px' : '40px', 
                     textAlign: 'center', 
                     lineHeight: '1.6' 
                   }}>
@@ -600,7 +835,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
       </div>
 
       {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
-      {currentPage > 0 && (
+      {currentPage > 0 && !isMobile && (
       <div className="relative z-10" style={{ 
         position: 'sticky', 
         bottom: 0,

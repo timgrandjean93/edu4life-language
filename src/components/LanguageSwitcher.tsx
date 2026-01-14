@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AVAILABLE_LANGUAGES, getOrderedLanguages } from '../i18n/languages';
+import { useOrientation } from '../hooks/useOrientation';
 
 export const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
+  const { isMobile } = useOrientation();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -38,33 +40,43 @@ export const LanguageSwitcher: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         style={{
           background: 'transparent',
-          border: '2px solid white',
+          border: isMobile ? 'none' : '2px solid white',
           color: 'white',
           borderRadius: '6px',
           cursor: 'pointer',
           fontFamily: 'Comfortaa, sans-serif',
           fontWeight: 'bold',
           fontSize: '14px',
-          padding: '6px 16px 6px 12px',
+          padding: isMobile ? '8px' : '6px 16px 6px 12px',
           display: 'flex',
           alignItems: 'center',
-          gap: '8px',
+          gap: isMobile ? '0' : '8px',
           transition: 'all 0.2s ease-in-out',
-          minWidth: '120px',
-          justifyContent: 'space-between',
+          minWidth: isMobile ? 'auto' : '120px',
+          justifyContent: isMobile ? 'center' : 'space-between',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+          if (!isMobile) {
+            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+          }
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.backgroundColor = 'transparent';
         }}
       >
-        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          {currentLanguage.flag && <span>{currentLanguage.flag}</span>}
-          <span>{currentLanguage.name}</span>
-        </span>
-        <span style={{ fontSize: '10px', marginLeft: '4px' }}>▾</span>
+        {isMobile ? (
+          <span style={{ fontSize: '28px', display: 'flex', alignItems: 'center' }}>
+            {currentLanguage.flag && <span>{currentLanguage.flag}</span>}
+          </span>
+        ) : (
+          <>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              {currentLanguage.flag && <span>{currentLanguage.flag}</span>}
+              <span>{currentLanguage.name}</span>
+            </span>
+            <span style={{ fontSize: '10px', marginLeft: '4px' }}>▾</span>
+          </>
+        )}
       </button>
 
       {isOpen && (

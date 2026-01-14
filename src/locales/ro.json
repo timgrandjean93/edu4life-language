@@ -1,0 +1,986 @@
+{
+  "common": {
+  "accept": "Corect",
+  "reject": "Respinge",
+  "home": "Acasă",
+  "loading": "Se încarcă...",
+  "close": "Închide",
+  "tryAgain": "ÎNCEARCĂ DIN NOU",
+  "learnAndTestButton": "ÎNVAȚĂ ȘI TESTEAZĂ-ȚI CUNOȘTINȚELE"
+},
+  "header": {
+    "learningActivities": "Activități de învățare",
+    "externalTools": "Instrumente externe",
+    "restore4Life": "Restore4Life",
+    "menuItems": {
+      "livingEnvironment": "Mediul de viață",
+      "mapYourWetland": "Cartografiați-vă zona umedă",
+      "exploringHabitats": "Explorarea habitatelor",
+      "floodplainSpongeEffect": "Efectul de burete al câmpiei inundabile",
+      "climateCarbon": "Climă și carbon",
+      "purification": "Purificare",
+      "treatmentWetlands": "Zone umede de tratare",
+      "aesthetics": "Estetică",
+      "sourcesOfInspiration": "Surse de inspirație",
+      "peopleAndAquatic": "Oamenii și mediul acvatic"
+    },
+    "externalToolsItems": {
+      "blueGreenSpace4All": "Space4All Albastru-Verde",
+      "wetlandFresk": "Wetland Fresk",
+      "wetland4Life": "Wetland4Life",
+      "exploreWetEduRepository": "Explorează Wet- Edu Arhiva"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © {{year}} Restore4Life Consortium. All Rights Reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "termsOfUse": "Terms of Use",
+    "creativeCommons": "Licensed under CC BY-NC 4.0"
+  },
+  "cookieConsent": {
+  "message": "Acest site web utilizează cookie-uri în scopuri analitice prin Google Analytics. Puteți accepta sau respinge aceste cookie-uri.",
+  "readMore": "Citiți mai multe în politica noastră privind cookie-urile"
+},
+  "homePage": {
+    "title": "ZONE INUNDABILE:",
+    "subtitle": "ÎNVAȚĂ, EXPLOREAZĂ, RESTAURARE PENTRU VIAȚĂ",
+    "subtitle2": "- SET DE INSTRUMENTE",
+    "credits": "Credite"
+  },
+  "languageModal": {
+    "title": "Selectați limba**",
+    "detecting": "Se detectează locația dvs...",
+    "suggested": "Am detectat că sunteți din",
+    "suggestedQuestion": "Doriți să utilizați",
+    "continueWith": "Continuați cu"
+  },
+  "pages": {
+    "titles": {
+      "home": "ZONE INUNDABILE: ÎNVAȚĂ, EXPLOREAZĂ, RESTAURARE PENTRU VIAȚĂ - SET DE INSTRUMENTE",
+      "riparian": "Evaluarea habitatului",
+      "mapwetland": "Cartografierea zonelor inundabile",
+      "floodplain": "Mediul de viață din zonă inundabilă",
+      "floodcontrol": "Controlul inundațiilor",
+      "carbon": "Sechestrarea carbonului",
+      "selfpurification": "Autopurificare",
+      "art": "Artă și povestiri",
+      "people": "Oamenii și ecosistemele acvatice",
+      "aesthetics": "Estetică",
+      "wetlandfresk": "Wetland Fresk",
+      "wetland4life": "Wetland4Life",
+      "wetlandEduRepo": "Wet- Edu Arhiva",
+      "treatmentwetlands": "Zone umede construite",
+      "bluegreen": "Blue-Green Space 4 All",
+      "environmentalToolbox": "Wet- Edu Arhivax",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "termsofuse": "Terms of Use"
+    }
+  },
+  "carbonPage": {
+    "title": {
+      "page0": "Protecția climei și absorbția carbonului",
+      "page1": "Rezervoare de carbon pe Pământ",
+      "page2": "Ciclul carbonului în ecosistemele continentale ale Pământului"
+    },
+    "intro": {
+      "description": "Învață despre protecția climei și descoperă cum rezervoarele de carbon joacă un rol crucial în atenuarea schimbărilor climatice.",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "opensNewTab": "Deschide o filă nouă: Zenodo",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "explore": "EXPLOREAZĂ"
+    },
+    "page1": {
+      "title": "Potriviți pictogramele ecosistemului",
+      "instruction1": "Uită-te la pictogramele din partea de sus a graficului – fiecare reprezintă un ecosistem diferit. ",
+      "instruction2": "Provocarea ta:",
+      "instruction3": "Trage eticheta corectă de jos în semnul de întrebare corespunzător.",
+      "hint": "Sugestie: Concentrați-vă pe caracteristicile care fac fiecare ecosistem unic, cum ar fi copacii, apa, iarba sau formele de relief.",
+      "checkAnswers": "Verifică răspunsurile",
+      "clickToRemove": "Faceți clic pentru a elimina eticheta",
+      "correct": "Corect",
+      "incorrect": "Incorect",
+      "missed": "Omis"
+    },
+    "page2": {
+      "instruction": "Treceți cursorul peste imagine pentru a afla contribuția zonelor umede la carbon.",
+      "infoText": "Zonele umede acoperă doar 5-6% din suprafața terestră a Pământului, dar stochează 20-30% din tot carbonul organic din sol.",
+      "hoverAreas": {
+        "anthropogenic-release": "Eliberarea antropogenă de carbon prin drenaj sau alte degradări umane ale zonelor umede. Carbonul stocat este astfel oxidat și eliberat sub formă de CO₂.",
+        "carbon-sequestration": "Sechestrarea carbonului prin fotosinteză. Plantele elimină CO₂ din aer prin fotosinteză și produc biomasă.",
+        "natural-release": "Eliberarea naturală de carbon prin respirație și descompunerea biomasei.",
+        "carbon-storage": "Stocarea carbonului prin biomasă îngropată în sol și sedimente."
+      },
+      "modal": {
+        "title": "Știați că...?",
+        "fact": "Solurile Pământului reprezintă o rezervă masivă de carbon, stocând de trei ori mai mult carbon decât atmosfera și de patru ori mai mult decât toate plantele și animalele.",
+        "question": "Care dintre ecosistemele prezentate în grafic stochează cel mai mult carbon?",
+        "selectEcosystem": "Selectați un ecosistem...",
+        "submitAnswer": "Trimiteți răspunsul",
+        "nextPage": "Următorul",
+        "feedback": {
+          "correct": "Corect! Zonele umede stochează cel mai mult carbon.",
+          "incorrect": "Incorect. Răspunsul corect este Zonele umede.",
+          "explanation": "Zonele umede se numără printre cele mai eficiene rezervoare de carbon de pe Pământ, stocând cantități masive de carbon în sol și vegetație."
+        }
+      }
+    },
+    "page3": {
+      "title": "Completați spațiile libere",
+      "instruction1": "Planeta noastră are o modalitate uimitoare de a stoca carbonul în pământ timp de secole! Dar unele litere și silabe din propozițiile de mai jos au fost ascunse în desen.",
+      "instruction2": "Poți să le descifrezi și să completezi textul?",
+      "instruction3": "Faceți clic pe o literă din imaginea de mai sus, apoi faceți clic pe spațiul corespunzător din text pentru a o plasa. Faceți clic pe o literă plasată pentru a o elimina.",
+      "checkAnswers": "Verifică răspunsurile",
+      "puzzleText": {
+        "part1": "Some C",
+        "part2": "bon stays locked in the s",
+        "part3": "il for a very long time — sometimes h",
+        "part4": "dreds or even tho",
+        "part5": "ands of y",
+        "part6": "rs! ",
+        "part7": "If we leave it un",
+        "part8": "sturbed, this soil carbon remains safely und",
+        "part9": "ground, instead of going into the a",
+        "part10": "mosphere. ",
+        "part11": "B",
+        "part12": "ue carbon, stored in coastal and wetland areas, also helps slow down cl",
+        "part13": "ate ch",
+        "part14": "ge."
+      },
+      "correctAnswers": {
+        "blank1": "ar",
+        "blank2": "o",
+        "blank3": "un",
+        "blank4": "us",
+        "blank5": "ea",
+        "blank6": "di",
+        "blank7": "er",
+        "blank8": "t",
+        "blank9": "l",
+        "blank10": "im",
+        "blank11": "an"
+      },
+      "blankPositions": {
+        "blank1": "afterPart1",
+        "blank2": "afterPart2",
+        "blank3": "afterPart3",
+        "blank4": "afterPart4",
+        "blank5": "afterPart5",
+        "blank6": "afterPart7",
+        "blank7": "afterPart8",
+        "blank8": "afterPart9",
+        "blank9": "afterPart11",
+        "blank10": "afterPart12",
+        "blank11": "afterPart13"
+      },
+      "hiddenLetters": {
+        "letter1": {
+          "text": "an",
+          "x": 15,
+          "y": 20
+        },
+        "letter2": {
+          "text": "ar",
+          "x": 20,
+          "y": 60
+        },
+        "letter3": {
+          "text": "o",
+          "x": 35,
+          "y": 15
+        },
+        "letter4": {
+          "text": "l",
+          "x": 45,
+          "y": 25
+        },
+        "letter5": {
+          "text": "us",
+          "x": 55,
+          "y": 30
+        },
+        "letter6": {
+          "text": "oi",
+          "x": 25,
+          "y": 50
+        },
+        "letter7": {
+          "text": "er",
+          "x": 50,
+          "y": 60
+        },
+        "letter8": {
+          "text": "un",
+          "x": 65,
+          "y": 35
+        },
+        "letter9": {
+          "text": "t",
+          "x": 75,
+          "y": 20
+        },
+        "letter10": {
+          "text": "ea",
+          "x": 70,
+          "y": 70
+        },
+        "letter11": {
+          "text": "di",
+          "x": 80,
+          "y": 25
+        },
+        "letter12": {
+          "text": "im",
+          "x": 85,
+          "y": 45
+        }
+      }
+    },
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "carbonSequestrationSoils": "Carbon sequestration in soils",
+      "carbonSequestrationFloodplains": "Carbon sequestration in floodplain forests",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    },
+    "ecosystemLabels": {
+      "tropicalForests": "Păduri tropicale",
+      "temperateForests": "Păduri temperate",
+      "borealForests": "Pădurile boreale",
+      "tropicalSavannas": "Savane tropicale",
+      "temperateGrasslands": "Pășuni temperate",
+      "desertsSemiDeserts": "Deșerturi și semideșerturi",
+      "tundra": "Tundră",
+      "wetlands": "Zone umede",
+      "croplands": "Terenuri cultivate"
+    },
+    "nextTopic": "URMĂTORUL SUBIECT"
+  },
+  "floodplainPage": {
+    "title": "MEDIUL DE VIAȚĂ ÎN ZONE INUNDABILE",
+    "intro": {
+      "question": "Poți observa diferența dintre ilustrații?",
+      "rainLabel": "Zona inundabilă în timpul unui eveniment de inundații (sezonul ploios)",
+      "dryLabel": "Zona inundabilă în condiții de secetă",
+      "description": "Aflați despre mediul de viață din zonele inundabile și explorați diversele habitate și fauna sălbatică care prosperă în aceste ecosisteme unice.",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "opensNewTab": "Deschide o filă nouă: Zenodo",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "explore": "EXPLOREAZĂ"
+    },
+    "page2": {
+      "title": "Zonele inundabile în sezonul ploios"
+    },
+    "page3": {
+      "title": "Zonele inundabile în sezonul uscat"
+    },
+    "page4": {
+      "sliderTitle": "Glisați bara pentru a vedea diferențele"
+    },
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "basedOn5E": "Bazat pe metoda de învățare 5E și pe cercetare științifică",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    },
+    "nextTopic": "URMĂTORUL SUBIECT"
+  },
+  "mapWetlandPage": {
+    "title": "Cartografiați zona umedă",
+    "intro": {
+      "description": "Învață despre cartografierea zonelor umede și explorează diversele habitate și caracteristici care pot fi identificate de mai sus.",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "opensNewTab": "Deschide o filă nouă: Zenodo",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "explore": "EXPLOREAZĂ"
+    },
+    "challenge": {
+      "title": "Provocare cu ochi de vultur!",
+      "intro": "De sus, deasupra zonei inundabile, prietenul nostru codalbul vede râul șerpuitor, lacurile ascunse, mlaștinile, pădurile, digurile și satele. Le poți găsi și tu? Asociază fiecare element cu eticheta corectă și dă-i viață prin culoare! De fiecare dată când identifici locul potrivit, peisajul va străluci în adevăratele sale culori - așa cum îl vede codalbul din cer."
+    },
+    "quizItems": {
+      "WATERCOURSE": "Curs de apă",
+      "SIDE_ARMS": "Brațe laterale",
+      "DRAINAGE_CHANNELS": "Canale de drenaj",
+      "FLOODPLAIN_LAKE": "Lac inundabil",
+      "ISLANDS_MARSH": "Insule (mlaștină)",
+      "FLOODPLAIN_FOREST": "Pădure inundabilă",
+      "PASTURE_WITH_ANIMALS": "Pășune cu animale",
+      "GRASSLAND": "Pășune",
+      "PROTECTIVE_DIKE": "Dig de protecție",
+      "HUMAN_SETTLEMENT": "Așezare umană",
+      "AGRICULTURAL_FIELDS": "Câmpuri agricole"
+    },
+    "quiz": {
+      "letterPlaceholder": "Literă?",
+      "congratulations": "Felicitări!",
+      "successMessage": "Ați cartografiat cu succes toate elementele zonei umede!"
+    },
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "basedOn5E": "Bazat pe metoda de învățare 5E și pe cercetare științifică",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    },
+    "nextTopic": "URMĂTORUL SUBIECT"
+  },
+  "riparianPage": {
+    "title": {
+      "page0": "EXPLORAREA HABITATULUI UNUI CURS DE APĂ",
+      "page1": "Utilizarea terenurilor de-a lungul râurilor",
+      "page2": "Habitate ale cursurilor de apă: RIFFLE, POOL, and RUN"
+    },
+    "intro": {
+      "description": "Învață despre explorarea habitatelor și descoperă diversele ecosisteme riverane și activitățile de utilizare a terenurilor de-a lungul râurilor.",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "opensNewTab": "Deschide o filă nouă: Zenodo",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "explore": "EXPLOREAZĂ"
+    },
+    "page1": {
+      "introText": "Râurile și împrejurimile lor au fost folosite de oameni încă din cele mai vechi timpuri pentru diferite activități, cum ar fi agricultura, construirea de case, pescuitul, călătoriile și aprovizionarea cu apă. Această utilizare a terenurilor arată cum interacționează oamenii cu zonele din apropierea râurilor și cum le modelează.",
+      "instruction": "Priviți cu atenție ambele ilustrații și alegeți ",
+      "landUseActivities": "activitățile de utilizare a terenului pe care",
+      "instructionEnd": "le puteți găsi.",
+      "quizQuestion": "Din lista de mai jos, faceți clic pe activitățile pe care le puteți vedea în imagini:",
+      "correct": "Corect",
+      "incorrect": "Incorect",
+      "missed": "Omis"
+    },
+    "page2": {
+      "instruction": "Citiți definițiile termenilor ",
+      "and": "and",
+      "instructionEnd": "de mai jos, apoi trageți și plasați fiecare etichetă în locul corect în cele două imagini.",
+      "correct": "Corect:",
+      "labels": {
+        "POOL": "POOL",
+        "RIFFLE": "RIFFLE",
+        "RUN": "RUN"
+      },
+      "definitions": {
+        "POOL": "O secțiune mai adâncă, cu curgere mai lentă, a unui pârâu, unde se adună apa. Bălțile sunt liniștite, calme și oferă adăpost pentru pești.",
+        "RIFFLE": "O parte puțin adâncă, cu curgere rapidă, a unui pârâu, cu valuri mici și roci vizibile. Malurile apar accidentate și cu bule și sunt bogate în oxigen, ceea ce le face habitate ideale pentru insecte și pești.",
+        "RUN": "O secțiune lină, moderat adâncă, a unui pârâu, unde apa curge constant între un mal și o baltă."
+      }
+    },
+    "quizOptions": {
+      "human-settlements": "Așezări umane",
+      "roads-bridges": "Drumuri și poduri",
+      "flood-protection": "Structuri de protecție împotriva inundațiilor (diguri, terasamente și poduri)",
+      "dams": "Baraje și hidroenergie",
+      "pastures": "Pășuni și zone de pășunat pentru animale",
+      "irrigation": "Canale și sisteme de irigații",
+      "factory": "Fabrici sau industrie",
+      "mining": "Exploatarea nisipului și a pietrișului",
+      "cycling": "Ciclism",
+      "riparian-vegetation": "Vegetație riverană (copaci și arbuști de-a lungul malurilor râului)",
+      "floodplains": "Zone inundabile, zone umede",
+      "agriculture": "Agricultură/Creștere",
+      "recreation": "Recreere (camping, înot, canotaj etc.)"
+    },
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "basedOn5E": "Bazat pe metoda de învățare 5E și pe cercetare științifică",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    }
+  },
+  "floodControlPage": {
+    "title": {
+      "page0": "Zonele inundabile ca un burete",
+      "page1": "Funcția de control la inundații – Zonele inundabile sunt ca un burete"
+    },
+    "intro": {
+      "description": "Învață despre funcția de control la inundații și de ce zonele inundabile sunt ca un burete și testează-ți cunoștințele cu activități distractive.",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "opensNewTab": "Deschide o filă nouă: Zenodo",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "explore": "EXPLOREAZĂ"
+    },
+    "page1": {
+      "instruction": "Plasați cursorul peste diferite zone ale imaginilor pentru a descoperi informații utile.",
+      "didYouKnow": "Știați că...?",
+      "hoverAreas": {
+        "left": {
+          "willows-banks": "Sălciile stabilizează malurile și cresc porozitatea solului prin sistemele radiculare extinse.",
+          "reed-vegetation": "Vegetația densă de stuf încetinește curgerea apei, reține sedimentele și îmbunătățește calitatea apei.",
+          "native-grasses": "Ierburile native îmbunătățesc porozitatea solului și infiltrarea apei",
+          "leaf-litter": "Resturile de frunze de pe solul pădurii reține umezeala și reduce scurgerile de suprafață.",
+          "deep-rooted-trees": "Copacii și arbuștii cu rădăcini adânci oferă o stabilizare a malurilor mai puternică decât ierburile cu rădăcini superficiale."
+        },
+        "right": {
+          "natural-filtration": "Râul este îngrădit de diguri ca un corset strâns. Nu se poate extinde sau ajunge în zona inundabilă, așa că apele din inundații cresc rapid.",
+          "ecosystem-benefits": "Fără plante pe malul râului, nu există nimic care să încetinească scurgerea sau să absoarbă apa. Solul devine crăpat și compactat - apa nu poate pătrunde.",
+          "groundwater-recharge": "Fără plante de-a lungul malurilor, scurgerea apei se face mai repede, mai multe sedimente și nutrienți intră în râu, iar calitatea apei scade."
+        }
+      },
+      "didYouKnowContent": {
+        "left": {
+          "title": "Știați că...?",
+          "items": [
+            "Solurile din zonele umede pot stoca 3.000-4.000 m³ de apă pe hectar.",
+            "Meandrele cresc timpul de retenție cu 30-50%.",
+            "Vegetația de zonă inundabilă stochează 30-40% din capacitatea totală de retenție.",
+            "Zona naturală absoarbe apa provenită din inundații timp de 20-30 de zile.",
+            "Reîncărcarea apelor subterane: 500-1.000 m³ pe hectar pe an."
+          ]
+        },
+        "right": {
+          "title": "Știați că...?",
+          "items": [
+            "Regularizarea reduce retenția cu: 60-80%.",
+            "Pierderea vegetației reduce capacitatea cu: 40-50%.",
+            "Compactarea solului reduce depozitarea cu: 30-40%.",
+            "Zona inundabilă degradată reține doar: 1.000-2.000 m³ pe hectar."
+          ]
+        }
+      }
+    },
+    "page2": {
+      "activityTitle": "Activitatea 1",
+      "instruction": "Poți identifica superputerile lipsă ale zonei inundabile? Asociază numerele din descriere cu zona inundabilă sănătoasă (stânga) și zona inundabilă degradată (dreapta).",
+      "naturalFloodplain": "Zona inundabilă sănătoasă :",
+      "degradedFloodplain": "Zona inundabilă degradată:",
+      "descriptions": {
+        "left": [
+          "Un râu șerpuitor curge în curbe line, răspândind apa pe zona inundabilă, încetinind debitul și hrănind pământul.",
+          "Plantele de pe malurile râurilor încetinesc scurgerea, captează sedimentele și absorb excesul de nutrienți, ajutând la menținerea apei curate.",
+          "Lacurile inundabile și meandrele stochează excesul de apă din inundații, susțin o biodiversitate bogată și ajută la reîncărcarea apelor subterane."
+        ],
+        "right": [
+          "În timpul ploilor abundente, inundațiile se pot acumula, pot sparge digurile și pot amenința satele din apropiere.",
+          "Într-un râu îndreptat și regularizat, curgerea mai rapidă provoacă eroziunea și adâncirea albiei, ceea ce seacă zonele inundabile din apropiere.",
+          "Fără plante de pe malul râului, nimic nu poate încetini scurgerea sau absorbi apa."
+        ]
+      },
+      "correct": "Corect",
+      "incorrect": "Incorect",
+      "correctLabel": "Corect:"
+    },
+    "page3": {
+      "title": "Provocarea de completare a spațiilor libere",
+      "intro1": "Zonele inundabile sunt zone tampon ale naturii!",
+      "intro2": "Cum ajută zona inundabilă în perioadele de ploi abundente?",
+      "intro3": "Ce se întâmplă cu apa provenită din inundații atunci când un râu are spațiu pentru a se întinde?",
+      "completeSentence": "Completează propoziția:",
+      "sentence1": "Zonele inundabile acționează ca un ",
+      "sentence1End": "natural pentru a reține apa din",
+      "sentence2": "inundații și a reduce riscul de",
+      "sentence2End": "în aval.",
+      "placeholder1": "b____e",
+      "placeholder2": "i____i",
+      "correctAnswers": {
+        "answer1": "burete",
+        "answer2": "inundații"
+      },
+      "feedback": {
+        "correctSponge": "Corect: burete",
+        "incorrectSponge": "Incorect (Răspuns: burete)",
+        "correctFlooding": "Corect: inundații",
+        "incorrectFlooding": "Incorect (Răspuns: inundații)"
+      }
+    },
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "basedOn5E": "Bazat pe metoda de învățare 5E și pe cercetare științifică",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    },
+    "nextTopic": "URMĂTORUL SUBIECT"
+  },
+  "peopleAquaticPage": {
+    "title": "The people and aquatic ecosystems",
+    "subtitle": {
+      "page1": "A. Natural floodplains",
+      "page2": "B. Used and altered floodplains",
+      "page3": "C. Restoring floodplains as a Nature-based Solution"
+    },
+    "intro": {
+      "description": "Explore how people rely on floodplains and aquatic ecosystems, and discover pathways to restore their benefits for communities and nature.",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "explore": "EXPLOREAZĂ"
+    },
+    "activity1": {
+      "title": "Activity 1",
+      "description": "Look closely—this is how human actions have transformed the Danube and its floodplains. Dikes, farming, navigation, and other pressures changed the landscape.",
+      "question": "Can you help me by matching each pressure label to the right place in the picture?",
+      "instruction": "People cleared forests, transformed the floodplains into pastures and crop fields, and built villages and later cities near the banks of the Danube. To protect themselves from floods, they constructed dikes. The Danube was also developed as a navigational waterway and for hydropower production. As a result, the river lost many of its natural features: the balance of sediments in the riverbed was disturbed, and the connection between the river channel and its floodplains was largely cut off. Only a few remnants of the original floodplain remained, while many typical animals and plants disappeared."
+    },
+    "activity2": {
+      "title": "Activity 2",
+      "description": "To solve societal problems with this Nature-based Solution, you can now explore suitable restoration measures: each picture shows one way how people and nature may work together.",
+      "question": "At the bottom, you will find a list with six measures. Can you match the number of the measure from the list with the respective image that shows it?",
+      "instruction": "Step by step, parts of the Danube floodplain are being reconnected to the river. Old side arms are reopened, forests and wetlands are restored, and natural flooding is allowed again wherever possible. These measures bring back habitats for fish, birds, and plants, while also helping people — by storing floodwaters, improving water quality, providing water during droughts, and offering space for recreation. These restoration Measures are called Nature-based Solution."
+    },
+    "activity3": {
+      "title": "Activity 3",
+      "description": "These polar charts show how the Danube's ecosystem services change in three different scenarios: natural floodplains, altered floodplains with human pressures, and restored floodplains with nature-based solutions. Can you find out why the services look so different?",
+      "column1": {
+        "title": "Original natural Floodplain",
+        "question": "Looking at this polar chart, why are almost all ecosystem services very high, while agriculture is low?",
+        "options": {
+          "A": "Because the soil in the floodplain was too poor and nothing could grow there.",
+          "B": "Because farming was forbidden by the rulers of the Danube region in those times.",
+          "C": "Because the floodplain was still natural, offering many benefits for people and animals, but farming was not possible on flooded land."
+        }
+      },
+      "column2": {
+        "title": "Altered floodplain",
+        "question": "Why is agricultural production so much provided in this status, while most other services are low?",
+        "options": {
+          "A": "Because the Danube's natural forests and wetlands expanded, increasing farming and timber production at the same time.",
+          "B": "Because dikes disconnected the floodplain from the river, protecting agriculture from floods but destroying many natural habitats and their benefits.",
+          "C": "Because no one lived near the Danube, so only a few services were used."
+        }
+      },
+      "column3": {
+        "title": "Restored floodplain",
+        "question": "Why are the ecosystem services more balanced in this polar chart compared to the other two?",
+        "options": {
+          "A": "Because nature-based solutions restore side arms, wetlands, and forests, which bring back multiple benefits for both nature and people.",
+          "B": "Because people allowed the river to flood naturally, and removed all the pressures",
+          "C": "Because the Danube was cut off from its floodplains by dikes."
+        }
+      },
+      "correctAnswer": "Correct answer:"
+    },
+    "pressureLabels": {
+      "cutting-meanders": {
+        "label": "Cutting meanders",
+        "description": "Straightening the river (making the river shorter and straighter instead of meandering)"
+      },
+      "building-dikes": {
+        "label": "Building dikes",
+        "description": "Flood protection dikes (raised embankments along the river that keep the water inside the main channel and stop it from reaching the floodplain)"
+      },
+      "channellizing-rivers": {
+        "label": "Channellizing rivers",
+        "description": "Channelizing the river (protecting the banks of straightened rivers from erosion by covering them by stones, or by building groynes [small transverse stone barriers] so the river cannot change its river bed any more)"
+      },
+      "draining-floodplains": {
+        "label": "Draining floodplains",
+        "description": "Drying out wetlands (removing water from wetlands to make land usable for pastures, crop fields and settlements)"
+      },
+      "urbanization": {
+        "label": "Urbanization",
+        "description": "Building settlements, roads, and cities, accompanied by wastewater discharge into the river."
+      },
+      "agriculture-pesticides": {
+        "label": "Agriculture using pesticides, insecticides, etc.",
+        "description": "Application of chemicals in farming against weeds and insects"
+      },
+      "cutting-forests": {
+        "label": "Cutting down forests",
+        "description": "Deforestation (removing trees from large areas)"
+      },
+      "industrialization": {
+        "label": "Industrialization",
+        "description": "Building factories and industries, often accompanied by air, soil or water pollution"
+      },
+      "dams-hydroelectric": {
+        "label": "Dams, hydroelectric power plants, etc.",
+        "description": "Construction of river barriers (transverse concrete structures that stop water, sediment and fish from moving freely)"
+      },
+      "invasive-species": {
+        "label": "Invasive species",
+        "description": "Newcomer species (plants or animals from other continents that spread massively and cause problems by their dominance)"
+      },
+      "navigation": {
+        "label": "Navigation",
+        "description": "Ships and canals (deepening and regulating rivers so big ships can travel along them)"
+      },
+      "climate-change": {
+        "label": "Climate change",
+        "description": "Global warming (more extreme weather conditions caused by humans)"
+      }
+    },
+    "restorationMeasures": {
+      "restoration-sidearms": {
+        "label": "Restoration of river side-arms",
+        "description": "Re-opening old river branches so that water can flow there again, creating multiple habitats for fish, birds, and plants."
+      },
+      "dike-relocation": {
+        "label": "Dike relocation for more space",
+        "description": "Moving dikes further away from the river to provide more space to the river and floodplain forests that may retain flood waters."
+      },
+      "buffer-strips": {
+        "label": "Buffer strips",
+        "description": "Restoring narrow forests between agricultural fields and rivers so they can filter nutrients and hence protect water from pollution."
+      },
+      "fish-ramps": {
+        "label": "Fish ramps or remove barriers",
+        "description": "Helping fish migrate by removing barriers or transforming them into ramps of stones enabling them to swim upstream again."
+      },
+      "bypass-channels": {
+        "label": "Bypass channels",
+        "description": "Creating artificial side channels around barriers with gentle slopes where fish and other animals can move, or even live."
+      },
+      "native-species": {
+        "label": "Support native species",
+        "description": "Restoring natural habitat conditions to support native plants and animals, making it harder for invasive species to spread."
+      }
+    },
+    "ui": {
+      "results": "Results",
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "correctTooltip": "Correct!",
+      "incorrectTooltip": "Incorrect",
+      "clickToRemove": "Click to remove and return to list",
+      "checkAnswers": "Check Answers",
+      "tryAgain": "Try Again"
+    },
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "basedOn5E": "Bazat pe metoda de învățare 5E și pe cercetare științifică",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    }
+  },
+  "artPage": {
+    "title": "Zonele inundabile ca surse de inspirație",
+    "intro": {
+      "description": "Descoperă cum zonele inundabile inspiră povești, meșteșuguri și creativitate. Explorează arta materialelor naturale înainte de a-ți construi propriile capodopere.",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "opensNewTab": "Deschide o filă nouă: Zenodo",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "explore": "EXPLOREAZĂ"
+    },
+    "instruction": {
+      "intro1": "Râurile și zonele lor inundabile găzduiesc numeroase animale și plante și sunt, de asemenea, peisaje vii pline de povești care au inspirat oamenii timp de secole. De la împletirea coșurilor cu crengi de salcie până la crearea de cântece, legende și desene, zonele inundabile leagă natura de cultură.",
+      "intro2": "Acum e rândul tău - distrează-te folosind elemente naturale pentru a-ți crea propriile imagini și povești.  Pe malul râului, lasă culorile, formele și sunetele sale să te inspire și să descoperi bucuria de a-ți modela propria poveste pornind de la zona inundabilă.",
+      "instruction": "Imaginează-ți că ești în natură, adunând frunze, crengi sau pene pentru a-ți crea propriile personaje. Ai putea ajuta aceste schițe să prindă viață? Trageți și plasați elementele naturale în forme până când acestea sunt umplute cu formă și culoare.",
+      "page3": {
+        "text1": "Lipsesc unele părți ale peisajului. ",
+        "text2": "Trageți și plasați figurinele pe care le-ați creat în locurile potrivite pentru a completa scena cu câmpia inundabilă.",
+        "trySnailFirst": "Încearcă să pui melcul mai întâi"
+      }
+    },
+    "nextTopic": "URMĂTORUL SUBIECT",
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "basedOn5E": "Bazat pe metoda de învățare 5E și pe cercetare științifică",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    }
+  },
+  "aestheticsPage": {
+    "title": {
+      "page0": "Floodplain aesthetics versus Floodplain functions",
+      "page1": "Nature's presents offered by the Danube and its floodplains",
+      "page2": "Discover the hidden services of the floodplain!"
+    },
+    "intro": {
+      "description": "Learn about aesthetics and discover the hidden services and cultural values that floodplains offer.",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "opensNewTab": "Deschide o filă nouă: Zenodo",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "explore": "EXPLOREAZĂ"
+    },
+    "page1": {
+      "description": "The floodplains and wetlands of the Danube give us many benefits, called ecosystem services. These come in different forms:",
+      "provisioningServices": "Provisioning services",
+      "provisioningDescription": "resources we can use directly, like fish, clean water, or wood.",
+      "regulatingServices": "Regulating services",
+      "regulatingDescription": "processes that keep nature in balance, like reducing floods, cleaning water, or storing carbon.",
+      "culturalServices": "Cultural services",
+      "culturalDescription": "benefits that enrich our lives, such as recreation, learning, and cultural traditions.",
+      "activityQuestion": "Can you sort nature's services into groups?",
+      "activityInstruction": "Please drag and drop each icon to its matching labeled box on the right.",
+      "results": "Results",
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "correctTooltip": "Correct!",
+      "incorrectTooltip": "Incorrect",
+      "clickToRemove": "Click to remove"
+    },
+    "page2": {
+      "instruction": "The Danube floodplain is full of hidden treasures — but some are tricky to see!\n\nUse the magnifying glass to explore the landscape and spot the ecosystem service icons.\nWhen you hover over one with the magnifying glass, it will disappear from the image and appear at the matching label at the edge of the illustration.\n\nTogether, these services reveal how nature supports our lives every day."
+    },
+    "ecosystemServices": {
+      "tourism": "Tourism",
+      "recreation": "Recreation and fishing",
+      "landscape": "Landscape aesthetics",
+      "climate": "Climate regulation",
+      "carbon": "Carbon sequestration",
+      "nutrient": "Nutrient retention",
+      "flood": "Flood regulation",
+      "habitat": "Habitat provision",
+      "water": "Surface and groundwater",
+      "fish": "Fish",
+      "agriculture": "Agriculture",
+      "timber": "Timber"
+    },
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "basedOn5E": "Bazat pe metoda de învățare 5E și pe cercetare științifică",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    },
+    "nextTopic": "URMĂTORUL SUBIECT"
+  },
+  "treatmentWetlandsPage": {
+    "title": {
+      "main": "Treatment wetlands",
+      "page1": "Nature's final filter – The Treatment Wetland",
+      "page2": "Layer by layer – Nature's cleaning crew",
+      "page3": "Let's build nature's filter - Vertical Flow Wetland",
+      "page4": "Tiny cleaners, big impact!"
+    },
+    "intro": {
+      "description": "Learn about treatment wetlands and discover how constructed wetlands naturally filter and clean wastewater.",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "opensNewTab": "Deschide o filă nouă: Zenodo",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "explore": "EXPLOREAZĂ"
+    },
+    "characters": {
+      "rocky": {
+        "name": "Rocky the Drainer",
+        "label": "ROCKY THE DRAINER",
+        "tooltip": {
+          "first": "I'm Rocky the Drainer! I collect the cleaned water and let it flow out safely to the river. I keep the bottom open and full of air so the whole system can breathe.",
+          "second": "Function: Collects the cleaned water, ensures aeration from below, and directs flow to the outlet."
+        }
+      },
+      "reeda": {
+        "name": "Reeda the Flowkeeper",
+        "label": "REEDA THE FLOWKEEPER",
+        "tooltip": {
+          "first": "I'm Reeda, Flowkeeper! My roots keep the filter open so the water can pass through easily. I protect the wetland from heat and cold, bring in a bit of oxygen, and give microbes a good place to live.",
+          "second": "Function: Root growth maintains hydraulic conductivity of the filter, provide insulation against heat (summer) and cold (winter), slows down inflow, supports microbes, and takes up some nutrients."
+        }
+      },
+      "gravelia": {
+        "name": "Gravelia the Distributor",
+        "label": "GRAVELIA THE DISTRIBUTOR",
+        "tooltip": {
+          "first": "Hey there! I'm Gravelia the Distributor! I stop fine particles from blocking the bottom and spread the water evenly.  I keep everything balanced between Sandy above and Rocky below.",
+          "second": "Function: Distributes water evenly, prevents clogging, and protects the drainage zone below."
+        }
+      },
+      "sandy": {
+        "name": "Sandy the Cleaner",
+        "label": "SANDY THE CLEANER",
+        "tooltip": {
+          "first": "I'm Sandy the Cleaner! Millions of microbes live between my grains — they eat waste and transform nitrogen and organic matter into harmless forms. I do most of the real cleaning work here!",
+          "second": "Function: Hosts microbial biofilms that perform most of the biological cleaning (nitrification, organic matter removal, some phosphorus binding). Fine texture slows water for longer contact time → better cleaning.",
+          "highlightText": "perform most of the biological cleaning"
+        }
+      }
+    },
+    "layerSlots": {
+      "plant": "Plant layer",
+      "filter": "Filter layer",
+      "intermediate": "Intermediate layer",
+      "drainage": "Drainage layer"
+    },
+    "page2": {
+      "instruction": "Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky.\n\nDrag each helper onto the wetland container to build the layers from bottom to top.",
+      "successMessage": "Great job! You built the treatment wetland in the right order.",
+      "errorMessage": "{{name}} belongs in a different layer. Try another spot!"
+    },
+    "page3": {
+      "instruction": "Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top.\n\nWatch how your wetland gets ready to clean the water naturally!",
+      "dropBucket": "Drop bucket here!"
+    },
+    "page4": {
+      "intro": "Now that the wetland is built, let's meet its hidden workers — the tiny microbes who do most of the cleaning job.",
+      "conclusion": "Thanks to millions of tiny helpers like Nino, Dina, Phos, and Bacto, the water leaves the treatment wetland fresh and clean — ready to flow back to Danubius and start its journey again!",
+      "hoverZones": {
+        "zone1": "I turn ammonium into nitrate when oxygen is around!",
+        "zone2": "I work where there's no oxygen — I turn nitrate into nitrogen gas!",
+        "zone3": "I grab phosphorus and hold it tight in the gravel!",
+        "zone4": "I grab phosphorus and hold it tight in the gravel!"
+      }
+    },
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "basedOn5E": "Bazat pe metoda de învățare 5E și pe cercetare științifică",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    },
+    "nextTopic": "URMĂTORUL SUBIECT"
+  },
+  "selfPurificationPage": {
+    "title": {
+      "main": "Self purification function",
+      "page1": "Nitrogen input into rivers",
+      "page2": "Retention of nitrogen by rivers",
+      "page3": "Additional retention of nitrogen by floodplains",
+      "page4": "Phosphorous input into rivers",
+      "page5": "Retention of phosphorous by rivers",
+      "page6": "Additional retention of phosphorous by floodplains"
+    },
+    "intro": {
+      "description": "Learn about self purification functions and discover how rivers and floodplains naturally filter and clean water.",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "openPlatform": "PLATFORMĂ DESCHISĂ",
+      "opensNewTab": "Deschide o filă nouă: Zenodo",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "explore": "EXPLOREAZĂ"
+    },
+    "hoverAreas": {
+      "nutrients1": {
+        "area1": "Pollution that comes from many scattered places, such as <span style=\"color: #1C00B8;\">farm fields, roads, or towns</span>, and is carried into rivers by rain or runoff.",
+        "area2": "Pollution that comes from a single, identifiable place, such as a <span style=\"color: #1C00B8;\">pipe from a factory or a wastewater treatment plant</span>.",
+        "area3": "<span style=\"color: #1C00B8;\">Fertilizers and manure</span> dissolve in rainwater and move through the soil or across fields into rivers. This is the main source of diffuse nitrogen pollution.",
+        "area4": "Rainwater carries nitrogen compounds from <span style=\"color: #1C00B8;\">streets, vehicles, and urban green areas</span> into drains and rivers.",
+        "area5": "<span style=\"color: #1C00B8;\">Treated water still contains some nitrogen</span> compounds that flow into rivers through outlet pipes. In some countries, modern plants remove most nitrogen efficiently, but in others, treatment is less advanced — or even missing.",
+        "area6": "<span style=\"color: #1C00B8;\">Some factories</span> release nitrogen-rich wastewater from food processing, chemicals, or manufacturing activities. Usually regulated but still important locally."
+      },
+      "nutrients2": {
+        "area1": "Particulate N settles in sediments. Organic nitrogen particles <span style=\"color: #1C00B8;\">sink down</span>, and thus become accessible for microbes living between sand grains — quiet zones of purification.",
+        "area2": "Nutrients → Biomass (temporary). Algae and aquatic plants <span style=\"color: #1C00B8;\">take up nitrate and ammonium</span>; nitrogen is stored in their tissues until they decay.",
+        "area3": "<span style=\"color: #1C00B8;\">Ammonium → Nitrate (needs oxygen)</span>. Tiny microbes in oxygen-rich sediments convert ammonium into nitrate — the first step of purification.",
+        "area4": "<span style=\"color: #1C00B8;\">Nitrate → Nitrogen gas (no oxygen)</span> Bacteria in low-oxygen zones turn nitrate into nitrogen gas — the key process for nitrogen loss."
+      },
+      "nutrients3": {
+        "area1": "<span style=\"color: #1C00B8;\">Nitrogen bound to particles settles.</span> During floods, suspended particles with nitrogen are trapped and deposited on the floodplain surface.",
+        "area2": "<span style=\"color: #1C00B8;\">Nutrients → Biomass (temporary).</span> Floodplain plants absorb nitrogen during the growing season and store it in wood and leaves.",
+        "area3": "<span style=\"color: #1C00B8;\">Nitrate → Nitrogen gas (no oxygen).</span> In flooded soils, microbes breathe without oxygen and transform nitrate into nitrogen gas — permanent nitrogen removal."
+      },
+      "nutrients4": {
+        "area1": "Pollution that comes from many scattered places, such as <span style=\"color: #CE7C0A;\">farmland, unpaved roads, or towns</span>.",
+        "area2": "Pollution that comes from one clear source, such as a pipe from a wastewater treatment plant or a factory.",
+        "area3": "Phosphorus <span style=\"color: #CE7C0A;\">bound to soil particles</span> is washed into rivers during rain or floods.",
+        "area4": "<span style=\"color: #CE7C0A;\">Fertilizer</span> phosphorus dissolves in water and slowly reaches rivers through the soil or overland flow. A smaller but steady diffuse source.",
+        "area5": "Rainwater carries <span style=\"color: #CE7C0A;\">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers.",
+        "area6": "<span style=\"color: #CE7C0A;\">Even after treatment, part of the</span> phosphorus remains in discharged water. Many countries have upgraded their plants, but others still lack efficient systems or any wastewater treatment at all.",
+        "area7": "Certain factories release phosphorus-containing wastewater from <span style=\"color: #CE7C0A;\">cleaning, processing, or production activities</span>. Usually regulated but still significant in some areas."
+      },
+      "nutrients5": {
+        "area1": "<span style=\"color: #CE7C0A;\">Dissolved phosphate sticks to minerals</span> such as iron, aluminium, or lime. When oxygen is present, phosphorus stays bound; but if oxygen is missing, it can be released again back into the water.",
+        "area2": "<span style=\"color: #CE7C0A;\">Algae, aquatic plants, and biofilms take up phosphorus</span> and use it for growth. This retention is temporary — when the organisms die or decay, the phosphorus is released to the water.",
+        "area3": "Phosphorus attached to soil and organic particles sinks down to the riverbed. This happens mainly in calm areas or where the flow is slow — forming a temporary \"phosphorus storage\" in the sediment."
+      },
+      "nutrients6": {
+        "area1": "When floodwaters spread across the land, they slow down and drop suspended particles rich in phosphorus. This is one of the most effective ways floodplains trap and store phosphorus.",
+        "area2": "Floodplain plants absorb phosphorus as they grow, storing it in leaves and roots. This retention is temporary, but some phosphorus stays longer in litter and humus after plants die.",
+        "area3": "Dissolved phosphorus binds to iron, aluminium, or calcium compounds in the soil. This keeps phosphorus locked away — unless oxygen runs out, when it can be released again."
+      }
+    },
+    "quizModal": {
+      "content": "<p style=\"margin: 0;\">About <span style=\"color: #619F6A;\">40% of phosphorus</span> released into the Danube Basin never reaches the river mouth — it settles and is trapped in <span style=\"color: #619F6A;\">reservoirs and floodplains</span> along the way.</p>"
+    },
+    "didYouKnow": {
+      "nitrogenRivers": {
+        "title": "Do you know how much nitrogen remove rivers?",
+        "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Every year, rivers in floodplain areas naturally retain around 25,000 tonnes of nitrogen (about 5% of total emissions)</span> — the same amount of nitrogen that roughly 5.5 million people would excrete in a year! That's roughly the population of Slovakia.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Across the entire Danube Basin, rivers remove even more: about 30%</span> of the nitrogen entering the river system is retained during in-stream transport, mainly through <span style=\"color: #619F6A;\">denitrification</span>.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">This shows how much cleaning power rivers have, even before the water reaches floodplains.</span></p>"
+      },
+      "nitrogenFloodplains": {
+        "title": "Do you know how much nitrogen remove the Danube floodplains?",
+        "content": "<p style=\"margin: 0;\">The <span style=\"color: #619F6A;\">remaining active floodplains</span> of the Danube Basin provide an extra cleaning step, retaining around <span style=\"color: #619F6A;\">7,700 tonnes of nitrogen per year</span> — about as much as <span style=\"color: #619F6A;\">1.6 million people</span> (the population of Belgrade) would excrete in a year.</p>"
+      }
+    },
+    "modal": {
+      "title": "Opțiuni de descărcare",
+      "accessTeachingMaterials": "Accesați materiale didactice",
+      "basedOn5E": "Bazat pe metoda de învățare 5E și pe cercetare științifică",
+      "opensInNewTab": "(Deschide o filă nouă: Zenodo)",
+      "exploreRepository": "Explorează Wet- Edu Arhiva",
+      "exploreRelated": "Explorați proiecte și resurse conexe"
+    },
+    "nextTopic": "URMĂTORUL SUBIECT"
+  },
+  "wetlandFreskPage": {
+    "title": "Wetland Fresk",
+    "description": "Wetlands Fresk este un atelier colaborativ și interactiv conceput pentru a ajuta participanții să exploreze modul în care activitățile umane afectează ecosistemele zonelor umede (inclusiv mlaștinile sărate, lagunele etc.), consecințele acestor impacturi și potențialele soluții. Participanții lucrează împreună pentru a construi o „hartă” a relațiilor cauză-efect folosind un set de cartonașe, apoi trec la reflecție și acțiune.",
+    "duration": {
+      "label": "Durată",
+      "value": "90-120 de minute"
+    },
+    "numberOfCards": {
+      "label": "Număr de cărți",
+      "value": "24 de cărți"
+    },
+    "teamPlayers": {
+      "label": "Jucători de echipă",
+      "value": "4 - 8"
+    },
+    "age": {
+      "label": "Vârstă",
+      "value": "de la ± 12 ani"
+    },
+    "downloadNote": "Vei fi direcționat către o bază de date externă"
+  },
+  "wetland4LifePage": {
+    "title": "Wetland4Life",
+    "subtitle": "Explorează potențialul zonelor umede prin intermediul unei aplicații!",
+    "whatDoesItDo": {
+      "title": "Ce face Wetland4Life?",
+      "description": "Wetland4Life ajută pentru a realiza cartografierea zonelor umede accesibil pentru toată lumea. Oferă modalități simple și practice la evaluarea stării zonei umede şi identifică oportunități de restaurare."
+    },
+    "howItWorks": {
+      "title": "Cum funcționează",
+      "description": "Întrebări simple, pas cu pas, vă ghidează prin procesul de cartografiere. Evaluarea fiecărei locații durează aproximativ ",
+      "time": "5 minute",
+      "timeEnd": " — rapid, clar și fundamentat științific."
+    },
+    "academy": {
+      "title": "Vrei să afli mai multe?",
+      "description": "Aplicația include o academie încorporată cu materiale despre zonele umede — cum ar fi funcțiile, amenințările și restaurarea acestora. Fie că ești începător sau profesionist, există întotdeauna ceva nou de descoperit."
+    },
+    "callToAction": "Întrucât zonele umede sunt atât de importante pentru siguranța noastrră, mediul nostru de viață și viitorul nostru este crucială înţelegerea stării lor actuale — și unde putem restabili ceea ce s-a pierdut. Așadar, avem nevoie de tine !",
+    "visitButton": "Vizitați aplicația Wetland4Life",
+    "externalLinkNote": "Acest link duce la un website extern optimizat pentru pentru mobil. Experiența poate fi mai puțin optimă pe desktop.",
+    "websiteUrl": "https://wetland.restore4life-platform.eu"
+  },
+  "blueGreenSpace4AllPage": {
+    "title": "Space4All Albastru-Verde",
+    "subtitle": "Călătorește cu Otis Vidra de-a lungul Dunării și abordează provocările !",
+    "description": "Un joc pe calculator jucăuș în care călătorești cu Otis Vidra de-a lungul Dunării. Pe parcurs, vei întâlni provocări biologice, fizice, chimice și sociale. Răspunde la întrebări, alege soluții și îmbunătățește Dunărea pas cu pas — în timp ce colectezi cât mai multe monede posibil.",
+    "quizHighlight": "Testul perfect pentru a vedea cât de multe ai învățat despre zonele umede!",
+    "playButton": "Joacă Space4All Albastru-Verde",
+    "externalLinkNote": "Vei deschide un site web extern cu jocul.",
+    "websiteUrl": "http://game.restore4life-platform.eu"
+  },
+  "wetlandEduRepoPage": {
+    "title": "Explorează Wet- Edu Arhiva",
+    "subtitle": "Explorați proiecte și resurse conexe",
+    "allTopics": "Toate subiectele",
+    "clickToOpen": "**Faceți clic pe orice proiect pentru a-l deschide într-o filă nouă**",
+    "opensInNewTab": "Se deschide într-o filă nouă**",
+    "previous": "Anterior",
+    "next": "Următor",
+    "page": "Pagină",
+    "of": "din",
+    "topics": {
+      "Floodplain living environment": "Mediul de viață din zonă inundabilă",
+      "Floodplain mapping": "Cartografierea zonelor inundabile",
+      "Flood control": "Controlul inundațiilor",
+      "Habitat assessment": "Evaluarea habitatului",
+      "Carbon sequestration": "Sechestrarea carbonului",
+      "Self purification": "Autopurificare",
+      "Constructed wetlands": "Zone umede construite",
+      "Aesthetics": "Estetică",
+      "Art & Storytelling": "Artă și povestiri"
+    }
+  }
+}

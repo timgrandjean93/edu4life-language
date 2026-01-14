@@ -9,6 +9,7 @@ import srTranslations from '../locales/sr.json';
 import huTranslations from '../locales/hu.json';
 import bsTranslations from '../locales/bs.json';
 import deTranslations from '../locales/de.json';
+import roTranslations from '../locales/ro.json';
 
 i18n
   .use(LanguageDetector) // Detect user language from browser
@@ -38,6 +39,9 @@ i18n
       },
       de: {
         translation: deTranslations,
+      },
+      ro: {
+        translation: roTranslations,
       },
     },
     fallbackLng: 'en', // Use English if translation is missing

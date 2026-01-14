@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { HomeButton } from '../HomeButton';
 import { usePageRouting } from '../../hooks/usePageRouting';
 import { LocalizedImage } from '../LocalizedImage';
+import { useOrientation } from '../../hooks/useOrientation';
 
 interface ArtPageProps {
   onHomeClick: () => void;
@@ -505,6 +506,7 @@ const finalOutline = {
 
 export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticClick, onRepositoryClick }) => {
   const { t } = useTranslation();
+  const { isMobile } = useOrientation();
   const [draggedElement, setDraggedElement] = useState<string | null>(null);
   const [placedElements, setPlacedElements] = useState<{[key: string]: string}>({});
   const [isCompleted, setIsCompleted] = useState(false);
@@ -513,6 +515,15 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
   const showDropZones = false;
   const [showDownloadModal, setShowDownloadModal] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
+  // Touch drag state for mobile
+  const [touchDragState, setTouchDragState] = useState<{
+    elementId: string | null;
+    touchX: number;
+    touchY: number;
+    offsetX: number;
+    offsetY: number;
+  } | null>(null);
 
   // Track window width for responsive navbar
   useEffect(() => {
@@ -747,11 +758,141 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
     setShowDownloadModal(false);
   };
 
+  // Touch handlers for mobile drag and drop
+  const handleTouchStart = (e: React.TouchEvent, elementId: string) => {
+    if (!isMobile) return;
+    
+    const elementZones = getCurrentOutline().dropZones.filter(zone => zone.accepts.includes(elementId));
+    const filledElementZones = elementZones.filter(zone => placedElements[zone.id] === elementId);
+    const isElementFullyUsed = filledElementZones.length >= elementZones.length;
+    
+    if (isElementFullyUsed) return;
+    
+    const touch = e.touches[0];
+    const target = e.currentTarget as HTMLElement;
+    const rect = target.getBoundingClientRect();
+    
+    setTouchDragState({
+      elementId,
+      touchX: touch.clientX,
+      touchY: touch.clientY,
+      offsetX: touch.clientX - rect.left - rect.width / 2,
+      offsetY: touch.clientY - rect.top - rect.height / 2
+    });
+    
+    e.preventDefault(); // Prevent scrolling
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isMobile || !touchDragState) return;
+    
+    const touch = e.touches[0];
+    setTouchDragState({
+      ...touchDragState,
+      touchX: touch.clientX,
+      touchY: touch.clientY
+    });
+    
+    e.preventDefault(); // Prevent scrolling
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!isMobile || !touchDragState) return;
+    
+    const touch = e.changedTouches[0];
+    const elementId = touchDragState.elementId;
+    const element = getCurrentElements().find(el => el.id === elementId);
+    
+    if (!element) {
+      setTouchDragState(null);
+      return;
+    }
+
+    // Find the drop zone at touch position
+    const imageContainer = document.querySelector('[data-art-image-container]') as HTMLElement;
+    if (!imageContainer) {
+      setTouchDragState(null);
+      return;
+    }
+
+    const containerRect = imageContainer.getBoundingClientRect();
+    const touchX = touch.clientX;
+    const touchY = touch.clientY;
+    
+    // Check if touch is within image container
+    if (
+      touchX < containerRect.left ||
+      touchX > containerRect.right ||
+      touchY < containerRect.top ||
+      touchY > containerRect.bottom
+    ) {
+      setTouchDragState(null);
+      return;
+    }
+
+    // Calculate percentage position
+    const dropX = ((touchX - containerRect.left) / containerRect.width) * 100;
+    const dropY = ((touchY - containerRect.top) / containerRect.height) * 100;
+
+    // Find all dropzones that accept this element
+    const validZones = getCurrentOutline().dropZones.filter(zone => 
+      zone.accepts.includes(element.id) && !placedElements[zone.id]
+    );
+
+    if (validZones.length === 0) {
+      setTouchDragState(null);
+      return;
+    }
+
+    // Find the closest valid dropzone
+    let closestZone = validZones[0];
+    let minDistance = Infinity;
+
+    validZones.forEach(zone => {
+      const distance = Math.sqrt(
+        Math.pow(zone.x - dropX, 2) + Math.pow(zone.y - dropY, 2)
+      );
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestZone = zone;
+      }
+    });
+
+    // Check if within zone bounds (with some tolerance)
+    const zoneWidth = closestZone.width;
+    const zoneHeight = closestZone.height;
+    const distanceX = Math.abs(dropX - closestZone.x);
+    const distanceY = Math.abs(dropY - closestZone.y);
+    
+    // Use larger tolerance for mobile (20% of zone size)
+    const toleranceX = zoneWidth * 0.2;
+    const toleranceY = zoneHeight * 0.2;
+
+    if (distanceX <= zoneWidth / 2 + toleranceX && distanceY <= zoneHeight / 2 + toleranceY) {
+      // Place element
+      setPlacedElements(prev => ({
+        ...prev,
+        [closestZone.id]: element.id
+      }));
+      
+      setUsedElements(prev => new Set([...prev, element.id]));
+      
+      // Check if all zones are filled
+      const allZonesFilled = getCurrentOutline().dropZones.every(zone => placedElements[zone.id] || zone.id === closestZone.id);
+      if (allZonesFilled) {
+        setIsCompleted(true);
+      }
+    }
+
+    setTouchDragState(null);
+  };
+
   // Retry function to reset current page
   const handleRetry = () => {
     setPlacedElements({});
     setIsCompleted(false);
     setUsedElements(new Set());
+    setTouchDragState(null);
   };
 
   const handleDashboardLink = () => {
@@ -772,7 +913,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
       {/* Header with title and home button */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
         <div className="flex items-start justify-center" style={{ paddingTop: '70px', paddingBottom: '40px' }}>
-          <div className="w-full max-w-6xl px-4" style={{ marginLeft: '100px', marginRight: '100px' }}>
+          <div className="w-full max-w-6xl px-4" style={{ marginLeft: isMobile ? '0' : '100px', marginRight: isMobile ? '0' : '100px', paddingLeft: isMobile ? '12px' : '16px', paddingRight: isMobile ? '12px' : '16px' }}>
             {/* Header with Title */}
             <div className="relative" style={{ marginTop: '40px' }}>
               {/* Title and Subtitle - Centered */}
@@ -795,19 +936,19 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '10px', flex: 1 }}>
+      <div className="relative z-10 pb-8" style={{ paddingBottom: '10px', flex: 1, paddingLeft: isMobile ? '12px' : '16px', paddingRight: isMobile ? '12px' : '16px' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
           className="max-w-6xl mx-auto"
-          style={{ marginLeft: '100px', marginRight: '100px' }}
+          style={{ marginLeft: isMobile ? '0' : '100px', marginRight: isMobile ? '0' : '100px' }}
         >
           {currentPage === 0 ? (
             <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
               {/* Single Illustration */}
-              <div className="flex justify-center mb-8" style={{ width: '100%', maxWidth: '500px' }}>
-                <div style={{ width: '100%', maxWidth: '600px' }}>
+              <div className="flex justify-center mb-8" style={{ width: '100%', maxWidth: isMobile ? '100%' : '500px' }}>
+                <div style={{ width: '100%', maxWidth: isMobile ? '100%' : '600px' }}>
                   <img
                     src="/assets/components/art/landing.png"
                     alt="Sources of inspiration"
@@ -819,41 +960,71 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
               {/* Descriptive Text */}
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
-                fontSize: '24px',
+                fontSize: isMobile ? '18px' : '24px',
                 fontWeight: 'bold',
                 color: '#406A46',
                 textAlign: 'center',
-                marginBottom: '40px',
+                marginBottom: isMobile ? '24px' : '40px',
                 maxWidth: '1200px',
-                lineHeight: '1.6'
+                lineHeight: '1.6',
+                padding: '0'
               }}>
-                {t('artPage.intro.description')}
+                {isMobile ? t('artPage.instruction.intro1') : t('artPage.intro.description')}
               </div>
 
               {/* Call-to-Action Button */}
-              <button
-                className="learn-test-button"
-                onClick={() => setCurrentPage(1)}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer',
-                  marginBottom: '40px',
-                  padding: 0
-                }}
-              >
-                <LocalizedImage
-                  src="/assets/icons/learnandtest.png"
-                  alt={t('common.learnAndTestButton')}
+              {isMobile ? (
+                <button
+                  onClick={() => setCurrentPage(1)}
                   style={{
-                    height: 'auto',
-                    maxWidth: '500px',
-                    width: 'auto'
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '18px',
+                    fontWeight: 'bold',
+                    color: 'white',
+                    backgroundColor: '#51727C',
+                    padding: '14px 32px',
+                    borderRadius: '8px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textTransform: 'uppercase',
+                    marginBottom: '24px',
+                    transition: 'background-color 0.2s'
                   }}
-                />
-              </button>
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#406A46';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#51727C';
+                  }}
+                >
+                  {t('artPage.intro.explore')}
+                </button>
+              ) : (
+                <button
+                  className="learn-test-button"
+                  onClick={() => setCurrentPage(1)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    marginBottom: '40px',
+                    padding: 0
+                  }}
+                >
+                  <LocalizedImage
+                    src="/assets/icons/learnandtest.png"
+                    alt={t('common.learnAndTestButton')}
+                    style={{
+                      height: 'auto',
+                      maxWidth: '500px',
+                      width: 'auto'
+                    }}
+                  />
+                </button>
+              )}
 
-              {/* Download Section */}
+              {/* Download Section - Hidden on mobile */}
+              {!isMobile && (
               <div className="flex justify-center" style={{ width: '100%', maxWidth: '1400px', paddingTop: '20px', position: 'relative', marginBottom: '20px', minHeight: '180px' }}>
                 {/* Left Download Section */}
                 <div className="flex items-center" style={{ gap: '32px', position: 'absolute', right: 'calc(50% + 50px)', alignItems: 'center' }}>
@@ -961,11 +1132,12 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                   </div>
                 </div>
               </div>
+              )}
             </div>
           ) : (
             <>
               {/* Introduction Text - Only on pages 1 and 2 */}
-              {currentPage !== 3 && (
+              {currentPage !== 3 && !isMobile && (
                 <div className="text-center mb-8">
                   <p style={{
                     fontSize: '22px',
@@ -1013,8 +1185,25 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                 </div>
               )}
 
+              {/* Mobile: Only show intro2 text */}
+              {currentPage !== 3 && isMobile && (
+                <div className="text-center mb-8">
+                  <p style={{
+                    fontSize: '18px',
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#9F8B68',
+                    lineHeight: '1.6',
+                    marginBottom: '20px',
+                    padding: '0 12px'
+                  }}>
+                    {t('artPage.instruction.intro2')}
+                  </p>
+                </div>
+              )}
+
               {/* Page 3 - Pointer and Instruction */}
-              {currentPage === 3 && (
+              {currentPage === 3 && !isMobile && (
                 <div className="text-center mb-8">
                   {/* Pointer Icon */}
                   <div className="flex justify-center mb-8">
@@ -1043,20 +1232,21 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
 
               {/* Interactive Section */}
               <div
-                className="bg-white bg-opacity-90 rounded-lg p-8 shadow-lg"
+                className="bg-white bg-opacity-90 rounded-lg shadow-lg"
                 style={{
                   maxWidth: '1200px',
-                  margin: '50px auto 0'
+                  margin: isMobile ? '20px auto 0' : '50px auto 0',
+                  padding: isMobile ? '16px' : '32px'
                 }}
               >
 
               {/* Puzzle Area */}
-              <div className="flex justify-center items-center gap-8" style={{
-                flexDirection: (currentPage === 1 || currentPage === 2 || currentPage === 3) ? 'row' : 'column',
-                gap: currentPage === 3 ? '20px' : currentPage === 2 ? '120px' : '8px'
+              <div className="flex justify-center items-center" style={{
+                flexDirection: isMobile ? 'column' : ((currentPage === 1 || currentPage === 2 || currentPage === 3) ? 'row' : 'column'),
+                gap: isMobile ? '20px' : (currentPage === 3 ? '20px' : currentPage === 2 ? '120px' : '8px')
               }}>
                 {/* Left Elements - Only on page 3, 25% width */}
-                {currentPage === 3 && (
+                {currentPage === 3 && !isMobile && (
               <div className="grid gap-1" style={{ 
                 gridTemplateColumns: 'repeat(2, 1fr)',
                 width: '25%',
@@ -1075,13 +1265,20 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                           ? 'opacity-30 cursor-not-allowed' 
                           : 'cursor-move hover:bg-green-100'
                       }`}
-                      draggable={!isElementFullyUsed}
+                      draggable={!isElementFullyUsed && !isMobile}
                       onDragStart={(e) => {
-                        if (!isElementFullyUsed) {
+                        if (!isElementFullyUsed && !isMobile) {
                           handleDragStart(e, element.id);
                         } else {
                           e.preventDefault();
                         }
+                      }}
+                      onTouchStart={(e) => handleTouchStart(e, element.id)}
+                      onTouchMove={handleTouchMove}
+                      onTouchEnd={handleTouchEnd}
+                      style={{
+                        touchAction: 'none', // Prevent default touch behaviors
+                        userSelect: 'none'
                       }}
                     >
                       <img 
@@ -1258,7 +1455,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                     style={{
                       left: '0%',
                       top: '0%',
-                      width: currentPage === 1 ? '354px' : currentPage === 2 ? '506px' : '100%',
+                      width: '100%',
                       height: 'auto',
                       zIndex: getZIndex(element.id),
                       pointerEvents: 'none'
@@ -1410,7 +1607,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
       </div>
 
       {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
-      {currentPage > 0 && (
+      {currentPage > 0 && !isMobile && (
         <div className="relative z-10" style={{ 
           position: 'sticky', 
           bottom: 0,
@@ -1585,6 +1782,45 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
             </div>
       </div>
       </div>
+      )}
+
+      {/* Mobile Next Button - Centered at bottom */}
+      {currentPage > 0 && isMobile && (
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '20px',
+          paddingBottom: '40px'
+        }}>
+          <button
+            onClick={isCompleted ? (currentPage === TOTAL_PAGES ? onPeopleAquaticClick : () => {
+              setCurrentPage(currentPage + 1);
+              setPlacedElements({});
+              setIsCompleted(false);
+              setUsedElements(new Set());
+            }) : undefined}
+            className="next-button relative flex items-center justify-center z-50"
+            style={{
+              width: 'auto',
+              height: '60px',
+              backgroundColor: 'transparent',
+              border: 'none',
+              cursor: isCompleted ? 'pointer' : 'not-allowed'
+            }}
+          >
+            <LocalizedImage 
+              src="/assets/icons/next.png" 
+              alt={currentPage === TOTAL_PAGES ? t('artPage.nextTopic') : 'Next'} 
+              style={{ 
+                width: 'auto',
+                height: '60px',
+                opacity: isCompleted ? 1 : 0.3,
+                transition: 'opacity 0.3s ease'
+              }}
+            />
+          </button>
+        </div>
       )}
 
       {/* Download Modal */}

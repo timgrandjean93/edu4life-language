@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { RotationMessage } from './RotationMessage';
 import { LocalizedImage } from './LocalizedImage';
+import { useOrientation } from '../hooks/useOrientation';
 import type { ClickableComponent } from '../data/clickableComponents';
 
 interface HomePageProps {
@@ -103,9 +103,9 @@ const IMAGE_STYLE: React.CSSProperties = {
 
 export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onComponentClick, onNavigate }) => {
   const { t } = useTranslation();
+  const { isMobile } = useOrientation();
   const riverRef = useRef<HTMLDivElement>(null);
   const riverImgRef = useRef<HTMLImageElement>(null);
-  const [showRotationMessage, setShowRotationMessage] = useState(false);
   const [showCreditsModal, setShowCreditsModal] = useState(false);
   const [overlayBox, setOverlayBox] = useState<{ left: number; top: number; w: number; h: number; s: number }>({ 
     left: 0, top: 0, w: 0, h: 0, s: 1 
@@ -159,23 +159,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
     };
   }, []);
 
-  // Check orientation
-  useEffect(() => {
-    const checkOrientation = () => {
-      const isPortrait = window.innerHeight > window.innerWidth;
-      const isMobile = window.innerWidth <= 768;
-      setShowRotationMessage(isMobile && isPortrait);
-    };
-
-    checkOrientation();
-    window.addEventListener('resize', checkOrientation);
-    window.addEventListener('orientationchange', checkOrientation);
-
-    return () => {
-      window.removeEventListener('resize', checkOrientation);
-      window.removeEventListener('orientationchange', checkOrientation);
-    };
-  }, []);
 
   // Image hover handlers
   const handleImageMouseEnter = useCallback((e: React.MouseEvent<HTMLImageElement>) => {
@@ -281,6 +264,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
     );
   }, [overlayBox]);
 
+  // Mobile menu items (Map your Wetland and Art on homepage)
+  const mobileMenuItems = MENU_ITEMS.filter(item => 
+    ['map', 'art'].includes(item.key)
+  );
+
   return (
     <div className="relative w-full homepage-container" style={{ 
       width: '100%',
@@ -291,9 +279,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
       display: 'flex',
       flexDirection: 'column'
     }}>
-      {showRotationMessage && <RotationMessage />}
-      
-      {/* Credits image */}
+      {/* Credits image - Hidden on mobile */}
+      {!isMobile && (
       <div style={{
         position: 'absolute',
         top: '170px',
@@ -313,6 +300,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
           }}
         />
       </div>
+      )}
 
       {/* Credits Modal */}
       {showCreditsModal && (
@@ -380,9 +368,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
       )}
       
       {/* Page Title */}
-      <div className="flex items-start justify-center" style={{ paddingTop: '16px', paddingBottom: '24px', marginTop: '80px' }}>
-        <div className="w-full" style={{ padding: '0 100px' }}>
-          <h1 className="main-title" style={{ fontSize: '36px', color: '#51727C' }}>
+      <div className="flex items-start justify-center" style={{ paddingTop: isMobile ? '20px' : '16px', paddingBottom: isMobile ? '16px' : '24px', marginTop: isMobile ? '80px' : '80px' }}>
+        <div className="w-full" style={{ padding: isMobile ? '0 20px' : '0 100px' }}>
+          <h1 className="main-title" style={{ fontSize: isMobile ? '20px' : '36px', color: '#51727C', textAlign: isMobile ? 'center' : 'left' }}>
             {t('homePage.title')}{' '}
             <span style={{ color: '#548235' }}>{t('homePage.subtitle')}</span>
             <span style={{ color: '#51727C' }}>{t('homePage.subtitle2')}</span>
@@ -390,66 +378,166 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
         </div>
       </div>
 
-      {/* River Container */}
-      <div ref={riverRef} className="w-full z-10" style={{ 
-        width: '100%', 
-        position: 'relative',
-        maxWidth: '100vw'
-      }}>
-        {renderPointerLines}
-        
-        <img 
-          src="/assets/backgrounds/river.png" 
-          alt="River path" 
-          style={{ 
+      {isMobile ? (
+        // Mobile Layout: River image + Simple grid with 4 menu items
+        <div style={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          paddingBottom: '60px'
+        }}>
+          {/* River Image - Full Width - Overlaps with title */}
+          <div style={{
             width: '100%',
-            height: 'auto',
-            objectFit: 'contain',
-            objectPosition: 'center',
-            display: 'block'
-          }}
-          ref={riverImgRef}
-        />
-        
-        {/* Render all menu buttons */}
-        {MENU_ITEMS.map(renderMenuButton)}
+            marginTop: '-40px',
+            marginBottom: '24px',
+            position: 'relative'
+          }}>
+            <img 
+              src="/assets/backgrounds/river.png" 
+              alt="River path" 
+              style={{ 
+                width: '100%',
+                height: 'auto',
+                display: 'block'
+              }}
+            />
+            {/* Lau image - Left bottom */}
+            <div style={{
+              position: 'absolute',
+              bottom: '-15px',
+              left: '10%',
+              zIndex: 20,
+              pointerEvents: 'none'
+            }}>
+              <LocalizedImage 
+                src="/assets/components/Lau.png" 
+                alt="Lau instruction" 
+                style={{ 
+                  width: 'clamp(80px, 15vw, 120px)',
+                  height: 'auto',
+                  opacity: 0.9,
+                  maxWidth: 'none'
+                }}
+              />
+            </div>
+          </div>
 
-        {/* Click instruction images */}
-        <div 
-          style={{
-            position: 'absolute',
-            bottom: '8px',
-            left: '3%',
-            zIndex: 20,
-            pointerEvents: 'none',
+          {/* Menu Items Grid */}
+          <div style={{
+            width: '100%',
+            padding: '0 20px',
             display: 'flex',
-            gap: 'clamp(0.5vw, 8px, 2vw)',
-            alignItems: 'flex-end',
-            width: 'auto'
-          }}
-        >
-          <LocalizedImage 
-            src="/assets/components/Click.png" 
-            alt="Click instruction" 
-            style={{ 
-              width: 'clamp(100px, 10vw, 240px)',
-              height: 'auto',
-              opacity: 0.9,
-              maxWidth: 'none'
-            }}
-          />
-          <LocalizedImage 
-            src="/assets/components/Lau.png" 
-            alt="Lau instruction" 
-            style={{ 
-              width: 'clamp(100px, 10vw, 240px)',
-              height: 'auto',
-              opacity: 0.9,
-              maxWidth: 'none'
-            }}
-          />
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '24px'
+          }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '24px',
+              width: '100%',
+              maxWidth: '400px'
+            }}>
+              {mobileMenuItems.map((item) => (
+                <button
+                  key={item.key}
+                  onClick={() => onNavigate && onNavigate(item.page)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '12px',
+                    transition: 'transform 0.2s ease-in-out'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
+                >
+                  <LocalizedImage
+                    src={item.imageSrc}
+                    alt={item.alt}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: '180px'
+                    }}
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        // Desktop Layout: Original river image with all menu items
+        <div ref={riverRef} className="w-full z-10" style={{ 
+          width: '100%', 
+          position: 'relative',
+          maxWidth: '100vw'
+        }}>
+          {renderPointerLines}
+          
+          <img 
+            src="/assets/backgrounds/river.png" 
+            alt="River path" 
+            style={{ 
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain',
+              objectPosition: 'center',
+              display: 'block'
+            }}
+            ref={riverImgRef}
+          />
+          
+          {/* Render all menu buttons */}
+          {MENU_ITEMS.map(renderMenuButton)}
+
+          {/* Click instruction images */}
+          <div 
+            style={{
+              position: 'absolute',
+              bottom: '8px',
+              left: '3%',
+              zIndex: 20,
+              pointerEvents: 'none',
+              display: 'flex',
+              gap: 'clamp(0.5vw, 8px, 2vw)',
+              alignItems: 'flex-end',
+              width: 'auto'
+            }}
+          >
+            <LocalizedImage 
+              src="/assets/components/Click.png" 
+              alt="Click instruction" 
+              style={{ 
+                width: 'clamp(100px, 10vw, 240px)',
+                height: 'auto',
+                opacity: 0.9,
+                maxWidth: 'none'
+              }}
+            />
+            <LocalizedImage 
+              src="/assets/components/Lau.png" 
+              alt="Lau instruction" 
+              style={{ 
+                width: 'clamp(100px, 10vw, 240px)',
+                height: 'auto',
+                opacity: 0.9,
+                maxWidth: 'none'
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

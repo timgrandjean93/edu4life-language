@@ -42,7 +42,7 @@ const COUNTRY_TO_LANGUAGE: Record<string, string> = {
   'NO': 'en', // Norway
   'PL': 'en', // Poland (will be 'pl' when Polish is added)
   'PT': 'en', // Portugal
-  'RO': 'en', // Romania (will be 'ro' when Romanian is added)
+  'RO': 'ro', // Romania
   'SM': 'en', // San Marino
   'RS': 'en', // Serbia
   'SK': 'sk', // Slovakia
