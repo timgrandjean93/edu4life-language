@@ -134,33 +134,34 @@
       "instruction3": "Faceți clic pe o literă din imaginea de mai sus, apoi faceți clic pe spațiul corespunzător din text pentru a o plasa. Faceți clic pe o literă plasată pentru a o elimina.",
       "checkAnswers": "Verifică răspunsurile",
       "puzzleText": {
-        "part1": "Some C",
-        "part2": "bon stays locked in the s",
-        "part3": "il for a very long time — sometimes h",
-        "part4": "dreds or even tho",
-        "part5": "ands of y",
-        "part6": "rs! ",
-        "part7": "If we leave it un",
-        "part8": "sturbed, this soil carbon remains safely und",
-        "part9": "ground, instead of going into the a",
-        "part10": "mosphere. ",
-        "part11": "B",
-        "part12": "ue carbon, stored in coastal and wetland areas, also helps slow down cl",
-        "part13": "ate ch",
-        "part14": "ge."
+        "part1": "O parte din c",
+        "part2": "bon rămâne blocat în s",
+        "part3": "l pentru o perioadă foarte lungă de timp - uneori s",
+        "part4": "te sau chiar m",
+        "part5": "i de a",
+        "part6": "i! ",
+        "part7": "Dacă îl lăsăm ne",
+        "part8": "eranjat, acest carbon din sol ra",
+        "part9": "âne în siguranță în sub",
+        "part10": "eran, în loc să ajungă în a",
+        "part11": "sferă. Carbonul a",
+        "part12": "bastru, stocat în zonele de coastă și umede, ajută, de asemenea, la încetinirea sc",
+        "part13": "imbărilor cl",
+        "part14": "tice."
       },
       "correctAnswers": {
         "blank1": "ar",
         "blank2": "o",
-        "blank3": "un",
-        "blank4": "us",
-        "blank5": "ea",
-        "blank6": "di",
-        "blank7": "er",
+        "blank3": "u",
+        "blank4": "i",
+        "blank5": "n",
+        "blank6": "d",
+        "blank7": "m",
         "blank8": "t",
-        "blank9": "l",
-        "blank10": "im",
-        "blank11": "an"
+        "blank9": "tmo",
+        "blank10": "l",
+        "blank11": "h",
+        "blank12": "ima"
       },
       "blankPositions": {
         "blank1": "afterPart1",
@@ -171,68 +172,69 @@
         "blank6": "afterPart7",
         "blank7": "afterPart8",
         "blank8": "afterPart9",
-        "blank9": "afterPart11",
-        "blank10": "afterPart12",
-        "blank11": "afterPart13"
+        "blank9": "afterPart10",
+        "blank10": "afterPart11",
+        "blank11": "afterPart12",
+        "blank12": "afterPart13"
       },
       "hiddenLetters": {
         "letter1": {
-          "text": "an",
+          "text": "ar",
           "x": 15,
           "y": 20
         },
         "letter2": {
-          "text": "ar",
+          "text": "o",
           "x": 20,
           "y": 60
         },
         "letter3": {
-          "text": "o",
+          "text": "u",
           "x": 35,
           "y": 15
         },
         "letter4": {
-          "text": "l",
+          "text": "i",
           "x": 45,
           "y": 25
         },
         "letter5": {
-          "text": "us",
+          "text": "n",
           "x": 55,
           "y": 30
         },
         "letter6": {
-          "text": "oi",
+          "text": "d",
           "x": 25,
           "y": 50
         },
         "letter7": {
-          "text": "er",
+          "text": "m",
           "x": 50,
           "y": 60
         },
         "letter8": {
-          "text": "un",
+          "text": "t",
           "x": 65,
           "y": 35
         },
         "letter9": {
-          "text": "t",
+          "text": "tmo",
           "x": 75,
           "y": 20
         },
         "letter10": {
-          "text": "ea",
+          "text": "l",
           "x": 70,
           "y": 70
         },
         "letter11": {
-          "text": "di",
+          "text": "h",
           "x": 80,
           "y": 25
         },
         "letter12": {
-          "text": "im",
+          "text": "ima",
           "x": 85,
           "y": 45
         }
@@ -504,11 +506,11 @@
     "nextTopic": "URMĂTORUL SUBIECT"
   },
   "peopleAquaticPage": {
-    "title": "The people and aquatic ecosystems",
+    "title": "Oamenii și ecosistemele acvatice",
     "subtitle": {
-      "page1": "A. Natural floodplains",
-      "page2": "B. Used and altered floodplains",
-      "page3": "C. Restoring floodplains as a Nature-based Solution"
+      "page1": "A. Zonele inundabile naturale",
+      "page2": "B. Zonele inundabile utilizate și modificate",
+      "page3": "C. Restaurarea zonelor inundabile ca Soluție bazată pe Natură"
     },
     "intro": {
       "description": "Explore how people rely on floodplains and aquatic ecosystems, and discover pathways to restore their benefits for communities and nature.",
@@ -516,134 +518,134 @@
       "explore": "EXPLOREAZĂ"
     },
     "activity1": {
-      "title": "Activity 1",
-      "description": "Look closely—this is how human actions have transformed the Danube and its floodplains. Dikes, farming, navigation, and other pressures changed the landscape.",
-      "question": "Can you help me by matching each pressure label to the right place in the picture?",
-      "instruction": "People cleared forests, transformed the floodplains into pastures and crop fields, and built villages and later cities near the banks of the Danube. To protect themselves from floods, they constructed dikes. The Danube was also developed as a navigational waterway and for hydropower production. As a result, the river lost many of its natural features: the balance of sediments in the riverbed was disturbed, and the connection between the river channel and its floodplains was largely cut off. Only a few remnants of the original floodplain remained, while many typical animals and plants disappeared."
+      "title": "Activitatea 1",
+      "description": "Privește cu atenție — așa au transformat acțiunile umane Dunărea și zonele sale inundabile. Digurile, agricultura, navigația și alte presiuni au modificat peisajul.",
+      "question": "Ne poți ajuta să potrivești fiecare etichetă de presiune cu locul corect din imagine?",
+      "instruction": "Oamenii au defrișat pădurile, au transformat luncile în pășuni și terenuri agricole și au construit sate și apoi orașe de-a lungul Dunării. Pentru a se proteja de inundații, au construit diguri. Fluviul a fost transformat și într-o cale navigabilă și într-o sursă de energie hidroelectrică. Ca urmare, Dunărea și-a pierdut multe dintre caracteristicile sale naturale: echilibrul sedimentelor din albie a fost perturbat, iar legătura dintre râu și luncile sale a fost în mare parte întreruptă. Doar câteva fragmente ale luncii naturale au rămas, iar multe plante și animale tipice au dispărut."
     },
     "activity2": {
-      "title": "Activity 2",
-      "description": "To solve societal problems with this Nature-based Solution, you can now explore suitable restoration measures: each picture shows one way how people and nature may work together.",
-      "question": "At the bottom, you will find a list with six measures. Can you match the number of the measure from the list with the respective image that shows it?",
-      "instruction": "Step by step, parts of the Danube floodplain are being reconnected to the river. Old side arms are reopened, forests and wetlands are restored, and natural flooding is allowed again wherever possible. These measures bring back habitats for fish, birds, and plants, while also helping people — by storing floodwaters, improving water quality, providing water during droughts, and offering space for recreation. These restoration Measures are called Nature-based Solution."
+      "title": "Activitatea 2",
+      "description": "Pentru a rezolva problemele societății prin această Soluție bazată pe Natură, poți explora acum măsuri de restaurare: fiecare imagine arată o modalitate prin care oamenii și natura pot colabora.",
+      "question": "În partea de jos, veți găsi o listă cu șase măsuri. Puteți asocia numărul măsurii din listă cu imaginea respectivă care o prezintă?",
+      "instruction": "Pas cu pas, părți ale luncii Dunării sunt reconectate la râu. Brațe laterale vechi sunt redeschise, păduri și zone umede sunt restaurate, iar inundațiile naturale sunt din nou permise acolo unde este posibil. Aceste măsuri readuc habitate pentru pești, păsări și plante și ajută oamenii prin stocarea apelor de viitură, îmbunătățirea calității apei, furnizarea de apă în perioadele de secetă și oferirea de spații pentru recreere. Aceste măsuri de restaurare se numesc Soluții bazate pe Natură."
     },
     "activity3": {
-      "title": "Activity 3",
-      "description": "These polar charts show how the Danube's ecosystem services change in three different scenarios: natural floodplains, altered floodplains with human pressures, and restored floodplains with nature-based solutions. Can you find out why the services look so different?",
+      "title": "Activitatea 3",
+      "description": "Aceste hărți polare arată cum se schimbă serviciile ecosistemice ale Dunării în trei scenarii diferite: zone inundabile naturale, zone inundabile modificate sub presiunea omului și zone inundabile restaurate cu soluții bazate pe natură. Puteți afla de ce serviciile arată atât de diferit?",
       "column1": {
-        "title": "Original natural Floodplain",
-        "question": "Looking at this polar chart, why are almost all ecosystem services very high, while agriculture is low?",
+        "title": "Zonă inundabilă naturală originală ",
+        "question": "Privind această hartă polară, de ce aproape toate serviciile ecosistemice sunt foarte ridicate, în timp ce agricultura este scăzută?",
         "options": {
-          "A": "Because the soil in the floodplain was too poor and nothing could grow there.",
-          "B": "Because farming was forbidden by the rulers of the Danube region in those times.",
-          "C": "Because the floodplain was still natural, offering many benefits for people and animals, but farming was not possible on flooded land."
+          "A": "Pentru că solul din zona inundabilă era prea sărac și nimic nu putea crește acolo.",
+          "B": "Deoarece agricultura era interzisă de conducătorii regiunii Dunării în acele vremuri.",
+          "C": "Deoarece zona inundabilă era încă naturală, oferind multe beneficii pentru oameni și animale, dar agricultura nu era posibilă pe terenurile inundate."
         }
       },
       "column2": {
-        "title": "Altered floodplain",
-        "question": "Why is agricultural production so much provided in this status, while most other services are low?",
+        "title": "Luncă inundabilă alterată",
+        "question": "De ce este asigurată atât de multă producție agricolă în acest statut, în timp ce majoritatea celorlalte servicii sunt scăzute?",
         "options": {
-          "A": "Because the Danube's natural forests and wetlands expanded, increasing farming and timber production at the same time.",
-          "B": "Because dikes disconnected the floodplain from the river, protecting agriculture from floods but destroying many natural habitats and their benefits.",
-          "C": "Because no one lived near the Danube, so only a few services were used."
+          "A": "Deoarece pădurile naturale și zonele umede ale Dunării s-au extins, sporind în același timp agricultura și producția de lemn.",
+          "B": "Deoarece digurile au deconectat zona inundabilă de râu, protejând agricultura de inundații, dar distrugând multe habitate naturale și beneficiile aferente.",
+          "C": "Deoarece nimeni nu locuia în apropierea Dunării, au fost folosite doar câteva servicii."
         }
       },
       "column3": {
-        "title": "Restored floodplain",
-        "question": "Why are the ecosystem services more balanced in this polar chart compared to the other two?",
+        "title": "Luncă inundabilă restaurată ",
+        "question": "De ce sunt serviciile ecosistemice mai echilibrate în această hartă polară în comparație cu celelalte două?",
         "options": {
-          "A": "Because nature-based solutions restore side arms, wetlands, and forests, which bring back multiple benefits for both nature and people.",
-          "B": "Because people allowed the river to flood naturally, and removed all the pressures",
-          "C": "Because the Danube was cut off from its floodplains by dikes."
+          "A": "Deoarece soluțiile bazate pe natură restaurează zonele umede, zonele umede și pădurile, ceea ce aduce beneficii multiple atât pentru natură, cât și pentru oameni.",
+          "B": "Pentru că oamenii au permis râului să revărse în mod natural și au eliminat toate presiunile.",
+          "C": "Deoarece Dunărea a fost separată de zonele sale inundabile prin diguri."
         }
       },
-      "correctAnswer": "Correct answer:"
+      "correctAnswer": "Răspuns corect:"
     },
     "pressureLabels": {
       "cutting-meanders": {
-        "label": "Cutting meanders",
-        "description": "Straightening the river (making the river shorter and straighter instead of meandering)"
+        "label": "Tăierea meandrelor",
+        "description": "Îndreptarea râului (făcându-l mai scurt și mai drept în loc să șerpuiască)"
       },
       "building-dikes": {
-        "label": "Building dikes",
-        "description": "Flood protection dikes (raised embankments along the river that keep the water inside the main channel and stop it from reaching the floodplain)"
+        "label": "Construirea de diguri",
+        "description": "Diguri de protecție împotriva inundațiilor (diguri ridicate de-a lungul râului care mențin apa în interiorul canalului principal și o împiedică să ajungă în zona inundabilă)"
       },
       "channellizing-rivers": {
-        "label": "Channellizing rivers",
-        "description": "Channelizing the river (protecting the banks of straightened rivers from erosion by covering them by stones, or by building groynes [small transverse stone barriers] so the river cannot change its river bed any more)"
+        "label": "Regularizarea râurilor",
+        "description": "Regularizarea râului (protejarea malurilor râurilor îndreptate de eroziune prin acoperirea lor cu pietre sau prin construirea de epiuri [mici bariere transversale de piatră], astfel încât râul să nu-și mai poată schimba albia)"
       },
       "draining-floodplains": {
-        "label": "Draining floodplains",
-        "description": "Drying out wetlands (removing water from wetlands to make land usable for pastures, crop fields and settlements)"
+        "label": "Drenarea zonelor inundabile ",
+        "description": "Uscarea zonelor umede (îndepărtarea apei din zonele umede pentru a face terenul utilizabil pentru pășuni, câmpuri cultivate și așezări)"
       },
       "urbanization": {
-        "label": "Urbanization",
-        "description": "Building settlements, roads, and cities, accompanied by wastewater discharge into the river."
+        "label": "Urbanizare",
+        "description": "Construirea de așezări, drumuri și orașe, însoțită de deversarea de ape uzate în râu."
       },
       "agriculture-pesticides": {
-        "label": "Agriculture using pesticides, insecticides, etc.",
-        "description": "Application of chemicals in farming against weeds and insects"
+        "label": "Agricultură -utilizarea pesticidelor, insecticidelor etc. ",
+        "description": "Aplicarea substanțelor chimice în agricultură împotriva buruienilor și insectelor."
       },
       "cutting-forests": {
-        "label": "Cutting down forests",
-        "description": "Deforestation (removing trees from large areas)"
+        "label": "Defrișarea pădurilor ",
+        "description": "Defrișări (îndepărtarea copacilor de pe suprafețe mari)."
       },
       "industrialization": {
-        "label": "Industrialization",
-        "description": "Building factories and industries, often accompanied by air, soil or water pollution"
+        "label": "Industrializare",
+        "description": "Construirea de fabrici și industrii, adesea însoțită de poluarea aerului, solului sau apei."
       },
       "dams-hydroelectric": {
-        "label": "Dams, hydroelectric power plants, etc.",
-        "description": "Construction of river barriers (transverse concrete structures that stop water, sediment and fish from moving freely)"
+        "label": "Baraje, centrale hidroelectrice etc.",
+        "description": "Construcția de bariere fluviale (structuri transversale din beton care împiedică mișcarea liberă a apei, sedimentelor și peștilor)."
       },
       "invasive-species": {
-        "label": "Invasive species",
-        "description": "Newcomer species (plants or animals from other continents that spread massively and cause problems by their dominance)"
+        "label": "Specii invazive",
+        "description": "Specii nou-venite (plante sau animale de pe alte continente care se răspândesc masiv și cauzează probleme prin dominanța lor)."
       },
       "navigation": {
-        "label": "Navigation",
-        "description": "Ships and canals (deepening and regulating rivers so big ships can travel along them)"
+        "label": "Navigație",
+        "description": "Nave și canale (adâncirea și regularizea râurilor astfel încât navele mari să poată circula de-a lungul lor)."
       },
       "climate-change": {
-        "label": "Climate change",
-        "description": "Global warming (more extreme weather conditions caused by humans)"
+        "label": "Schimbări climatice",
+        "description": "Încălzire globală (condiții meteorologice extreme cauzate de oameni)."
       }
     },
     "restorationMeasures": {
       "restoration-sidearms": {
-        "label": "Restoration of river side-arms",
-        "description": "Re-opening old river branches so that water can flow there again, creating multiple habitats for fish, birds, and plants."
+        "label": "Restaurarea brațelor laterale ale râului",
+        "description": "Redeschiderea vechilor brațe ale râului, astfel încât apa să poată curge din nou acolo, creând habitate multiple pentru pești, păsări și plante."
       },
       "dike-relocation": {
-        "label": "Dike relocation for more space",
-        "description": "Moving dikes further away from the river to provide more space to the river and floodplain forests that may retain flood waters."
+        "label": "Relocarea digurilor pentru mai mult spațiu",
+        "description": "Mutarea digurilor mai departe de râu pentru a oferi mai mult spațiu râului și pădurilor din lunci care pot reține apele provenite din inundații."
       },
       "buffer-strips": {
-        "label": "Buffer strips",
-        "description": "Restoring narrow forests between agricultural fields and rivers so they can filter nutrients and hence protect water from pollution."
+        "label": "Fâșii tampon",
+        "description": "Restaurarea pădurilor înguste dintre câmpurile agricole și râuri, astfel încât acestea să poată filtra nutrienții și, prin urmare, să protejeze apa de poluare."
       },
       "fish-ramps": {
-        "label": "Fish ramps or remove barriers",
-        "description": "Helping fish migrate by removing barriers or transforming them into ramps of stones enabling them to swim upstream again."
+        "label": "Rampe pentru pești sau îndepărtarea barierelor",
+        "description": "Ajutarea peștilor să migreze prin îndepărtarea barierelor sau transformarea lor în rampe de pietre, permițându-le să înoate din nou în amonte."
       },
       "bypass-channels": {
-        "label": "Bypass channels",
-        "description": "Creating artificial side channels around barriers with gentle slopes where fish and other animals can move, or even live."
+        "label": "Canale ocolitoare",
+        "description": " Crearea de canale laterale artificiale în jurul barierelor cu pante line, unde peștii și alte animale se pot deplasa sau chiar pot trăi."
       },
       "native-species": {
-        "label": "Support native species",
-        "description": "Restoring natural habitat conditions to support native plants and animals, making it harder for invasive species to spread."
+        "label": "Sprijinirea speciilor native",
+        "description": "Restaurarea condițiilor de habitat natural pentru a susține plantele și animalele native, îngreunând răspândirea speciilor invazive."
       }
     },
     "ui": {
-      "results": "Results",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "correctTooltip": "Correct!",
-      "incorrectTooltip": "Incorrect",
-      "clickToRemove": "Click to remove and return to list",
-      "checkAnswers": "Check Answers",
-      "tryAgain": "Try Again"
+      "results": "Rezultate",
+      "correct": "Corect",
+      "incorrect": "Incorect",
+      "correctTooltip": "Corect!",
+      "incorrectTooltip": "Incorect",
+      "clickToRemove": "Faceți clic pentru a elimina și a reveni la listă",
+      "checkAnswers": "Verifică răspunsurile",
+      "tryAgain": "ÎNCEARCĂ DIN NOU"
     },
     "modal": {
       "title": "Opțiuni de descărcare",
@@ -686,12 +688,12 @@
   },
   "aestheticsPage": {
     "title": {
-      "page0": "Floodplain aesthetics versus Floodplain functions",
-      "page1": "Nature's presents offered by the Danube and its floodplains",
+      "page0": "Estetica zonelor inundabile versus funcțiile zonelorinundabile",
+      "page1": "Darurile naturii oferite de Dunăre și zonele sale inundabile",
       "page2": "Discover the hidden services of the floodplain!"
     },
     "intro": {
-      "description": "Learn about aesthetics and discover the hidden services and cultural values that floodplains offer.",
+      "description": "Învață despre estetică și descoperă serviciile ascunse și valorile culturale pe care le oferă zonele inundabile.",
       "accessTeachingMaterials": "Accesați materiale didactice",
       "openPlatform": "PLATFORMĂ DESCHISĂ",
       "opensNewTab": "Deschide o filă nouă: Zenodo",
@@ -699,38 +701,38 @@
       "explore": "EXPLOREAZĂ"
     },
     "page1": {
-      "description": "The floodplains and wetlands of the Danube give us many benefits, called ecosystem services. These come in different forms:",
-      "provisioningServices": "Provisioning services",
-      "provisioningDescription": "resources we can use directly, like fish, clean water, or wood.",
-      "regulatingServices": "Regulating services",
-      "regulatingDescription": "processes that keep nature in balance, like reducing floods, cleaning water, or storing carbon.",
-      "culturalServices": "Cultural services",
-      "culturalDescription": "benefits that enrich our lives, such as recreation, learning, and cultural traditions.",
-      "activityQuestion": "Can you sort nature's services into groups?",
-      "activityInstruction": "Please drag and drop each icon to its matching labeled box on the right.",
-      "results": "Results",
-      "correct": "Correct",
-      "incorrect": "Incorrect",
-      "correctTooltip": "Correct!",
-      "incorrectTooltip": "Incorrect",
-      "clickToRemove": "Click to remove"
+      "description": "Te rugăm să încerci să tragi și să plasezi fiecare pictogramă în grupul corect: Aprovizionare, Reglare sau Cultural.",
+      "provisioningServices": "Servicii de aprovizionare ",
+      "provisioningDescription": "resurse pe care le putem folosi direct, cum ar fi peștele, apa curată sau lemnul.",
+      "regulatingServices": "Servicii de reglare ",
+      "regulatingDescription": "procese care mențin echilibrul naturii, cum ar fi reducerea inundațiilor, curățarea apei sau stocarea carbonului.",
+      "culturalServices": "Servicii culturale",
+      "culturalDescription": "beneficii care ne îmbogățesc viața, cum ar fi recreerea, învățarea și tradițiile culturale.",
+      "activityQuestion": "Poți sorta serviciile naturii în grupuri? ",
+      "activityInstruction": "Te rugăm să încerci să tragi și să plasezi fiecare pictogramă în grupul corect: Aprovizionare, Reglare sau Cultural.",
+      "results": "Rezultate",
+      "correct": "Corect",
+      "incorrect": "Incorect",
+      "correctTooltip": "Corect!",
+      "incorrectTooltip": "Incorect",
+      "clickToRemove": "Faceți clic pentru a elimina"
     },
     "page2": {
-      "instruction": "The Danube floodplain is full of hidden treasures — but some are tricky to see!\n\nUse the magnifying glass to explore the landscape and spot the ecosystem service icons.\nWhen you hover over one with the magnifying glass, it will disappear from the image and appear at the matching label at the edge of the illustration.\n\nTogether, these services reveal how nature supports our lives every day."
+      "instruction": "Lunca Dunării este plină de comori ascunse — dar unele sunt greu de văzut! \n  Folosește lupa pentru a explora peisajul și a identifica pictogramele serviciilor ecosistemice. \n Când treceți cu mouse-ul cu lupa peste una, aceasta va dispărea din imagine și va apărea la eticheta corespunzătoare de la marginea ilustrației. \n Împreună, aceste servicii dezvăluie modul în care natura ne susține viața de zi cu zi."
     },
     "ecosystemServices": {
-      "tourism": "Tourism",
-      "recreation": "Recreation and fishing",
-      "landscape": "Landscape aesthetics",
-      "climate": "Climate regulation",
-      "carbon": "Carbon sequestration",
-      "nutrient": "Nutrient retention",
-      "flood": "Flood regulation",
-      "habitat": "Habitat provision",
-      "water": "Surface and groundwater",
-      "fish": "Fish",
-      "agriculture": "Agriculture",
-      "timber": "Timber"
+      "tourism": "Turism ",
+      "recreation": "Recreere și pescuit",
+      "landscape": "Estetica peisajului ",
+      "climate": "Reglarea climei",
+      "carbon": "Sechestrarea carbonului",
+      "nutrient": "Retenția nutrienților",
+      "flood": "Reglarea inundațiilor",
+      "habitat": "Asigurarea habitatului",
+      "water": "Ape de suprafață și subterane",
+      "fish": "Pescuit",
+      "agriculture": "Agricultură",
+      "timber": "Cheresteaua"
     },
     "modal": {
       "title": "Opțiuni de descărcare",
@@ -744,14 +746,14 @@
   },
   "treatmentWetlandsPage": {
     "title": {
-      "main": "Treatment wetlands",
-      "page1": "Nature's final filter – The Treatment Wetland",
-      "page2": "Layer by layer – Nature's cleaning crew",
-      "page3": "Let's build nature's filter - Vertical Flow Wetland",
-      "page4": "Tiny cleaners, big impact!"
+      "main": "Zone umede de tratare",
+      "page1": "Filtrul final al naturii – Zona umedă de tratare",
+      "page2": "Strat cu strat – Echipa de curățare a naturii",
+      "page3": "Să construim filtrul naturii - Zonă umedă cu flux vertical",
+      "page4": "Mici agenți de curățenie, impact mare! "
     },
     "intro": {
-      "description": "Learn about treatment wetlands and discover how constructed wetlands naturally filter and clean wastewater.",
+      "description": "Aflați despre zonele umede de tratare și descoperiți cum zonele umede construite filtrează și curăță în mod natural apele uzate.",
       "accessTeachingMaterials": "Accesați materiale didactice",
       "openPlatform": "PLATFORMĂ DESCHISĂ",
       "opensNewTab": "Deschide o filă nouă: Zenodo",
@@ -760,62 +762,62 @@
     },
     "characters": {
       "rocky": {
-        "name": "Rocky the Drainer",
-        "label": "ROCKY THE DRAINER",
+        "name": "Rocky, cea care drenează ",
+        "label": "Rocky, cea care drenează ",
         "tooltip": {
-          "first": "I'm Rocky the Drainer! I collect the cleaned water and let it flow out safely to the river. I keep the bottom open and full of air so the whole system can breathe.",
-          "second": "Function: Collects the cleaned water, ensures aeration from below, and directs flow to the outlet."
+          "first": "Eu sunt Rocky, Drenajul! Colectez apa curățată și o las să curgă în siguranță în râu. Mențin zona de fund a apei aerată, astfel încât întregul sistem să poată respira.",
+          "second": "Funcție: Colectează apa curățată, asigură aerarea în partea de jos a apei și direcționează debitul către ieșire."
         }
       },
       "reeda": {
-        "name": "Reeda the Flowkeeper",
-        "label": "REEDA THE FLOWKEEPER",
+        "name": "Reeda, cea care păstrează fluxul ",
+        "label": "Reeda, cea care păstrează fluxul ",
         "tooltip": {
-          "first": "I'm Reeda, Flowkeeper! My roots keep the filter open so the water can pass through easily. I protect the wetland from heat and cold, bring in a bit of oxygen, and give microbes a good place to live.",
-          "second": "Function: Root growth maintains hydraulic conductivity of the filter, provide insulation against heat (summer) and cold (winter), slows down inflow, supports microbes, and takes up some nutrients."
+          "first": "Sunt Reeda, Păstrătoarea Fluxului! Rădăcinile mele mențin filtrul deschis, astfel încât apa să poată trece ușor. Protejez zona umedă de căldură și frig, aduc oxigen și le ofer microbilor un loc bun de trăit.",
+          "second": "Funcție: Creșterea rădăcinilor menține conductivitatea hidraulică a filtrului, asigură izolație împotriva căldurii (vara) și a frigului (iarna), încetinește fluxul de apă, susține microbii și absoarbe anumiți nutrienți."
         }
       },
       "gravelia": {
-        "name": "Gravelia the Distributor",
-        "label": "GRAVELIA THE DISTRIBUTOR",
+        "name": "Gravelia, cea care distribuie",
+        "label": "Gravelia, cea care distribuie",
         "tooltip": {
-          "first": "Hey there! I'm Gravelia the Distributor! I stop fine particles from blocking the bottom and spread the water evenly.  I keep everything balanced between Sandy above and Rocky below.",
-          "second": "Function: Distributes water evenly, prevents clogging, and protects the drainage zone below."
+          "first": "Salut! Sunt Gravelia, Distribuitoarea! Împiedic particulele fine să blocheze partea de jos a apei și distribui apa uniform. Mențin echilibrul între Sandy de deasupra și Rocky de dedesubt.",
+          "second": "Funcție: Distribuie uniform apa, previne colmatarea și protejează zona de drenaj de dedesubt."
         }
       },
       "sandy": {
-        "name": "Sandy the Cleaner",
-        "label": "SANDY THE CLEANER",
+        "name": "Sandy, cea care curăță",
+        "label": "Sandy, cea care curăță",
         "tooltip": {
-          "first": "I'm Sandy the Cleaner! Millions of microbes live between my grains — they eat waste and transform nitrogen and organic matter into harmless forms. I do most of the real cleaning work here!",
-          "second": "Function: Hosts microbial biofilms that perform most of the biological cleaning (nitrification, organic matter removal, some phosphorus binding). Fine texture slows water for longer contact time → better cleaning.",
+          "first": "Sunt Sandy, Responsabila cu Curățenia! Milioane de microbi trăiesc printre particulele mele — mănâncă deșeuri și transformă azotul și materia organică în forme inofensive. Eu fac cea mai mare parte a curățeniei aici!",
+          "second": "Funcție: Găzduiește biofilme microbiene care efectuează cea mai mare parte a curățării biologice (nitrificare, îndepărtarea materiei organice, legarea unei părți din fosfor). Textura fină încetinește apa pentru un timp de contact mai lung → curățare mai bună.",
           "highlightText": "perform most of the biological cleaning"
         }
       }
     },
     "layerSlots": {
-      "plant": "Plant layer",
-      "filter": "Filter layer",
-      "intermediate": "Intermediate layer",
-      "drainage": "Drainage layer"
+      "plant": "Strat vegetal",
+      "filter": "Strat filtrant",
+      "intermediate": "Strat intermediar",
+      "drainage": "Strat de drenaj"
     },
     "page2": {
-      "instruction": "Learn about the characters that represent the layers of a treatment wetland — Reeda, Sandy, Gravelia, and Rocky.\n\nDrag each helper onto the wetland container to build the layers from bottom to top.",
-      "successMessage": "Great job! You built the treatment wetland in the right order.",
-      "errorMessage": "{{name}} belongs in a different layer. Try another spot!"
+      "instruction": "Aflați despre caracterele care reprezintă straturile unei zone umede de tratare — Reeda, Sandy, Gravelia și Rocky. \n\n Trageți fiecare etichetă de strat în locul corect din container, apoi verificați dacă ați întocmit ordinea corectă!",
+      "successMessage": "Bravo! Ai construit zona umedă de tratare în ordinea corectă.",
+      "errorMessage": "{{name}} își are locul într-un alt strat. Încearcă alt loc!"
     },
     "page3": {
-      "instruction": "Pour the materials from the buckets in the correct order to build your vertical treatment wetland — first stones, then gravel, sand, and finally plant the reeds on top.\n\nWatch how your wetland gets ready to clean the water naturally!",
-      "dropBucket": "Drop bucket here!"
+      "instruction": "Turnați materialele din găleți în ordinea corectă pentru a construi zona umedă de tratare pe verticală - mai întâi pietre, apoi pietriș, nisip și în final plantați stuf deasupra. \n Urmărește cum se pregătește zona ta umedă să curețe apa în mod natural!",
+      "dropBucket": "Plasați găleata aici!"
     },
     "page4": {
-      "intro": "Now that the wetland is built, let's meet its hidden workers — the tiny microbes who do most of the cleaning job.",
-      "conclusion": "Thanks to millions of tiny helpers like Nino, Dina, Phos, and Bacto, the water leaves the treatment wetland fresh and clean — ready to flow back to Danubius and start its journey again!",
+      "intro": "Acum că zona umedă este construită, haideți să-i cunoaștem pe lucrătorii ei ascunși - micii microbi care fac cea mai mare parte a lucrării de curățenie.",
+      "conclusion": "Datorită milioanelor de mici ajutoare precum Nino, Dina, Phos și Bacto, apa părăsește zona umedă de tratare proaspătă și curată — gata să curgă înapoi spre Danubius și să-și înceapă din nou călătoria!",
       "hoverZones": {
-        "zone1": "I turn ammonium into nitrate when oxygen is around!",
-        "zone2": "I work where there's no oxygen — I turn nitrate into nitrogen gas!",
-        "zone3": "I grab phosphorus and hold it tight in the gravel!",
-        "zone4": "I grab phosphorus and hold it tight in the gravel!"
+        "zone1": "Transform amoniacul în nitrat când este oxigen prin preajmă!",
+        "zone2": "Lucrez unde nu este oxigen — transform nitratul în azot gazos!",
+        "zone3": "Iau fosfor și îl țin strâns în pietriș!",
+        "zone4": "Descompun deșeurile organice în substanțe simple cu care mă pot hrăni!"
       }
     },
     "modal": {
@@ -830,16 +832,16 @@
   },
   "selfPurificationPage": {
     "title": {
-      "main": "Self purification function",
-      "page1": "Nitrogen input into rivers",
-      "page2": "Retention of nitrogen by rivers",
-      "page3": "Additional retention of nitrogen by floodplains",
-      "page4": "Phosphorous input into rivers",
-      "page5": "Retention of phosphorous by rivers",
-      "page6": "Additional retention of phosphorous by floodplains"
+      "main": "FUNCȚIA DE AUTOPURIFICARE",
+      "page1": "Aportul de azot în râuri",
+      "page2": "Retenția azotului de către râuri",
+      "page3": "Retenție suplimentară de azot de către zonele inundabile",
+      "page4": "Aportul de fosfor în râuri",
+      "page5": "Retenția fosforului de către râuri",
+      "page6": "Retenție suplimentară de fosfor de către zonele inundabile"
     },
     "intro": {
-      "description": "Learn about self purification functions and discover how rivers and floodplains naturally filter and clean water.",
+      "description": "Învață despre funcțiile de autopurificare și descoperă cum râurile și zonele inundabile filtrează și curăță apa în mod natural.",
       "accessTeachingMaterials": "Accesați materiale didactice",
       "openPlatform": "PLATFORMĂ DESCHISĂ",
       "opensNewTab": "Deschide o filă nouă: Zenodo",
@@ -848,55 +850,55 @@
     },
     "hoverAreas": {
       "nutrients1": {
-        "area1": "Pollution that comes from many scattered places, such as <span style=\"color: #1C00B8;\">farm fields, roads, or towns</span>, and is carried into rivers by rain or runoff.",
-        "area2": "Pollution that comes from a single, identifiable place, such as a <span style=\"color: #1C00B8;\">pipe from a factory or a wastewater treatment plant</span>.",
-        "area3": "<span style=\"color: #1C00B8;\">Fertilizers and manure</span> dissolve in rainwater and move through the soil or across fields into rivers. This is the main source of diffuse nitrogen pollution.",
-        "area4": "Rainwater carries nitrogen compounds from <span style=\"color: #1C00B8;\">streets, vehicles, and urban green areas</span> into drains and rivers.",
-        "area5": "<span style=\"color: #1C00B8;\">Treated water still contains some nitrogen</span> compounds that flow into rivers through outlet pipes. In some countries, modern plants remove most nitrogen efficiently, but in others, treatment is less advanced — or even missing.",
-        "area6": "<span style=\"color: #1C00B8;\">Some factories</span> release nitrogen-rich wastewater from food processing, chemicals, or manufacturing activities. Usually regulated but still important locally."
+        "area1": "Poluare care provine din multe locuri dispersate, cum ar fi câmpurile agricole, drumurile sau orașele, și este transportată spre râuri de către ploi sau de scurgeri.",
+        "area2": "Poluarea care provine dintr-un singur loc identificabil, cum ar fi o conductă a unei fabrici sau a unei stații de epurare a apelor uzate.",
+        "area3": "Îngrășămintele și gunoiul de grajd se dizolvă în apa de ploaie și se trece prin sol sau pe câmpuri în râuri. Aceasta este principala sursă de poluare difuză cu azot.",
+        "area4": "Apa de ploaie transportă compuși cu azot de pe străzi, vehicule și zone verzi urbane în canale de scurgere și râuri.",
+        "area5": "Apa tratată conține încă anumiți compuși cu azot care se varsă în râuri prin conductele de evacuare. În unele țări, instalațiile moderne elimină eficient cea mai mare parte a azotului, dar în altele, tratarea este mai puțin avansată - sau chiar lipsește.",
+        "area6": "Unele fabrici eliberează ape uzate bogate în azot din procesarea alimentelor, substanțe chimice sau activității de producție. De obicei, reglementate, dar totuși importante la nivel local."
       },
       "nutrients2": {
-        "area1": "Particulate N settles in sediments. Organic nitrogen particles <span style=\"color: #1C00B8;\">sink down</span>, and thus become accessible for microbes living between sand grains — quiet zones of purification.",
-        "area2": "Nutrients → Biomass (temporary). Algae and aquatic plants <span style=\"color: #1C00B8;\">take up nitrate and ammonium</span>; nitrogen is stored in their tissues until they decay.",
-        "area3": "<span style=\"color: #1C00B8;\">Ammonium → Nitrate (needs oxygen)</span>. Tiny microbes in oxygen-rich sediments convert ammonium into nitrate — the first step of purification.",
-        "area4": "<span style=\"color: #1C00B8;\">Nitrate → Nitrogen gas (no oxygen)</span> Bacteria in low-oxygen zones turn nitrate into nitrogen gas — the key process for nitrogen loss."
+        "area1": "Azotul se depune în sedimente Particulele de azot organic se scufundă și astfel devin accesibile microbilor care trăiesc între granulele de nisip - zone liniștite de purificare.",
+        "area2": "Biomasă (temporar) Algele și plantele acvatice absorb nitrați și amoniu ; azotul este stocat în țesuturile lor până când se descompun.",
+        "area3": "Amoniu → Nitrat (necesită oxigen)  Mici microbi din sedimentele bogate în oxigen transformă amoniul în nitrat - primul pas al purificării.",
+        "area4": "Nitrat → Azot gazos (fără oxigen)  Bacteriile din zonele cu conținut scăzut de oxigen transformă nitrații în azot gazos — procesul cheie pentru pierderea azotului."
       },
       "nutrients3": {
-        "area1": "<span style=\"color: #1C00B8;\">Nitrogen bound to particles settles.</span> During floods, suspended particles with nitrogen are trapped and deposited on the floodplain surface.",
-        "area2": "<span style=\"color: #1C00B8;\">Nutrients → Biomass (temporary).</span> Floodplain plants absorb nitrogen during the growing season and store it in wood and leaves.",
-        "area3": "<span style=\"color: #1C00B8;\">Nitrate → Nitrogen gas (no oxygen).</span> In flooded soils, microbes breathe without oxygen and transform nitrate into nitrogen gas — permanent nitrogen removal."
+        "area1": "Azotul legat de particule se depune În timpul inundațiilor, particulele în suspensie cu azot sunt prinse și depuse pe suprafața zonei inundabile.",
+        "area2": "Nutrienți → Biomasă (temporar) Plantele de zonă inundabilă absorb azotul în timpul sezonului de creștere și îl depozitează în lemn și frunze.",
+        "area3": "Nitrat → Azot gazos (fără oxigen) În solurile inundate, microbii respiră fără oxigen și transformă nitrații în azot gazos — eliminare permanentă a azotului."
       },
       "nutrients4": {
-        "area1": "Pollution that comes from many scattered places, such as <span style=\"color: #CE7C0A;\">farmland, unpaved roads, or towns</span>.",
-        "area2": "Pollution that comes from one clear source, such as a pipe from a wastewater treatment plant or a factory.",
-        "area3": "Phosphorus <span style=\"color: #CE7C0A;\">bound to soil particles</span> is washed into rivers during rain or floods.",
-        "area4": "<span style=\"color: #CE7C0A;\">Fertilizer</span> phosphorus dissolves in water and slowly reaches rivers through the soil or overland flow. A smaller but steady diffuse source.",
-        "area5": "Rainwater carries <span style=\"color: #CE7C0A;\">dust, detergents, and waste particles rich in</span> phosphorus into drains and rivers.",
-        "area6": "<span style=\"color: #CE7C0A;\">Even after treatment, part of the</span> phosphorus remains in discharged water. Many countries have upgraded their plants, but others still lack efficient systems or any wastewater treatment at all.",
-        "area7": "Certain factories release phosphorus-containing wastewater from <span style=\"color: #CE7C0A;\">cleaning, processing, or production activities</span>. Usually regulated but still significant in some areas."
+        "area1": "Poluare care provine din multe locuri dispersate, cum ar fi terenurile agricole, drumurile neasfaltate sau orașele.",
+        "area2": "Poluare care provine dintr-o sursă clară, cum ar fi o conductă de la o stație de epurare a apelor uzate sau o fabrică.",
+        "area3": "Fosforul legat de particulele de sol este spălat în râuri în timpul ploii sau inundațiilor. ",
+        "area4": "Fosforul din îngrășăminte se dizolvă în apă și ajunge încet în râuri prin sol sau prin curgerea apei de suprafață. O sursă difuză mai mică, dar constantă.",
+        "area5": "Apa de ploaie transportă praf, detergenți și particule de deșeuri bogate în fosfor în canalele de scurgere și râuri. ",
+        "area6": "Chiar și după tratare, o parte din fosfor rămâne în apa deversată. Multe țări și-au modernizat instalațiile, dar altele încă nu dispun de sisteme eficiente sau de orice tip de tratare a apelor uzate.",
+        "area7": "Anumite fabrici eliberează ape uzate care conțin fosfor din activitățile de curățare, procesare sau producție. De obicei, acestea sunt reglementate, dar totuși rămân semnificative în unele zone."
       },
       "nutrients5": {
-        "area1": "<span style=\"color: #CE7C0A;\">Dissolved phosphate sticks to minerals</span> such as iron, aluminium, or lime. When oxygen is present, phosphorus stays bound; but if oxygen is missing, it can be released again back into the water.",
-        "area2": "<span style=\"color: #CE7C0A;\">Algae, aquatic plants, and biofilms take up phosphorus</span> and use it for growth. This retention is temporary — when the organisms die or decay, the phosphorus is released to the water.",
-        "area3": "Phosphorus attached to soil and organic particles sinks down to the riverbed. This happens mainly in calm areas or where the flow is slow — forming a temporary \"phosphorus storage\" in the sediment."
+        "area1": "Fosfatul dizolvat se atașează de substanțele minerale precum fierul, aluminiul sau calcarul. Când este prezent oxigen, fosforul rămâne legat; dar dacă oxigenul lipsește, acesta poate fi eliberat din nou în apă.",
+        "area2": "Algele, plantele acvatice și biofilmele absorb fosforul și îl folosesc pentru creștere. Această retenție este temporară — când organismele mor sau se descompun, fosforul este eliberat în apă.",
+        "area3": "Fosforul atașat de sol și particulele organice se depune în albia râului. Acest lucru se întâmplă în principal în zone calme sau unde fluxul este lent — formând o „ depozitare temporară de fosfor ” în sediment."
       },
       "nutrients6": {
-        "area1": "When floodwaters spread across the land, they slow down and drop suspended particles rich in phosphorus. This is one of the most effective ways floodplains trap and store phosphorus.",
-        "area2": "Floodplain plants absorb phosphorus as they grow, storing it in leaves and roots. This retention is temporary, but some phosphorus stays longer in litter and humus after plants die.",
-        "area3": "Dissolved phosphorus binds to iron, aluminium, or calcium compounds in the soil. This keeps phosphorus locked away — unless oxygen runs out, when it can be released again."
+        "area1": "Când apele inundațiilor se răspândesc pe uscat, acestea încetinesc și lasă să cadă particule în suspensie bogate în fosfor. Aceasta este una dintre cele mai eficiente metode prin care zonele inundabile captează și stochează fosforul.",
+        "area2": "Plantele din zona inundabilă absorb fosforul pe măsură ce cresc, stocându-l în frunze și rădăcini. Această retenție este temporară, dar o parte din fosfor rămâne mai mult timp în așternut și humus după ce plantele mor.",
+        "area3": "Fosforul dizolvat se leagă de compușii de fier, aluminiu sau calciu din sol.  Acest lucru menține fosforul blocat - cu excepția cazului în care oxigenul se termină, când acesta poate fi eliberat din nou."
       }
     },
     "quizModal": {
-      "content": "<p style=\"margin: 0;\">About <span style=\"color: #619F6A;\">40% of phosphorus</span> released into the Danube Basin never reaches the river mouth — it settles and is trapped in <span style=\"color: #619F6A;\">reservoirs and floodplains</span> along the way.</p>"
+      "content": "Aproximativ 40% din fosforul eliberat în bazinul Dunării nu ajunge niciodată la gura râului — acesta se depune și este prins în rezervoare și zone inundabile de-a lungul drumului."
     },
     "didYouKnow": {
       "nitrogenRivers": {
-        "title": "Do you know how much nitrogen remove rivers?",
-        "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Every year, rivers in floodplain areas naturally retain around 25,000 tonnes of nitrogen (about 5% of total emissions)</span> — the same amount of nitrogen that roughly 5.5 million people would excrete in a year! That's roughly the population of Slovakia.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Across the entire Danube Basin, rivers remove even more: about 30%</span> of the nitrogen entering the river system is retained during in-stream transport, mainly through <span style=\"color: #619F6A;\">denitrification</span>.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">This shows how much cleaning power rivers have, even before the water reaches floodplains.</span></p>"
+        "title": "Știi cât azot elimină râurile?",
+        "content": "În fiecare an, râurile din zonele inundabile rețin în mod natural aproximativ 25.000 de tone de azot (aproximativ 5% din totalul emisiilor) - aceeași cantitate de azot pe care aproximativ 5,5 milioane de oameni ar elimina-o într-un an! Aceasta este aproximativ populația Slovaciei. \n În întregul bazin al Dunării, râurile elimină și mai mult: aproximativ 30% din azotul care intră în sistemul fluvial este reținut în timpul transportului în cursul de apă, în principal prin denitrificare. \n  Aceasta arată câtă putere de curățare au râurile, chiar înainte ca apa să ajungă în zonele inundabile."
       },
       "nitrogenFloodplains": {
-        "title": "Do you know how much nitrogen remove the Danube floodplains?",
-        "content": "<p style=\"margin: 0;\">The <span style=\"color: #619F6A;\">remaining active floodplains</span> of the Danube Basin provide an extra cleaning step, retaining around <span style=\"color: #619F6A;\">7,700 tonnes of nitrogen per year</span> — about as much as <span style=\"color: #619F6A;\">1.6 million people</span> (the population of Belgrade) would excrete in a year.</p>"
+        "title": "Știi cât azot este eliminat din zonele inundabile ale Dunării?",
+        "content": "Zonele inundabile active rămase din bazinul Dunării oferă o etapă suplimentară de curățare, reținând aproximativ 7.700 de tone de azot pe an - aproximativ 1,6 milioane de oameni (populația Belgradului) ar elimina azotul într-un an."
       }
     },
     "modal": {

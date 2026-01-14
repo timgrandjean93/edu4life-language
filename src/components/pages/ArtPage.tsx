@@ -516,14 +516,8 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
   const [showDownloadModal, setShowDownloadModal] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
-  // Touch drag state for mobile
-  const [touchDragState, setTouchDragState] = useState<{
-    elementId: string | null;
-    touchX: number;
-    touchY: number;
-    offsetX: number;
-    offsetY: number;
-  } | null>(null);
+  // Current element to place on mobile (click-to-place)
+  const [currentElementToPlace, setCurrentElementToPlace] = useState<string | null>(null);
 
   // Track window width for responsive navbar
   useEffect(() => {
@@ -555,6 +549,59 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
     if (currentPage === 2) return libelleElements;
     return finalElements;
   };
+
+  // Get the next element that needs to be placed (for mobile click-to-place)
+  const getNextElementToPlace = (): string | null => {
+    const elements = getCurrentElements();
+    const outline = getCurrentOutline();
+    
+    // On page 1, always prioritize snail first
+    if (currentPage === 1) {
+      const snailZone = outline.dropZones.find(zone => zone.accepts.includes('snail'));
+      const isSnailPlaced = snailZone && placedElements[snailZone.id] === 'snail';
+      
+      if (!isSnailPlaced) {
+        return 'snail';
+      }
+    }
+    
+    // Find first element that has unplaced zones
+    for (const element of elements) {
+      // Special handling for feather: only show once (even though it has 2 dropzones)
+      if (element.id === 'feather') {
+        const elementZones = outline.dropZones.filter(zone => zone.accepts.includes(element.id));
+        const filledElementZones = elementZones.filter(zone => placedElements[zone.id] === element.id);
+        
+        // If feather is already placed in any zone, skip it
+        if (filledElementZones.length > 0) {
+          continue;
+        }
+        
+        // If feather has unplaced zones, show it
+        if (filledElementZones.length < elementZones.length) {
+          return element.id;
+        }
+      } else {
+        // For other elements, check if all their zones are filled
+        const elementZones = outline.dropZones.filter(zone => zone.accepts.includes(element.id));
+        const filledElementZones = elementZones.filter(zone => placedElements[zone.id] === element.id);
+        
+        if (filledElementZones.length < elementZones.length) {
+          return element.id;
+        }
+      }
+    }
+    
+    return null;
+  };
+
+  // Initialize current element to place when page changes or on mount
+  useEffect(() => {
+    if (isMobile && currentPage > 0) {
+      const nextElement = getNextElementToPlace();
+      setCurrentElementToPlace(nextElement);
+    }
+  }, [currentPage, isMobile, placedElements]);
 
   const handleDragStart = (e: React.DragEvent, elementId: string) => {
     console.log('🎯 Drag started:', elementId);
@@ -758,91 +805,27 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
     setShowDownloadModal(false);
   };
 
-  // Touch handlers for mobile drag and drop
-  const handleTouchStart = (e: React.TouchEvent, elementId: string) => {
-    if (!isMobile) return;
+  // Click handler for mobile click-to-place
+  const handleImageClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isMobile || !currentElementToPlace) return;
     
-    const elementZones = getCurrentOutline().dropZones.filter(zone => zone.accepts.includes(elementId));
-    const filledElementZones = elementZones.filter(zone => placedElements[zone.id] === elementId);
-    const isElementFullyUsed = filledElementZones.length >= elementZones.length;
-    
-    if (isElementFullyUsed) return;
-    
-    const touch = e.touches[0];
-    const target = e.currentTarget as HTMLElement;
-    const rect = target.getBoundingClientRect();
-    
-    setTouchDragState({
-      elementId,
-      touchX: touch.clientX,
-      touchY: touch.clientY,
-      offsetX: touch.clientX - rect.left - rect.width / 2,
-      offsetY: touch.clientY - rect.top - rect.height / 2
-    });
-    
-    e.preventDefault(); // Prevent scrolling
-  };
+    const element = getCurrentElements().find(el => el.id === currentElementToPlace);
+    if (!element) return;
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isMobile || !touchDragState) return;
+    const containerRect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX;
+    const clickY = e.clientY;
     
-    const touch = e.touches[0];
-    setTouchDragState({
-      ...touchDragState,
-      touchX: touch.clientX,
-      touchY: touch.clientY
-    });
-    
-    e.preventDefault(); // Prevent scrolling
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (!isMobile || !touchDragState) return;
-    
-    const touch = e.changedTouches[0];
-    const elementId = touchDragState.elementId;
-    const element = getCurrentElements().find(el => el.id === elementId);
-    
-    if (!element) {
-      setTouchDragState(null);
-      return;
-    }
-
-    // Find the drop zone at touch position
-    const imageContainer = document.querySelector('[data-art-image-container]') as HTMLElement;
-    if (!imageContainer) {
-      setTouchDragState(null);
-      return;
-    }
-
-    const containerRect = imageContainer.getBoundingClientRect();
-    const touchX = touch.clientX;
-    const touchY = touch.clientY;
-    
-    // Check if touch is within image container
-    if (
-      touchX < containerRect.left ||
-      touchX > containerRect.right ||
-      touchY < containerRect.top ||
-      touchY > containerRect.bottom
-    ) {
-      setTouchDragState(null);
-      return;
-    }
-
     // Calculate percentage position
-    const dropX = ((touchX - containerRect.left) / containerRect.width) * 100;
-    const dropY = ((touchY - containerRect.top) / containerRect.height) * 100;
+    const dropX = ((clickX - containerRect.left) / containerRect.width) * 100;
+    const dropY = ((clickY - containerRect.top) / containerRect.height) * 100;
 
     // Find all dropzones that accept this element
     const validZones = getCurrentOutline().dropZones.filter(zone => 
       zone.accepts.includes(element.id) && !placedElements[zone.id]
     );
 
-    if (validZones.length === 0) {
-      setTouchDragState(null);
-      return;
-    }
+    if (validZones.length === 0) return;
 
     // Find the closest valid dropzone
     let closestZone = validZones[0];
@@ -864,27 +847,39 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
     const distanceX = Math.abs(dropX - closestZone.x);
     const distanceY = Math.abs(dropY - closestZone.y);
     
-    // Use larger tolerance for mobile (20% of zone size)
-    const toleranceX = zoneWidth * 0.2;
-    const toleranceY = zoneHeight * 0.2;
+    // Use larger tolerance for mobile (30% of zone size for easier clicking)
+    const toleranceX = zoneWidth * 0.3;
+    const toleranceY = zoneHeight * 0.3;
 
     if (distanceX <= zoneWidth / 2 + toleranceX && distanceY <= zoneHeight / 2 + toleranceY) {
-      // Place element
-      setPlacedElements(prev => ({
-        ...prev,
-        [closestZone.id]: element.id
-      }));
+      // Special handling for feather: if it's placed, place it in both zones
+      const newPlacedElements = { ...placedElements };
+      if (element.id === 'feather') {
+        // Find all feather zones and place feather in all of them
+        const featherZones = getCurrentOutline().dropZones.filter(zone => zone.accepts.includes('feather'));
+        featherZones.forEach(zone => {
+          newPlacedElements[zone.id] = 'feather';
+        });
+      } else {
+        // Normal placement: just place in the clicked zone
+        newPlacedElements[closestZone.id] = element.id;
+      }
       
+      setPlacedElements(newPlacedElements);
       setUsedElements(prev => new Set([...prev, element.id]));
       
       // Check if all zones are filled
-      const allZonesFilled = getCurrentOutline().dropZones.every(zone => placedElements[zone.id] || zone.id === closestZone.id);
+      const allZonesFilled = getCurrentOutline().dropZones.every(zone => 
+        newPlacedElements[zone.id]
+      );
       if (allZonesFilled) {
         setIsCompleted(true);
       }
+      
+      // Move to next element
+      const nextElement = getNextElementToPlace();
+      setCurrentElementToPlace(nextElement);
     }
-
-    setTouchDragState(null);
   };
 
   // Retry function to reset current page
@@ -892,7 +887,10 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
     setPlacedElements({});
     setIsCompleted(false);
     setUsedElements(new Set());
-    setTouchDragState(null);
+    if (isMobile) {
+      const nextElement = getNextElementToPlace();
+      setCurrentElementToPlace(nextElement);
+    }
   };
 
   const handleDashboardLink = () => {
@@ -1235,8 +1233,8 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                 className="bg-white bg-opacity-90 rounded-lg shadow-lg"
                 style={{
                   maxWidth: '1200px',
-                  margin: isMobile ? '20px auto 0' : '50px auto 0',
-                  padding: isMobile ? '16px' : '32px'
+                  margin: isMobile ? '12px auto 0' : '50px auto 0',
+                  padding: isMobile ? '12px' : '32px'
                 }}
               >
 
@@ -1265,20 +1263,13 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                           ? 'opacity-30 cursor-not-allowed' 
                           : 'cursor-move hover:bg-green-100'
                       }`}
-                      draggable={!isElementFullyUsed && !isMobile}
+                      draggable={!isElementFullyUsed}
                       onDragStart={(e) => {
-                        if (!isElementFullyUsed && !isMobile) {
+                        if (!isElementFullyUsed) {
                           handleDragStart(e, element.id);
                         } else {
                           e.preventDefault();
                         }
-                      }}
-                      onTouchStart={(e) => handleTouchStart(e, element.id)}
-                      onTouchMove={handleTouchMove}
-                      onTouchEnd={handleTouchEnd}
-                      style={{
-                        touchAction: 'none', // Prevent default touch behaviors
-                        userSelect: 'none'
                       }}
                     >
                       <img 
@@ -1300,23 +1291,34 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
             )}
 
             {/* Image - 50% width on page 3, fixed width on pages 1 and 2 */}
-              <div className="relative" style={{ 
-              width: currentPage === 1 ? '354px' : currentPage === 2 ? '506px' : '50%',
-              height: 'auto',
-              flexShrink: currentPage === 3 ? 0 : undefined
-              }}>
+              <div 
+                className="relative" 
+                onClick={isMobile ? handleImageClick : undefined}
+                style={{ 
+                  width: isMobile ? '100%' : (currentPage === 1 ? '354px' : currentPage === 2 ? '506px' : '50%'),
+                  height: 'auto',
+                  flexShrink: currentPage === 3 ? 0 : undefined,
+                  cursor: isMobile && currentElementToPlace ? 'pointer' : 'default',
+                  maxHeight: isMobile ? '60vh' : 'none',
+                  overflow: 'hidden'
+                }}
+                data-art-image-container
+              >
               <img 
                 src={getCurrentOutline().image} 
                 alt={getCurrentOutline().name}
                 style={{ 
-                  width: currentPage === 1 ? '354px' : currentPage === 2 ? '506px' : '100%', 
+                  width: isMobile ? '100%' : (currentPage === 1 ? '354px' : currentPage === 2 ? '506px' : '100%'), 
                   height: 'auto',
-                  display: 'block'
+                  display: 'block',
+                  pointerEvents: 'none', // Let clicks pass through to container
+                  maxHeight: isMobile ? '60vh' : 'none',
+                  objectFit: isMobile ? 'contain' : 'fill'
                 }}
               />
               
-              {/* Drop Zones (invisible but on top) */}
-              {getCurrentOutline().dropZones.map((zone) => {
+              {/* Drop Zones (invisible but on top) - Only for desktop drag and drop */}
+              {!isMobile && getCurrentOutline().dropZones.map((zone) => {
                 // Get z-index for drop zone based on what it accepts
                 const getDropZoneZIndex = (accepts: string[]) => {
                   const elementId = accepts[0];
@@ -1465,8 +1467,8 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
               })}
             </div>
 
-            {/* Right Elements - Only on page 3, 25% width */}
-            {currentPage === 3 && (
+            {/* Right Elements - Only on page 3, 25% width - Desktop only */}
+            {currentPage === 3 && !isMobile && (
               <div className="grid gap-1" style={{ 
                 gridTemplateColumns: 'repeat(1, 1fr)',
                 width: '25%',
@@ -1513,7 +1515,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
             )}
 
             {/* Elements for pages 1 and 2 - Below image */}
-            {currentPage !== 3 && (
+            {currentPage !== 3 && !isMobile && (
               <div style={{ 
                 width: currentPage === 1 ? '354px' : '506px',
                 display: 'flex',
@@ -1596,6 +1598,60 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
                     );
                   })}
                 </div>
+              </div>
+            )}
+
+            {/* Mobile: Show current element to place - All pages */}
+            {isMobile && currentPage > 0 && currentElementToPlace && (
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '100%',
+                marginTop: '12px',
+                padding: '0 12px'
+              }}>
+                <div style={{
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  color: '#406A46',
+                  textAlign: 'center',
+                  marginBottom: '12px',
+                  padding: '10px',
+                  backgroundColor: 'rgba(97, 192, 157, 0.2)',
+                  borderRadius: '8px',
+                  width: '100%'
+                }}>
+                  {t('artPage.instruction.clickToPlace')}
+                </div>
+                {(() => {
+                  const element = getCurrentElements().find(el => el.id === currentElementToPlace);
+                  if (!element) return null;
+                  
+                  return (
+                    <div style={{
+                      padding: '12px',
+                      backgroundColor: 'rgba(97, 192, 157, 0.1)',
+                      borderRadius: '12px',
+                      border: '2px solid #61C09D',
+                      maxWidth: '150px',
+                      width: '100%'
+                    }}>
+                      <img 
+                        src={element.image} 
+                        alt={element.name}
+                        className="object-contain"
+                        style={{
+                          transform: `rotate(${element.rotation}deg)`,
+                          width: '100%',
+                          height: 'auto',
+                          maxHeight: '120px'
+                        }}
+                      />
+                    </div>
+                  );
+                })()}
               </div>
             )}
           </div>
