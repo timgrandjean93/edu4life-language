@@ -13,7 +13,7 @@
     "externalTools": "Instrumente externe",
     "restore4Life": "Restore4Life",
     "menuItems": {
-      "livingEnvironment": "Mediul de viață",
+      "livingEnvironment": "Luncile inundabile ca mediu de viață",
       "mapYourWetland": "Cartografiați-vă zona umedă",
       "exploringHabitats": "Explorarea habitatelor",
       "floodplainSpongeEffect": "Efectul de burete al câmpiei inundabile",
@@ -44,7 +44,7 @@
 },
   "homePage": {
     "title": "ZONE INUNDABILE:",
-    "subtitle": "ÎNVAȚĂ, EXPLOREAZĂ, RESTAURARE PENTRU VIAȚĂ",
+    "subtitle": "ÎNVAȚĂ, EXPLOREAZĂ, RESTAUREAZĂ PENTRU VIAȚĂ",
     "subtitle2": "- SET DE INSTRUMENTE",
     "credits": "Credite"
   },
@@ -57,10 +57,10 @@
   },
   "pages": {
     "titles": {
-      "home": "ZONE INUNDABILE: ÎNVAȚĂ, EXPLOREAZĂ, RESTAURARE PENTRU VIAȚĂ - SET DE INSTRUMENTE",
+      "home": "ZONE INUNDABILE: ÎNVAȚĂ, EXPLOREAZĂ, RESTAUREAZĂ PENTRU VIAȚĂ - SET DE INSTRUMENTE",
       "riparian": "Evaluarea habitatului",
       "mapwetland": "Cartografierea zonelor inundabile",
-      "floodplain": "Mediul de viață din zonă inundabilă",
+      "floodplain": "Luncile inundabile ca mediu de viață",
       "floodcontrol": "Controlul inundațiilor",
       "carbon": "Sechestrarea carbonului",
       "selfpurification": "Autopurificare",
@@ -262,7 +262,7 @@
     "nextTopic": "URMĂTORUL SUBIECT"
   },
   "floodplainPage": {
-    "title": "MEDIUL DE VIAȚĂ ÎN ZONE INUNDABILE",
+    "title": "Luncile inundabile ca mediu de viață",
     "intro": {
       "question": "Poți observa diferența dintre ilustrații?",
       "rainLabel": "Zona inundabilă în timpul unui eveniment de inundații (sezonul ploios)",
@@ -305,7 +305,7 @@
     },
     "challenge": {
       "title": "Provocare cu ochi de vultur!",
-      "intro": "De sus, deasupra zonei inundabile, prietenul nostru codalbul vede râul șerpuitor, lacurile ascunse, mlaștinile, pădurile, digurile și satele. Le poți găsi și tu? Asociază fiecare element cu eticheta corectă și dă-i viață prin culoare! De fiecare dată când identifici locul potrivit, peisajul va străluci în adevăratele sale culori - așa cum îl vede codalbul din cer."
+      "intro": "De sus, deasupra zonelor inundabile, prietenul nostru codalbul vede râul șerpuitor, lacurile ascunse, mlaștinile, pădurile, digurile și satele. Le poți găsi și tu? Asociază fiecare element cu eticheta corectă și dă-i viață prin culoare! De fiecare dată când identifici locul potrivit, peisajul va străluci în adevăratele sale culori - așa cum îl vede codalbul din cer."
     },
     "quizItems": {
       "WATERCOURSE": "Curs de apă",
@@ -453,7 +453,7 @@
     },
     "page2": {
       "activityTitle": "Activitatea 1",
-      "instruction": "Poți identifica superputerile lipsă ale zonei inundabile? Asociază numerele din descriere cu zona inundabilă sănătoasă (stânga) și zona inundabilă degradată (dreapta).",
+      "instruction": "Poți identifica superputerile lipsă ale zonelor inundabile? Asociază numerele din descriere cu zona inundabilă sănătoasă (stânga) și zona inundabilă degradată (dreapta).",
       "naturalFloodplain": "Zona inundabilă sănătoasă :",
       "degradedFloodplain": "Zona inundabilă degradată:",
       "descriptions": {
@@ -766,7 +766,7 @@
         "label": "Rocky, cea care drenează ",
         "tooltip": {
           "first": "Eu sunt Rocky, Drenajul! Colectez apa curățată și o las să curgă în siguranță în râu. Mențin zona de fund a apei aerată, astfel încât întregul sistem să poată respira.",
-          "second": "Funcție: Colectează apa curățată, asigură aerarea în partea de jos a apei și direcționează debitul către ieșire."
+          "second": "Funcția: Colectează apa curățată, asigură aerarea în partea de jos a apei și direcționează debitul către ieșire."
         }
       },
       "reeda": {
@@ -774,7 +774,7 @@
         "label": "Reeda, cea care păstrează fluxul ",
         "tooltip": {
           "first": "Sunt Reeda, Păstrătoarea Fluxului! Rădăcinile mele mențin filtrul deschis, astfel încât apa să poată trece ușor. Protejez zona umedă de căldură și frig, aduc oxigen și le ofer microbilor un loc bun de trăit.",
-          "second": "Funcție: Creșterea rădăcinilor menține conductivitatea hidraulică a filtrului, asigură izolație împotriva căldurii (vara) și a frigului (iarna), încetinește fluxul de apă, susține microbii și absoarbe anumiți nutrienți."
+          "second": "Funcția: Creșterea rădăcinilor menține conductivitatea hidraulică a filtrului, asigură izolație împotriva căldurii (vara) și a frigului (iarna), încetinește fluxul de apă, susține microbii și absoarbe anumiți nutrienți."
         }
       },
       "gravelia": {
@@ -782,7 +782,7 @@
         "label": "Gravelia, cea care distribuie",
         "tooltip": {
           "first": "Salut! Sunt Gravelia, Distribuitoarea! Împiedic particulele fine să blocheze partea de jos a apei și distribui apa uniform. Mențin echilibrul între Sandy de deasupra și Rocky de dedesubt.",
-          "second": "Funcție: Distribuie uniform apa, previne colmatarea și protejează zona de drenaj de dedesubt."
+          "second": "Funcția: Distribuie uniform apa, previne colmatarea și protejează zona de drenaj de dedesubt."
         }
       },
       "sandy": {
@@ -790,7 +790,7 @@
         "label": "Sandy, cea care curăță",
         "tooltip": {
           "first": "Sunt Sandy, Responsabila cu Curățenia! Milioane de microbi trăiesc printre particulele mele — mănâncă deșeuri și transformă azotul și materia organică în forme inofensive. Eu fac cea mai mare parte a curățeniei aici!",
-          "second": "Funcție: Găzduiește biofilme microbiene care efectuează cea mai mare parte a curățării biologice (nitrificare, îndepărtarea materiei organice, legarea unei părți din fosfor). Textura fină încetinește apa pentru un timp de contact mai lung → curățare mai bună.",
+          "second": "Funcția: Găzduiește biofilme microbiene care efectuează cea mai mare parte a curățării biologice (nitrificare, îndepărtarea materiei organice, legarea unei părți din fosfor). Textura fină încetinește apa pentru un timp de contact mai lung → curățare mai bună.",
           "highlightText": "perform most of the biological cleaning"
         }
       }
@@ -864,9 +864,9 @@
         "area4": "Nitrat → Azot gazos (fără oxigen)  Bacteriile din zonele cu conținut scăzut de oxigen transformă nitrații în azot gazos — procesul cheie pentru pierderea azotului."
       },
       "nutrients3": {
-        "area1": "Azotul legat de particule se depune În timpul inundațiilor, particulele în suspensie cu azot sunt prinse și depuse pe suprafața zonei inundabile.",
-        "area2": "Nutrienți → Biomasă (temporar) Plantele de zonă inundabilă absorb azotul în timpul sezonului de creștere și îl depozitează în lemn și frunze.",
-        "area3": "Nitrat → Azot gazos (fără oxigen) În solurile inundate, microbii respiră fără oxigen și transformă nitrații în azot gazos — eliminare permanentă a azotului."
+        "area1": "Azotul legat de particule se depune În timpul inundațiilor, particulele în suspensie cu azot sunt prinse și depuse pe suprafața zonelor inundabile.",
+        "area2": "Nutrienți → Biomasă (temporar) Plantele de zonă inundabilă absorb azotul în timpul sezonului de creștere și îl depozitează în lemn și frunze.",
+        "area3": "Nitrat → Azot gazos (fără oxigen) În solurile inundate, microbii respiră fără oxigen și transformă nitrații în azot gazos — eliminare permanentă a azotului."
       },
       "nutrients4": {
         "area1": "Poluare care provine din multe locuri dispersate, cum ar fi terenurile agricole, drumurile neasfaltate sau orașele.",
