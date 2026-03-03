@@ -43,8 +43,7 @@ export const usePageRouting = (totalPages: number): [number, React.Dispatch<Reac
       // Reset to page 0 (intro) when navigating to a new topic
       setCurrentPage(0);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }); // Run on every render to check for pathname changes
+  }, []); // Only run on mount - pathname changes trigger new component mount
 
   // Initialize URL on mount if needed (only if URL doesn't match current page)
   useEffect(() => {
@@ -52,8 +51,9 @@ export const usePageRouting = (totalPages: number): [number, React.Dispatch<Reac
     if (currentPage !== currentURLPage) {
       updateURL(currentPage);
     }
+    // Intentional: run only on mount to avoid sync loops with setCurrentPage
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Only run on mount
+  }, []);
 
   // Listen for browser back/forward buttons
   useEffect(() => {

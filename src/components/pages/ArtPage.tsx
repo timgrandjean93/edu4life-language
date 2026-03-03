@@ -551,7 +551,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
   };
 
   // Get the next element that needs to be placed (for mobile click-to-place)
-  const getNextElementToPlace = (): string | null => {
+  const getNextElementToPlace = React.useCallback((): string | null => {
     const elements = getCurrentElements();
     const outline = getCurrentOutline();
     
@@ -593,7 +593,9 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
     }
     
     return null;
-  };
+    // getCurrentElements/getCurrentOutline are stable derivations from currentPage
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage, placedElements]);
 
   // Initialize current element to place when page changes or on mount
   useEffect(() => {
@@ -601,7 +603,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
       const nextElement = getNextElementToPlace();
       setCurrentElementToPlace(nextElement);
     }
-  }, [currentPage, isMobile, placedElements]);
+  }, [currentPage, isMobile, placedElements, getNextElementToPlace]);
 
   const handleDragStart = (e: React.DragEvent, elementId: string) => {
     console.log('🎯 Drag started:', elementId);

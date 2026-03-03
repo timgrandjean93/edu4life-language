@@ -125,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                     <button
                       key={item.id}
                       onClick={() => {
-                        onNavigate && onNavigate(item.id);
+                        onNavigate?.(item.id);
                         setIsMenuOpen(false);
                       }}
                       style={{

@@ -12,7 +12,7 @@ interface GameContainerProps {
 export const GameContainer: React.FC<GameContainerProps> = ({ 
   children, 
   className = '',
-  currentPage
+  currentPage: _currentPage
 }) => {
   const { isMobile, isLandscape } = useOrientation();
   // Op mobiel horizontaal (landscape): altijd melding tonen om verticaal (portrait) te zetten
