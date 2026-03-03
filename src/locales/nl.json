@@ -105,6 +105,8 @@
       "instruction1": "Bekijk de plaatjes boven de grafiek. Elk plaatje hoort bij een ander ecosysteem.",
       "instruction2": "Jouw opdracht:",
       "instruction3": "Sleep het juiste woord naar het bijpassende vraagteken.",
+      "mobileInstruction": "Tik op de juiste plek in de afbeelding",
+      "mobileTryAgain": "Fout - probeer opnieuw",
       "hint": "Tip: Let op dingen zoals bomen, water, gras of droge grond.",
       "checkAnswers": "Controleer je antwoorden",
       "clickToRemove": "Klik om het woord te verwijderen",

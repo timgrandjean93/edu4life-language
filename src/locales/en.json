@@ -105,6 +105,8 @@
       "instruction1": "Look at the icons on top of the graph – each shows a different ecosystem.",
       "instruction2": "Your challenge:",
       "instruction3": "Drag the correct label from below to the matching question mark.",
+      "mobileInstruction": "Tap the correct spot on the image",
+      "mobileTryAgain": "Incorrect - try again",
       "hint": "Hint: Focus on the features that make each ecosystem unique such as trees, water, grass, or landforms.",
       "checkAnswers": "Check Answers",
       "clickToRemove": "Click to remove label",

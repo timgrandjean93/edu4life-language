@@ -30,18 +30,32 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
     };
   }, [isMenuOpen]);
   
-  // Mobile version: hamburger menu, centered logo, and language switcher
+  // Mobile version: hamburger menu met alleen de mobiele homepage-items (zelfde volgorde)
   if (isMobile) {
-    // Alle mobile-friendly pagina's (excluded from rotate warning in GameContainer)
-    const menuItems = [
+    const mobileMenuItems = [
       { id: 'mapwetland' as const, labelKey: 'header.menuItems.mapYourWetland' },
       { id: 'riparian' as const, labelKey: 'header.menuItems.exploringHabitats' },
       { id: 'floodcontrol' as const, labelKey: 'header.menuItems.floodplainSpongeEffect' },
+      { id: 'carbon' as const, labelKey: 'header.menuItems.climateCarbon' },
       { id: 'art' as const, labelKey: 'header.menuItems.sourcesOfInspiration' },
       { id: 'wetlandfresk' as const, labelKey: 'header.externalToolsItems.wetlandFresk' },
       { id: 'wetland4life' as const, labelKey: 'header.externalToolsItems.wetland4Life' },
-      { id: 'bluegreen' as const, labelKey: 'header.externalToolsItems.blueGreenSpace4All' },
+      { id: 'bluegreen' as const, labelKey: 'header.externalToolsItems.blueGreenSpace4All', href: 'http://game.restore4life-platform.eu' as const },
     ];
+
+    const navItemStyle: React.CSSProperties = {
+      width: '100%',
+      textAlign: 'left' as const,
+      padding: '12px 16px',
+      background: 'white',
+      border: 'none',
+      cursor: 'pointer',
+      fontFamily: 'Comfortaa, sans-serif',
+      fontWeight: 'bold',
+      fontSize: '15px',
+      color: '#406A46',
+      transition: 'background-color 0.2s ease-in-out',
+    };
 
     return (
       <>
@@ -81,6 +95,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                   justifyContent: 'center',
                   alignItems: 'center'
                 }}
+                aria-label="Menu"
+                aria-expanded={isMenuOpen}
               >
                 <div style={{
                   width: '24px',
@@ -105,48 +121,37 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                 }} />
               </button>
 
-              {/* Menu Dropdown */}
+              {/* Menu Dropdown - alleen mobiele pagina's (zelfde als homepage) */}
               {isMenuOpen && (
                 <div
                   style={{
-                    position: 'absolute',
-                    top: '100%',
-                    left: 0,
-                    marginTop: '8px',
+                    position: 'fixed',
+                    top: '80px',
+                    left: '16px',
+                    right: '16px',
+                    maxHeight: 'calc(100vh - 100px)',
+                    overflowY: 'auto',
                     background: 'white',
-                    borderRadius: '8px',
-                    boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                    borderRadius: '12px',
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
                     minWidth: '220px',
                     zIndex: 1000,
-                    overflow: 'hidden',
                   }}
                 >
-                  {menuItems.map((item) => (
+                  {mobileMenuItems.map((item) => (
                     <button
                       key={item.id}
                       onClick={() => {
-                        onNavigate?.(item.id);
+                        if ('href' in item && item.href) {
+                          window.open(item.href, '_blank');
+                        } else {
+                          onNavigate?.(item.id);
+                        }
                         setIsMenuOpen(false);
                       }}
-                      style={{
-                        width: '100%',
-                        textAlign: 'left',
-                        padding: '14px 16px',
-                        background: 'white',
-                        border: 'none',
-                        cursor: 'pointer',
-                        fontFamily: 'Comfortaa, sans-serif',
-                        fontWeight: 'bold',
-                        fontSize: '16px',
-                        color: '#406A46',
-                        transition: 'background-color 0.2s ease-in-out',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#f8f8f8';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'white';
-                      }}
+                      style={navItemStyle}
+                      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#f0f7f0'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'white'; }}
                     >
                       {t(item.labelKey)}
                     </button>

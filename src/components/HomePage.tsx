@@ -264,8 +264,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
     );
   }, [overlayBox]);
 
-  // Mobile menu items - order: map, explore, sponge, art (floodplain as source of inspiration), fresk, wetland4life, game (blue-green)
-  const mobileMenuOrder = ['map', 'explore', 'sponge', 'art', 'fresk', 'wetland4life', 'game'] as const;
+  // Mobile menu items - order: map, explore, sponge, carbon, art, fresk, wetland4life, game (blue-green)
+  const mobileMenuOrder = ['map', 'explore', 'sponge', 'carbon', 'art', 'fresk', 'wetland4life', 'game'] as const;
   const mobileMenuItems = mobileMenuOrder
     .map(key => MENU_ITEMS.find(item => item.key === key))
     .filter((item): item is NonNullable<typeof item> => item != null);

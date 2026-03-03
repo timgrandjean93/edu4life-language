@@ -98,6 +98,8 @@
       "instruction1": "Sieh dir die Piktogramme oben im Diagramm an – jedes steht für ein anderes Ökosystem.",
       "instruction2": "Deine Aufgabe:",
       "instruction3": "Ziehe die passenden Bezeichnungen unten im Diagramm zu den Fragezeichen.",
+      "mobileInstruction": "Tippe auf die richtige Stelle im Bild",
+      "mobileTryAgain": "Falsch – versuche es erneut",
       "hint": "Hinweis: Achte darauf, was jedes Ökosystem einzigartig macht, Bäume, Wasser, Gras oder typische Landschaftsformen.",
       "checkAnswers": "Antworten überprüfen",
       "clickToRemove": "Klicken, um das Label zu entfernen",

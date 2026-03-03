@@ -105,6 +105,8 @@
       "instruction1": "Uită-te la pictogramele din partea de sus a graficului – fiecare reprezintă un ecosistem diferit. ",
       "instruction2": "Provocarea ta:",
       "instruction3": "Trage eticheta corectă de jos în semnul de întrebare corespunzător.",
+      "mobileInstruction": "Atinge locul corect din imagine",
+      "mobileTryAgain": "Incorect – încearcă din nou",
       "hint": "Sugestie: Concentrați-vă pe caracteristicile care fac fiecare ecosistem unic, cum ar fi copacii, apa, iarba sau formele de relief.",
       "checkAnswers": "Verifică răspunsurile",
       "clickToRemove": "Faceți clic pentru a elimina eticheta",
