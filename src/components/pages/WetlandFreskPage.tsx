@@ -88,7 +88,7 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
             textAlign: 'center',
             width: '100%',
             lineHeight: '1.6',
-            marginBottom: isMobile ? '30px' : '50px',
+            marginBottom: isMobile ? '20px' : '50px',
             padding: isMobile ? '0 10px' : '0'
           }}>
             {t('wetlandFreskPage.description')}
@@ -96,186 +96,102 @@ export const WetlandFreskPage: React.FC<WetlandFreskPageProps> = ({
 
           {/* Two Columns Layout */}
           <div style={{ width: isMobile ? '100%' : '60%', margin: '0 auto' }}>
-            <div className={isMobile ? 'flex flex-col' : 'flex'} style={{ alignItems: 'flex-start', gap: isMobile ? '30px' : '48px' }}>
+            <div className={isMobile ? 'flex flex-col' : 'flex'} style={{ alignItems: 'flex-start', gap: isMobile ? '20px' : '48px' }}>
               {/* Left Column - Information */}
-            <div className="flex flex-col" style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
-              {/* Duration */}
-              <div className="flex items-start" style={{ marginBottom: isMobile ? '25px' : '40px' }}>
-                <div style={{ 
-                  width: isMobile ? '50px' : '60px', 
-                  height: isMobile ? '50px' : '60px', 
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#97C09D',
-                  borderRadius: '50%'
+            <div style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
+              {isMobile ? (
+                /* Mobile: 2-column grid, icon + value only (no labels) */
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '12px 14px'
                 }}>
-                  <img 
-                    src="/assets/icons/clock.png" 
-                    alt="Duration" 
-                    style={{ 
-                      width: isMobile ? '40px' : '50px',
-                      height: isMobile ? '40px' : '50px',
-                      filter: 'brightness(0) invert(1)'
-                    }}
-                  />
+                  {[
+                    { icon: '/assets/icons/clock.png', value: t('wetlandFreskPage.duration.value'), alt: 'Duration' },
+                    { icon: '/assets/icons/cards.png', value: t('wetlandFreskPage.numberOfCards.value'), alt: 'Cards' },
+                    { icon: '/assets/icons/players.png', value: t('wetlandFreskPage.teamPlayers.value'), alt: 'Players' },
+                    { icon: '/assets/icons/age.png', value: t('wetlandFreskPage.age.value'), alt: 'Age' }
+                  ].map((item) => (
+                    <div key={item.alt} className="flex items-center" style={{ gap: '10px' }}>
+                      <div style={{
+                        width: '44px',
+                        height: '44px',
+                        flexShrink: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: '#97C09D',
+                        borderRadius: '50%'
+                      }}>
+                        <img
+                          src={item.icon}
+                          alt={item.alt}
+                          style={{
+                            width: '32px',
+                            height: '32px',
+                            filter: 'brightness(0) invert(1)'
+                          }}
+                        />
+                      </div>
+                      <div style={{
+                        fontFamily: 'Comfortaa, sans-serif',
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        color: '#51727C',
+                        lineHeight: '1.3'
+                      }}>
+                        {item.value}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div style={{ marginLeft: isMobile ? '20px' : '40px' }}>
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: isMobile ? '18px' : '24px',
-                    fontWeight: 'bold',
-                    color: '#406A46',
-                    marginBottom: '4px'
-                  }}>
-                    {t('wetlandFreskPage.duration.label')}
+              ) : (
+                /* Desktop: original layout with labels */
+                <div className="flex flex-col">
+                  <div className="flex items-start" style={{ marginBottom: '40px' }}>
+                    <div style={{ width: '60px', height: '60px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#97C09D', borderRadius: '50%' }}>
+                      <img src="/assets/icons/clock.png" alt="Duration" style={{ width: '50px', height: '50px', filter: 'brightness(0) invert(1)' }} />
+                    </div>
+                    <div style={{ marginLeft: '40px' }}>
+                      <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '24px', fontWeight: 'bold', color: '#406A46', marginBottom: '4px' }}>{t('wetlandFreskPage.duration.label')}</div>
+                      <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '20px', fontWeight: 'bold', color: '#51727C' }}>{t('wetlandFreskPage.duration.value')}</div>
+                    </div>
                   </div>
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: isMobile ? '16px' : '20px',
-                    fontWeight: 'bold',
-                    color: '#51727C'
-                  }}>
-                    {t('wetlandFreskPage.duration.value')}
+                  <div className="flex items-start" style={{ marginBottom: '40px' }}>
+                    <div style={{ width: '60px', height: '60px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#97C09D', borderRadius: '50%' }}>
+                      <img src="/assets/icons/cards.png" alt="Cards" style={{ width: '55px', height: '55px', filter: 'brightness(0) invert(1)' }} />
+                    </div>
+                    <div style={{ marginLeft: '40px' }}>
+                      <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '24px', fontWeight: 'bold', color: '#406A46', marginBottom: '4px' }}>{t('wetlandFreskPage.numberOfCards.label')}</div>
+                      <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '20px', fontWeight: 'bold', color: '#51727C' }}>{t('wetlandFreskPage.numberOfCards.value')}</div>
+                    </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Number of Cards */}
-              <div className="flex items-start" style={{ marginBottom: isMobile ? '25px' : '40px' }}>
-                <div style={{ 
-                  width: isMobile ? '50px' : '60px', 
-                  height: isMobile ? '50px' : '60px', 
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#97C09D',
-                  borderRadius: '50%'
-                }}>
-                  <img 
-                    src="/assets/icons/cards.png" 
-                    alt="Cards" 
-                    style={{ 
-                      width: isMobile ? '45px' : '55px',
-                      height: isMobile ? '45px' : '55px',
-                      filter: 'brightness(0) invert(1)'
-                    }}
-                  />
-                </div>
-                <div style={{ marginLeft: isMobile ? '20px' : '40px' }}>
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: isMobile ? '18px' : '24px',
-                    fontWeight: 'bold',
-                    color: '#406A46',
-                    marginBottom: '4px'
-                  }}>
-                    {t('wetlandFreskPage.numberOfCards.label')}
+                  <div className="flex items-start" style={{ marginBottom: '40px' }}>
+                    <div style={{ width: '60px', height: '60px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#97C09D', borderRadius: '50%' }}>
+                      <img src="/assets/icons/players.png" alt="Team players" style={{ width: '40px', height: '40px', filter: 'brightness(0) invert(1)' }} />
+                    </div>
+                    <div style={{ marginLeft: '40px' }}>
+                      <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '24px', fontWeight: 'bold', color: '#406A46', marginBottom: '4px' }}>{t('wetlandFreskPage.teamPlayers.label')}</div>
+                      <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '20px', fontWeight: 'bold', color: '#51727C' }}>{t('wetlandFreskPage.teamPlayers.value')}</div>
+                    </div>
                   </div>
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: isMobile ? '16px' : '20px',
-                    fontWeight: 'bold',
-                    color: '#51727C'
-                  }}>
-                    {t('wetlandFreskPage.numberOfCards.value')}
-                  </div>
-                </div>
-              </div>
-
-              {/* Team players */}
-              <div className="flex items-start" style={{ marginBottom: isMobile ? '25px' : '40px' }}>
-                <div style={{ 
-                  width: isMobile ? '50px' : '60px', 
-                  height: isMobile ? '50px' : '60px', 
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#97C09D',
-                  borderRadius: '50%'
-                }}>
-                  <img 
-                    src="/assets/icons/players.png" 
-                    alt="Team players" 
-                    style={{ 
-                      width: isMobile ? '35px' : '40px',
-                      height: isMobile ? '35px' : '40px',
-                      filter: 'brightness(0) invert(1)'
-                    }}
-                  />
-                </div>
-                <div style={{ marginLeft: isMobile ? '20px' : '40px' }}>
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: isMobile ? '18px' : '24px',
-                    fontWeight: 'bold',
-                    color: '#406A46',
-                    marginBottom: '4px'
-                  }}>
-                    {t('wetlandFreskPage.teamPlayers.label')}
-                  </div>
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: isMobile ? '16px' : '20px',
-                    fontWeight: 'bold',
-                    color: '#51727C'
-                  }}>
-                    {t('wetlandFreskPage.teamPlayers.value')}
+                  <div className="flex items-start">
+                    <div style={{ width: '60px', height: '60px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#97C09D', borderRadius: '50%' }}>
+                      <img src="/assets/icons/age.png" alt="Age" style={{ width: '55px', height: '55px', filter: 'brightness(0) invert(1)' }} />
+                    </div>
+                    <div style={{ marginLeft: '40px' }}>
+                      <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '24px', fontWeight: 'bold', color: '#406A46', marginBottom: '4px' }}>{t('wetlandFreskPage.age.label')}</div>
+                      <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '20px', fontWeight: 'bold', color: '#51727C' }}>{t('wetlandFreskPage.age.value')}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Age */}
-              <div className="flex items-start">
-                <div style={{ 
-                  width: isMobile ? '50px' : '60px', 
-                  height: isMobile ? '50px' : '60px', 
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#97C09D',
-                  borderRadius: '50%'
-                }}>
-                  <img 
-                    src="/assets/icons/age.png" 
-                    alt="Age" 
-                    style={{ 
-                      width: isMobile ? '45px' : '55px',
-                      height: isMobile ? '45px' : '55px',
-                      filter: 'brightness(0) invert(1)'
-                    }}
-                  />
-                </div>
-                <div style={{ marginLeft: isMobile ? '20px' : '40px' }}>
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: isMobile ? '18px' : '24px',
-                    fontWeight: 'bold',
-                    color: '#406A46',
-                    marginBottom: '4px'
-                  }}>
-                    {t('wetlandFreskPage.age.label')}
-                  </div>
-                  <div style={{
-                    fontFamily: 'Comfortaa, sans-serif',
-                    fontSize: isMobile ? '16px' : '20px',
-                    fontWeight: 'bold',
-                    color: '#51727C'
-                  }}>
-                    {t('wetlandFreskPage.age.value')}
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Right Column - Logo and Download */}
-            <div className="flex flex-col items-center gap-6" style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
+            <div className="flex flex-col items-center" style={{ width: isMobile ? '100%' : '50%', flex: 1, gap: isMobile ? '12px' : '24px' }}>
               {/* Logo */}
-              <div style={{ marginBottom: isMobile ? '15px' : '20px' }}>
+              <div style={{ marginBottom: isMobile ? '8px' : '20px' }}>
                 <img 
                   src="/assets/icons/Space4all.png" 
                   alt="Space4all Logo" 

@@ -1,12 +1,16 @@
 {
   "common": {
+  "yes": "Ja",
+  "no": "Nein",
   "accept": "Akzeptieren",
   "reject": "Ablehnen",
   "home": "Startseite",
+  "next": "Weiter",
   "loading": "Wird geladen...",
   "close": "Schließen",
   "tryAgain": "Versuch’s noch einmal",
-  "learnAndTestButton": "LERNEN UND WISSEN TESTEN"
+  "learnAndTestButton": "LERNEN UND WISSEN TESTEN",
+  "backToHome": "Zurück zur Startseite"
   },
   "header": {
     "learningActivities": "Lernaktivitäten",
@@ -34,6 +38,10 @@
   "cookieConsent": {
     "message": "Diese Website verwendet Cookies zu Analysezwecken über Google Analytics. Sie können diese Cookies akzeptieren oder ablehnen.",
     "readMore": "Mehr dazu in unserer Cookie-Richtlinie"
+  },
+  "orientationWarning": {
+    "title": "Gerät drehen",
+    "description": "Für die beste Erfahrung bitte das Telefon in den Hochformat-Modus drehen."
   },
   "homePage": {
     "title": "LEBENDE AUEN:",
@@ -337,6 +345,7 @@
     },
     "page1": {
       "introText": "Seit sehr langer Zeit werden Flüsse und ihre Umgebung von Menschen für unterschiedlichste Aktivitäten genutzt, darunter Landwirtschaft,Siedlungsbau, Fischerei, Transport und die Versorgung mit Wasser.Diese Formen der Landnutzung zeigen, wie Menschen mit Flüssen interagieren und wie sie die Flusslandschaften prägen.",
+      "lookCarefully": "Sieh dir die beiden Abbildungen genau an.",
       "instruction": "Sieh dir die beiden Abbildungen genau an und entscheide, welche ",
       "landUseActivities": "Landnutzungsformen",
       "instructionEnd": "du dort erkennen kannst.",
@@ -346,6 +355,9 @@
       "missed": "Übersehen"
     },
     "page2": {
+      "definitionsIntro": "Lies die Definitionen der Begriffe:",
+      "placeInImage1": "Ziehe jedes Wort an die richtige Stelle in Abbildung 1.",
+      "placeInImage2": "Ziehe jedes Wort an die richtige Stelle in Abbildung 2.",
       "instruction": "Lies die Definitionen der Begriffe ",
       "and": "und",
       "instructionEnd": "unten durch und ziehe dann jedes Label an die richtige Stelle in den beiden Abbildungen.",
@@ -359,7 +371,8 @@
         "POOL": "Ein tieferer, langsamer fließender Abschnitt eines Baches, in dem sich Wasser sammelt. Kolke sind ruhig, still und bieten Fischen Schutz.",
         "RIFFLE": "Ein flacher, schnell fließender Abschnitt eines Baches mit kleinen Wellen und sichtbaren Steinen. Rauschen wirken rau und schäumend und sind reich an Sauerstoff, was sie zu idealen Lebensräumen für Insekten und Fische macht.",
         "RUN": "Ein glatter, mäßig tiefer Abschnitt eines Baches, in dem das Wasser gleichmäßig fließt zwischen einer Rausche und einem Kolk."
-      }
+      },
+      "checkAnswers": "Antworten überprüfen"
     },
     "quizOptions": {
       "human-settlements": "Siedlungen",
@@ -479,7 +492,8 @@
         "incorrectSponge": "Falsch (Lösung: Schwamm)",
         "correctFlooding": "Richtig: Hochwasser",
         "incorrectFlooding": "Falsch (Lösung: Hochwasser)"
-      }
+      },
+      "checkAnswers": "Antworten überprüfen"
     },
     "modal": {
       "title": "Download-Optionen",

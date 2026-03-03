@@ -14,13 +14,11 @@ export const GameContainer: React.FC<GameContainerProps> = ({
   className = '',
   currentPage
 }) => {
-  const { isMobile, isPortrait } = useOrientation();
-  // Exclude home, art, wetlandfresk, wetland4life, mapwetland, privacy, cookies, and termsofuse pages from orientation warning
-  const excludedPages = ['home', 'art', 'wetlandfresk', 'wetland4life', 'mapwetland', 'privacy', 'cookies', 'termsofuse'];
-  const shouldShowWarning = isMobile && isPortrait && (!currentPage || !excludedPages.includes(currentPage));
-  const showOrientationWarning = shouldShowWarning;
-  // For excluded pages, don't use landscape-only class to avoid CSS hiding content on mobile
-  const isExcludedPage = currentPage && excludedPages.includes(currentPage);
+  const { isMobile, isLandscape } = useOrientation();
+  // Op mobiel horizontaal (landscape): altijd melding tonen om verticaal (portrait) te zetten
+  const showOrientationWarning = isMobile && isLandscape;
+  // Op mobiel in portrait tonen we content; landscape-only niet nodig want warning doet het werk
+  const isExcludedPage = true; // Content altijd zichtbaar wanneer geen warning (portrait of desktop)
 
   return (
     <div className={`game-container w-full h-screen min-h-screen ${className}`}>

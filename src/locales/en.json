@@ -1,12 +1,16 @@
 {
   "common": {
+    "yes": "Yes",
+    "no": "No",
     "accept": "Accept",
     "reject": "Reject",
     "home": "Home",
+    "next": "Next",
     "loading": "Loading...",
     "close": "Close",
     "tryAgain": "Try Again",
-    "learnAndTestButton": "Learn and test your knowledge"
+    "learnAndTestButton": "Learn and test your knowledge",
+    "backToHome": "Back to home"
   },
   "header": {
     "learningActivities": "Learning activities",
@@ -41,6 +45,10 @@
   "cookieConsent": {
     "message": "This website uses cookies for analytical purposes via Google Analytics. You can accept or reject these cookies.",
     "readMore": "Read more in our cookie policy"
+  },
+  "orientationWarning": {
+    "title": "Rotate Your Screen",
+    "description": "For the best experience, please rotate your phone to portrait mode."
   },
   "homePage": {
     "title": "LIVING FLOODPLAINS:",
@@ -349,6 +357,7 @@
     },
     "page1": {
       "introText": "Rivers and their surroundings have been used by people since ancient times for many different activities, such as farming, building homes, fishing, traveling, and getting water. This land use shows how humans interact with and shape the areas around rivers.",
+      "lookCarefully": "Look carefully at both images.",
       "instruction": "Look carefully at the both illustration and choose which",
       "landUseActivities": "land use activities",
       "instructionEnd": "you can find.",
@@ -358,6 +367,9 @@
       "missed": "Missed"
     },
     "page2": {
+      "definitionsIntro": "Read the definitions of the terms:",
+      "placeInImage1": "Drag each label to its correct place in image 1.",
+      "placeInImage2": "Drag each label to its correct place in image 2.",
       "instruction": "Read the definitions of the terms",
       "and": "and",
       "instructionEnd": "below, then drag and drop each label to its correct place in the two images.",
@@ -371,7 +383,8 @@
         "POOL": "A deeper, slower-moving section of a stream where water collects. Pools are quiet, calm, and provide shelter for fish.",
         "RIFFLE": "A shallow, fast-flowing part of a stream with small waves and visible rocks. Riffles appear rough and bubbly, and are rich in oxygen, making them ideal habitats for insects and fish.",
         "RUN": "A smooth, moderately deep section of a stream where water flows steadily between a riffle and a pool. Runs get plenty of sunlight, which helps algae grow. Insects feed on the algae, making runs good feeding spots for fish from pools and riffles."
-      }
+      },
+      "checkAnswers": "Check answers"
     },
     "quizOptions": {
       "human-settlements": "Human settlements",
@@ -491,7 +504,8 @@
         "incorrectSponge": "Incorrect (Answer: sponge)",
         "correctFlooding": "Correct: flooding",
         "incorrectFlooding": "Incorrect (Answer: flooding)"
-      }
+      },
+      "checkAnswers": "Check answers"
     },
     "modal": {
       "title": "Download Options",

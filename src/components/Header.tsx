@@ -32,11 +32,15 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   
   // Mobile version: hamburger menu, centered logo, and language switcher
   if (isMobile) {
+    // Alle mobile-friendly pagina's (excluded from rotate warning in GameContainer)
     const menuItems = [
       { id: 'mapwetland' as const, labelKey: 'header.menuItems.mapYourWetland' },
+      { id: 'riparian' as const, labelKey: 'header.menuItems.exploringHabitats' },
+      { id: 'floodcontrol' as const, labelKey: 'header.menuItems.floodplainSpongeEffect' },
       { id: 'art' as const, labelKey: 'header.menuItems.sourcesOfInspiration' },
       { id: 'wetlandfresk' as const, labelKey: 'header.externalToolsItems.wetlandFresk' },
       { id: 'wetland4life' as const, labelKey: 'header.externalToolsItems.wetland4Life' },
+      { id: 'bluegreen' as const, labelKey: 'header.externalToolsItems.blueGreenSpace4All' },
     ];
 
     return (

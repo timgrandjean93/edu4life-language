@@ -99,7 +99,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
         >
           {/* Two Columns Layout */}
           <div style={{ width: isMobile ? '100%' : '90%', margin: '0 auto' }}>
-            <div className={isMobile ? 'flex flex-col' : 'flex'} style={{ alignItems: 'flex-start', gap: isMobile ? '30px' : '48px' }}>
+            <div className={isMobile ? 'flex flex-col' : 'flex'} style={{ alignItems: 'flex-start', gap: isMobile ? '20px' : '48px' }}>
               {/* Left Column - What does Wetland4Life do? */}
               <div className="flex flex-col" style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
                 <div style={{ marginBottom: isMobile ? '15px' : '10px', display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>

@@ -1,12 +1,16 @@
 {
   "common": {
+    "yes": "Igen",
+    "no": "Nem",
     "accept": "Elfogadás",
     "reject": "Elutasítás",
     "home": "Főoldal",
+    "next": "Következő",
     "loading": "Betöltés...",
     "close": "Bezárás",
     "tryAgain": "Próbáld újra",
-    "learnAndTestButton": "Tanulj és teszteld a tudásodat"
+    "learnAndTestButton": "Tanulj és teszteld a tudásodat",
+    "backToHome": "Vissza a kezdőlapra"
   },
   "header": {
     "learningActivities": "Tanulási tevékenységek",
@@ -34,6 +38,10 @@
   "cookieConsent": {
     "message": "Ez a weboldal a Google Analytics segítségével analitikai célokra sütiket használ. Ezeket a sütiket elfogadhatja vagy elutasíthatja.",
     "readMore": "További információk a sütikezelési irányelveinkben"
+  },
+  "orientationWarning": {
+    "title": "Forgassa el a készüléket",
+    "description": "A legjobb élményért fordítsa a telefont álló helyzetbe."
   },
   "homePage": {
     "title": "ÉLŐ ÁRTÉREK:",
@@ -269,6 +277,7 @@
     },
     "page1": {
       "introText": "A folyókat és környezetüket az emberek ősidők óta használják számos különböző tevékenységre, például mezőgazdaságra, házépítésre, halászatra, utazásra és vízszerzésre. Ez a földhasználat megmutatja, hogyan hatnak egymásra az emberek a folyók körüli területekkel, és hogyan alakítják azokat.",
+      "lookCarefully": "Nézd meg figyelmesen mindkét illusztrációt.",
       "instruction": "Nézd meg figyelmesen mindkét illusztrációt, és válaszd ki, melyik ",
       "landUseActivities": "földhasználati tevékenységeket",
       "instructionEnd": "találod.",
@@ -291,7 +300,8 @@
         "POOL": "A patak mélyebb, lassabban folyó szakasza, ahol a víz összegyűlik. A medencék csendesek, nyugodtak, és menedéket nyújtanak a halaknak.",
         "RIFFLE": "A patak sekély, gyors folyású része kis hullámokkal és látható sziklákkal. A gátak durvák és bugyborékosak, és oxigénben gazdagok, így ideális élőhelyek a rovarok és halak számára.",
         "RUN": "A patak sima, mérsékelten mély szakasza, ahol a víz egyenletesen folyik egy zuhatag és egy medence között."
-      }
+      },
+      "checkAnswers": "Válaszok ellenőrzése"
     },
     "quizOptions": {
       "human-settlements": "Emberi települések",
@@ -403,7 +413,8 @@
         "incorrectSponge": "Helytelen (helyes válasz: szivacs)",
         "correctFlooding": "Helyes: árvíz",
         "incorrectFlooding": "Helytelen (helyes válasz: árvíz)"
-      }
+      },
+      "checkAnswers": "Válaszok ellenőrzése"
     }
   },
   "peopleAquaticPage": {

@@ -1,12 +1,16 @@
 {
   "common": {
+    "yes": "Da",
+    "no": "Ne",
     "accept": "Prihvati",
     "reject": "Odbij",
     "home": "Početna",
+    "next": "Sledeće",
     "loading": "Učitavanje...",
     "close": "Zatvori",
     "tryAgain": "Pokušaj ponovo",
-    "learnAndTestButton": "Uči i testiraj svoje znanje"
+    "learnAndTestButton": "Uči i testiraj svoje znanje",
+    "backToHome": "Nazad na početnu"
   },
   "header": {
     "learningActivities": "Aktivnosti učenja",
@@ -34,6 +38,10 @@
   "cookieConsent": {
     "message": "Ovaj veb-sajt koristi kolačiće u analitičke svrhe putem Google Analytics-a. Možete prihvatiti ili odbiti ove kolačiće.",
     "readMore": "Pročitajte više u našoj politici kolačića"
+  },
+  "orientationWarning": {
+    "title": "Okrenite uređaj",
+    "description": "Za najbolje iskustvo, okrenite telefon u uspravni položaj."
   },
   "homePage": {
     "title": "PLAVNE RAVNICE:",
@@ -317,6 +325,7 @@
     },
     "page1": {
       "introText": "Ljudi od davnina koriste reke i njihovo okruženje za mnoge aktivnosti, kao što su poljoprivreda, izgradnja domova, ribolov, putovanja i snabdevanje vode. Raznolikost aktivnosti ukazuje na to kako sve ljudi oblikuju područja oko reka.",
+      "lookCarefully": "Pažljivo pogledajte obe ilustracije.",
       "instruction": "Pažljivo pogledajte obe ilustracije i izaberite koje ",
       "landUseActivities": "načine korišćenja zemljišta",
       "instructionEnd": "možete pronaći.",
@@ -339,7 +348,8 @@
         "POOL": "Dublji, sporije tekući deo rečnog toka u kojem se skuplja voda. Bazeni su tihi, mirni i pružaju sklonište za ribe. ",
         "RIFFLE": "Plitak, brzo tekući deo rečnog toka sa malim talasima i vidljivim kamenjem. Brzaci izgledaju hrapavo i penušavo, bogati su kiseonikom, što ih čini idealnim staništima za insekte i ribe.",
         "RUN": "Glatki, umereno dubok deo rečnog toka gde voda teče stalno između brzaka i bazena."
-      }
+      },
+      "checkAnswers": "Proveri odgovore"
     },
     "quizOptions": {
       "human-settlements": "Ljudska naselja",
@@ -451,7 +461,8 @@
         "incorrectSponge": "Netačno (Odgovor: sunder)",
         "correctFlooding": "Tačno: plavljenja",
         "incorrectFlooding": "Netačno (Odgovor: plavljenja)"
-      }
+      },
+      "checkAnswers": "Proveri odgovore"
     }
   },
   "peopleAquaticPage": {

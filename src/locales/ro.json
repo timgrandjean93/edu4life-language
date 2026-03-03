@@ -1,12 +1,16 @@
 {
   "common": {
+  "yes": "Da",
+  "no": "Nu",
   "accept": "Corect",
   "reject": "Respinge",
   "home": "Acasă",
+  "next": "Următor",
   "loading": "Se încarcă...",
   "close": "Închide",
   "tryAgain": "ÎNCEARCĂ DIN NOU",
-  "learnAndTestButton": "ÎNVAȚĂ ȘI TESTEAZĂ-ȚI CUNOȘTINȚELE"
+  "learnAndTestButton": "ÎNVAȚĂ ȘI TESTEAZĂ-ȚI CUNOȘTINȚELE",
+  "backToHome": "Înapoi la pagina principală"
 },
   "header": {
     "learningActivities": "Activități de învățare",
@@ -42,6 +46,10 @@
   "message": "Acest site web utilizează cookie-uri în scopuri analitice prin Google Analytics. Puteți accepta sau respinge aceste cookie-uri.",
   "readMore": "Citiți mai multe în politica noastră privind cookie-urile"
 },
+  "orientationWarning": {
+    "title": "Rotiți ecranul",
+    "description": "Pentru cea mai bună experiență, rotiți telefonul în mod vertical."
+  },
   "homePage": {
     "title": "ZONE INUNDABILE:",
     "subtitle": "ÎNVAȚĂ, EXPLOREAZĂ, RESTAUREAZĂ PENTRU VIAȚĂ",
@@ -351,6 +359,7 @@
     },
     "page1": {
       "introText": "Râurile și împrejurimile lor au fost folosite de oameni încă din cele mai vechi timpuri pentru diferite activități, cum ar fi agricultura, construirea de case, pescuitul, călătoriile și aprovizionarea cu apă. Această utilizare a terenurilor arată cum interacționează oamenii cu zonele din apropierea râurilor și cum le modelează.",
+      "lookCarefully": "Priviți cu atenție ambele ilustrații.",
       "instruction": "Priviți cu atenție ambele ilustrații și alegeți ",
       "landUseActivities": "activitățile de utilizare a terenului pe care",
       "instructionEnd": "le puteți găsi.",
@@ -373,7 +382,8 @@
         "POOL": "O secțiune mai adâncă, cu curgere mai lentă, a unui pârâu, unde se adună apa. Bălțile sunt liniștite, calme și oferă adăpost pentru pești.",
         "RIFFLE": "O parte puțin adâncă, cu curgere rapidă, a unui pârâu, cu valuri mici și roci vizibile. Malurile apar accidentate și cu bule și sunt bogate în oxigen, ceea ce le face habitate ideale pentru insecte și pești.",
         "RUN": "O secțiune lină, moderat adâncă, a unui pârâu, unde apa curge constant între un mal și o baltă."
-      }
+      },
+      "checkAnswers": "Verifică răspunsurile"
     },
     "quizOptions": {
       "human-settlements": "Așezări umane",
@@ -493,7 +503,8 @@
         "incorrectSponge": "Incorect (Răspuns: burete)",
         "correctFlooding": "Corect: inundații",
         "incorrectFlooding": "Incorect (Răspuns: inundații)"
-      }
+      },
+      "checkAnswers": "Verifică răspunsurile"
     },
     "modal": {
       "title": "Opțiuni de descărcare",
@@ -858,10 +869,10 @@
         "area6": "Unele fabrici eliberează ape uzate bogate în azot din procesarea alimentelor, substanțe chimice sau activității de producție. De obicei, reglementate, dar totuși importante la nivel local."
       },
       "nutrients2": {
-        "area1": "Azotul se depune în sedimente Particulele de azot organic se scufundă și astfel devin accesibile microbilor care trăiesc între granulele de nisip - zone liniștite de purificare.",
-        "area2": "Biomasă (temporar) Algele și plantele acvatice absorb nitrați și amoniu ; azotul este stocat în țesuturile lor până când se descompun.",
-        "area3": "Amoniu → Nitrat (necesită oxigen)  Mici microbi din sedimentele bogate în oxigen transformă amoniul în nitrat - primul pas al purificării.",
-        "area4": "Nitrat → Azot gazos (fără oxigen)  Bacteriile din zonele cu conținut scăzut de oxigen transformă nitrații în azot gazos — procesul cheie pentru pierderea azotului."
+        "area1": "Azotul se depune în sedimenteParticulele de azot organic se scufundă și astfel devin accesibile microbilor care trăiesc între granulele de nisip - zone liniștite de purificare.",
+        "area2": "Biomasă (temporar)Algele și plantele acvatice absorb nitrați și amoniu ; azotul este stocat în țesuturile lor până când se descompun.",
+        "area3": "Amoniu → Nitrat (necesită oxigen) Mici microbi din sedimentele bogate în oxigen transformă amoniul în nitrat - primul pas al purificării.",
+        "area4": "Nitrat → Azot gazos (fără oxigen) Bacteriile din zonele cu conținut scăzut de oxigen transformă nitrații în azot gazos — procesul cheie pentru pierderea azotului."
       },
       "nutrients3": {
         "area1": "Azotul legat de particule se depune În timpul inundațiilor, particulele în suspensie cu azot sunt prinse și depuse pe suprafața zonelor inundabile.",
@@ -871,21 +882,21 @@
       "nutrients4": {
         "area1": "Poluare care provine din multe locuri dispersate, cum ar fi terenurile agricole, drumurile neasfaltate sau orașele.",
         "area2": "Poluare care provine dintr-o sursă clară, cum ar fi o conductă de la o stație de epurare a apelor uzate sau o fabrică.",
-        "area3": "Fosforul legat de particulele de sol este spălat în râuri în timpul ploii sau inundațiilor. ",
+        "area3": "Fosforul legat de particulele de sol este spălat în râuri în timpul ploii sau inundațiilor.",
         "area4": "Fosforul din îngrășăminte se dizolvă în apă și ajunge încet în râuri prin sol sau prin curgerea apei de suprafață. O sursă difuză mai mică, dar constantă.",
-        "area5": "Apa de ploaie transportă praf, detergenți și particule de deșeuri bogate în fosfor în canalele de scurgere și râuri. ",
+        "area5": "Apa de ploaie transportă praf, detergenți și particule de deșeuri bogate în fosfor în canalele de scurgere și râuri.",
         "area6": "Chiar și după tratare, o parte din fosfor rămâne în apa deversată. Multe țări și-au modernizat instalațiile, dar altele încă nu dispun de sisteme eficiente sau de orice tip de tratare a apelor uzate.",
         "area7": "Anumite fabrici eliberează ape uzate care conțin fosfor din activitățile de curățare, procesare sau producție. De obicei, acestea sunt reglementate, dar totuși rămân semnificative în unele zone."
       },
       "nutrients5": {
-        "area1": "Fosfatul dizolvat se atașează de substanțele minerale precum fierul, aluminiul sau calcarul. Când este prezent oxigen, fosforul rămâne legat; dar dacă oxigenul lipsește, acesta poate fi eliberat din nou în apă.",
-        "area2": "Algele, plantele acvatice și biofilmele absorb fosforul și îl folosesc pentru creștere. Această retenție este temporară — când organismele mor sau se descompun, fosforul este eliberat în apă.",
-        "area3": "Fosforul atașat de sol și particulele organice se depune în albia râului. Acest lucru se întâmplă în principal în zone calme sau unde fluxul este lent — formând o „ depozitare temporară de fosfor ” în sediment."
+        "area1": "Fosfatul dizolvat se atașează de substanțele minerale precum fierul, aluminiul sau calcarul.Când este prezent oxigen, fosforul rămâne legat; dar dacă oxigenul lipsește, acesta poate fi eliberat din nou în apă.",
+        "area2": "Algele, plantele acvatice și biofilmele absorb fosforul și îl folosesc pentru creștere.Această retenție este temporară — când organismele mor sau se descompun, fosforul este eliberat în apă.",
+        "area3": "Fosforul atașat de sol și particulele organice se depune în albia râului.Acest lucru se întâmplă în principal în zone calme sau unde fluxul este lent — formând o „ depozitare temporară de fosfor ” în sediment."
       },
       "nutrients6": {
-        "area1": "Când apele inundațiilor se răspândesc pe uscat, acestea încetinesc și lasă să cadă particule în suspensie bogate în fosfor. Aceasta este una dintre cele mai eficiente metode prin care zonele inundabile captează și stochează fosforul.",
-        "area2": "Plantele din zona inundabilă absorb fosforul pe măsură ce cresc, stocându-l în frunze și rădăcini. Această retenție este temporară, dar o parte din fosfor rămâne mai mult timp în așternut și humus după ce plantele mor.",
-        "area3": "Fosforul dizolvat se leagă de compușii de fier, aluminiu sau calciu din sol.  Acest lucru menține fosforul blocat - cu excepția cazului în care oxigenul se termină, când acesta poate fi eliberat din nou."
+        "area1": "Când apele inundațiilor se răspândesc pe uscat, acestea încetinesc și lasă să cadă particule în suspensie bogate în fosfor.Aceasta este una dintre cele mai eficiente metode prin care zonele inundabile captează și stochează fosforul.",
+        "area2": "Plantele din zona inundabilă absorb fosforul pe măsură ce cresc, stocându-l în frunze și rădăcini.Această retenție este temporară, dar o parte din fosfor rămâne mai mult timp în așternut și humus după ce plantele mor.",
+        "area3": "Fosforul dizolvat se leagă de compușii de fier, aluminiu sau calciu din sol. Acest lucru menține fosforul blocat - cu excepția cazului în care oxigenul se termină, când acesta poate fi eliberat din nou."
       }
     },
     "quizModal": {

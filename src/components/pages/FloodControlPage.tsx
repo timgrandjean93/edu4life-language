@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { usePageRouting } from '../../hooks/usePageRouting';
+import { useOrientation } from '../../hooks/useOrientation';
 import { HomeButton } from '../HomeButton';
 import { LocalizedImage } from '../LocalizedImage';
 
@@ -11,7 +12,8 @@ interface FloodControlPageProps {
   onRepositoryClick?: () => void;
 }
 
-const TOTAL_PAGES = 3;
+const TOTAL_PAGES_DESKTOP = 3; // 0=intro, 1=hover panels, 2=drag panels, 3=fill blank
+const TOTAL_PAGES_MOBILE = 7;  // 0=intro, 1=left hover, 2=left did you know, 3=right hover, 4=right did you know, 5=left drag, 6=right drag, 7=fill blank
 
 // Page 2 drop zones
 const leftImageDropZones = [
@@ -32,11 +34,37 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
   onRepositoryClick
 }) => {
   const { t, i18n } = useTranslation();
+  const { isMobile } = useOrientation();
+  const TOTAL_PAGES = isMobile ? TOTAL_PAGES_MOBILE : TOTAL_PAGES_DESKTOP;
   const [currentPage, setCurrentPage] = usePageRouting(TOTAL_PAGES);
   const currentLanguage = i18n.language;
   
+  // Content mapping: which panels to show based on page and device
+  const showLeftHover = isMobile ? currentPage === 1 : currentPage === 1;
+  const showLeftDidYouKnow = isMobile && currentPage === 2;
+  const showRightHover = isMobile ? currentPage === 3 : currentPage === 1;
+  const showRightDidYouKnow = isMobile && currentPage === 4;
+  
+  // Mobile Activity 1: step-by-step flow - one description at a time, immediate feedback, retry on wrong
+  const [mobileActivityStep, setMobileActivityStep] = React.useState(1); // 1, 2, or 3 - which number to place
+  const [mobilePlacementWrong, setMobilePlacementWrong] = React.useState(false); // Show "try again" when wrong
+  
+  // Reset mobile-specific state when changing pages
+  React.useEffect(() => {
+    setTappedArea(null);
+    setMobileHoverStep(1);
+    setCurrentNumberToPlace(null);
+    setMobileActivityStep(1);
+    setMobilePlacementWrong(false);
+  }, [currentPage]);
+  
+  const showLeftDrop = isMobile ? currentPage === 5 : currentPage === 2;
+  const showRightDrop = isMobile ? currentPage === 6 : currentPage === 2;
+  const showFillBlank = isMobile ? currentPage === 7 : currentPage === 3;
+  
   // Calculate input width based on language (Dutch words are longer)
   const getInputWidth = () => {
+    if (isMobile) return currentLanguage === 'nl' ? '180px' : '140px';
     return currentLanguage === 'nl' ? '250px' : '200px';
   };
   
@@ -146,6 +174,9 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
     t('floodControlPage.page2.descriptions.right.2')
   ];
   const [hoveredArea, setHoveredArea] = React.useState<string | null>(null);
+  const [tappedArea, setTappedArea] = React.useState<string | null>(null); // Mobile: tap to show info
+  const [mobileHoverStep, setMobileHoverStep] = React.useState(1); // Mobile: sequential 1,2,3... - which number is visible
+  const [currentNumberToPlace, setCurrentNumberToPlace] = React.useState<number | null>(null); // Mobile: click-to-place
   const [showDidYouKnowLeft, setShowDidYouKnowLeft] = React.useState(false);
   const [showDidYouKnowRight, setShowDidYouKnowRight] = React.useState(false);
   
@@ -279,19 +310,16 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
     };
   }, [currentPage]);
 
-  // Auto-submit page 2 when all zones are filled
+  // Auto-submit page 2 when all zones are filled (desktop only; mobile uses step-by-step)
   React.useEffect(() => {
-    if (currentPage === 2 && !page2Submitted) {
+    if (!isMobile && (showLeftDrop || showRightDrop) && !page2Submitted) {
       const totalZones = leftImageDropZones.length + rightImageDropZones.length;
       const allZonesFilled = Object.keys(placements).length === totalZones;
       if (allZonesFilled) {
-        // Small delay to allow the last drop animation to complete
-        setTimeout(() => {
-          handleSubmitPage2();
-        }, 300);
+        setTimeout(() => handleSubmitPage2(), 300);
       }
     }
-  }, [placements, currentPage, page2Submitted]);
+  }, [placements, showLeftDrop, showRightDrop, page2Submitted, isMobile]);
 
   const handleAreaHover = (areaId: string) => {
     setHoveredArea(areaId);
@@ -354,6 +382,32 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
     e.preventDefault();
   };
 
+  // Mobile: click-to-place - step-by-step flow: one description at a time, immediate feedback, retry on wrong
+  const handleMobileDrop = (zoneId: string) => {
+    if (page2Submitted) return;
+    // Mobile step-by-step: use mobileActivityStep as the number to place
+    if (isMobile && (showLeftDrop || showRightDrop)) {
+      const side: 'left' | 'right' = showLeftDrop ? 'left' : 'right';
+      const correctZoneId = findZoneIdByCorrectNumber(mobileActivityStep, side);
+      if (zoneId === correctZoneId) {
+        setPlacements(prev => ({ ...prev, [zoneId]: mobileActivityStep }));
+        setMobilePlacementWrong(false);
+        if (mobileActivityStep < 3) {
+          setMobileActivityStep(mobileActivityStep + 1);
+        } else {
+          setMobileActivityStep(4); // Done with this panel
+        }
+      } else {
+        setMobilePlacementWrong(true);
+      }
+      return;
+    }
+    // Fallback (shouldn't reach): original click-to-select behavior
+    if (!currentNumberToPlace) return;
+    setPlacements(prev => ({ ...prev, [zoneId]: currentNumberToPlace }));
+    setCurrentNumberToPlace(null);
+  };
+
   const handleSubmitPage2 = () => {
     setPage2Submitted(true);
     setShowPage2Feedback(true);
@@ -382,12 +436,15 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
 
   // Retry function to reset activity
   const handleRetry = () => {
-    if (currentPage === 2) {
+    if (showLeftDrop || showRightDrop) {
       setPlacements({});
       setPage2Submitted(false);
       setShowPage2Feedback(false);
       setDraggedNumber(null);
-    } else if (currentPage === 3) {
+      setCurrentNumberToPlace(null);
+      setMobileActivityStep(1);
+      setMobilePlacementWrong(false);
+    } else if (showFillBlank) {
       setAnswer1('');
       setAnswer2('');
       setPage3Submitted(false);
@@ -436,7 +493,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
       
       {/* Header with title and home button */}
       <div className="relative z-50" style={{ flexShrink: 0 }}>
-        <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+        <div className="flex items-start justify-center" style={{ paddingTop: '40px', paddingBottom: isMobile && currentPage === 0 ? '10px' : '40px' }}>
           <div className="w-full max-w-6xl px-4">
             {/* Header with Title */}
             <div className="relative">
@@ -461,7 +518,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: '10px', flex: 1 }}>
+      <div className="relative z-10 px-4 pb-8" style={{ paddingBottom: isMobile && currentPage === 0 ? '32px' : '10px', flex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -469,91 +526,143 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
           className="max-w-6xl mx-auto"
         >
           {currentPage === 0 ? (
-            // Intro Page: Introduction with two illustrations (image1 and image2), description, and CTA button
+            // Intro Page: Like Map - single image on mobile, two on desktop; text CTA on mobile; download hidden on mobile
             <div className="flex flex-col items-center" style={{ paddingBottom: '10px' }}>
-              {/* Two Illustrations Side by Side - Smaller */}
-              <div className="flex gap-8 justify-center mb-8" style={{ width: '100%', maxWidth: '1000px' }}>
-                {/* Left Illustration - Image 1 */}
-                <div style={{ flex: 1, maxWidth: '480px' }}>
-                  <img 
-                    src="/assets/components/Sponge/image1.png"
-                    alt="Natural floodplain"
-                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-                  />
-                </div>
-                {/* Right Illustration - Image 2 */}
-                <div style={{ flex: 1, maxWidth: '480px' }}>
-                  <img 
-                    src="/assets/components/Sponge/image2.png"
-                    alt="Degraded floodplain"
-                    style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-                  />
-                </div>
+              {/* Illustration(s) - Single centered on mobile (like Map), two side by side on desktop */}
+              <div 
+                className="flex justify-center mb-8"
+                style={{ 
+                  width: '100%', 
+                  maxWidth: isMobile ? '600px' : '1000px',
+                  flexDirection: isMobile ? 'column' : 'row',
+                  gap: isMobile ? 0 : '32px',
+                  alignItems: 'center'
+                }}
+              >
+                {isMobile ? (
+                  /* Mobile: Single image like Map */
+                  <div style={{ width: '100%', maxWidth: '600px' }}>
+                    <img 
+                      src="/assets/components/Sponge/image1.png"
+                      alt="Natural floodplain"
+                      style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                    />
+                  </div>
+                ) : (
+                  /* Desktop: Two illustrations side by side */
+                  <>
+                    <div style={{ flex: 1, maxWidth: '480px' }}>
+                      <img 
+                        src="/assets/components/Sponge/image1.png"
+                        alt="Natural floodplain"
+                        style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                      />
+                    </div>
+                    <div style={{ flex: 1, maxWidth: '480px' }}>
+                      <img 
+                        src="/assets/components/Sponge/image2.png"
+                        alt="Degraded floodplain"
+                        style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                      />
+                    </div>
+                  </>
+                )}
               </div>
 
-              {/* Descriptive Text */}
+              {/* Descriptive Text - responsive like Map */}
               <div style={{
                 fontFamily: 'Comfortaa, sans-serif',
-                fontSize: '24px',
+                fontSize: isMobile ? '18px' : '24px',
                 fontWeight: 'bold',
                 color: '#406A46',
                 textAlign: 'center',
-                marginBottom: '40px',
+                marginBottom: isMobile ? '24px' : '40px',
                 maxWidth: '1200px',
-                lineHeight: '1.6'
+                lineHeight: '1.6',
+                padding: isMobile ? '0 16px' : '0'
               }}>
                 {t('floodControlPage.intro.description')}
               </div>
 
-              {/* Call-to-Action Button */}
-              <button
-                className="learn-test-button"
-                onClick={() => setCurrentPage(1)}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer',
-                  marginBottom: '40px',
-                  padding: 0
+              {/* Call-to-Action - Text button on mobile (like Map), image on desktop */}
+              {isMobile ? (
+                <button
+                  onClick={() => setCurrentPage(1)}
+                  style={{
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '18px',
+                    fontWeight: 'bold',
+                    color: 'white',
+                    backgroundColor: '#51727C',
+                    padding: '14px 32px',
+                    borderRadius: '8px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textTransform: 'uppercase',
+                    marginBottom: '24px',
+                    transition: 'background-color 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#406A46';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#51727C';
+                  }}
+                >
+                  {t('floodControlPage.intro.explore')}
+                </button>
+              ) : (
+                <button
+                  className="learn-test-button"
+                  onClick={() => setCurrentPage(1)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    marginBottom: '40px',
+                    padding: 0
+                  }}
+                >
+                  <LocalizedImage 
+                    src="/assets/icons/learnandtest.png"
+                    alt={t('common.learnAndTestButton')}
+                    style={{ 
+                      height: 'auto',
+                      maxWidth: '500px',
+                      width: 'auto'
+                    }}
+                  />
+                </button>
+              )}
+
+              {/* Download Section - Hidden on mobile (like Map) */}
+              {!isMobile && (
+              <div 
+                className="flex justify-center" 
+                style={{ 
+                  width: '100%', 
+                  maxWidth: '1400px', 
+                  paddingTop: '20px', 
+                  marginBottom: '20px', 
+                  minHeight: '180px',
+                  position: 'relative'
                 }}
               >
-                <LocalizedImage 
-                  src="/assets/icons/learnandtest.png"
-                  alt={t('common.learnAndTestButton')}
-                  style={{ 
-                    height: 'auto',
-                    maxWidth: '500px',
-                    width: 'auto'
-                  }}
-                />
-              </button>
-
-              {/* Download Section */}
-              <div className="flex justify-center" style={{ width: '100%', maxWidth: '1400px', paddingTop: '20px', position: 'relative', marginBottom: '20px', minHeight: '180px' }}>
                 {/* Left Download Section */}
-                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', right: 'calc(50% + 50px)', alignItems: 'center' }}>
-                  {/* Icon - Transparent background */}
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}>
-                    <img 
-                      src="/assets/icons/edumaterial.png"
-                      alt="Access Teaching Materials"
-                      style={{ width: '150px', height: '110px' }}
-                    />
+                <div 
+                  className="flex items-center" 
+                  style={{ 
+                    gap: '32px', 
+                    position: 'absolute',
+                    right: 'calc(50% + 50px)',
+                    alignItems: 'center'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <img src="/assets/icons/edumaterial.png" alt="Access Teaching Materials" style={{ width: '150px', height: '110px' }} />
                   </div>
-                  {/* Text and Button - Left aligned */}
                   <div>
-                    <div style={{
-                      fontFamily: 'Comfortaa, sans-serif',
-                      fontSize: '24px',
-                      fontWeight: 'bold',
-                      color: '#406A46',
-                      marginBottom: '6px'
-                    }}>
+                    <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '24px', fontWeight: 'bold', color: '#406A46', marginBottom: '6px' }}>
                       {t('floodControlPage.intro.accessTeachingMaterials')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
@@ -562,76 +671,38 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         target="_blank"
                         rel="noreferrer"
                         style={{
-                          fontFamily: 'Comfortaa, sans-serif',
-                          fontSize: '16px',
-                          fontWeight: 'bold',
-                          color: 'white',
-                          backgroundColor: '#51727C',
-                          padding: '12px 32px',
-                          borderRadius: '8px',
-                          border: 'none',
-                          cursor: 'pointer',
-                          textTransform: 'uppercase',
-                          textDecoration: 'none',
-                          display: 'inline-block'
+                          fontFamily: 'Comfortaa, sans-serif', fontSize: '16px', fontWeight: 'bold', color: 'white',
+                          backgroundColor: '#51727C', padding: '12px 32px', borderRadius: '8px', border: 'none',
+                          cursor: 'pointer', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block'
                         }}
                       >
                         {t('floodControlPage.intro.openPlatform')}
                       </a>
                     </div>
-                    <div style={{
-                      fontFamily: 'Comfortaa, sans-serif',
-                      fontSize: '14px',
-                      color: '#406A46',
-                      fontStyle: 'italic'
-                    }}>
+                    <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '14px', color: '#406A46', fontStyle: 'italic' }}>
                       {t('floodControlPage.intro.opensNewTab')}
                     </div>
                   </div>
                 </div>
-
                 {/* Right Download Section */}
-                <div className="flex items-center" style={{ gap: '32px', position: 'absolute', left: 'calc(50% + 50px)', alignItems: 'center' }}>
-                  {/* Icon - Transparent background */}
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}>
-                    <img 
-                      src="/assets/icons/edurepo.png"
-                      alt="Explore Wet-Edu Repository"
-                      style={{ width: '120px', height: '120px' }}
-                    />
+                <div 
+                  className="flex items-center" 
+                  style={{ gap: '32px', position: 'absolute', left: 'calc(50% + 50px)', alignItems: 'center' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <img src="/assets/icons/edurepo.png" alt="Explore Wet-Edu Repository" style={{ width: '120px', height: '120px' }} />
                   </div>
-                  {/* Text and Button - Left aligned */}
                   <div>
-                    <div style={{
-                      fontFamily: 'Comfortaa, sans-serif',
-                      fontSize: '24px',
-                      fontWeight: 'bold',
-                      color: '#406A46',
-                      marginBottom: '6px'
-                    }}>
+                    <div style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '24px', fontWeight: 'bold', color: '#406A46', marginBottom: '6px' }}>
                       {t('floodControlPage.intro.exploreRepository')}
                     </div>
                     <div style={{ marginBottom: '12px' }}>
                       <button
                         onClick={() => onRepositoryClick && onRepositoryClick()}
                         style={{
-                          fontFamily: 'Comfortaa, sans-serif',
-                          fontSize: '16px',
-                          fontWeight: 'bold',
-                          color: 'white',
-                          backgroundColor: '#51727C',
-                          padding: '12px 32px',
-                          borderRadius: '8px',
-                          border: 'none',
-                          cursor: 'pointer',
-                          textTransform: 'uppercase',
-                          textDecoration: 'none',
-                          display: 'inline-block'
+                          fontFamily: 'Comfortaa, sans-serif', fontSize: '16px', fontWeight: 'bold', color: 'white',
+                          backgroundColor: '#51727C', padding: '12px 32px', borderRadius: '8px', border: 'none',
+                          cursor: 'pointer', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block'
                         }}
                       >
                         {t('floodControlPage.intro.explore')}
@@ -640,40 +711,187 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   </div>
                 </div>
               </div>
+              )}
             </div>
-          ) : currentPage === 1 ? (
-            <>
-              {/* Page 1 Content */}
-              {/* Pointer Icon */}
-              <div className="text-center mx-auto mb-4">
-                <img 
-                  src="/assets/icons/pointer.png" 
-                  alt="Pointer" 
-                  style={{ 
-                    width: '54px', 
-                    height: '54px',
-                    backgroundColor: 'transparent',
-                    margin: '0 auto'
-                  }} 
-                />
-              </div>
-              
-              {/* Instruction Text */}
-              <div className="text-center mb-8">
-                <p style={{ 
-                  fontSize: '24px',
+          ) : (showLeftDidYouKnow || showRightDidYouKnow) ? (
+            /* Mobile only: Did you know full page */
+            <div className="flex flex-col items-center" style={{ padding: '0 16px 40px' }}>
+              <div style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                borderRadius: '16px',
+                padding: '24px',
+                width: '100%',
+                maxWidth: '400px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
+              }}>
+                <h3 style={{ 
+                  fontSize: '24px', 
+                  marginBottom: '20px',
+                  color: '#51727C',
                   fontFamily: 'Comfortaa, sans-serif',
                   fontWeight: 'bold',
-                  color: '#406A46',
-                  lineHeight: '1.5'
+                  textAlign: 'center'
                 }}>
+                  {showLeftDidYouKnow ? didYouKnowContentLeftTranslated.title : didYouKnowContentRightTranslated.title}
+                </h3>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                  {(showLeftDidYouKnow ? didYouKnowContentLeftTranslated.items : didYouKnowContentRightTranslated.items).map((item, index) => (
+                    <li key={index} className="flex items-start" style={{ marginBottom: '14px' }}>
+                      <span style={{ fontSize: '18px', lineHeight: '1.5', fontFamily: 'Comfortaa, sans-serif', color: '#548235', fontWeight: 'bold', marginRight: '8px' }}>•</span>
+                      <span style={{ fontSize: '16px', lineHeight: '1.6', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#406A46' }}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  style={{
+                    fontFamily: 'Comfortaa, sans-serif',
+                    fontSize: '18px',
+                    fontWeight: 'bold',
+                    color: 'white',
+                    backgroundColor: '#51727C',
+                    padding: '14px 40px',
+                    borderRadius: '8px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textTransform: 'uppercase',
+                    marginTop: '24px',
+                    width: '100%'
+                  }}
+                >
+                  {t('common.next')}
+                </button>
+              </div>
+            </div>
+          ) : (showLeftHover || showRightHover) ? (
+            <>
+              {/* Hover/Tap panels - Desktop: both with hover. Mobile: numbered 1-N, text below on tap */}
+              {!isMobile && (
+              <>
+              {/* Pointer Icon - Desktop only */}
+              <div className="text-center mx-auto mb-4">
+                <img src="/assets/icons/pointer.png" alt="Pointer" style={{ width: '54px', height: '54px', backgroundColor: 'transparent', margin: '0 auto' }} />
+              </div>
+              {/* Instruction Text - Desktop only */}
+              <div className="text-center mb-8">
+                <p style={{ fontSize: '24px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#406A46', lineHeight: '1.5' }}>
                   {t('floodControlPage.page1.instruction')}
                 </p>
               </div>
+              </>
+              )}
 
-              {/* Images with Hover Areas */}
-          <div className="flex justify-center items-start gap-8">
-            {/* Left Image */}
+              {isMobile && (() => {
+                const areas = showLeftHover ? leftImageHoverAreasTranslated : rightImageHoverAreasTranslated;
+                const totalAreas = areas.length;
+                const lastClickedArea = mobileHoverStep > 1 ? areas[mobileHoverStep - 2] : null;
+                const showNextInCenter = mobileHoverStep > totalAreas;
+                return (
+              <div className="flex flex-col items-center" style={{ padding: '0 16px', gap: '20px' }}>
+                <p style={{ fontSize: '18px', fontFamily: 'Comfortaa, sans-serif', fontWeight: 'bold', color: '#406A46', textAlign: 'center', margin: 0 }}>
+                  {t('floodControlPage.page1.instruction')}
+                </p>
+                <div className="relative" style={{ width: '100%', maxWidth: '400px' }}>
+                  <img 
+                    src={showLeftHover ? "/assets/components/Sponge/image1.png" : "/assets/components/Sponge/image2.png"}
+                    alt="Floodplain"
+                    className="w-full h-auto rounded-lg shadow-lg"
+                    style={{ display: 'block' }}
+                  />
+                  {areas.map((area, index) => {
+                    const num = index + 1;
+                    const isVisible = num <= mobileHoverStep || (mobileHoverStep > totalAreas && num <= totalAreas);
+                    const isClickable = num === mobileHoverStep && mobileHoverStep <= totalAreas;
+                    const isHighlighted = area === lastClickedArea; // Different color when this area's text is shown
+                    if (!isVisible) return null;
+                    return (
+                      <button
+                        key={area.id}
+                        onClick={isClickable ? () => {
+                          setTappedArea(area.id);
+                          if (mobileHoverStep < totalAreas) {
+                            setMobileHoverStep(mobileHoverStep + 1);
+                          } else {
+                            setMobileHoverStep(totalAreas + 1);
+                          }
+                        } : undefined}
+                        style={{
+                          position: 'absolute',
+                          left: `${area.x + area.width / 2}%`,
+                          top: `${area.y + area.height / 2}%`,
+                          width: '40px',
+                          height: '40px',
+                          marginLeft: '-20px',
+                          marginTop: '-20px',
+                          borderRadius: '50%',
+                          border: 'none',
+                          backgroundColor: isHighlighted ? '#97C09D' : isClickable ? '#51727C' : 'rgba(81, 114, 124, 0.7)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: isClickable ? 'pointer' : 'default',
+                          fontFamily: 'Comfortaa, sans-serif',
+                          fontWeight: 'bold',
+                          fontSize: '18px',
+                          color: 'white',
+                          boxShadow: '0 2px 6px rgba(0,0,0,0.3)'
+                        }}
+                      >
+                        {num}
+                      </button>
+                    );
+                  })}
+                </div>
+                {lastClickedArea && (
+                  <div style={{
+                    width: '100%',
+                    maxWidth: '400px',
+                    backgroundColor: 'rgba(255,255,255,0.95)',
+                    borderRadius: '12px',
+                    padding: '16px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                  }}>
+                    <p style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontWeight: 'bold',
+                      fontSize: '16px',
+                      color: '#406A46',
+                      lineHeight: '1.5',
+                      margin: 0
+                    }} dangerouslySetInnerHTML={{ __html: lastClickedArea.text }} />
+                  </div>
+                )}
+                {showNextInCenter && (
+                  <button
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                    style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '18px',
+                      fontWeight: 'bold',
+                      color: 'white',
+                      backgroundColor: '#51727C',
+                      padding: '14px 40px',
+                      borderRadius: '8px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textTransform: 'uppercase',
+                      width: '100%',
+                      maxWidth: '280px',
+                      alignSelf: 'stretch'
+                    }}
+                  >
+                    {t('common.next')}
+                  </button>
+                )}
+              </div>
+                );
+              })()}
+
+              {/* Desktop: Images with Hover Areas */}
+          {!isMobile && (
+          <div className="flex justify-center items-start" style={{ gap: 32, flexDirection: 'row', alignItems: 'center' }}>
+            {/* Left Image - Desktop */}
+            {showLeftHover && (
             <div ref={leftImageRef} className="relative" style={{ width: '45%', maxWidth: '800px', display: 'inline-block' }}>
               <img 
                 src="/assets/components/Sponge/image1.png"
@@ -686,7 +904,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 }}
               />
               
-              {/* Did you know Modal - Over Left Image */}
+              {/* Did you know Modal - Desktop only, Over Left Image */}
               {showDidYouKnowLeft && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -765,8 +983,10 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 </motion.div>
               )}
               
-              {/* Hover Areas for Left Image */}
-              {leftImageHoverAreasTranslated.map((area) => (
+              {/* Hover Areas for Left Image - hover on desktop, tap on mobile */}
+              {leftImageHoverAreasTranslated.map((area) => {
+                const isActive = hoveredArea === area.id || (isMobile && tappedArea === area.id);
+                return (
                 <div
                   key={area.id}
                   className="absolute cursor-pointer transition-all duration-300"
@@ -775,15 +995,16 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     top: `${area.y}%`,
                     width: `${area.width}%`,
                     height: `${area.height}%`,
-                    backgroundColor: hoveredArea === area.id ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
+                    backgroundColor: isActive ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
                     borderRadius: '8px',
                     border: 'none'
                   }}
-                  onMouseEnter={() => handleAreaHover(area.id)}
-                  onMouseLeave={handleAreaLeave}
+                  onMouseEnter={!isMobile ? () => handleAreaHover(area.id) : undefined}
+                  onMouseLeave={!isMobile ? handleAreaLeave : undefined}
+                  onClick={isMobile ? () => setTappedArea(prev => prev === area.id ? null : area.id) : undefined}
                 >
                   {/* Hover indicator - small circle with ! */}
-                  {hoveredArea !== area.id && (
+                  {!isActive && (
                     <div
                       style={{
                         position: 'absolute',
@@ -808,8 +1029,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     </div>
                   )}
                   
-                  {/* Text overlay when hovered */}
-                  {hoveredArea === area.id && (
+                  {/* Text overlay when hovered/tapped */}
+                  {isActive && (
                     <div 
                       className="absolute bg-white rounded-lg shadow-lg font-medium text-gray-800 leading-tight flex items-center justify-center text-center"
                       style={{
@@ -836,11 +1057,14 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     </div>
                   )}
                 </div>
-              ))}
+              );
+              })}
             </div>
+            )}
 
-            {/* Right Image */}
-            <div ref={rightImageRef} className="relative" style={{ width: '45%', maxWidth: '800px', display: 'inline-block' }}>
+            {/* Right Image - show when showRightHover */}
+            {showRightHover && (
+            <div ref={rightImageRef} className="relative" style={{ width: isMobile ? '100%' : '45%', maxWidth: isMobile ? '400px' : '800px', display: 'inline-block', margin: isMobile ? '0 auto' : 0 }}>
               <img 
                 src="/assets/components/Sponge/image2.png"
                 alt="Floodplain ecosystem benefits"
@@ -931,8 +1155,10 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 </motion.div>
               )}
               
-              {/* Hover Areas for Right Image */}
-              {rightImageHoverAreasTranslated.map((area) => (
+              {/* Hover Areas for Right Image - hover on desktop, tap on mobile */}
+              {rightImageHoverAreasTranslated.map((area) => {
+                const isActive = hoveredArea === area.id || (isMobile && tappedArea === area.id);
+                return (
                 <div
                   key={area.id}
                   className="absolute cursor-pointer transition-all duration-300"
@@ -941,15 +1167,16 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     top: `${area.y}%`,
                     width: `${area.width}%`,
                     height: `${area.height}%`,
-                    backgroundColor: hoveredArea === area.id ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
+                    backgroundColor: isActive ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
                     borderRadius: '8px',
                     border: 'none'
                   }}
-                  onMouseEnter={() => handleAreaHover(area.id)}
-                  onMouseLeave={handleAreaLeave}
+                  onMouseEnter={!isMobile ? () => handleAreaHover(area.id) : undefined}
+                  onMouseLeave={!isMobile ? handleAreaLeave : undefined}
+                  onClick={isMobile ? () => setTappedArea(prev => prev === area.id ? null : area.id) : undefined}
                 >
                   {/* Hover indicator - small circle with ! */}
-                  {hoveredArea !== area.id && (
+                  {!isActive && (
                     <div
                       style={{
                         position: 'absolute',
@@ -974,8 +1201,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     </div>
                   )}
                   
-                  {/* Text overlay when hovered */}
-                  {hoveredArea === area.id && (
+                  {/* Text overlay when hovered/tapped */}
+                  {isActive && (
                     <div 
                       className="absolute bg-white rounded-lg shadow-lg font-medium text-gray-800 leading-tight flex items-center justify-center text-center"
                       style={{
@@ -1002,14 +1229,21 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     </div>
                   )}
                 </div>
-              ))}
+              );
+              })}
             </div>
+            )}
           </div>
+          )}
 
-
-          {/* Did you know Buttons - Centered under both images */}
-          <div className="flex justify-center items-start gap-8 mt-8">
-            {/* Left Button */}
+          {/* Did you know Buttons - Desktop only (on mobile, Did you know is a separate page) */}
+          {!isMobile && (
+          <div 
+            className="flex justify-center items-start mt-8"
+            style={{ gap: 32, flexDirection: 'row', alignItems: 'center' }}
+          >
+            {/* Left Button - show when left panel is visible */}
+            {showLeftHover && (
             <div style={{ width: '45%', maxWidth: '800px', display: 'flex', justifyContent: 'center' }}>
               <motion.button
                 initial={{ opacity: 0 }}
@@ -1040,8 +1274,10 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 </span>
               </motion.button>
             </div>
+            )}
             
-            {/* Right Button */}
+            {/* Right Button - show when right panel is visible */}
+            {showRightHover && (
             <div style={{ width: '45%', maxWidth: '800px', display: 'flex', justifyContent: 'center' }}>
               <motion.button
                 initial={{ opacity: 0 }}
@@ -1072,25 +1308,27 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 </span>
               </motion.button>
             </div>
+            )}
           </div>
+          )}
             </>
-          ) : currentPage === 2 ? (
+          ) : (showLeftDrop || showRightDrop) ? (
             <>
               {/* Page 2 Content - Drag and Drop */}
               {/* Activity 1 Title with Pencil Icon */}
               <div className="text-center mb-8">
-                <div className="flex items-center justify-center" style={{ gap: '10px' }}>
+                <div className="flex items-center justify-center" style={{ gap: isMobile ? '8px' : '10px' }}>
                   <img 
                     src="/assets/icons/pencil.png" 
                     alt="Pencil" 
                     style={{ 
-                      width: '84px', 
-                      height: '84px',
+                      width: isMobile ? '60px' : '84px',
+                      height: isMobile ? '60px' : '84px',
                       backgroundColor: 'transparent'
                     }} 
                   />
                   <h2 style={{
-                    fontSize: '48px',
+                    fontSize: isMobile ? '28px' : '48px',
                     fontFamily: 'Comfortaa, sans-serif',
                     fontWeight: 'bold',
                     color: '#406A46',
@@ -1101,25 +1339,47 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                 </div>
               </div>
               
-              {/* Instruction Text */}
+              {/* Instruction / Description - mobile: current step description; desktop: full instruction */}
               <div className="text-center mb-2">
                 <p style={{
-                  fontSize: '24px',
+                  fontSize: isMobile ? '18px' : '24px',
                   fontFamily: 'Comfortaa, sans-serif',
                   fontWeight: 'bold',
                   color: '#406A46',
                   lineHeight: '1.6',
                   width: '100%',
-                  margin: '0 auto'
+                  margin: '0 auto',
+                  padding: isMobile ? '0 16px' : 0
                 }}>
-                  {t('floodControlPage.page2.instruction')}
+                  {isMobile && (showLeftDrop || showRightDrop) ? (
+                    (showLeftDrop ? leftDescriptionsTranslated : rightDescriptionsTranslated)[mobileActivityStep - 1]
+                  ) : t('floodControlPage.page2.instruction')}
                 </p>
               </div>
 
-              {/* Images with Drop Zones */}
-              <div className="flex justify-center items-start gap-8 mb-2">
-                {/* Left Image */}
-                <div className="relative" style={{ width: '45%', maxWidth: '800px', display: 'inline-block' }}>
+              {/* Mobile: "Try again" when placement was wrong */}
+              {isMobile && (showLeftDrop || showRightDrop) && mobilePlacementWrong && (
+                <p style={{
+                  fontSize: '16px',
+                  fontFamily: 'Comfortaa, sans-serif',
+                  fontWeight: 'bold',
+                  color: '#C41904',
+                  textAlign: 'center',
+                  margin: '0 0 8px 0',
+                  padding: '0 16px'
+                }}>
+                  {t('common.tryAgain')}
+                </p>
+              )}
+
+              {/* Images with Drop Zones - one or both panels */}
+              <div 
+                className="flex justify-center items-start mb-2"
+                style={{ gap: isMobile ? 0 : 32, flexDirection: isMobile ? 'column' : 'row', alignItems: 'center' }}
+              >
+                {/* Left Image - show when showLeftDrop */}
+                {showLeftDrop && (
+                <div className="relative" style={{ width: isMobile ? '100%' : '45%', maxWidth: isMobile ? '400px' : '800px', display: 'inline-block', margin: isMobile ? '0 auto' : 0 }}>
                   <img 
                     src="/assets/components/Sponge/image1.png"
                     alt="Natural floodplain"
@@ -1130,9 +1390,11 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   {/* Drop Zones for Left Image */}
                   {leftImageDropZones.map(zone => {
                     const placement = placements[zone.id];
-                    const isCorrect = showPage2Feedback && placement === zone.correctNumber;
-                    const isIncorrect = showPage2Feedback && placement && placement !== zone.correctNumber;
-                    const isEmpty = showPage2Feedback && !placement;
+                    const showFeedback = showPage2Feedback || (isMobile && (showLeftDrop || showRightDrop));
+                    const isCorrect = showFeedback && placement === zone.correctNumber;
+                    const isIncorrect = showFeedback && placement && placement !== zone.correctNumber;
+                    const isEmpty = showFeedback && !placement;
+                    const mobileStepActive = isMobile && mobileActivityStep <= 3 && !page2Submitted;
                     
                     return (
                       <div
@@ -1141,18 +1403,20 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           position: 'absolute',
                           left: `${zone.x}%`,
                           top: `${zone.y}%`,
-                          transform: 'translate(-50%, -50%)'
+                          transform: 'translate(-50%, -50%)',
+                          cursor: (isMobile && mobileStepActive) || (!isMobile && (draggedNumber || currentNumberToPlace) && !page2Submitted) ? 'pointer' : undefined
                         }}
+                        onClick={isMobile ? () => handleMobileDrop(zone.id) : undefined}
                       >
                         <div
-                          onDragOver={handleDragOver}
-                          onDrop={() => handleDrop(zone.id)}
+                          onDragOver={!isMobile ? handleDragOver : undefined}
+                          onDrop={!isMobile ? () => handleDrop(zone.id) : undefined}
                           className="rounded-full transition-all duration-300"
                           style={{
                             width: '50px',
                             height: '50px',
                             backgroundColor: placement ? '#51727C' : 'transparent',
-                            border: showPage2Feedback 
+                            border: showFeedback 
                               ? (isCorrect ? '4px solid #548235' : isIncorrect ? '4px solid #C41904' : '4px solid #CE7C0A')
                               : '4px solid white',
                             boxShadow: placement ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(255, 255, 255, 0.5)',
@@ -1162,15 +1426,15 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            cursor: draggedNumber && !page2Submitted ? 'copy' : 'default',
+                            cursor: (mobileStepActive || draggedNumber || currentNumberToPlace) && !page2Submitted ? 'pointer' : 'default',
                             opacity: 1
                           }}
                         >
                           {placement || '?'}
                         </div>
                         
-                        {/* Show correct answer when incorrect or empty */}
-                        {((isIncorrect || isEmpty) && page2Submitted) && (
+                        {/* Show correct answer when incorrect or empty (desktop only; mobile has retry message) */}
+                        {!isMobile && ((isIncorrect || isEmpty) && page2Submitted) && (
                           <div
                             style={{
                               position: 'absolute',
@@ -1197,7 +1461,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     );
                   })}
                   
-                  {/* Extra Corner Drop Zones for Left Image - Always accessible, aligned right bottom horizontally */}
+                  {/* Number selectors - desktop only; mobile uses step-by-step (fixed number per step) */}
+                  {!isMobile && (
                   <div
                     style={{
                       position: 'absolute',
@@ -1209,31 +1474,31 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     }}
                   >
                     {[1, 2, 3].map((num) => {
+                      const isSelected = isMobile ? currentNumberToPlace === num : draggedNumber === num;
                       return (
-                        <div
-                          key={`left-corner-${num}`}
-                        >
+                        <div key={`left-corner-${num}`}>
                           <div
-                            draggable={!page2Submitted}
-                            onDragStart={() => handleDragStart(num)}
-                            onDragEnd={handleDragEnd}
-                            onDragOver={handleDragOver}
-                            onDrop={() => handleCornerDrop(num, 'left')}
+                            draggable={!isMobile && !page2Submitted}
+                            onDragStart={!isMobile ? () => handleDragStart(num) : undefined}
+                            onDragEnd={!isMobile ? handleDragEnd : undefined}
+                            onDragOver={!isMobile ? handleDragOver : undefined}
+                            onDrop={!isMobile ? () => handleCornerDrop(num, 'left') : undefined}
+                            onClick={isMobile ? () => setCurrentNumberToPlace(prev => prev === num ? null : num) : undefined}
                             className="font-bold transition-all duration-300 hover:opacity-80"
                             style={{
-                              width: '40px',
-                              height: '40px',
+                              width: isMobile ? '44px' : '40px',
+                              height: isMobile ? '44px' : '40px',
                               backgroundColor: '#51727C',
                               color: 'white',
                               borderRadius: '50%',
                               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-                              fontSize: '20px',
+                              fontSize: isMobile ? '22px' : '20px',
                               fontWeight: 'bold',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              cursor: page2Submitted ? 'not-allowed' : 'move',
-                              opacity: draggedNumber === num ? 0.5 : 1,
+                              cursor: page2Submitted ? 'not-allowed' : (isMobile ? 'pointer' : 'move'),
+                              opacity: isSelected ? 0.5 : 1,
                               zIndex: 10
                             }}
                           >
@@ -1243,10 +1508,13 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       );
                     })}
                   </div>
+                  )}
                 </div>
+                )}
 
-                {/* Right Image */}
-                <div className="relative" style={{ width: '45%', maxWidth: '800px', display: 'inline-block' }}>
+                {/* Right Image - show when showRightDrop */}
+                {showRightDrop && (
+                <div className="relative" style={{ width: isMobile ? '100%' : '45%', maxWidth: isMobile ? '400px' : '800px', display: 'inline-block', margin: isMobile ? '0 auto' : 0 }}>
                   <img 
                     src="/assets/components/Sponge/image2.png"
                     alt="Degraded floodplain"
@@ -1257,9 +1525,11 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   {/* Drop Zones for Right Image */}
                   {rightImageDropZones.map(zone => {
                     const placement = placements[zone.id];
-                    const isCorrect = showPage2Feedback && placement === zone.correctNumber;
-                    const isIncorrect = showPage2Feedback && placement && placement !== zone.correctNumber;
-                    const isEmpty = showPage2Feedback && !placement;
+                    const showFeedback = showPage2Feedback || (isMobile && (showLeftDrop || showRightDrop));
+                    const isCorrect = showFeedback && placement === zone.correctNumber;
+                    const isIncorrect = showFeedback && placement && placement !== zone.correctNumber;
+                    const isEmpty = showFeedback && !placement;
+                    const mobileStepActive = isMobile && mobileActivityStep <= 3 && !page2Submitted;
                     
                     return (
                       <div
@@ -1268,18 +1538,20 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           position: 'absolute',
                           left: `${zone.x}%`,
                           top: `${zone.y}%`,
-                          transform: 'translate(-50%, -50%)'
+                          transform: 'translate(-50%, -50%)',
+                          cursor: (isMobile && mobileStepActive) || (!isMobile && (draggedNumber || currentNumberToPlace) && !page2Submitted) ? 'pointer' : undefined
                         }}
+                        onClick={isMobile ? () => handleMobileDrop(zone.id) : undefined}
                       >
                         <div
-                          onDragOver={handleDragOver}
-                          onDrop={() => handleDrop(zone.id)}
+                          onDragOver={!isMobile ? handleDragOver : undefined}
+                          onDrop={!isMobile ? () => handleDrop(zone.id) : undefined}
                           className="rounded-full transition-all duration-300"
                           style={{
                             width: '50px',
                             height: '50px',
                             backgroundColor: placement ? '#51727C' : 'transparent',
-                            border: showPage2Feedback 
+                            border: showFeedback 
                               ? (isCorrect ? '4px solid #548235' : isIncorrect ? '4px solid #C41904' : '4px solid #CE7C0A')
                               : '4px solid white',
                             boxShadow: placement ? '0 4px 12px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(255, 255, 255, 0.5)',
@@ -1289,15 +1561,15 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            cursor: draggedNumber && !page2Submitted ? 'copy' : 'default',
+                            cursor: (mobileStepActive || draggedNumber || currentNumberToPlace) && !page2Submitted ? 'pointer' : 'default',
                             opacity: 1
                           }}
                         >
                           {placement || '?'}
                         </div>
                         
-                        {/* Show correct answer when incorrect or empty */}
-                        {((isIncorrect || isEmpty) && page2Submitted) && (
+                        {/* Show correct answer when incorrect or empty (desktop only) */}
+                        {!isMobile && ((isIncorrect || isEmpty) && page2Submitted) && (
                           <div
                             style={{
                               position: 'absolute',
@@ -1324,7 +1596,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     );
                   })}
                   
-                  {/* Extra Corner Drop Zones for Right Image - Always accessible, aligned right bottom horizontally */}
+                  {/* Number selectors - desktop only; mobile uses step-by-step */}
+                  {!isMobile && (
                   <div
                     style={{
                       position: 'absolute',
@@ -1336,31 +1609,31 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     }}
                   >
                     {[1, 2, 3].map((num) => {
+                      const isSelected = draggedNumber === num;
                       return (
-                        <div
-                          key={`right-corner-${num}`}
-                        >
+                        <div key={`right-corner-${num}`}>
                           <div
-                            draggable={!page2Submitted}
-                            onDragStart={() => handleDragStart(num)}
-                            onDragEnd={handleDragEnd}
-                            onDragOver={handleDragOver}
-                            onDrop={() => handleCornerDrop(num, 'right')}
+                            draggable={!isMobile && !page2Submitted}
+                            onDragStart={!isMobile ? () => handleDragStart(num) : undefined}
+                            onDragEnd={!isMobile ? handleDragEnd : undefined}
+                            onDragOver={!isMobile ? handleDragOver : undefined}
+                            onDrop={!isMobile ? () => handleCornerDrop(num, 'right') : undefined}
+                            onClick={isMobile ? () => setCurrentNumberToPlace(prev => prev === num ? null : num) : undefined}
                             className="font-bold transition-all duration-300 hover:opacity-80"
                             style={{
-                              width: '40px',
-                              height: '40px',
+                              width: isMobile ? '44px' : '40px',
+                              height: isMobile ? '44px' : '40px',
                               backgroundColor: '#51727C',
                               color: 'white',
                               borderRadius: '50%',
                               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-                              fontSize: '20px',
+                              fontSize: isMobile ? '22px' : '20px',
                               fontWeight: 'bold',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              cursor: page2Submitted ? 'not-allowed' : 'move',
-                              opacity: draggedNumber === num ? 0.5 : 1,
+                              cursor: page2Submitted ? 'not-allowed' : (isMobile ? 'pointer' : 'move'),
+                              opacity: isSelected ? 0.5 : 1,
                               zIndex: 10
                             }}
                           >
@@ -1370,10 +1643,13 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                       );
                     })}
                   </div>
+                  )}
                 </div>
+                )}
               </div>
 
-              {/* Descriptions with Draggable Numbers */}
+              {/* Descriptions with Draggable Numbers - only on desktop (mobile uses in-image numbers) */}
+              {!isMobile && (
               <div className="flex justify-center gap-8 mt-4">
                 {/* Left Descriptions */}
                 <div style={{ width: '45%', maxWidth: '800px', paddingLeft: '10px' }}>
@@ -1447,10 +1723,10 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   ))}
                 </div>
               </div>
+              )}
 
-
-              {/* Feedback Summary */}
-              {showPage2Feedback && (() => {
+              {/* Feedback Summary - desktop only; mobile has per-zone immediate feedback */}
+              {!isMobile && showPage2Feedback && (() => {
                 const allZones = [...leftImageDropZones, ...rightImageDropZones];
                 const correctCount = Object.keys(placements).filter(zoneId => {
                   const zone = allZones.find(z => z.id === zoneId);
@@ -1510,27 +1786,51 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   </motion.div>
                 );
               })()}
+
+              {/* Mobile: In-content Next - step-by-step flow: show when all 3 numbers placed correctly */}
+              {isMobile && (showLeftDrop || showRightDrop) && mobileActivityStep > 3 && (
+                <div className="flex justify-center" style={{ marginTop: '24px', paddingBottom: '24px' }}>
+                  <button
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                    style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      color: 'white',
+                      backgroundColor: '#51727C',
+                      padding: '12px 32px',
+                      borderRadius: '8px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      width: '100%',
+                      maxWidth: '280px'
+                    }}
+                  >
+                    {t('common.next')}
+                  </button>
+                </div>
+              )}
             </>
-          ) : currentPage === 3 ? (
+          ) : showFillBlank ? (
             <>
-              {/* Page 3 Content - Fill in the Blank */}
+              {/* Page 3/5 Content - Fill in the Blank */}
               {/* Title above white box */}
               <div className="text-center mb-12">
-                <div className="flex items-center justify-center" style={{ gap: '10px' }}>
+                <div className="flex items-center justify-center" style={{ gap: isMobile ? '8px' : '10px' }}>
                   <img 
                     src="/assets/icons/pencil.png" 
                     alt="Pencil" 
                     style={{ 
-                      width: '84px', 
-                      height: '84px',
+                      width: isMobile ? '50px' : '84px',
+                      height: isMobile ? '50px' : '84px',
                       backgroundColor: 'transparent'
                     }} 
                   />
                   <h2 style={{
-                    fontSize: '48px',
+                    fontSize: isMobile ? '22px' : '48px',
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
-                    color: '#406A46',
+                    fontWeight: isMobile ? '600' : 'bold',
+                    color: isMobile ? '#5a7a5a' : '#406A46',
                     margin: 0
                   }}>
                     {t('floodControlPage.page3.title')}
@@ -1541,16 +1841,18 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
               <div className="flex justify-center mb-8">
                 <div style={{
                   backgroundColor: '#F5F5F5',
-                  borderRadius: '24px',
-                  padding: '40px 60px',
+                  borderRadius: isMobile ? '16px' : '24px',
+                  padding: isMobile ? '24px 16px' : '40px 60px',
                   maxWidth: '1000px',
+                  width: isMobile ? '100%' : undefined,
+                  margin: isMobile ? '0 16px' : 0,
                   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
                 }}>
                   <p style={{
-                    fontSize: '24px',
+                    fontSize: isMobile ? '14px' : '24px',
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
-                    color: '#406A46',
+                    fontWeight: isMobile ? '600' : 'bold',
+                    color: isMobile ? '#5a7a5a' : '#406A46',
                     lineHeight: '1.6',
                     margin: '0 0 20px',
                     textAlign: 'center'
@@ -1558,10 +1860,10 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     {t('floodControlPage.page3.intro1')}
                   </p>
                   <p style={{
-                    fontSize: '24px',
+                    fontSize: isMobile ? '14px' : '24px',
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
-                    color: '#406A46',
+                    fontWeight: isMobile ? '600' : 'bold',
+                    color: isMobile ? '#5a7a5a' : '#406A46',
                     lineHeight: '1.8',
                     margin: '0 0 30px',
                     textAlign: 'center'
@@ -1570,10 +1872,10 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                     {t('floodControlPage.page3.intro3')}
                   </p>
                   <p style={{
-                    fontSize: '24px',
+                    fontSize: isMobile ? '14px' : '24px',
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
-                    color: '#406A46',
+                    fontWeight: isMobile ? '600' : 'bold',
+                    color: isMobile ? '#5a7a5a' : '#406A46',
                     textAlign: 'center',
                     margin: '0 0 30px'
                   }}>
@@ -1582,12 +1884,12 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
 
                   {/* Fill in the blank inputs */}
                   <div style={{
-                    fontSize: '24px',
+                    fontSize: isMobile ? '15px' : '24px',
                     fontFamily: 'Comfortaa, sans-serif',
-                    fontWeight: 'bold',
+                    fontWeight: isMobile ? '600' : 'bold',
                     lineHeight: '2',
                     textAlign: 'center',
-                    color: '#406A46'
+                    color: isMobile ? '#5a7a5a' : '#406A46'
                   }}>
                     <p style={{ margin: 0 }}>
                       {t('floodControlPage.page3.sentence1')}{' '}
@@ -1598,8 +1900,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         disabled={page3Submitted}
                         style={{
                           width: getInputWidth(),
-                          padding: '8px 16px',
-                          fontSize: '20px',
+                          padding: isMobile ? '6px 12px' : '8px 16px',
+                          fontSize: isMobile ? '16px' : '20px',
                           textAlign: 'center',
                           border: showPage3Feedback 
                             ? (isAnswer1Correct() ? '3px solid #548235' : '3px solid #C41904')
@@ -1622,8 +1924,8 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                         disabled={page3Submitted}
                         style={{
                           width: getInputWidth(),
-                          padding: '8px 16px',
-                          fontSize: '20px',
+                          padding: isMobile ? '6px 12px' : '8px 16px',
+                          fontSize: isMobile ? '16px' : '20px',
                           textAlign: 'center',
                           border: showPage3Feedback 
                             ? (isAnswer2Correct() ? '3px solid #548235' : '3px solid #C41904')
@@ -1655,22 +1957,22 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           <div className="flex items-center justify-center rounded-full" 
                             style={{ 
                               backgroundColor: isAnswer1Correct() ? '#548235' : '#C41904',
-                              width: '32px',
-                              height: '32px'
+                              width: isMobile ? '26px' : '32px',
+                              height: isMobile ? '26px' : '32px'
                             }}
                           >
                             {isAnswer1Correct() ? (
-                              <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+                              <svg width={isMobile ? '14' : '20'} height={isMobile ? '14' : '20'} viewBox="0 0 16 16" fill="none">
                                 <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                               </svg>
                             ) : (
-                              <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+                              <svg width={isMobile ? '14' : '20'} height={isMobile ? '14' : '20'} viewBox="0 0 16 16" fill="none">
                                 <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                               </svg>
                             )}
                           </div>
                           <span style={{ 
-                            fontSize: '20px', 
+                            fontSize: isMobile ? '14px' : '20px', 
                             fontWeight: '600', 
                             color: isAnswer1Correct() ? '#548235' : '#C41904' 
                           }}>
@@ -1683,22 +1985,22 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                           <div className="flex items-center justify-center rounded-full" 
                             style={{ 
                               backgroundColor: isAnswer2Correct() ? '#548235' : '#C41904',
-                              width: '32px',
-                              height: '32px'
+                              width: isMobile ? '26px' : '32px',
+                              height: isMobile ? '26px' : '32px'
                             }}
                           >
                             {isAnswer2Correct() ? (
-                              <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+                              <svg width={isMobile ? '14' : '20'} height={isMobile ? '14' : '20'} viewBox="0 0 16 16" fill="none">
                                 <path d="M3 8L6 11L13 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                               </svg>
                             ) : (
-                              <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+                              <svg width={isMobile ? '14' : '20'} height={isMobile ? '14' : '20'} viewBox="0 0 16 16" fill="none">
                                 <path d="M4 4L12 12M12 4L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
                               </svg>
                             )}
                           </div>
                           <span style={{ 
-                            fontSize: '20px', 
+                            fontSize: isMobile ? '14px' : '20px', 
                             fontWeight: '600', 
                             color: isAnswer2Correct() ? '#548235' : '#C41904' 
                           }}>
@@ -1710,13 +2012,45 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   )}
                 </div>
               </div>
+
+              {/* Mobile: In-content Next / Check Answers for fill - no footer on mobile. Last page: back to home */}
+              {isMobile && (page3Submitted || (answer1.trim() && answer2.trim())) && (
+                <div className="flex justify-center" style={{ marginTop: '16px', marginBottom: '24px' }}>
+                  <button
+                    onClick={() => {
+                      if (!page3Submitted && answer1.trim() && answer2.trim()) {
+                        handleSubmitPage3();
+                      } else if (currentPage === TOTAL_PAGES) {
+                        onHomeClick();
+                      } else {
+                        setCurrentPage(currentPage + 1);
+                      }
+                    }}
+                    style={{
+                      fontFamily: 'Comfortaa, sans-serif',
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      color: 'white',
+                      backgroundColor: '#51727C',
+                      padding: '12px 32px',
+                      borderRadius: '8px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      width: '100%',
+                      maxWidth: '280px'
+                    }}
+                  >
+                    {!page3Submitted ? t('floodControlPage.page3.checkAnswers') : currentPage === TOTAL_PAGES ? t('common.backToHome') : t('common.next')}
+                  </button>
+                </div>
+              )}
             </>
           ) : null}
         </motion.div>
       </div>
 
-      {/* Pagination and Next Button - Sticky Footer - Outside container for full width */}
-      {currentPage > 0 && (
+      {/* Pagination and Next Button - Sticky Footer - Desktop only (hidden on mobile; mobile uses in-content buttons only) */}
+      {currentPage > 0 && !isMobile && (
       <div className="relative z-10" style={{ 
         position: 'sticky', 
         bottom: 0,
@@ -1740,7 +2074,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
           background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%)',
           pointerEvents: 'none'
         }} />
-        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: '100px', paddingRight: '100px' }}>
+        <div className="relative flex justify-between items-center" style={{ maxWidth: '100%', width: '100%', paddingLeft: isMobile ? '16px' : '100px', paddingRight: isMobile ? '16px' : '100px' }}>
           {/* Home Button - Left */}
           <div className="flex items-center" style={{ paddingLeft: '16px' }}>
             <HomeButton onClick={onHomeClick} />
@@ -1926,7 +2260,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
           {!(currentPage === TOTAL_PAGES && page3Submitted) && (
             <div className="flex items-center" style={{ paddingRight: '16px', gap: '16px' }}>
               {/* Retry Button - Show when page 2 is submitted */}
-              {currentPage === 2 && page2Submitted && (
+              {(showLeftDrop || showRightDrop) && page2Submitted && (
                 <button
                   onClick={handleRetry}
                   className="retry-button relative flex items-center justify-center z-50"
@@ -1950,7 +2284,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   />
                 </button>
               )}
-              {currentPage === 2 ? (
+              {(showLeftDrop || showRightDrop) ? (
               // Page 2: Show Check Answers button (becomes NEXT after submit)
               <button
                 onClick={() => {
@@ -1981,7 +2315,7 @@ export const FloodControlPage: React.FC<FloodControlPageProps> = ({
                   }}
                 />
               </button>
-            ) : currentPage === 3 ? (
+            ) : showFillBlank ? (
               // Page 3: Show Check Answers button
               <button
                 onClick={() => {

@@ -264,10 +264,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
     );
   }, [overlayBox]);
 
-  // Mobile menu items (Map your Wetland and Art on homepage)
-  const mobileMenuItems = MENU_ITEMS.filter(item => 
-    ['map', 'art'].includes(item.key)
-  );
+  // Mobile menu items - order: map, explore, sponge, art (floodplain as source of inspiration), fresk, wetland4life, game (blue-green)
+  const mobileMenuOrder = ['map', 'explore', 'sponge', 'art', 'fresk', 'wetland4life', 'game'] as const;
+  const mobileMenuItems = mobileMenuOrder
+    .map(key => MENU_ITEMS.find(item => item.key === key))
+    .filter((item): item is NonNullable<typeof item> => item != null);
 
   return (
     <div className="relative w-full homepage-container" style={{ 
@@ -391,7 +392,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
           <div style={{
             width: '100%',
             marginTop: '-40px',
-            marginBottom: '24px',
+            marginBottom: '16px',
             position: 'relative'
           }}>
             <img 
@@ -431,12 +432,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '24px'
+            gap: '16px'
           }}>
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '24px',
+              gap: '16px',
               width: '100%',
               maxWidth: '400px'
             }}>
@@ -452,7 +453,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onComponentClick: _onCompone
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '12px',
+                    gap: '10px',
                     transition: 'transform 0.2s ease-in-out'
                   }}
                   onMouseEnter={(e) => {

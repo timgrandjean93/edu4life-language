@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface OrientationWarningProps {
   isVisible: boolean;
 }
 
 export const OrientationWarning: React.FC<OrientationWarningProps> = ({ isVisible }) => {
+  const { t } = useTranslation();
   if (!isVisible) return null;
 
   return (
@@ -38,7 +40,7 @@ export const OrientationWarning: React.FC<OrientationWarningProps> = ({ isVisibl
         maxWidth: '90vw',
         minWidth: '320px'
       }}>
-        Rotate Your Screen
+        {t('orientationWarning.title')}
       </h2>
       
       <p className="text-xl mb-8 leading-relaxed mx-auto text-center px-4" style={{ 
@@ -46,7 +48,7 @@ export const OrientationWarning: React.FC<OrientationWarningProps> = ({ isVisibl
         minWidth: '320px',
         width: '100%'
       }}>
-        For the best experience, please rotate your phone to landscape mode.
+        {t('orientationWarning.description')}
       </p>
       
       {/* Decorative elements */}

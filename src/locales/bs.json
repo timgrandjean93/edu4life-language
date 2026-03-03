@@ -1,12 +1,16 @@
 {
   "common": {
+    "yes": "Da",
+    "no": "Ne",
     "accept": "Prihvati",
     "reject": "Odbij",
     "home": "Početna",
+    "next": "Sljedeće",
     "loading": "Učitavanje...",
     "close": "Zatvori",
     "tryAgain": "POKUŠAJ PONOVO",
-    "learnAndTestButton": "NAUČI I TESTIRAJ SVOJE ZNANJE"
+    "learnAndTestButton": "NAUČI I TESTIRAJ SVOJE ZNANJE",
+    "backToHome": "Nazad na početnu"
   },
   "header": {
     "learningActivities": "Aktivnosti učenja",
@@ -34,6 +38,10 @@
   "cookieConsent": {
     "message": "Ova web-stranica koristi kolačiće u analitičke svrhe putem Google Analyticsa. Ove kolačiće možete prihvatiti ili odbiti.",
     "readMore": "Pročitajte više u našoj politici kolačića"
+  },
+  "orientationWarning": {
+    "title": "Okrenite uređaj",
+    "description": "Za najbolje iskustvo, okrenite telefon u uspravni položaj."
   },
   "homePage": {
     "title": "ŽIVE POPLAVNE RAVNICE:",
@@ -311,6 +319,7 @@
     },
     "page1": {
       "introText": "Rijeke i njihova okolna područja ljudi koriste od davnina za razne aktivnosti, poput poljoprivrede, gradnje naselja, ribolova, putovanja i izvorišta vode. Ova upotreba zemljišta pokazuje kako ljudi utiču na riječne pejzaže i oblikuju prostore oko rijeka.",
+      "lookCarefully": "Pažljivo pogledajte obje ilustracije.",
       "instruction": "Pažljivo pogledajte obje ilustracije i odaberite koje",
       "landUseActivities": "oblike korištenja zemljišta",
       "instructionEnd": "možete uočiti.",
@@ -333,7 +342,8 @@
         "POOL": "Dublji dio vodotoka sa sporijim kretanjem vode, gdje se voda zadržava. Virovi su mirni i tihi, te predstavljaju sklonište za ribe.",
         "RIFFLE": "Plitak dio vodotoka sa brzim tokom, malim valovima i vidljivim kamenjem. Brzaci izgledaju hrapavo i pjenušavo, bogati su kisikom i predstavljaju idealna staništa za vodene insekte i ribe.",
         "RUN": "Umjereno dubok dio toka sa ravnomjernim protokom vode, smješten između brzaka i dubokaka."
-      }
+      },
+      "checkAnswers": "Provjeri odgovore"
     },
     "quizOptions": {
       "human-settlements": "Ljudska naselja",
@@ -445,7 +455,8 @@
         "incorrectSponge": "Netačno (odgovor: sunder)",
         "correctFlooding": "Tačno: flooding",
         "incorrectFlooding": "Netačno (odgovor: poplave)"
-      }
+      },
+      "checkAnswers": "Provjeri odgovore"
     }
   },
   "peopleAquaticPage": {

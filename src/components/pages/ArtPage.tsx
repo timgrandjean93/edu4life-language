@@ -1241,7 +1241,7 @@ export const ArtPage: React.FC<ArtPageProps> = ({ onHomeClick, onPeopleAquaticCl
               {/* Puzzle Area */}
               <div className="flex justify-center items-center" style={{
                 flexDirection: isMobile ? 'column' : ((currentPage === 1 || currentPage === 2 || currentPage === 3) ? 'row' : 'column'),
-                gap: isMobile ? '20px' : (currentPage === 3 ? '20px' : currentPage === 2 ? '120px' : '8px')
+                gap: isMobile ? '14px' : (currentPage === 3 ? '20px' : currentPage === 2 ? '120px' : '8px')
               }}>
                 {/* Left Elements - Only on page 3, 25% width */}
                 {currentPage === 3 && !isMobile && (

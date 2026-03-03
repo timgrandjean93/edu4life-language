@@ -779,7 +779,7 @@ export const MapWetlandPage: React.FC<MapWetlandPageProps> = ({
                 </div>
               </div>
 
-              <div className={isMobile ? "flex flex-col" : "flex justify-center items-center"} style={{gap: isMobile ? '24px' : '8px', marginTop: isMobile ? '20px' : '-50px', marginBottom: isMobile ? '24px' : '8px' }}>
+              <div className={isMobile ? "flex flex-col" : "flex justify-center items-center"} style={{gap: isMobile ? '16px' : '8px', marginTop: isMobile ? '16px' : '-50px', marginBottom: isMobile ? '16px' : '8px' }}>
                 {/* Map Image */}
                 <motion.div
                   initial={{ opacity: 0, x: isMobile ? 0 : -20 }}

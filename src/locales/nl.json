@@ -1,12 +1,16 @@
 {
   "common": {
+    "yes": "Ja",
+    "no": "Nee",
     "accept": "Accepteren",
     "reject": "Weigeren",
     "home": "Home",
+    "next": "Volgende",
     "loading": "Laden...",
     "close": "Sluiten",
     "tryAgain": "Probeer opnieuw",
-    "learnAndTestButton": "Leer en test je kennis"
+    "learnAndTestButton": "Leer en test je kennis",
+    "backToHome": "Terug naar home"
   },
   "header": {
     "learningActivities": "Activiteiten",
@@ -41,6 +45,10 @@
   "cookieConsent": {
     "message": "Deze website maakt gebruik van cookies voor analytische doeleinden via Google Analytics. U kunt deze cookies accepteren of weigeren.",
     "readMore": "Lees meer in ons cookiebeleid"
+  },
+  "orientationWarning": {
+    "title": "Draai je scherm",
+    "description": "Voor de beste ervaring, draai je telefoon naar staande stand."
   },
   "homePage": {
     "title": "LEVENDE UITERWAARDEN:",
@@ -337,7 +345,8 @@
     },
     "page1": {
       "introText": "Mensen gebruiken rivieren en hun omgeving al heel lang. Ze verbouwen er voedsel, bouwen huizen, vissen, reizen over het water en halen er water vandaan. Zo laten rivieren zien hoe mensen samenleven met het landschap langs het water.",
-      "instruction": "Kijk goed naar de twee plaatjes en kies welke",
+      "lookCarefully": "Kijk goed naar de twee plaatjes.",
+    "instruction": "Kijk goed naar de twee plaatjes en kies welke",
       "landUseActivities": "activiteiten",
       "instructionEnd": "je kunt herkennen.",
       "quizQuestion": "Klik op de activiteiten die je in de afbeeldingen ziet:",
@@ -346,6 +355,9 @@
       "missed": "Gemist"
     },
     "page2": {
+      "definitionsIntro": "Lees de uitleg van de woorden:",
+      "placeInImage1": "Sleep elk woord naar de juiste plek in afbeelding 1.",
+      "placeInImage2": "Sleep elk woord naar de juiste plek in afbeelding 2.",
       "instruction": "Lees eerst de uitleg van de woorden",
       "and": "en",
       "instructionEnd": "sleep daarna elk woord naar de juiste plek in de afbeeldingen.",
@@ -359,7 +371,8 @@
         "POOL": "Een dieper en rustiger deel van een beek waar het water langzaam stroomt. Poelen zijn fijne schuilplekken voor vissen.",
         "RIFFLE": "Een ondiep deel van een beek waar het water snel stroomt over stenen. Het water borrelt hier en bevat veel zuurstof. Dit is een goede plek voor kleine waterdieren en vissen.",
         "RUN": "Een deel van de beek waar het water rustig maar constant stroomt, tussen een stroomversnelling en een poel in. Hier komt veel zonlicht, waardoor algen kunnen groeien. Dat maakt dit een belangrijke voedselplek voor waterdieren."
-      }
+      },
+      "checkAnswers": "Controleer antwoorden"
     },
     "quizOptions": {
       "human-settlements": "Huizen en dorpen",
@@ -479,7 +492,8 @@
         "incorrectSponge": "Niet goed (antwoord: spons)",
         "correctFlooding": "Goed: overstroming",
         "incorrectFlooding": "Niet goed (antwoord: overstroming)"
-      }
+      },
+      "checkAnswers": "Controleer antwoorden"
     },
     "modal": {
       "title": "Downloaden",

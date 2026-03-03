@@ -1,12 +1,16 @@
 {
   "common": {
+    "yes": "Áno",
+    "no": "Nie",
     "accept": "Prijať",
     "reject": "Odmietnuť",
     "home": "Home",
     "loading": "Loading...",
     "close": "Close",
+    "next": "Ďalšie",
     "tryAgain": "SKÚS ZNOVA",
-    "learnAndTestButton": "NAUČ SA A OTESTUJ SI SVOJE ZNALOSTI"
+    "learnAndTestButton": "NAUČ SA A OTESTUJ SI SVOJE ZNALOSTI",
+    "backToHome": "Späť na domov"
   },
   "header": {
     "learningActivities": "Vzdelávacie aktivity",
@@ -41,6 +45,10 @@
   "cookieConsent": {
     "message": "Táto webová stránka používa súbory cookie na analytické účely prostredníctvom služby Google Analytics. Môžete tieto súbory cookie prijať alebo odmietnuť.",
     "readMore": "Prečítajte si viac v našej politike súborov cookie"
+  },
+  "orientationWarning": {
+    "title": "Otočte zariadenie",
+    "description": "Pre najlepší zážitok otočte telefón do zvislej polohy."
   },
   "homePage": {
     "title": "ŽIVÉ ZÁPLAVOVÉ ÚZEMIA:",
@@ -344,6 +352,7 @@
     },
     "page1": {
       "introText": "Rieky a ich okolie ľudia využívajú už od staroveku na rôzne aktivity, ako je poľnohospodárstvo, stavba domov, rybolov, cestovanie alebo získavanie vody. Toto využívanie krajiny ukazuje, ako ľudia zasahujú do prostredia okolo riek a formujú ho.",
+      "lookCarefully": "Pozorne si prezrite obe ilustrácie.",
       "instruction": "Pozorne si prezrite obe ilustrácie a vyberte, ktoré aktivity využitia ",
       "landUseActivities": "aktivity využitia",
       "instructionEnd": "krajiny dokážete nájsť.",
@@ -366,7 +375,8 @@
         "POOL": "Hlbšia, pomaly tečúca časť potoka, kde sa voda zhromažďuje. Priehlbiny sú tiché a pokojné a poskytujú úkryt rybám.",
         "RIFFLE": "Plytká, rýchlo tečúca časť potoka s malými vlnkami a viditeľnými kameňmi. Plytké prúdy pôsobia drsne a penivo a sú bohaté na kyslík, čo ich robí ideálnym biotopom pre hmyz a ryby.",
         "RUN": "Hladká, mierne hlboká časť potoka, kde voda tečie rovnomerne medzi plytkým prúdom a hlbinou. Výbehy dostávajú veľa slnečného svetla, čo pomáha rastu rias. Hmyz sa živí riasami, čím sú výbehy dobrými miestami na kŕmenie pre ryby z priehlbín a plytčín."
-      }
+      },
+      "checkAnswers": "Skontrolovať odpovede"
     },
     "quizOptions": {
       "human-settlements": "Ľudské sídla / osady",
@@ -486,7 +496,8 @@
         "incorrectSponge": "Nesprávne (správna odpoveď: špongia)",
         "correctFlooding": "Správne: povodňového",
         "incorrectFlooding": "Nesprávne (správna odpoveď: povodňového)"
-      }
+      },
+      "checkAnswers": "Skontrolovať odpovede"
     },
     "modal": {
       "title": "Možnosti stiahnutia",
