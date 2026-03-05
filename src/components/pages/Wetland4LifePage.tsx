@@ -36,8 +36,7 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
   }, []);
 
   const handleVisitWebsite = () => {
-    // App komt medio januari online - button is disabled
-    // window.open('https://wetland.restore4life-platform.eu', '_blank');
+    window.open(t('wetland4LifePage.websiteUrl'), '_blank');
   };
 
   return (
@@ -272,20 +271,18 @@ export const Wetland4LifePage: React.FC<Wetland4LifePageProps> = ({
           <div style={{ textAlign: 'center', marginTop: isMobile ? '30px' : '40px' }}>
             <button
               onClick={handleVisitWebsite}
-              disabled={true}
               style={{
                 backgroundColor: '#97C09D',
                 border: 'none',
                 borderRadius: '8px',
                 padding: isMobile ? '12px 24px' : '16px 32px',
-                cursor: 'not-allowed',
+                cursor: 'pointer',
                 fontFamily: 'Comfortaa, sans-serif',
                 fontSize: isMobile ? '18px' : '20px',
                 fontWeight: 'bold',
                 color: 'white',
                 transition: 'background-color 0.3s',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                opacity: 0.7
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
               }}
             >
               {t('wetland4LifePage.visitButton')}
