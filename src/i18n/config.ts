@@ -10,6 +10,9 @@ import huTranslations from '../locales/hu.json';
 import bsTranslations from '../locales/bs.json';
 import deTranslations from '../locales/de.json';
 import roTranslations from '../locales/ro.json';
+import bgTranslations from '../locales/bg.json';
+import svTranslations from '../locales/sv.json';
+import slTranslations from '../locales/sl.json';
 
 i18n
   .use(LanguageDetector) // Detect user language from browser
@@ -42,6 +45,15 @@ i18n
       },
       ro: {
         translation: roTranslations,
+      },
+      bg: {
+        translation: bgTranslations,
+      },
+      sv: {
+        translation: svTranslations,
+      },
+      sl: {
+        translation: slTranslations,
       },
     },
     fallbackLng: 'en', // Use English if translation is missing

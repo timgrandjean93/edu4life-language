@@ -17,7 +17,7 @@ const COUNTRY_TO_LANGUAGE: Record<string, string> = {
   'AT': 'en', // Austria (will be 'de' when German is added)
   'BY': 'en', // Belarus
   'BA': 'en', // Bosnia and Herzegovina
-  'BG': 'en', // Bulgaria
+  'BG': 'bg', // Bulgaria
   'HR': 'hr', // Croatia
   'CY': 'en', // Cyprus
   'CZ': 'en', // Czech Republic
@@ -46,9 +46,9 @@ const COUNTRY_TO_LANGUAGE: Record<string, string> = {
   'SM': 'en', // San Marino
   'RS': 'en', // Serbia
   'SK': 'sk', // Slovakia
-  'SI': 'en', // Slovenia
+  'SI': 'sl', // Slovenia
   'ES': 'en', // Spain (will be 'es' when Spanish is added)
-  'SE': 'en', // Sweden
+  'SE': 'sv', // Sweden
   'CH': 'en', // Switzerland
   'UA': 'en', // Ukraine
   'VA': 'en', // Vatican City

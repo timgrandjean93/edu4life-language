@@ -1,0 +1,1268 @@
+{
+    "common": {
+      "yes": "Ja",
+      "no": "Nej",
+      "accept": "Acceptera",
+      "reject": "Avvisa",
+      "home": "Hem",
+      "next": "Nästa",
+      "loading": "Laddar...",
+      "close": "Stäng",
+      "tryAgain": "Försök igen",
+      "learnAndTestButton": "Lär dig och testa dina kunskaper",
+      "backToHome": "Tillbaka till start"
+    },
+    "header": {
+      "learningActivities": "Lärandeaktiviteter",
+      "externalTools": "Externa verktyg",
+      "restore4Life": "Restore4Life",
+      "menuItems": {
+        "livingEnvironment": "Boendemiljö",
+        "mapYourWetland": "Kartlägg din våtmark",
+        "exploringHabitats": "Utforskande av livsmiljöer",
+        "floodplainSpongeEffect": "Svämplanens svampeffekt",
+        "climateCarbon": "Klimat och kol",
+        "purification": "Rening",
+        "treatmentWetlands": "Behandlingsvåtmarker",
+        "aesthetics": "Estetik",
+        "sourcesOfInspiration": "Inspirationskällor",
+        "peopleAndAquatic": "Människor och vattenliv"
+      },
+      "externalToolsItems": {
+        "blueGreenSpace4All": "Blue-Green Space4All",
+        "wetlandFresk": "Wetland Fresk",
+        "wetland4Life": "Wetland4Life",
+        "exploreWetEduRepository": "Utforska Wet-Edu-arkivet"
+      }
+    },
+    "footer": {
+      "copyright": "Copyright © {{year}} Restore4Life Consortium. Med ensamrätt.",
+      "privacyPolicy": "Integritetspolicy",
+      "cookiePolicy": "Cookiepolicy",
+      "termsOfUse": "Användarvillkor",
+      "creativeCommons": "Licensierad under CC BY-NC 4.0"
+    },
+    "cookieConsent": {
+      "message": "Denna webbplats använder cookies för analytiska ändamål via Google Analytics. Du kan acceptera eller avvisa dessa cookies.",
+      "readMore": "Läs mer i vår cookiepolicy"
+    },
+    "orientationWarning": {
+      "title": "Vrid din skärm",
+      "description": "För bästa upplevelse, vänligen vrid din telefon till stående läge."
+    },
+    "homePage": {
+      "title": "LEVANDE SVÄMPLAN:",
+      "subtitle": "LÄR DIG, UTFORSKA, ÅTERSTÄLL",
+      "subtitle2": "4LIFE VERKTYGSLÅDA",
+      "credits": "Medverkande"
+    },
+    "languageModal": {
+      "title": "Välj ditt språk",
+      "detecting": "Identifierar din plats...",
+      "suggested": "Vi upptäckte att du är från",
+      "suggestedQuestion": "Vill du använda",
+      "continueWith": "Fortsätt med"
+    },
+    "pages": {
+      "titles": {
+        "home": "Levande svämplan: Lär dig, utforska, Restore4Life verktygslåda",
+        "riparian": "Sida: Strandnära miljöer",
+        "mapwetland": "Sida: Kartlägg våtmark",
+        "floodplain": "Sida: Svämplan",
+        "floodcontrol": "Sida: Översvämningskontroll",
+        "carbon": "Sida: Kol",
+        "selfpurification": "Sida: Självrening",
+        "art": "Sida: Konst",
+        "people": "Sida: Människor och vattenliv",
+        "aesthetics": "Sida: Estetik",
+        "wetlandfresk": "Sida: Wetland Fresk",
+        "wetland4life": "Sida: Wetland4Life",
+        "wetlandEduRepo": "Wet-Edu-arkivet",
+        "treatmentwetlands": "Sida: Behandlingsvåtmarker",
+        "bluegreen": "Blue-Green Space4All",
+        "environmentalToolbox": "Miljöverktygslåda",
+        "privacy": "Integritetspolicy",
+        "cookies": "Cookiepolicy",
+        "termsofuse": "Användarvillkor"
+      }
+    },
+    "carbonPage": {
+      "title": {
+        "page0": "Klimatskydd och kolsänka",
+        "page1": "Kolinlagring på jorden",
+        "page2": "Kolcykeln i jordens kontinentala ekosystem"
+      },
+      "intro": {
+        "description": "Lär dig om klimatskydd och upptäck hur kolsänkor spelar en avgörande roll i att mildra klimatförändringar.",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "openPlatform": "Öppen plattform",
+        "opensNewTab": "Öppnar ny flik: Zenodo",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "explore": "Utforska"
+      },
+      "page1": {
+        "title": "Matcha ekosystemikonerna",
+        "instruction1": "Titta på ikonerna högst upp i grafen – var och en visar ett olika ekosystem.",
+        "instruction2": "Din utmaning:",
+        "instruction3": "Dra rätt etikett från undersidan till det matchande frågetecknet.",
+        "mobileInstruction": "Tryck på rätt plats på bilden",
+        "mobileTryAgain": "Felaktigt – försök igen",
+        "hint": "Tips: Fokusera på de egenskaper som gör varje ekosystem unikt, såsom träd, vatten, gräs eller landformer.",
+        "checkAnswers": "Kontrollera svar",
+        "clickToRemove": "Klicka för att ta bort etiketten",
+        "correct": "Korrekt",
+        "incorrect": "Felaktigt",
+        "missed": "Missade"
+      },
+      "page2": {
+        "instruction": "Håll muspekaren över bilden för att hitta våtmarkernas bidrag till kollagringen",
+        "infoText": "Våtmarker täcker bara 5–6 % av jordens yta men lagrar 20–30 % av allt organiskt kol i jorden",
+        "hoverAreas": {
+          "anthropogenic-release": "Antropogena kolutsläpp genom dränering eller annan mänsklig nedbrytning av våtmarker. Lagrat kol oxideras och släpps ut som CO₂.",
+          "carbon-sequestration": "Kolinlagring genom fotosyntes. Växter avlägsnar CO₂ från luften genom fotosyntes och producerar biomassa.",
+          "natural-release": "Naturliga koldioxidutsläpp genom respiration och biomassanedbrytning",
+          "carbon-storage": "Kolinlagring genom biomassa begravd i jord och sediment"
+        },
+        "modal": {
+          "title": "Visste du...?",
+          "fact": "Jordens jordar utgör en enorm kolsänka som lagrar tre gånger mer kol än atmosfären och fyra gånger så mycket som alla växter och djur.",
+          "question": "Vilket av ekosystemen som visas i grafen lagrar mest kol?",
+          "selectEcosystem": "🌿 Välj ett ekosystem...",
+          "submitAnswer": "Skicka svar",
+          "nextPage": "Nästa sida",
+          "feedback": {
+            "correct": "Korrekt! Våtmarker lagrar mest kol.",
+            "incorrect": "Felaktigt. Rätt svar är Våtmarker.",
+            "explanation": "Våtmarker är bland de mest effektiva kolsänkorna på jorden och lagrar enorma mängder kol i sina jordar och växtligheter."
+          }
+        }
+      },
+      "page3": {
+        "title": "Fyll i luckorna",
+        "instruction1": "Vår planet har ett fantastiskt sätt att lagra kol i marken i århundraden! Men några bokstäver och stavelser från meningarna nedan har gömts i teckningen.",
+        "instruction2": "Kan du lista ut dem och slutföra texten?",
+        "instruction3": "Klicka på en bokstav i bilden ovan, och klicka sedan på motsvarande lucka i texten för att placera den. Klicka på en placerad bokstav för att ta bort den.",
+        "checkAnswers": "Kontrollera svar",
+        "puzzleText": {
+          "part1": "En del av ko",
+          "part2": "t förblir bundet i jor",
+          "part3": "n mycket lä",
+          "part4": "e — ibland hund",
+          "part5": "tals eller till och med tu",
+          "part6": "tals år! ",
+          "part7": "Om vi läm",
+          "part8": "r den o",
+          "part9": "d stannar detta markkol tryggt under jorden istället för att hamna i atmos",
+          "part10": "ren. ",
+          "part11": "Blått kol, som la",
+          "part12": "s i kust- och våtmarksområden, hjäl",
+          "part13": "r också till att bromsa klimatförändring",
+          "part14": "na."
+        },
+        "correctAnswers": {
+          "blank1": "le",
+          "blank2": "de",
+          "blank3": "ng",
+          "blank4": "ra",
+          "blank5": "sen",
+          "blank6": "na",
+          "blank7": "stör",
+          "blank8": "fä",
+          "blank9": "gra",
+          "blank10": "pe",
+          "blank11": "ar"
+        },
+        "blankPositions": {
+          "blank1": "afterPart1",
+          "blank2": "afterPart2",
+          "blank3": "afterPart3",
+          "blank4": "afterPart4",
+          "blank5": "afterPart5",
+          "blank6": "afterPart7",
+          "blank7": "afterPart8",
+          "blank8": "afterPart9",
+          "blank9": "afterPart11",
+          "blank10": "afterPart12",
+          "blank11": "afterPart13"
+        },
+        "hiddenLetters": {
+          "letter1": {
+            "text": "le",
+            "x": 15,
+            "y": 20
+          },
+          "letter2": {
+            "text": "de",
+            "x": 22,
+            "y": 55
+          },
+          "letter3": {
+            "text": "ng",
+            "x": 33,
+            "y": 18
+          },
+          "letter4": {
+            "text": "ra",
+            "x": 44,
+            "y": 28
+          },
+          "letter5": {
+            "text": "sen",
+            "x": 55,
+            "y": 22
+          },
+          "letter6": {
+            "text": "na",
+            "x": 27,
+            "y": 48
+          },
+          "letter7": {
+            "text": "stör",
+            "x": 50,
+            "y": 62
+          },
+          "letter8": {
+            "text": "fä",
+            "x": 64,
+            "y": 33
+          },
+          "letter9": {
+            "text": "gra",
+            "x": 74,
+            "y": 20
+          },
+          "letter10": {
+            "text": "pe",
+            "x": 70,
+            "y": 68
+          },
+          "letter11": {
+            "text": "ar",
+            "x": 82,
+            "y": 30
+          }
+        }
+      },
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "carbonSequestrationSoils": "Kolinlagring i jordar",
+        "carbonSequestrationFloodplains": "Kolinlagring i svämskogar",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      },
+      "ecosystemLabels": {
+        "tropicalForests": "Tropiska skogar",
+        "temperateForests": "Tempererade skogar",
+        "borealForests": "Boreala skogar",
+        "tropicalSavannas": "Tropiska savanner",
+        "temperateGrasslands": "Tempererade gräsmarker",
+        "desertsSemiDeserts": "Öknar och halvöknar",
+        "tundra": "Tundra",
+        "wetlands": "Våtmarker",
+        "croplands": "Åkermark"
+      },
+      "nextTopic": "Nästa ämne"
+    },
+    "floodplainPage": {
+      "title": "Svämplanets livsmiljö",
+      "intro": {
+        "question": "Ser du skillnaden mellan illustrationerna?",
+        "rainLabel": "Svämplan under en översvämning (regnperiod)",
+        "dryLabel": "Svämplan under torra förhållanden",
+        "description": "Lär dig om svämplanets levande miljö och utforska de mångsidiga livsmiljöer och djurliv som frodas i dessa unika ekosystem.",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "openPlatform": "Öppen plattform",
+        "opensNewTab": "Öppnar ny flik: Zenodo",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "explore": "Utforska"
+      },
+      "page2": {
+        "title": "Översvämningsområden under regnperioden"
+      },
+      "page3": {
+        "title": "Svämplan under torrperioden"
+      },
+      "page4": {
+        "sliderTitle": "Skjut stången för att se skillnaderna"
+      },
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "basedOn5E": "Baserat på 5E-inlärningsmetoden och vetenskaplig forskning",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      },
+      "nextTopic": "Nästa ämne"
+    },
+    "mapWetlandPage": {
+      "title": "Kartlägg din våtmark",
+      "intro": {
+        "description": "Lär dig om kartläggning av våtmarker och utforska de olika habitat och egenskaper som kan identifieras ovanifrån.",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "openPlatform": "Öppen plattform",
+        "opensNewTab": "Öppnar ny flik: Zenodo",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "explore": "Utforska"
+      },
+      "challenge": {
+        "title": "Örnöga-utmaning!",
+        "intro": "Högt ovanför svämplanen ser vår vitsvansade örnvän den slingrande floden, dolda sjöar, kärr, skogar, diken och byar. Kan du också hitta dem? Matcha det du ser med rätt namn och färglägg det! Varje gång du identifierar rätt plats kommer landskapet att lysa i sina sanna färger – precis som örnen ser det från himlen."
+      },
+      "quizItems": {
+        "WATERCOURSE": "VATTENDRAG",
+        "SIDE_ARMS": "BIFLÖDE",
+        "DRAINAGE_CHANNELS": "AVRINNINGSKANALER",
+        "FLOODPLAIN_LAKE": "SVÄMPLANSSJÖ",
+        "ISLANDS_MARSH": "ÖAR (VÅTMARK)",
+        "FLOODPLAIN_FOREST": "SVÄMSKOG",
+        "PASTURE_WITH_ANIMALS": "BETESMARK MED DJUR",
+        "GRASSLAND": "GRÄSMARKER",
+        "PROTECTIVE_DIKE": "SKYDDSDIKE",
+        "HUMAN_SETTLEMENT": "MÄNSKLIG BOSÄTTNING",
+        "AGRICULTURAL_FIELDS": "ÅKRAR"
+      },
+      "quiz": {
+        "letterPlaceholder": "Bokstav?",
+        "congratulations": "Grattis!",
+        "successMessage": "Du har framgångsrikt kartlagt alla våtmarksområden!"
+      },
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "basedOn5E": "Baserat på 5E-inlärningsmetoden och vetenskaplig forskning",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      },
+      "nextTopic": "Nästa ämne"
+    },
+    "riparianPage": {
+      "title": {
+        "page0": "Utforska en bäcks livsmiljö",
+        "page1": "Markanvändning längs med floderna",
+        "page2": "Vattendragshabitat: Strömsträckor, Djuphålor och Lugnflytande sträckor"
+      },
+      "intro": {
+        "description": "Lär dig om att utforska livsmiljöer och upptäck de varierade strandnära ekosystemen och markanvändningen längs med vattendrag.",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "openPlatform": "Öppen plattform",
+        "opensNewTab": "Öppnar ny flik: Zenodo",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "explore": "Utforska"
+      },
+      "page1": {
+        "introText": "Vattendrag och deras omgivningar har använts av människor sedan urminnes tider för många olika aktiviteter, såsom jordbruk, husbyggande, fiske, resor och vatteninsamling. Denna markanvändning visar hur människor interagerar med och formar områdena runt vattendrag.",
+        "lookCarefully": "Titta noga på båda bilderna.",
+        "instruction": "Titta noga på båda illustrationerna och välj vilken",
+        "landUseActivities": "markanvändning",
+        "instructionEnd": "du kan hitta.",
+        "quizQuestion": "Klicka på aktiviteterna du kan se på bilderna i listan nedan:",
+        "correct": "Korrekt",
+        "incorrect": "Felaktigt",
+        "missed": "Missade"
+      },
+      "page2": {
+        "definitionsIntro": "Läs definitionerna av termerna:",
+        "placeInImage1": "Dra varje etikett till dess rätta plats i bild 1.",
+        "placeInImage2": "Dra varje etikett till dess rätta plats i bild 2.",
+        "instruction": "Läs definitionerna av termerna",
+        "and": "och",
+        "instructionEnd": "nedan, och dra och släpp sedan varje etikett till dess rätta plats i de två bilderna.",
+        "correct": "Korrekt:",
+        "labels": {
+          "POOL": "DJUPHÅLA",
+          "RIFFLE": "STRÖMSTRÄCKA",
+          "RUN": "LUGNFLYTANDE STRÄCKA"
+        },
+        "definitions": {
+          "POOL": "En djupare, långsammare del av en bäck där vatten samlas. Djuphålorna är lugna och ger skydd åt fiskarna.",
+          "RIFFLE": "En grund, snabbt flödande del av en bäck med små vågor och synliga stenar. Strömsträckor ser grova och bubbliga ut och är rika på syre, vilket gör dem till idealiska livsmiljöer för insekter och fiskar.",
+          "RUN": "En jämn, måttligt djup del av en bäck där vattnet flyter stadigt mellan en strömsträcka och en djuphåla. Lugnflytande sträckor får gott om solljus, vilket hjälper alger att växa. Insekter livnär sig på algerna, vilket gör lugnflytande sträckor till bra matplatser för fiskar från djuphålor och strömsträckor."
+        },
+        "checkAnswers": "Kontrollera svar"
+      },
+      "quizOptions": {
+        "human-settlements": "Mänskliga bosättningar",
+        "roads-bridges": "Vägar och broar",
+        "flood-protection": "Översvämningsskyddsstrukturer (skyddsdiken, vallar och broar)",
+        "dams": "Dammar och vattenkraft",
+        "pastures": "Ängar och betesmarker för boskap",
+        "irrigation": "Bevattningskanaler och system",
+        "factory": "Fabrik eller industri",
+        "mining": "Sand- och grusbrytning",
+        "cycling": "Cykling",
+        "riparian-vegetation": "Ripariansk vegetation (träd och buskar längs flodbankarna)",
+        "floodplains": "Svämplan, våtmarker",
+        "agriculture": "Jordbruk",
+        "recreation": "Rekreation (camping, simning, kanotpaddling, etc.)"
+      },
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "basedOn5E": "Baserat på 5E-inlärningsmetoden och vetenskaplig forskning",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      }
+    },
+    "floodControlPage": {
+      "title": {
+        "page0": "Svämplan som en svamp",
+        "page1": "Översvämningskontrollfunktion – Svämplan är som en svamp"
+      },
+      "intro": {
+        "description": "Lär dig om översvämningsskyddsfunktionen och upptäck hur svämplan fungerar som naturliga svampar som absorberar och lagrar vatten.",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "openPlatform": "Öppen plattform",
+        "opensNewTab": "Öppnar ny flik: Zenodo",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "explore": "Utforska"
+      },
+      "page1": {
+        "instruction": "Håll muspekaren över olika delar av bilderna för att visa användbara fakta.",
+        "didYouKnow": "Visste du...?",
+        "hoverAreas": {
+          "left": {
+            "willows-banks": "Pilträd stabiliserar bankarna och ökar jordens porositet genom omfattande rotsystem.",
+            "reed-vegetation": "Tät vassvegetation saktar ner vattenflödet, fångar sediment och förbättrar vattenkvaliteten.",
+            "native-grasses": "Inhemskt gräs förbättrar jordens porositet och vatteninfiltration",
+            "leaf-litter": "Döda löv på marken behåller fukt och minskar ytavrinning.",
+            "deep-rooted-trees": "Djuprotade träd och buskar erbjuder starkare bankstabilisering än gräs med grunda rötter."
+          },
+          "right": {
+            "natural-filtration": "Floden är innestängd av vallar som en tät korsett. Den kan inte sprida sig eller nå svämplanet, så flodvattnet stiger snabbt.",
+            "ecosystem-benefits": "Utan växter vid floden finns det inget som bromsar avrinningen eller absorberar vatten. Jorden blir sprucken och kompakt – vatten kan inte tränga in.",
+            "groundwater-recharge": "Utan växter längs stränderna flyter avrinningen snabbare, mer sediment och näringsämnen kommer in i floden och vattenkvaliteten försämras."
+          }
+        },
+        "didYouKnowContent": {
+          "left": {
+            "title": "Visste du...?",
+            "items": [
+              "Svämplan lagrar 3 000–4 000 m³ vatten per hektar",
+              "Meanderbågar ökar retentionstiden med 30–50 %",
+              "Svämplanets vegetation står för 30–40 % av den totala lagringskapaciteten",
+              "Naturliga svämplan absorberar översvämningsvatten i 20–30 dagar",
+              "Grundvattenpåfyllning: 500–1 000 m³ per hektar och år"
+            ]
+          },
+          "right": {
+            "title": "Visste du...?",
+            "items": [
+              "Kanalisering minskar lagringskapaciteten med: 60–80 %",
+              "Förlust av vegetation minskar lagringskapaciteten med: 40–50 %",
+              "Jordkompaktering minskar lagringskapaciteten med: 30–40 %",
+              "Försämrat svämplan kan endast hålla: 1 000–2 000 m³ per hektar"
+            ]
+          }
+        }
+      },
+      "page2": {
+        "activityTitle": "Aktivitet 1",
+        "instruction": "Kan du hitta de saknade superkrafterna i flodområdet? Matcha beskrivningsnumren med det friska svämplanet (vänster) och det påverkade svämplanet (höger).",
+        "naturalFloodplain": "Friskt svämplan:",
+        "degradedFloodplain": "Påverkat svämplan:",
+        "descriptions": {
+          "left": [
+            "En slingrande flod flyter i mjuka kurvor, sprider vatten över svämplanet, saktar ner flödet och ger näring åt marken.",
+            "Växter längs med flodbankar bromsar avrinningen, fångar sediment och absorberar överskott av näringsämnen, vilket hjälper till att hålla vattnet rent.",
+            "Småvatten och korvsjöar lagrar överskottsvatten, stödjer rik biologisk mångfald och hjälper till att återfylla grundvattnet"
+          ],
+          "right": [
+            "Vid kraftigt regn kan översvämningar byggas upp, bryta vallar och hota närliggande byar.",
+            "I ett rätat, kanaliserat vattendrag orsakar snabbare flöde erosion och flodbottnen fördjupas, vilket torkar ut närliggande svämplan.",
+            "Utan växter vid floden finns det inget som bromsar avrinningen eller absorberar vatten."
+          ]
+        },
+        "correct": "Korrekt",
+        "incorrect": "Felaktigt",
+        "correctLabel": "Korrekt:"
+      },
+      "page3": {
+        "title": "Fyll-i-luckorna-utmaningen",
+        "intro1": "Svämplan är naturliga buffertzoner!",
+        "intro2": "Hur är svämplanen till nytta under kraftiga regn?",
+        "intro3": "Vad händer med höga flöden när ett vattendrag har utrymme att sprida ut sig?",
+        "completeSentence": "FULLBORDA MENINGEN:",
+        "sentence1": "Svämplan fungerar som naturliga",
+        "sentence1End": "för att hålla kvar översvämningsvatten",
+        "sentence2": "och minska risken för",
+        "sentence2End": "nedströms.",
+        "placeholder1": "s____p",
+        "placeholder2": "ö___g",
+        "correctAnswers": {
+          "answer1": "svamp",
+          "answer2": "översvämning"
+        },
+        "feedback": {
+          "correctSponge": "Korrekt: svamp",
+          "incorrectSponge": "Felaktigt (Svar: svamp)",
+          "correctFlooding": "Korrekt: översvämning",
+          "incorrectFlooding": "Felaktigt (Svar: översvämning)"
+        },
+        "checkAnswers": "Kontrollera svar"
+      },
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "basedOn5E": "Baserat på 5E-inlärningsmetoden och vetenskaplig forskning",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      },
+      "nextTopic": "Nästa ämne"
+    },
+    "peopleAquaticPage": {
+      "title": "Människorna och limniska ekosystem",
+      "subtitle": {
+        "page1": "A. Naturliga svämplan",
+        "page2": "B. Använda och förändrade svämplan",
+        "page3": "C. Återställande av svämplan som en naturbaserad lösning"
+      },
+      "intro": {
+        "description": "Utforska hur människor är beroende av svämplan och vattenmiljöer, och upptäck vägar för att återställa deras fördelar för samhällen och naturen.",
+        "openPlatform": "Öppen plattform",
+        "explore": "Utforska"
+      },
+      "activity1": {
+        "title": "Aktivitet 1",
+        "description": "Titta noga – så här har mänskliga handlingar förändrat Donau och dess svämplan. Utdikningar, jordbruk, infrastruktur och andra påfrestningar förändrade landskapet.",
+        "question": "Kan du hjälpa mig genom att matcha varje trycketikett på rätt plats på bilden?",
+        "instruction": "Folk röjde skogar, förvandlade svämplan till betesmarker och åkermarker, och byggde byar och senare städer nära Donaus stränder. För att skydda sig mot översvämningar byggde de vallar. Donau utvecklades också som en sjöväg och för vattenkraftsproduktion. Som ett resultat förlorade floden många av sina naturliga egenskaper: balansen av sediment i flodbottnen stördes, och förbindelsen mellan flodkanalen och dess svämplan kapades till stor del. Endast några få rester av de ursprungliga svämplanen återstod, medan många typiska djur och växter försvann."
+      },
+      "activity2": {
+        "title": "Aktivitet 2",
+        "description": "För att lösa samhällsproblem med denna naturbaserade lösning kan du nu utforska lämpliga återställningsåtgärder: varje bild visar ett alternativ på hur människor och natur kan samarbeta.",
+        "question": "Längst ner hittar du en lista med sex åtgärder. Kan du matcha numret på åtgärden från listan med den respektive bilden som visar det?",
+        "instruction": "Steg för steg återkopplas delar av Donaus svämplan till floden. Gamla biflöden öppnas igen, skogar och våtmarker återställs, och naturlig översvämning tillåts igen där det är möjligt. Dessa åtgärder återställer livsmiljöer för fiskar, fåglar och växter, samtidigt som de hjälper människor – genom att lagra översvämningsvatten, förbättra vattenkvaliteten, tillhandahålla vatten under torkperioder och erbjuda utrymme för rekreation. Dessa återställningsåtgärder kallas naturbaserade lösningar."
+      },
+      "activity3": {
+        "title": "Aktivitet 3",
+        "description": "Dessa kartor visar hur Donaus ekosystemtjänster förändras i tre olika scenarier: naturliga svämplan, förändrade svämplan under mänskliga påtryckningar och återställda svämplan med naturbaserade lösningar. Kan du ta reda på varför ekosystemtjänsterna vi får ser så olika ut?",
+        "column1": {
+          "title": "Ursprungligt naturligt svämplan",
+          "question": "Om man tittar på denna kartläggning, varför är nästan alla ekosystemtjänster mycket höga när jordbruket är lågintensivt?",
+          "options": {
+            "A": "Eftersom jorden i svämplanet var för dålig och inget kunde växa där.",
+            "B": "Eftersom jordbruk var förbjudet av härskarna i Donauregionen på den tiden.",
+            "C": "Eftersom svämplanet fortfarande var naturligt och erbjöd många fördelar för människor och djur, men jordbruk inte var möjligt på översvämmad mark."
+          }
+        },
+        "column2": {
+          "title": "Påverkat svämplan",
+          "question": "Varför finns det så mycket jordbruk i denna variant, medan de flesta andra fördelar har försvunnit?",
+          "options": {
+            "A": "Eftersom Donaus naturliga skogar och våtmarker expanderade, vilket ökade jordbruk och timmerproduktion samtidigt.",
+            "B": "Eftersom vallar kopplade bort svämplanet från floden, skyddade jordbruket från översvämningar men förstörde många naturliga livsmiljöer och deras fördelar.",
+            "C": "Eftersom ingen bodde nära Donau användes endast några få ekosystemtjänster."
+          }
+        },
+        "column3": {
+          "title": "Återställt svämplan",
+          "question": "Varför är ekosystemtjänsterna mer balanserade i detta polardiagram jämfört med de andra två?",
+          "options": {
+            "A": "Eftersom naturbaserade lösningar återställer biflöden, våtmarker och skogar, vilket ger flera fördelar för både natur och människor.",
+            "B": "För att människor lät floden svämma över naturligt och tog bort all påverkan",
+            "C": "Eftersom Donau var avskuren från sina svämplan av vallar."
+          }
+        },
+        "correctAnswer": "Rätt svar:"
+      },
+      "pressureLabels": {
+        "cutting-meanders": {
+          "label": "Avskurna meanderbågar",
+          "description": "Räta ut floden (göra floden kortare och rakare i stället för slingrande i sig)"
+        },
+        "building-dikes": {
+          "label": "Byggda vallar",
+          "description": "Översvämningsskyddsvallar (upphöjda vallar längs floden som håller vattnet inne i huvudkanalen och hindrar det från att nå svämplanet)"
+        },
+        "channellizing-rivers": {
+          "label": "Kanalisering av floder",
+          "description": "Kanalisering av vattendrag (att skydda stränderna på rätade vattendrag från erosion genom att täcka dem med stenar eller genom att bygga vågbrytare [små tvärgående stenbarriärer] så att vattnet inte längre kan ändra sin struktur)"
+        },
+        "draining-floodplains": {
+          "label": "Dränerade svämplan",
+          "description": "Torka ut våtmarker (ta bort vatten från våtmarker för att göra mark användbar för betesmarker, åkermarker och bosättningar)"
+        },
+        "urbanization": {
+          "label": "Urbanisering",
+          "description": "Byggande av bosättningar, vägar och städer, åtföljt av utsläpp av avloppsvatten i floden."
+        },
+        "agriculture-pesticides": {
+          "label": "Jordbruk med bekämpningsmedel, insektsmedel, etc.",
+          "description": "Användning av kemikalier i jordbruk mot ogräs och insekter"
+        },
+        "cutting-forests": {
+          "label": "Avverkning av skog",
+          "description": "Avskogning (avskogning av träd från stora områden)"
+        },
+        "industrialization": {
+          "label": "Industrialisering",
+          "description": "Byggande av fabriker och industrier, ofta åtföljt av luft-, jord- eller vattenföroreningar"
+        },
+        "dams-hydroelectric": {
+          "label": "Dammar, vattenkraftverk etc.",
+          "description": "Byggande av flodbarriärer (tvärgående betongkonstruktioner som stoppar vatten, sediment och fisk från att röra sig fritt)"
+        },
+        "invasive-species": {
+          "label": "Invasiva arter",
+          "description": "Nykomlingar (växter eller djur från andra kontinenter som sprider sig massivt och orsakar problem genom sin dominans)"
+        },
+        "navigation": {
+          "label": "Fartyg och kanaler",
+          "description": "Fartyg och kanaler (fördjupning och reglering av floder så att stora fartyg kan färdas längs dem)"
+        },
+        "climate-change": {
+          "label": "Klimatförändringar",
+          "description": "Global uppvärmning (mer extrema väderförhållanden orsakade av människor)"
+        }
+      },
+      "restorationMeasures": {
+        "restoration-sidearms": {
+          "label": "Återställning av sidofåror",
+          "description": "Återöppnande av gamla flodgrenar så att vatten kan rinna dit igen, vilket skapar flera livsmiljöer för fisk, fåglar och växter."
+        },
+        "dike-relocation": {
+          "label": "Omlokalisering av vallen för mer utrymme",
+          "description": "Flytta vallarna längre bort från vattendraget för att ge mer utrymme åt vattnet och svämskogar som kan hålla kvar översvämningsvatten."
+        },
+        "buffer-strips": {
+          "label": "Skyddszoner",
+          "description": "Återställer smala skogar mellan jordbruksfält och vattendrag så att de kan filtrera näringsämnen och därmed skydda vattnet från föroreningar."
+        },
+        "fish-ramps": {
+          "label": "Ta bort vandringshinder",
+          "description": "Hjälper fiskar att migrera genom att ta bort barriärer eller förvandla dem till ramper av stenar som gör att de kan simma uppströms igen."
+        },
+        "bypass-channels": {
+          "label": "Bygga fiskvägar/naturlika omlöp",
+          "description": "Skapa konstgjorda sidokanaler runt barriärer med mjuka sluttningar där fiskar och andra djur kan röra sig eller till och med leva."
+        },
+        "native-species": {
+          "label": "Stöd inhemska arter",
+          "description": "Återställa naturliga livsmiljöförhållanden för att stödja inhemska växter och djur, vilket gör det svårare för invasiva arter att sprida sig."
+        }
+      },
+      "ui": {
+        "results": "Resultat",
+        "correct": "Korrekt",
+        "incorrect": "Felaktigt",
+        "correctTooltip": "Korrekt!",
+        "incorrectTooltip": "Felaktigt",
+        "clickToRemove": "Klicka för att ta bort och återgå till listan",
+        "checkAnswers": "Kontrollera svar",
+        "tryAgain": "Försök igen"
+      },
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "basedOn5E": "Baserat på 5E-inlärningsmetoden och vetenskaplig forskning",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      }
+    },
+    "artPage": {
+      "title": "Svämplan som inspirationskällor",
+      "intro": {
+        "description": "Upptäck hur svämplan inspirerar berättelser, hantverk och kreativitet. Utforska konsten med naturbaserade material innan du bygger dina egna mästerverk.",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "openPlatform": "Öppen plattform",
+        "opensNewTab": "Öppnar ny flik: Zenodo",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "explore": "Utforska"
+      },
+      "instruction": {
+        "intro1": "Vattendrag och deras svämplan är hem för många djur och växter, och de är också levande landskap fulla av berättelser som har inspirerat människor i århundraden. Svämplan kopplar naturen till kulturen i allt från att väva korgar med pilgrenar, till sånger, legender och teckningar.",
+        "intro2": "Nu är det din tur – ha kul med att använda naturliga element för att skapa dina egna bilder och berättelser. Låt flodens färger, former och ljud inspirera dig och upptäcka glädjen i att forma din egen berättelse från svämplanet.",
+        "instruction": "Föreställ dig att du är ute i naturen och samlar löv, grenar eller fjädrar för att skapa dina egna karaktärer. Kan du hjälpa dessa idéer att bli verklighet? Dra och släpp de naturliga elementen i formerna tills de är fyllda med form och färg.",
+        "clickToPlace": "Klicka på bilden där detta element ska placeras",
+        "page3": {
+          "text1": "Vissa delar av landskapet saknas.",
+          "text2": "Dra och släpp figurerna du skapat på rätt platser för att slutföra scenen från svämplanet.",
+          "trySnailFirst": "Försök placera snigeln först"
+        }
+      },
+      "nextTopic": "Nästa ämne",
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "basedOn5E": "Baserat på 5E-inlärningsmetoden och vetenskaplig forskning",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      }
+    },
+    "aestheticsPage": {
+      "title": {
+        "page0": "Svämplanets estetik kontra svämplanets funktioner",
+        "page1": "Naturens gåvor som Donau och dess svämplan erbjuder",
+        "page2": "Upptäck de dolda tjänsterna i svämplanet!"
+      },
+      "intro": {
+        "description": "Lär dig om estetik och upptäck de dolda tjänster och kulturella värderingar som svämplan erbjuder.",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "openPlatform": "Öppen plattform",
+        "opensNewTab": "Öppnar ny flik: Zenodo",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "explore": "Utforska"
+      },
+      "page1": {
+        "description": "Donauflodens svämplan och våtmarker ger oss många fördelar, kallade ekosystemtjänster. Dessa finns i olika former:",
+        "provisioningServices": "Försörjningstjänster",
+        "provisioningDescription": "resurser vi kan använda direkt, som fisk, rent vatten eller virke.",
+        "regulatingServices": "Reglerande tjänster",
+        "regulatingDescription": "processer som håller naturen i balans, som att minska översvämningar, rena vatten eller lagra kol.",
+        "culturalServices": "Kulturella tjänster",
+        "culturalDescription": "förmåner som berikar våra liv, såsom rekreation, lärande och kulturella traditioner.",
+        "activityQuestion": "Kan du sortera in naturens tjänster i grupper?",
+        "activityInstruction": "Dra och släpp varje ikon till dess matchande märkta ruta till höger.",
+        "results": "Resultat",
+        "correct": "Korrekt",
+        "incorrect": "Felaktigt",
+        "correctTooltip": "Korrekt!",
+        "incorrectTooltip": "Felaktigt",
+        "clickToRemove": "Klicka för att ta bort"
+      },
+      "page2": {
+        "instruction": "Donaus svämplan är full av dolda skatter – men vissa är svåra att se!\n\nAnvänd förstoringsglaset för att utforska landskapet och upptäcka ikonerna för ekosystemtjänster.\nNär du håller muspekaren över en med förstoringsglaset försvinner den från bilden och visas på den matchande etiketten vid illustrationens kant.\n\nTillsammans visar dessa tjänster hur naturen hela tiden upprätthåller våra liv."
+      },
+      "ecosystemServices": {
+        "tourism": "Turism",
+        "recreation": "Rekreation och fiske",
+        "landscape": "Landskapsestetik",
+        "climate": "Klimatreglering",
+        "carbon": "Koldioxidinlagring",
+        "nutrient": "Näringsretention",
+        "flood": "Översvämningsreglering",
+        "habitat": "Livsmiljöer",
+        "water": "Yt- och grundvatten",
+        "fish": "Fisk",
+        "agriculture": "Jordbruk",
+        "timber": "Virke"
+      },
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "basedOn5E": "Baserat på 5E-inlärningsmetoden och vetenskaplig forskning",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      },
+      "nextTopic": "Nästa ämne"
+    },
+    "treatmentWetlandsPage": {
+      "title": {
+        "main": "Behandlingsvåtmarker",
+        "page1": "Naturens sista filter – Behandlingsvåtmarken",
+        "page2": "Lager för lager – Naturens städteam",
+        "page3": "Låt oss bygga naturens filter – Vertikal flödesvåtmark",
+        "page4": "Små städare, stor effekt!"
+      },
+      "intro": {
+        "description": "Lär dig om våtmarker för behandling och upptäck hur anlagda våtmarker naturligt filtrerar och rengör avloppsvatten.",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "openPlatform": "Öppen plattform",
+        "opensNewTab": "Öppnar ny flik: Zenodo",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "explore": "Utforska"
+      },
+      "characters": {
+        "rocky": {
+          "name": "Dräneraren Sten",
+          "label": "DRÄNERAREN STEN",
+          "tooltip": {
+            "first": "Jag är Dräneraren Sten! Jag samlar det rena vattnet och låter det rinna ut säkert i vattendraget. Jag håller botten öppen och full av luft så att hela systemet kan andas.",
+            "second": "Funktion: Samlar upp det renade vattnet, säkerställer luftning underifrån och leder flödet till utloppet."
+          }
+        },
+        "reeda": {
+          "name": "Flödesväktaren Vassa",
+          "label": "FLÖDESVÄKTAREN VASSA",
+          "tooltip": {
+            "first": "Jag är Flödesväktaren Vassa! Mina rötter håller filtret öppet så att vattnet lätt kan passera igenom. Jag skyddar våtmarken från värme och kyla, tar in lite syre och ger mikrober en bra plats att bo på.",
+            "second": "Funktion: Rottillväxten upprätthåller filtrets hydrauliska ledningsförmåga, ger isolering mot värme (sommar) och kyla (vinter), bromsar inflödet, stödjer mikrober och tar upp vissa näringsämnen."
+          }
+        },
+        "gravelia": {
+          "name": "Fördelaren Grusa",
+          "label": "FÖRDELAREN GRUSA",
+          "tooltip": {
+            "first": "Hej där! Jag är Fördelaren Grusa! Jag stoppar fina partiklar från att blockera botten och fördelar vattnet jämnt. Jag håller allt balanserat mellan Sandy ovanför och Sten nedanför.",
+            "second": "Funktion: Fördelar vattnet jämnt, förhindrar igensättning och skyddar dräneringszonen nedanför."
+          }
+        },
+        "sandy": {
+          "name": "Städerskan Sandy",
+          "label": "STÄDERSKAN SANDY",
+          "tooltip": {
+            "first": "Jag är Städerskan Sandy! Miljontals mikrober lever mellan mina korn – de äter avfall och omvandlar kväve och organiskt material till ofarliga former. Jag gör det mesta av det riktiga städarbetet här!",
+            "second": "Funktion: Är värd för mikrobiella biofilmer som utför det mesta av den biologiska rengöringen (nitrifiering, borttagning av organiskt material, viss fosforbindning). Fin textur saktar ner vattnet för längre kontakttid → bättre rengöring.",
+            "highlightText": "utför det mesta av den biologiska rengöringen"
+          }
+        }
+      },
+      "layerSlots": {
+        "plant": "Växtlager",
+        "filter": "Filterlager",
+        "intermediate": "Mellanlager",
+        "drainage": "Dräneringslager"
+      },
+      "page2": {
+        "instruction": "Lär dig om karaktärerna som representerar lagren i en behandlingsvåtmark — Vassa, Sandy, Grusa och Sten.\n\nDra varje hjälpare till våtmarksbehållaren för att bygga lagren nerifrån och upp.",
+        "successMessage": "Bra jobbat! Du byggde våtmarken i rätt ordning.",
+        "errorMessage": "{{name}} hör hemma i ett annat lager. Prova en annan plats!"
+      },
+      "page3": {
+        "instruction": "Häll materialen ur hinkarna i rätt ordning för att bygga din vertikala våtmark – först stenar, sedan grus, sand, och slutligen plantera vassen ovanpå.\n\nSe hur din våtmark förbereder sig för att naturligt rena vattnet!",
+        "dropBucket": "Släpp hinken här!"
+      },
+      "page4": {
+        "intro": "Nu när våtmarken är byggd, låt oss möta dess dolda arbetare – de små mikrober som gör det mesta av städarbetet.",
+        "conclusion": "Tack vare miljontals små hjälpare som Nino, Dina, Fos och Bakto lämnar vattnet behandlingsvåtmarken fräscht och rent — redo att flöda tillbaka till Donau och börja sin resa på nytt!",
+        "hoverZones": {
+          "zone1": "Jag omvandlar ammonium till nitrat när syre är i närheten!",
+          "zone2": "Jag jobbar där det inte finns något syre – jag omvandlar nitrat till kvävgas!",
+          "zone3": "Jag tar tag i fosfor och håller det hårt i gruset!",
+          "zone4": "Jag tar tag i fosfor och håller det hårt i gruset!"
+        }
+      },
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "basedOn5E": "Baserat på 5E-inlärningsmetoden och vetenskaplig forskning",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      },
+      "nextTopic": "Nästa ämne"
+    },
+    "selfPurificationPage": {
+      "title": {
+        "main": "Självreningsfunktion",
+        "page1": "Kvävetillförsel till floder",
+        "page2": "Retention av kväve i floder",
+        "page3": "Ytterligare kvävehållning av svämplan",
+        "page4": "Fosfortillförsel i vattendrag",
+        "page5": "Bevarande av fosfor i vattendrag",
+        "page6": "Ytterligare retention av fosfor i svämplan"
+      },
+      "intro": {
+        "description": "Lär dig om självreningsfunktioner och upptäck hur vattendrag och svämplan naturligt filtrerar och renar vatten.",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "openPlatform": "Öppen plattform",
+        "opensNewTab": "Öppnar ny flik: Zenodo",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "explore": "Utforska"
+      },
+      "hoverAreas": {
+        "nutrients1": {
+          "area1": "Föroreningar som kommer från många spridda platser, såsom <span style=\"color: #1C00B8;\">åkrar, vägar eller städer</span>, och som förs ut i vattendrag av regn eller avrinning.",
+          "area2": "Föroreningar som kommer från en enda, identifierbar plats, såsom ett <span style=\"color: #1C00B8;\">rör från en fabrik eller ett avloppsreningsverk</span>.",
+          "area3": "<span style=\"color: #1C00B8;\">Konstgödning och gödsel</span> löses i regnvatten och rör sig genom jorden eller över fält ut i vattendrag. Detta är den huvudsakliga källan till diffus kväveförorening.",
+          "area4": "Regnvatten transporterar kväveföreningar från <span style=\"color: #1C00B8;\">gator, fordon och urbana grönområden</span> till avlopp och vattendrag.",
+          "area5": "<span style=\"color: #1C00B8;\">Behandlat vatten innehåller fortfarande vissa kväve</span>föreningar som rinner ut i vattendrag genom utloppsrör. I vissa länder tar moderna anläggningar bort det mesta av kväve effektivt, men i andra är behandlingen mindre avancerad – eller saknas till och med helt.",
+          "area6": "<span style=\"color: #1C00B8;\">Vissa fabriker</span> släpper ut kväverikt avloppsvatten från livsmedelsbearbetning, kemikalier eller tillverkningsverksamhet. Vanligtvis reglerat men ändå viktigt lokalt."
+        },
+        "nutrients2": {
+          "area1": "Kvävepartiklar sätter sig i sediment. Organiska kvävepartiklar <span style=\"color: #1C00B8;\">sjunker ner</span> och blir därmed tillgängliga för mikrober som lever mellan sandkorn – tysta reningszoner.",
+          "area2": "Näringsämnen → biomassa (tillfälligt). Alger och vattenväxter <span style=\"color: #1C00B8;\">tar upp nitrat och ammonium</span>; kväve lagras i deras vävnader tills de bryts ner.",
+          "area3": "<span style=\"color: #1C00B8;\">Ammonium → nitrat (behöver syre)</span>. Små mikrober i syrerika sediment omvandlar ammonium till nitrat — det första steget i reningen.",
+          "area4": "<span style=\"color: #1C00B8;\">Nitrat → kvävgas (inget syre)</span> Bakterier i syrefattiga zoner omvandlar nitrat till kvävgas – den viktigaste processen för kväveförlust."
+        },
+        "nutrients3": {
+          "area1": "<span style=\"color: #1C00B8;\">Kväve bundet till partiklar sedimenterar.</span> Under översvämningar fångas och avsätts suspenderade partiklar med kväve på svämplanets yta.",
+          "area2": "<span style=\"color: #1C00B8;\">Näringsämnen → biomassa (tillfälligt).</span> Växter på svämplan absorberar kväve under växtsäsongen och lagrar det i trä och blad.",
+          "area3": "<span style=\"color: #1C00B8;\">Nitrat → kvävgas (ingen syre).</span> I översvämmade jordar andas mikrober utan syre och omvandlar nitrat till kvävgas – permanent kväveborttagning."
+        },
+        "nutrients4": {
+          "area1": "Föroreningar som kommer från många spridda platser, såsom <span style=\"color: #CE7C0A;\">jordbruksmark, grusvägar eller städer</span>.",
+          "area2": "Föroreningar som kommer från en uppenbar källa, såsom ett rör från ett avloppsreningsverk eller en fabrik.",
+          "area3": "Fosfor <span style=\"color: #CE7C0A;\">som är bundet till jordpartiklar</span> sköljs ut i vattendrag vid regn eller översvämningar.",
+          "area4": "<span style=\"color: #CE7C0A;\">Konstgödsel</span>fosfor löser sig i vatten och når långsamt vattendrag genom marken eller genom ytvatten. En mindre men stadig diffus källa.",
+          "area5": "Regnvatten för med sig <span style=\"color: #CE7C0A;\">damm, rengöringsmedel och avfallspartiklar rika på</span> fosfor till avlopp och vattendrag.",
+          "area6": "<span style=\"color: #CE7C0A;\">Även efter behandling finns en del av</span> fosforn kvar i utsläppt vatten. Många länder har uppgraderat sina anläggningar, men andra saknar fortfarande effektiva system eller har ingen avloppsrening alls.",
+          "area7": "Vissa fabriker släpper ut fosforhaltigt avloppsvatten från <span style=\"color: #CE7C0A;\">rengöring, bearbetning eller produktionsaktiviteter</span>. Vanligtvis reglerat men ändå betydande i vissa områden."
+        },
+        "nutrients5": {
+          "area1": "<span style=\"color: #CE7C0A;\">Löst fosfat fastnar på mineraler</span> som järn, aluminium eller kalk. När syre finns närvarande förblir fosfor bundet; men om syre saknas kan det släppas ut igen i vattnet.",
+          "area2": "<span style=\"color: #CE7C0A;\">Alger, vattenväxter och biofilmer tar upp fosfor</span> och använder det för tillväxt. Denna retention är tillfällig – när organismerna dör eller bryts ner frigörs fosforn till vattnet.",
+          "area3": "Fosfor som fäster sig vid jorden och organiska partiklar sjunker ner till bottnen. Detta sker främst i lugna områden eller där flödet är långsamt — vilket bildar en tillfällig \"fosforlagring\" i sedimentet."
+        },
+        "nutrients6": {
+          "area1": "När översvämningsvatten sprider ut sig saktar det ner och släpper fosforrika partiklar. Detta är ett av de mest effektiva sätten som svämplan fångar och lagrar fosfor.",
+          "area2": "Svämplansväxter absorberar fosfor när de växer och lagrar det i blad och rötter. Denna retention är tillfällig, men en del fosfor stannar längre i torv, humus och döda växtdelar efter att växterna dött.",
+          "area3": "Löst fosfor binder till järn, aluminium eller kalciumföreningar i jorden. Detta håller fosfor låst — om inte syret tar slut, då kan det släppas ut igen."
+        }
+      },
+      "quizModal": {
+        "content": "<p style=\"margin: 0;\">Cirka <span style=\"color: #619F6A;\">40 % av den fosfor</span> som släpps ut i Donau når aldrig flodmynningen – den sätter sig och fångas i <span style=\"color: #619F6A;\">reservoarer och svämplan</span> längs vägen.</p>"
+      },
+      "didYouKnow": {
+        "nitrogenRivers": {
+          "title": "Vet du hur mycket kväve som tas bort av floder?",
+          "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Varje år behåller vattendrag i översvämningsområden naturligt omkring 25 000 ton kväve (ungefär 5 % av de totala utsläppen)</span> — samma mängd kväve som ungefär 5,5 miljoner människor skulle utsöndra på ett år! Det är ungefär lika många som Slovakiens befolkning.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">I hela Donaus avrinningsområde avlägsnar vattendragen ännu mer: cirka 30 %</span> av kvävet som kommer in i flodsystemet behålls under transport i vattendraget, främst genom <span style=\"color: #619F6A;\">denitrifiering</span>.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">Detta visar hur mycket renande kraft vattendrag har, redan innan vattnet når svämplanen.</span></p>"
+        },
+        "nitrogenFloodplains": {
+          "title": "Vet du hur mycket kväve Donaus svämplan tar bort?",
+          "content": "<p style=\"margin: 0;\">De återstående <span style=\"color: #619F6A;\">aktiva svämplanen</span> i Donau ger ett extra rengöringssteg och behåller omkring <span style=\"color: #619F6A;\">7 700 ton kväve per år</span> — ungefär lika mycket som <span style=\"color: #619F6A;\">1,6 miljoner människor</span> (Belgrads befolkning) skulle utsöndra på ett år.</p>"
+        }
+      },
+      "modal": {
+        "title": "Nedladdningsalternativ",
+        "accessTeachingMaterials": "Tillgång till undervisningsmaterial",
+        "basedOn5E": "Baserat på 5E-inlärningsmetoden och vetenskaplig forskning",
+        "opensInNewTab": "(Öppnar ny flik: Zenodo)",
+        "exploreRepository": "Utforska Wet-Edu-arkivet",
+        "exploreRelated": "Utforska relaterade projekt och resurser"
+      },
+      "nextTopic": "Nästa ämne"
+    },
+    "termsOfUse": {
+      "title": "Användarvillkor",
+      "section1": {
+        "title": "1. Introduktion",
+        "p1": "Restore4Life (Restoration of wetland complexes as life supporting systems in the Danube Basin), nedan kallat \"Projektet\", är ett 48-månaders projekt som behandlar ämnet HORIZON-MISS-2022-OCEAN-01.",
+        "p2": "\"LIVING FLOODPLAINS: LEARN, EXPLORE, RESTORE4LIFE TOOLBOX\" (nedan kallad \"denna plattform\" eller \"Verktygslådan\") har utvecklats inom ramen för Projektet.",
+        "p3": "Dessa Användarvillkor reglerar din åtkomst till och användning av denna plattform och allt innehåll, material och resurser som finns tillgängliga inom Verktygslådan. Allt innehåll i Verktygslådan är en del av Projektet och omfattas av dessa Användarvillkor. Genom att gå in på eller använda denna plattform eller något innehåll inom Verktygslådan godkänner du att vara bunden av dessa Användarvillkor."
+      },
+      "section2": {
+        "title": "2. Definitioner",
+        "consortium": "\"Konsortiet\" avser alla parter, andra än Europeiska kommissionen, som undertecknat bidragsavtal 101112736, vilka kan ha enskilda eller gemensamma immateriella rättigheter i förhållande till projektresultaten.",
+        "materials": "\"Material\" avser all information, allt innehåll, data, dokument (t.ex. faktablad, broschyrer, datablad, vanliga frågor, mallar, pressmeddelanden osv.), nedladdningar, filer, text, bilder, fotografier, grafik, videor, webbsändningar, publikationer, verktyg, resurser, programvara, kod, program, applikationer och produkter som görs tillgängliga eller möjliggörs via Webbplatsen."
+      },
+      "section3": {
+        "title": "3. Användning av material",
+        "p1": "Materialet på denna webbplats har utvecklats som utbildningsmaterial och är avsett för utbildningssyfte och icke-kommersiella ändamål.",
+        "license": "Licens:",
+        "licenseDesc": "Allt material på denna webbplats är licensierat under en Creative Commons Attribution-NonCommercial 4.0 International-licens (CC BY-NC 4.0). Detta innebär att du är fri att:",
+        "licenseShare": "Dela — kopiera och vidaredistribuera materialet i vilket medium eller format som helst",
+        "licenseAdapt": "Anpassa — remixa, omvandla och bygga vidare på materialet",
+        "licenseConditions": "Under följande villkor:",
+        "licenseAttribution": "Erkännande — Du måste ge lämpligt erkännande, tillhandahålla en länk till licensen och ange om ändringar har gjorts. Du får göra detta på ett rimligt sätt, men inte på ett sätt som antyder att licensgivaren stöder dig eller din användning.",
+        "licenseNonCommercial": "Icke-kommersiellt — Du får inte använda materialet för kommersiella ändamål.",
+        "licenseLink": "För mer information om CC BY-NC 4.0-licensen, besök:",
+        "educationalUse": "Användning i utbildningssyfte:",
+        "educationalUseDesc": "Du får fritt kopiera och använda materialet i utbildningssyfte utan att begära förhandstillstånd, förutsatt att:",
+        "li1": "Användningen är av icke-kommersiell och utbildningsmässig karaktär",
+        "li2": "Lämpligt erkännande ges till Restore4Life-projektet",
+        "li3": "Materialet inte ändras på ett sätt som förvränger det ursprungliga innehållet",
+        "commercialUse": "Kommersiell användning:",
+        "commercialUseDesc": "Kopiering eller användning av material för ekonomiska eller kommersiella ändamål är inte tillåten utan uttryckligt skriftligt förhandsmedgivande. För frågor om kommersiell användning, vänligen kontakta rättighetsinnehavaren:"
+      },
+      "section4": {
+        "title": "4. Ansvarsfriskrivning",
+        "p1": "Konsortiet och Projektet ansvarar inte för eventuella felaktigheter, fel, utelämnanden eller problem som kan uppstå vid användning av materialet eller denna webbplats.",
+        "p2": "Materialet tillhandahålls \"i befintligt skick\" utan någon form av garanti, vare sig uttrycklig eller underförstådd, inklusive men inte begränsat till underförstådda garantier om säljbarhet, lämplighet för ett visst ändamål eller icke-intrång.",
+        "p3": "Konsortiet ska inte hållas ansvarigt för några direkta, indirekta, oavsiktliga, särskilda eller följdskador, eller skadestånd i bestraffande syfte, som uppstår på grund av eller i samband med användning av eller oförmåga att använda materialet eller denna webbplats."
+      },
+      "section5": {
+        "title": "5. Rätt att ändra material",
+        "p1": "Konsortiet, i egenskap av rättighetsinnehavare, förbehåller sig rätten att när som helst ändra, uppdatera eller ta bort material på denna webbplats utan föregående meddelande och utan att ta något ansvar för sådana ändringar. Konsortiet är inte skyldigt att underhålla eller uppdatera materialet och kan avbryta eller ändra vilken aspekt som helst av webbplatsen efter eget gottfinnande."
+      },
+      "section6": {
+        "title": "6. Immateriella rättigheter",
+        "p1": "Allt material på denna webbplats skyddas av immateriella rättigheter. Konsortiet kan ha enskilda eller gemensamma immateriella rättigheter i förhållande till projektresultaten.",
+        "p2": "Även om användning i utbildningssyfte är tillåten enligt beskrivningen ovan, förbehålls alla andra rättigheter. Obehörig användning av material kan strida mot upphovsrätt, varumärken eller andra lagar."
+      },
+      "section7": {
+        "title": "7. Länkar till tredjepartswebbplatser",
+        "p1": "Denna webbplats kan innehålla länkar till tredjepartswebbplatser. Konsortiet ansvarar inte för innehållet, riktigheten eller de åsikter som uttrycks på sådana webbplatser, och sådana webbplatser undersöks, övervakas eller kontrolleras inte för riktighet eller fullständighet av Konsortiet. Inkluderingen av en länkad webbplats innebär inte godkännande eller rekommendation från Konsortiet."
+      },
+      "section8": {
+        "title": "8. Ändringar av Användarvillkoren",
+        "p1": "Konsortiet förbehåller sig rätten att när som helst ändra dessa Användarvillkor. Ändringar träder i kraft omedelbart efter publicering på denna webbplats. Din fortsatta användning av webbplatsen efter eventuella ändringar utgör ditt godkännande av de ändrade Användarvillkoren."
+      },
+      "section9": {
+        "title": "9. Kontakt",
+        "materialsTitle": "För frågor om materialet eller förfrågningar om kommersiell användning:",
+        "termsTitle": "För frågor om dessa Användarvillkor eller webbplatsen i allmänhet:",
+        "generalInquiries": "För allmänna förfrågningar om Restore4Life-projektet, vänligen besök"
+      },
+      "lastUpdated": "Senast uppdaterad:"
+    },
+    "privacyPolicyPage": {
+      "title": "Integritetspolicy",
+      "section1": {
+        "title": "1. Introduktion",
+        "content": "Denna integritetspolicy beskriver hur vi hanterar dina personuppgifter när du använder denna webbplats. Vi respekterar din integritet och är engagerade i att skydda dina personuppgifter i enlighet med dataskyddsförordningen (GDPR)."
+      },
+      "section2": {
+        "title": "2. Personuppgiftsansvarig",
+        "content": "Denna webbplats förvaltas av Restore4Life-projektet. Det tekniska ansvaret ligger hos Archipelagos Institute of Marine Conservation. För frågor om denna integritetspolicy, vänligen kontakta oss via",
+        "website": "www.archipelagos.gr",
+        "orEmail": "eller e-post",
+        "email": "info@archipelagos.gr"
+      },
+      "section3": {
+        "title": "3. Uppgifter vi samlar in",
+        "intro": "Vi samlar endast in uppgifter som är nödvändiga för driften av denna webbplats:",
+        "analyticalData": {
+          "label": "Analytiska uppgifter:",
+          "content": "Via Google Analytics samlar vi in anonym användningsstatistik, såsom antalet besökare, vilka sidor som visas och hur länge användare stannar på webbplatsen. Dessa uppgifter samlas endast in om du har gett samtycke till användning av cookies.",
+          "important": "Vi lagrar inga personuppgifter som kan identifiera enskilda användare."
+        },
+        "technicalData": {
+          "label": "Tekniska uppgifter:",
+          "content": "Vi samlar automatiskt in viss teknisk information, såsom din IP-adress (anonymiserad), webbläsartyp och operativsystem. Dessa uppgifter används för tekniska ändamål och används inte för att identifiera dig."
+        },
+        "important": "Viktigt:",
+        "importantContent": "Vi lagrar inte personuppgifter som kan användas för att identifiera enskilda användare. De analysuppgifter vi samlar in är aggregerade och anonyma. Vi kan inte spåra eller identifiera enskilda besökare via Google Analytics."
+      },
+      "section4": {
+        "title": "4. Cookies",
+        "intro": "Denna webbplats använder cookies endast för analytiska ändamål via Google Analytics. Vi använder följande typer av cookies:",
+        "analyticalCookies": {
+          "label": "Analytiska cookies:",
+          "content": "Dessa cookies hjälper oss att förstå hur besökare använder webbplatsen. Dessa cookies placeras endast om du har gett samtycke."
+        },
+        "withdrawConsent": "Du kan när som helst återkalla ditt samtycke till cookies genom att radera cookies i dina webbläsarinställningar. Eftersom vi inte lagrar personuppgifter som kan identifiera enskilda användare kan vi inte radera specifika användaruppgifter på begäran. Du kan dock alltid rensa dina webbläsarcookies eller inaktivera cookies i dina webbläsarinställningar för att förhindra framtida spårning."
+      },
+      "section5": {
+        "title": "5. Ändamål med behandlingen av uppgifter",
+        "intro": "Vi använder dina uppgifter för följande ändamål:",
+        "purposes": [
+          "Förbättra webbplatsens funktionalitet och användarupplevelse",
+          "Analysera webbplatsanvändning för att optimera innehållet",
+          "Säkerställa webbplatsens tekniska säkerhet"
+        ]
+      },
+      "section6": {
+        "title": "6. Dina rättigheter",
+        "intro": "Enligt GDPR har enskilda personer vissa rättigheter avseende sina personuppgifter. Dock,",
+        "notApplicable": "är dessa rättigheter inte tillämpliga i vårt fall",
+        "because": "eftersom:",
+        "reasons": [
+          "Vi lagrar inte personuppgifter som kan identifiera enskilda användare",
+          "Alla analysuppgifter är anonyma och aggregerade",
+          "Vi kan inte spåra eller identifiera enskilda besökare"
+        ],
+        "therefore": "Därför är följande GDPR-rättigheter inte tillämpliga:",
+        "rights": {
+          "access": {
+            "label": "Rätt till tillgång:",
+            "content": "Ej tillämpligt – vi har inga personuppgifter om dig att tillhandahålla"
+          },
+          "rectification": {
+            "label": "Rätt till rättelse:",
+            "content": "Ej tillämpligt – vi lagrar inga personuppgifter som kan rättas"
+          },
+          "erasure": {
+            "label": "Rätt till radering:",
+            "content": "Ej tillämpligt – vi har inga personuppgifter att radera. Du kan rensa dina webbläsarcookies när som helst"
+          },
+          "restriction": {
+            "label": "Rätt till begränsning:",
+            "content": "Du kan när som helst återkalla ditt samtycke till cookies via dina webbläsarinställningar"
+          },
+          "object": {
+            "label": "Rätt att göra invändningar:",
+            "content": "Du kan avvisa cookies via cookiebannern eller inaktivera cookies i dina webbläsarinställningar"
+          },
+          "portability": {
+            "label": "Rätt till dataportabilitet:",
+            "content": "Ej tillämpligt – vi har inga personuppgifter att exportera"
+          }
+        },
+        "contact": "Om du har några frågor eller funderingar kan du kontakta oss via",
+        "website": "www.archipelagos.gr",
+        "orEmail": "eller e-post",
+        "email": "info@archipelagos.gr"
+      },
+      "section7": {
+        "title": "7. Säkerhet",
+        "content": "Vi vidtar lämpliga tekniska och organisatoriska åtgärder för att skydda dina personuppgifter mot obehörig åtkomst, förlust eller förstörelse. Google Analytics använder anonymiserade IP-adresser och vi har konfigurerat inställningarna för att maximera integriteten. Vi lagrar inte personuppgifter som kan identifiera enskilda användare."
+      },
+      "section8": {
+        "title": "8. Ändringar av denna integritetspolicy",
+        "content": "Vi förbehåller oss rätten att ändra denna integritetspolicy. Ändringar kommer att publiceras på denna sida. Vi rekommenderar att du regelbundet besöker denna sida för att hålla dig informerad om eventuella ändringar."
+      },
+      "section9": {
+        "title": "9. Kontakt",
+        "content": "För frågor om denna integritetspolicy eller om behandlingen av dina personuppgifter, vänligen kontakta oss via",
+        "website": "www.archipelagos.gr",
+        "orEmail": "eller e-post",
+        "email": "info@archipelagos.gr"
+      },
+      "lastUpdated": "Senast uppdaterad:"
+    },
+    "cookiePolicyPage": {
+      "title": "Cookiepolicy",
+      "section1": {
+        "title": "Vad är cookies?",
+        "content": "Cookies är små textfiler som placeras på din enhet när du besöker en webbplats. De används i stor utsträckning för att få webbplatser att fungera mer effektivt och för att ge information till webbplatsägarna."
+      },
+      "section2": {
+        "title": "Typer av cookies vi använder",
+        "intro": "Denna webbplats använder",
+        "onlyAnalytical": "endast analytiska cookies",
+        "viaGoogleAnalytics": "via Google Analytics.",
+        "weDoNotUse": "Vi använder inte nödvändiga/väsentliga cookies eller funktionella cookies.",
+        "important": "Viktigt:",
+        "importantContent": "Alla cookies som används på denna webbplats kräver ditt samtycke. Inga cookies placeras utan ditt uttryckliga tillstånd."
+      },
+      "section3": {
+        "title": "Analytiska cookies (Google Analytics)",
+        "intro": "Vi använder Google Analytics för att förstå hur besökare interagerar med vår webbplats. Dessa cookies hjälper oss att samla in information om:",
+        "infoItems": [
+          "Antal besökare på webbplatsen",
+          "Vilka sidor som visas oftast",
+          "Hur länge besökare stannar på webbplatsen",
+          "Hur besökare navigerar genom webbplatsen"
+        ],
+        "purpose": "Syfte:",
+        "purposeContent": "Dessa cookies hjälper oss att förbättra webbplatsens funktionalitet och användarupplevelse.",
+        "consentRequired": "Samtycke krävs:",
+        "consentRequiredContent": "Ja – dessa cookies placeras endast om du accepterar dem via cookiebannern.",
+        "dataCollected": "Insamlade uppgifter:",
+        "dataCollectedContent": "Alla uppgifter är anonyma och aggregerade. Vi kan inte identifiera enskilda användare."
+      },
+      "section4": {
+        "title": "Specifika cookies som används",
+        "intro": "Följande cookies sätts av Google Analytics (endast om du har accepterat cookies):",
+        "cookies": {
+          "_ga": {
+            "name": "_ga",
+            "purpose": "Syfte:",
+            "purposeContent": "Särskiljer unika användare",
+            "duration": "Varaktighet:",
+            "durationContent": "2 år",
+            "type": "Typ:",
+            "typeContent": "Förstapartscookie"
+          },
+          "_gid": {
+            "name": "_gid",
+            "purpose": "Syfte:",
+            "purposeContent": "Särskiljer unika användare",
+            "duration": "Varaktighet:",
+            "durationContent": "24 timmar",
+            "type": "Typ:",
+            "typeContent": "Förstapartscookie"
+          },
+          "_gat": {
+            "name": "_gat (or _gat_gtag_*)",
+            "purpose": "Syfte:",
+            "purposeContent": "Begränsar antalet förfrågningar",
+            "duration": "Varaktighet:",
+            "durationContent": "1 minut",
+            "type": "Typ:",
+            "typeContent": "Förstapartscookie"
+          }
+        },
+        "note": "Obs:",
+        "noteContent": "Dessa cookies sätts av Google Analytics och omfattas av Googles integritetspolicy. Vi har konfigurerat Google Analytics med integritetsvänliga inställningar inklusive IP-anonymisering och inaktiverade Google Signals och annonspersonalisering."
+      },
+      "section5": {
+        "title": "Hantera dina cookieinställningar",
+        "intro": "Du har full kontroll över cookies på denna webbplats:",
+        "preferences": [
+          {
+            "label": "Acceptera eller avvisa:",
+            "content": "När du först besöker webbplatsen kan du acceptera eller avvisa analytiska cookies via cookiebannern längst ner på sidan."
+          },
+          {
+            "label": "Ändra ditt val:",
+            "content": "Du kan ändra dina cookieinställningar när som helst genom att rensa dina webbläsarcookies och besöka webbplatsen igen. Cookiebannern visas då igen så att du kan göra ett nytt val."
+          },
+          {
+            "label": "Webbläsarinställningar:",
+            "content": "Du kan också hantera cookies direkt i dina webbläsarinställningar. De flesta webbläsare låter dig blockera eller radera cookies. Observera att blockering av cookies kan påverka din upplevelse på vissa webbplatser."
+          }
+        ]
+      },
+      "section6": {
+        "title": "Tredjepartscookies",
+        "content": "Google Analytics-cookies är tekniskt sett tredjepartscookies (satta av Google), men de används enbart för analys av vår webbplats. Vi använder inga andra tredjepartscookies för annonsering, sociala medier eller andra ändamål."
+      },
+      "section7": {
+        "title": "Mer information",
+        "intro": "För mer information om cookies och hur du hanterar dem kan du besöka:",
+        "links": {
+          "allAboutCookies": "www.allaboutcookies.org",
+          "googlePrivacy": "Googles integritetspolicy"
+        },
+        "contact": "Om du har frågor om vår användning av cookies, vänligen kontakta oss via",
+        "website": "www.archipelagos.gr",
+        "orEmail": "eller e-post",
+        "email": "info@archipelagos.gr"
+      },
+      "lastUpdated": "Senast uppdaterad:"
+    },
+    "wetlandFreskPage": {
+      "title": "Wetland Fresk",
+      "description": "Wetlands Fresk är en samarbetsinriktad, interaktiv workshop utformad för att hjälpa deltagarna att utforska hur mänskliga aktiviteter påverkar våtmarksekosystem (inklusive sedimenteringar, saltängar, laguner med mera), konsekvenserna av dessa effekter och möjliga lösningar. Deltagarna arbetar tillsammans för att bygga en \"karta\" över orsak–verkan-relationer med hjälp av en uppsättning kort, och rör sig sedan mot reflektion och handling.",
+      "duration": {
+        "label": "Varaktighet",
+        "value": "90–120 minuter"
+      },
+      "numberOfCards": {
+        "label": "Antal kort",
+        "value": "24 kort"
+      },
+      "teamPlayers": {
+        "label": "Lagspelare",
+        "value": "4 – 8"
+      },
+      "age": {
+        "label": "Ålder",
+        "value": "Från ± 12 år"
+      },
+      "downloadNote": "Du kommer att hänvisas till en extern databas"
+    },
+    "wetland4LifePage": {
+      "title": "Wetland4Life",
+      "subtitle": "Utforska våtmarkers potential via en app!",
+      "whatDoesItDo": {
+        "title": "Vad gör Wetland4Life?",
+        "description": "Wetland4Life hjälper till att göra våtmarkskartläggning tillgänglig för alla. Det erbjuder enkla, praktiska sätt att bedöma våtmarkstillstånd och identifiera möjligheter till restaurering."
+      },
+      "howItWorks": {
+        "title": "Hur det fungerar",
+        "description": "Steg-för-steg-enkla frågor guidar dig genom kartläggningsprocessen. Varje plats tar ungefär",
+        "time": "5 minuter",
+        "timeEnd": "att bedöma — snabbt, tydligt och vetenskapligt förankrat."
+      },
+      "academy": {
+        "title": "Vill du lära dig mer?",
+        "description": "Appen inkluderar en inbyggd akademi med material om våtmarker – som deras funktioner, hot och återställning. Oavsett om du är nybörjare eller proffs finns det alltid något nytt att upptäcka."
+      },
+      "callToAction": "Eftersom våtmarker är så viktiga för vår säkerhet, vår miljö och vår framtid är det avgörande att förstå deras nuvarande tillstånd – och var vi kan återställa det som gått förlorat. Så vi behöver dig!",
+      "visitButton": "Besök Wetland4Life-appen",
+      "externalLinkNote": "Denna länk leder till en extern webbplats optimerad för mobil. Upplevelsen kan vara mindre optimal på dator.",
+      "websiteUrl": "https://wetland.restore4life-platform.eu"
+    },
+    "blueGreenSpace4AllPage": {
+      "title": "Blue-Green Space4All",
+      "subtitle": "Res med Otis utter längs Donau och ta dig an utmaningar!",
+      "description": "Ett lekfullt datorspel där du reser med Otis Utter längs Donau. På vägen kommer du att möta biologiska, fysiska, kemiska och sociala utmaningar. Svara på frågor, välja lösningar och förbättra Donau steg för steg – samtidigt som du samlar så många mynt som möjligt.",
+      "quizHighlight": "Det perfekta testet på hur mycket du har lärt dig om våtmarker!",
+      "playButton": "Spela Blue-Green Space4All",
+      "externalLinkNote": "Du kommer att öppna en extern webbplats med spelet.",
+      "websiteUrl": "http://game.restore4life-platform.eu"
+    },
+    "wetlandEduRepoPage": {
+      "title": "Utforska Wet-Edu-arkivet",
+      "subtitle": "Utforska relaterade projekt och resurser",
+      "allTopics": "Alla ämnen",
+      "clickToOpen": "Klicka på ett projekt för att öppna det i en ny flik",
+      "opensInNewTab": "Öppnas i ny flik",
+      "previous": "Tidigare",
+      "next": "Nästa",
+      "page": "Sida",
+      "of": "av",
+      "topics": {
+        "Floodplain living environment": "Habitat på Svämplan",
+        "Floodplain mapping": "Kartläggning av Svämplan",
+        "Flood control": "Översvämningskontroll",
+        "Habitat assessment": "Habitatbedömning",
+        "Carbon sequestration": "Koldioxidinlagring",
+        "Self purification": "Självrening",
+        "Constructed wetlands": "Anlagda våtmarker",
+        "Aesthetics": "Estetik",
+        "Art & Storytelling": "Konst och berättande"
+      }
+    }
+  }
