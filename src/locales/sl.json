@@ -1,1 +1,1268 @@
-{}
+{
+    "common": {
+      "yes": "Da",
+      "no": "Ne",
+      "accept": "Sprejmi",
+      "reject": "Zavrni",
+      "home": "Domov",
+      "next": "Naslednji",
+      "loading": "Nalaganje...",
+      "close": "Zapri",
+      "tryAgain": "Poskusite znova",
+      "learnAndTestButton": "Učite se in preizkusite svoje znanje",
+      "backToHome": "Nazaj na domačo stran"
+    },
+    "header": {
+      "learningActivities": "Učne dejavnosti",
+      "externalTools": "Zunanja orodja",
+      "restore4Life": "Restore4Life",
+      "menuItems": {
+        "livingEnvironment": "Življenjsko okolje",
+        "mapYourWetland": "Kartiranje vaših mokrišč",
+        "exploringHabitats": "Raziščite habitate",
+        "floodplainSpongeEffect": "Učinek poplavne spužve",
+        "climateCarbon": "Podnebja in ogljik",
+        "purification": "Čiščenje",
+        "treatmentWetlands": "Rastlinske čistilne naprave",
+        "aesthetics": "Estetika",
+        "sourcesOfInspiration": "Viri navdiha",
+        "peopleAndAquatic": "Ljudje in vodni sistemi"
+      },
+      "externalToolsItems": {
+        "blueGreenSpace4All": "Blue-Green Space4All",
+        "wetlandFresk": "Wetland Fresk",
+        "wetland4Life": "Wetland4Life",
+        "exploreWetEduRepository": "Razišči Wet-Edu repozitorij"
+      }
+    },
+    "footer": {
+      "copyright": "Copyright © {{year}} Restore4Life Consortium. Vse pravice pridržane.",
+      "privacyPolicy": "Politika zasebnosti",
+      "cookiePolicy": "Politika piškotkov",
+      "termsOfUse": "Pogoji uporabe",
+      "creativeCommons": "Licencirano pod CC BY-NC 4.0"
+    },
+    "cookieConsent": {
+      "message": "To spletno mesto uporablja piškotke za analitične namene prek storitve Google Analytics. Te piškotke lahko sprejmete ali zavrnete.",
+      "readMore": "Preberite več v naši politiki piškotkov"
+    },
+    "orientationWarning": {
+      "title": "Obrnite zaslon",
+      "description": "Za najboljšo izkušnjo obrnite telefon v pokončni način."
+    },
+    "homePage": {
+      "title": "POPLAVNE RAVNICE:",
+      "subtitle": "UČITE SE, RAZISKUJTE, OBNAVLJAJTE",
+      "subtitle2": "4LIFE ZBIRKA ORODIJ",
+      "credits": "Kreativna ekipa"
+    },
+    "languageModal": {
+      "title": "Izberite svoj jezik",
+      "detecting": "Zaznavanje vaše lokacije...",
+      "suggested": "Zaznali smo, da ste iz",
+      "suggestedQuestion": "Ali želite uporabljati",
+      "continueWith": "Nadaljuj z"
+    },
+    "pages": {
+      "titles": {
+        "home": "Poplavne ravnice: učite se, raziskujte, Restore4Life – zbirka orodij",
+        "riparian": "Stran: Obrečna območja",
+        "mapwetland": "Stran: Kartiranje mokrišč",
+        "floodplain": "Stran: Poplavna ravnica",
+        "floodcontrol": "Stran: Kontroliranje poplav",
+        "carbon": "Stran: Ogljik",
+        "selfpurification": "Stran: Samočistilna funkcija",
+        "art": "Stran: Umetnost",
+        "people": "Stran: Ljudje in vodni ekosistemi",
+        "aesthetics": "Stran: Estetika",
+        "wetlandfresk": "Stran: Wetland Fresk",
+        "wetland4life": "Stran: Wetland4Life",
+        "wetlandEduRepo": "Wet-Edu repozitorij",
+        "treatmentwetlands": "Stran: Rastlinske čistilne naprave",
+        "bluegreen": "Blue-Green Space4All",
+        "environmentalToolbox": "Okoljska zbirka orodij",
+        "privacy": "Politika zasebnosti",
+        "cookies": "Politika piškotkov",
+        "termsofuse": "Pogoji uporabe"
+      }
+    },
+    "carbonPage": {
+      "title": {
+        "page0": "Varovanje podnebja in skladiščenje ogljika",
+        "page1": "Skladišča ogljika na Zemlji",
+        "page2": "Kroženje ogljika v celinskih ekosistemih Zemlje"
+      },
+      "intro": {
+        "description": "Spoznajte varstvo podnebja in odkrijte, kako imajo skladišča ogljika ključno vlogo pri blaženju podnebnih sprememb.",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "openPlatform": "Odprta platforma",
+        "opensNewTab": "Odpre nov zavihek: Zenodo",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "explore": "Razišči"
+      },
+      "page1": {
+        "title": "Povežite ikone ekosistemov",
+        "instruction1": "Poglejte ikone na vrhu grafa – vsaka prikazuje drugačen ekosistem.",
+        "instruction2": "Vaš izziv:",
+        "instruction3": "Povlecite pravilno oznako do ustreznega vprašaja.",
+        "mobileInstruction": "Tapnite pravilno mesto na sliki",
+        "mobileTryAgain": "Napačno – poskusite znova",
+        "hint": "Namig: Osredotočite se na značilnosti, zaradi katerih je vsak ekosistem edinstven, kot so drevesa, voda, trava ali oblika pokrajine.",
+        "checkAnswers": "Preveri odgovore",
+        "clickToRemove": "Kliknite za odstranitev oznake",
+        "correct": "Pravilno",
+        "incorrect": "Napačno",
+        "missed": "Zgrešeno"
+      },
+      "page2": {
+        "instruction": "Premaknite kazalec čez sliko, da odkrijete prispevek mokrišč k ogljiku",
+        "infoText": "Mokrišča pokrivajo le 5–6 % Zemljine kopne, vendar shranjujejo 20–30 % vsega organskega ogljika v tleh.",
+        "hoverAreas": {
+          "anthropogenic-release": "Antropogeno sproščanje ogljika z odvodnjavanjem ali drugo človekovo degradacijo mokrišč. Shranjeni ogljik se tako oksidira in sprosti kot CO₂.",
+          "carbon-sequestration": "Sekvestracija ogljika s fotosintezo. Rastline s fotosintezo odstranjujejo CO₂ iz zraka in proizvajajo biomaso.",
+          "natural-release": "Naravno sproščanje ogljika z dihanjem in razgradnjo biomase",
+          "carbon-storage": "Shranjevanje ogljika z biomaso, zakopano v tleh in usedlinah"
+        },
+        "modal": {
+          "title": "Ali ste vedeli ...?",
+          "fact": "Zemljina tla predstavljajo ogromno skladišče ogljika, saj shranjujejo trikrat več ogljika kot ozračje in štirikrat več kot vse rastline in živali.",
+          "question": "Kateri od ekosistemov, prikazanih na grafu, shranjuje največ ogljika?",
+          "selectEcosystem": "🌿 Izberite ekosistem...",
+          "submitAnswer": "Pošlji odgovor",
+          "nextPage": "Naslednja stran",
+          "feedback": {
+            "correct": "Pravilno! Mokrišča shranjujejo največ ogljika.",
+            "incorrect": "Napačno. Pravilen odgovor je Mokrišča.",
+            "explanation": "Mokrišča so med najučinkovitejšimi skladišči ogljika na Zemlji, saj shranjujejo ogromne količine ogljika v svojih tleh in rastlinju."
+          }
+        }
+      },
+      "page3": {
+        "title": "Dopolni manjkajoče besede",
+        "instruction1": "Naš planet ima neverjeten način shranjevanja ogljika v tleh za stoletja! Vendar so nekatere črke in zlogi iz spodnjih povedi skriti v sliki.",
+        "instruction2": "Ali jih lahko ugotoviš in dopolniš besedilo?",
+        "instruction3": "Kliknite na črko na spodnji sliki in nato kliknite ustrezno vrzel v besedilu, da jo postavite na svoje mesto. Kliknite na postavljeno črko, da jo odstranite.",
+        "checkAnswers": "Preveri odgovore",
+        "puzzleText": {
+          "part1": "Del og",
+          "part2": "ka os",
+          "part3": "ne ujet v t",
+          "part4": "h zelo dolgo — včasih sto",
+          "part5": "ne ali celo ti",
+          "part6": "če let! ",
+          "part7": "Če jih pu",
+          "part8": "mo pri miru, ta talni ogljik ostane varno pod zemljo, na",
+          "part9": "to da bi odšel v oz",
+          "part10": "čje. ",
+          "part11": "Modri ogljik, shranjen v o",
+          "part12": "nih in mokriščnih območjih, prav tako po",
+          "part13": "ga upočasniti podnebne spre",
+          "part14": "be."
+        },
+        "correctAnswers": {
+          "blank1": "lji",
+          "blank2": "ta",
+          "blank3": "le",
+          "blank4": "ti",
+          "blank5": "so",
+          "blank6": "sti",
+          "blank7": "mes",
+          "blank8": "ra",
+          "blank9": "bal",
+          "blank10": "ma",
+          "blank11": "mem"
+        },
+        "blankPositions": {
+          "blank1": "afterPart1",
+          "blank2": "afterPart2",
+          "blank3": "afterPart3",
+          "blank4": "afterPart4",
+          "blank5": "afterPart5",
+          "blank6": "afterPart7",
+          "blank7": "afterPart8",
+          "blank8": "afterPart9",
+          "blank9": "afterPart11",
+          "blank10": "afterPart12",
+          "blank11": "afterPart13"
+        },
+        "hiddenLetters": {
+          "letter1": {
+            "text": "lji",
+            "x": 15,
+            "y": 20
+          },
+          "letter2": {
+            "text": "ta",
+            "x": 22,
+            "y": 55
+          },
+          "letter3": {
+            "text": "le",
+            "x": 33,
+            "y": 18
+          },
+          "letter4": {
+            "text": "ti",
+            "x": 44,
+            "y": 28
+          },
+          "letter5": {
+            "text": "so",
+            "x": 55,
+            "y": 22
+          },
+          "letter6": {
+            "text": "sti",
+            "x": 27,
+            "y": 48
+          },
+          "letter7": {
+            "text": "mes",
+            "x": 50,
+            "y": 62
+          },
+          "letter8": {
+            "text": "ra",
+            "x": 64,
+            "y": 33
+          },
+          "letter9": {
+            "text": "bal",
+            "x": 74,
+            "y": 20
+          },
+          "letter10": {
+            "text": "ma",
+            "x": 70,
+            "y": 68
+          },
+          "letter11": {
+            "text": "mem",
+            "x": 82,
+            "y": 30
+          }
+        }
+      },
+      "modal": {
+        "title": "Možnosti prenosa",
+        "carbonSequestrationSoils": "Sekvestracija ogljika v tleh",
+        "carbonSequestrationFloodplains": "Sekvestracija ogljika v poplavnih gozdovih",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      },
+      "ecosystemLabels": {
+        "tropicalForests": "Tropski gozdovi",
+        "temperateForests": "Gozd v zmernem podnebju",
+        "borealForests": "Borealni gozdovi",
+        "tropicalSavannas": "Tropske savane",
+        "temperateGrasslands": "Travniki zmernega pasu ali stepa",
+        "desertsSemiDeserts": "Puščave in polpuščave",
+        "tundra": "Tundra",
+        "wetlands": "Mokrišča",
+        "croplands": "Kmetijske površine"
+      },
+      "nextTopic": "Naslednja tema"
+    },
+    "floodplainPage": {
+      "title": "Življenjsko okolje poplavnih ravnic",
+      "intro": {
+        "question": "Opazite razliko med ilustracijami?",
+        "rainLabel": "Poplavna ravnica med poplavnim dogodkom (mokro obdobje).",
+        "dryLabel": "Poplavna ravnica v suhem obdobju.",
+        "description": "Spoznajte življenjsko okolje poplavnih ravnic in raziščite raznolike habitate ter živalstvo, ki uspeva v teh edinstvenih ekosistemih.",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "openPlatform": "Odprta platforma",
+        "opensNewTab": "Odpre nov zavihek: Zenodo",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "explore": "Razišči"
+      },
+      "page2": {
+        "title": "Poplavne ravnice v deževni sezoni"
+      },
+      "page3": {
+        "title": "Poplavne ravnice v suhem obdobju"
+      },
+      "page4": {
+        "sliderTitle": "Povlecite drsnik, da vidite razlike"
+      },
+      "modal": {
+        "title": "Možnosti prenosa",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "basedOn5E": "Temelji na učni metodi 5E in znanstvenih raziskavah",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      },
+      "nextTopic": "Naslednja tema"
+    },
+    "mapWetlandPage": {
+      "title": "Kartiranje vaših mokrišč",
+      "intro": {
+        "description": "Spoznajte kartiranje mokrišč in raziskujte raznolike habitate ter značilnosti, ki jih lahko opazimo od zgoraj.",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "openPlatform": "Odprta platforma",
+        "opensNewTab": "Odpre nov zavihek: Zenodo",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "explore": "Razišči"
+      },
+      "challenge": {
+        "title": "Izziv z orlovim pogledom!",
+        "intro": "Visoko nad poplavno ravnico naš prijatelj, belorepi orel, opazi vijugasto reko, skrita jezera, močvirja, gozdove, nasip in vasi. Ali jih lahko najdete tudi vi? Povežite vsako značilnost z njenim pravilnim opisom in jo obarvajte! Vsakič ko pravilno določite mesto, bo pokrajina zasijala v svojih pravih barvah — tako kot jo vidi orel z neba."
+      },
+      "quizItems": {
+        "WATERCOURSE": "VODOTOK",
+        "SIDE_ARMS": "STRANSKI ROKAV",
+        "DRAINAGE_CHANNELS": "ODVODNI KANAL",
+        "FLOODPLAIN_LAKE": "POPLAVNO JEZERO",
+        "ISLANDS_MARSH": "MOČVIRJE",
+        "FLOODPLAIN_FOREST": "POPLAVNI GOZD",
+        "PASTURE_WITH_ANIMALS": "PAŠNIK ZA ŽIVINO",
+        "GRASSLAND": "TRAVNIK",
+        "PROTECTIVE_DIKE": "PROTIPOPLAVNI NASIP",
+        "HUMAN_SETTLEMENT": "NASELJE",
+        "AGRICULTURAL_FIELDS": "KMETIJSKE POVRŠINE"
+      },
+      "quiz": {
+        "letterPlaceholder": "Črka?",
+        "congratulations": "Čestitamo!",
+        "successMessage": "Uspešno ste kartirali vse značilnosti mokrišč!"
+      },
+      "modal": {
+        "title": "Možnosti prenosa",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "basedOn5E": "Temelji na učni metodi 5E in znanstvenih raziskavah",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      },
+      "nextTopic": "Naslednja tema"
+    },
+    "riparianPage": {
+      "title": {
+        "page0": "Raziskovanje življenskega prostora vodotoka",
+        "page1": "Raba zemljišč ob vodotokih",
+        "page2": "Habitat potoka: brzica, tok in tolmun"
+      },
+      "intro": {
+        "description": "Spoznajte raziskovanje habitatov in odkrijte raznolike rečne ekosisteme ter aktivnosti rabe zemljišč ob vodotokih.",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "openPlatform": "Odprta platforma",
+        "opensNewTab": "Odpre nov zavihek: Zenodo",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "explore": "Razišči"
+      },
+      "page1": {
+        "introText": "Reke in njihovo okolico ljudje že od davnih časov uporabljajo za različne dejavnosti, kot so kmetovanje, gradnja domov, ribolov, potovanja in pridobivanje vode. Ta raba zemljišč prikazuje, kako ljudje sodelujejo z okoljem in oblikujejo območja ob vodotokih.",
+        "lookCarefully": "Pozorno si oglejte obe sliki.",
+        "instruction": "Pozorno si oglejte ilustraciji in izberite, katere dejavnosti",
+        "landUseActivities": "rabe zemljišč",
+        "instructionEnd": "lahko opazite.",
+        "quizQuestion": "Iz spodnjega seznama kliknite dejavnosti, ki jih vidite na slikah:",
+        "correct": "Pravilno",
+        "incorrect": "Napačno",
+        "missed": "Zgrešeno"
+      },
+      "page2": {
+        "definitionsIntro": "Preberite definicije izrazov:",
+        "placeInImage1": "Povlecite vsako oznako na pravilno mesto na sliki 1.",
+        "placeInImage2": "Povlecite vsako oznako na pravilno mesto na sliki 2.",
+        "instruction": "Spodaj preberite definicije izrazov",
+        "and": "in",
+        "instructionEnd": ", nato povlecite vsako oznako na pravilno mesto na obeh slikah.",
+        "correct": "Pravilno:",
+        "labels": {
+          "POOL": "TOLMUN",
+          "RIFFLE": "BRZICA",
+          "RUN": "TOK"
+        },
+        "definitions": {
+          "POOL": "Globlji, počasneje tekoči del vodotoka, kjer se zbere voda. Tolmuni so tihi, mirni in nudijo zavetje ribam.",
+          "RIFFLE": "Plitev, hitro tekoči del vodotoka z majhnimi valovi in vidnimi kamni. Brzice so hrapave in penaste, bogate s kisikom, zato so idealen habitat za žuželke in ribe.",
+          "RUN": "Gladek, zmerno globok del potoka, kjer voda teče enakomerno med brzico in tolmunom. Tok prejema veliko sončne svetlobe, kar pospešuje rast alg. Žuželke se hranijo z algami, zato je tok dobro mesto za prehranjevanje rib iz tolmunov in brzic."
+        },
+        "checkAnswers": "Preveri odgovore"
+      },
+      "quizOptions": {
+        "human-settlements": "Naselja",
+        "roads-bridges": "Ceste in mostovi",
+        "flood-protection": "Protipoplavni objekti (nasipi, zavarovanja brežin in mostovi)",
+        "dams": "Jezovi in hidroelektrarne",
+        "pastures": "Pašniki in območja za pašo živine",
+        "irrigation": "Namakalni kanali in sistemi",
+        "factory": "Tovarna ali industrija",
+        "mining": "Pridobivanje peska in gramoza",
+        "cycling": "Kolesarjenje",
+        "riparian-vegetation": "Obrežna vegetacija (drevesa in grmovje ob bregovih vodotokov)",
+        "floodplains": "Poplavne ravnice, mokrišča",
+        "agriculture": "Kmetijstvo/kmetovanje",
+        "recreation": "Rekreacija (kampiranje, plavanje, vožnja s kanujem itd.)"
+      },
+      "modal": {
+        "title": "Možnosti prenosa",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "basedOn5E": "Temelji na učni metodi 5E in znanstvenih raziskavah",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      }
+    },
+    "floodControlPage": {
+      "title": {
+        "page0": "Poplavne ravnice kot spužva",
+        "page1": "Kontroliranje poplav - Poplavne ravnice kot spužva"
+      },
+      "intro": {
+        "description": "Spoznajte funkcijo kontroliranja poplav in odkrijte, kako poplavne ravnice delujejo kot naravne spužve, ki vpijajo in zadržujejo vodo.",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "openPlatform": "Odprta platforma",
+        "opensNewTab": "Odpre nov zavihek: Zenodo",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "explore": "Razišči"
+      },
+      "page1": {
+        "instruction": "Premikajte kazalec miške po različnih delih slik, da odkrijete koristne informacije.",
+        "didYouKnow": "Ali ste vedeli ...?",
+        "hoverAreas": {
+          "left": {
+            "willows-banks": "Vrbe stabilizirajo bregove in povečujejo prepustnost tal s svojimi obsežnimi koreninami.",
+            "reed-vegetation": "Gosta trstična vegetacija upočasnjuje pretok vode, lovi usedline in izboljšuje kakovost vode.",
+            "native-grasses": "Avtohtone trave izboljšajo poroznost tal in infiltracijo vode",
+            "leaf-litter": "Listnati odpadki na gozdnih tleh zadržujejo vlago in zmanjšujejo površinski odtok.",
+            "deep-rooted-trees": "Drevesa in grmičevje z globokimi koreninami nudijo močnejšo stabilizacijo brežin kot trave s plitvimi koreninami."
+          },
+          "right": {
+            "natural-filtration": "Vodotok omejujejo nasipi kot tesen steznik. Ne more se razširiti ali doseči poplavne ravnice, zato poplavne vode hitro naraščajo.",
+            "ecosystem-benefits": "Brez obrečnih rastlin ni ničesar, kar bi upočasnilo odtekanje ali absorbiralo vodo. Tla postanejo razpokana in zbita – voda se ne more vpijati.",
+            "groundwater-recharge": "Brez rastlin ob bregovih odtok teče hitreje, v reko vstopi več usedlin in hranil, kakovost vode pa se poslabša."
+          }
+        },
+        "didYouKnowContent": {
+          "left": {
+            "title": "Ali ste vedeli ...?",
+            "items": [
+              "Poplavna tla shranijo 3000–4000 m³ vode na hektar.",
+              "Meandri povečajo čas zadrževanja vode za 30–50 %.",
+              "Poplavna vegetacija shrani 30–40 % celotne zadrževalne zmogljivosti poplavne ravnice.",
+              "Naravna poplavna ravnica absorbira poplavno vodo 20–30 dni.",
+              "Bogatenje podtalnice: 500–1000 m³ na hektar na leto."
+            ]
+          },
+          "right": {
+            "title": "Ali ste vedeli ...?",
+            "items": [
+              "Kanali zmanjšajo zadrževanje vode za: 60–80 %.",
+              "Izguba vegetacije zmanjša zadrževalno zmogljivost za: 40–50 %.",
+              "Zbijanje tal zmanjša shranjevanje vode za: 30–40 %.",
+              "Degradirana poplavna ravnica zadrži le: 1.000–2.000 m³ na hektar."
+            ]
+          }
+        }
+      },
+      "page2": {
+        "activityTitle": "Aktivnost 1",
+        "instruction": "Ali lahko prepoznaš manjkajoče „supermoči“ poplavnih ravnic? Poveži številke opisov z ohranjeno poplavno ravnico (levo) in degradirano poplavno ravnico (desno).",
+        "naturalFloodplain": "Ohranjena poplavna ravnica:",
+        "degradedFloodplain": "Degradirana poplavna ravnica:",
+        "descriptions": {
+          "left": [
+            "Vijugast vodotok teče v nežnih ovinkih, razliva vodo po poplavni ravnici, upočasnjuje tok in bogati zemljo.",
+            "Rastline ob rečnih bregovih upočasnjujejo odtok, lovijo usedline in absorbirajo odvečna hranila, kar pomaga ohranjati čisto vodo.",
+            "Poplavna jezera in mrtvice shranjujejo odvečno poplavno vodo, podpirajo bogato biotsko raznovrstnost in pomagajo bogatiti podtalnico."
+          ],
+          "right": [
+            "Ob močnem deževju lahko pride do poplav, ki porušijo nasipe in ogrozijo bližnje vasi.",
+            "V zravnanem, kanaliziranem vodotoku hitrejši tok povzroča erozijo in poglabljanje struge, kar izsušuje bližnje poplavne ravnice.",
+            "Brez obrečnih rastlin ni ničesar, kar bi upočasnilo odtok ali absorbiralo vodo."
+          ]
+        },
+        "correct": "Pravilno",
+        "incorrect": "Napačno",
+        "correctLabel": "Pravilno:"
+      },
+      "page3": {
+        "title": "Izziv »Dopolni prazna mesta«",
+        "intro1": "Poplavne ravnice so naravni varovalni pasovi!",
+        "intro2": "Kako poplavna ravnica pomaga v času močnega deževja?",
+        "intro3": "Kaj se zgodi s poplavno vodo, ko ima vodotok prostor za razlivanje?",
+        "completeSentence": "DOPOLNI STAVEK:",
+        "sentence1": "Poplavne ravnice delujejo kot naravne",
+        "sentence1End": "za zadrževanje poplavne vode",
+        "sentence2": "in zmanjšujejo tveganje za",
+        "sentence2End": "dolvodno.",
+        "placeholder1": "s____e",
+        "placeholder2": "p_____e",
+        "correctAnswers": {
+          "answer1": "spužve",
+          "answer2": "poplave"
+        },
+        "feedback": {
+          "correctSponge": "Pravilno: spužve",
+          "incorrectSponge": "Napačno (Odgovor: spužve)",
+          "correctFlooding": "Pravilno: poplave",
+          "incorrectFlooding": "Napačno (Odgovor: poplave)"
+        },
+        "checkAnswers": "Preveri odgovore"
+      },
+      "modal": {
+        "title": "Možnosti prenosa",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "basedOn5E": "Temelji na učni metodi 5E in znanstvenih raziskavah",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      },
+      "nextTopic": "Naslednja tema"
+    },
+    "peopleAquaticPage": {
+      "title": "Ljudje in vodni ekosistemi",
+      "subtitle": {
+        "page1": "A. Naravne poplavne ravnice",
+        "page2": "A. Uporabljene in spremenjene poplavne ravnice",
+        "page3": "A. Obnova poplavnih ravnic kot rešitev, temelječa na naravi"
+      },
+      "intro": {
+        "description": "Razišči, kako ljudje uporabljajo poplavne ravnice in vodne ekosisteme, ter odkrij poti za obnovitev njihovih koristi za skupnosti in naravo.",
+        "openPlatform": "Odprta platforma",
+        "explore": "Razišči"
+      },
+      "activity1": {
+        "title": "Aktivnost 1",
+        "description": "Poglej dobro — tako so človeške dejavnosti preoblikovale Donavo in njene poplavne ravnice. Nasipe, kmetijstvo, plovne poti ter druge obremenitve so spremenile pokrajino.",
+        "question": "Ali mi lahko pomagaš, tako da vsako oznako pritiska pripneš na pravo mesto na sliki?",
+        "instruction": "Ljudje so krčili gozdove, poplavne ravnice preoblikovali v pašnike in njive ter ob rečnih bregovih gradili vasice in kasneje mesta. Da bi se zaščitili pred poplavami, so zgradili nasipe. Donava je bila prav tako urejena kot plovna pot ter za proizvodnjo električne energije. Posledica tega je bila, da je reka izgubila številne svoje naravne značilnosti: ravnovesje plavin v rečnem koritu je bilo porušeno, povezava med rečnim tokom in poplavnimi ravnicami pa je bila večinoma prekinjena. Ostali so le drobni ostanki prvotnih poplavnih ravnic, medtem ko so mnoge tipične živalske in rastlinske vrste izginile."
+      },
+      "activity2": {
+        "title": "Dejavnost 2",
+        "description": "Za reševanje družbenih izzivov z rešitvami, temelječih na naravi, lahko zdaj raziščeš primerne ukrepe obnove: vsaka slika prikazuje en način, kako lahko ljudje in narava sodelujejo.",
+        "question": "Na dnu boš našel/-a seznam s šestimi ukrepi. Ali lahko vsak ukrep s seznama povežeš s pravo sliko?",
+        "instruction": "Korak za korakom se donavske poplavne ravnice ponovno povezujejo z reko. Stari stranski rokavi se ponovno odpirajo, gozdovi in mokrišča se obnavljajo, kjer je mogoče, pa se vzpostavlja naravno poplavljanje. Ti ukrepi vračajo habitate za ribe, ptice in rastline, hkrati pa pomagajo ljudem — z zadrževanjem poplavne vode, izboljšanjem kakovosti vode, zagotavljanjem vode med sušo in nudijo prostor za rekreacijo. Ti ukrepi obnove se imenujejo rešitve, temelječe na naravi (Nature-based Solutions)."
+      },
+      "activity3": {
+        "title": "Dejavnost 3",
+        "description": "Polarni diagrami prikazujejo, kako se ekosistemske storitve reke Donave spreminjajo v treh različnih scenarijih: naravne poplavne ravnice, spremenjene poplavne ravnice s človeškimi obremenitvami in obnovljene poplavne ravnice z rešitvami, temelječimi na naravi. Ali lahko ugotoviš, zakaj storitve izgledajo tako različno?",
+        "column1": {
+          "title": "Prvotna naravna poplavna ravnica",
+          "question": "Če pogledamo ta polarni diagram, zakaj so skoraj vse ekosistemske storitve zelo visoko, medtem ko je kmetijstvo nizko?",
+          "options": {
+            "A": "Ker so bila tla na poplavni ravnici revna in tam ni nič raslo.",
+            "B": "Ker je bilo kmetovanje v tistem času prepovedano s strani oblasti donavske regije.",
+            "C": "Ker je bila poplavna ravnica še vedno naravna, nudila je številne koristi ljudem in živalim, vendar na poplavljeni zemlji kmetovanje ni bilo mogoče."
+          }
+        },
+        "column2": {
+          "title": "Spremenjena poplavna ravnica",
+          "question": "Zakaj je kmetijska proizvodnja tako visoko v tem primeru, medtem ko je večina drugih storitev zelo nizko?",
+          "options": {
+            "A": "Ker so se naravni gozdovi in mokrišča Donave razširili, kar je hkrati povečalo kmetijstvo in proizvodnjo lesa.",
+            "B": "Ker so nasipi prekinili povezavo poplavne ravnice z reko, s čimer so zaščitili kmetijstvo pred poplavami, hkrati pa uničili številne naravne habitate in njihove koristi.",
+            "C": "Ker ob Donavi ni nihče živel, tako je bilo uporabljanih le nekaj storitev."
+          }
+        },
+        "column3": {
+          "title": "Obnovljena poplavna ravnica",
+          "question": "Zakaj so ekosistemske storitve na tem diagramu bolj uravnotežene v primerjavi z drugima dvema?",
+          "options": {
+            "A": "Ker rešitve, temelječe na naravi, obnavljajo stranske rokave, mokrišča in gozdove, kar vrača številne prednosti tako za naravo kot za ljudi.",
+            "B": "Ker so ljudje omogočili reki naravno poplavljanje in odpravili vse obremenitve.",
+            "C": "Ker je bila Donava s pomočjo nasipov odrezana od svojih poplavnih ravnic."
+          }
+        },
+        "correctAnswer": "Pravilen odgovor:"
+      },
+      "pressureLabels": {
+        "cutting-meanders": {
+          "label": "Krajšanje dolžine meandrov",
+          "description": "Poravnavanje reke (reko naredimo krajšo in bolj ravno, namesto da bi vijugala)."
+        },
+        "building-dikes": {
+          "label": "Gradnja nasipov",
+          "description": "Nasipi za zaščito pred poplavami (dvignjeni nasipi ob reki, ki zadržujejo vodo v glavnem rečnem koritu in preprečujejo, da bi dosegla poplavno ravnico)."
+        },
+        "channellizing-rivers": {
+          "label": "Urejanje rečnih korit / kanali",
+          "description": "Kanali (zaščita bregov poravnanih rek pred erozijo z oblaganjem s kamni ali gradnjo pregrad [majhnih prečnih kamnitih ovir], da reka ne more več spreminjati svojega korita)."
+        },
+        "draining-floodplains": {
+          "label": "Izsuševanje poplavnih ravnic",
+          "description": "Izsuševanje mokrišč (odstranjevanje vode iz mokrišč, da je zemljišče uporabno za pašnike, njive in naselja)."
+        },
+        "urbanization": {
+          "label": "Urbanizacija",
+          "description": "Gradnja naselij, cest in mest, skupaj z izpustom odpadnih voda v reko."
+        },
+        "agriculture-pesticides": {
+          "label": "Kmetijstvo z uporabo pesticidov, insekticidov itd.",
+          "description": "Uporaba kemikalij v kmetijstvu proti plevelu in insektom."
+        },
+        "cutting-forests": {
+          "label": "Krčenje gozdov",
+          "description": "Krčenje gozdov (odstranjevanje dreves z velikih območij)."
+        },
+        "industrialization": {
+          "label": "Industrijalizacija",
+          "description": "Gradnja tovarn in industrije, pogosto spremljana z onesnaževanjem zraka, tal ali vode."
+        },
+        "dams-hydroelectric": {
+          "label": "Pregrade, hidroelektrarne itd.",
+          "description": "Gradnja rečnih pregrad (prečne betonske strukture, ki preprečujejo prost pretok vode, usedlin in rib)."
+        },
+        "invasive-species": {
+          "label": "Invazivne vrste",
+          "description": "Tujerodne vrste (rastline ali živali z drugih celin, ki se množično razširijo in povzročajo težave z dominanco)."
+        },
+        "navigation": {
+          "label": "Plovba / plovne poti",
+          "description": "Ladje in kanali (poglabljanje in urejanje rek, da lahko velike ladje plujejo po njih)."
+        },
+        "climate-change": {
+          "label": "Podnebne spremembe",
+          "description": "Globalno segrevanje (ekstremnejše vremenske razmere, ki jih povzročajo ljudje)."
+        }
+      },
+      "restorationMeasures": {
+        "restoration-sidearms": {
+          "label": "Obnova stranskih rokavov",
+          "description": "Ponovno odpiranje starih stranskih rokavov, da lahko voda spet teče skozi njih, s čimer nastajajo različni habitati za ribe, ptice in rastline."
+        },
+        "dike-relocation": {
+          "label": "Premik nasipov za več prostora",
+          "description": "Premik nasipov dlje od reke, da se zagotovi več prostora za reko in poplavne gozdove, ki lahko zadržujejo poplavno vodo."
+        },
+        "buffer-strips": {
+          "label": "Varovalni pasovi",
+          "description": "Obnova ozkih območij gozdov med kmetijskimi površinami in rekami, da lahko filtrirajo hranila in s tem zaščitijo vodo pred onesnaženjem."
+        },
+        "fish-ramps": {
+          "label": "Prehodi za ribe ali odstranitev ovir",
+          "description": "Omogočanje migracije rib z odstranjevanjem pregrad ali preoblikovanjem v ribje steze, ki ribam omogočajo plavanje po toku navzgor."
+        },
+        "bypass-channels": {
+          "label": "Obvodni kanali",
+          "description": "Ustvarjanje umetnih stranskih kanalov okoli prečnih objektov z blagimi nakloni, kjer se ribe in druge živali lahko premikajo ali celo živijo."
+        },
+        "native-species": {
+          "label": "Podpora avtohtonim vrstam",
+          "description": "Obnova naravnih habitatov ter podpora avtohtonim rastlinam in živalim, kar otežuje širjenje invazivnih vrst."
+        }
+      },
+      "ui": {
+        "results": "Rezultati",
+        "correct": "Pravilno",
+        "incorrect": "Napačno",
+        "correctTooltip": "Pravilno!",
+        "incorrectTooltip": "Napačno",
+        "clickToRemove": "Kliknite za odstranitev in vrnitev na seznam",
+        "checkAnswers": "Preveri odgovore",
+        "tryAgain": "Poskusite znova"
+      },
+      "modal": {
+        "title": "Možnosti prenosa",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "basedOn5E": "Temelji na učni metodi 5E in znanstvenih raziskavah",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      }
+    },
+    "artPage": {
+      "title": "Poplavne ravnice kot vir navdiha",
+      "intro": {
+        "description": "Odkrij, kako poplavne ravnice navdihujejo zgodbe, ustvarjanje in kreativnost. Razišči izjemnost naravnih materialov, preden ustvariš svojo lastno mojstrovino.",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "openPlatform": "Odprta platforma",
+        "opensNewTab": "Odpre nov zavihek: Zenodo",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "explore": "Razišči"
+      },
+      "instruction": {
+        "intro1": "Reke in njihove poplavne ravnice so dom številnim živalim in rastlinam, hkrati pa so žive pokrajine, polne zgodb, ki navdihujejo ljudi že stoletja. Od tkanja košar iz vrbovih vej do ustvarjanja pesmi, legend in risb – poplavne ravnice povezujejo naravo s kulturo.",
+        "intro2": "Zdaj si na vrsti ti – zabavaj se z naravnimi elementi in ustvarjaj svoje slike ter zgodbe. Ob reki naj te barve, oblike in zvoki navdihnejo in odkrij veselje ob oblikovanju svoje zgodbe iz poplavne ravnice.",
+        "instruction": "Predstavljaj si, da si v naravi in nabiraš liste, veje ali perje, da bi ustvaril/-a svoje like. Ali bi lahko pomagal/-a tem obrisom oživeti? Povleci in spusti naravne elemente v oblike, dokler ne bodo napolnjene z obliko in barvo.",
+        "clickToPlace": "Klikni na sliko, kamor naj bo postavljen ta element",
+        "page3": {
+          "text1": "Nekateri deli pokrajine manjkajo.",
+          "text2": "Povleci in spusti figure, ki si jih ustvaril/-a, na prava mesta, da dokončaš prizor poplavne ravnice.",
+          "trySnailFirst": "Poskusi najprej postaviti polža"
+        }
+      },
+      "nextTopic": "Naslednja tema",
+      "modal": {
+        "title": "Možnosti prenosa",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "basedOn5E": "Temelji na učni metodi 5E in znanstvenih raziskavah",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      }
+    },
+    "aestheticsPage": {
+      "title": {
+        "page0": "Estetika poplavnih ravnic v primerjavi s funkcijami poplavnih območij",
+        "page1": "Darovi narave, ki jih ponujata Donava in njene poplavne ravnice",
+        "page2": "Odkrij skrite storitve poplavne ravnice!"
+      },
+      "intro": {
+        "description": "Spoznaj estetiko in odkrij skrite storitve ter kulturne vrednosti, ki jih ponujajo poplavne ravnice.",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "openPlatform": "Odprta platforma",
+        "opensNewTab": "Odpre nov zavihek: Zenodo",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "explore": "Razišči"
+      },
+      "page1": {
+        "description": "Poplavne ravnice in mokrišča ob Donavi nam nudijo številne koristi, ki jih imenujemo ekosistemske storitve. Te se pojavljajo v različnih oblikah:",
+        "provisioningServices": "Oskrbovalne storitve",
+        "provisioningDescription": "viri, ki jih lahko neposredno uporabljamo, kot so ribe, čista voda ali les.",
+        "regulatingServices": "Regulacijske in vzdrževalne storitve",
+        "regulatingDescription": "procesi, ki ohranjajo naravno ravnovesje, kot so zmanjševanje poplav, čiščenje vode ali shranjevanje ogljika.",
+        "culturalServices": "Kulturne storitve",
+        "culturalDescription": "koristi, ki bogatijo naše življenje, kot so rekreacija, učenje in kulturne tradicije.",
+        "activityQuestion": "Ali znaš razvrstiti naravne storitve v skupine?",
+        "activityInstruction": "Povleci in spusti vsako ikono v ustrezno polje na desni.",
+        "results": "Rezultati",
+        "correct": "Pravilno",
+        "incorrect": "Napačno",
+        "correctTooltip": "Pravilno!",
+        "incorrectTooltip": "Napačno",
+        "clickToRemove": "Kliknite za odstranitev"
+      },
+      "page2": {
+        "instruction": "Poplavna ravnica Donave je polna skritih zakladov — a nekateri so težko opazni!\n\nUporabi povečevalno steklo, da raziščeš pokrajino in poiščeš ikone ekosistemskih storitev.\nKo se z miško pomakneš čez ikono s povečevalnim steklom, bo izginila s slike in se pojavila na ustrezni oznaki ob robu ilustracije.\n\nSkupaj te storitve razkrivajo, kako narava vsak dan podpira naša življenja."
+      },
+      "ecosystemServices": {
+        "tourism": "Turizem",
+        "recreation": "Rekreacija in ribolov",
+        "landscape": "Estetika pokrajine",
+        "climate": "Uravnavanje podnebja",
+        "carbon": "Zajemanje ogljika",
+        "nutrient": "Zadrževanje hranil",
+        "flood": "Uravnavanje poplav",
+        "habitat": "Zagotavljanje habitata",
+        "water": "Površinska in podzemna voda",
+        "fish": "Ribe",
+        "agriculture": "Kmetijstvo",
+        "timber": "Les"
+      },
+      "modal": {
+        "title": "Možnosti prenosa",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "basedOn5E": "Temelji na učni metodi 5E in znanstvenih raziskavah",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      },
+      "nextTopic": "Naslednja tema"
+    },
+    "treatmentWetlandsPage": {
+      "title": {
+        "main": "Rastlinske čistilne naprave",
+        "page1": "Naravni filter – rastlinska čistilna naprava",
+        "page2": "Plast za plastjo – naravna čistilna ekipa",
+        "page3": "Zgradimo naravni filter – vertikalno pretočno mokrišče.",
+        "page4": "Majhni čistilci, velik vpliv!"
+      },
+      "intro": {
+        "description": "Spoznajte rastlinske čistilne naprave in odkrijte, kako umetna mokrišča naravno filtrirajo in čistijo odpadno vodo.",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "openPlatform": "Odprta platforma",
+        "opensNewTab": "Odpre nov zavihek: Zenodo",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "explore": "Razišči"
+      },
+      "characters": {
+        "rocky": {
+          "name": "Rocky, odtok",
+          "label": "ROCKY – ODTOK",
+          "tooltip": {
+            "first": "Jaz sem Rocky, odtok! Zbiram prečiščeno vodo in jo varno odtekam v reko. Dno ohranjam odprto in polno zraka, da lahko celoten sistem diha.",
+            "second": "Funkcija: Zbira prečiščeno vodo, zagotavlja prezračevanje od spodaj in usmerja pretok proti iztoku."
+          }
+        },
+        "reeda": {
+          "name": "Reeda, varuhinja toka",
+          "label": "REEDA – VARUHINJA TOKA",
+          "tooltip": {
+            "first": "Sem Reeda, varuhinja toka! Moje korenine držijo filter odprt, da voda lahko prosto teče. Ščitim mokrišče pred vročino in mrazom, prinesem malo kisika ter mikroorganizmom zagotovim prijeten dom.",
+            "second": "Funkcija: Rast korenin vzdržuje hidravlično prevodnost filtra, zagotavlja izolacijo pred vročino (poleti) in mrazom (pozimi), upočasnjuje dotok, podpira mikrobe in absorbira nekaj hranil."
+          }
+        },
+        "gravelia": {
+          "name": "Gravelia, distributerka",
+          "label": "GRAVELIA – DISTRIBUTERKA",
+          "tooltip": {
+            "first": "Živjo! Jaz sem Gravelia – distributerka! Enakomerno razporejam dotekajočo vodo in preprečujem, da bi drobni delci zamašili spodnje plasti. Skrbim za ravnovesje med Sandy zgoraj in Rockyjem spodaj.",
+            "second": "Funkcija: Enakomerno porazdeli vodo, preprečuje zamašitev in ščiti drenažno plast spodaj."
+          }
+        },
+        "sandy": {
+          "name": "Sandy, čistilka",
+          "label": "SANDY – ČISTILKA",
+          "tooltip": {
+            "first": "Jaz sem Sandy – Čistilka! Med mojimi zrni živijo milijoni mikroorganizmov — razgrajujejo odpadne snovi ter pretvarjajo dušik in organske snovi v neškodljive oblike. Jaz opravim večino pravega čiščenja!",
+            "second": "Funkcija: Nudi prostor za biofilme mikroorganizmov, ki izvajajo biološko čiščenje (nitrifikacija, razgradnja organskih snovi, delno vezanje fosforja). Fina struktura upočasni pretok vode → boljše čiščenje.",
+            "highlightText": "izvajajo biološko čiščenje"
+          }
+        }
+      },
+      "layerSlots": {
+        "plant": "Rastlinska plast",
+        "filter": "Filtrirna plast",
+        "intermediate": "Vmesna plast",
+        "drainage": "Drenažna plast"
+      },
+      "page2": {
+        "instruction": "Spoznajte like, ki predstavljajo plasti naravne čistilne ekipe – Reeda, Sandy, Gravelia in Rocky.\n\nVsakega pomočnika povlecite v posodo mokrišča in zgradite plasti od spodaj navzgor.",
+        "successMessage": "Odlično opravljeno! Pravilno si zgradil/-a rastlinsko čistilno napravo.",
+        "errorMessage": "{{name}} spada v drugo plast. Poskusi jo postaviti drugam!"
+      },
+      "page3": {
+        "instruction": "Materiale iz veder stresite v pravilnem vrstnem redu in zgradite svoje vertikalno čistilno napravo – najprej kamenje, nato gramoz, pesek in na koncu na vrh posadite trstičje.\n\nOpazujte, kako se vaše mokrišče pripravlja na naravno čiščenje vode!",
+        "dropBucket": "Spustite vedro tukaj!"
+      },
+      "page4": {
+        "intro": "Zdaj, ko je mokrišče zgrajeno, spoznajmo njegove skrite delavce — drobne mikroorganizme, ki opravijo večino čiščenja.",
+        "conclusion": "Zaradi milijonov drobnih pomočnikov, kot so Nino, Dina, Phos in Bacto, voda zapusti rastlinsko čistilno napravo sveža in čista — pripravljena, da odteče nazaj v Donavo in začne svojo pot znova!",
+        "hoverZones": {
+          "zone1": "Ko je prisoten kisik, pretvarjam amonij v nitrat!",
+          "zone2": "Delam tam, kjer ni kisika — nitrat pretvarjam v dušikov plin!",
+          "zone3": "Ujamem fosfor in ga trdno zadržim v gramozu!",
+          "zone4": "Ujamem fosfor in ga trdno zadržim v gramozu!"
+        }
+      },
+      "modal": {
+        "title": "Možnosti prenosa",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "basedOn5E": "Temelji na učni metodi 5E in znanstvenih raziskavah",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      },
+      "nextTopic": "Naslednja tema"
+    },
+    "selfPurificationPage": {
+      "title": {
+        "main": "Samočistilna funkcija",
+        "page1": "Vnos dušika v reke",
+        "page2": "Zadrževanje dušika v vodotokih",
+        "page3": "Dodatno zadrževanje dušika na poplavnih ravnicah",
+        "page4": "Vnos fosforja v reke",
+        "page5": "Zadrževanje fosforja v vodotokih",
+        "page6": "Dodatno zadrževanje fosforja v poplavnih ravnicah"
+      },
+      "intro": {
+        "description": "Spoznajte samočistilne funkcije in odkrijte, kako reke in poplavne ravnice naravno filtrirajo in čistijo vodo.",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "openPlatform": "Odprta platforma",
+        "opensNewTab": "Odpre nov zavihek: Zenodo",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "explore": "Razišči"
+      },
+      "hoverAreas": {
+        "nutrients1": {
+          "area1": "Onesnaženje, ki prihaja iz številnih razpršenih mest, kot so <span style=\"color: #1C00B8;\">kmetijska polja, ceste ali mesta</span>, se z dežjem ali odtokom prenese v vodotoke.",
+          "area2": "Onesnaženje, ki prihaja iz enega samega, prepoznavnega mesta, kot je <span style=\"color: #1C00B8;\">odtok iz tovarne ali čistilne naprave</span>.",
+          "area3": "<span style=\"color: #1C00B8;\">Gnojila in hlevski gnoj</span> se raztopijo v deževnici in pronicajo skozi tla ali po površini v vodotoke. To je glavni vir razpršenega onesnaženja z dušikom.",
+          "area4": "Meteorna voda prenaša dušikove spojine s <span style=\"color: #1C00B8;\">cest, vozil in mestnih zelenih površin</span> v kanalizacijo in reke.",
+          "area5": "<span style=\"color: #1C00B8;\">Prečiščena voda še vedno vsebuje nekaj dušikovih</span> spojin, ki se skozi iztočne cevi izlivajo v reke. V nekaterih državah sodobne naprave učinkovito odstranijo večino dušika, v drugih pa je čiščenje manj napredno – ali pa ga celo ni.",
+          "area6": "<span style=\"color: #1C00B8;\">Nekatere tovarne</span> izpuščajo odpadno vodo, bogato z dušikom, iz dejavnosti predelave hrane, kemikalij ali proizvodnje. Običajno je to regulirano, vendar je lokalno še vedno pomembno."
+        },
+        "nutrients2": {
+          "area1": "Dušikovi delci se usedajo v usedlinah. Organski delci dušika se <span style=\"color: #1C00B8;\">usedejo</span> in tako postanejo dostopni mikrobom, ki živijo med peščenimi zrni – mirnimi conami čiščenja.",
+          "area2": "Hranila → Biomasa (začasno). Alge in vodne rastline <span style=\"color: #1C00B8;\">absorbirajo nitrat in amonij</span>; dušik se shranjuje v njihovih tkivih, dokler ne razpadejo.",
+          "area3": "<span style=\"color: #1C00B8;\">Amonij → Nitrat (potrebuje kisik)</span>. Drobni mikrobi v usedlinah, bogatih s kisikom, pretvorijo amonij v nitrat – prvi korak čiščenja.",
+          "area4": "<span style=\"color: #1C00B8;\">Nitrat → Dušikov plin (brez kisika)</span> Bakterije v območjih z nizko vsebnostjo kisika pretvorijo nitrat v dušikov plin – ključni proces za izgubo dušika."
+        },
+        "nutrients3": {
+          "area1": "<span style=\"color: #1C00B8;\">Dušik, vezan na delce, se useda.</span> Med poplavami se lebdeči delci z dušikom ujamejo in usedejo na površino poplavne ravnice.",
+          "area2": "<span style=\"color: #1C00B8;\">Hranila → Biomasa (začasno).</span> Rastline na poplavnih ravnicah absorbirajo dušik med rastno sezono in ga shranjujejo v lesu in listih.",
+          "area3": "<span style=\"color: #1C00B8;\">Nitrat → Dušikov plin (brez kisika).</span> V poplavljenih tleh mikrobi dihajo brez kisika in pretvarjajo nitrat v dušikov plin – trajno odstranijo dušik."
+        },
+        "nutrients4": {
+          "area1": "Onesnaženje, ki prihaja iz številnih razpršenih krajev, kot so <span style=\"color: #CE7C0A;\">kmetijska zemljišča, neasfaltirane ceste ali mesta</span>.",
+          "area2": "Onesnaženje, ki prihaja iz enega prepoznavnega vira, kot je iztočna cev iz čistilne naprave za odpadne vode ali iz tovarne.",
+          "area3": "Fosfor, <span style=\"color: #CE7C0A;\">vezan na delce tal</span>, se med dežjem ali poplavami izpira v reke.",
+          "area4": "Fosfor kot <span style=\"color: #CE7C0A;\">gnojilo</span> se raztopi v vodi in počasi doseže vodotoke skozi tla ali površinski odtok. Manjši, a stalen razpršen vir.",
+          "area5": "Meteorna voda v odtoke in vodotoke odnaša <span style=\"color: #CE7C0A;\">prah, detergente in odpadne delce, bogate s</span> fosforjem.",
+          "area6": "<span style=\"color: #CE7C0A;\">Tudi po čiščenju del</span> fosforja ostane v izpuščeni vodi. Številne države so nadgradile svoje naprave, druge pa še vedno nimajo učinkovitih sistemov ali kakršne koli čiščenja odpadne vode.",
+          "area7": "Nekatere tovarne izpuščajo odpadno vodo, ki vsebuje fosfor, zaradi <span style=\"color: #CE7C0A;\">čiščenja, predelave ali proizvodnje</span>. Običajno je to regulirano, vendar je na nekaterih območjih še vedno pomembno."
+        },
+        "nutrients5": {
+          "area1": "<span style=\"color: #CE7C0A;\">Raztopljeni fosfat se veže na minerale</span>, kot so železo, aluminij ali apno. Ko je prisoten kisik, fosfor ostane vezan; če pa kisika primanjkuje, se lahko ponovno sprosti nazaj v vodo.",
+          "area2": "<span style=\"color: #CE7C0A;\">Alge, vodne rastline in biofilmi sprejemajo fosfor</span> in ga uporabljajo za rast. To zadrževanje je začasno — ko organizmi odmrejo ali razpadejo, se fosfor ponovno sprosti v vodo.",
+          "area3": "Fosfor, vezan na zemljo in organske delce, potone na dno struge. To se dogaja predvsem na mirnih območjih ali tam, kjer je pretok počasen – in tako v usedlinah tvori začasno »skladiščenje fosforja«."
+        },
+        "nutrients6": {
+          "area1": "Ko se poplavne vode razširijo po kopnem, se upočasnijo in spustijo lebdeče delce, bogate s fosforjem. To je eden najučinkovitejših načinov, kako poplavne ravnice ujamejo in shranjujejo fosfor.",
+          "area2": "Rastline na poplavnih območjih med rastjo absorbirajo fosfor in ga shranjujejo v listih in koreninah. To zadrževanje je začasno, vendar nekaj fosforja po odmrtju rastlin dlje časa ostane v rastlinskih ostankih in humusu.",
+          "area3": "Raztopljeni fosfor se veže na spojine železa, aluminija ali kalcija v tleh. To ohranja fosfor vezan — razen če zmanjka kisika, ko se lahko ponovno sprosti."
+        }
+      },
+      "quizModal": {
+        "content": "<p style=\"margin: 0;\">Približno <span style=\"color: #619F6A;\">40 % fosforja</span>, sproščenega v povodju Donave, nikoli ne doseže ustja reke — med potjo se usede in ujame v <span style=\"color: #619F6A;\">akumulacijah ter na poplavnih območjih</span>.</p>"
+      },
+      "didYouKnow": {
+        "nitrogenRivers": {
+          "title": "Ali veste, koliko dušika odvzamejo vodotoki?",
+          "content": "<p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">Vsako leto reke na poplavnih območjih naravno zadržijo približno 25.000 ton dušika (približno 5 % vseh emisij)</span> — enako količino dušika, ki bi ga približno 5,5 milijona ljudi izločilo v enem letu! To je približno število prebivalcev Slovaške.</p><p style=\"margin-bottom: 16px;\"><span style=\"color: #619F6A;\">V celotnem povodju Donave reke odstranijo še več: približno 30 %</span> dušika, ki vstopi v rečni sistem, se zadrži med tokom po reki, predvsem zaradi <span style=\"color: #619F6A;\">denitrifikacije</span>.</p><p style=\"margin: 0;\"><span style=\"color: #619F6A;\">To prikazuje, koliko čistilne moči imajo reke, še preden voda doseže poplavne ravnice.</span></p>"
+        },
+        "nitrogenFloodplains": {
+          "title": "Ali veš, koliko dušika odstranijo poplavna območja Donave?",
+          "content": "<p style=\"margin: 0;\">Preostale <span style=\"color: #619F6A;\">aktivne poplavne ravnice</span> v povodju Donave nudijo dodaten korak čiščenja, saj vsako leto zadržijo približno <span style=\"color: #619F6A;\">7.700 ton dušika</span> — približno toliko, kot bi ga <span style=\"color: #619F6A;\">1,6 milijona ljudi</span> (prebivalcev Beograda) izločilo v enem letu.</p>"
+        }
+      },
+      "modal": {
+        "title": "Možnosti prenosa",
+        "accessTeachingMaterials": "Dostop do učnih gradiv",
+        "basedOn5E": "Temelji na učni metodi 5E in znanstvenih raziskavah",
+        "opensInNewTab": "(Odpre nov zavihek: Zenodo)",
+        "exploreRepository": "Razišči Wet-Edu repozitorij",
+        "exploreRelated": "Razišči povezane projekte in vire"
+      },
+      "nextTopic": "Naslednja tema"
+    },
+    "termsOfUse": {
+      "title": "Pogoji uporabe",
+      "section1": {
+        "title": "1. Uvod",
+        "p1": "Restore4Life (Restoration of wetland complexes as life supporting systems in the Danube Basin), v nadaljevanju imenovan \"Projekt\", je 48-mesečni projekt, ki obravnava temo HORIZON-MISS-2022-OCEAN-01.",
+        "p2": "\"LIVING FLOODPLAINS: LEARN, EXPLORE, RESTORE4LIFE TOOLBOX\" (v nadaljevanju \"ta platforma\" ali \"Zbirka orodij\") je bila razvita v okviru Projekta.",
+        "p3": "Ti Pogoji uporabe urejajo vaš dostop do te platforme in njeno uporabo ter vse vsebine, gradiva in vire, ki so na voljo v Zbirki orodij. Vsa vsebina v Zbirki orodij je del Projekta in zanjo veljajo ti Pogoji uporabe. Z dostopom do te platforme ali katere koli vsebine v Zbirki orodij oziroma z njihovo uporabo se strinjate, da vas ti Pogoji uporabe zavezujejo."
+      },
+      "section2": {
+        "title": "2. Opredelitve pojmov",
+        "consortium": "\"Konzorcij\" se nanaša na vse podpisnike Sporazuma o dodelitvi sredstev 101112736, razen Evropske komisije, ki imajo lahko samostojne ali skupne pravice intelektualne lastnine v zvezi z rezultati projekta.",
+        "materials": "\"Gradiva\" se nanašajo na vse informacije, vsebine, podatke, dokumente (npr. bele knjige, brošure, podatkovne liste, pogosta vprašanja, predloge, sporočila za javnost itd.), prenose, datoteke, besedila, slike, fotografije, grafike, videoposnetke, spletne oddaje, publikacije, orodja, vire, programsko opremo, kodo, programe, aplikacije in izdelke, ki so na voljo ali omogočeni prek spletnega mesta."
+      },
+      "section3": {
+        "title": "3. Uporaba gradiv",
+        "p1": "Gradiva na tem spletnem mestu so razvita kot izobraževalna gradiva in so namenjena izobraževalnim in nekomercialnim namenom.",
+        "license": "Licenca:",
+        "licenseDesc": "Vsa gradiva na tem spletnem mestu so licencirana pod mednarodno licenco Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0). To pomeni, da lahko prosto:",
+        "licenseShare": "Delite — kopirate in razširjate gradivo v katerem koli mediju ali formatu",
+        "licenseAdapt": "Prilagodite — predelate, preoblikujete in nadgrajujete gradivo",
+        "licenseConditions": "Pod naslednjimi pogoji:",
+        "licenseAttribution": "Priznanje avtorstva — Navesti morate ustreznega avtorja, zagotoviti povezavo do licence in označiti, ali so bile narejene spremembe. To lahko storite na kateri koli razumen način, vendar ne na način, ki bi nakazoval, da dajalec licence podpira vas ali vašo uporabo.",
+        "licenseNonCommercial": "Nekomercialno — Gradiva ne smete uporabljati za komercialne namene.",
+        "licenseLink": "Za več informacij o licenci CC BY-NC 4.0 obiščite:",
+        "educationalUse": "Uporaba v izobraževalne namene:",
+        "educationalUseDesc": "Gradiva lahko prosto kopirate in uporabljate v izobraževalne namene brez predhodnega dovoljenja, pod pogojem, da:",
+        "li1": "je uporaba nekomercialne in izobraževalne narave",
+        "li2": "je projektu Restore4Life pripisano ustrezno avtorstvo",
+        "li3": "gradiva niso spremenjena na način, ki napačno predstavlja izvirno vsebino",
+        "commercialUse": "Komercialna uporaba:",
+        "commercialUseDesc": "Kopiranje ali uporaba gradiv za gospodarske ali komercialne namene ni dovoljeno brez izrecnega predhodnega pisnega soglasja. Za vprašanja o komercialni uporabi se obrnite na imetnika pravic:"
+      },
+      "section4": {
+        "title": "4. Omejitev odgovornosti",
+        "p1": "Konzorcij in Projekt nista odgovorna za morebitne netočnosti, napake, opustitve ali težave, ki bi lahko nastale pri uporabi gradiv ali tega spletnega mesta.",
+        "p2": "Gradiva so na voljo \"takšna, kot so\", brez kakršne koli garancije, izrecne ali implicitne, vključno z, vendar ne omejeno na, implicitne garancije primernosti za prodajo, ustreznosti za določen namen ali nekršitve pravic.",
+        "p3": "Konzorcij ni odgovoren za kakršno koli neposredno, posredno, naključno, posebno, posledično ali kazensko škodo, ki izhaja iz uporabe ali nezmožnosti uporabe gradiv ali tega spletnega mesta oziroma je z njo povezana."
+      },
+      "section5": {
+        "title": "5. Pravica do spreminjanja gradiv",
+        "p1": "Konzorcij si kot imetnik pravic pridržuje pravico, da kadar koli brez predhodnega obvestila in brez prevzemanja kakršne koli odgovornosti za takšne spremembe spremeni, posodobi ali odstrani katero koli gradivo na tem spletnem mestu. Konzorcij ni dolžan vzdrževati ali posodabljati gradiv in lahko po lastni presoji ukine ali spremeni kateri koli vidik spletnega mesta."
+      },
+      "section6": {
+        "title": "6. Pravice intelektualne lastnine",
+        "p1": "Vsa gradiva na tem spletnem mestu so zaščitena s pravicami intelektualne lastnine. Konzorcij ima lahko samostojne ali skupne pravice intelektualne lastnine v zvezi z rezultati projekta.",
+        "p2": "Čeprav je uporaba v izobraževalne namene dovoljena, kot je opisano zgoraj, so vse druge pravice pridržane. Nepooblaščena uporaba gradiv lahko krši avtorske pravice, blagovne znamke ali druge zakone."
+      },
+      "section7": {
+        "title": "7. Povezave do spletnih mest tretjih oseb",
+        "p1": "To spletno mesto lahko vsebuje povezave do spletnih mest tretjih oseb. Konzorcij ni odgovoren za vsebino, točnost ali mnenja, izražena na takšnih spletnih mestih, in teh spletnih mest ne preiskuje, spremlja ali preverja glede točnosti ali popolnosti. Vključitev katere koli povezane spletne strani ne pomeni odobritve ali podpore s strani Konzorcija."
+      },
+      "section8": {
+        "title": "8. Spremembe Pogojev uporabe",
+        "p1": "Konzorcij si pridržuje pravico, da kadar koli spremeni te Pogoje uporabe. Spremembe začnejo veljati takoj po objavi na tem spletnem mestu. Z nadaljnjo uporabo spletnega mesta po kakršnih koli spremembah se strinjate s spremenjenimi Pogoji uporabe."
+      },
+      "section9": {
+        "title": "9. Kontakt",
+        "materialsTitle": "Za vprašanja o gradivih ali poizvedbe o komercialni uporabi:",
+        "termsTitle": "Za vprašanja o teh Pogojih uporabe ali spletnem mestu na splošno:",
+        "generalInquiries": "Za splošne poizvedbe o projektu Restore4Life obiščite"
+      },
+      "lastUpdated": "Zadnja posodobitev:"
+    },
+    "privacyPolicyPage": {
+      "title": "Politika zasebnosti",
+      "section1": {
+        "title": "1. Uvod",
+        "content": "Ta politika zasebnosti opisuje, kako ravnamo z vašimi osebnimi podatki, ko uporabljate to spletno mesto. Spoštujemo vašo zasebnost in se zavezujemo k varovanju vaših osebnih podatkov v skladu s Splošno uredbo o varstvu podatkov (GDPR)."
+      },
+      "section2": {
+        "title": "2. Upravljavec podatkov",
+        "content": "To spletno mesto upravlja projekt Restore4Life. Tehnična odgovornost je na strani Archipelagos Institute of Marine Conservation. Za vprašanja o tej politiki zasebnosti nas kontaktirajte prek",
+        "website": "www.archipelagos.gr",
+        "orEmail": "ali po e-pošti",
+        "email": "info@archipelagos.gr"
+      },
+      "section3": {
+        "title": "3. Podatki, ki jih zbiramo",
+        "intro": "Zbiramo samo podatke, ki so potrebni za delovanje tega spletnega mesta:",
+        "analyticalData": {
+          "label": "Analitični podatki:",
+          "content": "Prek storitve Google Analytics zbiramo anonimno statistiko uporabe, kot so število obiskovalcev, katere strani so ogledane in kako dolgo uporabniki ostanejo na spletnem mestu. Ti podatki se zbirajo samo, če ste soglašali z uporabo piškotkov.",
+          "important": "Ne shranjujemo nobenih osebnih podatkov, ki bi lahko identificirali posamezne uporabnike."
+        },
+        "technicalData": {
+          "label": "Tehnični podatki:",
+          "content": "Samodejno zbiramo nekatere tehnične podatke, kot so vaš naslov IP (anonimiziran), vrsta brskalnika in operacijski sistem. Ti podatki se uporabljajo za tehnične namene in se ne uporabljajo za vašo identifikacijo."
+        },
+        "important": "Pomembno:",
+        "importantContent": "Ne shranjujemo osebnih podatkov, ki bi jih bilo mogoče uporabiti za identifikacijo posameznih uporabnikov. Analitični podatki, ki jih zbiramo, so združeni in anonimni. Posameznih obiskovalcev prek storitve Google Analytics ne moremo izslediti ali identificirati."
+      },
+      "section4": {
+        "title": "4. Piškotki",
+        "intro": "To spletno mesto uporablja piškotke samo za analitične namene prek storitve Google Analytics. Uporabljamo naslednje vrste piškotkov:",
+        "analyticalCookies": {
+          "label": "Analitični piškotki:",
+          "content": "Ti piškotki nam pomagajo razumeti, kako obiskovalci uporabljajo spletno mesto. Ti piškotki se namestijo samo, če ste podali soglasje."
+        },
+        "withdrawConsent": "Soglasje za piškotke lahko kadar koli prekličete tako, da izbrišete piškotke v nastavitvah brskalnika. Ker ne shranjujemo osebnih podatkov, ki bi lahko identificirali posamezne uporabnike, na zahtevo ne moremo izbrisati določenih uporabniških podatkov. Vendar lahko vedno počistite piškotke brskalnika ali onemogočite piškotke v nastavitvah brskalnika, da preprečite prihodnje sledenje."
+      },
+      "section5": {
+        "title": "5. Nameni obdelave podatkov",
+        "intro": "Vaše podatke uporabljamo za naslednje namene:",
+        "purposes": [
+          "Izboljšanje funkcionalnosti in uporabniške izkušnje spletnega mesta",
+          "Analiziranje uporabe spletnega mesta za optimizacijo vsebine",
+          "Zagotavljanje tehnične varnosti spletnega mesta"
+        ]
+      },
+      "section6": {
+        "title": "6. Vaše pravice",
+        "intro": "V skladu z GDPR imajo posamezniki določene pravice glede svojih osebnih podatkov. Vendar",
+        "notApplicable": "te pravice v našem primeru niso uporabne",
+        "because": "ker:",
+        "reasons": [
+          "Ne shranjujemo osebnih podatkov, ki bi lahko identificirali posamezne uporabnike",
+          "Vsi analitični podatki so anonimni in združeni",
+          "Posameznih obiskovalcev ne moremo izslediti ali identificirati"
+        ],
+        "therefore": "Zato naslednje pravice po GDPR niso uporabne:",
+        "rights": {
+          "access": {
+            "label": "Pravica do dostopa:",
+            "content": "Ni uporabno – o vas nimamo osebnih podatkov, ki bi jih lahko zagotovili"
+          },
+          "rectification": {
+            "label": "Pravica do popravka:",
+            "content": "Ni uporabno – ne shranjujemo osebnih podatkov, ki bi jih bilo mogoče popraviti"
+          },
+          "erasure": {
+            "label": "Pravica do izbrisa:",
+            "content": "Ni uporabno – nimamo osebnih podatkov za izbris. Piškotke brskalnika lahko počistite kadar koli"
+          },
+          "restriction": {
+            "label": "Pravica do omejitve:",
+            "content": "Soglasje za piškotke lahko kadar koli prekličete prek nastavitev brskalnika"
+          },
+          "object": {
+            "label": "Pravica do ugovora:",
+            "content": "Piškotke lahko zavrnete prek pasice za piškotke ali onemogočite piškotke v nastavitvah brskalnika"
+          },
+          "portability": {
+            "label": "Pravica do prenosljivosti podatkov:",
+            "content": "Ni uporabno – nimamo osebnih podatkov za izvoz"
+          }
+        },
+        "contact": "Če imate kakršna koli vprašanja ali pomisleke, nas lahko kontaktirate prek",
+        "website": "www.archipelagos.gr",
+        "orEmail": "ali po e-pošti",
+        "email": "info@archipelagos.gr"
+      },
+      "section7": {
+        "title": "7. Varnost",
+        "content": "Sprejemamo ustrezne tehnične in organizacijske ukrepe za zaščito vaših osebnih podatkov pred nepooblaščenim dostopom, izgubo ali uničenjem. Google Analytics uporablja anonimizirane naslove IP, nastavitve pa smo konfigurirali tako, da je zasebnost čim večja. Ne shranjujemo osebnih podatkov, ki bi lahko identificirali posamezne uporabnike."
+      },
+      "section8": {
+        "title": "8. Spremembe te politike zasebnosti",
+        "content": "Pridržujemo si pravico do spremembe te politike zasebnosti. Spremembe bodo objavljene na tej strani. Priporočamo, da to stran redno preverjate in tako ostanete obveščeni o morebitnih spremembah."
+      },
+      "section9": {
+        "title": "9. Kontakt",
+        "content": "Za vprašanja o tej politiki zasebnosti ali o obdelavi vaših osebnih podatkov nas kontaktirajte prek",
+        "website": "www.archipelagos.gr",
+        "orEmail": "ali po e-pošti",
+        "email": "info@archipelagos.gr"
+      },
+      "lastUpdated": "Zadnja posodobitev:"
+    },
+    "cookiePolicyPage": {
+      "title": "Politika piškotkov",
+      "section1": {
+        "title": "Kaj so piškotki?",
+        "content": "Piškotki so majhne besedilne datoteke, ki se ob obisku spletnega mesta shranijo v vašo napravo. Pogosto se uporabljajo za učinkovitejše delovanje spletnih mest in za zagotavljanje informacij lastnikom spletnih mest."
+      },
+      "section2": {
+        "title": "Vrste piškotkov, ki jih uporabljamo",
+        "intro": "To spletno mesto uporablja",
+        "onlyAnalytical": "samo analitične piškotke",
+        "viaGoogleAnalytics": "prek storitve Google Analytics.",
+        "weDoNotUse": "Ne uporabljamo nujnih/bistvenih piškotkov ali funkcionalnih piškotkov.",
+        "important": "Pomembno:",
+        "importantContent": "Vsi piškotki, uporabljeni na tem spletnem mestu, zahtevajo vaše soglasje. Brez vašega izrecnega dovoljenja se ne namesti noben piškotek."
+      },
+      "section3": {
+        "title": "Analitični piškotki (Google Analytics)",
+        "intro": "Google Analytics uporabljamo, da razumemo, kako obiskovalci uporabljajo naše spletno mesto. Ti piškotki nam pomagajo zbirati informacije o:",
+        "infoItems": [
+          "Številu obiskovalcev spletnega mesta",
+          "Katere strani so najpogosteje ogledane",
+          "Kako dolgo obiskovalci ostanejo na spletnem mestu",
+          "Kako se obiskovalci premikajo po spletnem mestu"
+        ],
+        "purpose": "Namen:",
+        "purposeContent": "Ti piškotki nam pomagajo izboljšati funkcionalnost in uporabniško izkušnjo spletnega mesta.",
+        "consentRequired": "Potrebno soglasje:",
+        "consentRequiredContent": "Da – ti piškotki se namestijo samo, če jih sprejmete prek pasice za piškotke.",
+        "dataCollected": "Zbrani podatki:",
+        "dataCollectedContent": "Vsi podatki so anonimni in združeni. Posameznih uporabnikov ne moremo identificirati."
+      },
+      "section4": {
+        "title": "Posebni uporabljeni piškotki",
+        "intro": "Naslednje piškotke nastavi Google Analytics (samo če ste sprejeli piškotke):",
+        "cookies": {
+          "_ga": {
+            "name": "_ga",
+            "purpose": "Namen:",
+            "purposeContent": "Razlikuje med enkratnimi uporabniki",
+            "duration": "Trajanje:",
+            "durationContent": "2 leti",
+            "type": "Vrsta:",
+            "typeContent": "Lastni piškotek"
+          },
+          "_gid": {
+            "name": "_gid",
+            "purpose": "Namen:",
+            "purposeContent": "Razlikuje med enkratnimi uporabniki",
+            "duration": "Trajanje:",
+            "durationContent": "24 ur",
+            "type": "Vrsta:",
+            "typeContent": "Lastni piškotek"
+          },
+          "_gat": {
+            "name": "_gat (or _gat_gtag_*)",
+            "purpose": "Namen:",
+            "purposeContent": "Omejuje pogostost zahtev",
+            "duration": "Trajanje:",
+            "durationContent": "1 minuta",
+            "type": "Vrsta:",
+            "typeContent": "Lastni piškotek"
+          }
+        },
+        "note": "Opomba:",
+        "noteContent": "Te piškotke nastavi Google Analytics in zanje velja Googlova politika zasebnosti. Google Analytics smo konfigurirali z nastavitvami, ki upoštevajo zasebnost, vključno z anonimizacijo naslovov IP ter onemogočenima Google Signals in personalizacijo oglasov."
+      },
+      "section5": {
+        "title": "Upravljanje nastavitev piškotkov",
+        "intro": "Imate popoln nadzor nad piškotki na tem spletnem mestu:",
+        "preferences": [
+          {
+            "label": "Sprejmi ali zavrni:",
+            "content": "Ob prvem obisku spletnega mesta lahko analitične piškotke sprejmete ali zavrnete prek pasice za piškotke na dnu strani."
+          },
+          {
+            "label": "Spremenite svojo izbiro:",
+            "content": "Nastavitve piškotkov lahko kadar koli spremenite tako, da počistite piškotke brskalnika in znova obiščete spletno mesto. Pasica za piškotke se bo znova prikazala in vam omogočila novo izbiro."
+          },
+          {
+            "label": "Nastavitve brskalnika:",
+            "content": "Piškotke lahko upravljate tudi neposredno v nastavitvah brskalnika. Večina brskalnikov omogoča blokiranje ali brisanje piškotkov. Upoštevajte, da lahko blokiranje piškotkov vpliva na vašo izkušnjo na nekaterih spletnih mestih."
+          }
+        ]
+      },
+      "section6": {
+        "title": "Piškotki tretjih oseb",
+        "content": "Piškotki Google Analytics so tehnično piškotki tretjih oseb (nastavi jih Google), vendar se uporabljajo izključno za analitiko našega spletnega mesta. Ne uporabljamo nobenih drugih piškotkov tretjih oseb za oglaševanje, družbene medije ali druge namene."
+      },
+      "section7": {
+        "title": "Več informacij",
+        "intro": "Za več informacij o piškotkih in o tem, kako jih upravljati, lahko obiščete:",
+        "links": {
+          "allAboutCookies": "www.allaboutcookies.org",
+          "googlePrivacy": "Googlova politika zasebnosti"
+        },
+        "contact": "Če imate vprašanja o naši uporabi piškotkov, nas kontaktirajte prek",
+        "website": "www.archipelagos.gr",
+        "orEmail": "ali po e-pošti",
+        "email": "info@archipelagos.gr"
+      },
+      "lastUpdated": "Zadnja posodobitev:"
+    },
+    "wetlandFreskPage": {
+      "title": "Wetland Fresk",
+      "description": "Wetland Fresk je interaktivna igra, namenjena sodelovanju in raziskovanju vpliva človeških dejavnosti na mokriščne ekosisteme (vključno s plimskimi ravnicami, slanimi močvirji, lagunami itd.), posledic teh vplivov in možnih rešitev. Udeleženci skupaj z uporabo kompleta kart sestavijo \"zemljevid\" vzročno-posledičnih odnosov, nato pa se lotijo refleksije in ukrepanja.",
+      "duration": {
+        "label": "Trajanje",
+        "value": "90–120 minut"
+      },
+      "numberOfCards": {
+        "label": "Število kart",
+        "value": "24 kart"
+      },
+      "teamPlayers": {
+        "label": "Igralci",
+        "value": "4–8"
+      },
+      "age": {
+        "label": "Starost",
+        "value": "Od ± 12 let"
+      },
+      "downloadNote": "Preusmerjeni boste na zunanjo bazo podatkov."
+    },
+    "wetland4LifePage": {
+      "title": "Wetland4Life",
+      "subtitle": "Razišči potencial mokrišč preko aplikacije!",
+      "whatDoesItDo": {
+        "title": "Kaj počne Wetland4Life?",
+        "description": "Wetland4Life omogoča, da je kartiranje mokrišč dostopno vsakomur. Ponuja enostavne in praktične načine za ocenjevanje stanja mokrišč ter prepoznavanje priložnosti za obnovo."
+      },
+      "howItWorks": {
+        "title": "Kako deluje",
+        "description": "Preprosta vprašanja te korak za korakom vodijo skozi proces kartiranja. Vsako lokacijo lahko oceniš v približno",
+        "time": "5 minutah",
+        "timeEnd": "— hitro, jasno in znanstveno utemeljeno."
+      },
+      "academy": {
+        "title": "Želiš izvedeti več?",
+        "description": "Aplikacija vsebuje vgrajeno bazo z gradivom o mokriščih — kot so njihove funkcije, grožnje in obnova. Ne glede na to, ali si začetnik ali strokovnjak, je vedno mogoče odkriti kaj novega."
+      },
+      "callToAction": "Mokrišča so ključna za našo varnost, okolje in prihodnost, zato je izjemno pomembno, da razumemo njihovo stanje — in kako lahko obnovimo, kar je bilo izgubljeno. Zato te potrebujemo!",
+      "visitButton": "Obišči aplikacijo Wetland4Life",
+      "externalLinkNote": "Ta povezava vodi na spletno mesto, prilagojeno za mobilne naprave. Uporaba na namiznem računalniku je lahko manj optimalna.",
+      "websiteUrl": "https://wetland.restore4life-platform.eu"
+    },
+    "blueGreenSpace4AllPage": {
+      "title": "Blue-Green Space4All",
+      "subtitle": "Potuj z Otisom Vidrom ob Donavi in reši izzive!",
+      "description": "Igra na računalniku, kjer potuješ z Otisom Vidrom ob Donavi. Na poti se boš srečeval/-a z biološkimi, fizikalnimi, kemičnimi in družbenimi izzivi. Odgovarjaj na vprašanja, izbiraj rešitve in korak za korakom izboljšuj Donavo — hkrati pa zbiraš čim več kovancev.",
+      "quizHighlight": "Popolni preizkus, koliko si se naučil/-a o mokriščih!",
+      "playButton": "Igraj Modro-zelena Space4all",
+      "externalLinkNote": "Odprl se bo zunanja spletna stran z igro.",
+      "websiteUrl": "http://game.restore4life-platform.eu"
+    },
+    "wetlandEduRepoPage": {
+      "title": "Razišči Wet-Edu repozitorij",
+      "subtitle": "Razišči povezane projekte in vire",
+      "allTopics": "Vse teme",
+      "clickToOpen": "Kliknite na projekt, da ga odprete v novem zavihku",
+      "opensInNewTab": "Odpre se v novem zavihku",
+      "previous": "Prejšnji",
+      "next": "Naslednji",
+      "page": "Stran",
+      "of": "od",
+      "topics": {
+        "Floodplain living environment": "Življenjsko okolje poplavnih ravnic",
+        "Floodplain mapping": "Kartiranje poplavnih ravnic",
+        "Flood control": "Upravljanje poplav",
+        "Habitat assessment": "Ocenjevanje habitatov",
+        "Carbon sequestration": "Zajemanje ogljika",
+        "Self purification": "Samoočiščevanje",
+        "Constructed wetlands": "Umetna mokrišča",
+        "Aesthetics": "Estetika",
+        "Art & Storytelling": "Umetnost in pripovedovanje zgodb"
+      }
+    }
+  }
