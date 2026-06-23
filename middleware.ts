@@ -1,4 +1,10 @@
-import { CANONICAL_HOST, isAllowedHost } from './canonicalHost.shared';
+const CANONICAL_HOST = 'education.wetlandrestorationhub.eu';
+
+function isAllowedHost(hostname: string): boolean {
+  if (hostname === CANONICAL_HOST) return true;
+  if (hostname === 'localhost' || hostname === '127.0.0.1') return true;
+  return false;
+}
 
 export default function middleware(request: Request) {
   const url = new URL(request.url);
